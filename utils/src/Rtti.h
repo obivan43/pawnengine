@@ -34,18 +34,18 @@ namespace pawn {
                 return false;
             }
 
-            template <typename T> T* As() {
-                if (Is(T::TypeIdClass())) {
-                    return reinterpret_cast<T*>(this);
+            template <typename Type> Type* As() {
+                if (Is(Type::TypeIdClass())) {
+                    return reinterpret_cast<Type*>(this);
                 }
 
                 return nullptr;
             }
 
-            template <typename T> const T* As() const {
-                if (Is(T::TypeIdClass()))
+            template <typename Type> const Type* As() const {
+                if (Is(Type::TypeIdClass()))
                 {
-                    return reinterpret_cast<T*>(this);
+                    return reinterpret_cast<Type*>(this);
                 }
 
                 return nullptr;
