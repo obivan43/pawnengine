@@ -3,6 +3,7 @@
 #include "Observer.h"
 
 namespace pawn {
+	
 	void Observable::AddObserver(const std::shared_ptr<pawn::Observer>& observer) {
 		m_Observers.push_front(observer);
 	}
@@ -16,4 +17,5 @@ namespace pawn {
 			observer->handleEvent();
 		}
 	}
+	
 }
