@@ -25,6 +25,9 @@
     <Filter Include="src\time">
       <UniqueIdentifier>{845193a1-0338-4e78-b7a5-b263883e2cfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\patterns\singleton">
+      <UniqueIdentifier>{79d31391-1be8-4010-b735-7e7d4b8cb015}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
@@ -64,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="src\Observer.h">
       <Filter>src\patterns\observer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Singleton.h">
+      <Filter>src\patterns\singleton</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
