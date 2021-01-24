@@ -4,3 +4,4 @@
 #include "../src/Observer.h"
 #include "../src/IObservable.h"
 #include "../src/Observable.h"
+#include "../src/Clock.h"

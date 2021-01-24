@@ -14,7 +14,7 @@ namespace pawn {
 
 	void Observable::NotifyObservers() {
 		for (auto& observer : m_Observers) {
-			observer->handleEvent();
+			observer->HandleEvent();
 		}
 	}
 	

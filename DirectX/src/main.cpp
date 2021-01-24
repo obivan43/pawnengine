@@ -48,11 +48,20 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
     }
 
     ShowWindow(hwnd, nCmdShow);
+
+    pawn::Clock timer;
+    timer.Reset();
 	
     MSG msg = { };
-    while (GetMessage(&msg, nullptr, 0, 0)) {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
+    while (msg.message != WM_QUIT) {
+        if(PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        } else {
+            timer.Tick();
+            std::cout << "Time: " << timer.DeltaTime() << std::endl;
+        }
+
     }
 
     return 0;
