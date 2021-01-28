@@ -30,7 +30,14 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
     wc.lpfnWndProc = WindowProc;
     wc.hInstance = hInstance;
     wc.lpszClassName = className;
-
+    wc.style = CS_OWNDC;
+    wc.cbClsExtra = 0;
+    wc.cbWndExtra = 0;
+    wc.hCursor = nullptr;
+    wc.hIcon = nullptr;
+    wc.hbrBackground = nullptr;
+    wc.lpszMenuName = nullptr;
+	
     RegisterClass(&wc);
 
     const HWND hwnd = CreateWindowEx(0,className,
@@ -57,11 +64,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
         if(PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
-        } else {
-            timer.Tick();
-            std::cout << "Time: " << timer.DeltaTime() << std::endl;
         }
-
     }
 
     return 0;
