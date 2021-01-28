@@ -1,6 +1,6 @@
 #include "pch.h"
+#include "WindowsAPI.h"
 #include "Clock.h"
-#include <Windows.h>
 
 namespace pawn {
 

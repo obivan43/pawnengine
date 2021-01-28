@@ -28,6 +28,9 @@
     <Filter Include="src\patterns\singleton">
       <UniqueIdentifier>{79d31391-1be8-4010-b735-7e7d4b8cb015}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\winapi">
+      <UniqueIdentifier>{5238d550-879d-465d-83a2-4cac9304d27f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
@@ -70,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="src\Singleton.h">
       <Filter>src\patterns\singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WindowsAPI.h">
+      <Filter>src\winapi</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
