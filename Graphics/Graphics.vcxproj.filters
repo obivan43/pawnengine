@@ -12,10 +12,19 @@
     <Filter Include="pch">
       <UniqueIdentifier>{5d2f8971-8c9b-4f17-8d37-d8fd29934364}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\directx11">
+      <UniqueIdentifier>{add8dfbb-fdf8-4523-853a-3486531a067e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
       <Filter>pch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GraphicsAPI.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DirectX11API.cpp">
+      <Filter>src\directx11</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -24,6 +33,12 @@
     </ClInclude>
     <ClInclude Include="include\graphics.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GraphicsAPI.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectX11API.h">
+      <Filter>src\directx11</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

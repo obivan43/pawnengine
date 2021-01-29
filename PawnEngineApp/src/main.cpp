@@ -47,6 +47,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
 
     pawn::Clock timer;
     timer.Reset();
+
+    pawn::DirectX11API directX11Api;
 	
     MSG msg = { };
     while (msg.message != WM_QUIT) {
