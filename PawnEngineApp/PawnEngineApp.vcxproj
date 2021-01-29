@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{9e5a0c46-a9df-4690-a05e-ba2d24343e36}</ProjectGuid>
-    <RootNamespace>DirectX</RootNamespace>
+    <RootNamespace>PawnEngineApp</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -191,6 +191,9 @@
     <ClInclude Include="pch\pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Graphics\Graphics.vcxproj">
+      <Project>{3ca759d2-5d17-42df-8806-6297e2fa4cf8}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\math\math.vcxproj">
       <Project>{3c1ee475-e5d9-496a-8d35-dc2a05362bfd}</Project>
     </ProjectReference>
