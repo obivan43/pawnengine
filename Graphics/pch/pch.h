@@ -1,4 +1,4 @@
 ﻿#pragma once
 
-#include "../../utils/include/utils.h"
-#include "../../math/include/math.h"
+#include "../../Utils/include/utils.h"
+#include "../../Math/include/math.h"
