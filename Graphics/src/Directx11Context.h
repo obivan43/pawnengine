@@ -28,7 +28,7 @@ namespace pawn {
 			ID3D11Device* m_Device;
 			ID3D11DeviceContext* m_DeviceContext;
 			IDXGISwapChain* m_SwapChain;
-			ID3D11RenderTargetView* m_TargetView;
+			ID3D11RenderTargetView* m_RenderTargetView;
 	};
 	
 }

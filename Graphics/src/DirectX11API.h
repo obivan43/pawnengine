@@ -20,8 +20,7 @@ namespace pawn {
 		
 			~DirectX11API() override;
 		
-			virtual void Clear() override final;
-			virtual void SetClearColor(float r, float g, float b, float a) override final;
+			virtual void Clear(float r, float g, float b, float a) override final;
 		
 	};
 	

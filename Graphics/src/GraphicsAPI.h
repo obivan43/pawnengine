@@ -21,8 +21,7 @@ namespace pawn {
 		
 			virtual ~GraphicsAPI() = default;
 
-			virtual void Clear();
-			virtual void SetClearColor(float r, float g, float b, float a);
+			virtual void Clear(float r, float g, float b, float a);
 		
 			static const GraphicsAPIEnum& GetGraphicsAPI() { return m_graphicsApi; }
 	

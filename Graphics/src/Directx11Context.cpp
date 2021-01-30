@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include "DirectX11Context.h"
+#include "DirectX11Debug.h"
 
 #ifdef PAWN_DIRECTX11
 
@@ -10,10 +11,18 @@ namespace pawn {
 	m_Device(nullptr),
 	m_DeviceContext(nullptr),
 	m_SwapChain(nullptr),
-	m_TargetView(nullptr)
+	m_RenderTargetView(nullptr)
 	{}
 
 	DirectX11Context::~DirectX11Context() {
+		if (m_RenderTargetView != nullptr) {
+			m_RenderTargetView->Release();
+		}
+
+		if(m_SwapChain != nullptr) {
+			m_SwapChain->Release();
+		}
+		
 		if (m_DeviceContext != nullptr) {
 			m_DeviceContext->Release();
 		}
@@ -36,15 +45,14 @@ namespace pawn {
 		DXGI_SWAP_CHAIN_DESC swapChainDescription = {};
 		swapChainDescription.BufferDesc = modeDescription;
 		swapChainDescription.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-		swapChainDescription.BufferCount = 1;
+		swapChainDescription.BufferCount = 2;
 		swapChainDescription.SampleDesc.Count = 1;
 		swapChainDescription.SampleDesc.Quality = 0;
-		swapChainDescription.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+		swapChainDescription.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
 		swapChainDescription.Flags = 0;
 		swapChainDescription.OutputWindow = hwnd;
 		swapChainDescription.Windowed = true;
 		
-		HRESULT result = E_FAIL;
 		D3D_FEATURE_LEVEL FeatureLevels[] = {
 			D3D_FEATURE_LEVEL_11_1,
 			D3D_FEATURE_LEVEL_11_0,
@@ -60,7 +68,7 @@ namespace pawn {
 #if defined(DEBUG) || defined(_DEBUG)
 		deviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif		
-		result = D3D11CreateDeviceAndSwapChain(
+		DirectX11Call(D3D11CreateDeviceAndSwapChain(
 			nullptr,
 			D3D_DRIVER_TYPE_HARDWARE,
 			nullptr,
@@ -70,21 +78,16 @@ namespace pawn {
 			D3D11_SDK_VERSION,
 			&swapChainDescription,
 			&m_SwapChain,
-			&m_Device, 
+			&m_Device,
 			&m_FeatureLevel,
 			&m_DeviceContext
-		);
+		))
 
-		if(FAILED(result)) {
-			std::cout << "Failed to create D3D device and swap chain" << std::endl;
-			return false;
-		}
-
-		if (m_FeatureLevel != D3D_FEATURE_LEVEL_11_1) {
-			std::cout << "D3D_FEATURE_LEVEL_11_1 Feature level not supported" << std::endl;
-			return false;
-		}
-
+		ID3D11Resource* buffer = nullptr;
+		DirectX11Call(m_SwapChain->GetBuffer(0, __uuidof(ID3D11Resource), reinterpret_cast<void**>(&buffer)))
+		DirectX11Call(m_Device->CreateRenderTargetView(buffer, nullptr, &m_RenderTargetView));
+		buffer->Release();
+		
 		return true;
 	}
 
