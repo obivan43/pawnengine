@@ -2,12 +2,16 @@
 
 #include "GraphicsContext.h"
 
+#ifdef PAWN_DIRECTX11
+
+#include <d3d11.h>
+
 namespace pawn {
 	
 	class DirectX11Context : public GraphicsContext {
 		
 		public:
-			DirectX11Context() = default;
+			DirectX11Context();
 			DirectX11Context(const DirectX11Context& other) = default;
 			DirectX11Context(DirectX11Context&& other) noexcept = default;
 			
@@ -16,9 +20,16 @@ namespace pawn {
 
 			~DirectX11Context() override;
 		
-			virtual void Initialize() override final;
+			virtual bool Initialize() override final;
 			virtual void SwapBuffers() override final;
+
+		private:
+			D3D_FEATURE_LEVEL m_FeatureLevel;
+			ID3D11Device* m_Device;
+			ID3D11DeviceContext* m_DeviceContext;
 
 	};
 	
 }
+
+#endif

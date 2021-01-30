@@ -14,7 +14,7 @@ namespace pawn {
 
 			virtual ~GraphicsContext() = default;
 
-			virtual void Initialize();
+			virtual bool Initialize();
 			virtual void SwapBuffers();
 	};
 	

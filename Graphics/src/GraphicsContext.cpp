@@ -3,7 +3,7 @@
 
 namespace pawn {
 	
-	void GraphicsContext::Initialize() {}
+	bool GraphicsContext::Initialize() { return true; }
 	
 	void GraphicsContext::SwapBuffers() {}
 	
