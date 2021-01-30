@@ -12,7 +12,7 @@ namespace pawn {
 			GraphicsContext& operator=(const GraphicsContext& other) = default;
 			GraphicsContext& operator=(GraphicsContext&& other) noexcept = default;
 
-			~GraphicsContext() = default;
+			virtual ~GraphicsContext() = default;
 
 			virtual void Initialize();
 			virtual void SwapBuffers();
