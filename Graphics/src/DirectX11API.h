@@ -18,7 +18,7 @@ namespace pawn {
 			DirectX11API& operator=(const DirectX11API& other) = default;
 			DirectX11API& operator=(DirectX11API&& other) noexcept = default;
 		
-			virtual ~DirectX11API();
+			~DirectX11API() override;
 		
 			virtual void Clear() override final;
 			virtual void SetClearColor(float r, float g, float b, float a) override final;
