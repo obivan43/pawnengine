@@ -23,13 +23,17 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\DirectX11API.cpp" />
+    <ClCompile Include="src\Directx11Context.cpp" />
     <ClCompile Include="src\GraphicsAPI.cpp" />
+    <ClCompile Include="src\GraphicsContext.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\graphics.h" />
     <ClInclude Include="pch\pch.h" />
     <ClInclude Include="src\DirectX11API.h" />
+    <ClInclude Include="src\Directx11Context.h" />
     <ClInclude Include="src\GraphicsAPI.h" />
+    <ClInclude Include="src\GraphicsContext.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

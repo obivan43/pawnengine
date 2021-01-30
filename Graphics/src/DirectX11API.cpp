@@ -3,8 +3,6 @@
 
 #ifdef PAWN_DIRECTX11
 
-#pragma comment(lib, "d3d11.lib")
-
 namespace pawn {
 	
 	DirectX11API::~DirectX11API() {}
