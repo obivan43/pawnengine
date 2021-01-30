@@ -20,14 +20,15 @@ namespace pawn {
 
 			~DirectX11Context() override;
 		
-			virtual bool Initialize() override final;
+			virtual bool Initialize(const HWND hwnd) override final;
 			virtual void SwapBuffers() override final;
 
 		private:
 			D3D_FEATURE_LEVEL m_FeatureLevel;
 			ID3D11Device* m_Device;
 			ID3D11DeviceContext* m_DeviceContext;
-
+			IDXGISwapChain* m_SwapChain;
+			ID3D11RenderTargetView* m_TargetView;
 	};
 	
 }

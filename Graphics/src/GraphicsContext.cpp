@@ -3,7 +3,10 @@
 
 namespace pawn {
 	
-	bool GraphicsContext::Initialize() { return true; }
+	bool GraphicsContext::Initialize(const HWND hwnd) {
+		(void)hwnd;
+		return true;
+	}
 	
 	void GraphicsContext::SwapBuffers() {}
 	

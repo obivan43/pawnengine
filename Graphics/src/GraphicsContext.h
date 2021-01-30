@@ -14,7 +14,7 @@ namespace pawn {
 
 			virtual ~GraphicsContext() = default;
 
-			virtual bool Initialize();
+			virtual bool Initialize(const HWND hwnd);
 			virtual void SwapBuffers();
 	};
 	

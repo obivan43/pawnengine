@@ -49,13 +49,17 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
         return 0;
     }
 
+    RECT rect = {};
+    GetWindowRect(hwnd, &rect);
+    SetWindowPos(hwnd, HWND_TOP, rect.left, rect.top, 800, 600, 0);
+	
     ShowWindow(hwnd, nCmdShow);
 
     pawn::Clock timer;
     timer.Reset();
 
     pawn::DirectX11Context directX11Context;
-    directX11Context.Initialize();
+    directX11Context.Initialize(hwnd);
 	
     pawn::DirectX11API directX11Api;
 	
