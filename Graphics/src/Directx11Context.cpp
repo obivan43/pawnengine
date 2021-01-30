@@ -45,10 +45,10 @@ namespace pawn {
 		DXGI_SWAP_CHAIN_DESC swapChainDescription = {};
 		swapChainDescription.BufferDesc = modeDescription;
 		swapChainDescription.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-		swapChainDescription.BufferCount = 2;
+		swapChainDescription.BufferCount = 1;
 		swapChainDescription.SampleDesc.Count = 1;
 		swapChainDescription.SampleDesc.Quality = 0;
-		swapChainDescription.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
+		swapChainDescription.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 		swapChainDescription.Flags = 0;
 		swapChainDescription.OutputWindow = hwnd;
 		swapChainDescription.Windowed = true;
@@ -91,7 +91,9 @@ namespace pawn {
 		return true;
 	}
 
-	void DirectX11Context::SwapBuffers() {}
+	void DirectX11Context::SwapBuffers() {
+		m_SwapChain->Present(1, 0);
+	}
 	
 }
 

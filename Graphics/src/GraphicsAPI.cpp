@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GraphicsAPI.h"
+#include "GraphicsContext.h"
 
 namespace pawn {
 	
@@ -16,6 +17,8 @@ namespace pawn {
 #endif // PAWN_OPENGL
 #endif // PAWN_DIRECTX11
 
-	void GraphicsAPI::Clear(float r, float g, float b, float a) {}
+	void GraphicsAPI::SetClearColor(float r, float g, float b) {}
+	
+	void GraphicsAPI::Clear() {}
 	
 }

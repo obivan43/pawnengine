@@ -58,17 +58,29 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
     pawn::Clock timer;
     timer.Reset();
 
-    pawn::DirectX11Context directX11Context;
-    directX11Context.Initialize(hwnd);
+    std::shared_ptr<pawn::GraphicsContext> graphicsContext;
+    std::unique_ptr<pawn::GraphicsAPI> graphicsAPI;
 	
-    pawn::DirectX11API directX11Api;
+#ifdef PAWN_DIRECTX11
+    graphicsContext = std::make_shared<pawn::DirectX11Context>();
+    graphicsAPI = std::make_unique<pawn::DirectX11API>();
+#endif
+	
+    graphicsContext->Initialize(hwnd);
+    graphicsAPI->SetContext(graphicsContext);
+    graphicsAPI->SetClearColor(1.0f, 0.0f, 0.0f);
 	
     MSG msg = { };
     while (msg.message != WM_QUIT) {
+        timer.Tick();
+    	
         if(PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
+    	
+        graphicsAPI->Clear();
+        graphicsContext->SwapBuffers();
     }
 
     return 0;

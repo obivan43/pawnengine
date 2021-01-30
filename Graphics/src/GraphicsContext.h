@@ -2,8 +2,9 @@
 
 namespace pawn {
 	
-	class GraphicsContext {
-		
+	class GraphicsContext : public Rtti {
+		RTTI_DECLARATIONS(GraphicsContext, Rtti)
+	
 		public:
 			GraphicsContext() = default;
 			GraphicsContext(const GraphicsContext& other) = default;

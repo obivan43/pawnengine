@@ -15,7 +15,7 @@
     <Filter Include="src\directx11">
       <UniqueIdentifier>{add8dfbb-fdf8-4523-853a-3486531a067e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\debug">
+    <Filter Include="src\directx11\debug">
       <UniqueIdentifier>{a340f572-2ac6-476c-9de4-03e13b0b1d43}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -36,7 +36,7 @@
       <Filter>src\directx11</Filter>
     </ClCompile>
     <ClCompile Include="src\dxerr.cpp">
-      <Filter>src\debug</Filter>
+      <Filter>src\directx11\debug</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -59,21 +59,21 @@
       <Filter>src\directx11</Filter>
     </ClInclude>
     <ClInclude Include="src\DirectX11Debug.h">
-      <Filter>src\debug</Filter>
+      <Filter>src\directx11\debug</Filter>
     </ClInclude>
     <ClInclude Include="src\dxerr.h">
-      <Filter>src\debug</Filter>
+      <Filter>src\directx11\debug</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\DXGetErrorDescription.inl">
-      <Filter>src\debug</Filter>
+      <Filter>src\directx11\debug</Filter>
     </None>
     <None Include="src\DXGetErrorString.inl">
-      <Filter>src\debug</Filter>
+      <Filter>src\directx11\debug</Filter>
     </None>
     <None Include="src\DXTrace.inl">
-      <Filter>src\debug</Filter>
+      <Filter>src\directx11\debug</Filter>
     </None>
   </ItemGroup>
 </Project>

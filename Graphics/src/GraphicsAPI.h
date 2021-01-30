@@ -2,6 +2,8 @@
 
 namespace pawn {
 
+	class GraphicsContext;
+
 	enum GraphicsAPIEnum {
 		None,
 		DirectX11,
@@ -21,11 +23,15 @@ namespace pawn {
 		
 			virtual ~GraphicsAPI() = default;
 
-			virtual void Clear(float r, float g, float b, float a);
+			virtual void SetContext(std::shared_ptr<GraphicsContext>& context) { m_graphicsContext = context; }
+
+			virtual void SetClearColor(float r, float g, float b);
+			virtual void Clear();
 		
 			static const GraphicsAPIEnum& GetGraphicsAPI() { return m_graphicsApi; }
 	
 		private:
+			std::shared_ptr<GraphicsContext> m_graphicsContext;
 			static GraphicsAPIEnum m_graphicsApi;
 	};
 	
