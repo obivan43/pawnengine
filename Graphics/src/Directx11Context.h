@@ -24,7 +24,7 @@ namespace pawn {
 
 			~DirectX11Context() override;
 		
-			virtual bool Initialize(const HWND hwnd) override final;
+			virtual bool Initialize(const pawn::Window& window) override final;
 			virtual void SwapBuffers() override final;
 
 			ID3D11Device* GetDevice() const { return m_Device; }

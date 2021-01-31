@@ -1,6 +1,8 @@
 ﻿#pragma once
 
 namespace pawn {
+
+	class Window;
 	
 	class GraphicsContext : public Rtti {
 		RTTI_DECLARATIONS(GraphicsContext, Rtti)
@@ -15,7 +17,7 @@ namespace pawn {
 
 			virtual ~GraphicsContext() = default;
 
-			virtual bool Initialize(const HWND hwnd);
+			virtual bool Initialize(const pawn::Window& window);
 			virtual void SwapBuffers();
 	};
 	

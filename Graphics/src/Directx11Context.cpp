@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "DirectX11Context.h"
 #include "DirectX11Debug.h"
+#include "Window.h"
 
 #ifdef PAWN_DIRECTX11
 
@@ -32,7 +33,7 @@ namespace pawn {
 		}
 	}
 
-	bool DirectX11Context::Initialize(const HWND hwnd) {
+	bool DirectX11Context::Initialize(const pawn::Window& window) {
 		DXGI_MODE_DESC modeDescription = {};
 		modeDescription.Width = 800;
 		modeDescription.Height = 600;
@@ -50,7 +51,7 @@ namespace pawn {
 		swapChainDescription.SampleDesc.Quality = 0;
 		swapChainDescription.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 		swapChainDescription.Flags = 0;
-		swapChainDescription.OutputWindow = hwnd;
+		swapChainDescription.OutputWindow = reinterpret_cast<HWND>(window.GetNativeHandle());
 		swapChainDescription.Windowed = true;
 		
 		D3D_FEATURE_LEVEL FeatureLevels[] = {

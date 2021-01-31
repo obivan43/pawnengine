@@ -3,8 +3,8 @@
 
 namespace pawn {
 	
-	bool GraphicsContext::Initialize(const HWND hwnd) {
-		(void)hwnd;
+	bool GraphicsContext::Initialize(const pawn::Window& window) {
+		(void)window;
 		return true;
 	}
 	

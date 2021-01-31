@@ -41,7 +41,7 @@ namespace pawn {
 #ifdef PAWN_DIRECTX11
         m_GraphicsContext = std::make_shared<pawn::DirectX11Context>();
 #endif
-        m_GraphicsContext->Initialize(m_WindowHandle);
+        m_GraphicsContext->Initialize(*this);
 	}
 
 	void WinAPIWindow::Update() {
