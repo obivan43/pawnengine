@@ -40,6 +40,8 @@ namespace pawn {
 
 #ifdef PAWN_DIRECTX11
         m_GraphicsContext = std::make_shared<pawn::DirectX11Context>();
+#else
+        m_GraphicsContext = std::make_shared<pawn::GraphicsContext>();
 #endif
         m_GraphicsContext->Initialize(*this);
 	}

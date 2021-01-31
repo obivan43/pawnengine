@@ -16,6 +16,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
     std::unique_ptr<pawn::GraphicsAPI> graphicsAPI;
 #ifdef PAWN_DIRECTX11
     graphicsAPI = std::make_unique<pawn::DirectX11API>();
+#else
+    graphicsAPI = std::make_unique<pawn::GraphicsAPI>();
 #endif
 	
     graphicsAPI->SetContext(window.GetGraphicsContext());
