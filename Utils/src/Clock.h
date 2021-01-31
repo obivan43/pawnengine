@@ -5,6 +5,7 @@
 namespace pawn {
 
 	class Clock {
+		
 		public:
 			Clock();
 		

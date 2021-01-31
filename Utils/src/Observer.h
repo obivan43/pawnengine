@@ -4,6 +4,7 @@
 namespace pawn {
 	
 	class Observer {
+		
 		public:
 			Observer() = default;
 			Observer(const Observer& other) = default;
@@ -14,7 +15,6 @@ namespace pawn {
 			virtual ~Observer() = default;
 		
 			virtual void HandleEvent();
-
 	};
 	
 }

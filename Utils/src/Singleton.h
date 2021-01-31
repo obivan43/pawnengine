@@ -2,24 +2,29 @@
 
 #include <memory>
 
-template<typename Type> class Singleton {
-	public:
-		Singleton(const Singleton& other) = delete;
-		Singleton(Singleton&& other) = delete;
+namespace pawn {
 	
-		Singleton& operator=(const Singleton& other) = delete;
-		Singleton& operator=(Singleton&& other) = delete;
-		Singleton& operator=(const Singleton) = delete;
-	
-	    virtual ~Singleton() = default;
+	template<typename Type> class Singleton {
 
-		static Type& instance();
+	public:
+		virtual ~Singleton() = default;
+
+		template<typename... Args>
+		static Type& Instance(Args&&... args);
 
 	protected:
 		Singleton() = default;
-};
 
-template<typename Type> Type& Singleton<Type>::instance() {
-    static const std::unique_ptr<Type> instance{ new Type() };
-    return *instance;
+	private:
+		Singleton(const Singleton&) = delete;
+		const Singleton& operator=(const Singleton&) = delete;
+	};
+
+	template <typename Type>
+	template <typename ... Args>
+	Type& Singleton<Type>::Instance(Args&&... args) {
+		static const std::unique_ptr<Type> instance(new Type(std::forward<Args>(args)...));
+		return *instance;
+	}
+	
 }

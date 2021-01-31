@@ -18,6 +18,9 @@
     <Filter Include="src\directx11\debug">
       <UniqueIdentifier>{a340f572-2ac6-476c-9de4-03e13b0b1d43}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\window">
+      <UniqueIdentifier>{bb5aba57-87a7-43cf-a672-8d04ec10f4d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
@@ -37,6 +40,12 @@
     </ClCompile>
     <ClCompile Include="src\dxerr.cpp">
       <Filter>src\directx11\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WinAPIWindow.cpp">
+      <Filter>src\window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Window.cpp">
+      <Filter>src\window</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +72,12 @@
     </ClInclude>
     <ClInclude Include="src\dxerr.h">
       <Filter>src\directx11\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WinAPIWindow.h">
+      <Filter>src\window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Window.h">
+      <Filter>src\window</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

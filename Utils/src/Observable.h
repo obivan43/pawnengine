@@ -7,6 +7,7 @@
 namespace pawn {
 	
 	class Observable : public IObservable {
+		
 		public:
 			Observable() = default;
 			Observable(const Observable& other) = default;

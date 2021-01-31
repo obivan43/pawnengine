@@ -5,6 +5,7 @@
 namespace pawn {
 
 	class Rtti {
+		
         public:
 		
             Rtti() = default;

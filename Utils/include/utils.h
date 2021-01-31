@@ -6,3 +6,4 @@
 #include "../src/IObservable.h"
 #include "../src/Observable.h"
 #include "../src/Clock.h"
+#include "../src/Singleton.h"
