@@ -35,8 +35,8 @@ namespace pawn {
 
 	bool DirectX11Context::Initialize(const pawn::Window& window) {
 		DXGI_MODE_DESC modeDescription = {};
-		modeDescription.Width = 800;
-		modeDescription.Height = 600;
+		modeDescription.Width = window.GetWidth();
+		modeDescription.Height = window.GetHeight();
 		modeDescription.RefreshRate.Numerator = 144;
 		modeDescription.RefreshRate.Denominator = 1;
 		modeDescription.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -93,7 +93,7 @@ namespace pawn {
 	}
 
 	void DirectX11Context::SwapBuffers() {
-		m_SwapChain->Present(1, 0);
+		DirectX11Call(m_SwapChain->Present(1, 0))
 	}
 	
 }
