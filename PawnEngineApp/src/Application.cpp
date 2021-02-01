@@ -37,8 +37,6 @@ namespace pawn {
 
 				fpsTime = 0.0f;
 				fpsCounter = 0;
-
-				std::cout << m_Fps << std::endl;
 			}
 
 			m_GraphicsAPI->Clear();
