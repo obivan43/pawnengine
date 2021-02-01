@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "Application.h"
 
 #ifdef PAWN_DIRECTX11
 
@@ -7,28 +8,7 @@
 #endif
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow) {
-    std::wstring windowTitle(L"Pawn WinAPIWindow");
-    pawn::Window& window = pawn::WinAPIWindow::Instance(windowTitle, 800, 600, hInstance);
-
-    pawn::Clock timer;
-    timer.Reset();
-
-    std::unique_ptr<pawn::GraphicsAPI> graphicsAPI;
-#ifdef PAWN_DIRECTX11
-    graphicsAPI = std::make_unique<pawn::DirectX11API>();
-#else
-    graphicsAPI = std::make_unique<pawn::GraphicsAPI>();
-#endif
-	
-    graphicsAPI->SetContext(window.GetGraphicsContext());
-    graphicsAPI->SetClearColor(1.0f, 0.0f, 0.0f);
-
-    while(!window.IsClosed()) {
-        timer.Tick();
-		graphicsAPI->Clear();
-    	
-        window.Update();
-    }
-
+	pawn::Application& application = pawn::Application::Instance();
+	application.Run();
     return 0;
 }

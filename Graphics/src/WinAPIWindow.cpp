@@ -5,9 +5,10 @@
 
 namespace pawn {
 
-	WinAPIWindow::WinAPIWindow(std::wstring& title, uint32_t width, uint32_t height, HINSTANCE hInstance)
-	: m_Width(width), m_Height(height), m_IsClosed(false), m_GraphicsContext(nullptr) {
+	WinAPIWindow::WinAPIWindow(const std::wstring& title, uint32_t width, uint32_t height)
+	: m_Width(width), m_Height(height), m_IsClosed(false) {
         const wchar_t className[] = L"Window";
+        HINSTANCE hInstance = GetModuleHandle(nullptr);
         WNDCLASS wc = { };
         wc.lpfnWndProc = DefWindowProc;
         wc.hInstance = hInstance;
@@ -37,13 +38,6 @@ namespace pawn {
         SetWindowPos(m_WindowHandle, HWND_TOP, rect.left, rect.top, 800, 600, 0);
 
         ShowWindow(m_WindowHandle, SW_SHOW);
-
-#ifdef PAWN_DIRECTX11
-        m_GraphicsContext = std::make_shared<pawn::DirectX11Context>();
-#else
-        m_GraphicsContext = std::make_shared<pawn::GraphicsContext>();
-#endif
-        m_GraphicsContext->Initialize(*this);
 	}
 
 	void WinAPIWindow::Update() {
@@ -56,8 +50,6 @@ namespace pawn {
         if (msg.message == WM_QUIT) {
             m_IsClosed = true;
         }
-
-        m_GraphicsContext->SwapBuffers();
 	}
 
 }
