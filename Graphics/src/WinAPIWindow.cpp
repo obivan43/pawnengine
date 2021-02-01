@@ -8,11 +8,11 @@ namespace pawn {
     WinAPIWindow* WinAPIWindow::m_This = nullptr;
 	
     LRESULT CALLBACK WinAPIWindow::FakeWindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-    	if(m_This != nullptr) {
-            return m_This->WindowProc(hwnd, uMsg, wParam, lParam);
-    	}
+	    if(m_This != nullptr) {
+	        return m_This->WindowProc(hwnd, uMsg, wParam, lParam);
+		}
 
-        return DefWindowProc(hwnd, uMsg, wParam, lParam);
+		return DefWindowProc(hwnd, uMsg, wParam, lParam);
     }
 
     LRESULT CALLBACK WinAPIWindow::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
