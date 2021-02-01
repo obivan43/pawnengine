@@ -4,7 +4,7 @@ namespace pawn {
 
 	class GraphicsContext;
 
-	enum GraphicsAPIEnum {
+	enum class GraphicsAPIEnum {
 		None,
 		DirectX11,
 		OpenGL,

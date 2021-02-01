@@ -7,6 +7,8 @@ namespace pawn {
 	m_isRunning(true),
 	m_Fps(0),
 	m_Window(pawn::WinAPIWindow::Instance(std::wstring(L"Pawn WinAPIWindow"), 800, 600)) {
+		m_Window.AddObserver(this);
+		
 		m_Clock.Reset();
 
 #ifdef PAWN_DIRECTX11
@@ -43,10 +45,12 @@ namespace pawn {
 			
 			m_Window.Update();
 			m_GraphicsContext->SwapBuffers();
+		}
+	}
 
-			if(m_Window.IsClosed()) {
-				m_isRunning = false;
-			}
+	void Application::HandleEvent(const Event& e) {
+		if(e.GetType() == EventTypeEnum::WindowClose) {
+			m_isRunning = false;
 		}
 	}
 	

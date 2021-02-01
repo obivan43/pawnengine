@@ -3,6 +3,6 @@
 
 namespace pawn {
 	
-	void Observer::HandleEvent() {}
+	void Observer::HandleEvent(const Event& e) { (void)e; }
 	
 }

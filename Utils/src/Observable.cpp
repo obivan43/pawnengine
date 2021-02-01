@@ -4,17 +4,17 @@
 
 namespace pawn {
 	
-	void Observable::AddObserver(const std::shared_ptr<pawn::Observer>& observer) {
+	void Observable::AddObserver(Observer* observer) {
 		m_Observers.push_front(observer);
 	}
 
-	void Observable::RemoveObserver(const std::shared_ptr<pawn::Observer>& observer) {
+	void Observable::RemoveObserver(Observer* observer) {
 		m_Observers.remove(observer);
 	}
 
-	void Observable::NotifyObservers() {
+	void Observable::NotifyObservers(const Event& e) {
 		for (auto& observer : m_Observers) {
-			observer->HandleEvent();
+			observer->HandleEvent(e);
 		}
 	}
 	

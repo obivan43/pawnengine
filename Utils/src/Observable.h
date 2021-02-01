@@ -18,12 +18,12 @@ namespace pawn {
 
 			virtual ~Observable() = default;
 		
-			virtual void AddObserver(const std::shared_ptr<pawn::Observer>& observer) override final;
-			virtual void RemoveObserver(const std::shared_ptr<pawn::Observer>& observer) override final;
-			virtual void NotifyObservers() override final;
+			virtual void AddObserver(Observer* observer) override final;
+			virtual void RemoveObserver(Observer* observer) override final;
+			virtual void NotifyObservers(const Event& e) override final;
 	
 		private:
-			std::list<std::shared_ptr<Observer>> m_Observers;
+			std::list<Observer*> m_Observers;
 	};
 	
 }

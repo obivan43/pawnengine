@@ -7,6 +7,7 @@ namespace pawn {
 	class WinAPIWindow : public Window, public Singleton<WinAPIWindow> {
 
 		public:
+			WinAPIWindow() = default;
 			WinAPIWindow(const std::wstring& title, uint32_t width, uint32_t height);
 			virtual void Update() override;
 			
@@ -16,10 +17,16 @@ namespace pawn {
 			virtual bool IsClosed() const override { return m_IsClosed; }
 
 		private:
+			static LRESULT CALLBACK FakeWindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+			LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+	
+		private:
 			uint32_t m_Width;
 			uint32_t m_Height;
 			HWND m_WindowHandle;
 			bool m_IsClosed;
+
+			static WinAPIWindow* m_This;
 	};
 	
 }

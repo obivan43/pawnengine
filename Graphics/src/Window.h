@@ -4,7 +4,7 @@
 
 namespace pawn {
 	
-	class Window {
+	class Window : public Observable {
 		
 		public:
 

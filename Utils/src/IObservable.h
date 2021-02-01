@@ -2,6 +2,8 @@
 
 #include <memory>
 
+#include "Event.h"
+
 namespace pawn {
 
 	class Observer;
@@ -18,9 +20,9 @@ namespace pawn {
 
 			virtual ~IObservable() = default;
 
-			virtual void AddObserver(const std::shared_ptr<pawn::Observer>& observer) = 0;
-			virtual void RemoveObserver(const std::shared_ptr<pawn::Observer>& observer) = 0;
-			virtual void NotifyObservers() = 0;
+			virtual void AddObserver(Observer* observer) = 0;
+			virtual void RemoveObserver(Observer* observer) = 0;
+			virtual void NotifyObservers(const Event& e) = 0;
 	};
 	
 }

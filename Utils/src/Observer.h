@@ -1,5 +1,8 @@
 ﻿#pragma once
+
 #include <iostream>
+
+#include "Event.h"
 
 namespace pawn {
 	
@@ -14,7 +17,7 @@ namespace pawn {
 
 			virtual ~Observer() = default;
 		
-			virtual void HandleEvent();
+			virtual void HandleEvent(const Event& e);
 	};
 	
 }

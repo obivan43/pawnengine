@@ -31,6 +31,9 @@
     <Filter Include="src\winapi">
       <UniqueIdentifier>{5238d550-879d-465d-83a2-4cac9304d27f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\patterns\observer\events">
+      <UniqueIdentifier>{ef05aa0a-7702-4641-ba48-1e62f971928e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
@@ -47,6 +50,12 @@
     </ClCompile>
     <ClCompile Include="src\Observer.cpp">
       <Filter>src\patterns\observer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event.cpp">
+      <Filter>src\patterns\observer\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WindowCloseEvent.cpp">
+      <Filter>src\patterns\observer\events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="src\WindowsAPI.h">
       <Filter>src\winapi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event.h">
+      <Filter>src\patterns\observer\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WindowCloseEvent.h">
+      <Filter>src\patterns\observer\events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
