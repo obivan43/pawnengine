@@ -12,10 +12,20 @@ namespace pawn {
 	m_Device(nullptr),
 	m_DeviceContext(nullptr),
 	m_SwapChain(nullptr),
-	m_RenderTargetView(nullptr)
+	m_RenderTargetView(nullptr),
+	m_DepthStencilBuffer(nullptr),
+	m_DepthStencilView(nullptr)
 	{}
 
 	DirectX11Context::~DirectX11Context() {
+		if (m_DepthStencilView != nullptr) {
+			m_DepthStencilView->Release();
+		}
+		
+		if (m_DepthStencilBuffer != nullptr) {
+			m_DepthStencilBuffer->Release();
+		}
+		
 		if (m_RenderTargetView != nullptr) {
 			m_RenderTargetView->Release();
 		}
@@ -86,8 +96,36 @@ namespace pawn {
 
 		ID3D11Resource* buffer = nullptr;
 		DirectX11Call(m_SwapChain->GetBuffer(0, __uuidof(ID3D11Resource), reinterpret_cast<void**>(&buffer)))
-		DirectX11Call(m_Device->CreateRenderTargetView(buffer, nullptr, &m_RenderTargetView));
+		DirectX11Call(m_Device->CreateRenderTargetView(buffer, nullptr, &m_RenderTargetView))
 		buffer->Release();
+
+		D3D11_TEXTURE2D_DESC depthStencilDescription = {};
+		depthStencilDescription.Width = window.GetWidth();
+		depthStencilDescription.Height = window.GetHeight();
+		depthStencilDescription.MipLevels = 1;
+		depthStencilDescription.ArraySize = 1;
+		depthStencilDescription.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+		depthStencilDescription.SampleDesc.Count = 1;
+		depthStencilDescription.SampleDesc.Quality = 0;
+		depthStencilDescription.Usage = D3D11_USAGE_DEFAULT;
+		depthStencilDescription.BindFlags = D3D11_BIND_DEPTH_STENCIL;
+		depthStencilDescription.CPUAccessFlags = 0;
+		depthStencilDescription.MiscFlags = 0;
+
+		m_DepthStencilBuffer = nullptr;
+		DirectX11Call(m_Device->CreateTexture2D(&depthStencilDescription, nullptr, &m_DepthStencilBuffer))
+		DirectX11Call(m_Device->CreateDepthStencilView(m_DepthStencilBuffer, nullptr, &m_DepthStencilView))
+
+		m_DeviceContext->OMSetRenderTargets(1, &m_RenderTargetView, m_DepthStencilView);
+
+		D3D11_VIEWPORT viewPort;
+		viewPort.TopLeftX = 0.0f;
+		viewPort.TopLeftY = 0.0f;
+		viewPort.Width = static_cast<float>(window.GetWidth());
+		viewPort.Height = static_cast<float>(window.GetHeight());
+		viewPort.MinDepth = 0.0f;
+		viewPort.MaxDepth = 1.0f;
+		m_DeviceContext->RSSetViewports(1, &viewPort);
 		
 		return true;
 	}

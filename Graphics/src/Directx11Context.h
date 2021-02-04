@@ -31,6 +31,8 @@ namespace pawn {
 			ID3D11DeviceContext* GetDeviceContext() const { return m_DeviceContext; }
 			IDXGISwapChain* GetSwapChain() const { return m_SwapChain; }
 			ID3D11RenderTargetView* GetRenderTargetView() const { return m_RenderTargetView; }
+			ID3D11Texture2D* GetDepthStencilBuffer() const { return m_DepthStencilBuffer; }
+			ID3D11DepthStencilView* GetDepthStencilView() const { return m_DepthStencilView; }
 	
 		private:
 			D3D_FEATURE_LEVEL m_FeatureLevel;
@@ -38,6 +40,8 @@ namespace pawn {
 			ID3D11DeviceContext* m_DeviceContext;
 			IDXGISwapChain* m_SwapChain;
 			ID3D11RenderTargetView* m_RenderTargetView;
+			ID3D11Texture2D* m_DepthStencilBuffer;
+			ID3D11DepthStencilView* m_DepthStencilView;
 	};
 	
 }
