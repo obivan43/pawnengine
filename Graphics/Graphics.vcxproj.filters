@@ -47,6 +47,12 @@
     <ClCompile Include="src\Window.cpp">
       <Filter>src\window</Filter>
     </ClCompile>
+    <ClCompile Include="src\GraphicsBuffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DirectX11VertexBuffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -78,6 +84,12 @@
     </ClInclude>
     <ClInclude Include="src\Window.h">
       <Filter>src\window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GraphicsBuffer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectX11VertexBuffer.h">
+      <Filter>src\directx11</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

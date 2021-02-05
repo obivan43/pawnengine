@@ -118,6 +118,8 @@ namespace pawn {
 
 		m_DeviceContext->OMSetRenderTargets(1, &m_RenderTargetView, m_DepthStencilView);
 
+		m_DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
 		D3D11_VIEWPORT viewPort;
 		viewPort.TopLeftX = 0.0f;
 		viewPort.TopLeftY = 0.0f;
