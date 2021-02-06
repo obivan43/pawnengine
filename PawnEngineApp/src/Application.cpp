@@ -1,6 +1,9 @@
 ﻿#include "pch.h"
 #include "Application.h"
 
+#include "DefaultLayer.h"
+#include "Layer.h"
+
 namespace pawn {
 	
 	Application::Application() :
@@ -13,16 +16,23 @@ namespace pawn {
 
 #ifdef PAWN_DIRECTX11
 		m_GraphicsContext = std::make_shared<pawn::DirectX11Context>();
-		m_GraphicsAPI = std::make_unique<pawn::DirectX11API>();
+		m_GraphicsAPI = std::make_shared<pawn::DirectX11API>();
 #else
 		m_GraphicsContext = std::make_shared<pawn::GraphicsContext>();
-		m_GraphicsAPI = std::make_unique<pawn::GraphicsAPI>();
+		m_GraphicsAPI = std::make_shared<pawn::GraphicsAPI>();
 #endif
 		m_GraphicsContext->Initialize(m_Window);
 		m_GraphicsAPI->SetContext(m_GraphicsContext);
+
+		const std::shared_ptr<pawn::Layer> layer(new DefaultLayer());
+		m_LayerList.PushLayer(layer);
 	}
 
 	void Application::Run() {
+		for (const std::shared_ptr<Layer>& layer : m_LayerList) {
+			layer->OnInit();
+		}
+		
 		uint32_t fpsCounter = 0;
 		float fpsTime = 0.0f;
 		
@@ -42,16 +52,28 @@ namespace pawn {
 			}
 
 			m_GraphicsAPI->Clear();
+
+			for (const std::shared_ptr<Layer>& layer : m_LayerList) {
+				layer->OnUpdate(m_Clock);
+			}
 			
 			m_Window.Update();
 			m_GraphicsContext->SwapBuffers();
 		}
+
+		for (const std::shared_ptr<Layer>& layer : m_LayerList) {
+			layer->OnRelease();
+		}
 	}
 
 	void Application::HandleEvent(const Event& e) {
-		if(e.GetType() == EventTypeEnum::WindowClose) {
-			m_isRunning = false;
-		}
+		switch (e.GetType()) {
+			case EventTypeEnum::WindowClose:
+				m_isRunning = false;
+				break;
+			default:
+				break;
+		}	
 	}
 	
 }

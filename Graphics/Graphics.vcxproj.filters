@@ -51,7 +51,7 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\DirectX11VertexBuffer.cpp">
-      <Filter>src</Filter>
+      <Filter>src\directx11</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

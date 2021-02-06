@@ -18,12 +18,30 @@
     <ClCompile Include="src\Application.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Layer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LayerList.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DefaultLayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
       <Filter>pch</Filter>
     </ClInclude>
     <ClInclude Include="src\Application.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Layer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LayerList.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DefaultLayer.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

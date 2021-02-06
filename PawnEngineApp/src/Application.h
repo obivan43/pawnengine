@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "LayerList.h"
+
 namespace pawn {
 	
 	class Application : public Singleton<Application>, public Observer {
@@ -15,6 +17,7 @@ namespace pawn {
 			uint32_t GetFps() const { return m_Fps; }
 			const pawn::Clock& GetClock() const { return m_Clock; }
 			const pawn::Window& GetWindow() const { return m_Window; }
+			std::shared_ptr<pawn::GraphicsAPI>& GetGraphicsAPI() { return m_GraphicsAPI; }
 			std::shared_ptr<pawn::GraphicsContext>& GetGraphicsContext() { return m_GraphicsContext; }
 	
 		private:
@@ -23,7 +26,9 @@ namespace pawn {
 			pawn::Clock m_Clock;
 			pawn::Window& m_Window;
 
-			std::unique_ptr<pawn::GraphicsAPI> m_GraphicsAPI;
+			pawn::LayerList m_LayerList;
+
+			std::shared_ptr<pawn::GraphicsAPI> m_GraphicsAPI;
 			std::shared_ptr<pawn::GraphicsContext> m_GraphicsContext;
 	};
 	

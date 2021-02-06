@@ -186,11 +186,17 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\DefaultLayer.cpp" />
+    <ClCompile Include="src\Layer.cpp" />
+    <ClCompile Include="src\LayerList.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h" />
     <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\DefaultLayer.h" />
+    <ClInclude Include="src\Layer.h" />
+    <ClInclude Include="src\LayerList.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Graphics\Graphics.vcxproj">
