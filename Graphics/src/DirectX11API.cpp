@@ -23,7 +23,7 @@ namespace pawn {
 	}
 
 	void DirectX11API::Clear() {
-		m_DirectX11Context->m_DeviceContext->ClearRenderTargetView(m_DirectX11Context->m_RenderTargetView, m_clearColor);
+		m_DirectX11Context->m_DeviceContext->ClearRenderTargetView(m_DirectX11Context->m_RenderTargetView.Get(), m_clearColor);
 	}
 }
 

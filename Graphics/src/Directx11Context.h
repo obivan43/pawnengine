@@ -21,27 +21,25 @@ namespace pawn {
 			
 			DirectX11Context& operator=(const DirectX11Context& other) = default;
 			DirectX11Context& operator=(DirectX11Context&& other) noexcept = default;
-
-			~DirectX11Context() override;
 		
 			virtual bool Initialize(const pawn::Window& window) override final;
 			virtual void SwapBuffers() override final;
 
-			ID3D11Device* GetDevice() const { return m_Device; }
-			ID3D11DeviceContext* GetDeviceContext() const { return m_DeviceContext; }
-			IDXGISwapChain* GetSwapChain() const { return m_SwapChain; }
-			ID3D11RenderTargetView* GetRenderTargetView() const { return m_RenderTargetView; }
-			ID3D11Texture2D* GetDepthStencilBuffer() const { return m_DepthStencilBuffer; }
-			ID3D11DepthStencilView* GetDepthStencilView() const { return m_DepthStencilView; }
+			ID3D11Device* GetDevice() const { return m_Device.Get(); }
+			ID3D11DeviceContext* GetDeviceContext() const { return m_DeviceContext.Get(); }
+			IDXGISwapChain* GetSwapChain() const { return m_SwapChain.Get(); }
+			ID3D11RenderTargetView* GetRenderTargetView() const { return m_RenderTargetView.Get(); }
+			ID3D11Texture2D* GetDepthStencilBuffer() const { return m_DepthStencilBuffer.Get(); }
+			ID3D11DepthStencilView* GetDepthStencilView() const { return m_DepthStencilView.Get(); }
 	
 		private:
 			D3D_FEATURE_LEVEL m_FeatureLevel;
-			ID3D11Device* m_Device;
-			ID3D11DeviceContext* m_DeviceContext;
-			IDXGISwapChain* m_SwapChain;
-			ID3D11RenderTargetView* m_RenderTargetView;
-			ID3D11Texture2D* m_DepthStencilBuffer;
-			ID3D11DepthStencilView* m_DepthStencilView;
+			Microsoft::WRL::ComPtr<ID3D11Device> m_Device;
+			Microsoft::WRL::ComPtr<ID3D11DeviceContext> m_DeviceContext;
+			Microsoft::WRL::ComPtr<IDXGISwapChain> m_SwapChain;
+			Microsoft::WRL::ComPtr<ID3D11RenderTargetView> m_RenderTargetView;
+			Microsoft::WRL::ComPtr<ID3D11Texture2D> m_DepthStencilBuffer;
+			Microsoft::WRL::ComPtr<ID3D11DepthStencilView> m_DepthStencilView;
 	};
 	
 }

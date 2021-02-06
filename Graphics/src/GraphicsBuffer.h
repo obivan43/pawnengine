@@ -25,6 +25,9 @@ namespace pawn {
 			virtual ~GraphicsBuffer() = default;
 
 			virtual void Bind(std::shared_ptr<GraphicsContext>& context);
+
+			virtual uint32_t GetBufferSize() const = 0;
+			virtual uint32_t GetStride() const = 0;
 		
 			const GraphicsBufferEnum& GetGraphicsBufferType() const { return m_graphicsBufferType; }
 

@@ -17,14 +17,14 @@ namespace pawn {
 #ifdef PAWN_DIRECTX11
 		m_GraphicsContext = std::make_shared<pawn::DirectX11Context>();
 		m_GraphicsAPI = std::make_shared<pawn::DirectX11API>();
+		const std::shared_ptr<pawn::Layer> layer(new DefaultLayer());
 #else
 		m_GraphicsContext = std::make_shared<pawn::GraphicsContext>();
 		m_GraphicsAPI = std::make_shared<pawn::GraphicsAPI>();
+		const std::shared_ptr<pawn::Layer> layer(new Layer());
 #endif
 		m_GraphicsContext->Initialize(m_Window);
 		m_GraphicsAPI->SetContext(m_GraphicsContext);
-
-		const std::shared_ptr<pawn::Layer> layer(new DefaultLayer());
 		m_LayerList.PushLayer(layer);
 	}
 

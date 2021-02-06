@@ -17,6 +17,9 @@
     <ClCompile Include="pch\pch.cpp">
       <Filter>pch</Filter>
     </ClCompile>
+    <ClCompile Include="src\Vertex.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -26,6 +29,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="src\math_defines.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vertex.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

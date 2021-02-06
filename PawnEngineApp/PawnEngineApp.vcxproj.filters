@@ -7,6 +7,9 @@
     <Filter Include="pch">
       <UniqueIdentifier>{57fa8d81-273b-48dd-849d-1bdccfa6edbe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{27644bcf-a52a-4324-9b43-197a8587e624}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -44,5 +47,13 @@
     <ClInclude Include="src\DefaultLayer.h">
       <Filter>src</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="res\VertexShader.hlsl">
+      <Filter>res</Filter>
+    </FxCompile>
+    <FxCompile Include="res\PixelShader.hlsl">
+      <Filter>res</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

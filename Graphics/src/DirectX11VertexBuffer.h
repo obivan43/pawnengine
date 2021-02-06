@@ -13,18 +13,16 @@ namespace pawn {
 		public:
 			DirectX11VertexBuffer();
 
-			~DirectX11VertexBuffer() override;
-
-			void Bind(std::shared_ptr<GraphicsContext>& context) override;
+			virtual void Bind(std::shared_ptr<GraphicsContext>& context) override;
+			virtual uint32_t GetBufferSize() const override { return m_BufferSize; }
+			virtual uint32_t GetStride() const override { return m_Stride; }
 		
 			void Initialize(ID3D11Device* device, void* data, uint32_t numVertices, uint32_t sizeofBufferDataType);
 
-			ID3D11Buffer* GetBuffer() const { return m_buffer; }
-			uint32_t GetBufferSize() const { return m_BufferSize; }
-			uint32_t GetStride() const { return m_Stride; }
+			ID3D11Buffer* GetBuffer() const { return m_Buffer.Get(); }
 	
 		private:
-			ID3D11Buffer* m_buffer;
+			Microsoft::WRL::ComPtr<ID3D11Buffer> m_Buffer;
 			uint32_t m_BufferSize;
 			uint32_t m_Stride;
 	};

@@ -2,6 +2,8 @@
 
 #include "Layer.h"
 
+#ifdef PAWN_DIRECTX11
+
 namespace pawn {
 	
 	class DefaultLayer : public Layer {
@@ -21,7 +23,14 @@ namespace pawn {
 		private:
 			std::shared_ptr<pawn::GraphicsContext> m_GraphicsContext;
 			std::shared_ptr<pawn::GraphicsAPI> m_GraphicsAPI;
+			std::shared_ptr<pawn::GraphicsBuffer> m_VertexBuffer;
+		
+			Microsoft::WRL::ComPtr<ID3D11VertexShader> m_VertexShader;
+			Microsoft::WRL::ComPtr<ID3D11PixelShader> m_PixelShader;
+			Microsoft::WRL::ComPtr<ID3DBlob> m_Blob;
+			Microsoft::WRL::ComPtr<ID3D11InputLayout> m_InputLayout;
 	};
 	
 }
 
+#endif

@@ -8,40 +8,8 @@
 namespace pawn {
 	
 	DirectX11Context::DirectX11Context()
-	: m_FeatureLevel(D3D_FEATURE_LEVEL_9_1),
-	m_Device(nullptr),
-	m_DeviceContext(nullptr),
-	m_SwapChain(nullptr),
-	m_RenderTargetView(nullptr),
-	m_DepthStencilBuffer(nullptr),
-	m_DepthStencilView(nullptr)
+	: m_FeatureLevel(D3D_FEATURE_LEVEL_9_1)
 	{}
-
-	DirectX11Context::~DirectX11Context() {
-		if (m_DepthStencilView != nullptr) {
-			m_DepthStencilView->Release();
-		}
-		
-		if (m_DepthStencilBuffer != nullptr) {
-			m_DepthStencilBuffer->Release();
-		}
-		
-		if (m_RenderTargetView != nullptr) {
-			m_RenderTargetView->Release();
-		}
-
-		if(m_SwapChain != nullptr) {
-			m_SwapChain->Release();
-		}
-		
-		if (m_DeviceContext != nullptr) {
-			m_DeviceContext->Release();
-		}
-		
-		if(m_Device != nullptr) {
-			m_Device->Release();
-		}
-	}
 
 	bool DirectX11Context::Initialize(const pawn::Window& window) {
 		DXGI_MODE_DESC modeDescription = {};
@@ -61,7 +29,7 @@ namespace pawn {
 		swapChainDescription.SampleDesc.Quality = 0;
 		swapChainDescription.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
 		swapChainDescription.Flags = 0;
-		swapChainDescription.OutputWindow = reinterpret_cast<HWND>(window.GetNativeHandle());
+		swapChainDescription.OutputWindow = static_cast<HWND>(window.GetNativeHandle());
 		swapChainDescription.Windowed = true;
 		
 		D3D_FEATURE_LEVEL FeatureLevels[] = {
@@ -94,10 +62,9 @@ namespace pawn {
 			&m_DeviceContext
 		))
 
-		ID3D11Resource* buffer = nullptr;
-		DirectX11Call(m_SwapChain->GetBuffer(0, __uuidof(ID3D11Resource), reinterpret_cast<void**>(&buffer)))
-		DirectX11Call(m_Device->CreateRenderTargetView(buffer, nullptr, &m_RenderTargetView))
-		buffer->Release();
+		Microsoft::WRL::ComPtr<ID3D11Resource> buffer;
+		DirectX11Call(m_SwapChain->GetBuffer(0, __uuidof(ID3D11Resource), &buffer))
+		DirectX11Call(m_Device->CreateRenderTargetView(buffer.Get(), nullptr, &m_RenderTargetView))
 
 		D3D11_TEXTURE2D_DESC depthStencilDescription = {};
 		depthStencilDescription.Width = window.GetWidth();
@@ -112,11 +79,10 @@ namespace pawn {
 		depthStencilDescription.CPUAccessFlags = 0;
 		depthStencilDescription.MiscFlags = 0;
 
-		m_DepthStencilBuffer = nullptr;
 		DirectX11Call(m_Device->CreateTexture2D(&depthStencilDescription, nullptr, &m_DepthStencilBuffer))
-		DirectX11Call(m_Device->CreateDepthStencilView(m_DepthStencilBuffer, nullptr, &m_DepthStencilView))
+		DirectX11Call(m_Device->CreateDepthStencilView(m_DepthStencilBuffer.Get(), nullptr, &m_DepthStencilView))
 
-		m_DeviceContext->OMSetRenderTargets(1, &m_RenderTargetView, m_DepthStencilView);
+		m_DeviceContext->OMSetRenderTargets(1, m_RenderTargetView.GetAddressOf(), m_DepthStencilView.Get());
 
 		m_DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
