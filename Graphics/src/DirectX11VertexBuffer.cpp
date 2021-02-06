@@ -8,7 +8,7 @@
 namespace pawn {
 
 	DirectX11VertexBuffer::DirectX11VertexBuffer()
-	: m_Buffer(nullptr), m_BufferSize(0), m_Stride(0) {
+	: m_BufferSize(0), m_Stride(0) {
 		m_graphicsBufferType = GraphicsBufferEnum::VertexBuffer;
 	}
 
