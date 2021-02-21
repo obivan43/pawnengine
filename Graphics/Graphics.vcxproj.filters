@@ -53,6 +53,12 @@
     <ClCompile Include="src\DirectX11VertexBuffer.cpp">
       <Filter>src\directx11</Filter>
     </ClCompile>
+    <ClCompile Include="src\GraphicsBindableResource.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DirectX11Shader.cpp">
+      <Filter>src\directx11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -89,6 +95,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\DirectX11VertexBuffer.h">
+      <Filter>src\directx11</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GraphicsBindableResource.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectX11Shader.h">
       <Filter>src\directx11</Filter>
     </ClInclude>
   </ItemGroup>

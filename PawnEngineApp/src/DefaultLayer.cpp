@@ -33,22 +33,24 @@ namespace pawn {
 		m_VertexBuffer.reset(vertexBuffer);
 		m_VertexBuffer->Bind(m_GraphicsContext);
 
-		D3DReadFileToBlob(L"PixelShader.cso", &m_Blob);
-		DirectX11Call(device->CreatePixelShader(m_Blob->GetBufferPointer(), m_Blob->GetBufferSize(), nullptr, &m_PixelShader))
-		context->PSSetShader(m_PixelShader.Get(), nullptr, 0);
+		m_VertexShader.reset(new DirectX11VertexShader());
+		m_PixelShader.reset(new DirectX11PixelShader());
+		
+		m_VertexShader->Init(m_GraphicsContext, L"VertexShader.cso");
+		m_PixelShader->Init(m_GraphicsContext, L"PixelShader.cso");
 
-		D3DReadFileToBlob(L"VertexShader.cso", &m_Blob);
-		DirectX11Call(device->CreateVertexShader(m_Blob->GetBufferPointer(), m_Blob->GetBufferSize(), nullptr, &m_VertexShader))
-		context->VSSetShader(m_VertexShader.Get(), nullptr, 0);
+		m_VertexShader->Bind(m_GraphicsContext);
+		m_PixelShader->Bind(m_GraphicsContext);
 
 		D3D11_INPUT_ELEMENT_DESC inputDescription[] = {
 			{"Position", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0}
 		};
+		
 		DirectX11Call(device->CreateInputLayout(
 			inputDescription,
 			static_cast<UINT>(std::size(inputDescription)),
-			m_Blob->GetBufferPointer(),
-			m_Blob->GetBufferSize(),
+			m_VertexShader->GetBlob()->GetBufferPointer(),
+			m_VertexShader->GetBlob()->GetBufferSize(),
 			&m_InputLayout
 		))
 

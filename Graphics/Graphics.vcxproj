@@ -27,9 +27,11 @@
     </ClCompile>
     <ClCompile Include="src\DirectX11API.cpp" />
     <ClCompile Include="src\DirectX11Context.cpp" />
+    <ClCompile Include="src\DirectX11Shader.cpp" />
     <ClCompile Include="src\DirectX11VertexBuffer.cpp" />
     <ClCompile Include="src\dxerr.cpp" />
     <ClCompile Include="src\GraphicsAPI.cpp" />
+    <ClCompile Include="src\GraphicsBindableResource.cpp" />
     <ClCompile Include="src\GraphicsBuffer.cpp" />
     <ClCompile Include="src\GraphicsContext.cpp" />
     <ClCompile Include="src\WinAPIWindow.cpp" />
@@ -41,9 +43,11 @@
     <ClInclude Include="src\DirectX11API.h" />
     <ClInclude Include="src\DirectX11Context.h" />
     <ClInclude Include="src\DirectX11Debug.h" />
+    <ClInclude Include="src\DirectX11Shader.h" />
     <ClInclude Include="src\DirectX11VertexBuffer.h" />
     <ClInclude Include="src\dxerr.h" />
     <ClInclude Include="src\GraphicsAPI.h" />
+    <ClInclude Include="src\GraphicsBindableResource.h" />
     <ClInclude Include="src\GraphicsBuffer.h" />
     <ClInclude Include="src\GraphicsContext.h" />
     <ClInclude Include="src\WinAPIWindow.h" />

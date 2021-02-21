@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "GraphicsBindableResource.h"
+
 namespace pawn {
 
 	class GraphicsContext;
@@ -12,7 +14,7 @@ namespace pawn {
 		Count
 	};
 	
-	class GraphicsBuffer {
+	class GraphicsBuffer : public GraphicsBindableResource {
 
 		public:
 			GraphicsBuffer();
@@ -24,8 +26,8 @@ namespace pawn {
 
 			virtual ~GraphicsBuffer() = default;
 
-			virtual void Bind(std::shared_ptr<GraphicsContext>& context);
-
+			void Bind(std::shared_ptr<GraphicsContext>& context) override;
+		
 			virtual uint32_t GetBufferSize() const = 0;
 			virtual uint32_t GetStride() const = 0;
 		
