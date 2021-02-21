@@ -20,7 +20,7 @@
 #endif
 #else
 #ifndef DirectX11Call
-#define DirectX11Call(x) (x)
+#define DirectX11Call(x) (x);
 #endif
 #endif
 

@@ -3,6 +3,8 @@
 #include "DirectX11Debug.h"
 #include "DirectX11Context.h"
 
+#ifdef PAWN_DIRECTX11
+
 namespace pawn {
 
 	DXGI_FORMAT DirectX11InputLayout::GraphicsInputElementTypeToDX11Type(GraphicsInputElementType type) {
@@ -64,3 +66,5 @@ namespace pawn {
 	}
 	
 }
+
+#endif

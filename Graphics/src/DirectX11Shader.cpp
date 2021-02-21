@@ -3,6 +3,8 @@
 #include "DirectX11Debug.h"
 #include "DirectX11Context.h"
 
+#ifdef PAWN_DIRECTX11
+
 namespace pawn {
 	
 	void DirectX11VertexShader::Init(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) {
@@ -29,3 +31,4 @@ namespace pawn {
 	
 }
 
+#endif
