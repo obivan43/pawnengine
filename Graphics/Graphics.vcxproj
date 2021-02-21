@@ -26,6 +26,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\DirectX11API.cpp" />
+    <ClCompile Include="src\DirectX11BasicRenderer.cpp" />
     <ClCompile Include="src\DirectX11Context.cpp" />
     <ClCompile Include="src\DirectX11InputLayout.cpp" />
     <ClCompile Include="src\DirectX11Shader.cpp" />
@@ -36,6 +37,7 @@
     <ClCompile Include="src\GraphicsBuffer.cpp" />
     <ClCompile Include="src\GraphicsContext.cpp" />
     <ClCompile Include="src\GraphicsInputLayout.cpp" />
+    <ClCompile Include="src\GraphicsRenderer.cpp" />
     <ClCompile Include="src\WinAPIWindow.cpp" />
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
@@ -43,6 +45,7 @@
     <ClInclude Include="include\graphics.h" />
     <ClInclude Include="pch\pch.h" />
     <ClInclude Include="src\DirectX11API.h" />
+    <ClInclude Include="src\DirectX11BasicRenderer.h" />
     <ClInclude Include="src\DirectX11Context.h" />
     <ClInclude Include="src\DirectX11Debug.h" />
     <ClInclude Include="src\DirectX11InputLayout.h" />
@@ -54,6 +57,7 @@
     <ClInclude Include="src\GraphicsBuffer.h" />
     <ClInclude Include="src\GraphicsContext.h" />
     <ClInclude Include="src\GraphicsInputLayout.h" />
+    <ClInclude Include="src\GraphicsRenderer.h" />
     <ClInclude Include="src\WinAPIWindow.h" />
     <ClInclude Include="src\Window.h" />
   </ItemGroup>

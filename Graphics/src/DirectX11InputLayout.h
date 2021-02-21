@@ -19,18 +19,14 @@ namespace pawn {
 			DirectX11InputLayout& operator=(const DirectX11InputLayout& other) = default;
 			DirectX11InputLayout& operator=(DirectX11InputLayout&& other) noexcept = default;
 
-			void Init(std::shared_ptr<GraphicsContext>& context, ID3DBlob* blob, const std::initializer_list<GraphicsInputElement>& elements);
+			void Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData) override;
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 		
 			ID3D11InputLayout* GetInputLayout() const { return m_InputLayout.Get(); }
 
 			static DXGI_FORMAT GraphicsInputElementTypeToDX11Type(GraphicsInputElementType type);
-
-		private:
-			void Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements) override;
 	
 		private:
-			D3D11_INPUT_ELEMENT_DESC* m_InputDescription;
 			Microsoft::WRL::ComPtr<ID3D11InputLayout> m_InputLayout;
 	};
 	

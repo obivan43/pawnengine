@@ -20,30 +20,13 @@ namespace pawn {
 		return DXGI_FORMAT_UNKNOWN;
 	}
 
-	void DirectX11InputLayout::Init(std::shared_ptr<GraphicsContext>& context, ID3DBlob* blob, const std::initializer_list<GraphicsInputElement>& elements) {
-		DirectX11InputLayout::Init(context, elements);
+	void DirectX11InputLayout::Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData) {
+		GraphicsInputLayout::Init(context, elements, shaderData);
 
-		DirectX11Context* directX11Context = context->As<DirectX11Context>();
-		ID3D11Device* device = directX11Context->GetDevice();
-
-		DirectX11Call(device->CreateInputLayout(
-			m_InputDescription,
-			static_cast<UINT>(elements.size()),
-			blob->GetBufferPointer(),
-			blob->GetBufferSize(),
-			&m_InputLayout
-		))
-
-		delete[] m_InputDescription;
-	}
-	
-	void DirectX11InputLayout::Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements) {
-		GraphicsInputLayout::Init(context, elements);
-		
-		m_InputDescription = new D3D11_INPUT_ELEMENT_DESC[elements.size()];
+		D3D11_INPUT_ELEMENT_DESC* inputDescription = new D3D11_INPUT_ELEMENT_DESC[elements.size()];
 		uint32_t inputSlot = 0;
-		for(const auto& element : elements) {
-			D3D11_INPUT_ELEMENT_DESC desription = {
+		for (const auto& element : elements) {
+			D3D11_INPUT_ELEMENT_DESC description = {
 				element.Name.c_str(),
 				0,
 				GraphicsInputElementTypeToDX11Type(element.Type),
@@ -53,10 +36,25 @@ namespace pawn {
 				0
 			};
 
-			m_InputDescription[inputSlot] = desription;
-			
+			inputDescription[inputSlot] = description;
+
 			++inputSlot;
 		}
+
+		DirectX11Context* directX11Context = context->As<DirectX11Context>();
+		ID3D11Device* device = directX11Context->GetDevice();
+
+		ID3DBlob* blob = static_cast<ID3DBlob*>(shaderData);
+		
+		DirectX11Call(device->CreateInputLayout(
+			inputDescription,
+			static_cast<UINT>(elements.size()),
+			blob->GetBufferPointer(),
+			blob->GetBufferSize(),
+			&m_InputLayout
+		))
+
+		delete[] inputDescription;
 	}
 	
 	void DirectX11InputLayout::Bind(std::shared_ptr<GraphicsContext>& context) {

@@ -45,7 +45,7 @@ namespace pawn {
 
 			virtual ~GraphicsInputLayout() = default;
 
-			virtual void Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements);
+			virtual void Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData);
 
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 

@@ -39,8 +39,9 @@ namespace pawn {
 
 	GraphicsInputLayout::GraphicsInputLayout() : m_Stride(0) {}
 
-	void GraphicsInputLayout::Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements) {
+	void GraphicsInputLayout::Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData) {
 		(void)context;
+		(void)shaderData;
 		
 		m_Elements = elements;
 		RecalculateStride();

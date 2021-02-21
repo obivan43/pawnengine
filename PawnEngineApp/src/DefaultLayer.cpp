@@ -1,7 +1,6 @@
 ﻿#include "pch.h"
 #include "DefaultLayer.h"
 #include "Application.h"
-#include "d3dcompiler.h"
 
 #ifdef PAWN_DIRECTX11
 
@@ -26,6 +25,7 @@ namespace pawn {
 		m_VertexShader.reset(new DirectX11VertexShader());
 		m_PixelShader.reset(new DirectX11PixelShader());
 		m_InputLayout.reset(new DirectX11InputLayout());
+		m_GraphicsRenderer.reset(new DirectX11BasicRenderer(m_GraphicsContext));
 
 		m_VertexBuffer->Init(m_GraphicsContext, vertices, std::size(vertices), sizeof(Vertex));
 		m_VertexBuffer->Bind(m_GraphicsContext);
@@ -36,17 +36,12 @@ namespace pawn {
 		m_VertexShader->Bind(m_GraphicsContext);
 		m_PixelShader->Bind(m_GraphicsContext);
 
-		m_InputLayout->Init(m_GraphicsContext, m_VertexShader->GetBlob(), inputElements);
+		m_InputLayout->Init(m_GraphicsContext, inputElements, m_VertexShader->GetBlob());
 		m_InputLayout->Bind(m_GraphicsContext);
 	}
 	
 	void DefaultLayer::OnUpdate(Clock clock) {
-		DirectX11Context* directX11Context = m_GraphicsContext->As<DirectX11Context>();
-		ID3D11DeviceContext* context = directX11Context->GetDeviceContext();
-		ID3D11RenderTargetView* renderTragetView = directX11Context->GetRenderTargetView();
-		
-		context->OMSetRenderTargets(1, &renderTragetView, nullptr);
-		context->Draw(m_VertexBuffer->GetBufferSize(), 0);
+		m_GraphicsRenderer->Draw(m_VertexBuffer);
 	}
 	
 	void DefaultLayer::OnRelease() {}
