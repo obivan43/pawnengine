@@ -17,28 +17,17 @@ namespace pawn {
 			{ 0.5f, -0.5f},
 			{-0.5f, -0.5f}
 		};
-
-		DirectX11Context* directX11Context = m_GraphicsContext->As<DirectX11Context>();
-		ID3D11Device* device = directX11Context->GetDevice();
-		ID3D11DeviceContext* context = directX11Context->GetDeviceContext();
-		
-		DirectX11VertexBuffer* vertexBuffer = new DirectX11VertexBuffer();
-		vertexBuffer->Initialize(
-			device,
-			vertices,
-			std::size(vertices),
-			sizeof(Vertex)
-		);
 		
 		const std::initializer_list<GraphicsInputElement> inputElements = {
 			{ "Position", GraphicsInputElementType::Float2 }
 		};
 		
-		m_VertexBuffer.reset(vertexBuffer);
+		m_VertexBuffer.reset(new DirectX11VertexBuffer());
 		m_VertexShader.reset(new DirectX11VertexShader());
 		m_PixelShader.reset(new DirectX11PixelShader());
 		m_InputLayout.reset(new DirectX11InputLayout());
-		
+
+		m_VertexBuffer->Init(m_GraphicsContext, vertices, std::size(vertices), sizeof(Vertex));
 		m_VertexBuffer->Bind(m_GraphicsContext);
 		
 		m_VertexShader->Init(m_GraphicsContext, L"VertexShader.cso");
