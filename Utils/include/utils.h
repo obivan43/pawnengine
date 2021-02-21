@@ -5,7 +5,7 @@
 #include "../src/Clock.h"
 
 #include "../src/Event.h"
-#include "../src/WindowCloseEvent.h"
+#include "../src/WindowEvents.h"
 
 #include "../src/Observer.h"
 #include "../src/IObservable.h"

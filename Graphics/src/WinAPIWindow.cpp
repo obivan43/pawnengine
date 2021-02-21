@@ -24,6 +24,30 @@ namespace pawn {
                  }
                  break;
 
+                 case WM_SETFOCUS: {
+                     NotifyObservers(WindowFocusEvent());
+                 }
+                 break;
+
+                 case WM_KILLFOCUS: {
+                     NotifyObservers(WindowFocusEvent());
+                 }
+                 break;
+
+                 case WM_SIZE: {
+                     uint32_t width = LOWORD(lParam);
+                     uint32_t height = HIWORD(lParam);
+                     NotifyObservers(WindowResizeEvent(width, height));
+                 }
+                 break;
+
+                 case WM_MOVE: {
+                     int32_t xPos = LOWORD(lParam);
+                     int32_t yPos = HIWORD(lParam);
+                     NotifyObservers(WindowMovedEvent(xPos, yPos));
+                 }
+                 break;
+
                  default: {}
              }
 

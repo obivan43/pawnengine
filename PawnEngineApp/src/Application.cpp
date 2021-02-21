@@ -71,6 +71,13 @@ namespace pawn {
 			case EventTypeEnum::WindowClose:
 				m_isRunning = false;
 				break;
+			
+			case EventTypeEnum::WindowFocus:
+			case EventTypeEnum::WindowLostFocus:
+			case EventTypeEnum::WindowMoved:
+			case EventTypeEnum::WindowResize:
+				break;
+			
 			default:
 				break;
 		}	

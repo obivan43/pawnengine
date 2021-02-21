@@ -54,7 +54,7 @@
     <ClCompile Include="src\Event.cpp">
       <Filter>src\patterns\observer\events</Filter>
     </ClCompile>
-    <ClCompile Include="src\WindowCloseEvent.cpp">
+    <ClCompile Include="src\WindowEvents.cpp">
       <Filter>src\patterns\observer\events</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,7 +89,7 @@
     <ClInclude Include="src\Event.h">
       <Filter>src\patterns\observer\events</Filter>
     </ClInclude>
-    <ClInclude Include="src\WindowCloseEvent.h">
+    <ClInclude Include="src\WindowEvents.h">
       <Filter>src\patterns\observer\events</Filter>
     </ClInclude>
   </ItemGroup>
