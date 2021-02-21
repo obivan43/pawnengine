@@ -22,8 +22,8 @@ namespace pawn {
 			DirectX11Context& operator=(const DirectX11Context& other) = default;
 			DirectX11Context& operator=(DirectX11Context&& other) noexcept = default;
 		
-			virtual bool Init(const pawn::Window& window) override final;
-			virtual void SwapBuffers() override final;
+			bool Init(const pawn::Window& window) override final;
+			void SwapBuffers() override final;
 
 			ID3D11Device* GetDevice() const { return m_Device.Get(); }
 			ID3D11DeviceContext* GetDeviceContext() const { return m_DeviceContext.Get(); }

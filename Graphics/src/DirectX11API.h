@@ -22,10 +22,10 @@ namespace pawn {
 		
 			~DirectX11API() = default;
 
-			virtual void SetContext(std::shared_ptr<GraphicsContext>& context) override final;
+			void SetContext(std::shared_ptr<GraphicsContext>& context) override final;
 
-			virtual void SetClearColor(float r, float g, float b) override;
-			virtual void Clear() override final;
+			void SetClearColor(float r, float g, float b) override;
+			void Clear() override final;
 	
 		private:
 			float m_clearColor[4];
