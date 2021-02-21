@@ -1,6 +1,5 @@
 ﻿#include "pch.h"
 #include "WinAPIWindow.h"
-#include "GraphicsContext.h"
 #include "DirectX11Context.h"
 
 namespace pawn {

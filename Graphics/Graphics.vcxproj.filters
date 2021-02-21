@@ -59,6 +59,12 @@
     <ClCompile Include="src\DirectX11Shader.cpp">
       <Filter>src\directx11</Filter>
     </ClCompile>
+    <ClCompile Include="src\GraphicsInputLayout.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DirectX11InputLayout.cpp">
+      <Filter>src\directx11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -101,6 +107,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\DirectX11Shader.h">
+      <Filter>src\directx11</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GraphicsInputLayout.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectX11InputLayout.h">
       <Filter>src\directx11</Filter>
     </ClInclude>
   </ItemGroup>

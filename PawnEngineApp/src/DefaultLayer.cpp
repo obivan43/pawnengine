@@ -21,7 +21,6 @@ namespace pawn {
 		DirectX11Context* directX11Context = m_GraphicsContext->As<DirectX11Context>();
 		ID3D11Device* device = directX11Context->GetDevice();
 		ID3D11DeviceContext* context = directX11Context->GetDeviceContext();
-		ID3D11RenderTargetView* renderTragetView = directX11Context->GetRenderTargetView();
 		
 		DirectX11VertexBuffer* vertexBuffer = new DirectX11VertexBuffer();
 		vertexBuffer->Initialize(
@@ -30,11 +29,17 @@ namespace pawn {
 			std::size(vertices),
 			sizeof(Vertex)
 		);
+		
+		const std::initializer_list<GraphicsInputElement> inputElements = {
+			{ "Position", GraphicsInputElementType::Float2 }
+		};
+		
 		m_VertexBuffer.reset(vertexBuffer);
-		m_VertexBuffer->Bind(m_GraphicsContext);
-
 		m_VertexShader.reset(new DirectX11VertexShader());
 		m_PixelShader.reset(new DirectX11PixelShader());
+		m_InputLayout.reset(new DirectX11InputLayout());
+		
+		m_VertexBuffer->Bind(m_GraphicsContext);
 		
 		m_VertexShader->Init(m_GraphicsContext, L"VertexShader.cso");
 		m_PixelShader->Init(m_GraphicsContext, L"PixelShader.cso");
@@ -42,19 +47,8 @@ namespace pawn {
 		m_VertexShader->Bind(m_GraphicsContext);
 		m_PixelShader->Bind(m_GraphicsContext);
 
-		D3D11_INPUT_ELEMENT_DESC inputDescription[] = {
-			{"Position", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0}
-		};
-		
-		DirectX11Call(device->CreateInputLayout(
-			inputDescription,
-			static_cast<UINT>(std::size(inputDescription)),
-			m_VertexShader->GetBlob()->GetBufferPointer(),
-			m_VertexShader->GetBlob()->GetBufferSize(),
-			&m_InputLayout
-		))
-
-		context->IASetInputLayout(m_InputLayout.Get());
+		m_InputLayout->Init(m_GraphicsContext, m_VertexShader->GetBlob(), inputElements);
+		m_InputLayout->Bind(m_GraphicsContext);
 	}
 	
 	void DefaultLayer::OnUpdate(Clock clock) {

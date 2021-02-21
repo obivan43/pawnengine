@@ -12,6 +12,15 @@ namespace pawn {
 	class DirectX11VertexShader : public GraphicsBindableResource {
 
 		public:
+			DirectX11VertexShader() = default;
+			DirectX11VertexShader(const DirectX11VertexShader& other) = default;
+			DirectX11VertexShader(DirectX11VertexShader&& other) noexcept = default;
+
+			DirectX11VertexShader& operator=(const DirectX11VertexShader& other) = default;
+			DirectX11VertexShader& operator=(DirectX11VertexShader&& other) noexcept = default;
+		
+			virtual ~DirectX11VertexShader() = default;
+		
 			void Init(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName);
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 
@@ -26,6 +35,15 @@ namespace pawn {
 	class DirectX11PixelShader : public GraphicsBindableResource {
 
 		public:
+			DirectX11PixelShader() = default;
+			DirectX11PixelShader(const DirectX11PixelShader& other) = default;
+			DirectX11PixelShader(DirectX11PixelShader&& other) noexcept = default;
+
+			DirectX11PixelShader& operator=(const DirectX11PixelShader& other) = default;
+			DirectX11PixelShader& operator=(DirectX11PixelShader&& other) noexcept = default;
+		
+			virtual ~DirectX11PixelShader() = default;
+		
 			void Init(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName);
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 
