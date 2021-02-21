@@ -29,7 +29,6 @@ namespace pawn {
 			std::shared_ptr<DirectX11PixelShader> m_PixelShader;
 
 			std::shared_ptr<DirectX11InputLayout> m_InputLayout;
-			/*Microsoft::WRL::ComPtr<ID3D11InputLayout> m_InputLayout;*/
 	};
 	
 }
