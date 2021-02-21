@@ -1,8 +1,13 @@
 ﻿#include "pch.h"
 #include "Application.h"
-
-#include "DefaultLayer.h"
 #include "Layer.h"
+
+#ifdef PAWN_DIRECTX11
+#include "DirectX11Layer.h"
+#elif PAWN_OPENGL
+#include "OpenGLLayer.h"
+#endif
+
 
 namespace pawn {
 	
@@ -17,13 +22,17 @@ namespace pawn {
 #ifdef PAWN_DIRECTX11
 		m_GraphicsContext = std::make_shared<pawn::DirectX11Context>();
 		m_GraphicsAPI = std::make_shared<pawn::DirectX11API>();
-		const std::shared_ptr<pawn::Layer> layer(new DefaultLayer());
+		const std::shared_ptr<pawn::Layer> layer(new DirectX11Layer());
+#elif PAWN_OPENGL
+		m_GraphicsContext = std::make_shared<pawn::OpenglContext>();
+		m_GraphicsAPI = std::make_shared<pawn::OpenglAPI>();
+		const std::shared_ptr<pawn::Layer> layer(new OpenGLLayer());
 #else
 		m_GraphicsContext = std::make_shared<pawn::GraphicsContext>();
 		m_GraphicsAPI = std::make_shared<pawn::GraphicsAPI>();
 		const std::shared_ptr<pawn::Layer> layer(new Layer());
 #endif
-		m_GraphicsContext->Initialize(m_Window);
+		m_GraphicsContext->Init(m_Window);
 		m_GraphicsAPI->SetContext(m_GraphicsContext);
 		m_LayerList.PushLayer(layer);
 	}
@@ -71,13 +80,14 @@ namespace pawn {
 			case EventTypeEnum::WindowClose:
 				m_isRunning = false;
 				break;
-			
 			case EventTypeEnum::WindowFocus:
+				break;
 			case EventTypeEnum::WindowLostFocus:
+				break;
 			case EventTypeEnum::WindowMoved:
+				break;
 			case EventTypeEnum::WindowResize:
 				break;
-			
 			default:
 				break;
 		}	

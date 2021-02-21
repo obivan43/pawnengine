@@ -17,7 +17,7 @@ namespace pawn {
 
 			virtual ~GraphicsContext() = default;
 
-			virtual bool Initialize(const pawn::Window& window);
+			virtual bool Init(const pawn::Window& window);
 			virtual void SwapBuffers();
 	};
 	

@@ -1,6 +1,5 @@
 ﻿#include "pch.h"
 #include "WinAPIWindow.h"
-#include "DirectX11Context.h"
 
 namespace pawn {
 
@@ -85,13 +84,12 @@ namespace pawn {
         GetWindowRect(m_WindowHandle, &rect);
         SetWindowPos(m_WindowHandle, HWND_TOP, rect.left, rect.top, 800, 600, 0);
 
-        ShowWindow(m_WindowHandle, SW_SHOW);
-
         m_This = this;
 	}
 
 	void WinAPIWindow::Update() {
         static MSG msg = { };
+        ShowWindow(m_WindowHandle, SW_SHOW);
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
             TranslateMessage(&msg);
             DispatchMessage(&msg);

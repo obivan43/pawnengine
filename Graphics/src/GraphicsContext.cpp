@@ -3,7 +3,7 @@
 
 namespace pawn {
 	
-	bool GraphicsContext::Initialize(const pawn::Window& window) {
+	bool GraphicsContext::Init(const pawn::Window& window) {
 		(void)window;
 		return true;
 	}

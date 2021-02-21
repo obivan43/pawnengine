@@ -376,17 +376,19 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_OpenGL|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\DefaultLayer.cpp" />
+    <ClCompile Include="src\DirectX11Layer.cpp" />
     <ClCompile Include="src\Layer.cpp" />
     <ClCompile Include="src\LayerList.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\OpenGLLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h" />
     <ClInclude Include="src\Application.h" />
-    <ClInclude Include="src\DefaultLayer.h" />
+    <ClInclude Include="src\DirectX11Layer.h" />
     <ClInclude Include="src\Layer.h" />
     <ClInclude Include="src\LayerList.h" />
+    <ClInclude Include="src\OpenGLLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Graphics\Graphics.vcxproj">

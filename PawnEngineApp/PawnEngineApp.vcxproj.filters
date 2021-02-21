@@ -27,7 +27,10 @@
     <ClCompile Include="src\LayerList.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\DefaultLayer.cpp">
+    <ClCompile Include="src\DirectX11Layer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGLLayer.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,7 +47,10 @@
     <ClInclude Include="src\LayerList.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\DefaultLayer.h">
+    <ClInclude Include="src\DirectX11Layer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenGLLayer.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

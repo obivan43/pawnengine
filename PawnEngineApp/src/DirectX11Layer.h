@@ -6,15 +6,15 @@
 
 namespace pawn {
 	
-	class DefaultLayer : public Layer {
+	class DirectX11Layer : public Layer {
 		
 		public:
-			DefaultLayer() = default;
-			DefaultLayer(const DefaultLayer& other) = delete;
-			DefaultLayer(DefaultLayer&& other) noexcept = default;
+			DirectX11Layer() = default;
+			DirectX11Layer(const DirectX11Layer& other) = delete;
+			DirectX11Layer(DirectX11Layer&& other) noexcept = default;
 
-			DefaultLayer& operator=(const DefaultLayer& other) = delete;
-			DefaultLayer& operator=(DefaultLayer&& other) noexcept = delete;
+			DirectX11Layer& operator=(const DirectX11Layer& other) = delete;
+			DirectX11Layer& operator=(DirectX11Layer&& other) noexcept = delete;
 		
 			void OnInit() override;
 			void OnUpdate(Clock clock) override;

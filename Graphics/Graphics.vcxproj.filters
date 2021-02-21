@@ -21,6 +21,12 @@
     <Filter Include="src\window">
       <UniqueIdentifier>{bb5aba57-87a7-43cf-a672-8d04ec10f4d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\opengl">
+      <UniqueIdentifier>{8cf7990c-4a12-41c0-afbb-ec2d641435c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\opengl\debug">
+      <UniqueIdentifier>{8cc60dc6-1ac6-4cfe-bce3-8ef484b3daa3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
@@ -70,6 +76,12 @@
     </ClCompile>
     <ClCompile Include="src\DirectX11BasicRenderer.cpp">
       <Filter>src\directx11</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenglAPI.cpp">
+      <Filter>src\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenglContext.cpp">
+      <Filter>src\opengl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +138,12 @@
     </ClInclude>
     <ClInclude Include="src\DirectX11BasicRenderer.h">
       <Filter>src\directx11</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenglAPI.h">
+      <Filter>src\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenglContext.h">
+      <Filter>src\opengl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

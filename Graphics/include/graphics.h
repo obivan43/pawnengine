@@ -7,6 +7,8 @@
 #include "../src/GraphicsInputLayout.h"
 #include "../src/GraphicsRenderer.h"
 
+#ifdef PAWN_DIRECTX11
+
 #include "../src/DirectX11Debug.h"
 #include "../src/DirectX11Context.h"
 #include "../src/DirectX11API.h"
@@ -14,6 +16,13 @@
 #include "../src/DirectX11Shader.h"
 #include "../src/DirectX11InputLayout.h"
 #include "../src/DirectX11BasicRenderer.h"
+
+#elif PAWN_OPENGL
+
+#include "../src/OpenglContext.h"
+#include "../src/OpenglAPI.h"
+
+#endif
 
 #include "../src/Window.h"
 #include "../src/WinAPIWindow.h"

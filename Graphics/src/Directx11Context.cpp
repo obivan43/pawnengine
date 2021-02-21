@@ -11,7 +11,7 @@ namespace pawn {
 	: m_FeatureLevel(D3D_FEATURE_LEVEL_9_1)
 	{}
 
-	bool DirectX11Context::Initialize(const pawn::Window& window) {
+	bool DirectX11Context::Init(const pawn::Window& window) {
 		DXGI_MODE_DESC modeDescription = {};
 		modeDescription.Width = window.GetWidth();
 		modeDescription.Height = window.GetHeight();

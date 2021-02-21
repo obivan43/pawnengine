@@ -1,12 +1,12 @@
 ﻿#include "pch.h"
-#include "DefaultLayer.h"
+#include "DirectX11Layer.h"
 #include "Application.h"
 
 #ifdef PAWN_DIRECTX11
 
 namespace pawn {
 
-	void DefaultLayer::OnInit() {
+	void DirectX11Layer::OnInit() {
 		Application& application = Application::Instance();
 		m_GraphicsContext = application.GetGraphicsContext();
 		m_GraphicsAPI = application.GetGraphicsAPI();
@@ -40,11 +40,11 @@ namespace pawn {
 		m_InputLayout->Bind(m_GraphicsContext);
 	}
 	
-	void DefaultLayer::OnUpdate(Clock clock) {
+	void DirectX11Layer::OnUpdate(Clock clock) {
 		m_GraphicsRenderer->Draw(m_VertexBuffer);
 	}
 	
-	void DefaultLayer::OnRelease() {}
+	void DirectX11Layer::OnRelease() {}
 	
 }
 
