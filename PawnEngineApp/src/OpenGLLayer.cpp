@@ -22,9 +22,7 @@ namespace pawn {
 		};
 	}
 
-	void OpenGLLayer::OnUpdate(Clock clock) {
-		glFlush();
-	}
+	void OpenGLLayer::OnUpdate(Clock clock) {}
 
 	void OpenGLLayer::OnRelease() {}
 	

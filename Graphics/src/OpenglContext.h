@@ -4,8 +4,6 @@
 
 #ifdef PAWN_OPENGL
 
-#include <gl/GL.h>
-
 namespace pawn {
 
 	class OpenglAPI;

@@ -1,4 +1,5 @@
 ﻿#include "pch.h"
+#include "Opengl.h"
 #include "OpenglAPI.h"
 #include "OpenglContext.h"
 

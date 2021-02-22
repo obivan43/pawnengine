@@ -1,4 +1,5 @@
 ﻿#include "pch.h"
+#include "Opengl.h"
 #include "OpenglContext.h"
 #include "Window.h"
 
@@ -48,6 +49,10 @@ namespace pawn {
         }
 
 		wglMakeCurrent(m_DeviceContext, m_RenderingContext);
+
+		if(glewInit() != GLEW_OK) {
+			return false;
+		}
 		
 		return true;
 	}
