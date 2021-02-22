@@ -17,7 +17,7 @@ namespace pawn {
 
 			virtual ~Observer() = default;
 		
-			virtual void HandleEvent(const Event& e);
+			virtual void HandleEvent(Event& e);
 	};
 	
 }

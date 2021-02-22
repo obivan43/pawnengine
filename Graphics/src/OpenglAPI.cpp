@@ -21,6 +21,10 @@ namespace pawn {
 	void OpenglAPI::Clear() {
 		glClear(GL_COLOR_BUFFER_BIT);
 	}
+
+	void OpenglAPI::SetViewport(uint32_t width, uint32_t height) {
+		glViewport(0, 0, width, height);
+	}
 	
 }
 

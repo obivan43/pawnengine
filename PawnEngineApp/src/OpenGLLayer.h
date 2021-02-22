@@ -20,6 +20,8 @@ namespace pawn {
 			void OnUpdate(Clock clock) override;
 			void OnRelease() override;
 
+			void HandleEvent(Event& e) override;
+
 		private:
 			std::shared_ptr<pawn::GraphicsContext> m_GraphicsContext;
 			std::shared_ptr<pawn::GraphicsAPI> m_GraphicsAPI;

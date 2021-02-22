@@ -37,6 +37,14 @@ namespace pawn {
 	}
 
 	void OpenGLLayer::OnRelease() {}
+
+	void OpenGLLayer::HandleEvent(Event& e) {
+		if (e.GetType() == EventTypeEnum::WindowResize) {
+			OpenglAPI* openglAPI = m_GraphicsAPI->As<OpenglAPI>();
+			WindowResizeEvent& resizeEvent = reinterpret_cast<WindowResizeEvent&>(e);
+			openglAPI->SetViewport(resizeEvent.m_Width, resizeEvent.m_Height);
+		}
+	}
 	
 }
 

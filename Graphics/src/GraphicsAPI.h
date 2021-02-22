@@ -11,7 +11,8 @@ namespace pawn {
 		Count
 	};
 	
-	class GraphicsAPI {
+	class GraphicsAPI : public Rtti {
+		RTTI_DECLARATIONS(GraphicsAPI, Rtti)
 		
 		public:
 			GraphicsAPI() = default;

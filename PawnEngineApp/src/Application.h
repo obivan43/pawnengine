@@ -11,7 +11,7 @@ namespace pawn {
 		
 			void Run();
 
-			virtual void HandleEvent(const Event& e) override;
+			void HandleEvent(Event& e) override;
 		
 			bool GetIsRunning() const { return m_isRunning; }
 			uint32_t GetFps() const { return m_Fps; }

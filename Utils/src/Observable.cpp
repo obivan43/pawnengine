@@ -12,7 +12,7 @@ namespace pawn {
 		m_Observers.remove(observer);
 	}
 
-	void Observable::NotifyObservers(const Event& e) {
+	void Observable::NotifyObservers(Event& e) {
 		for (auto& observer : m_Observers) {
 			observer->HandleEvent(e);
 		}

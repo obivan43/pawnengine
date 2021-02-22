@@ -17,32 +17,37 @@ namespace pawn {
              switch (uMsg) {
                  case WM_DESTROY: {
                      m_IsClosed = true;
-                     NotifyObservers(WindowCloseEvent());
+                     WindowCloseEvent event;
+                     NotifyObservers(event);
                      PostQuitMessage(0);
                  }
                  break;
 
                  case WM_SETFOCUS: {
-                     NotifyObservers(WindowFocusEvent());
+                     WindowFocusEvent event;
+                     NotifyObservers(event);
                  }
                  break;
 
                  case WM_KILLFOCUS: {
-                     NotifyObservers(WindowFocusEvent());
+                     WindowLostFocusEvent event;
+                     NotifyObservers(event);
                  }
                  break;
 
                  case WM_SIZE: {
                      uint32_t width = LOWORD(lParam);
                      uint32_t height = HIWORD(lParam);
-                     NotifyObservers(WindowResizeEvent(width, height));
+                     WindowResizeEvent event(width, height);
+                     NotifyObservers(event);
                  }
                  break;
 
                  case WM_MOVE: {
                      int32_t xPos = LOWORD(lParam);
                      int32_t yPos = HIWORD(lParam);
-                     NotifyObservers(WindowMovedEvent(xPos, yPos));
+                     WindowMovedEvent event(xPos, yPos);
+                     NotifyObservers(event);
                  }
                  break;
 

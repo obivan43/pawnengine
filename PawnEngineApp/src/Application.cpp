@@ -39,6 +39,7 @@ namespace pawn {
 
 	void Application::Run() {
 		for (const std::shared_ptr<Layer>& layer : m_LayerList) {
+			m_Window.AddObserver(layer.get());
 			layer->OnInit();
 		}
 		
@@ -75,22 +76,10 @@ namespace pawn {
 		}
 	}
 
-	void Application::HandleEvent(const Event& e) {
-		switch (e.GetType()) {
-			case EventTypeEnum::WindowClose:
-				m_isRunning = false;
-				break;
-			case EventTypeEnum::WindowFocus:
-				break;
-			case EventTypeEnum::WindowLostFocus:
-				break;
-			case EventTypeEnum::WindowMoved:
-				break;
-			case EventTypeEnum::WindowResize:
-				break;
-			default:
-				break;
-		}	
+	void Application::HandleEvent(Event& e) {
+		if (e.GetType() == EventTypeEnum::WindowClose) {
+			m_isRunning = false;
+		}
 	}
 	
 }

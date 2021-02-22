@@ -26,6 +26,7 @@ namespace pawn {
 
 			void SetClearColor(float r, float g, float b) override;
 			void Clear() override final;
+			void SetViewport(uint32_t width, uint32_t height);
 	
 		private:
 			OpenglContext* m_OpenglContext;

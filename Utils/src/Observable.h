@@ -20,7 +20,7 @@ namespace pawn {
 		
 			virtual void AddObserver(Observer* observer) override final;
 			virtual void RemoveObserver(Observer* observer) override final;
-			virtual void NotifyObservers(const Event& e) override final;
+			virtual void NotifyObservers(Event& e) override final;
 	
 		private:
 			std::list<Observer*> m_Observers;

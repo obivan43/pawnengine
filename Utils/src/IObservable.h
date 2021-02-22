@@ -22,7 +22,7 @@ namespace pawn {
 
 			virtual void AddObserver(Observer* observer) = 0;
 			virtual void RemoveObserver(Observer* observer) = 0;
-			virtual void NotifyObservers(const Event& e) = 0;
+			virtual void NotifyObservers(Event& e) = 0;
 	};
 	
 }
