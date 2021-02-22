@@ -12,7 +12,12 @@
 
 #endif
 
-int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow) {
+int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE parent, PWSTR pCmdLine, int nCmdShow) {
+	UNUSED(hInstance)
+	UNUSED(parent)
+	UNUSED(nCmdShow)
+	UNUSED(hInstance)
+	
 	pawn::Application& application = pawn::Application::Instance();
 	application.Run();
     return 0;

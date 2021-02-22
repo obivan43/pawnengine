@@ -33,6 +33,7 @@ namespace pawn {
 	}
 
 	void OpenGLLayer::OnUpdate(Clock clock) {
+		UNUSED(clock)
 		m_GraphicsRenderer->Draw(m_VertexBuffer);
 	}
 

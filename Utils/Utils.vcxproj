@@ -62,6 +62,7 @@
     <ClInclude Include="src\Observer.h" />
     <ClInclude Include="src\Rtti.h" />
     <ClInclude Include="src\Singleton.h" />
+    <ClInclude Include="src\Unused.h" />
     <ClInclude Include="src\WindowEvents.h" />
     <ClInclude Include="src\WindowsAPI.h" />
   </ItemGroup>

@@ -92,5 +92,8 @@
     <ClInclude Include="src\WindowEvents.h">
       <Filter>src\patterns\observer\events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Unused.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

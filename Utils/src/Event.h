@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-#include <string>
-
 #define EVENT_INFO(type)	static EventTypeEnum StaticType() { return EventTypeEnum::##type; } \
 							virtual const char* Name() const override { return #type; }
 

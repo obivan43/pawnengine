@@ -4,7 +4,7 @@
 namespace pawn {
 	
 	bool GraphicsContext::Init(const pawn::Window& window) {
-		(void)window;
+		UNUSED(window)
 		return true;
 	}
 	

@@ -19,19 +19,23 @@ namespace pawn {
 		
             virtual size_t TypeIdInstance() const = 0;
 
-            virtual Rtti* QueryInterface(const size_t) {
+            virtual Rtti* QueryInterface(const size_t id) {
+                UNUSED(id)
                 return nullptr;
             }
 
-            virtual const Rtti* QueryInterface(const size_t) const {
+            virtual const Rtti* QueryInterface(const size_t id) const {
+                UNUSED(id)
                 return nullptr;
             }
 
             virtual bool Is(const size_t id) const {
+                UNUSED(id)
                 return false;
             }
 
             virtual bool Is(const std::string& name) const {
+                UNUSED(name)
                 return false;
             }
 

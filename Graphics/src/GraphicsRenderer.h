@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <memory>
+
 #include "GraphicsBuffer.h"
 #include "GraphicsContext.h"
 

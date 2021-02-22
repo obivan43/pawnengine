@@ -17,7 +17,11 @@ namespace pawn {
 #endif // PAWN_OPENGL
 #endif // PAWN_DIRECTX11
 
-	void GraphicsAPI::SetClearColor(float r, float g, float b) {}
+	void GraphicsAPI::SetClearColor(float r, float g, float b) {
+		UNUSED(r)
+		UNUSED(g)
+		UNUSED(b)
+	}
 	
 	void GraphicsAPI::Clear() {}
 	

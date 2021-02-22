@@ -28,6 +28,9 @@ namespace pawn {
 	}
 
 	void OpenglInputLayout::Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData) {
+		UNUSED(context)
+		UNUSED(shaderData)
+		
 		glGenVertexArrays(1, &m_InputLayout);
 		glBindVertexArray(m_InputLayout);
 

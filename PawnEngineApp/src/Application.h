@@ -5,10 +5,10 @@
 namespace pawn {
 	
 	class Application : public Singleton<Application>, public Observer {
+
+		friend Singleton<Application>;
 		
 		public:
-			Application();
-		
 			void Run();
 
 			void HandleEvent(Event& e) override;
@@ -19,7 +19,10 @@ namespace pawn {
 			const pawn::Window& GetWindow() const { return m_Window; }
 			std::shared_ptr<pawn::GraphicsAPI>& GetGraphicsAPI() { return m_GraphicsAPI; }
 			std::shared_ptr<pawn::GraphicsContext>& GetGraphicsContext() { return m_GraphicsContext; }
-	
+
+		protected:
+			Application();
+
 		private:
 			bool m_isRunning;
 			uint32_t m_Fps;

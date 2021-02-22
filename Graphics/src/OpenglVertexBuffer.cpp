@@ -16,10 +16,13 @@ namespace pawn {
 	}
 	
 	void OpenglVertexBuffer::Bind(std::shared_ptr<GraphicsContext>& context) {
+		UNUSED(context)
 		glBindBuffer(GL_ARRAY_BUFFER, m_Buffer);
 	}
 
 	void OpenglVertexBuffer::Init(std::shared_ptr<GraphicsContext>& context, void* data, uint32_t numVertices, uint32_t stride) {
+		UNUSED(context)
+		
 		m_BufferSize = numVertices;
 		m_Stride = stride;
 

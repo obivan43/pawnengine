@@ -41,6 +41,7 @@ namespace pawn {
 	}
 	
 	void DirectX11Layer::OnUpdate(Clock clock) {
+		UNUSED(clock)
 		m_GraphicsRenderer->Draw(m_VertexBuffer);
 	}
 	

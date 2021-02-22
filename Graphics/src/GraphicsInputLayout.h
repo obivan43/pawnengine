@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <vector>
+
 #include "GraphicsBindableResource.h"
 
 namespace pawn {
