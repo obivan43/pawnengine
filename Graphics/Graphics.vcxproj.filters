@@ -92,6 +92,9 @@
     <ClCompile Include="src\OpenglInputLayout.cpp">
       <Filter>src\opengl</Filter>
     </ClCompile>
+    <ClCompile Include="src\DirectX11Debug.cpp">
+      <Filter>src\directx11\debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">

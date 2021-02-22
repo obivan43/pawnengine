@@ -6,15 +6,13 @@
 
 #include "dxerr.h"
 
+void DirectX11CallDebug(HRESULT result, const char* function);
+
 #ifndef DirectX11Call
 #define DirectX11Call(x) \
 { \
 	HRESULT result = (x); \
-	if (FAILED(result)) \
-	{ \
-		DXTrace(__FILEW__, (DWORD)__LINE__, result, L#x, true); \
-		__debugbreak(); \
-	} \
+	DirectX11CallDebug(result, #x);\
 } \
 
 #endif

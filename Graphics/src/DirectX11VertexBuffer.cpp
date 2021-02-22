@@ -36,6 +36,8 @@ namespace pawn {
 		vertexBufferData.pSysMem = data;
 
 		DirectX11Call(device->CreateBuffer(&bufferDescription, &vertexBufferData, &m_Buffer))
+
+		spdlog::info("Vertex buffer created");
 	}
 }
 

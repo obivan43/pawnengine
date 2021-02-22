@@ -37,7 +37,5 @@
 #define NOTAPE
 #define NOMINMAX
 
-#define STRICT
-
 #include <Windows.h>
 #include <wrl.h>

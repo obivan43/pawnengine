@@ -17,6 +17,10 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE parent, PWSTR pCmdLine, int n
 	UNUSED(parent)
 	UNUSED(nCmdShow)
 	UNUSED(hInstance)
+
+#if defined(DEBUG) | defined(_DEBUG)
+	spdlog::set_level(spdlog::level::debug);
+#endif
 	
 	pawn::Application& application = pawn::Application::Instance();
 	application.Run();

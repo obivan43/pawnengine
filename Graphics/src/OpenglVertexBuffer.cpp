@@ -30,6 +30,8 @@ namespace pawn {
 		glBindBuffer(GL_ARRAY_BUFFER, m_Buffer);
 		glBufferData(GL_ARRAY_BUFFER, numVertices * stride, data, GL_STATIC_DRAW);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+		spdlog::info("Vertex buffer created");
 	}
 	
 }

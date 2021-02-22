@@ -12,6 +12,7 @@ namespace pawn {
 	void OpenglAPI::SetContext(std::shared_ptr<GraphicsContext>& context) {
 		GraphicsAPI::SetContext(context);
 		m_OpenglContext = context->As<OpenglContext>();
+		spdlog::info("OpenglAPI initialized with context");
 	}
 
 	void OpenglAPI::SetClearColor(float r, float g, float b) {

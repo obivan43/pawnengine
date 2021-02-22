@@ -48,6 +48,8 @@ namespace pawn {
 
 			++inputSlot;
 		}
+
+		spdlog::info("Input layout created");
 	}
 
 	void OpenglInputLayout::Bind(std::shared_ptr<GraphicsContext>& context) {

@@ -32,7 +32,12 @@ namespace pawn {
 		m_GraphicsAPI = std::make_shared<pawn::GraphicsAPI>();
 		const std::shared_ptr<pawn::Layer> layer(new Layer());
 #endif
-		m_GraphicsContext->Init(m_Window);
+		bool result = m_GraphicsContext->Init(m_Window);
+
+		if(!result) {
+			exit(-1);
+		}
+		
 		m_GraphicsAPI->SetContext(m_GraphicsContext);
 		m_LayerList.PushLayer(layer);
 	}
@@ -59,6 +64,8 @@ namespace pawn {
 
 				fpsTime = 0.0f;
 				fpsCounter = 0;
+
+				spdlog::info("FPS: {}", m_Fps);
 			}
 
 			m_GraphicsAPI->Clear();

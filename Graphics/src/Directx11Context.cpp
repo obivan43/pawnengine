@@ -2,6 +2,7 @@
 #include "DirectX11Context.h"
 #include "DirectX11Debug.h"
 #include "Window.h"
+#include <comdef.h> 
 
 #ifdef PAWN_DIRECTX11
 
@@ -94,14 +95,37 @@ namespace pawn {
 		viewPort.MinDepth = 0.0f;
 		viewPort.MaxDepth = 1.0f;
 		m_DeviceContext->RSSetViewports(1, &viewPort);
+
+		IDXGIDevice* dxgiDevice;
+		m_Device->QueryInterface(__uuidof(IDXGIDevice), (void**)&dxgiDevice);
+		IDXGIAdapter* adapter;
+		dxgiDevice->GetAdapter(&adapter);
+		DXGI_ADAPTER_DESC adapterDesc;
+		adapter->GetDesc(&adapterDesc);
+
+		_bstr_t b(adapterDesc.Description);
+		const char* description = b;
+
+		spdlog::info("*********************************************");
+		if(adapterDesc.VendorId == 0x10DE) {
+			spdlog::info("Vendor: NVIDIA Corporation");
+		} else if(adapterDesc.VendorId == 0x1002 || adapterDesc.VendorId == 0x1022) {
+			spdlog::info("Vendor: Advanced Micro Devices");
+		}
+		else if(adapterDesc.VendorId == 0x163C || adapterDesc.VendorId == 0x8086 || adapterDesc.VendorId == 0x8087) {
+			spdlog::info("Vendor: Intel Corporation");
+		}
+		spdlog::info("Videocard: {}", description);
+		spdlog::info("*********************************************");
+		
+		spdlog::info("DirectX11 context initialized");
 		
 		return true;
 	}
 
 	void DirectX11Context::SwapBuffers() {
-		DirectX11Call(m_SwapChain->Present(1, 0))
+		m_SwapChain->Present(1, 0);
 	}
-	
 }
 
 #endif
