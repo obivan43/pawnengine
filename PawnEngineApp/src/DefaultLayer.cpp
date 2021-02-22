@@ -44,7 +44,7 @@ namespace pawn {
 			{ "Position", GraphicsInputElementType::Float2 }
 		};
 		
-		m_VertexBuffer->Init(m_GraphicsContext, vertices, std::size(vertices), sizeof(Vertex));
+		m_VertexBuffer->Init(m_GraphicsContext, vertices, static_cast<uint32_t>(std::size(vertices)), sizeof(Vertex));
 		m_VertexBuffer->Bind(m_GraphicsContext);
 
 		if (!m_Shader->InitVertexShader(m_GraphicsContext, m_VertexShaderPath)) {

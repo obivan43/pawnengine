@@ -145,12 +145,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)\lib\$(Configuration)d_32\</OutDir>
+    <OutDir>$(ProjectDir)\lib\$(Configuration)_32\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)_32\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_OpenGL|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)\lib\$(Configuration)d_32\</OutDir>
+    <OutDir>$(ProjectDir)\lib\$(Configuration)_32\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)_32\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -165,12 +165,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)\lib\$(Configuration)d_64\</OutDir>
+    <OutDir>$(ProjectDir)\lib\$(Configuration)_64\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)_64\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_OpenGL|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)\lib\$(Configuration)d_64\</OutDir>
+    <OutDir>$(ProjectDir)\lib\$(Configuration)_64\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)_64\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
