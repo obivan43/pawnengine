@@ -16,6 +16,12 @@
     <Filter Include="src\directx_layers">
       <UniqueIdentifier>{057778b6-6341-4763-91f3-c840ce37743d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="res\directx_shader">
+      <UniqueIdentifier>{a657e2dd-4011-4361-8edc-07f7ed954eb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\opengl_shader">
+      <UniqueIdentifier>{353b141c-897a-435b-9eda-a4b9325d790d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -61,11 +67,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="res\VertexShader.hlsl">
-      <Filter>res</Filter>
-    </FxCompile>
     <FxCompile Include="res\PixelShader.hlsl">
-      <Filter>res</Filter>
+      <Filter>res\directx_shader</Filter>
     </FxCompile>
+    <FxCompile Include="res\VertexShader.hlsl">
+      <Filter>res\directx_shader</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\PixelShader.fragment">
+      <Filter>res\opengl_shader</Filter>
+    </None>
+    <None Include="res\VertexShader.vertex">
+      <Filter>res\opengl_shader</Filter>
+    </None>
   </ItemGroup>
 </Project>

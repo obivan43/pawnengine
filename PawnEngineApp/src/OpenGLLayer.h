@@ -29,6 +29,8 @@ namespace pawn {
 
 			std::shared_ptr<GraphicsInputLayout> m_InputLayout;
 			std::shared_ptr<GraphicsRenderer> m_GraphicsRenderer;
+
+			std::shared_ptr<OpenglShader> m_Shader;
 	};
 	
 }

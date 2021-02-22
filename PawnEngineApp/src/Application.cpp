@@ -2,11 +2,13 @@
 #include "Application.h"
 #include "Layer.h"
 
-#ifdef PAWN_DIRECTX11
+//#ifdef PAWN_DIRECTX11
+//#include "DirectX11Layer.h"
+//#elif PAWN_OPENGL
+//#include "OpenGLLayer.h"
+//#endif
+
 #include "DirectX11Layer.h"
-#elif PAWN_OPENGL
-#include "OpenGLLayer.h"
-#endif
 
 
 namespace pawn {
@@ -26,7 +28,7 @@ namespace pawn {
 #elif PAWN_OPENGL
 		m_GraphicsContext = std::make_shared<pawn::OpenglContext>();
 		m_GraphicsAPI = std::make_shared<pawn::OpenglAPI>();
-		const std::shared_ptr<pawn::Layer> layer(new OpenGLLayer());
+		const std::shared_ptr<pawn::Layer> layer(new DirectX11Layer());
 #else
 		m_GraphicsContext = std::make_shared<pawn::GraphicsContext>();
 		m_GraphicsAPI = std::make_shared<pawn::GraphicsAPI>();

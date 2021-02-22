@@ -2,8 +2,6 @@
 
 #include "Layer.h"
 
-#ifdef PAWN_DIRECTX11
-
 namespace pawn {
 	
 	class DirectX11Layer : public Layer {
@@ -27,11 +25,12 @@ namespace pawn {
 
 			std::shared_ptr<GraphicsInputLayout> m_InputLayout;
 			std::shared_ptr<GraphicsRenderer> m_GraphicsRenderer;
-		
-			std::shared_ptr<DirectX11VertexShader> m_VertexShader;
-			std::shared_ptr<DirectX11PixelShader> m_PixelShader;
+
+#ifdef PAWN_DIRECTX11
+			std::shared_ptr<DirectX11Shader> m_Shader;
+#else
+			std::shared_ptr<OpenglShader> m_Shader;
+#endif
 	};
 	
 }
-
-#endif

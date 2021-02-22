@@ -23,6 +23,7 @@
 #include "../src/OpenglContext.h"
 #include "../src/OpenglAPI.h"
 #include "../src/OpenglVertexBuffer.h"
+#include "../src/OpenglShader.h"
 #include "../src/OpenglInputLayout.h"
 #include "../src/OpenglBasicRenderer.h"
 

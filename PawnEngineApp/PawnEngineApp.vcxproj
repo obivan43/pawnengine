@@ -441,6 +441,10 @@
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release_OpenGL|x64'">Vertex</ShaderType>
     </FxCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\PixelShader.fragment" />
+    <None Include="res\VertexShader.vertex" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

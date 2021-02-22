@@ -64,6 +64,7 @@
     <ClCompile Include="src\OpenglContext.cpp" />
     <ClCompile Include="src\OpenglDebug.cpp" />
     <ClCompile Include="src\OpenglInputLayout.cpp" />
+    <ClCompile Include="src\OpenglShader.cpp" />
     <ClCompile Include="src\OpenglVertexBuffer.cpp" />
     <ClCompile Include="src\WinAPIWindow.cpp" />
     <ClCompile Include="src\Window.cpp" />
@@ -91,6 +92,7 @@
     <ClInclude Include="src\OpenglContext.h" />
     <ClInclude Include="src\OpenglDebug.h" />
     <ClInclude Include="src\OpenglInputLayout.h" />
+    <ClInclude Include="src\OpenglShader.h" />
     <ClInclude Include="src\OpenglVertexBuffer.h" />
     <ClInclude Include="src\WinAPIWindow.h" />
     <ClInclude Include="src\Window.h" />
