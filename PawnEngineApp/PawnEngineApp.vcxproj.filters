@@ -10,6 +10,12 @@
     <Filter Include="res">
       <UniqueIdentifier>{27644bcf-a52a-4324-9b43-197a8587e624}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\opengl_layers">
+      <UniqueIdentifier>{fa7f6340-3a10-4f57-a1eb-380cf9717180}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\directx_layers">
+      <UniqueIdentifier>{057778b6-6341-4763-91f3-c840ce37743d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -28,10 +34,10 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\DirectX11Layer.cpp">
-      <Filter>src</Filter>
+      <Filter>src\directx_layers</Filter>
     </ClCompile>
     <ClCompile Include="src\OpenGLLayer.cpp">
-      <Filter>src</Filter>
+      <Filter>src\opengl_layers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,10 +54,10 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\DirectX11Layer.h">
-      <Filter>src</Filter>
+      <Filter>src\directx_layers</Filter>
     </ClInclude>
     <ClInclude Include="src\OpenGLLayer.h">
-      <Filter>src</Filter>
+      <Filter>src\opengl_layers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
