@@ -1,6 +1,5 @@
 ﻿#include "pch.h"
 #include "DirectX11BasicRenderer.h"
-#include "DirectX11Debug.h"
 #include "DirectX11Context.h"
 
 #ifdef PAWN_DIRECTX11

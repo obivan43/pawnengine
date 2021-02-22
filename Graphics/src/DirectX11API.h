@@ -4,8 +4,6 @@
 
 #ifdef PAWN_DIRECTX11
 
-#include <d3d11.h>
-
 namespace pawn {
 
 	class DirectX11Context;
