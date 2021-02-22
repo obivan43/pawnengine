@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include "Opengl.h"
+#include "OpenglDebug.h"
 #include "OpenglInputLayout.h"
 
 #ifdef PAWN_OPENGL
@@ -24,36 +25,36 @@ namespace pawn {
 	OpenglInputLayout::OpenglInputLayout() : m_InputLayout(0) {}
 
 	OpenglInputLayout::~OpenglInputLayout() {
-		glDeleteVertexArrays(1, &m_InputLayout);
+		OpenglCall(glDeleteVertexArrays(1, &m_InputLayout))
 	}
 
 	void OpenglInputLayout::Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData) {
 		UNUSED(context)
 		UNUSED(shaderData)
-		
-		glGenVertexArrays(1, &m_InputLayout);
-		glBindVertexArray(m_InputLayout);
+
+		OpenglCall(glGenVertexArrays(1, &m_InputLayout))
+		OpenglCall(glBindVertexArray(m_InputLayout))
 
 		uint32_t inputSlot = 0;
 		for (const auto& element : elements) {
-			glEnableVertexAttribArray(inputSlot);
-			glVertexAttribPointer(
+			OpenglCall(glEnableVertexAttribArray(inputSlot))
+			OpenglCall(glVertexAttribPointer(
 				inputSlot,
 				element.ElementCount(),
 				GraphicsInputElementTypeToOpenglType(element.Type),
 				GL_FALSE,
 				GraphicsInputElement::GraphicsInputElementTypeSize(element.Type),
 				reinterpret_cast<const void*>(element.Offset)
-			);
+			))
 
 			++inputSlot;
 		}
 
-		spdlog::info("Input layout created");
+		spdlog::get("console")->info("Input layout created");
 	}
 
 	void OpenglInputLayout::Bind(std::shared_ptr<GraphicsContext>& context) {
-		glBindVertexArray(m_InputLayout);
+		OpenglCall(glBindVertexArray(m_InputLayout))
 	}
 
 }

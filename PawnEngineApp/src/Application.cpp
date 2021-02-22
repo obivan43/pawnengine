@@ -65,7 +65,7 @@ namespace pawn {
 				fpsTime = 0.0f;
 				fpsCounter = 0;
 
-				spdlog::info("FPS: {}", m_Fps);
+				spdlog::get("console")->info("FPS: {}", m_Fps);
 			}
 
 			m_GraphicsAPI->Clear();
@@ -81,6 +81,8 @@ namespace pawn {
 		for (const std::shared_ptr<Layer>& layer : m_LayerList) {
 			layer->OnRelease();
 		}
+
+		m_LayerList.Clear();
 	}
 
 	void Application::HandleEvent(Event& e) {

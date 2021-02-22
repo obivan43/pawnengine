@@ -17,12 +17,17 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE parent, PWSTR pCmdLine, int n
 	UNUSED(parent)
 	UNUSED(nCmdShow)
 	UNUSED(hInstance)
-
+	
+	auto console = spdlog::stdout_color_mt("console");
+	
 #if defined(DEBUG) | defined(_DEBUG)
-	spdlog::set_level(spdlog::level::debug);
+	console->set_level(spdlog::level::debug);
 #endif
 	
 	pawn::Application& application = pawn::Application::Instance();
 	application.Run();
+
+	spdlog::drop_all();
+	
     return 0;
 }

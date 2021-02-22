@@ -19,6 +19,7 @@
 
 #elif PAWN_OPENGL
 
+#include "../src/OpenglDebug.h"
 #include "../src/OpenglContext.h"
 #include "../src/OpenglAPI.h"
 #include "../src/OpenglVertexBuffer.h"

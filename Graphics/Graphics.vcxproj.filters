@@ -95,6 +95,9 @@
     <ClCompile Include="src\DirectX11Debug.cpp">
       <Filter>src\directx11\debug</Filter>
     </ClCompile>
+    <ClCompile Include="src\OpenglDebug.cpp">
+      <Filter>src\opengl\debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -168,6 +171,9 @@
     </ClInclude>
     <ClInclude Include="src\OpenglInputLayout.h">
       <Filter>src\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenglDebug.h">
+      <Filter>src\opengl\debug</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -12,7 +12,7 @@ namespace pawn {
 		D3DReadFileToBlob(fileName.c_str(), &m_Blob);
 		DirectX11Call(directX11Context->GetDevice()->CreateVertexShader(m_Blob->GetBufferPointer(), m_Blob->GetBufferSize(), nullptr, &m_Shader))
 
-		spdlog::info("Vertex shader created");
+		spdlog::get("console")->info("Vertex shader created");
 	}
 
 	void DirectX11VertexShader::Bind(std::shared_ptr<GraphicsContext>& context) {
@@ -25,7 +25,7 @@ namespace pawn {
 		D3DReadFileToBlob(fileName.c_str(), &m_Blob);
 		DirectX11Call(directX11Context->GetDevice()->CreatePixelShader(m_Blob->GetBufferPointer(), m_Blob->GetBufferSize(), nullptr, &m_Shader))
 
-		spdlog::info("Pixel shader created");
+		spdlog::get("console")->info("Pixel shader created");
 	}
 
 	void DirectX11PixelShader::Bind(std::shared_ptr<GraphicsContext>& context) {

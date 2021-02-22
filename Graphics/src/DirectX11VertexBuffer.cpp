@@ -37,7 +37,7 @@ namespace pawn {
 
 		DirectX11Call(device->CreateBuffer(&bufferDescription, &vertexBufferData, &m_Buffer))
 
-		spdlog::info("Vertex buffer created");
+		spdlog::get("console")->info("Vertex buffer created");
 	}
 }
 

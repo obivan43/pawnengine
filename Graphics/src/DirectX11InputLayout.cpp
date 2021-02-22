@@ -58,7 +58,7 @@ namespace pawn {
 
 		delete[] inputDescription;
 
-		spdlog::info("Input layout created");
+		spdlog::get("console")->info("Input layout created");
 	}
 	
 	void DirectX11InputLayout::Bind(std::shared_ptr<GraphicsContext>& context) {

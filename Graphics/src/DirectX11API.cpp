@@ -14,7 +14,7 @@ namespace pawn {
 	void DirectX11API::SetContext(std::shared_ptr<GraphicsContext>& context) {
 		GraphicsAPI::SetContext(context);
 		m_DirectX11Context = context->As<DirectX11Context>();
-		spdlog::info("DirectX11API initialized with context");
+		spdlog::get("console")->info("DirectX11API initialized with context");
 	}
 
 	void DirectX11API::SetClearColor(float r, float g, float b) {

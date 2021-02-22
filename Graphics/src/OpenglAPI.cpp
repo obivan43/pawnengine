@@ -1,5 +1,6 @@
 ﻿#include "pch.h"
 #include "Opengl.h"
+#include "OpenglDebug.h"
 #include "OpenglAPI.h"
 #include "OpenglContext.h"
 
@@ -12,19 +13,19 @@ namespace pawn {
 	void OpenglAPI::SetContext(std::shared_ptr<GraphicsContext>& context) {
 		GraphicsAPI::SetContext(context);
 		m_OpenglContext = context->As<OpenglContext>();
-		spdlog::info("OpenglAPI initialized with context");
+		spdlog::get("console")->info("OpenglAPI initialized with context");
 	}
 
 	void OpenglAPI::SetClearColor(float r, float g, float b) {
-		glClearColor(r, g, b, 0.0f);
+		OpenglCall(glClearColor(r, g, b, 0.0f))
 	}
 
 	void OpenglAPI::Clear() {
-		glClear(GL_COLOR_BUFFER_BIT);
+		OpenglCall(glClear(GL_COLOR_BUFFER_BIT))
 	}
 
 	void OpenglAPI::SetViewport(uint32_t width, uint32_t height) {
-		glViewport(0, 0, width, height);
+		OpenglCall(glViewport(0, 0, width, height))
 	}
 	
 }

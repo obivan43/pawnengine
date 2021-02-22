@@ -1,11 +1,17 @@
 #include "pch.h"
 #include "DirectX11Debug.h"
 
-void DirectX11CallDebug(HRESULT result, const char* function) {
+#if defined(DEBUG) | defined(_DEBUG)
+#ifdef DirectX11Call
+
+void DirectX11CallDebug(HRESULT result, const char* file, unsigned int line, const char* expression) {
 	if (FAILED(result))  {
-		spdlog::error("DirectX call error: {}, {}, {}", __FILE__, __LINE__, function);
+		spdlog::get("console")->error("DirectX call error: {}, {}, {}", file, line, expression);
 		__debugbreak();
 	}
 	
-	spdlog::debug("DirectX call: {}, {}, {}", __FILE__, __LINE__, function);
+	spdlog::get("console")->trace("DirectX call: {}, {}, {}", file, line, expression);
 }
+
+#endif
+#endif
