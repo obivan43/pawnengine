@@ -21,9 +21,11 @@
 
 #include "../src/OpenglContext.h"
 #include "../src/OpenglAPI.h"
+#include "../src/OpenglVertexBuffer.h"
+#include "../src/OpenglInputLayout.h"
+#include "../src/OpenglBasicRenderer.h"
 
 #endif
 
 #include "../src/Window.h"
 #include "../src/WinAPIWindow.h"
-

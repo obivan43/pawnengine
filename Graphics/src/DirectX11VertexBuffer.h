@@ -16,7 +16,7 @@ namespace pawn {
 			void Init(std::shared_ptr<GraphicsContext>& context, void* data, uint32_t numVertices, uint32_t sizeofBufferDataType) override;
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 
-			void* GetBuffer() const override { return m_Buffer.Get(); } // ID3D11Buffer*
+			void* GetBuffer() const override { return m_Buffer.Get(); }
 			uint32_t GetBufferSize() const override { return m_BufferSize; }
 			uint32_t GetStride() const override { return m_Stride; }
 	

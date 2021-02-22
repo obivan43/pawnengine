@@ -15,7 +15,7 @@ namespace pawn {
 			GraphicsRenderer& operator=(const GraphicsRenderer& other) = default;
 			GraphicsRenderer& operator=(GraphicsRenderer&& other) noexcept = default;
 
-			~GraphicsRenderer() = default;
+			virtual ~GraphicsRenderer() = default;
 		
 			virtual void Draw(const std::shared_ptr<GraphicsBuffer>& buffer);
 	
