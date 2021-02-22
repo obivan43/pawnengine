@@ -11,7 +11,9 @@ namespace pawn {
 
 	OpenglShader::OpenglShader() : m_VertexShader(0), m_PixelShader(0){}
 
-	OpenglShader::~OpenglShader() {}
+	OpenglShader::~OpenglShader() {
+		OpenglCall(glDeleteProgram(m_Shader))
+	}
 	
 	bool OpenglShader::InitVertexShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) {
 		return Init(context, fileName, GL_VERTEX_SHADER, &m_VertexShader);

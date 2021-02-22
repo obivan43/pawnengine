@@ -3,6 +3,8 @@
 #include "DirectX11Debug.h"
 #include "DirectX11Context.h"
 
+#include <d3dcompiler.h>
+
 #ifdef PAWN_DIRECTX11
 
 namespace pawn {

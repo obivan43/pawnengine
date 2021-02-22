@@ -101,6 +101,9 @@
     <ClCompile Include="src\OpenglShader.cpp">
       <Filter>src\opengl</Filter>
     </ClCompile>
+    <ClCompile Include="src\GraphicsShader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -180,6 +183,9 @@
     </ClInclude>
     <ClInclude Include="src\OpenglShader.h">
       <Filter>src\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GraphicsShader.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

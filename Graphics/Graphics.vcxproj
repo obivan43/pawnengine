@@ -59,6 +59,7 @@
     <ClCompile Include="src\GraphicsContext.cpp" />
     <ClCompile Include="src\GraphicsInputLayout.cpp" />
     <ClCompile Include="src\GraphicsRenderer.cpp" />
+    <ClCompile Include="src\GraphicsShader.cpp" />
     <ClCompile Include="src\OpenglAPI.cpp" />
     <ClCompile Include="src\OpenglBasicRenderer.cpp" />
     <ClCompile Include="src\OpenglContext.cpp" />
@@ -86,6 +87,7 @@
     <ClInclude Include="src\GraphicsContext.h" />
     <ClInclude Include="src\GraphicsInputLayout.h" />
     <ClInclude Include="src\GraphicsRenderer.h" />
+    <ClInclude Include="src\GraphicsShader.h" />
     <ClInclude Include="src\Opengl.h" />
     <ClInclude Include="src\OpenglAPI.h" />
     <ClInclude Include="src\OpenglBasicRenderer.h" />

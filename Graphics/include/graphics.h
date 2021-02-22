@@ -4,6 +4,7 @@
 #include "../src/GraphicsBindableResource.h"
 #include "../src/GraphicsAPI.h"
 #include "../src/GraphicsBuffer.h"
+#include "../src/GraphicsShader.h"
 #include "../src/GraphicsInputLayout.h"
 #include "../src/GraphicsRenderer.h"
 

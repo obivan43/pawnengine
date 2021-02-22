@@ -1,14 +1,7 @@
 ﻿#include "pch.h"
 #include "Application.h"
 #include "Layer.h"
-
-//#ifdef PAWN_DIRECTX11
-//#include "DirectX11Layer.h"
-//#elif PAWN_OPENGL
-//#include "OpenGLLayer.h"
-//#endif
-
-#include "DirectX11Layer.h"
+#include "DefaultLayer.h"
 
 
 namespace pawn {
@@ -24,15 +17,12 @@ namespace pawn {
 #ifdef PAWN_DIRECTX11
 		m_GraphicsContext = std::make_shared<pawn::DirectX11Context>();
 		m_GraphicsAPI = std::make_shared<pawn::DirectX11API>();
-		const std::shared_ptr<pawn::Layer> layer(new DirectX11Layer());
 #elif PAWN_OPENGL
 		m_GraphicsContext = std::make_shared<pawn::OpenglContext>();
 		m_GraphicsAPI = std::make_shared<pawn::OpenglAPI>();
-		const std::shared_ptr<pawn::Layer> layer(new DirectX11Layer());
 #else
 		m_GraphicsContext = std::make_shared<pawn::GraphicsContext>();
 		m_GraphicsAPI = std::make_shared<pawn::GraphicsAPI>();
-		const std::shared_ptr<pawn::Layer> layer(new Layer());
 #endif
 		bool result = m_GraphicsContext->Init(m_Window);
 
@@ -41,10 +31,12 @@ namespace pawn {
 		}
 		
 		m_GraphicsAPI->SetContext(m_GraphicsContext);
-		m_LayerList.PushLayer(layer);
 	}
 
 	void Application::Run() {
+		const std::shared_ptr<pawn::Layer> layer(new DefaultLayer());
+		m_LayerList.PushLayer(layer);
+		
 		for (const std::shared_ptr<Layer>& layer : m_LayerList) {
 			m_Window.AddObserver(layer.get());
 			layer->OnInit();

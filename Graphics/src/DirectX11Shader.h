@@ -1,15 +1,14 @@
 ﻿#pragma once
 
-#include "GraphicsBindableResource.h"
+#include "GraphicsShader.h"
 
 #ifdef PAWN_DIRECTX11
 
 #include <d3d11.h>
-#include <d3dcompiler.h>
 
 namespace pawn {
 
-	class DirectX11Shader : public GraphicsBindableResource {
+	class DirectX11Shader : public GraphicsShader {
 
 		public:
 			DirectX11Shader() = default;
@@ -19,10 +18,8 @@ namespace pawn {
 			DirectX11Shader& operator=(const DirectX11Shader& other) = default;
 			DirectX11Shader& operator=(DirectX11Shader&& other) noexcept = default;
 		
-			virtual ~DirectX11Shader() = default;
-		
-			bool InitVertexShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName);
-			bool InitPixelShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName);
+			bool InitVertexShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) override;
+			bool InitPixelShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) override;
 			bool Link();
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 

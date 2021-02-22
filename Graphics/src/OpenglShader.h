@@ -1,12 +1,12 @@
 ﻿#pragma once
 
-#include "GraphicsBindableResource.h"
+#include "GraphicsShader.h"
 
 #ifdef PAWN_OPENGL
 
 namespace pawn {
 
-	class OpenglShader : public GraphicsBindableResource {
+	class OpenglShader : public GraphicsShader {
 
 		public:
 			OpenglShader();
@@ -16,11 +16,11 @@ namespace pawn {
 			OpenglShader& operator=(const OpenglShader& other) = default;
 			OpenglShader& operator=(OpenglShader&& other) noexcept = default;
 
-			virtual ~OpenglShader();
+			~OpenglShader() override;
 
-			bool InitVertexShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName);
-			bool InitPixelShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName);
-			bool Link();
+			bool InitVertexShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) override;
+			bool InitPixelShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) override;
+			bool Link() override;
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 
 			uint32_t GetVertexShader() const { return m_VertexShader; }

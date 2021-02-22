@@ -2,25 +2,21 @@
 
 #include "Layer.h"
 
-#ifdef PAWN_OPENGL
-
 namespace pawn {
 	
-	class OpenGLLayer : public Layer {
-
+	class DefaultLayer : public Layer {
+		
 		public:
-			OpenGLLayer() = default;
-			OpenGLLayer(const OpenGLLayer& other) = delete;
-			OpenGLLayer(OpenGLLayer&& other) noexcept = default;
+			DefaultLayer();
+			DefaultLayer(const DefaultLayer& other) = delete;
+			DefaultLayer(DefaultLayer&& other) noexcept = default;
 
-			OpenGLLayer& operator=(const OpenGLLayer& other) = delete;
-			OpenGLLayer& operator=(OpenGLLayer&& other) noexcept = delete;
-
+			DefaultLayer& operator=(const DefaultLayer& other) = delete;
+			DefaultLayer& operator=(DefaultLayer&& other) noexcept = delete;
+		
 			void OnInit() override;
 			void OnUpdate(Clock clock) override;
 			void OnRelease() override;
-
-			void HandleEvent(Event& e) override;
 
 		private:
 			std::shared_ptr<pawn::GraphicsContext> m_GraphicsContext;
@@ -30,9 +26,10 @@ namespace pawn {
 			std::shared_ptr<GraphicsInputLayout> m_InputLayout;
 			std::shared_ptr<GraphicsRenderer> m_GraphicsRenderer;
 
-			std::shared_ptr<OpenglShader> m_Shader;
+			std::shared_ptr<GraphicsShader> m_Shader;
+
+			std::wstring m_VertexShaderPath;
+			std::wstring m_PixelShaderPath;
 	};
 	
 }
-
-#endif
