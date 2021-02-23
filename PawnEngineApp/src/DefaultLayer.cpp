@@ -52,6 +52,8 @@ namespace pawn {
 			spdlog::get("console")->error("Vertex shader initialization failed");
 		}
 
+		void* vertexShaderInfo = m_Shader->GetVertexShaderInfo();
+
 		if (!m_Shader->InitPixelShader(m_GraphicsContext, m_PixelShaderPath)) {
 			spdlog::get("console")->error("Pixel shader initialization failed");
 		}
@@ -62,14 +64,7 @@ namespace pawn {
 		
 		m_Shader->Bind(m_GraphicsContext);
 
-#ifdef PAWN_DIRECTX11
-		Microsoft::WRL::ComPtr<ID3DBlob> blob;
-		D3DReadFileToBlob(L"VertexShader.cso", &blob);
-		m_InputLayout->Init(m_GraphicsContext, inputElements, blob.Get());
-#else
-		m_InputLayout->Init(m_GraphicsContext, inputElements, nullptr);
-#endif
-		
+		m_InputLayout->Init(m_GraphicsContext, inputElements, vertexShaderInfo);
 		m_InputLayout->Bind(m_GraphicsContext);
 	}
 	

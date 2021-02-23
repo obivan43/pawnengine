@@ -25,10 +25,16 @@ namespace pawn {
 
 			ID3D11VertexShader* GetVertexShader() const { return m_VertexShader.Get(); }
 			ID3D11PixelShader* GetPixelShader() const { return m_PixelShader.Get(); }
+		
+			void* GetVertexShaderInfo() const override { return m_VertexShaderInfo.Get(); }
+			void* GetPixelShaderInfo() const override { return m_PixelShaderInfo.Get(); }
 
 		private:
 			Microsoft::WRL::ComPtr<ID3D11VertexShader> m_VertexShader;
 			Microsoft::WRL::ComPtr<ID3D11PixelShader> m_PixelShader;
+		
+			Microsoft::WRL::ComPtr<ID3DBlob> m_VertexShaderInfo;
+			Microsoft::WRL::ComPtr<ID3DBlob> m_PixelShaderInfo;
 	};
 
 }

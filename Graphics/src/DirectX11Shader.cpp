@@ -11,25 +11,33 @@ namespace pawn {
 	
 	bool DirectX11Shader::InitVertexShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) {
 		DirectX11Context* directX11Context = context->As<DirectX11Context>();
-		Microsoft::WRL::ComPtr<ID3DBlob> blob;
-		D3DReadFileToBlob(fileName.c_str(), &blob);
-		DirectX11Call(directX11Context->GetDevice()->CreateVertexShader(blob->GetBufferPointer(), blob->GetBufferSize(), nullptr, &m_VertexShader))
-
+		D3DReadFileToBlob(fileName.c_str(), &m_VertexShaderInfo);
+		DirectX11Call(directX11Context->GetDevice()->CreateVertexShader(
+			m_VertexShaderInfo->GetBufferPointer(),
+			m_VertexShaderInfo->GetBufferSize(),
+			nullptr, 
+			&m_VertexShader
+		))
 		spdlog::get("console")->info("Vertex shader created");
 		return true;
 	}
 
 	bool DirectX11Shader::InitPixelShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) {
 		DirectX11Context* directX11Context = context->As<DirectX11Context>();
-		Microsoft::WRL::ComPtr<ID3DBlob> blob;
-		D3DReadFileToBlob(fileName.c_str(), &blob);
-		DirectX11Call(directX11Context->GetDevice()->CreatePixelShader(blob->GetBufferPointer(), blob->GetBufferSize(), nullptr, &m_PixelShader))
-
+		D3DReadFileToBlob(fileName.c_str(), &m_PixelShaderInfo);
+		DirectX11Call(directX11Context->GetDevice()->CreatePixelShader(
+			m_PixelShaderInfo->GetBufferPointer(),
+			m_PixelShaderInfo->GetBufferSize(),
+			nullptr,
+			&m_PixelShader
+		))
 		spdlog::get("console")->info("Pixel shader created");
 		return true;
 	}
 
-	bool DirectX11Shader::Link() { return true; }
+	bool DirectX11Shader::Link() {
+		return true;
+	}
 
 	void DirectX11Shader::Bind(std::shared_ptr<GraphicsContext>& context) {
 		DirectX11Context* directX11Context = context->As<DirectX11Context>();

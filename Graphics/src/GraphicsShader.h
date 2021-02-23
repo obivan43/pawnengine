@@ -23,6 +23,8 @@ namespace pawn {
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 
 			virtual void* GetShader() const { return nullptr; }
+			virtual void* GetVertexShaderInfo() const { return nullptr; }
+			virtual void* GetPixelShaderInfo() const { return nullptr; }
 	};
 
 }
