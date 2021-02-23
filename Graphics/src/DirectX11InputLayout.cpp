@@ -25,14 +25,14 @@ namespace pawn {
 	void DirectX11InputLayout::Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData) {
 		GraphicsInputLayout::Init(context, elements, shaderData);
 
-		D3D11_INPUT_ELEMENT_DESC* inputDescription = new D3D11_INPUT_ELEMENT_DESC[elements.size()];
+		D3D11_INPUT_ELEMENT_DESC* inputDescription = new D3D11_INPUT_ELEMENT_DESC[m_Elements.size()];
 		uint32_t inputSlot = 0;
-		for (const auto& element : elements) {
+		for (const auto& element : m_Elements) {
 			D3D11_INPUT_ELEMENT_DESC description = {
 				element.Name.c_str(),
 				0,
 				GraphicsInputElementTypeToDX11Type(element.Type),
-				inputSlot,
+				0,
 				element.Offset,
 				D3D11_INPUT_PER_VERTEX_DATA,
 				0
@@ -50,7 +50,7 @@ namespace pawn {
 		
 		DirectX11Call(device->CreateInputLayout(
 			inputDescription,
-			static_cast<UINT>(elements.size()),
+			static_cast<UINT>(m_Elements.size()),
 			blob->GetBufferPointer(),
 			blob->GetBufferSize(),
 			&m_InputLayout

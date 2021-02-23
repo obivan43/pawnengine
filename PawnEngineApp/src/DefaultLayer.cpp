@@ -34,17 +34,18 @@ namespace pawn {
 	}
 	
 	void DefaultLayer::OnInit() {
-		static Vertex vertices[] = {
-			{ 0.0f,  0.5f },
-			{ 0.5f, -0.5f },
-			{-0.5f, -0.5f }
+		static ColoredVertex vertices[] = {
+			{ { 0.0f,  0.5f }, { 1.0f, 0.0f, 0.0f } },
+			{ { 0.5f, -0.5f }, { 0.0f, 1.0f, 0.0f } },
+			{ {-0.5f, -0.5f }, { 0.0f, 0.0f, 1.0f } }
 		};
 		
 		const std::initializer_list<GraphicsInputElement> inputElements = {
-			{ "Position", GraphicsInputElementType::Float2 }
+			{ "Position", GraphicsInputElementType::Float2 },
+			{ "Color", GraphicsInputElementType::Float3 }
 		};
 		
-		m_VertexBuffer->Init(m_GraphicsContext, vertices, static_cast<uint32_t>(std::size(vertices)), sizeof(Vertex));
+		m_VertexBuffer->Init(m_GraphicsContext, vertices, 3, sizeof(ColoredVertex));
 		m_VertexBuffer->Bind(m_GraphicsContext);
 
 		if (!m_Shader->InitVertexShader(m_GraphicsContext, m_VertexShaderPath)) {

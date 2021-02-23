@@ -1,7 +1,9 @@
-#version 330
+#version 400 core
 
-layout(location = 0) out vec4 color;
+in vec3 out_Color;
+
+out vec4 result_Color;
 
 void main() {
-	color =  vec4(1.0f, 0.0f, 1.0f, 1.0f);
+	result_Color =  vec4(out_Color, 1.0f);
 }

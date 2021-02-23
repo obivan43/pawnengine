@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "Opengl.h"
 #include "OpenglContext.h"
+#include "OpenglDebug.h"
 #include "Window.h"
 
 #ifdef PAWN_OPENGL
@@ -58,6 +59,9 @@ namespace pawn {
 			spdlog::get("console")->error("GLEW not initialized");
 			return false;
 		}
+
+		OpenglCall(glEnable(GL_DEPTH_TEST))
+		OpenglCall(glDepthFunc(GL_ALWAYS))
 
 		spdlog::get("console")->info("*********************************************");
 		spdlog::get("console")->info("Vendor: {}", glGetString(GL_VENDOR));

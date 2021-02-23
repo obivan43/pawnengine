@@ -61,7 +61,7 @@ namespace pawn {
 
 			void RecalculateStride();
 	
-		private:
+		protected:
 			std::vector<GraphicsInputElement> m_Elements;
 			uint32_t m_Stride;
 	};

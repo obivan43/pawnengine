@@ -29,21 +29,20 @@ namespace pawn {
 	}
 
 	void OpenglInputLayout::Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData) {
-		UNUSED(context)
-		UNUSED(shaderData)
+		GraphicsInputLayout::Init(context, elements, shaderData);
 
 		OpenglCall(glGenVertexArrays(1, &m_InputLayout))
 		OpenglCall(glBindVertexArray(m_InputLayout))
 
 		uint32_t inputSlot = 0;
-		for (const auto& element : elements) {
+		for (const auto& element : m_Elements) {
 			OpenglCall(glEnableVertexAttribArray(inputSlot))
 			OpenglCall(glVertexAttribPointer(
 				inputSlot,
 				element.ElementCount(),
 				GraphicsInputElementTypeToOpenglType(element.Type),
 				GL_FALSE,
-				GraphicsInputElement::GraphicsInputElementTypeSize(element.Type),
+				m_Stride,
 				reinterpret_cast<const void*>(element.Offset)
 			))
 
