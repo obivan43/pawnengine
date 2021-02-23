@@ -74,7 +74,26 @@ namespace pawn {
 	}
 	
 	void DefaultLayer::OnUpdate(Clock clock) {
-		UNUSED(clock)
+		float angle = clock.TotalTime();
+		Transformation transformation = {
+			{
+				(3.0f / 4.0f) * std::cos(angle),	std::sin(angle), 0.0f,	0.0f,
+				(3.0f / 4.0f) * -std::sin(angle),	std::cos(angle), 0.0f,	0.0f,
+				0.0f,								0.0f,			 1.0f,	0.0f,
+				0.0f,								0.0f,			 0.0f,	1.0f
+			}
+		};
+
+#ifdef PAWN_DIRECTX11
+		m_ContantBuffer.reset(new DirectX11ContantBuffer());
+#elif PAWN_OPENGL
+		m_ContantBuffer.reset(new OpenglConstantBuffer());
+#endif
+		
+		m_ContantBuffer->Init(m_GraphicsContext, &transformation, 1, sizeof(Transformation));
+		m_ContantBuffer->InitLocation(m_GraphicsContext, m_Shader, "Transformation");
+		m_ContantBuffer->Bind(m_GraphicsContext);
+		
 		m_GraphicsRenderer->Draw(m_VertexBuffer);
 	}
 	

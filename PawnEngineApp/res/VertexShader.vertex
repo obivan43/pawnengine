@@ -1,11 +1,15 @@
-#version 400 core
+#version 460 core
 
 in vec2 Position;
 in vec3 Color;
 
+layout(std140) uniform Transformation {
+	mat4 transformation;
+};
+
 out vec3 out_Color;
 
 void main() {
-	gl_Position = vec4(Position, 0.0f, 1.0f);
+	gl_Position = transformation * vec4(Position, 0.0f, 1.0f);
 	out_Color = Color;
 }

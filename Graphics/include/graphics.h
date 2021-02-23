@@ -17,9 +17,11 @@
 #include "../src/DirectX11Shader.h"
 #include "../src/DirectX11InputLayout.h"
 #include "../src/DirectX11BasicRenderer.h"
+#include "../src/DirectX11ContantBuffer.h"
 
 #elif PAWN_OPENGL
 
+#include "../src/Opengl.h"
 #include "../src/OpenglDebug.h"
 #include "../src/OpenglContext.h"
 #include "../src/OpenglAPI.h"
@@ -27,6 +29,7 @@
 #include "../src/OpenglShader.h"
 #include "../src/OpenglInputLayout.h"
 #include "../src/OpenglBasicRenderer.h"
+#include "../src/OpenglConstantBuffer.h"
 
 #endif
 

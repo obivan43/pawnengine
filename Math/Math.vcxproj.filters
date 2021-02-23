@@ -20,6 +20,9 @@
     <ClCompile Include="src\Vertex.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Transformation.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -32,6 +35,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Vertex.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Transformation.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

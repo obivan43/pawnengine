@@ -16,8 +16,8 @@ namespace pawn {
 			OpenglVertexBuffer& operator=(const OpenglVertexBuffer& other) = default;
 			OpenglVertexBuffer& operator=(OpenglVertexBuffer&& other) noexcept = default;
 
-			~OpenglVertexBuffer()
-				;
+			~OpenglVertexBuffer();
+		
 			void Init(std::shared_ptr<GraphicsContext>& context, void* data, uint32_t numVertices, uint32_t sizeofBufferDataType) override;
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 

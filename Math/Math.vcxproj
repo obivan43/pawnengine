@@ -45,12 +45,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_OpenGL|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Transformation.cpp" />
     <ClCompile Include="src\Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\math.h" />
     <ClInclude Include="pch\pch.h" />
     <ClInclude Include="src\math_defines.h" />
+    <ClInclude Include="src\Transformation.h" />
     <ClInclude Include="src\Vertex.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

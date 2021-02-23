@@ -21,6 +21,8 @@ namespace pawn {
 			virtual bool InitPixelShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName);
 			virtual bool Link();
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
+
+			virtual void* GetShader() const { return nullptr; }
 	};
 
 }
