@@ -13,3 +13,5 @@
 #include "../src/IObservable.h"
 #include "../src/Observable.h"
 #include "../src/Singleton.h"
+
+#include "../src/StbImageLoader.h"

@@ -56,6 +56,11 @@ namespace pawn {
 		OpenglCall(glBindVertexArray(m_InputLayout))
 	}
 
+	void OpenglInputLayout::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
+		UNUSED(index)
+		Bind(context);
+	}
+
 }
 
 #endif

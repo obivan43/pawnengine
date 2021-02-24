@@ -121,6 +121,11 @@ namespace pawn {
 	void OpenglShader::Bind(std::shared_ptr<GraphicsContext>& context) {
 		OpenglCall(glUseProgram(m_Shader))
 	}
+
+	void OpenglShader::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
+		UNUSED(index)
+		Bind(context);
+	}
 	
 }
 

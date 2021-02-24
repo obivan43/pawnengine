@@ -15,6 +15,11 @@ namespace pawn {
 		DirectX11Context* directX11Context = context->As<DirectX11Context>();
 		directX11Context->GetDeviceContext()->IASetVertexBuffers(0, 1, m_Buffer.GetAddressOf(), &m_Stride, &offset);
 	}
+
+	void DirectX11VertexBuffer::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
+		UNUSED(index)
+		Bind(context);
+	}
 }
 
 #endif

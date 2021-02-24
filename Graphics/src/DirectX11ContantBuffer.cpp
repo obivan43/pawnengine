@@ -15,6 +15,11 @@ namespace pawn {
 		directX11Context->GetDeviceContext()->VSSetConstantBuffers(0, 1, m_Buffer.GetAddressOf());
 	}
 
+	void DirectX11ContantBuffer::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
+		UNUSED(index)
+		Bind(context);
+	}
+
 	void DirectX11ContantBuffer::Init(
 		std::shared_ptr<GraphicsContext>& context,
 		void* data,

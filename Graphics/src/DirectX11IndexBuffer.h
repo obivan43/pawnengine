@@ -17,6 +17,7 @@ namespace pawn {
 			DirectX11IndexBuffer& operator=(DirectX11IndexBuffer&& other) noexcept = default;
 
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
+			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 	};
 
 }

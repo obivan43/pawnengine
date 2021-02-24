@@ -22,6 +22,7 @@ namespace pawn {
 			bool InitPixelShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) override;
 			bool Link();
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
+			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 
 			ID3D11VertexShader* GetVertexShader() const { return m_VertexShader.Get(); }
 			ID3D11PixelShader* GetPixelShader() const { return m_PixelShader.Get(); }

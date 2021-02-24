@@ -22,4 +22,9 @@ namespace pawn
 	void GraphicsShader::Bind(std::shared_ptr<GraphicsContext>& context) {
 		UNUSED(context)
 	}
+
+	void GraphicsShader::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
+		UNUSED(context)
+		UNUSED(index)
+	}
 }

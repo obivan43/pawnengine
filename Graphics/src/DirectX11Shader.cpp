@@ -44,6 +44,11 @@ namespace pawn {
 		directX11Context->GetDeviceContext()->VSSetShader(m_VertexShader.Get(), nullptr, 0);
 		directX11Context->GetDeviceContext()->PSSetShader(m_PixelShader.Get(), nullptr, 0);
 	}
+
+	void DirectX11Shader::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
+		UNUSED(index)
+		Bind(context);
+	}
 	
 }
 

@@ -17,6 +17,7 @@ namespace pawn {
 			DirectX11VertexBuffer& operator=(DirectX11VertexBuffer&& other) noexcept = default;
 
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
+			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 	};
 	
 }

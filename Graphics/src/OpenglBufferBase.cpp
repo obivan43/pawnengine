@@ -58,6 +58,11 @@ namespace pawn {
 		OpenglCall(glBindBuffer(BufferTypeToOpenglBufferType(m_GraphicsBufferType), m_Buffer))
 	}
 
+	void OpenglBufferBase::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
+		UNUSED(index)
+		Bind(context);
+	}
+
 	void OpenglBufferBase::Update(std::shared_ptr<GraphicsContext>& context, void* data, uint32_t numVertices, uint32_t stride) {
 		const uint32_t bufferType = BufferTypeToOpenglBufferType(m_GraphicsBufferType);
 		switch (m_UsageType) {

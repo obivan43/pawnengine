@@ -8,6 +8,10 @@ namespace pawn {
 		Application& application = Application::Instance();
 		m_GraphicsContext = application.GetGraphicsContext();
 		m_GraphicsAPI = application.GetGraphicsAPI();
+
+		int32_t width, height, bitsPerPixel;
+		unsigned char* data = StbImageLoader::Load("res\\textures\\brick.jpg", &width, &height, &bitsPerPixel);
+		StbImageLoader::Free(data);
 		
 #ifdef PAWN_DIRECTX11
 		m_VertexBuffer.reset(new DirectX11VertexBuffer());
@@ -40,7 +44,7 @@ namespace pawn {
 	void DefaultLayer::OnInit() {
 		ColoredVertex vertices[] = {
 			{ { 0.0f,  0.5f }, { 1.0f, 0.0f, 0.0f } },
-			{ { 0.5f, -0.5f }, { 0.0f, 1.0f, 0.0f } },
+			{ { 0.5f, -0.5f }, { 0.0f, 1.0f, 1.0f } },
 			{ {-0.5f, -0.5f }, { 0.0f, 0.0f, 1.0f } }
 		};
 

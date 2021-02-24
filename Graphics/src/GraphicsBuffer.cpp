@@ -37,4 +37,9 @@ namespace pawn {
 	}
 	
 	void GraphicsBuffer::Bind(std::shared_ptr<GraphicsContext>& context) { UNUSED(context) }
+
+	void GraphicsBuffer::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
+		UNUSED(context)
+		UNUSED(index)
+	}
 }

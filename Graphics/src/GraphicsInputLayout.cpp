@@ -61,5 +61,10 @@ namespace pawn {
 	}
 	
 	void GraphicsInputLayout::Bind(std::shared_ptr<GraphicsContext>& context) { UNUSED(context) }
+
+	void GraphicsInputLayout::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
+		UNUSED(context)
+		UNUSED(index)
+	}
 	
 }

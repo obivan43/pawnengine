@@ -20,6 +20,7 @@ namespace pawn {
 
 			void Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData = nullptr) override;
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
+			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 
 			uint32_t GetInputLayout() const { return m_InputLayout; }
 

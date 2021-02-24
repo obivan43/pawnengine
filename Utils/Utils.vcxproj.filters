@@ -34,6 +34,9 @@
     <Filter Include="src\patterns\observer\events">
       <UniqueIdentifier>{ef05aa0a-7702-4641-ba48-1e62f971928e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\image_loader">
+      <UniqueIdentifier>{ae302308-ae93-4e3d-926a-8f5240f64952}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
@@ -56,6 +59,12 @@
     </ClCompile>
     <ClCompile Include="src\WindowEvents.cpp">
       <Filter>src\patterns\observer\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StbImage.cpp">
+      <Filter>src\image_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StbImageLoader.cpp">
+      <Filter>src\image_loader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +103,12 @@
     </ClInclude>
     <ClInclude Include="src\Unused.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StbImage.h">
+      <Filter>src\image_loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StbImageLoader.h">
+      <Filter>src\image_loader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -128,6 +128,9 @@
     <ClCompile Include="src\OpenglIndexBuffer.cpp">
       <Filter>src\opengl\buffers</Filter>
     </ClCompile>
+    <ClCompile Include="src\GraphicsTexture.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -228,6 +231,9 @@
     </ClInclude>
     <ClInclude Include="src\OpenglIndexBuffer.h">
       <Filter>src\opengl\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GraphicsTexture.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -50,6 +50,7 @@ namespace pawn {
 			virtual void Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData);
 
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
+			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 
 			const std::vector<GraphicsInputElement>& GetElements() const { return m_Elements; }
 			uint32_t GetStride() const { return m_Stride; }

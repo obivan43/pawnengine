@@ -25,6 +25,7 @@ namespace pawn {
 			) override;
 		
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
+			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 	};
 
 }
