@@ -122,6 +122,12 @@
     <ClCompile Include="src\DirectX11BufferBase.cpp">
       <Filter>src\directx11\buffers</Filter>
     </ClCompile>
+    <ClCompile Include="src\DirectX11IndexBuffer.cpp">
+      <Filter>src\directx11\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenglIndexBuffer.cpp">
+      <Filter>src\opengl\buffers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -216,6 +222,12 @@
     </ClInclude>
     <ClInclude Include="src\DirectX11BufferBase.h">
       <Filter>src\directx11\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectX11IndexBuffer.h">
+      <Filter>src\directx11\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenglIndexBuffer.h">
+      <Filter>src\opengl\buffers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

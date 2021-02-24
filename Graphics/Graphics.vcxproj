@@ -51,6 +51,7 @@
     <ClCompile Include="src\DirectX11ContantBuffer.cpp" />
     <ClCompile Include="src\DirectX11Context.cpp" />
     <ClCompile Include="src\DirectX11Debug.cpp" />
+    <ClCompile Include="src\DirectX11IndexBuffer.cpp" />
     <ClCompile Include="src\DirectX11InputLayout.cpp" />
     <ClCompile Include="src\DirectX11Shader.cpp" />
     <ClCompile Include="src\DirectX11VertexBuffer.cpp" />
@@ -68,6 +69,7 @@
     <ClCompile Include="src\OpenglConstantBuffer.cpp" />
     <ClCompile Include="src\OpenglContext.cpp" />
     <ClCompile Include="src\OpenglDebug.cpp" />
+    <ClCompile Include="src\OpenglIndexBuffer.cpp" />
     <ClCompile Include="src\OpenglInputLayout.cpp" />
     <ClCompile Include="src\OpenglShader.cpp" />
     <ClCompile Include="src\OpenglVertexBuffer.cpp" />
@@ -83,6 +85,7 @@
     <ClInclude Include="src\DirectX11ContantBuffer.h" />
     <ClInclude Include="src\DirectX11Context.h" />
     <ClInclude Include="src\DirectX11Debug.h" />
+    <ClInclude Include="src\DirectX11IndexBuffer.h" />
     <ClInclude Include="src\DirectX11InputLayout.h" />
     <ClInclude Include="src\DirectX11Shader.h" />
     <ClInclude Include="src\DirectX11VertexBuffer.h" />
@@ -101,6 +104,7 @@
     <ClInclude Include="src\OpenglConstantBuffer.h" />
     <ClInclude Include="src\OpenglContext.h" />
     <ClInclude Include="src\OpenglDebug.h" />
+    <ClInclude Include="src\OpenglIndexBuffer.h" />
     <ClInclude Include="src\OpenglInputLayout.h" />
     <ClInclude Include="src\OpenglShader.h" />
     <ClInclude Include="src\OpenglVertexBuffer.h" />

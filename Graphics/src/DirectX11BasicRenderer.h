@@ -16,9 +16,8 @@ namespace pawn {
 			DirectX11BasicRenderer& operator=(const DirectX11BasicRenderer& other) = default;
 			DirectX11BasicRenderer& operator=(DirectX11BasicRenderer&& other) noexcept = default;
 
-			~DirectX11BasicRenderer() = default;
-
 			void Draw(const std::shared_ptr<GraphicsBuffer>& buffer) override;
+			void DrawIndexed(const std::shared_ptr<GraphicsBuffer>& IndexBuffer) override;
 	};
 	
 }

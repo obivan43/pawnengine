@@ -12,7 +12,12 @@ namespace pawn {
 
 	public:
 		DirectX11BufferBase(GraphicsBufferEnum type);
+		DirectX11BufferBase(const DirectX11BufferBase& other) = default;
+		DirectX11BufferBase(DirectX11BufferBase&& other) noexcept = default;
 
+		DirectX11BufferBase& operator=(const DirectX11BufferBase& other) = default;
+		DirectX11BufferBase& operator=(DirectX11BufferBase&& other) noexcept = default;
+		
 		void Update(
 			std::shared_ptr<GraphicsContext>& context,
 			void* data,

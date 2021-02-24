@@ -20,6 +20,7 @@ namespace pawn {
 			virtual ~GraphicsRenderer() = default;
 		
 			virtual void Draw(const std::shared_ptr<GraphicsBuffer>& buffer);
+			virtual void DrawIndexed(const std::shared_ptr<GraphicsBuffer>& IndexBuffer);
 	
 		protected:
 			std::shared_ptr<GraphicsContext> m_ContextCache;

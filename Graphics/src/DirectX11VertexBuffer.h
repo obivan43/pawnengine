@@ -10,6 +10,11 @@ namespace pawn {
 		
 		public:
 			DirectX11VertexBuffer();
+			DirectX11VertexBuffer(const DirectX11VertexBuffer& other) = default;
+			DirectX11VertexBuffer(DirectX11VertexBuffer&& other) noexcept = default;
+
+			DirectX11VertexBuffer& operator=(const DirectX11VertexBuffer& other) = default;
+			DirectX11VertexBuffer& operator=(DirectX11VertexBuffer&& other) noexcept = default;
 
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 	};

@@ -6,5 +6,7 @@ namespace pawn {
 	GraphicsRenderer::GraphicsRenderer(const std::shared_ptr<GraphicsContext>& context) : m_ContextCache(context) {}
 
 	void GraphicsRenderer::Draw(const std::shared_ptr<GraphicsBuffer>& buffer) { UNUSED(buffer) }
+
+	void GraphicsRenderer::DrawIndexed(const std::shared_ptr<GraphicsBuffer>& IndexBuffer) { UNUSED(IndexBuffer) }
 	
 }

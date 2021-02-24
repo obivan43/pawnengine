@@ -10,10 +10,13 @@
     <Filter Include="res">
       <UniqueIdentifier>{27644bcf-a52a-4324-9b43-197a8587e624}</UniqueIdentifier>
     </Filter>
-    <Filter Include="res\directx_shader">
+    <Filter Include="res\shaders">
+      <UniqueIdentifier>{e3d9c5cb-9230-4789-8a74-0aacfac2eab5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\shaders\directx_shader">
       <UniqueIdentifier>{a657e2dd-4011-4361-8edc-07f7ed954eb8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="res\opengl_shader">
+    <Filter Include="res\shaders\opengl_shader">
       <UniqueIdentifier>{353b141c-897a-435b-9eda-a4b9325d790d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -55,19 +58,19 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="res\PixelShader.hlsl">
-      <Filter>res\directx_shader</Filter>
+    <FxCompile Include="res\shaders\directx_shaders\PixelShader.hlsl">
+      <Filter>res\shaders\directx_shader</Filter>
     </FxCompile>
-    <FxCompile Include="res\VertexShader.hlsl">
-      <Filter>res\directx_shader</Filter>
+    <FxCompile Include="res\shaders\directx_shaders\VertexShader.hlsl">
+      <Filter>res\shaders\directx_shader</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\PixelShader.fragment">
-      <Filter>res\opengl_shader</Filter>
+    <None Include="res\shaders\opengl_shaders\PixelShader.fragment">
+      <Filter>res\shaders\opengl_shader</Filter>
     </None>
-    <None Include="res\VertexShader.vertex">
-      <Filter>res\opengl_shader</Filter>
+    <None Include="res\shaders\opengl_shaders\VertexShader.vertex">
+      <Filter>res\shaders\opengl_shader</Filter>
     </None>
   </ItemGroup>
 </Project>

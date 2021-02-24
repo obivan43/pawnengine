@@ -19,6 +19,7 @@ namespace pawn {
 		~OpenglBasicRenderer() = default;
 
 		void Draw(const std::shared_ptr<GraphicsBuffer>& buffer) override;
+		void DrawIndexed(const std::shared_ptr<GraphicsBuffer>& IndexBuffer) override;
 	};
 
 }
