@@ -27,6 +27,12 @@
     <Filter Include="src\opengl\debug">
       <UniqueIdentifier>{8cc60dc6-1ac6-4cfe-bce3-8ef484b3daa3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\opengl\buffers">
+      <UniqueIdentifier>{ed83b4cd-f31d-4b7e-b59e-e5d816f9d220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\directx11\buffers">
+      <UniqueIdentifier>{c5e45e4d-a7ad-485d-b709-51c90b9765d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
@@ -56,9 +62,6 @@
     <ClCompile Include="src\GraphicsBuffer.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\DirectX11VertexBuffer.cpp">
-      <Filter>src\directx11</Filter>
-    </ClCompile>
     <ClCompile Include="src\GraphicsBindableResource.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -83,9 +86,6 @@
     <ClCompile Include="src\OpenglContext.cpp">
       <Filter>src\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="src\OpenglVertexBuffer.cpp">
-      <Filter>src\opengl</Filter>
-    </ClCompile>
     <ClCompile Include="src\OpenglBasicRenderer.cpp">
       <Filter>src\opengl</Filter>
     </ClCompile>
@@ -104,11 +104,23 @@
     <ClCompile Include="src\GraphicsShader.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\DirectX11ContantBuffer.cpp">
-      <Filter>src\directx11</Filter>
+    <ClCompile Include="src\OpenglBufferBase.cpp">
+      <Filter>src\opengl\buffers</Filter>
     </ClCompile>
     <ClCompile Include="src\OpenglConstantBuffer.cpp">
-      <Filter>src\opengl</Filter>
+      <Filter>src\opengl\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenglVertexBuffer.cpp">
+      <Filter>src\opengl\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DirectX11VertexBuffer.cpp">
+      <Filter>src\directx11\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DirectX11ContantBuffer.cpp">
+      <Filter>src\directx11\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DirectX11BufferBase.cpp">
+      <Filter>src\directx11\buffers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,9 +157,6 @@
     <ClInclude Include="src\GraphicsBuffer.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\DirectX11VertexBuffer.h">
-      <Filter>src\directx11</Filter>
-    </ClInclude>
     <ClInclude Include="src\GraphicsBindableResource.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -175,9 +184,6 @@
     <ClInclude Include="src\Opengl.h">
       <Filter>src\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="src\OpenglVertexBuffer.h">
-      <Filter>src\opengl</Filter>
-    </ClInclude>
     <ClInclude Include="src\OpenglBasicRenderer.h">
       <Filter>src\opengl</Filter>
     </ClInclude>
@@ -193,11 +199,23 @@
     <ClInclude Include="src\GraphicsShader.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\DirectX11ContantBuffer.h">
-      <Filter>src\directx11</Filter>
+    <ClInclude Include="src\OpenglBufferBase.h">
+      <Filter>src\opengl\buffers</Filter>
     </ClInclude>
     <ClInclude Include="src\OpenglConstantBuffer.h">
-      <Filter>src\opengl</Filter>
+      <Filter>src\opengl\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenglVertexBuffer.h">
+      <Filter>src\opengl\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectX11VertexBuffer.h">
+      <Filter>src\directx11\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectX11ContantBuffer.h">
+      <Filter>src\directx11\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectX11BufferBase.h">
+      <Filter>src\directx11\buffers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

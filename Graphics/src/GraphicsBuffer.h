@@ -11,8 +11,13 @@ namespace pawn {
 		None,
 		VertexBuffer,
 		IndexBuffer,
-		ConstantBuffer,
-		Count
+		ConstantBuffer
+	};
+
+	enum class GraphicsBufferUsageTypeEnum {
+		None,
+		StaticBuffer,
+		DynamicBuffer
 	};
 	
 	class GraphicsBuffer : public GraphicsBindableResource {
@@ -33,8 +38,22 @@ namespace pawn {
 				const std::string& name,
 				uint32_t index = 0
 			);
+
+			virtual void Update(
+				std::shared_ptr<GraphicsContext>& context,
+				void* data,
+				uint32_t numVertices,
+				uint32_t stride
+			);
 		
-			virtual void Init(std::shared_ptr<GraphicsContext>& context, void* data, uint32_t numVertices, uint32_t stride);
+			virtual void Init(
+				std::shared_ptr<GraphicsContext>& context,
+				void* data,
+				uint32_t numVertices,
+				uint32_t stride,
+				GraphicsBufferUsageTypeEnum type
+			);
+		
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 
 			virtual void* GetBuffer() const { return nullptr; };

@@ -9,18 +9,10 @@
 
 namespace pawn {
 
-	OpenglConstantBuffer::OpenglConstantBuffer()
-		: m_BufferSize(0), m_Stride(0), m_UniformIndex(0) {
-		m_GraphicsBufferType = GraphicsBufferEnum::ConstantBuffer;
-	}
-
-	OpenglConstantBuffer::~OpenglConstantBuffer() {
-		OpenglCall(glDeleteBuffers(1, &m_Buffer))
-	}
+	OpenglConstantBuffer::OpenglConstantBuffer() : OpenglBufferBase(GraphicsBufferEnum::ConstantBuffer), m_UniformIndex(0), m_BindingIndex(0) {}
 
 	void OpenglConstantBuffer::Bind(std::shared_ptr<GraphicsContext>& context) {
-		UNUSED(context)
-		OpenglCall(glBindBuffer(GL_UNIFORM_BUFFER, m_Buffer))
+		OpenglBufferBase::Bind(context);
 		OpenglCall(glBindBufferBase(GL_UNIFORM_BUFFER, m_BindingIndex, m_Buffer))
 	}
 
@@ -35,19 +27,15 @@ namespace pawn {
 		OpenglCall(m_UniformIndex = glGetUniformBlockIndex(reinterpret_cast<uint32_t>(shader->GetShader()), name.c_str()))
 		OpenglCall(glUniformBlockBinding(reinterpret_cast<uint32_t>(shader->GetShader()), m_UniformIndex, m_BindingIndex))
 	}
-	
-	void OpenglConstantBuffer::Init(std::shared_ptr<GraphicsContext>& context, void* data, uint32_t numVertices, uint32_t stride) {
-		UNUSED(context)
 
-		m_BufferSize = numVertices;
-		m_Stride = stride;
-		
-		OpenglCall(glGenBuffers(1, &m_Buffer))
-		OpenglCall(glBindBuffer(GL_UNIFORM_BUFFER, m_Buffer))
-		OpenglCall(glBufferData(GL_UNIFORM_BUFFER, numVertices * stride, data, GL_DYNAMIC_DRAW))
-		OpenglCall(glBindBuffer(GL_UNIFORM_BUFFER, 0))
-		
-		spdlog::get("console")->info("Constant buffer created");
+	void OpenglConstantBuffer::Init(
+		std::shared_ptr<GraphicsContext>& context,
+		void* data,
+		uint32_t numVertices,
+		uint32_t sizeofBufferDataType,
+		GraphicsBufferUsageTypeEnum type
+	) {
+		OpenglBufferBase::Init(context, data, numVertices, sizeofBufferDataType, type);
 	}
 }
 
