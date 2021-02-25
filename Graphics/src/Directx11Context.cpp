@@ -67,12 +67,21 @@ namespace pawn {
 		DirectX11Call(m_SwapChain->GetBuffer(0, __uuidof(ID3D11Resource), &buffer))
 		DirectX11Call(m_Device->CreateRenderTargetView(buffer.Get(), nullptr, &m_RenderTargetView))
 
+		D3D11_DEPTH_STENCIL_DESC depthStencilStateDescription = {};
+		depthStencilStateDescription.DepthEnable = TRUE;
+		depthStencilStateDescription.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+		depthStencilStateDescription.DepthFunc = D3D11_COMPARISON_LESS;
+
+		Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilState;
+		DirectX11Call(m_Device->CreateDepthStencilState(&depthStencilStateDescription, &depthStencilState))
+		m_DeviceContext->OMSetDepthStencilState(depthStencilState.Get(), 0);
+		
 		D3D11_TEXTURE2D_DESC depthStencilDescription = {};
 		depthStencilDescription.Width = window.GetWidth();
 		depthStencilDescription.Height = window.GetHeight();
 		depthStencilDescription.MipLevels = 1;
 		depthStencilDescription.ArraySize = 1;
-		depthStencilDescription.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+		depthStencilDescription.Format = DXGI_FORMAT_D32_FLOAT;
 		depthStencilDescription.SampleDesc.Count = 1;
 		depthStencilDescription.SampleDesc.Quality = 0;
 		depthStencilDescription.Usage = D3D11_USAGE_DEFAULT;
@@ -81,11 +90,17 @@ namespace pawn {
 		depthStencilDescription.MiscFlags = 0;
 
 		DirectX11Call(m_Device->CreateTexture2D(&depthStencilDescription, nullptr, &m_DepthStencilBuffer))
-		DirectX11Call(m_Device->CreateDepthStencilView(m_DepthStencilBuffer.Get(), nullptr, &m_DepthStencilView))
+
+		D3D11_DEPTH_STENCIL_VIEW_DESC depthStencilViewDescription = {};
+		depthStencilViewDescription.Format = DXGI_FORMAT_D32_FLOAT;
+		depthStencilViewDescription.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
+		depthStencilViewDescription.Texture2D.MipSlice = 0;
+		
+		DirectX11Call(m_Device->CreateDepthStencilView(m_DepthStencilBuffer.Get(), &depthStencilViewDescription, &m_DepthStencilView))
 
 		m_DeviceContext->OMSetRenderTargets(1, m_RenderTargetView.GetAddressOf(), m_DepthStencilView.Get());
 
-		m_DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		m_DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 		D3D11_VIEWPORT viewPort;
 		viewPort.TopLeftX = 0.0f;
