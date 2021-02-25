@@ -170,7 +170,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);PAWN_DIRECTX11</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;;$(SolutionDir)\third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;$(SolutionDir)\ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -182,7 +182,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
-      <AdditionalLibraryDirectories>;$(SolutionDir)\third_party\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
     </Link>
     <FxCompile>
@@ -200,7 +200,7 @@ exit</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);PAWN_OPENGL;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;$(SolutionDir)\third_party\glew-2.1.0\include\GL;$(SolutionDir)\third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;$(SolutionDir)\ThirdParty\glew-2.1.0\include\GL;$(SolutionDir)\ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -212,7 +212,7 @@ exit</Command>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
-      <AdditionalLibraryDirectories>$(SolutionDir)\third_party\glew-2.1.0\lib\Release\Win32;$(SolutionDir)\third_party\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\glew-2.1.0\lib\Release\Win32;$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32s.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
     </Link>
     <FxCompile>
@@ -232,7 +232,7 @@ exit</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);PAWN_DIRECTX11</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;;$(SolutionDir)\third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;$(SolutionDir)\ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -246,7 +246,7 @@ exit</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
-      <AdditionalLibraryDirectories>;$(SolutionDir)\third_party\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
     </Link>
     <FxCompile>
@@ -266,7 +266,7 @@ exit</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);PAWN_OPENGL;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;$(SolutionDir)\third_party\glew-2.1.0\include\GL;$(SolutionDir)\third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;$(SolutionDir)\ThirdParty\glew-2.1.0\include\GL;$(SolutionDir)\ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -280,7 +280,7 @@ exit</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
-      <AdditionalLibraryDirectories>$(SolutionDir)\third_party\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories);$(SolutionDir)\third_party\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories);$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32s.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
     </Link>
     <FxCompile>
@@ -298,7 +298,7 @@ exit</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);PAWN_DIRECTX11</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;;$(SolutionDir)\third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;$(SolutionDir)\ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -310,7 +310,7 @@ exit</Command>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
-      <AdditionalLibraryDirectories>;$(SolutionDir)\third_party\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
     </Link>
     <FxCompile>
@@ -328,7 +328,7 @@ exit</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);PAWN_OPENGL;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;$(SolutionDir)\third_party\glew-2.1.0\include\GL;$(SolutionDir)\third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;$(SolutionDir)\ThirdParty\glew-2.1.0\include\GL;$(SolutionDir)\ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -340,7 +340,7 @@ exit</Command>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
-      <AdditionalLibraryDirectories>$(SolutionDir)\third_party\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories);$(SolutionDir)\third_party\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories);$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32s.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
     </Link>
     <FxCompile>
@@ -360,7 +360,7 @@ exit</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);PAWN_DIRECTX11</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;;$(SolutionDir)\third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;$(SolutionDir)\ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -374,7 +374,7 @@ exit</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
-      <AdditionalLibraryDirectories>;$(SolutionDir)\third_party\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
     </Link>
     <FxCompile>
@@ -394,7 +394,7 @@ exit</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);PAWN_OPENGL;GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;$(SolutionDir)\third_party\glew-2.1.0\include\GL;$(SolutionDir)\third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\include;$(ProjectDir)\src;$(ProjectDir)\pch;$(SolutionDir)\ThirdParty\glew-2.1.0\include\GL;$(SolutionDir)\ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -408,7 +408,7 @@ exit</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
-      <AdditionalLibraryDirectories>$(SolutionDir)\third_party\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories);$(SolutionDir)\third_party\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories);$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32s.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
     </Link>
     <FxCompile>

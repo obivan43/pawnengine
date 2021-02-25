@@ -264,7 +264,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -283,7 +283,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)\third_party\glew-2.1.0\include\GL;%(AdditionalIncludeDirectories);$(SolutionDir)third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)\ThirdParty\glew-2.1.0\include\GL;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -304,7 +304,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)third_party\spdlog-1.8.2\include\;%(AdditionalIncludeDirectories);$(SolutionDir)third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -327,7 +327,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)\third_party\glew-2.1.0\include\GL;%(AdditionalIncludeDirectories);$(SolutionDir)third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)\ThirdParty\glew-2.1.0\include\GL;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -348,7 +348,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -367,7 +367,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)\third_party\glew-2.1.0\include\GL;%(AdditionalIncludeDirectories);$(SolutionDir)third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)\ThirdParty\glew-2.1.0\include\GL;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -388,7 +388,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)third_party\spdlog-1.8.2\include\;%(AdditionalIncludeDirectories);$(SolutionDir)third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -411,7 +411,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)\third_party\glew-2.1.0\include\GL;%(AdditionalIncludeDirectories);$(SolutionDir)third_party\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)\ThirdParty\glew-2.1.0\include\GL;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
