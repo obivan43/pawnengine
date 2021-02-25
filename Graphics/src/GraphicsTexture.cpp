@@ -17,7 +17,14 @@ namespace pawn {
 		UNUSED(index)
 	}
 
-	void GraphicsTexture::Init(const void* data, int32_t width, int32_t height, int32_t bitsPerPixel, const GraphicsTextureParams& params) {
+	void GraphicsTexture::Init(
+		std::shared_ptr<GraphicsContext>& context,
+		const void* data, 
+		int32_t width,
+		int32_t height,
+		int32_t bitsPerPixel, 
+		const GraphicsTextureParams& params) {
+		UNUSED(context)
 		UNUSED(data)
 		UNUSED(width)
 		UNUSED(height)

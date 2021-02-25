@@ -39,7 +39,15 @@ namespace pawn {
 		
 			virtual ~GraphicsTexture() = default;
 
-			virtual void Init(const void* data, int32_t width, int32_t height, int32_t bitsPerPixel, const GraphicsTextureParams& params);
+			virtual void Init(
+				std::shared_ptr<GraphicsContext>& context, 
+				const void* data, 
+				int32_t width,
+				int32_t height,
+				int32_t bitsPerPixel,
+				const GraphicsTextureParams& params
+			);
+		
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 

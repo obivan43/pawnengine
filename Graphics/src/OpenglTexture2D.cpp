@@ -3,6 +3,8 @@
 #include "OpenglDebug.h"
 #include "OpenglTexture2D.h"
 
+#ifdef PAWN_OPENGL
+
 namespace pawn {
 
 	OpenglTexture2D::~OpenglTexture2D() {
@@ -30,7 +32,14 @@ namespace pawn {
 		OpenglCall(glBindTexture(GL_TEXTURE_2D, m_Texture));
 	}
 
-	void OpenglTexture2D::Init(const void* data, int32_t width, int32_t height, int32_t bitsPerPixel, const GraphicsTextureParams& params) {
+	void OpenglTexture2D::Init(
+		std::shared_ptr<GraphicsContext>& context,
+		const void* data,
+		int32_t width,
+		int32_t height,
+		int32_t bitsPerPixel,
+		const GraphicsTextureParams& params
+	) {
 		m_Width = width;
 		m_Height = height;
 		m_Params = params;
@@ -79,3 +88,5 @@ namespace pawn {
 	}
 
 }
+
+#endif

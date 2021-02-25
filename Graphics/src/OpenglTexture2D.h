@@ -2,6 +2,8 @@
 
 #include "GraphicsTexture.h"
 
+#ifdef PAWN_OPENGL
+
 namespace pawn {
 	
 	class OpenglTexture2D : public GraphicsTexture {
@@ -16,7 +18,15 @@ namespace pawn {
 
 			~OpenglTexture2D() override;
 
-			void Init(const void* data, int32_t width, int32_t height, int32_t bitsPerPixel, const GraphicsTextureParams& params) override;
+			void Init(
+				std::shared_ptr<GraphicsContext>& context,
+				const void* data,
+				int32_t width,
+				int32_t height,
+				int32_t bitsPerPixel,
+				const GraphicsTextureParams& params
+			) override;
+		
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 
@@ -30,3 +40,5 @@ namespace pawn {
 	};
 
 }
+
+#endif

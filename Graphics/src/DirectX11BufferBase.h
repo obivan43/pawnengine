@@ -33,7 +33,7 @@ namespace pawn {
 			GraphicsBufferUsageTypeEnum type
 		) override;
 
-		void* GetBuffer() const override { return m_Buffer.Get(); }
+		void* GetBuffer() override { return m_Buffer.Get(); }
 		uint32_t GetBufferSize() const override { return m_BufferSize; }
 		uint32_t GetStride() const override { return m_Stride; }
 	

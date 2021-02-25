@@ -66,6 +66,9 @@ namespace pawn {
 		OpenglCall(glEnable(GL_BLEND))
 		OpenglCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA))
 
+		OpenglCall(glEnable(GL_CULL_FACE))
+		OpenglCall(glCullFace(GL_BACK))
+		
 		spdlog::get("console")->info("*********************************************");
 		spdlog::get("console")->info("Vendor: {}", glGetString(GL_VENDOR));
 		spdlog::get("console")->info("Videocard: {}", glGetString(GL_RENDERER));

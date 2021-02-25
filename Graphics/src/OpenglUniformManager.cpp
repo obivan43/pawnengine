@@ -3,6 +3,8 @@
 #include "OpenglDebug.h"
 #include "OpenglUniformManager.h"
 
+#ifdef PAWN_OPENGL
+
 namespace pawn {
 	
 	void OpenglUniformManager::SetUniform(std::shared_ptr<GraphicsShader>& shader, const char* name, int32_t value) {
@@ -29,3 +31,5 @@ namespace pawn {
 	}
 	
 }
+
+#endif

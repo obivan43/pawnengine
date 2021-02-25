@@ -44,7 +44,7 @@ namespace pawn {
 			{ { -0.5f,   0.5f },  { 0.0f, 1.0f } },
 		};
 
-		uint16_t indices[] = { 0, 1, 2, 2, 3, 0 };
+		uint16_t indices[] = { 0, 1, 2, 0, 2, 3 };
 		
 		const std::initializer_list<GraphicsInputElement> inputElements = {
 			{ "Position", GraphicsInputElementType::Float2 },
@@ -75,14 +75,20 @@ namespace pawn {
 
 		int32_t width, height, bitsPerPixel;
 		unsigned char* data = StbImageLoader::Load("res\\textures\\brick.jpg", &width, &height, &bitsPerPixel);
-		m_Texture->Init(data, width, height, bitsPerPixel, { GraphicsTextureWrap::CLAMP, GraphicsTextureFilter::LINEAR, GraphicsTextureFormat::RGBA });
+		m_Texture->Init(
+			m_GraphicsContext,
+			data, width, height, bitsPerPixel,
+			{ GraphicsTextureWrap::CLAMP, GraphicsTextureFilter::LINEAR, GraphicsTextureFormat::RGBA }
+		);
 		m_Texture->Bind(m_GraphicsContext);
 		StbImageLoader::Free(data);
 
 		m_InputLayout->Init(m_GraphicsContext, inputElements, vertexShaderInfo);
 		m_InputLayout->Bind(m_GraphicsContext);
 
+#ifdef PAWN_OPENGL
 		OpenglUniformManager::SetUniform(m_Shader, "Texture", 0);
+#endif
 	}
 	
 	void DefaultLayer::OnUpdate(Clock clock) {

@@ -2,6 +2,8 @@
 
 #include "GraphicsShader.h"
 
+#ifdef PAWN_OPENGL
+
 namespace pawn {
 	
 	class OpenglUniformManager {
@@ -18,3 +20,5 @@ namespace pawn {
 	};
 	
 }
+
+#endif
