@@ -1,16 +1,11 @@
 struct VS_OUT {
-	float3 color : Color;
+	float2 texcoord : TextureCoordinates;
 	float4 position : SV_Position;
 };
 
-cbuffer Transformation {
-	row_major matrix transformation;
-};
-
-VS_OUT main(float2 position : Position, float3 color : Color)
-{
+VS_OUT main(float2 position : Position, float2 texcoord : TextureCoordinates) {
 	VS_OUT result;
-	result.position = mul(float4(position.x, position.y, 0.0f, 1.0f), transformation);
-	result.color = color;
+	result.position = float4(position.x, position.y, 0.0f, 1.0f);
+	result.texcoord = texcoord;
 	return result;
 }

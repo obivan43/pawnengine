@@ -54,6 +54,7 @@
     <ClCompile Include="src\DirectX11IndexBuffer.cpp" />
     <ClCompile Include="src\DirectX11InputLayout.cpp" />
     <ClCompile Include="src\DirectX11Shader.cpp" />
+    <ClCompile Include="src\DirectX11Texture2D.cpp" />
     <ClCompile Include="src\DirectX11VertexBuffer.cpp" />
     <ClCompile Include="src\dxerr.cpp" />
     <ClCompile Include="src\GraphicsAPI.cpp" />
@@ -91,6 +92,7 @@
     <ClInclude Include="src\DirectX11IndexBuffer.h" />
     <ClInclude Include="src\DirectX11InputLayout.h" />
     <ClInclude Include="src\DirectX11Shader.h" />
+    <ClInclude Include="src\DirectX11Texture2D.h" />
     <ClInclude Include="src\DirectX11VertexBuffer.h" />
     <ClInclude Include="src\dxerr.h" />
     <ClInclude Include="src\GraphicsAPI.h" />

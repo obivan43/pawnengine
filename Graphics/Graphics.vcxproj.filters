@@ -137,6 +137,9 @@
     <ClCompile Include="src\OpenglUniformManager.cpp">
       <Filter>src\opengl</Filter>
     </ClCompile>
+    <ClCompile Include="src\DirectX11Texture2D.cpp">
+      <Filter>src\directx11</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -246,6 +249,9 @@
     </ClInclude>
     <ClInclude Include="src\OpenglUniformManager.h">
       <Filter>src\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectX11Texture2D.h">
+      <Filter>src\directx11</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

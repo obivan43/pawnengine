@@ -11,6 +11,7 @@ namespace pawn {
 		
 #ifdef PAWN_DIRECTX11
 		m_VertexBuffer.reset(new DirectX11VertexBuffer());
+		m_Texture.reset(new DirectX11Texture2D());
 		m_IndexBuffer.reset(new DirectX11IndexBuffer());
 		m_Shader.reset(new DirectX11Shader());
 		m_InputLayout.reset(new DirectX11InputLayout());
@@ -38,10 +39,10 @@ namespace pawn {
 	
 	void DefaultLayer::OnInit() {
 		Vertex vertices[] = {
-			{ { -0.5f,  -0.5f },  { 0.0f, 0.0f } },
-			{ {  0.5f,  -0.5f },  { 1.0f, 0.0f } },
-			{ {  0.5f,   0.5f },  { 1.0f, 1.0f } },
-			{ { -0.5f,   0.5f },  { 0.0f, 1.0f } },
+			{ { -0.5f, -0.5f },  { 0.0f, 0.0f } },
+			{ { -0.5f,  0.5f },  { 1.0f, 0.0f } },
+			{ {  0.5f,  0.5f },  { 1.0f, 1.0f } },
+			{ {  0.5f, -0.5f },  { 0.0f, 1.0f } },
 		};
 
 		uint16_t indices[] = { 0, 1, 2, 0, 2, 3 };

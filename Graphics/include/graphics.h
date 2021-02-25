@@ -20,6 +20,7 @@
 #include "../src/DirectX11Shader.h"
 #include "../src/DirectX11InputLayout.h"
 #include "../src/DirectX11BasicRenderer.h"
+#include "../src/DirectX11Texture2D.h"
 
 #elif PAWN_OPENGL
 

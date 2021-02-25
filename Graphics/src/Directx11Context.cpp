@@ -96,6 +96,13 @@ namespace pawn {
 		viewPort.MaxDepth = 1.0f;
 		m_DeviceContext->RSSetViewports(1, &viewPort);
 
+		D3D11_RASTERIZER_DESC rasterizerDescription = {};
+		rasterizerDescription.FillMode = D3D11_FILL_SOLID;
+		rasterizerDescription.CullMode = D3D11_CULL_FRONT;
+
+		Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerState;
+		DirectX11Call(m_Device->CreateRasterizerState(&rasterizerDescription, &rasterizerState))
+
 		IDXGIDevice* dxgiDevice;
 		m_Device->QueryInterface(__uuidof(IDXGIDevice), (void**)&dxgiDevice);
 		IDXGIAdapter* adapter;
