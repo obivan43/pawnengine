@@ -11,8 +11,8 @@ namespace pawn {
 		
 #ifdef PAWN_DIRECTX11
 		m_VertexBuffer.reset(new DirectX11VertexBuffer());
-		m_Texture.reset(new DirectX11Texture2D());
 		m_IndexBuffer.reset(new DirectX11IndexBuffer());
+		m_Texture.reset(new DirectX11Texture2D());
 		m_Shader.reset(new DirectX11Shader());
 		m_InputLayout.reset(new DirectX11InputLayout());
 		m_GraphicsRenderer.reset(new DirectX11BasicRenderer(m_GraphicsContext));
