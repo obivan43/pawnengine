@@ -7,6 +7,7 @@
 #include "../src/GraphicsShader.h"
 #include "../src/GraphicsInputLayout.h"
 #include "../src/GraphicsRenderer.h"
+#include "../src/GraphicsTexture.h"
 
 #ifdef PAWN_DIRECTX11
 
@@ -32,6 +33,8 @@
 #include "../src/OpenglShader.h"
 #include "../src/OpenglInputLayout.h"
 #include "../src/OpenglBasicRenderer.h"
+#include "../src/OpenglTexture2D.h"
+#include "../src/OpenglUniformManager.h"
 
 #endif
 

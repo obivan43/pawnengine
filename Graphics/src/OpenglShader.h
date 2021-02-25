@@ -26,7 +26,7 @@ namespace pawn {
 
 			uint32_t GetVertexShader() const { return m_VertexShader; }
 			uint32_t GetPixelShader() const { return m_PixelShader; }
-			void* GetShader() const override { return reinterpret_cast<void*>(m_Shader); }
+			void* GetShader() override { return &m_Shader; }
 
 		private:
 			bool Init(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName, GLenum shaderType, uint32_t* shader);

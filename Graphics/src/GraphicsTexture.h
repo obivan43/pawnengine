@@ -20,6 +20,12 @@ namespace pawn {
 		RGB,
 		RGBA
 	};
+
+	struct GraphicsTextureParams {
+		GraphicsTextureWrap m_WrapMode;
+		GraphicsTextureFilter m_FilterMode;
+		GraphicsTextureFormat m_Format;
+	};
 	
 	class GraphicsTexture : public GraphicsBindableResource {
 
@@ -33,14 +39,17 @@ namespace pawn {
 		
 			virtual ~GraphicsTexture() = default;
 
+			virtual void Init(const void* data, int32_t width, int32_t height, int32_t bitsPerPixel, const GraphicsTextureParams& params);
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
+			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+
+			virtual void* GetTexture() { return nullptr; }
 
 		protected:
 			int32_t m_Width;
 			int32_t m_Height;
-			GraphicsTextureWrap m_WrapMode;
-			GraphicsTextureFilter m_FilterMode;
-			GraphicsTextureFormat m_Format;
+			int32_t m_BitsPerPixel;
+			GraphicsTextureParams m_Params;
 	};
 	
 }

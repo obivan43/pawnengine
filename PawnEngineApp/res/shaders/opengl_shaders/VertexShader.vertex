@@ -1,15 +1,11 @@
 #version 460 core
 
 in vec2 Position;
-in vec3 Color;
+in vec2 TextureCoordinates;
 
-layout(std140) uniform Transformation {
-	mat4 transformation;
-};
-
-out vec3 out_Color;
+out vec2 out_TextureCoordinates;
 
 void main() {
-	gl_Position = transformation * vec4(Position, 0.0f, 1.0f);
-	out_Color = Color;
+	gl_Position = vec4(Position, 0.0f, 1.0f);
+	out_TextureCoordinates = TextureCoordinates;
 }

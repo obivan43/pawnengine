@@ -23,7 +23,7 @@ namespace pawn {
 			std::shared_ptr<pawn::GraphicsAPI> m_GraphicsAPI;
 			std::shared_ptr<pawn::GraphicsBuffer> m_VertexBuffer;
 			std::shared_ptr<pawn::GraphicsBuffer> m_IndexBuffer;
-			std::shared_ptr<pawn::GraphicsBuffer> m_ContantBuffer;
+			std::shared_ptr<pawn::GraphicsTexture> m_Texture;
 
 			std::shared_ptr<GraphicsInputLayout> m_InputLayout;
 			std::shared_ptr<GraphicsRenderer> m_GraphicsRenderer;

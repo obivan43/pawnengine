@@ -73,6 +73,8 @@
     <ClCompile Include="src\OpenglIndexBuffer.cpp" />
     <ClCompile Include="src\OpenglInputLayout.cpp" />
     <ClCompile Include="src\OpenglShader.cpp" />
+    <ClCompile Include="src\OpenglTexture2D.cpp" />
+    <ClCompile Include="src\OpenglUniformManager.cpp" />
     <ClCompile Include="src\OpenglVertexBuffer.cpp" />
     <ClCompile Include="src\WinAPIWindow.cpp" />
     <ClCompile Include="src\Window.cpp" />
@@ -109,6 +111,8 @@
     <ClInclude Include="src\OpenglIndexBuffer.h" />
     <ClInclude Include="src\OpenglInputLayout.h" />
     <ClInclude Include="src\OpenglShader.h" />
+    <ClInclude Include="src\OpenglTexture2D.h" />
+    <ClInclude Include="src\OpenglUniformManager.h" />
     <ClInclude Include="src\OpenglVertexBuffer.h" />
     <ClInclude Include="src\WinAPIWindow.h" />
     <ClInclude Include="src\Window.h" />

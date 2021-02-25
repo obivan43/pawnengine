@@ -36,7 +36,7 @@ namespace pawn {
 		void Bind(std::shared_ptr<GraphicsContext>& context) override;
 		void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 
-		void* GetBuffer() const override { return reinterpret_cast<void*>(m_Buffer); }
+		void* GetBuffer() override { return &m_Buffer; }
 		uint32_t GetBufferSize() const override { return m_BufferSize; }
 		uint32_t GetStride() const override { return m_Stride; }
 

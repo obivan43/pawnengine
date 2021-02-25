@@ -24,8 +24,10 @@ namespace pawn {
 	) {
 		UNUSED(context)
 		m_BindingIndex = index;
-		OpenglCall(m_UniformIndex = glGetUniformBlockIndex(reinterpret_cast<uint32_t>(shader->GetShader()), name.c_str()))
-		OpenglCall(glUniformBlockBinding(reinterpret_cast<uint32_t>(shader->GetShader()), m_UniformIndex, m_BindingIndex))
+
+		const uint32_t shaderID = FROM_VOIDP(uint32_t, shader->GetShader());;
+		OpenglCall(m_UniformIndex = glGetUniformBlockIndex(shaderID, name.c_str()))
+		OpenglCall(glUniformBlockBinding(shaderID, m_UniformIndex, m_BindingIndex))
 	}
 
 	void OpenglConstantBuffer::Init(

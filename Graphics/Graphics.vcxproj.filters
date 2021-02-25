@@ -131,6 +131,12 @@
     <ClCompile Include="src\GraphicsTexture.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\OpenglTexture2D.cpp">
+      <Filter>src\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenglUniformManager.cpp">
+      <Filter>src\opengl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -234,6 +240,12 @@
     </ClInclude>
     <ClInclude Include="src\GraphicsTexture.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenglTexture2D.h">
+      <Filter>src\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenglUniformManager.h">
+      <Filter>src\opengl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

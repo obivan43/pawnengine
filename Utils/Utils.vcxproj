@@ -66,7 +66,7 @@
     <ClInclude Include="src\Singleton.h" />
     <ClInclude Include="src\StbImage.h" />
     <ClInclude Include="src\StbImageLoader.h" />
-    <ClInclude Include="src\Unused.h" />
+    <ClInclude Include="src\Macros.h" />
     <ClInclude Include="src\WindowEvents.h" />
     <ClInclude Include="src\WindowsAPI.h" />
   </ItemGroup>

@@ -6,20 +6,25 @@ namespace pawn {
 		struct {
 			float x;
 			float y;
-		} position;
+		} Position;
+
+		struct {
+			float u;
+			float v;
+		} TextureCoordinats;
 	};
 
 	struct ColoredVertex {
 		struct {
 			float x;
 			float y;
-		} position;
+		} Position;
 
 		struct {
 			float r;
 			float g;
 			float b;
-		} color;
+		} Color;
 	};
 	
 }

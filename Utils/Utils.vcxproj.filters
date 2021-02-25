@@ -101,14 +101,14 @@
     <ClInclude Include="src\WindowEvents.h">
       <Filter>src\patterns\observer\events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Unused.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\StbImage.h">
       <Filter>src\image_loader</Filter>
     </ClInclude>
     <ClInclude Include="src\StbImageLoader.h">
       <Filter>src\image_loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macros.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

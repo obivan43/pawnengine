@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../src/Unused.h"
+#include "../src/Macros.h"
 
 #include "../src/WindowsAPI.h"
 #include "../src/Rtti.h"

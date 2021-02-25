@@ -13,7 +13,7 @@ namespace pawn {
 
 	void StbImageLoader::Free(unsigned char* data) {
 		if(data) {
-			spdlog::get("console")->debug("std: data released");
+			spdlog::get("console")->debug("stb: data released");
 			stbi_image_free(data);
 		}
 	}
