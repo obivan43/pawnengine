@@ -23,6 +23,9 @@
     <ClCompile Include="src\Transformation.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -39,6 +42,9 @@
     </ClInclude>
     <ClInclude Include="include\pawnmath.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Camera.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

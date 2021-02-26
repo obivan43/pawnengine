@@ -1,11 +1,21 @@
 #version 460 core
 
-in vec2 Position;
+layout(std140, binding = 0) uniform Transformation {
+	mat4 transformation;
+};
+
+layout(std140, binding = 1) uniform ViewProjection {
+	mat4 projection;
+	mat4 view;
+};
+
+in vec3 Position;
 in vec2 TextureCoordinates;
 
 out vec2 out_TextureCoordinates;
 
 void main() {
-	gl_Position = vec4(Position, 0.0f, 1.0f);
+	mat4 MVP = projection * view * transformation;
+	gl_Position = MVP * vec4(Position, 1.0f);
 	out_TextureCoordinates = TextureCoordinates;
 }

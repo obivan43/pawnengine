@@ -2,9 +2,11 @@
 #include "DefaultLayer.h"
 #include "Application.h"
 
+#include <DirectXMath.h>
+
 namespace pawn {
 
-	DefaultLayer::DefaultLayer() {
+	DefaultLayer::DefaultLayer() : m_Camera({0.0f, 0.0f, 4.0f}) {
 		Application& application = Application::Instance();
 		m_GraphicsContext = application.GetGraphicsContext();
 		m_GraphicsAPI = application.GetGraphicsAPI();
@@ -12,6 +14,8 @@ namespace pawn {
 #ifdef PAWN_DIRECTX11
 		m_VertexBuffer.reset(new DirectX11VertexBuffer());
 		m_IndexBuffer.reset(new DirectX11IndexBuffer());
+		m_Transformation.reset(new DirectX11ContantBuffer());
+		m_ViewProjection.reset(new DirectX11ContantBuffer());
 		m_Texture.reset(new DirectX11Texture2D());
 		m_Shader.reset(new DirectX11Shader());
 		m_InputLayout.reset(new DirectX11InputLayout());
@@ -22,6 +26,8 @@ namespace pawn {
 #elif PAWN_OPENGL
 		m_VertexBuffer.reset(new OpenglVertexBuffer());
 		m_IndexBuffer.reset(new OpenglIndexBuffer());
+		m_Transformation.reset(new OpenglConstantBuffer());
+		m_ViewProjection.reset(new OpenglConstantBuffer());
 		m_Texture.reset(new OpenglTexture2D());
 		m_Shader.reset(new OpenglShader());
 		m_InputLayout.reset(new OpenglInputLayout());
@@ -39,16 +45,16 @@ namespace pawn {
 	
 	void DefaultLayer::OnInit() {
 		Vertex vertices[] = {
-			{ { -0.5f, -0.5f },  { 0.0f, 0.0f } },
-			{ { -0.5f,  0.5f },  { 1.0f, 0.0f } },
-			{ {  0.5f,  0.5f },  { 1.0f, 1.0f } },
-			{ {  0.5f, -0.5f },  { 0.0f, 1.0f } },
+			{ { -0.5f, -0.5f, 0.0f },  { 0.0f, 0.0f } },
+			{ { -0.5f,  0.5f, 0.0f },  { 1.0f, 0.0f } },
+			{ {  0.5f,  0.5f, 0.0f },  { 1.0f, 1.0f } },
+			{ {  0.5f, -0.5f, 0.0f },  { 0.0f, 1.0f } },
 		};
 
 		uint16_t indices[] = { 0, 1, 2, 0, 2, 3 };
 		
 		const std::initializer_list<GraphicsInputElement> inputElements = {
-			{ "Position", GraphicsInputElementType::Float2 },
+			{ "Position", GraphicsInputElementType::Float3 },
 			{ "TextureCoordinates", GraphicsInputElementType::Float2 }
 		};
 		
@@ -87,6 +93,18 @@ namespace pawn {
 		m_InputLayout->Init(m_GraphicsContext, inputElements, vertexShaderInfo);
 		m_InputLayout->Bind(m_GraphicsContext);
 
+		m_Camera.RecalculateView();
+		Transformation transformation;
+		glm::mat4 transformationMatrix = transformation.GetModelMatrix();
+		m_Transformation->Init(m_GraphicsContext, &transformationMatrix, 1, sizeof(DirectX::XMMATRIX), GraphicsBufferUsageTypeEnum::StaticBuffer);
+		m_Transformation->InitLocation(m_GraphicsContext, m_Shader, "Transformation", 0);
+		m_Transformation->Bind(m_GraphicsContext);
+
+		ViewProjection viewProjection = { m_Camera.GetProjection(), m_Camera.GetView() };
+		m_ViewProjection->Init(m_GraphicsContext, &viewProjection, 1, sizeof(ViewProjection), GraphicsBufferUsageTypeEnum::StaticBuffer);
+		m_ViewProjection->InitLocation(m_GraphicsContext, m_Shader, "ViewProjection", 1);
+		m_ViewProjection->Bind(m_GraphicsContext);
+		
 #ifdef PAWN_OPENGL
 		OpenglUniformManager::SetUniform(m_Shader, "Texture", 0);
 #endif
@@ -94,6 +112,8 @@ namespace pawn {
 	
 	void DefaultLayer::OnUpdate(Clock clock) {
 		m_IndexBuffer->Bind(m_GraphicsContext);
+		m_Transformation->Bind(m_GraphicsContext);
+		m_ViewProjection->Bind(m_GraphicsContext);
 		m_GraphicsRenderer->DrawIndexed(m_IndexBuffer);
 	}
 	

@@ -32,7 +32,8 @@ namespace pawn {
 		) override;
 		
 		void Bind(std::shared_ptr<GraphicsContext>& context) override;
-
+		void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+	
 	private:
 		uint32_t m_UniformIndex;
 		uint32_t m_BindingIndex;

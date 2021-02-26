@@ -11,6 +11,11 @@ namespace pawn {
 
 	OpenglConstantBuffer::OpenglConstantBuffer() : OpenglBufferBase(GraphicsBufferEnum::ConstantBuffer), m_UniformIndex(0), m_BindingIndex(0) {}
 
+	void OpenglConstantBuffer::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
+		OpenglBufferBase::Bind(context);
+		OpenglCall(glBindBufferBase(GL_UNIFORM_BUFFER, index, m_Buffer))
+	}
+	
 	void OpenglConstantBuffer::Bind(std::shared_ptr<GraphicsContext>& context) {
 		OpenglBufferBase::Bind(context);
 		OpenglCall(glBindBufferBase(GL_UNIFORM_BUFFER, m_BindingIndex, m_Buffer))

@@ -16,6 +16,13 @@ namespace pawn {
 			DirectX11ContantBuffer& operator=(const DirectX11ContantBuffer& other) = default;
 			DirectX11ContantBuffer& operator=(DirectX11ContantBuffer&& other) noexcept = default;
 
+			void InitLocation(
+				std::shared_ptr<GraphicsContext>& context,
+				std::shared_ptr<GraphicsShader>& shader,
+				const std::string& name,
+				uint32_t index = 0
+			) override;
+		
 			void Init(
 				std::shared_ptr<GraphicsContext>& context,
 				void* data,
@@ -26,6 +33,9 @@ namespace pawn {
 		
 			void Bind(std::shared_ptr<GraphicsContext>& context) override;
 			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+
+		private:
+			uint32_t m_BindingIndex;
 	};
 
 }
