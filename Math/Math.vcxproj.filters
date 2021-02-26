@@ -28,9 +28,6 @@
     <ClInclude Include="pch\pch.h">
       <Filter>pch</Filter>
     </ClInclude>
-    <ClInclude Include="include\math.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="src\math_defines.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -39,6 +36,9 @@
     </ClInclude>
     <ClInclude Include="src\Transformation.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="include\pawnmath.h">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
