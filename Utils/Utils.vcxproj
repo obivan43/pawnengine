@@ -60,6 +60,7 @@
     <ClInclude Include="include\utils.h" />
     <ClInclude Include="pch\pch.h" />
     <ClInclude Include="src\Clock.h" />
+    <ClInclude Include="src\entt.h" />
     <ClInclude Include="src\Event.h" />
     <ClInclude Include="src\IObservable.h" />
     <ClInclude Include="src\KeyboardEvents.h" />

@@ -40,6 +40,9 @@
     <Filter Include="src\input">
       <UniqueIdentifier>{488ca6ca-f021-4fca-86da-a0f85bc097de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\entt">
+      <UniqueIdentifier>{ec495ffe-4e23-45f3-8699-b32a25aa88bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
@@ -124,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="src\KeyboardInputManager.h">
       <Filter>src\input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entt.h">
+      <Filter>src\entt</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
