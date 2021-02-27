@@ -128,9 +128,6 @@
     <ClCompile Include="src\OpenglIndexBuffer.cpp">
       <Filter>src\opengl\buffers</Filter>
     </ClCompile>
-    <ClCompile Include="src\GraphicsTexture.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\OpenglTexture2D.cpp">
       <Filter>src\opengl</Filter>
     </ClCompile>
@@ -139,6 +136,9 @@
     </ClCompile>
     <ClCompile Include="src\DirectX11Texture2D.cpp">
       <Filter>src\directx11</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GraphicsTexture2D.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -241,9 +241,6 @@
     <ClInclude Include="src\OpenglIndexBuffer.h">
       <Filter>src\opengl\buffers</Filter>
     </ClInclude>
-    <ClInclude Include="src\GraphicsTexture.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\OpenglTexture2D.h">
       <Filter>src\opengl</Filter>
     </ClInclude>
@@ -252,6 +249,9 @@
     </ClInclude>
     <ClInclude Include="src\DirectX11Texture2D.h">
       <Filter>src\directx11</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GraphicsTexture2D.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

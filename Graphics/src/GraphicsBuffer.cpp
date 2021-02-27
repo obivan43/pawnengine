@@ -2,6 +2,13 @@
 #include "GraphicsBuffer.h"
 #include "GraphicsShader.h"
 
+#include "OpenglVertexBuffer.h"
+#include "OpenglIndexBuffer.h"
+#include "OpenglConstantBuffer.h"
+
+#include "DirectX11VertexBuffer.h"
+#include "DirectX11IndexBuffer.h"
+#include "DirectX11ContantBuffer.h"
 
 namespace pawn {
 
@@ -42,4 +49,34 @@ namespace pawn {
 		UNUSED(context)
 		UNUSED(index)
 	}
+
+	std::shared_ptr<GraphicsBuffer> GraphicsBuffer::Create(GraphicsBufferEnum bufferType) {
+#ifdef PAWN_DIRECTX11
+		switch(bufferType) {
+			case GraphicsBufferEnum::VertexBuffer:
+				return std::shared_ptr<GraphicsBuffer>(new DirectX11VertexBuffer());
+			case GraphicsBufferEnum::IndexBuffer:
+				return std::shared_ptr<GraphicsBuffer>(new DirectX11IndexBuffer());
+			case GraphicsBufferEnum::ConstantBuffer:
+				return std::shared_ptr<GraphicsBuffer>(new DirectX11ContantBuffer());
+		}
+
+		return std::shared_ptr<GraphicsBuffer>(new GraphicsBuffer());
+		
+#elif PAWN_OPENGL
+		switch (bufferType) {
+			case GraphicsBufferEnum::VertexBuffer:
+				return std::shared_ptr<GraphicsBuffer>(new OpenglVertexBuffer());
+			case GraphicsBufferEnum::IndexBuffer:
+				return std::shared_ptr<GraphicsBuffer>(new OpenglIndexBuffer());
+			case GraphicsBufferEnum::ConstantBuffer:
+				return std::shared_ptr<GraphicsBuffer>(new OpenglConstantBuffer());
+		}
+
+		return std::shared_ptr<GraphicsBuffer>(new GraphicsBuffer());
+#else
+		return std::shared_ptr<GraphicsBuffer>(new GraphicsBuffer());
+#endif
+	}
+	
 }

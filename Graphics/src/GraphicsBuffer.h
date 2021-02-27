@@ -63,6 +63,8 @@ namespace pawn {
 		
 			const GraphicsBufferEnum& GetGraphicsBufferType() const { return m_GraphicsBufferType; }
 
+			static std::shared_ptr<GraphicsBuffer> Create(GraphicsBufferEnum bufferType);
+
 		protected:
 			GraphicsBufferEnum m_GraphicsBufferType;
 	};

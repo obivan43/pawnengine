@@ -29,8 +29,8 @@ namespace pawn {
 			void* GetShader() override { return &m_Shader; }
 
 		private:
-			bool Init(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName, GLenum shaderType, uint32_t* shader);
-			bool CheckErrors(GLuint checkType);
+			bool Init(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName, uint32_t shaderType, uint32_t* shader);
+			bool CheckErrors(uint32_t checkType);
 			void Clean();
 	
 		private:

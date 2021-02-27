@@ -64,7 +64,7 @@
     <ClCompile Include="src\GraphicsInputLayout.cpp" />
     <ClCompile Include="src\GraphicsRenderer.cpp" />
     <ClCompile Include="src\GraphicsShader.cpp" />
-    <ClCompile Include="src\GraphicsTexture.cpp" />
+    <ClCompile Include="src\GraphicsTexture2D.cpp" />
     <ClCompile Include="src\OpenglAPI.cpp" />
     <ClCompile Include="src\OpenglBasicRenderer.cpp" />
     <ClCompile Include="src\OpenglBufferBase.cpp" />
@@ -102,7 +102,7 @@
     <ClInclude Include="src\GraphicsInputLayout.h" />
     <ClInclude Include="src\GraphicsRenderer.h" />
     <ClInclude Include="src\GraphicsShader.h" />
-    <ClInclude Include="src\GraphicsTexture.h" />
+    <ClInclude Include="src\GraphicsTexture2D.h" />
     <ClInclude Include="src\Opengl.h" />
     <ClInclude Include="src\OpenglAPI.h" />
     <ClInclude Include="src\OpenglBasicRenderer.h" />

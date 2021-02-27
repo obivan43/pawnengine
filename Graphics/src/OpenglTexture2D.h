@@ -1,12 +1,12 @@
 ﻿#pragma once
 
-#include "GraphicsTexture.h"
+#include "GraphicsTexture2D.h"
 
 #ifdef PAWN_OPENGL
 
 namespace pawn {
 	
-	class OpenglTexture2D : public GraphicsTexture {
+	class OpenglTexture2D : public GraphicsTexture2D {
 
 		public:
 			OpenglTexture2D() = default;

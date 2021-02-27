@@ -26,6 +26,8 @@ namespace pawn {
 			virtual void* GetShader() { return nullptr; }
 			virtual void* GetVertexShaderInfo() const { return nullptr; }
 			virtual void* GetPixelShaderInfo() const { return nullptr; }
+
+			static std::shared_ptr<GraphicsShader> Create();
 	};
 
 }

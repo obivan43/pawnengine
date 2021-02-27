@@ -21,6 +21,8 @@ namespace pawn {
 		
 			virtual void Draw(const std::shared_ptr<GraphicsBuffer>& buffer);
 			virtual void DrawIndexed(const std::shared_ptr<GraphicsBuffer>& IndexBuffer);
+
+			static std::shared_ptr<GraphicsRenderer> Create(std::shared_ptr<GraphicsContext>& context);
 	
 		protected:
 			std::shared_ptr<GraphicsContext> m_ContextCache;

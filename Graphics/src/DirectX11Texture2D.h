@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "GraphicsTexture.h"
+#include "GraphicsTexture2D.h"
 
 #ifdef PAWN_DIRECTX11
 
@@ -8,7 +8,7 @@
 
 namespace pawn {
 
-	class DirectX11Texture2D : public GraphicsTexture {
+	class DirectX11Texture2D : public GraphicsTexture2D {
 
 	public:
 		DirectX11Texture2D() = default;

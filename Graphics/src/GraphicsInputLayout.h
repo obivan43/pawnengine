@@ -61,6 +61,8 @@ namespace pawn {
 			std::vector<GraphicsInputElement>::const_iterator end() const { return m_Elements.end(); }
 
 			void RecalculateStride();
+
+			static std::shared_ptr<GraphicsInputLayout> Create();
 	
 		protected:
 			std::vector<GraphicsInputElement> m_Elements;

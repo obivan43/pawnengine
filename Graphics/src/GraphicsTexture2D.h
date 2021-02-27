@@ -27,17 +27,17 @@ namespace pawn {
 		GraphicsTextureFormat m_Format;
 	};
 	
-	class GraphicsTexture : public GraphicsBindableResource {
+	class GraphicsTexture2D : public GraphicsBindableResource {
 
 		public:
-			GraphicsTexture();
-			GraphicsTexture(const GraphicsTexture& other) = default;
-			GraphicsTexture(GraphicsTexture&& other) noexcept = default;
+			GraphicsTexture2D();
+			GraphicsTexture2D(const GraphicsTexture2D& other) = default;
+			GraphicsTexture2D(GraphicsTexture2D&& other) noexcept = default;
 
-			GraphicsTexture& operator=(const GraphicsTexture& other) = default;
-			GraphicsTexture& operator=(GraphicsTexture&& other) noexcept = default;
+			GraphicsTexture2D& operator=(const GraphicsTexture2D& other) = default;
+			GraphicsTexture2D& operator=(GraphicsTexture2D&& other) noexcept = default;
 		
-			virtual ~GraphicsTexture() = default;
+			virtual ~GraphicsTexture2D() = default;
 
 			virtual void Init(
 				std::shared_ptr<GraphicsContext>& context, 
@@ -52,6 +52,8 @@ namespace pawn {
 			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 
 			virtual void* GetTexture() { return nullptr; }
+
+			static std::shared_ptr<GraphicsTexture2D> Create();
 
 		protected:
 			int32_t m_Width;

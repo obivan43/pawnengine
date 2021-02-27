@@ -10,36 +10,23 @@ namespace pawn {
 		Application& application = Application::Instance();
 		m_GraphicsContext = application.GetGraphicsContext();
 		m_GraphicsAPI = application.GetGraphicsAPI();
+
+		m_VertexBuffer = GraphicsBuffer::Create(GraphicsBufferEnum::VertexBuffer);
+		m_IndexBuffer = GraphicsBuffer::Create(GraphicsBufferEnum::IndexBuffer);
+		m_Transformation = GraphicsBuffer::Create(GraphicsBufferEnum::ConstantBuffer);
+		m_ViewProjection = GraphicsBuffer::Create(GraphicsBufferEnum::ConstantBuffer);
+		m_Texture = GraphicsTexture2D::Create();
+
+		m_Shader = GraphicsShader::Create();
+		m_InputLayout = GraphicsInputLayout::Create();
+		m_GraphicsRenderer = GraphicsRenderer::Create(m_GraphicsContext);
 		
 #ifdef PAWN_DIRECTX11
-		m_VertexBuffer.reset(new DirectX11VertexBuffer());
-		m_IndexBuffer.reset(new DirectX11IndexBuffer());
-		m_Transformation.reset(new DirectX11ContantBuffer());
-		m_ViewProjection.reset(new DirectX11ContantBuffer());
-		m_Texture.reset(new DirectX11Texture2D());
-		m_Shader.reset(new DirectX11Shader());
-		m_InputLayout.reset(new DirectX11InputLayout());
-		m_GraphicsRenderer.reset(new DirectX11BasicRenderer(m_GraphicsContext));
-
 		m_VertexShaderPath = L"res\\shaders\\directx_shaders\\VertexShader.cso";
 		m_PixelShaderPath = L"res\\shaders\\directx_shaders\\PixelShader.cso";
 #elif PAWN_OPENGL
-		m_VertexBuffer.reset(new OpenglVertexBuffer());
-		m_IndexBuffer.reset(new OpenglIndexBuffer());
-		m_Transformation.reset(new OpenglConstantBuffer());
-		m_ViewProjection.reset(new OpenglConstantBuffer());
-		m_Texture.reset(new OpenglTexture2D());
-		m_Shader.reset(new OpenglShader());
-		m_InputLayout.reset(new OpenglInputLayout());
-		m_GraphicsRenderer.reset(new OpenglBasicRenderer(m_GraphicsContext));
-
 		m_VertexShaderPath = L"res\\shaders\\opengl_shaders\\VertexShader.vertex";
 		m_PixelShaderPath = L"res\\shaders\\opengl_shaders\\PixelShader.fragment";
-#else
-		m_VertexBuffer.reset(new GraphicsBuffer());
-		m_Shader.reset(new GraphicsShader());
-		m_InputLayout.reset(new GraphicsInputLayout());
-		m_GraphicsRenderer.reset(new GraphicsRenderer(m_GraphicsContext));
 #endif
 	}
 	
@@ -112,8 +99,8 @@ namespace pawn {
 	
 	void DefaultLayer::OnUpdate(Clock clock) {
 		m_CameraMovement.MoveCamera(m_Camera, clock);
-		
 		m_Camera.RecalculateView();
+		
 		m_viewProjectionMatrix = { m_Camera.GetProjection(), m_Camera.GetView() };
 		m_ViewProjection->Update(m_GraphicsContext, &m_viewProjectionMatrix, 1, sizeof(ViewProjection));
 		

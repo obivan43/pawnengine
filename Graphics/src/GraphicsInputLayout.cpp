@@ -1,5 +1,7 @@
 ﻿#include "pch.h"
 #include "GraphicsInputLayout.h"
+#include "OpenglInputLayout.h"
+#include "DirectX11InputLayout.h"
 
 namespace pawn {
 
@@ -65,6 +67,16 @@ namespace pawn {
 	void GraphicsInputLayout::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
 		UNUSED(context)
 		UNUSED(index)
+	}
+
+	std::shared_ptr<GraphicsInputLayout> GraphicsInputLayout::Create() {
+#ifdef PAWN_DIRECTX11
+		return std::shared_ptr<GraphicsInputLayout>(new DirectX11InputLayout());
+#elif PAWN_OPENGL
+		return std::shared_ptr<GraphicsInputLayout>(new OpenglInputLayout());
+#else
+		return std::shared_ptr<GraphicsInputLayout>(new GraphicsInputLayout());
+#endif
 	}
 	
 }

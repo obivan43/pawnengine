@@ -23,7 +23,7 @@ namespace pawn {
 		return Init(context, fileName, GL_FRAGMENT_SHADER, &m_PixelShader);
 	}
 	
-	bool OpenglShader::Init(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName, GLenum shaderType, uint32_t* shader) {
+	bool OpenglShader::Init(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName, uint32_t shaderType, uint32_t* shader) {
 		std::ifstream file(fileName.c_str());
 		if (file.good()) {
 			OpenglCall(*shader = glCreateShader(shaderType))
@@ -81,7 +81,7 @@ namespace pawn {
 		return true;
 	}
 
-	bool OpenglShader::CheckErrors(GLuint checkType) {
+	bool OpenglShader::CheckErrors(uint32_t checkType) {
 		int logLength = 0;
 		GLint result = GL_FALSE;
 		OpenglCall(glGetProgramiv(m_Shader, checkType, &result))

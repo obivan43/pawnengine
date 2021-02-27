@@ -20,27 +20,25 @@ namespace pawn {
 			void OnRelease() override;
 	
 		private:
-			Camera m_Camera;
-		
 			std::shared_ptr<pawn::GraphicsContext> m_GraphicsContext;
 			std::shared_ptr<pawn::GraphicsAPI> m_GraphicsAPI;
+		
 			std::shared_ptr<pawn::GraphicsBuffer> m_VertexBuffer;
 			std::shared_ptr<pawn::GraphicsBuffer> m_IndexBuffer;
 			std::shared_ptr<pawn::GraphicsBuffer> m_Transformation;
 			std::shared_ptr<pawn::GraphicsBuffer> m_ViewProjection;
-			std::shared_ptr<pawn::GraphicsTexture> m_Texture;
-			
+			std::shared_ptr<pawn::GraphicsTexture2D> m_Texture;
+
+			std::shared_ptr<GraphicsShader> m_Shader;
 			std::shared_ptr<GraphicsInputLayout> m_InputLayout;
 			std::shared_ptr<GraphicsRenderer> m_GraphicsRenderer;
 
-			std::shared_ptr<GraphicsShader> m_Shader;
-
-			ViewProjection m_viewProjectionMatrix;
-
-			CameraInputHandler m_CameraMovement;
-		
 			std::wstring m_VertexShaderPath;
 			std::wstring m_PixelShaderPath;
+		
+			Camera m_Camera;
+			CameraInputHandler m_CameraMovement;
+			ViewProjection m_viewProjectionMatrix;
 	};
 	
 }

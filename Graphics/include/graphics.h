@@ -7,7 +7,7 @@
 #include "../src/GraphicsShader.h"
 #include "../src/GraphicsInputLayout.h"
 #include "../src/GraphicsRenderer.h"
-#include "../src/GraphicsTexture.h"
+#include "../src/GraphicsTexture2D.h"
 
 #ifdef PAWN_DIRECTX11
 
