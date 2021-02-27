@@ -93,15 +93,15 @@ namespace pawn {
 		m_InputLayout->Init(m_GraphicsContext, inputElements, vertexShaderInfo);
 		m_InputLayout->Bind(m_GraphicsContext);
 
-		m_Camera.RecalculateView();
 		Transformation transformation;
 		glm::mat4 transformationMatrix = transformation.GetModelMatrix();
 		m_Transformation->Init(m_GraphicsContext, &transformationMatrix, 1, sizeof(DirectX::XMMATRIX), GraphicsBufferUsageTypeEnum::StaticBuffer);
 		m_Transformation->InitLocation(m_GraphicsContext, m_Shader, "Transformation", 0);
 		m_Transformation->Bind(m_GraphicsContext);
 
-		ViewProjection viewProjection = { m_Camera.GetProjection(), m_Camera.GetView() };
-		m_ViewProjection->Init(m_GraphicsContext, &viewProjection, 1, sizeof(ViewProjection), GraphicsBufferUsageTypeEnum::StaticBuffer);
+		m_Camera.RecalculateView();
+		m_viewProjectionMatrix = { m_Camera.GetProjection(), m_Camera.GetView() };
+		m_ViewProjection->Init(m_GraphicsContext, &m_viewProjectionMatrix, 1, sizeof(ViewProjection), GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_ViewProjection->InitLocation(m_GraphicsContext, m_Shader, "ViewProjection", 1);
 		m_ViewProjection->Bind(m_GraphicsContext);
 		
@@ -111,12 +111,40 @@ namespace pawn {
 	}
 	
 	void DefaultLayer::OnUpdate(Clock clock) {
+		m_Camera.RecalculateView();
+		m_viewProjectionMatrix = { m_Camera.GetProjection(), m_Camera.GetView() };
+		m_ViewProjection->Update(m_GraphicsContext, &m_viewProjectionMatrix, 1, sizeof(ViewProjection));
+		
 		m_IndexBuffer->Bind(m_GraphicsContext);
 		m_Transformation->Bind(m_GraphicsContext);
 		m_ViewProjection->Bind(m_GraphicsContext);
+		
 		m_GraphicsRenderer->DrawIndexed(m_IndexBuffer);
 	}
 	
 	void DefaultLayer::OnRelease() {}
+
+	void DefaultLayer::HandleEvent(Event& e) {		
+		if(e.GetType() == EventTypeEnum::KeyboardPress) {
+			OnKeyboardInput();
+		}
+		
+	}
+
+	void DefaultLayer::OnKeyboardInput() {
+		static pawn::Window& window = Application::Instance().GetWindow();
+		static KeyboardInputManager& keyboard = window.GetKeyBoardInputManager();
+
+		if(keyboard.IsPressed('W')) {
+			glm::vec3 position = m_Camera.GetPosition();
+			position.z -= 0.1f;
+			m_Camera.SetPosition(position);
+		} else if (keyboard.IsPressed('S')) {
+			glm::vec3 position = m_Camera.GetPosition();
+			position.z += 0.1f;
+			m_Camera.SetPosition(position);
+		}
+		
+	}
 	
 }

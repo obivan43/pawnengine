@@ -37,6 +37,9 @@
     <Filter Include="src\image_loader">
       <UniqueIdentifier>{ae302308-ae93-4e3d-926a-8f5240f64952}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\input">
+      <UniqueIdentifier>{488ca6ca-f021-4fca-86da-a0f85bc097de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
@@ -65,6 +68,12 @@
     </ClCompile>
     <ClCompile Include="src\StbImageLoader.cpp">
       <Filter>src\image_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KeyboardEvents.cpp">
+      <Filter>src\patterns\observer\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KeyboardInputManager.cpp">
+      <Filter>src\input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +118,12 @@
     </ClInclude>
     <ClInclude Include="src\Macros.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KeyboardEvents.h">
+      <Filter>src\patterns\observer\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KeyboardInputManager.h">
+      <Filter>src\input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

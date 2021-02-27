@@ -51,6 +51,21 @@ namespace pawn {
                  }
                  break;
 
+                 case WM_KEYDOWN: {
+                     m_KeyboardInputManager.OnKeyPressed(static_cast<uint8_t>(wParam));
+                 }
+                 break;
+
+                 case WM_KEYUP: {
+                     m_KeyboardInputManager.OnKeyRelease(static_cast<uint8_t>(wParam));
+                 }
+                 break;
+
+                 case WM_CHAR: {
+                     m_KeyboardInputManager.OnChar(static_cast<uint8_t>(wParam));
+                 }
+                 break;
+
                  default: {}
              }
 

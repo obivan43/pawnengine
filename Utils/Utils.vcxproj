@@ -48,6 +48,8 @@
     <ClCompile Include="src\Clock.cpp" />
     <ClCompile Include="src\Event.cpp" />
     <ClCompile Include="src\IObservable.cpp" />
+    <ClCompile Include="src\KeyboardEvents.cpp" />
+    <ClCompile Include="src\KeyboardInputManager.cpp" />
     <ClCompile Include="src\Observable.cpp" />
     <ClCompile Include="src\Observer.cpp" />
     <ClCompile Include="src\StbImage.cpp" />
@@ -60,6 +62,8 @@
     <ClInclude Include="src\Clock.h" />
     <ClInclude Include="src\Event.h" />
     <ClInclude Include="src\IObservable.h" />
+    <ClInclude Include="src\KeyboardEvents.h" />
+    <ClInclude Include="src\KeyboardInputManager.h" />
     <ClInclude Include="src\Observable.h" />
     <ClInclude Include="src\Observer.h" />
     <ClInclude Include="src\Rtti.h" />

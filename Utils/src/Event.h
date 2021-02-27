@@ -11,7 +11,9 @@ namespace pawn
 		WindowResize,
 		WindowFocus,
 		WindowLostFocus,
-		WindowMoved
+		WindowMoved,
+		KeyboardPress,
+		KeyboardRelease
 	};
 	
 	class Event {
@@ -31,8 +33,9 @@ namespace pawn
 
 			void SetHandeled(bool state) { m_IsHandeled = state; }
 		
-			virtual const char* Name() const = 0;
-
+			static EventTypeEnum StaticType() { return EventTypeEnum::None; }
+			virtual const char* Name() const { return "None"; };
+	
 		private:
 			EventTypeEnum m_Type;
 			bool m_IsHandeled;

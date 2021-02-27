@@ -16,7 +16,7 @@ namespace pawn {
 			bool GetIsRunning() const { return m_isRunning; }
 			uint32_t GetFps() const { return m_Fps; }
 			const pawn::Clock& GetClock() const { return m_Clock; }
-			const pawn::Window& GetWindow() const { return m_Window; }
+			pawn::Window& GetWindow() const { return m_Window; }
 			std::shared_ptr<pawn::GraphicsAPI>& GetGraphicsAPI() { return m_GraphicsAPI; }
 			std::shared_ptr<pawn::GraphicsContext>& GetGraphicsContext() { return m_GraphicsContext; }
 

@@ -3,6 +3,8 @@
 #include <string>
 
 namespace pawn {
+
+	class KeyboardInputManager;
 	
 	class Window : public Observable {
 		
@@ -16,6 +18,11 @@ namespace pawn {
 			virtual uint32_t GetHeight() const = 0;
 			virtual void* GetNativeHandle() const = 0;
 			virtual bool IsClosed() const = 0;
+
+			KeyboardInputManager& GetKeyBoardInputManager() { return m_KeyboardInputManager; }
+
+		protected:
+			KeyboardInputManager m_KeyboardInputManager;
 	};
 
 }

@@ -62,6 +62,23 @@ namespace pawn {
 				spdlog::get("console")->info("FPS: {}", m_Fps);
 			}
 
+			KeyboardInputManager& keyboard = m_Window.GetKeyBoardInputManager();
+			while(!keyboard.IsKeyBufferEmpty()) {
+				
+				std::optional<std::shared_ptr<Event>> optionalEvent = keyboard.ReadKeyFromBuffer();
+				if(optionalEvent.has_value()) {
+					std::shared_ptr<Event>& keyboardEvent = optionalEvent.value();
+					
+					for (const std::shared_ptr<Layer>& layer : m_LayerList) {
+						if(!keyboardEvent->GetIsHandeled()) {
+							layer->HandleEvent(*keyboardEvent);
+						}
+					}
+				}
+				
+			}
+
+
 			m_GraphicsAPI->Clear();
 
 			for (const std::shared_ptr<Layer>& layer : m_LayerList) {
