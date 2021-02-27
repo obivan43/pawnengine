@@ -28,22 +28,15 @@ namespace pawn {
 
 			const glm::mat4& GetProjection() const { return m_Projection; }
 			const glm::mat4& GetView() const { return m_View; }
-
-			void SetPosition(const glm::vec3& position);
-			void SetPitch(float pitch);
-			void SetYaw(float yaw);
-
-			const glm::vec3& GetPosition() const { return m_Position; }
-			float GetPitch() const { return m_Pitch; }
-			float GetYaw() const { return m_Yaw; }
-
+	
 		private:
 			glm::mat4 m_Projection;
 			glm::mat4 m_View;
 
+		public:
 			glm::vec3 m_Position;
-			float m_Pitch;
-			float m_Yaw;
+			glm::vec3 m_ViewDirection;
+			glm::vec3 m_CameraUP;
 	};
 	
 }

@@ -111,6 +111,8 @@ namespace pawn {
 	}
 	
 	void DefaultLayer::OnUpdate(Clock clock) {
+		m_CameraMovement.MoveCamera(m_Camera, clock);
+		
 		m_Camera.RecalculateView();
 		m_viewProjectionMatrix = { m_Camera.GetProjection(), m_Camera.GetView() };
 		m_ViewProjection->Update(m_GraphicsContext, &m_viewProjectionMatrix, 1, sizeof(ViewProjection));
@@ -123,28 +125,5 @@ namespace pawn {
 	}
 	
 	void DefaultLayer::OnRelease() {}
-
-	void DefaultLayer::HandleEvent(Event& e) {		
-		if(e.GetType() == EventTypeEnum::KeyboardPress) {
-			OnKeyboardInput();
-		}
-		
-	}
-
-	void DefaultLayer::OnKeyboardInput() {
-		static pawn::Window& window = Application::Instance().GetWindow();
-		static KeyboardInputManager& keyboard = window.GetKeyBoardInputManager();
-
-		if(keyboard.IsPressed('W')) {
-			glm::vec3 position = m_Camera.GetPosition();
-			position.z -= 0.1f;
-			m_Camera.SetPosition(position);
-		} else if (keyboard.IsPressed('S')) {
-			glm::vec3 position = m_Camera.GetPosition();
-			position.z += 0.1f;
-			m_Camera.SetPosition(position);
-		}
-		
-	}
 	
 }

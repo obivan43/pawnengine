@@ -39,6 +39,9 @@
     <ClCompile Include="src\DefaultLayer.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\CameraInputHandler.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -54,6 +57,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\DefaultLayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CameraInputHandler.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

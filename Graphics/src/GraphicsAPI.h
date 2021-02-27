@@ -3,13 +3,6 @@
 namespace pawn {
 
 	class GraphicsContext;
-
-	enum class GraphicsAPIEnum {
-		None,
-		DirectX11,
-		OpenGL,
-		Count
-	};
 	
 	class GraphicsAPI : public Rtti {
 		RTTI_DECLARATIONS(GraphicsAPI, Rtti)
@@ -28,12 +21,9 @@ namespace pawn {
 
 			virtual void SetClearColor(float r, float g, float b);
 			virtual void Clear();
-		
-			static const GraphicsAPIEnum& GetGraphicsAPI() { return m_graphicsApi; }
 	
 		private:
 			std::shared_ptr<GraphicsContext> m_graphicsContext;
-			static GraphicsAPIEnum m_graphicsApi;
 	};
 	
 }

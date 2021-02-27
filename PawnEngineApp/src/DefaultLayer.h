@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Layer.h"
+#include "CameraInputHandler.h"
 
 namespace pawn {
 	
@@ -17,10 +18,6 @@ namespace pawn {
 			void OnInit() override;
 			void OnUpdate(Clock clock) override;
 			void OnRelease() override;
-
-			void HandleEvent(Event& e) override;
-
-			void OnKeyboardInput();
 	
 		private:
 			Camera m_Camera;
@@ -39,6 +36,8 @@ namespace pawn {
 			std::shared_ptr<GraphicsShader> m_Shader;
 
 			ViewProjection m_viewProjectionMatrix;
+
+			CameraInputHandler m_CameraMovement;
 		
 			std::wstring m_VertexShaderPath;
 			std::wstring m_PixelShaderPath;
