@@ -35,10 +35,12 @@ namespace pawn {
 
 			std::wstring m_VertexShaderPath;
 			std::wstring m_PixelShaderPath;
+
+			Transformation m_TransformationMatrix;
 		
 			Camera m_Camera;
 			CameraInputHandler m_CameraMovement;
-			ViewProjection m_viewProjectionMatrix;
+			ViewProjection m_ViewProjectionMatrix;
 	};
 	
 }

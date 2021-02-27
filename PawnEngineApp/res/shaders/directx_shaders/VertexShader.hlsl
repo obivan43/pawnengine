@@ -17,7 +17,7 @@ VS_OUT main(float3 position : Position, float2 texcoord : TextureCoordinates) {
 	matrix tProjection = transpose(projection);
 	matrix tTransformation = transpose(transformation);
 
-	matrix MVP = mul(mul(tView, tProjection), tTransformation);
+	matrix MVP = mul(tTransformation, mul(tView, tProjection));
 	VS_OUT result;
 	result.position = mul(float4(position, 1.0f), MVP);
 	result.texcoord = texcoord;

@@ -80,15 +80,14 @@ namespace pawn {
 		m_InputLayout->Init(m_GraphicsContext, inputElements, vertexShaderInfo);
 		m_InputLayout->Bind(m_GraphicsContext);
 
-		Transformation transformation;
-		glm::mat4 transformationMatrix = transformation.GetModelMatrix();
-		m_Transformation->Init(m_GraphicsContext, &transformationMatrix, 1, sizeof(DirectX::XMMATRIX), GraphicsBufferUsageTypeEnum::StaticBuffer);
+		glm::mat4 transformationMatrix = m_TransformationMatrix.GetModelMatrix();
+		m_Transformation->Init(m_GraphicsContext, &transformationMatrix, 1, sizeof(DirectX::XMMATRIX), GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_Transformation->InitLocation(m_GraphicsContext, m_Shader, "Transformation", 0);
 		m_Transformation->Bind(m_GraphicsContext);
 
 		m_Camera.RecalculateView();
-		m_viewProjectionMatrix = { m_Camera.GetProjection(), m_Camera.GetView() };
-		m_ViewProjection->Init(m_GraphicsContext, &m_viewProjectionMatrix, 1, sizeof(ViewProjection), GraphicsBufferUsageTypeEnum::DynamicBuffer);
+		m_ViewProjectionMatrix = { m_Camera.GetProjection(), m_Camera.GetView() };
+		m_ViewProjection->Init(m_GraphicsContext, &m_ViewProjectionMatrix, 1, sizeof(ViewProjection), GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_ViewProjection->InitLocation(m_GraphicsContext, m_Shader, "ViewProjection", 1);
 		m_ViewProjection->Bind(m_GraphicsContext);
 		
@@ -101,13 +100,21 @@ namespace pawn {
 		m_CameraMovement.MoveCamera(m_Camera, clock);
 		m_Camera.RecalculateView();
 		
-		m_viewProjectionMatrix = { m_Camera.GetProjection(), m_Camera.GetView() };
-		m_ViewProjection->Update(m_GraphicsContext, &m_viewProjectionMatrix, 1, sizeof(ViewProjection));
-		
-		m_IndexBuffer->Bind(m_GraphicsContext);
-		m_Transformation->Bind(m_GraphicsContext);
+		m_ViewProjectionMatrix = { m_Camera.GetProjection(), m_Camera.GetView() };
+		m_ViewProjection->Update(m_GraphicsContext, &m_ViewProjectionMatrix, 1, sizeof(ViewProjection));
 		m_ViewProjection->Bind(m_GraphicsContext);
-		
+		m_IndexBuffer->Bind(m_GraphicsContext);
+
+		m_TransformationMatrix.SetPosition({ -1.0, 0.0, 0.0 });
+		glm::mat4 transformationMatrix = m_TransformationMatrix.GetModelMatrix();
+		m_Transformation->Update(m_GraphicsContext, &transformationMatrix, 1, sizeof(DirectX::XMMATRIX));
+		m_Transformation->Bind(m_GraphicsContext);
+		m_GraphicsRenderer->DrawIndexed(m_IndexBuffer);
+
+		m_TransformationMatrix.SetPosition({ 1.0, 0.0, 0.0 });
+		transformationMatrix = m_TransformationMatrix.GetModelMatrix();
+		m_Transformation->Update(m_GraphicsContext, &transformationMatrix, 1, sizeof(DirectX::XMMATRIX));
+		m_Transformation->Bind(m_GraphicsContext);
 		m_GraphicsRenderer->DrawIndexed(m_IndexBuffer);
 	}
 	
