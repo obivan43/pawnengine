@@ -12,19 +12,28 @@
     <Filter Include="pch">
       <UniqueIdentifier>{5d2f8971-8c9b-4f17-8d37-d8fd29934364}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\layers">
+      <UniqueIdentifier>{6d958b36-4a89-4caa-bea6-bbb112ed73eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ecs">
+      <UniqueIdentifier>{45e20008-2303-4f9d-a7f8-9a5a40d3d45f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
       <Filter>pch</Filter>
     </ClCompile>
     <ClCompile Include="src\Layer.cpp">
-      <Filter>src</Filter>
+      <Filter>src\layers</Filter>
     </ClCompile>
     <ClCompile Include="src\LayerList.cpp">
-      <Filter>src</Filter>
+      <Filter>src\layers</Filter>
     </ClCompile>
     <ClCompile Include="src\Scene.cpp">
-      <Filter>src</Filter>
+      <Filter>src\ecs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entity.cpp">
+      <Filter>src\ecs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -35,13 +44,19 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="src\Layer.h">
-      <Filter>src</Filter>
+      <Filter>src\layers</Filter>
     </ClInclude>
     <ClInclude Include="src\LayerList.h">
-      <Filter>src</Filter>
+      <Filter>src\layers</Filter>
     </ClInclude>
     <ClInclude Include="src\Scene.h">
-      <Filter>src</Filter>
+      <Filter>src\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Components.h">
+      <Filter>src\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entity.h">
+      <Filter>src\ecs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
