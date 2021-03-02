@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-#include "LayerList.h"
-
 namespace pawn {
 	
 	class Application : public Singleton<Application>, public Observer {

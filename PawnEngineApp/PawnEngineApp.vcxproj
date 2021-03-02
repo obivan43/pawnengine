@@ -283,7 +283,7 @@ exit</Command>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
       <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories);$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32s.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
-      <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <FxCompile>
       <ObjectFileOutput>$(ProjectDir)%(Filename).cso</ObjectFileOutput>
@@ -413,7 +413,7 @@ exit</Command>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
       <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories);$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32s.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
-      <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <FxCompile>
       <ObjectFileOutput>$(ProjectDir)%(Filename).cso</ObjectFileOutput>
@@ -438,8 +438,6 @@ exit</Command>
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\CameraInputHandler.cpp" />
     <ClCompile Include="src\DefaultLayer.cpp" />
-    <ClCompile Include="src\Layer.cpp" />
-    <ClCompile Include="src\LayerList.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -447,8 +445,6 @@ exit</Command>
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\CameraInputHandler.h" />
     <ClInclude Include="src\DefaultLayer.h" />
-    <ClInclude Include="src\Layer.h" />
-    <ClInclude Include="src\LayerList.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Graphics\Graphics.vcxproj">
@@ -456,6 +452,9 @@ exit</Command>
     </ProjectReference>
     <ProjectReference Include="..\math\math.vcxproj">
       <Project>{3c1ee475-e5d9-496a-8d35-dc2a05362bfd}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\PawnEngineLib\PawnEngineLib.vcxproj">
+      <Project>{bc6605ee-ecc3-4047-93bd-97ea406fc626}</Project>
     </ProjectReference>
     <ProjectReference Include="..\utils\utils.vcxproj">
       <Project>{10967da7-dd20-4003-b270-d25f086216ba}</Project>

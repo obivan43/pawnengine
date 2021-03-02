@@ -102,7 +102,7 @@ namespace pawn {
 
         RECT rect = {};
         GetWindowRect(m_WindowHandle, &rect);
-        SetWindowPos(m_WindowHandle, HWND_TOP, rect.left, rect.top, 800, 600, 0);
+        SetWindowPos(m_WindowHandle, HWND_TOP, rect.left, rect.top, width, height, 0);
 
         m_This = this;
 	}

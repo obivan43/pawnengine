@@ -1,6 +1,5 @@
 ﻿#include "pch.h"
 #include "Application.h"
-#include "Layer.h"
 #include "DefaultLayer.h"
 
 
@@ -9,7 +8,7 @@ namespace pawn {
 	Application::Application() :
 	m_isRunning(true),
 	m_Fps(0),
-	m_Window(pawn::WinAPIWindow::Instance(std::wstring(L"Pawn WinAPIWindow"), 800, 600)) {
+	m_Window(pawn::WinAPIWindow::Instance(std::wstring(L"Pawn WinAPIWindow"), 1280, 1024)) {
 		m_Window.AddObserver(this);
 		
 		m_Clock.Reset();

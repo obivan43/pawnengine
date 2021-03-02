@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math", "Math\Math.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graphics", "Graphics\Graphics.vcxproj", "{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PawnEngineLib", "PawnEngineLib\PawnEngineLib.vcxproj", "{BC6605EE-ECC3-4047-93BD-97EA406FC626}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug_DirectX|x64 = Debug_DirectX|x64
@@ -91,6 +93,22 @@ Global
 		{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}.Release_OpenGL|x64.Build.0 = Release_OpenGL|x64
 		{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}.Release_OpenGL|x86.ActiveCfg = Release_OpenGL|Win32
 		{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}.Release_OpenGL|x86.Build.0 = Release_OpenGL|Win32
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Debug_DirectX|x64.ActiveCfg = Debug|x64
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Debug_DirectX|x64.Build.0 = Debug|x64
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Debug_DirectX|x86.ActiveCfg = Debug|Win32
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Debug_DirectX|x86.Build.0 = Debug|Win32
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Debug_OpenGL|x64.ActiveCfg = Debug_OpenGL|x64
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Debug_OpenGL|x64.Build.0 = Debug_OpenGL|x64
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Debug_OpenGL|x86.ActiveCfg = Debug_OpenGL|Win32
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Debug_OpenGL|x86.Build.0 = Debug_OpenGL|Win32
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Release_DirectX|x64.ActiveCfg = Release|x64
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Release_DirectX|x64.Build.0 = Release|x64
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Release_DirectX|x86.ActiveCfg = Release|Win32
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Release_DirectX|x86.Build.0 = Release|Win32
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Release_OpenGL|x64.ActiveCfg = Release_OpenGL|x64
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Release_OpenGL|x64.Build.0 = Release_OpenGL|x64
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Release_OpenGL|x86.ActiveCfg = Release_OpenGL|Win32
+		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Release_OpenGL|x86.Build.0 = Release_OpenGL|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

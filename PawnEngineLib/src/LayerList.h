@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#include <vector>
+#include <memory>
+
 namespace pawn {
 
 	class Layer;
