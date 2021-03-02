@@ -214,6 +214,7 @@ exit</Command>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
       <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\glew-2.1.0\lib\Release\Win32;$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32s.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <FxCompile>
       <ObjectFileOutput>$(ProjectDir)%(Filename).cso</ObjectFileOutput>
@@ -282,6 +283,7 @@ exit</Command>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
       <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories);$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32s.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <FxCompile>
       <ObjectFileOutput>$(ProjectDir)%(Filename).cso</ObjectFileOutput>
@@ -342,6 +344,7 @@ exit</Command>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
       <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories);$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32s.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <FxCompile>
       <ObjectFileOutput>$(ProjectDir)%(Filename).cso</ObjectFileOutput>
@@ -410,6 +413,7 @@ exit</Command>
       <EntryPointSymbol>wWinMainCRTStartup</EntryPointSymbol>
       <AdditionalLibraryDirectories>$(SolutionDir)\ThirdParty\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories);$(SolutionDir)\ThirdParty\spdlog-1.8.2\lib\</AdditionalLibraryDirectories>
       <AdditionalDependencies>glew32s.lib;%(AdditionalDependencies);spdlog.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
     <FxCompile>
       <ObjectFileOutput>$(ProjectDir)%(Filename).cso</ObjectFileOutput>

@@ -2,8 +2,6 @@
 #include "DefaultLayer.h"
 #include "Application.h"
 
-#include <DirectXMath.h>
-
 namespace pawn {
 
 	DefaultLayer::DefaultLayer() : m_Camera({0.0f, 0.0f, 4.0f}) {
@@ -81,7 +79,7 @@ namespace pawn {
 		m_InputLayout->Bind(m_GraphicsContext);
 
 		glm::mat4 transformationMatrix = m_TransformationMatrix.GetModelMatrix();
-		m_Transformation->Init(m_GraphicsContext, &transformationMatrix, 1, sizeof(DirectX::XMMATRIX), GraphicsBufferUsageTypeEnum::DynamicBuffer);
+		m_Transformation->Init(m_GraphicsContext, &transformationMatrix, 1, sizeof(glm::mat4), GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_Transformation->InitLocation(m_GraphicsContext, m_Shader, "Transformation", 0);
 		m_Transformation->Bind(m_GraphicsContext);
 
@@ -107,13 +105,13 @@ namespace pawn {
 
 		m_TransformationMatrix.SetPosition({ -1.0, 0.0, 0.0 });
 		glm::mat4 transformationMatrix = m_TransformationMatrix.GetModelMatrix();
-		m_Transformation->Update(m_GraphicsContext, &transformationMatrix, 1, sizeof(DirectX::XMMATRIX));
+		m_Transformation->Update(m_GraphicsContext, &transformationMatrix, 1, sizeof(glm::mat4));
 		m_Transformation->Bind(m_GraphicsContext);
 		m_GraphicsRenderer->DrawIndexed(m_IndexBuffer);
 
 		m_TransformationMatrix.SetPosition({ 1.0, 0.0, 0.0 });
 		transformationMatrix = m_TransformationMatrix.GetModelMatrix();
-		m_Transformation->Update(m_GraphicsContext, &transformationMatrix, 1, sizeof(DirectX::XMMATRIX));
+		m_Transformation->Update(m_GraphicsContext, &transformationMatrix, 1, sizeof(glm::mat4));
 		m_Transformation->Bind(m_GraphicsContext);
 		m_GraphicsRenderer->DrawIndexed(m_IndexBuffer);
 	}
