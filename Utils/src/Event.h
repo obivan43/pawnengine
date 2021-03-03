@@ -13,7 +13,8 @@ namespace pawn
 		WindowLostFocus,
 		WindowMoved,
 		KeyboardPress,
-		KeyboardRelease
+		KeyboardRelease,
+		MouseMove
 	};
 	
 	class Event {

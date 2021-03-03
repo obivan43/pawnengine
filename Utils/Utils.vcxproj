@@ -50,6 +50,8 @@
     <ClCompile Include="src\IObservable.cpp" />
     <ClCompile Include="src\KeyboardEvents.cpp" />
     <ClCompile Include="src\KeyboardInputManager.cpp" />
+    <ClCompile Include="src\MouseEvents.cpp" />
+    <ClCompile Include="src\MouseInputManager.cpp" />
     <ClCompile Include="src\Observable.cpp" />
     <ClCompile Include="src\Observer.cpp" />
     <ClCompile Include="src\StbImage.cpp" />
@@ -65,6 +67,8 @@
     <ClInclude Include="src\IObservable.h" />
     <ClInclude Include="src\KeyboardEvents.h" />
     <ClInclude Include="src\KeyboardInputManager.h" />
+    <ClInclude Include="src\MouseEvents.h" />
+    <ClInclude Include="src\MouseInputManager.h" />
     <ClInclude Include="src\Observable.h" />
     <ClInclude Include="src\Observer.h" />
     <ClInclude Include="src\Rtti.h" />

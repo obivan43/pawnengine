@@ -78,6 +78,12 @@
     <ClCompile Include="src\KeyboardInputManager.cpp">
       <Filter>src\input</Filter>
     </ClCompile>
+    <ClCompile Include="src\MouseEvents.cpp">
+      <Filter>src\patterns\observer\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MouseInputManager.cpp">
+      <Filter>src\input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -130,6 +136,12 @@
     </ClInclude>
     <ClInclude Include="src\entt.h">
       <Filter>src\entt</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MouseEvents.h">
+      <Filter>src\patterns\observer\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MouseInputManager.h">
+      <Filter>src\input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

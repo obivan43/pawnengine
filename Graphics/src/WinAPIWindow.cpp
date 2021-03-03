@@ -36,19 +36,33 @@ namespace pawn {
                  break;
 
                  case WM_SIZE: {
-                     uint32_t width = LOWORD(lParam);
-                     uint32_t height = HIWORD(lParam);
+                     const uint32_t width = LOWORD(lParam);
+                     const uint32_t height = HIWORD(lParam);
                      WindowResizeEvent event(width, height);
                      NotifyObservers(event);
                  }
                  break;
 
                  case WM_MOVE: {
-                     int32_t xPos = LOWORD(lParam);
-                     int32_t yPos = HIWORD(lParam);
+                     const int32_t xPos = LOWORD(lParam);
+                     const int32_t yPos = HIWORD(lParam);
+                 		
+                     m_CenterX = xPos + int32_t(m_Width * 0.5f);
+                     m_CenterY = yPos + int32_t(m_Height * 0.5f);
+                 		
                      WindowMovedEvent event(xPos, yPos);
                      NotifyObservers(event);
                  }
+                 break;
+
+                 case WM_MOUSEMOVE: {
+                     POINT pt;
+                 	 GetCursorPos(&pt);
+                 		
+                     m_MouseInputManager.OnMouseMove(m_CenterX - pt.x, m_CenterY - pt.y);
+                 		
+                     SetCursorPos(m_CenterX, m_CenterY);
+	             }
                  break;
 
                  case WM_KEYDOWN: {
@@ -63,6 +77,13 @@ namespace pawn {
 
                  case WM_CHAR: {
                      m_KeyboardInputManager.OnChar(static_cast<uint8_t>(wParam));
+                 }
+                 break;
+
+                 case WM_SETCURSOR: {
+                     if (LOWORD(lParam) == HTCLIENT) {
+                         SetCursor(NULL);
+                     }
                  }
                  break;
 
@@ -103,13 +124,18 @@ namespace pawn {
         RECT rect = {};
         GetWindowRect(m_WindowHandle, &rect);
         SetWindowPos(m_WindowHandle, HWND_TOP, rect.left, rect.top, width, height, 0);
+    	
+        m_CenterX = rect.left + int32_t(width * 0.5f);
+        m_CenterY = rect.top + int32_t(height * 0.5f);
 
         m_This = this;
+
+        ShowWindow(m_WindowHandle, SW_SHOW);
+        SetCursorPos(m_CenterX, m_CenterY);
 	}
 
 	void WinAPIWindow::Update() {
         static MSG msg = { };
-        ShowWindow(m_WindowHandle, SW_SHOW);
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
             TranslateMessage(&msg);
             DispatchMessage(&msg);

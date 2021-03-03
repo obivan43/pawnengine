@@ -13,6 +13,8 @@ namespace pawn {
 			
 			uint32_t GetWidth() const override { return m_Width; }
 			uint32_t GetHeight() const override { return m_Height; }
+			uint32_t GetCenterPositionX() const override { return m_CenterX; }
+			uint32_t GetCenterPositionY() const override { return m_CenterY; }
 			void* GetNativeHandle() const override { return m_WindowHandle; }
 			bool IsClosed() const override { return m_IsClosed; }
 
@@ -26,6 +28,10 @@ namespace pawn {
 		private:
 			uint32_t m_Width;
 			uint32_t m_Height;
+
+			int32_t m_CenterX;
+			int32_t m_CenterY;
+		
 			HWND m_WindowHandle;
 			bool m_IsClosed;
 

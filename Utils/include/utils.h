@@ -9,8 +9,10 @@
 #include "../src/Event.h"
 #include "../src/WindowEvents.h"
 #include "../src/KeyboardEvents.h"
+#include "../src/MouseEvents.h"
 
 #include "../src/KeyboardInputManager.h"
+#include "../src/MouseInputManager.h"
 
 #include "../src/Observer.h"
 #include "../src/IObservable.h"
