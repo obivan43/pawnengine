@@ -22,6 +22,8 @@ namespace pawn {
 			virtual void SetClearColor(float r, float g, float b);
 			virtual void Clear();
 	
+			static std::shared_ptr<GraphicsAPI> Create();
+
 		private:
 			std::shared_ptr<GraphicsContext> m_graphicsContext;
 	};

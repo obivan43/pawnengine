@@ -1,9 +1,8 @@
 ﻿#include "pch.h"
 #include "CameraInputHandler.h"
-
-#include <ext/matrix_transform.hpp>
-
 #include "Application.h"
+
+#include "ext/matrix_transform.hpp"
 
 namespace pawn {
 
@@ -29,8 +28,6 @@ namespace pawn {
 		}
 
 		MouseMove(camera, clock, glm::vec2(mouse.GetX(), mouse.GetY()));
-		spdlog::get("console")->info("Mouse X {}, Y {}", mouse.GetX(), mouse.GetY());
-		spdlog::get("console")->info("View X {}, Y {}, Z {}", camera.m_ViewDirection.x, camera.m_ViewDirection.y, camera.m_ViewDirection.z);
 	}
 
 	void CameraInputHandler::MoveFront(Camera& camera, Clock clock) const {

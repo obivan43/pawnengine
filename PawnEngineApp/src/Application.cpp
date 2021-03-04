@@ -13,16 +13,9 @@ namespace pawn {
 		
 		m_Clock.Reset();
 
-#ifdef PAWN_DIRECTX11
-		m_GraphicsContext = std::make_shared<pawn::DirectX11Context>();
-		m_GraphicsAPI = std::make_shared<pawn::DirectX11API>();
-#elif PAWN_OPENGL
-		m_GraphicsContext = std::make_shared<pawn::OpenglContext>();
-		m_GraphicsAPI = std::make_shared<pawn::OpenglAPI>();
-#else
-		m_GraphicsContext = std::make_shared<pawn::GraphicsContext>();
-		m_GraphicsAPI = std::make_shared<pawn::GraphicsAPI>();
-#endif
+		m_GraphicsAPI = GraphicsAPI::Create();
+		m_GraphicsContext = GraphicsContext::Create();
+
 		bool result = m_GraphicsContext->Init(m_Window);
 
 		if(!result) {
@@ -76,7 +69,6 @@ namespace pawn {
 				}
 				
 			}
-
 
 			m_GraphicsAPI->Clear();
 

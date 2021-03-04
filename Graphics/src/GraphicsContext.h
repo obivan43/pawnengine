@@ -19,6 +19,8 @@ namespace pawn {
 
 			virtual bool Init(const pawn::Window& window);
 			virtual void SwapBuffers();
+
+			static std::shared_ptr<GraphicsContext> Create();
 	};
 	
 }
