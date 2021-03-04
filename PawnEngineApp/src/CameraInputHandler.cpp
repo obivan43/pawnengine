@@ -11,6 +11,8 @@ namespace pawn {
 		static KeyboardInputManager& keyboard = window.GetKeyBoardInputManager();
 		static MouseInputManager& mouse = window.GetMouseInputManager();
 
+		bool IsRotated = false;
+
 		if (keyboard.IsPressed('W')) {
 			MoveFront(camera, clock);
 		}
@@ -27,7 +29,29 @@ namespace pawn {
 			MoveRight(camera, clock);
 		}
 
-		MouseMove(camera, clock, glm::vec2(mouse.GetX(), mouse.GetY()));
+		if (keyboard.IsPressed(VK_UP)) {
+			RotateUp(camera, clock);
+			IsRotated = true;
+		}
+
+		if (keyboard.IsPressed(VK_DOWN)) {
+			RotateDown(camera, clock);
+			IsRotated = true;
+		}
+
+		if (keyboard.IsPressed(VK_LEFT)) {
+			RotateLeft(camera, clock);
+			IsRotated = true;
+		}
+
+		if (keyboard.IsPressed(VK_RIGHT)) {
+			RotateRight(camera, clock);
+			IsRotated = true;
+		}
+
+		if (IsRotated) {
+			RecalculateViewDirection(camera);
+		}
 	}
 
 	void CameraInputHandler::MoveFront(Camera& camera, Clock clock) const {
@@ -48,12 +72,23 @@ namespace pawn {
 		camera.m_Position += (m_MovementSpeed * clock.DeltaTime()) * strafeDirection;
 	}
 
-	void CameraInputHandler::MouseMove(Camera& camera, Clock clock, glm::vec2 position) {
-		position *= m_MouseSensitivity;
+	void CameraInputHandler::RotateUp(Camera& camera, Clock clock) {
+		m_Pitch += m_RotationSpeed * clock.DeltaTime();
+	}
 
-		m_Yaw += position.x;
-		m_Pitch += position.y;
-		
+	void CameraInputHandler::RotateDown(Camera& camera, Clock clock) {
+		m_Pitch -= m_RotationSpeed * clock.DeltaTime();
+	}
+
+	void CameraInputHandler::RotateLeft(Camera& camera, Clock clock) {
+		m_Yaw += m_RotationSpeed * clock.DeltaTime() ;
+	}
+
+	void CameraInputHandler::RotateRight(Camera& camera, Clock clock) {
+		m_Yaw -= m_RotationSpeed * clock.DeltaTime();
+	}
+
+	void CameraInputHandler::RecalculateViewDirection(Camera& camera) {
 		if (m_Pitch > 89.0f)
 			m_Pitch = 89.0f;
 

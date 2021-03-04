@@ -55,16 +55,6 @@ namespace pawn {
                  }
                  break;
 
-                 case WM_MOUSEMOVE: {
-                     POINT pt;
-                 	 GetCursorPos(&pt);
-                 		
-                     m_MouseInputManager.OnMouseMove(m_CenterX - pt.x, m_CenterY - pt.y);
-                 		
-                     SetCursorPos(m_CenterX, m_CenterY);
-	             }
-                 break;
-
                  case WM_KEYDOWN: {
                      m_KeyboardInputManager.OnKeyPressed(static_cast<uint8_t>(wParam));
                  }
@@ -77,13 +67,6 @@ namespace pawn {
 
                  case WM_CHAR: {
                      m_KeyboardInputManager.OnChar(static_cast<uint8_t>(wParam));
-                 }
-                 break;
-
-                 case WM_SETCURSOR: {
-                     if (LOWORD(lParam) == HTCLIENT) {
-                         SetCursor(NULL);
-                     }
                  }
                  break;
 
@@ -131,7 +114,6 @@ namespace pawn {
         m_This = this;
 
         ShowWindow(m_WindowHandle, SW_SHOW);
-        SetCursorPos(m_CenterX, m_CenterY);
 	}
 
 	void WinAPIWindow::Update() {
