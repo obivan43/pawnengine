@@ -143,5 +143,8 @@
     <ClInclude Include="src\MouseInputManager.h">
       <Filter>src\input</Filter>
     </ClInclude>
+    <ClInclude Include="src\KeyboardMappings.h">
+      <Filter>src\input</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

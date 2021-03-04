@@ -13,38 +13,38 @@ namespace pawn {
 
 		bool IsRotated = false;
 
-		if (keyboard.IsPressed('W')) {
+		if (keyboard.IsPressed(PAWN_W)) {
 			MoveFront(camera, clock);
 		}
 
-		if (keyboard.IsPressed('S')) {
+		if (keyboard.IsPressed(PAWN_S)) {
 			MoveBack(camera, clock);
 		}
 
-		if (keyboard.IsPressed('A')) {
+		if (keyboard.IsPressed(PAWN_A)) {
 			MoveLeft(camera, clock);
 		}
 
-		if (keyboard.IsPressed('D')) {
+		if (keyboard.IsPressed(PAWN_D)) {
 			MoveRight(camera, clock);
 		}
 
-		if (keyboard.IsPressed(VK_UP)) {
+		if (keyboard.IsPressed(PAWN_UP)) {
 			RotateUp(camera, clock);
 			IsRotated = true;
 		}
 
-		if (keyboard.IsPressed(VK_DOWN)) {
+		if (keyboard.IsPressed(PAWN_DOWN)) {
 			RotateDown(camera, clock);
 			IsRotated = true;
 		}
 
-		if (keyboard.IsPressed(VK_LEFT)) {
+		if (keyboard.IsPressed(PAWN_LEFT)) {
 			RotateLeft(camera, clock);
 			IsRotated = true;
 		}
 
-		if (keyboard.IsPressed(VK_RIGHT)) {
+		if (keyboard.IsPressed(PAWN_RIGHT)) {
 			RotateRight(camera, clock);
 			IsRotated = true;
 		}

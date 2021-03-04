@@ -67,6 +67,7 @@
     <ClInclude Include="src\IObservable.h" />
     <ClInclude Include="src\KeyboardEvents.h" />
     <ClInclude Include="src\KeyboardInputManager.h" />
+    <ClInclude Include="src\KeyboardMappings.h" />
     <ClInclude Include="src\MouseEvents.h" />
     <ClInclude Include="src\MouseInputManager.h" />
     <ClInclude Include="src\Observable.h" />
