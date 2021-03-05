@@ -10,6 +10,8 @@ namespace Assimp {
 
 namespace pawn {
 
+	struct Vertex;
+
 	class AssimpLoader {
 
 		public:
@@ -25,7 +27,7 @@ namespace pawn {
 			bool LoadModel(const std::string& file);
 			void Flush();
 
-			std::vector<float>* GetVertexData() { return &m_Verticies; }
+			std::vector<Vertex>* GetVertexData() { return &m_Verticies; }
 			std::vector<uint16_t>* GetIndexData() { return &m_Indices; }
 
 		private:
@@ -38,7 +40,7 @@ namespace pawn {
 			const aiScene* m_ModelScene;
 			const aiNode* m_ModelNode;
 
-			std::vector<float> m_Verticies;
+			std::vector<Vertex> m_Verticies;
 			std::vector<uint16_t> m_Indices;
 			std::vector<const aiNode*> m_Nodes;
 	};

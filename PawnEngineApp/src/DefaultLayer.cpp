@@ -30,7 +30,7 @@ namespace pawn {
 	
 	void DefaultLayer::OnInit() {
 		m_ModelLoader.LoadModel("res\\models\\cube.obj");
-		std::vector<float>* vertices = m_ModelLoader.GetVertexData();
+		std::vector<Vertex>* vertices = m_ModelLoader.GetVertexData();
 		std::vector<uint16_t>* indices = m_ModelLoader.GetIndexData();
 		
 		const std::initializer_list<GraphicsInputElement> inputElements = {
@@ -84,7 +84,7 @@ namespace pawn {
 		m_ViewProjection->Init(m_GraphicsContext, &m_ViewProjectionMatrix, 1, sizeof(ViewProjection), GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_ViewProjection->InitLocation(m_GraphicsContext, m_Shader, "ViewProjection", 1);
 		m_ViewProjection->Bind(m_GraphicsContext);
-		
+
 #ifdef PAWN_OPENGL
 		OpenglUniformManager::SetUniform(m_Shader, "Texture", 0);
 #endif

@@ -27,18 +27,7 @@ namespace pawn {
 	bool AssimpLoader::LoadModel(const std::string& file) {
 		Flush();
 
-        m_ModelScene = m_Importer->ReadFile(file,
-			aiProcess_MakeLeftHanded       |
-			aiProcess_FlipWindingOrder     |
-			aiProcess_FlipUVs              |
-			aiProcess_PreTransformVertices |
-			aiProcess_CalcTangentSpace     |
-			aiProcess_GenSmoothNormals     |
-			aiProcess_Triangulate          |
-			aiProcess_FixInfacingNormals   |
-			aiProcess_FindInvalidData      |
-			aiProcess_ValidateDataStructure
-		);
+        m_ModelScene = m_Importer->ReadFile(file, aiProcessPreset_TargetRealtime_MaxQuality);
 
 		if (!m_ModelScene) {
 			spdlog::get("console")->error("Assimp: model not loaded {}", file.c_str());
@@ -86,21 +75,24 @@ namespace pawn {
         aiFace* face;
 
         for (uint32_t i = 0; i < mesh->mNumVertices; i++) {
-            m_Verticies.push_back(mesh->mVertices[i].x);
-            m_Verticies.push_back(mesh->mVertices[i].y);
-            m_Verticies.push_back(mesh->mVertices[i].z);
+			Vertex vertex;
+			vertex.Position.x = mesh->mVertices[i].x;
+			vertex.Position.y = mesh->mVertices[i].y;
+			vertex.Position.z = mesh->mVertices[i].z;
 
-            m_Verticies.push_back(mesh->mNormals[i].x);
-            m_Verticies.push_back(mesh->mNormals[i].y);
-            m_Verticies.push_back(mesh->mNormals[i].z);
+			vertex.Normal.x = mesh->mNormals[i].x;
+			vertex.Normal.y = mesh->mNormals[i].y;
+			vertex.Normal.z = mesh->mNormals[i].z;
 
             if (mesh->HasTextureCoords(0)) {
-                m_Verticies.push_back(mesh->mTextureCoords[0][i].x);
-                m_Verticies.push_back(mesh->mTextureCoords[0][i].y);
+				vertex.TextureCoordinate.u = mesh->mTextureCoords[0][i].x;
+				vertex.TextureCoordinate.v = mesh->mTextureCoords[0][i].y;
             } else {
-                m_Verticies.push_back(0);
-                m_Verticies.push_back(0);
+				vertex.TextureCoordinate.u = 0.0f;
+				vertex.TextureCoordinate.v = 0.0f;
             }
+
+			m_Verticies.push_back(vertex);
         }
 
         for (uint32_t i = 0; i < mesh->mNumFaces; i++) {

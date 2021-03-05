@@ -117,6 +117,7 @@ namespace pawn {
 
 		Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerState;
 		DirectX11Call(m_Device->CreateRasterizerState(&rasterizerDescription, &rasterizerState))
+		m_DeviceContext->RSSetState(rasterizerState.Get());
 
 		IDXGIDevice* dxgiDevice;
 		m_Device->QueryInterface(__uuidof(IDXGIDevice), (void**)&dxgiDevice);
