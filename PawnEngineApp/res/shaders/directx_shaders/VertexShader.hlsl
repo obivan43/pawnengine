@@ -8,11 +8,11 @@ cbuffer ViewProjection : register(b1) {
 };
 
 struct VS_OUT {
-	float2 texcoord : TextureCoordinates;
+	float2 texcoord : TextureCoordinate;
 	float4 position : SV_Position;
 };
 
-VS_OUT main(float3 position : Position, float3 normal : Normal, float2 texcoord : TextureCoordinates) {
+VS_OUT main(float3 position : Position, float3 normal : Normal, float2 texcoord : TextureCoordinate) {
 	matrix tView = transpose(view);
 	matrix tProjection = transpose(projection);
 	matrix tTransformation = transpose(transformation);

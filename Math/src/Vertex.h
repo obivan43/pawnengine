@@ -18,7 +18,7 @@ namespace pawn {
 		struct {
 			float u;
 			float v;
-		} TextureCoordinats;
+		} TextureCoordinate;
 	};
 	
 }

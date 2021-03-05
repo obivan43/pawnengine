@@ -36,7 +36,7 @@ namespace pawn {
 		const std::initializer_list<GraphicsInputElement> inputElements = {
 			{ "Position", GraphicsInputElementType::Float3 },
 			{ "Normal", GraphicsInputElementType::Float3 },
-			{ "TextureCoordinates", GraphicsInputElementType::Float2 }
+			{ "TextureCoordinate", GraphicsInputElementType::Float2 }
 		};
 		
 		m_VertexBuffer->Init(m_GraphicsContext, vertices->data(), static_cast<uint32_t>(vertices->size()), sizeof(Vertex), GraphicsBufferUsageTypeEnum::StaticBuffer);

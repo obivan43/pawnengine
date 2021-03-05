@@ -41,10 +41,12 @@ namespace pawn {
 		);
 
 		if (!m_ModelScene) {
+			spdlog::get("console")->error("Assimp: model not loaded {}", file.c_str());
             return false;
 		}
 
         ProcessData();
+		spdlog::get("console")->debug("Assimp: model loaded {}", file.c_str());
 
         return true;
 	}
