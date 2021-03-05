@@ -45,6 +45,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_OpenGL|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\AssimpLoader.cpp" />
     <ClCompile Include="src\Clock.cpp" />
     <ClCompile Include="src\Event.cpp" />
     <ClCompile Include="src\IObservable.cpp" />
@@ -61,6 +62,7 @@
   <ItemGroup>
     <ClInclude Include="include\utils.h" />
     <ClInclude Include="pch\pch.h" />
+    <ClInclude Include="src\AssimpLoader.h" />
     <ClInclude Include="src\Clock.h" />
     <ClInclude Include="src\entt.h" />
     <ClInclude Include="src\Event.h" />
@@ -218,7 +220,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\assimp-5.0.1\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -237,7 +239,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\assimp-5.0.1\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -258,7 +260,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)\ThirdParty\spdlog-1.8.2\include\;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)\ThirdParty\spdlog-1.8.2\include\;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\assimp-5.0.1\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -281,7 +283,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\assimp-5.0.1\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -302,7 +304,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\assimp-5.0.1\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -321,7 +323,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\assimp-5.0.1\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -342,7 +344,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)\ThirdParty\spdlog-1.8.2\include\;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;$(SolutionDir)\ThirdParty\spdlog-1.8.2\include\;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\assimp-5.0.1\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -365,7 +367,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/pch;$(ProjectDir)/src;$(ProjectDir)/include;%(AdditionalIncludeDirectories);$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\assimp-5.0.1\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>

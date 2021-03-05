@@ -35,7 +35,7 @@ namespace pawn {
 		OpenglCall(glBindVertexArray(m_InputLayout))
 
 		uint32_t inputSlot = 0;
-		for (const auto& element : m_Elements) {
+		for (auto& element : m_Elements) {
 			OpenglCall(glEnableVertexAttribArray(inputSlot))
 			OpenglCall(glVertexAttribPointer(
 				inputSlot,
@@ -43,7 +43,7 @@ namespace pawn {
 				GraphicsInputElementTypeToOpenglType(element.Type),
 				GL_FALSE,
 				m_Stride,
-				reinterpret_cast<const void*>(element.Offset)
+				reinterpret_cast<void*>(element.Offset)
 			))
 
 			++inputSlot;

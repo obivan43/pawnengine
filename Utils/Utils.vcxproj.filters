@@ -43,6 +43,9 @@
     <Filter Include="src\entt">
       <UniqueIdentifier>{ec495ffe-4e23-45f3-8699-b32a25aa88bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\model_loader">
+      <UniqueIdentifier>{63d8f885-3923-48c4-8f99-ab23500455b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
@@ -83,6 +86,9 @@
     </ClCompile>
     <ClCompile Include="src\MouseInputManager.cpp">
       <Filter>src\input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AssimpLoader.cpp">
+      <Filter>src\model_loader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="src\KeyboardMappings.h">
       <Filter>src\input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AssimpLoader.h">
+      <Filter>src\model_loader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

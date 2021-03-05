@@ -7,8 +7,8 @@
 namespace pawn {
 
 	void CameraInputHandler::MoveCamera(Camera& camera, Clock clock) {
-		static pawn::Window& window = Application::Instance().GetWindow();
-		static KeyboardInputManager& keyboard = window.GetKeyBoardInputManager();
+		pawn::Window& window = Application::Instance().GetWindow();
+		KeyboardInputManager& keyboard = window.GetKeyBoardInputManager();
 
 		bool IsRotated = false;
 

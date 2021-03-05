@@ -32,7 +32,7 @@ namespace pawn {
 			std::string Name;
 			GraphicsInputElementType Type;
 			uint32_t Size;
-			uint32_t Offset;
+			size_t Offset;
 	};
 	
 	class GraphicsInputLayout : public GraphicsBindableResource {

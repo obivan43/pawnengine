@@ -21,5 +21,6 @@
 #include "../src/Singleton.h"
 
 #include "../src/StbImageLoader.h"
+#include "../src/AssimpLoader.h"
 
 #include "../src/entt.h"

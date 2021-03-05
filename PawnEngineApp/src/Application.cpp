@@ -2,7 +2,6 @@
 #include "Application.h"
 #include "DefaultLayer.h"
 
-
 namespace pawn {
 	
 	Application::Application() :
