@@ -10,6 +10,7 @@ layout(std140, binding = 1) uniform ViewProjection {
 };
 
 in vec3 Position;
+in vec3 Normal;
 in vec2 TextureCoordinates;
 
 out vec2 out_TextureCoordinates;

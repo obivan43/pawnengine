@@ -33,7 +33,7 @@ namespace pawn {
 				0,
 				GraphicsInputElementTypeToDX11Type(element.Type),
 				0,
-				element.Offset,
+				static_cast<uint32_t>(element.Offset),
 				D3D11_INPUT_PER_VERTEX_DATA,
 				0
 			};

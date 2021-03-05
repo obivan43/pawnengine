@@ -40,6 +40,8 @@ namespace pawn {
 			Camera m_Camera;
 			CameraInputHandler m_CameraMovement;
 			ViewProjection m_ViewProjectionMatrix;
+
+			AssimpLoader m_ModelLoader;
 	};
 	
 }

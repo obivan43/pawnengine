@@ -29,26 +29,20 @@ namespace pawn {
 	}
 	
 	void DefaultLayer::OnInit() {
-		AssimpLoader::LoadModel("");
-
-		Vertex vertices[] = {
-			{ { -0.5f, -0.5f, 0.0f },  { 0.0f, 0.0f } },
-			{ { -0.5f,  0.5f, 0.0f },  { 1.0f, 0.0f } },
-			{ {  0.5f,  0.5f, 0.0f },  { 1.0f, 1.0f } },
-			{ {  0.5f, -0.5f, 0.0f },  { 0.0f, 1.0f } },
-		};
-
-		uint16_t indices[] = { 0, 1, 2, 0, 2, 3 };
+		m_ModelLoader.LoadModel("res\\models\\cube.obj");
+		std::vector<float>* vertices = m_ModelLoader.GetVertexData();
+		std::vector<uint16_t>* indices = m_ModelLoader.GetIndexData();
 		
 		const std::initializer_list<GraphicsInputElement> inputElements = {
 			{ "Position", GraphicsInputElementType::Float3 },
+			{ "Normal", GraphicsInputElementType::Float3 },
 			{ "TextureCoordinates", GraphicsInputElementType::Float2 }
 		};
 		
-		m_VertexBuffer->Init(m_GraphicsContext, vertices, 4, sizeof(Vertex), GraphicsBufferUsageTypeEnum::StaticBuffer);
+		m_VertexBuffer->Init(m_GraphicsContext, vertices->data(), static_cast<uint32_t>(vertices->size()), sizeof(Vertex), GraphicsBufferUsageTypeEnum::StaticBuffer);
 		m_VertexBuffer->Bind(m_GraphicsContext);
 
-		m_IndexBuffer->Init(m_GraphicsContext, indices, 6, sizeof(uint16_t), GraphicsBufferUsageTypeEnum::StaticBuffer);
+		m_IndexBuffer->Init(m_GraphicsContext, indices->data(), static_cast<uint32_t>(indices->size()), sizeof(uint16_t), GraphicsBufferUsageTypeEnum::StaticBuffer);
 		m_IndexBuffer->Bind(m_GraphicsContext);
 		
 		if (!m_Shader->InitVertexShader(m_GraphicsContext, m_VertexShaderPath)) {
@@ -81,7 +75,7 @@ namespace pawn {
 		m_InputLayout->Bind(m_GraphicsContext);
 
 		glm::mat4 transformationMatrix = m_TransformationMatrix.GetModelMatrix();
-		m_Transformation->Init(m_GraphicsContext, &transformationMatrix, 1, sizeof(glm::mat4), GraphicsBufferUsageTypeEnum::DynamicBuffer);
+		m_Transformation->Init(m_GraphicsContext, &transformationMatrix, 1, sizeof(glm::mat4), GraphicsBufferUsageTypeEnum::StaticBuffer);
 		m_Transformation->InitLocation(m_GraphicsContext, m_Shader, "Transformation", 0);
 		m_Transformation->Bind(m_GraphicsContext);
 
@@ -105,15 +99,6 @@ namespace pawn {
 		m_ViewProjection->Bind(m_GraphicsContext);
 		m_IndexBuffer->Bind(m_GraphicsContext);
 
-		m_TransformationMatrix.SetPosition({ -1.0, 0.0, 0.0 });
-		glm::mat4 transformationMatrix = m_TransformationMatrix.GetModelMatrix();
-		m_Transformation->Update(m_GraphicsContext, &transformationMatrix, 1, sizeof(glm::mat4));
-		m_Transformation->Bind(m_GraphicsContext);
-		m_GraphicsRenderer->DrawIndexed(m_IndexBuffer);
-
-		m_TransformationMatrix.SetPosition({ 1.0, 0.0, 0.0 });
-		transformationMatrix = m_TransformationMatrix.GetModelMatrix();
-		m_Transformation->Update(m_GraphicsContext, &transformationMatrix, 1, sizeof(glm::mat4));
 		m_Transformation->Bind(m_GraphicsContext);
 		m_GraphicsRenderer->DrawIndexed(m_IndexBuffer);
 	}
