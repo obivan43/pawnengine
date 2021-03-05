@@ -74,6 +74,7 @@ namespace pawn {
     void AssimpLoader::AssimpGetMeshData(const aiMesh* mesh) {
         aiFace* face;
 
+		m_Verticies.reserve(mesh->mNumVertices);
         for (uint32_t i = 0; i < mesh->mNumVertices; i++) {
 			Vertex vertex;
 			vertex.Position.x = mesh->mVertices[i].x;

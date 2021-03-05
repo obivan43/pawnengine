@@ -66,7 +66,7 @@ namespace pawn {
 		m_Texture->Init(
 			m_GraphicsContext,
 			data, width, height, bitsPerPixel,
-			{ GraphicsTextureWrap::CLAMP, GraphicsTextureFilter::LINEAR, GraphicsTextureFormat::RGBA }
+			{ GraphicsTextureWrap::CLAMP_TO_EDGE, GraphicsTextureFilter::LINEAR, GraphicsTextureFormat::RGBA }
 		);
 		m_Texture->Bind(m_GraphicsContext);
 		StbImageLoader::Free(data);
