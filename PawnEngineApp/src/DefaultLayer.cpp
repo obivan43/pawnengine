@@ -23,8 +23,8 @@ namespace pawn {
 		m_VertexShaderPath = L"res\\shaders\\directx_shaders\\VertexShader.cso";
 		m_PixelShaderPath = L"res\\shaders\\directx_shaders\\PixelShader.cso";
 #elif PAWN_OPENGL
-		m_VertexShaderPath = L"res\\shaders\\opengl_shaders\\VertexShader.vertex";
-		m_PixelShaderPath = L"res\\shaders\\opengl_shaders\\PixelShader.fragment";
+		m_VertexShaderPath = L"res\\shaders\\opengl_shaders\\VertexShader.glsl";
+		m_PixelShaderPath = L"res\\shaders\\opengl_shaders\\PixelShader.glsl";
 #endif
 	}
 	

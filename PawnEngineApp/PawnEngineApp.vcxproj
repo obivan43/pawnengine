@@ -523,8 +523,8 @@ exit</Command>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\opengl_shaders\PixelShader.fragment" />
-    <None Include="res\shaders\opengl_shaders\VertexShader.vertex" />
+    <None Include="res\shaders\opengl_shaders\PixelShader.glsl" />
+    <None Include="res\shaders\opengl_shaders\VertexShader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

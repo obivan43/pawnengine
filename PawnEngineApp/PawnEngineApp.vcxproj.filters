@@ -60,10 +60,10 @@
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\opengl_shaders\PixelShader.fragment">
+    <None Include="res\shaders\opengl_shaders\PixelShader.glsl">
       <Filter>res\shaders\opengl_shader</Filter>
     </None>
-    <None Include="res\shaders\opengl_shaders\VertexShader.vertex">
+    <None Include="res\shaders\opengl_shaders\VertexShader.glsl">
       <Filter>res\shaders\opengl_shader</Filter>
     </None>
   </ItemGroup>
