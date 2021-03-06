@@ -9,6 +9,7 @@ cbuffer ViewProjection : register(b1) {
 
 struct VS_OUT {
 	float2 texcoord : TextureCoordinate;
+	float3 normal : Normal;
 	float4 position : SV_Position;
 };
 
@@ -21,5 +22,7 @@ VS_OUT main(float3 position : Position, float3 normal : Normal, float2 texcoord 
 	VS_OUT result;
 	result.position = mul(float4(position, 1.0f), MVP);
 	result.texcoord = texcoord;
+	result.normal = normal;
+	
 	return result;
 }

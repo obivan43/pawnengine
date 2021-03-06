@@ -26,7 +26,6 @@ namespace pawn {
 			std::shared_ptr<pawn::GraphicsBuffer> m_IndexBuffer;
 			std::shared_ptr<pawn::GraphicsBuffer> m_Transformation;
 			std::shared_ptr<pawn::GraphicsBuffer> m_ViewProjection;
-			std::shared_ptr<pawn::GraphicsTexture2D> m_Texture;
 
 			std::shared_ptr<GraphicsShader> m_Shader;
 			std::shared_ptr<GraphicsInputLayout> m_InputLayout;

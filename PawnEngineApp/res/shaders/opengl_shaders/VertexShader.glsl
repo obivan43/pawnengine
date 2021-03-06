@@ -14,9 +14,11 @@ layout(location = 1) in vec3 Normal;
 layout(location = 2) in vec2 TextureCoordinate;
 
 out vec2 out_TextureCoordinate;
+out vec3 out_Normal;
 
 void main() {
 	mat4 MVP = projection * view * transformation;
 	gl_Position = MVP * vec4(Position, 1.0f);
 	out_TextureCoordinate = TextureCoordinate;
+	out_Normal = Normal;
 }

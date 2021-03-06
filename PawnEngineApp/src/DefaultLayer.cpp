@@ -13,7 +13,6 @@ namespace pawn {
 		m_IndexBuffer = GraphicsBuffer::Create(GraphicsBufferEnum::IndexBuffer);
 		m_Transformation = GraphicsBuffer::Create(GraphicsBufferEnum::ConstantBuffer);
 		m_ViewProjection = GraphicsBuffer::Create(GraphicsBufferEnum::ConstantBuffer);
-		m_Texture = GraphicsTexture2D::Create();
 
 		m_Shader = GraphicsShader::Create();
 		m_InputLayout = GraphicsInputLayout::Create();
@@ -61,16 +60,6 @@ namespace pawn {
 		
 		m_Shader->Bind(m_GraphicsContext);
 
-		int32_t width, height, bitsPerPixel;
-		unsigned char* data = StbImageLoader::Load("res\\textures\\brick.jpg", &width, &height, &bitsPerPixel);
-		m_Texture->Init(
-			m_GraphicsContext,
-			data, width, height, bitsPerPixel,
-			{ GraphicsTextureWrap::CLAMP_TO_EDGE, GraphicsTextureFilter::LINEAR, GraphicsTextureFormat::RGBA }
-		);
-		m_Texture->Bind(m_GraphicsContext);
-		StbImageLoader::Free(data);
-
 		m_InputLayout->Init(m_GraphicsContext, inputElements, vertexShaderInfo);
 		m_InputLayout->Bind(m_GraphicsContext);
 
@@ -84,10 +73,6 @@ namespace pawn {
 		m_ViewProjection->Init(m_GraphicsContext, &m_ViewProjectionMatrix, 1, sizeof(ViewProjection), GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_ViewProjection->InitLocation(m_GraphicsContext, m_Shader, "ViewProjection", 1);
 		m_ViewProjection->Bind(m_GraphicsContext);
-
-#ifdef PAWN_OPENGL
-		OpenglUniformManager::SetUniform(m_Shader, "Texture", 0);
-#endif
 	}
 	
 	void DefaultLayer::OnUpdate(Clock clock) {

@@ -24,7 +24,7 @@ namespace pawn {
 		const int32_t location = glGetUniformLocation(shaderID, name);
 
 		if (location == -1) {
-			spdlog::get("console")->error("Uniform location undefined");
+			spdlog::get("console")->warn("Uniform location undefined");
 		}
 
 		return location;
