@@ -28,7 +28,7 @@ namespace pawn {
 	}
 	
 	void DefaultLayer::OnInit() {
-		m_ModelLoader.LoadModel("res\\models\\cube.obj");
+		m_ModelLoader.LoadModel("res\\models\\smoothsphere.obj");
 		std::vector<Vertex>* vertices = m_ModelLoader.GetVertexData();
 		std::vector<uint16_t>* indices = m_ModelLoader.GetIndexData();
 		
