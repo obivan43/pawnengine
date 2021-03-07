@@ -44,7 +44,9 @@ namespace pawn {
 		std::shared_ptr<GraphicsInputLayout> inputLayout = GraphicsInputLayout::Create();
 
 		vertexBuffer->Init(context, vertices->data(), static_cast<uint32_t>(vertices->size()), sizeof(Vertex), GraphicsBufferUsageTypeEnum::StaticBuffer);
+		vertexBuffer->Bind(context);
 		indexBuffer->Init(context, indices->data(), static_cast<uint32_t>(indices->size()), sizeof(uint16_t), GraphicsBufferUsageTypeEnum::StaticBuffer);
+		indexBuffer->Bind(context);
 		inputLayout->Init(context, inputElements, shader->GetVertexShaderInfo());
 
 		m_MeshesMap[file_without_extension].reset(new Mesh(vertexBuffer, indexBuffer, inputLayout));
