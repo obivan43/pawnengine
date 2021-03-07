@@ -4,20 +4,20 @@ namespace pawn {
 	class Mesh;
 }
 
-struct TransformComponent {
+struct TransformationComponent {
 
-	TransformComponent() = default;
-	TransformComponent(const glm::mat4& transform) : m_Transform(transform) {};
-	TransformComponent(const TransformComponent& other) = default;
-	TransformComponent(TransformComponent&& other) noexcept = default;
+	TransformationComponent() = default;
+	TransformationComponent(const glm::mat4& transformation) : m_Transformation(transformation) {};
+	TransformationComponent(const TransformationComponent& other) = default;
+	TransformationComponent(TransformationComponent&& other) noexcept = default;
 
-	TransformComponent& operator=(const TransformComponent& other) = default;
-	TransformComponent& operator=(TransformComponent&& other) noexcept = default;
+	TransformationComponent& operator=(const TransformationComponent& other) = default;
+	TransformationComponent& operator=(TransformationComponent&& other) noexcept = default;
 
-	operator glm::mat4& () { return m_Transform; }
-	operator const glm::mat4&() const { return m_Transform; }
+	operator glm::mat4& () { return m_Transformation; }
+	operator const glm::mat4&() const { return m_Transformation; }
 	
-	glm::mat4 m_Transform = glm::mat4(1.0f);
+	glm::mat4 m_Transformation = glm::mat4(1.0f);
 };
 
 struct NameComponent {

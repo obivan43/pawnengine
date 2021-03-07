@@ -34,7 +34,7 @@ namespace pawn {
 			MeshManager m_MeshManager;
 
 			Scene m_Scene;
-			Entity m_Sphere;
+			Entity m_Entity;
 		
 			Camera m_Camera;
 			CameraInputHandler m_CameraMovement;

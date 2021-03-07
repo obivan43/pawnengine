@@ -40,6 +40,8 @@ namespace pawn {
 		m_Shader->Bind(m_GraphicsContext);
 
 		m_MeshManager.UploadMeshFromFile(m_GraphicsContext, m_Shader, "res\\models\\smoothsphere.obj");
+		m_MeshManager.UploadMeshFromFile(m_GraphicsContext, m_Shader, "res\\models\\sphere.obj");
+		m_MeshManager.UploadMeshFromFile(m_GraphicsContext, m_Shader, "res\\models\\cube.obj");
 
 		m_Transformation->Init(m_GraphicsContext, nullptr, 1, sizeof(glm::mat4), GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_Transformation->InitLocation(m_GraphicsContext, m_Shader, "Transformation", 0);
@@ -49,8 +51,8 @@ namespace pawn {
 		m_ViewProjection->InitLocation(m_GraphicsContext, m_Shader, "ViewProjection", 1);
 		m_ViewProjection->Bind(m_GraphicsContext);
 
-		m_Sphere = m_Scene.CreateEntity();
-		m_Sphere.AddComponent<MeshComponent>(m_MeshManager.GetMeshByName("smoothsphere"));
+		m_Entity = m_Scene.CreateEntity("sphere");
+		m_Entity.AddComponent<MeshComponent>(m_MeshManager.GetMeshByName("sphere"));
 	}
 	
 	void DefaultLayer::OnUpdate(Clock clock) {
@@ -61,11 +63,11 @@ namespace pawn {
 		m_ViewProjection->Update(m_GraphicsContext, &m_ViewProjectionMatrix, 1, sizeof(ViewProjection));
 		m_ViewProjection->Bind(m_GraphicsContext);
 
-		TransformComponent& transformComponent = m_Sphere.GetComponent<TransformComponent>();
-		m_Transformation->Update(m_GraphicsContext, &transformComponent.m_Transform, 1, sizeof(glm::mat4));
+		TransformationComponent& transformationComponent = m_Entity.GetComponent<TransformationComponent>();
+		m_Transformation->Update(m_GraphicsContext, &transformationComponent.m_Transformation, 1, sizeof(glm::mat4));
 		m_Transformation->Bind(m_GraphicsContext);
 
-		MeshComponent& meshComponent = m_Sphere.GetComponent<MeshComponent>();
+		MeshComponent& meshComponent = m_Entity.GetComponent<MeshComponent>();
 		meshComponent.m_Mesh->Bind(m_GraphicsContext);
 		m_GraphicsRenderer->DrawIndexed(meshComponent.m_Mesh->GetIndexBuffer());
 	}
