@@ -18,6 +18,9 @@
     <Filter Include="src\ecs">
       <UniqueIdentifier>{45e20008-2303-4f9d-a7f8-9a5a40d3d45f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\managers">
+      <UniqueIdentifier>{fbca2349-6ed7-4079-8a8d-4ead0b40c5f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
@@ -34,6 +37,9 @@
     </ClCompile>
     <ClCompile Include="src\Entity.cpp">
       <Filter>src\ecs</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MeshManager.cpp">
+      <Filter>src\managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +63,9 @@
     </ClInclude>
     <ClInclude Include="src\Entity.h">
       <Filter>src\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MeshManager.h">
+      <Filter>src\managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

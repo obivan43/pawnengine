@@ -6,3 +6,5 @@
 #include "../src/Components.h"
 #include "../src/Scene.h"
 #include "../src/Entity.h"
+
+#include "../src/MeshManager.h"

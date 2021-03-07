@@ -22,25 +22,23 @@ namespace pawn {
 			std::shared_ptr<pawn::GraphicsContext> m_GraphicsContext;
 			std::shared_ptr<pawn::GraphicsAPI> m_GraphicsAPI;
 		
-			std::shared_ptr<pawn::GraphicsBuffer> m_VertexBuffer;
-			std::shared_ptr<pawn::GraphicsBuffer> m_IndexBuffer;
 			std::shared_ptr<pawn::GraphicsBuffer> m_Transformation;
 			std::shared_ptr<pawn::GraphicsBuffer> m_ViewProjection;
 
 			std::shared_ptr<GraphicsShader> m_Shader;
-			std::shared_ptr<GraphicsInputLayout> m_InputLayout;
 			std::shared_ptr<GraphicsRenderer> m_GraphicsRenderer;
 
 			std::wstring m_VertexShaderPath;
 			std::wstring m_PixelShaderPath;
+
+			MeshManager m_MeshManager;
+			std::shared_ptr<Mesh> m_Sphere;
 
 			Transformation m_TransformationMatrix;
 		
 			Camera m_Camera;
 			CameraInputHandler m_CameraMovement;
 			ViewProjection m_ViewProjectionMatrix;
-
-			AssimpLoader m_ModelLoader;
 	};
 	
 }

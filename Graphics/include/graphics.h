@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../src/Mesh.h"
+
 #include "../src/GraphicsContext.h"
 #include "../src/GraphicsBindableResource.h"
 #include "../src/GraphicsAPI.h"
