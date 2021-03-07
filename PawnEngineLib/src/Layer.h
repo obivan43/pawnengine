@@ -15,7 +15,7 @@ namespace pawn {
 			virtual ~Layer() = default;
 		
 			virtual void OnInit();
-			virtual void OnUpdate(Clock clock);
+			virtual void OnUpdate(Clock& clock);
 			virtual void OnRelease();
 	};
 	

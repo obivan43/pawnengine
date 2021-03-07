@@ -17,7 +17,10 @@ namespace pawn {
 			Scene& operator=(Scene&& other) noexcept = delete;
 
 			Entity CreateEntity(const std::string& name = std::string());
+			void DeleteEntity(Entity& entity);
 	
+			void OnUpdate(Clock& clock);
+
 		private:
 			entt::registry m_EnttRegistry;
 	};

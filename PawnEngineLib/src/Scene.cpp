@@ -16,4 +16,11 @@ namespace pawn {
 		return entity;
 	}
 	
+	void Scene::DeleteEntity(Entity& entity) {
+		m_EnttRegistry.destroy(entity);
+	}
+
+
+	void Scene::OnUpdate(Clock& clock) {}
+
 }

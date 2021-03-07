@@ -8,3 +8,4 @@
 #include "../src/Entity.h"
 
 #include "../src/MeshManager.h"
+#include "../src/Renderer.h"

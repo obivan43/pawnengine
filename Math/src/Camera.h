@@ -1,44 +1,38 @@
-﻿#pragma once
-
-#include "glm.hpp"
+#pragma once
 
 namespace pawn {
 
-	struct ViewProjection {
-		glm::mat4 projection;
-		glm::mat4 view;
-	};
-	
 	class Camera {
 
 		public:
-			Camera(
-				const glm::vec3& position = glm::vec3(0.0f, 0.0f, 0.0f),
-				float fov = 65.0f,
-				float aspectRatio = 4.0f / 3.0f,
-				float zNear = 0.001f,
-				float zFar = 1000.0f
-			);
-
+			Camera() = default;
+			Camera(const glm::mat4& projection);
 			Camera(const Camera& other) = default;
 			Camera(Camera&& other) noexcept = default;
 
 			Camera& operator=(const Camera& other) = default;
 			Camera& operator=(Camera&& other) noexcept = default;
 
-			void RecalculateView();
-
 			const glm::mat4& GetProjection() const { return m_Projection; }
-			const glm::mat4& GetView() const { return m_View; }
-	
+
+			void SetOrthographic(
+				float left = -16.0f,
+				float right = 16.0f,
+				float bottom = -9.0f,
+				float top = 9.0f,
+				float near = -1.0f,
+				float far = 1.0f
+			);
+
+			void SetPerspective(
+				float fov = 65.0f,
+				float aspectRatio = 4.0f / 3.0f,
+				float zNear = 0.001f,
+				float zFar = 1000.0f
+			);
+
 		private:
 			glm::mat4 m_Projection;
-			glm::mat4 m_View;
-
-		public:
-			glm::vec3 m_Position;
-			glm::vec3 m_ViewDirection;
-			glm::vec3 m_CameraUP;
 	};
-	
+
 }

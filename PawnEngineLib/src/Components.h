@@ -1,7 +1,10 @@
 #pragma once
 
+#include "glm.hpp"
+
 namespace pawn {
 	class Mesh;
+	class Camera;
 }
 
 struct TransformationComponent {
@@ -50,4 +53,22 @@ struct MeshComponent {
 	operator const std::shared_ptr<pawn::Mesh>& () const { return m_Mesh; }
 
 	std::shared_ptr<pawn::Mesh> m_Mesh;
+};
+
+struct CameraComponent {
+
+	CameraComponent() = default;
+	CameraComponent(const glm::mat4& projection) : m_Camera(projection) {};
+	CameraComponent(const CameraComponent& other) = default;
+	CameraComponent(CameraComponent&& other) noexcept = default;
+
+	CameraComponent& operator=(const CameraComponent& other) = default;
+	CameraComponent& operator=(CameraComponent&& other) noexcept = default;
+
+	operator pawn::Camera& () { return m_Camera; }
+	operator const pawn::Camera& () const { return m_Camera; }
+
+	pawn::Camera m_Camera;
+	bool m_IsActiveCamera = false;
+
 };

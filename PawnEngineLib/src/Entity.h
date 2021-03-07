@@ -34,6 +34,8 @@ namespace pawn {
 			Component& AddComponent(Args&&... args) {
 				return m_Scene->m_EnttRegistry.emplace<Component>(m_EntityID, std::forward<Args>(args)...);
 			}
+			
+			operator entt::entity() const { return m_EntityID; }
 
 		private:
 			entt::entity m_EntityID;

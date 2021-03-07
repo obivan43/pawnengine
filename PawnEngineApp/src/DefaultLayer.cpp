@@ -4,16 +4,8 @@
 
 namespace pawn {
 
-	DefaultLayer::DefaultLayer() : m_Camera({0.0f, 0.0f, 4.0f}) {
-		Application& application = Application::Instance();
-		m_GraphicsContext = application.GetGraphicsContext();
-		m_GraphicsAPI = application.GetGraphicsAPI();
-
-		m_Transformation = GraphicsBuffer::Create(GraphicsBufferEnum::ConstantBuffer);
-		m_ViewProjection = GraphicsBuffer::Create(GraphicsBufferEnum::ConstantBuffer);
-
+	DefaultLayer::DefaultLayer() {
 		m_Shader = GraphicsShader::Create();
-		m_GraphicsRenderer = GraphicsRenderer::Create(m_GraphicsContext);
 		
 #ifdef PAWN_DIRECTX11
 		m_VertexShaderPath = L"res\\shaders\\directx_shaders\\VertexShader.cso";
@@ -25,11 +17,14 @@ namespace pawn {
 	}
 	
 	void DefaultLayer::OnInit() {
-		if (!m_Shader->InitVertexShader(m_GraphicsContext, m_VertexShaderPath)) {
+		Application& application = Application::Instance();
+		std::shared_ptr<GraphicsContext>& context = application.GetGraphicsContext();
+
+		if (!m_Shader->InitVertexShader(context, m_VertexShaderPath)) {
 			spdlog::get("console")->error("Vertex shader initialization failed");
 		}
 
-		if (!m_Shader->InitPixelShader(m_GraphicsContext, m_PixelShaderPath)) {
+		if (!m_Shader->InitPixelShader(context, m_PixelShaderPath)) {
 			spdlog::get("console")->error("Pixel shader initialization failed");
 		}
 
@@ -37,39 +32,35 @@ namespace pawn {
 			spdlog::get("console")->error("Shader linking failed");
 		}
 
-		m_Shader->Bind(m_GraphicsContext);
+		Renderer::SetShader(context, m_Shader);
+		Renderer::Init(application.GetGraphicsContext(), application.GetGraphicsAPI());
 
-		m_MeshManager.UploadMeshFromFile(m_GraphicsContext, m_Shader, "res\\models\\smoothsphere.obj");
-		m_MeshManager.UploadMeshFromFile(m_GraphicsContext, m_Shader, "res\\models\\sphere.obj");
-		m_MeshManager.UploadMeshFromFile(m_GraphicsContext, m_Shader, "res\\models\\cube.obj");
-
-		m_Transformation->Init(m_GraphicsContext, nullptr, 1, sizeof(glm::mat4), GraphicsBufferUsageTypeEnum::DynamicBuffer);
-		m_Transformation->InitLocation(m_GraphicsContext, m_Shader, "Transformation", 0);
-		m_Transformation->Bind(m_GraphicsContext);
-
-		m_ViewProjection->Init(m_GraphicsContext, nullptr, 1, sizeof(ViewProjection), GraphicsBufferUsageTypeEnum::DynamicBuffer);
-		m_ViewProjection->InitLocation(m_GraphicsContext, m_Shader, "ViewProjection", 1);
-		m_ViewProjection->Bind(m_GraphicsContext);
+		m_MeshManager.UploadMeshFromFile(context, m_Shader, "res\\models\\smoothsphere.obj");
+		m_MeshManager.UploadMeshFromFile(context, m_Shader, "res\\models\\sphere.obj");
+		m_MeshManager.UploadMeshFromFile(context, m_Shader, "res\\models\\cube.obj");
 
 		m_Entity = m_Scene.CreateEntity("sphere");
-		m_Entity.AddComponent<MeshComponent>(m_MeshManager.GetMeshByName("sphere"));
+		m_Entity.AddComponent<MeshComponent>(m_MeshManager.GetMeshByName("smoothsphere"));
+
+		m_Camera = m_Scene.CreateEntity("camera");
+		CameraComponent& cameraComponent = m_Camera.AddComponent<CameraComponent>();
+		cameraComponent.m_Camera.SetPerspective();
+		cameraComponent.m_IsActiveCamera = true;
+
+		TransformationComponent& transformationComponent = m_Camera.GetComponent<TransformationComponent>();
+		glm::vec4& position = transformationComponent.m_Transformation[3];
+		position.z = 4.0f;
 	}
 	
-	void DefaultLayer::OnUpdate(Clock clock) {
-		m_CameraMovement.MoveCamera(m_Camera, clock);
-		m_Camera.RecalculateView();
+	void DefaultLayer::OnUpdate(Clock& clock) {
+		CameraComponent& cameraComponent = m_Camera.GetComponent<CameraComponent>();
+		glm::mat4 view = glm::inverse(m_Camera.GetComponent<TransformationComponent>().m_Transformation);
 
-		m_ViewProjectionMatrix = { m_Camera.GetProjection(), m_Camera.GetView() };
-		m_ViewProjection->Update(m_GraphicsContext, &m_ViewProjectionMatrix, 1, sizeof(ViewProjection));
-		m_ViewProjection->Bind(m_GraphicsContext);
+		Renderer::BeginScene(cameraComponent.m_Camera, view);
 
-		TransformationComponent& transformationComponent = m_Entity.GetComponent<TransformationComponent>();
-		m_Transformation->Update(m_GraphicsContext, &transformationComponent.m_Transformation, 1, sizeof(glm::mat4));
-		m_Transformation->Bind(m_GraphicsContext);
+		Renderer::Submit(m_Entity);
 
-		MeshComponent& meshComponent = m_Entity.GetComponent<MeshComponent>();
-		meshComponent.m_Mesh->Bind(m_GraphicsContext);
-		m_GraphicsRenderer->DrawIndexed(meshComponent.m_Mesh->GetIndexBuffer());
+		Renderer::EndScene();
 	}
 	
 	void DefaultLayer::OnRelease() {}

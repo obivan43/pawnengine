@@ -5,7 +5,7 @@ namespace pawn {
 
 	void Layer::OnInit() {}
 	
-	void Layer::OnUpdate(Clock clock) { UNUSED(clock) }
+	void Layer::OnUpdate(Clock& clock) { UNUSED(clock) }
 	
 	void Layer::OnRelease() {}
 	
