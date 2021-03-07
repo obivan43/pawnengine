@@ -32,9 +32,9 @@ namespace pawn {
 			std::wstring m_PixelShaderPath;
 
 			MeshManager m_MeshManager;
-			std::shared_ptr<Mesh> m_Sphere;
 
-			Transformation m_TransformationMatrix;
+			Scene m_Scene;
+			Entity m_Sphere;
 		
 			Camera m_Camera;
 			CameraInputHandler m_CameraMovement;

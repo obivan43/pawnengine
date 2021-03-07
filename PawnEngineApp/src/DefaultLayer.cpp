@@ -40,33 +40,34 @@ namespace pawn {
 		m_Shader->Bind(m_GraphicsContext);
 
 		m_MeshManager.UploadMeshFromFile(m_GraphicsContext, m_Shader, "res\\models\\smoothsphere.obj");
-		m_MeshManager.UploadMeshFromFile(m_GraphicsContext, m_Shader, "res\\models\\sphere.obj");
-		m_MeshManager.UploadMeshFromFile(m_GraphicsContext, m_Shader, "res\\models\\cube.obj");
-		m_Sphere = m_MeshManager.GetMeshByName("smoothsphere");
-		m_Sphere->Bind(m_GraphicsContext);
 
-		glm::mat4 transformationMatrix = m_TransformationMatrix.GetModelMatrix();
-		m_Transformation->Init(m_GraphicsContext, &transformationMatrix, 1, sizeof(glm::mat4), GraphicsBufferUsageTypeEnum::StaticBuffer);
+		m_Transformation->Init(m_GraphicsContext, nullptr, 1, sizeof(glm::mat4), GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_Transformation->InitLocation(m_GraphicsContext, m_Shader, "Transformation", 0);
 		m_Transformation->Bind(m_GraphicsContext);
 
 		m_ViewProjection->Init(m_GraphicsContext, nullptr, 1, sizeof(ViewProjection), GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_ViewProjection->InitLocation(m_GraphicsContext, m_Shader, "ViewProjection", 1);
 		m_ViewProjection->Bind(m_GraphicsContext);
+
+		m_Sphere = m_Scene.CreateEntity();
+		m_Sphere.AddComponent<MeshComponent>(m_MeshManager.GetMeshByName("smoothsphere"));
 	}
 	
 	void DefaultLayer::OnUpdate(Clock clock) {
 		m_CameraMovement.MoveCamera(m_Camera, clock);
 		m_Camera.RecalculateView();
-		
-		m_Sphere->Bind(m_GraphicsContext);
 
 		m_ViewProjectionMatrix = { m_Camera.GetProjection(), m_Camera.GetView() };
 		m_ViewProjection->Update(m_GraphicsContext, &m_ViewProjectionMatrix, 1, sizeof(ViewProjection));
 		m_ViewProjection->Bind(m_GraphicsContext);
 
+		TransformComponent& transformComponent = m_Sphere.GetComponent<TransformComponent>();
+		m_Transformation->Update(m_GraphicsContext, &transformComponent.m_Transform, 1, sizeof(glm::mat4));
 		m_Transformation->Bind(m_GraphicsContext);
-		m_GraphicsRenderer->DrawIndexed(m_Sphere->GetIndexBuffer());
+
+		MeshComponent& meshComponent = m_Sphere.GetComponent<MeshComponent>();
+		meshComponent.m_Mesh->Bind(m_GraphicsContext);
+		m_GraphicsRenderer->DrawIndexed(meshComponent.m_Mesh->GetIndexBuffer());
 	}
 	
 	void DefaultLayer::OnRelease() {}

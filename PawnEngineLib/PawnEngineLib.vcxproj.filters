@@ -41,6 +41,9 @@
     <ClCompile Include="src\MeshManager.cpp">
       <Filter>src\managers</Filter>
     </ClCompile>
+    <ClCompile Include="src\Components.cpp">
+      <Filter>src\ecs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
