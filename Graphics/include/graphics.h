@@ -10,6 +10,7 @@
 #include "../src/GraphicsInputLayout.h"
 #include "../src/GraphicsRenderer.h"
 #include "../src/GraphicsTexture2D.h"
+#include "../src/GraphicsFrameBuffer.h"
 
 #ifdef PAWN_DIRECTX11
 
@@ -38,6 +39,7 @@
 #include "../src/OpenglBasicRenderer.h"
 #include "../src/OpenglTexture2D.h"
 #include "../src/OpenglUniformManager.h"
+#include "../src/OpenglFramebuffer.h"
 
 #endif
 

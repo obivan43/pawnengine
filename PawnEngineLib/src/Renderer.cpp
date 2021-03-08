@@ -11,6 +11,7 @@ namespace pawn {
 	std::shared_ptr<GraphicsAPI> Renderer::m_GraphicsAPI(nullptr);
 	std::shared_ptr<GraphicsShader> Renderer::m_Shader(nullptr);
 	std::shared_ptr<GraphicsRenderer> Renderer::m_GraphicsRenderer(nullptr);
+	std::shared_ptr<GraphicsFrameBuffer> Renderer::m_FrameBuffer(nullptr);
 
 	void Renderer::SetShader(std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsShader>& shader) {
 		m_Shader = shader; 
@@ -26,13 +27,19 @@ namespace pawn {
 		m_ViewProjection->InitLocation(m_Context, m_Shader, "ViewProjection", 1);
 	}
 
-	void Renderer::Init(const std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsAPI>& api) {
+	void Renderer::Init(const std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsAPI>& api, uint32_t width, uint32_t height) {
 		m_Context = context;
 		m_GraphicsAPI = api;
+		m_FrameBuffer = GraphicsFrameBuffer::Create();
 		m_GraphicsRenderer = GraphicsRenderer::Create(m_Context);
+
+		m_FrameBuffer->Init(m_Context, width, height);
 	}
 
 	void Renderer::BeginScene(Camera& camera, glm::mat4& view) {
+		m_FrameBuffer->Bind(m_Context);
+		m_GraphicsAPI->Clear();
+
 		ViewProjection viewProjection;
 
 		viewProjection.projection = camera.GetProjection();
@@ -50,6 +57,8 @@ namespace pawn {
 		m_GraphicsRenderer->DrawIndexed(meshComponent.m_Mesh->GetIndexBuffer());
 	}
 
-	void Renderer::EndScene() {}
+	void Renderer::EndScene() {
+		m_FrameBuffer->Unbind(m_Context);
+	}
 
 }
