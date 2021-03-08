@@ -69,8 +69,6 @@ namespace pawn {
 				
 			}
 
-			m_GraphicsAPI->Clear();
-
 			for (const std::shared_ptr<Layer>& layer : m_LayerList) {
 				layer->OnUpdate(m_Clock);
 			}

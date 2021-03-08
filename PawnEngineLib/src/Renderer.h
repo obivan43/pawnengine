@@ -14,7 +14,7 @@ namespace pawn {
 
 		public:
 
-			static void Init(const std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsAPI>& api);
+			static void Init(const std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsAPI>& api, uint32_t width, uint32_t height);
 			static void BeginScene(Camera& camera, glm::mat4& view);
 			static void EndScene();
 
@@ -30,6 +30,7 @@ namespace pawn {
 			static std::shared_ptr<GraphicsAPI> m_GraphicsAPI;
 			static std::shared_ptr<GraphicsShader> m_Shader;
 			static std::shared_ptr<GraphicsRenderer> m_GraphicsRenderer;
+			static std::shared_ptr<GraphicsFrameBuffer> m_FrameBuffer;
 	};
 
 }

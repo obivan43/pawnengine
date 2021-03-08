@@ -146,6 +146,12 @@
     <ClCompile Include="src\Mesh.cpp">
       <Filter>src\data</Filter>
     </ClCompile>
+    <ClCompile Include="src\GraphicsFrameBuffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenglFramebuffer.cpp">
+      <Filter>src\opengl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h">
@@ -261,6 +267,12 @@
     </ClInclude>
     <ClInclude Include="src\Mesh.h">
       <Filter>src\data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GraphicsFrameBuffer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenglFramebuffer.h">
+      <Filter>src\opengl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

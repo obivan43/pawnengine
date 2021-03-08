@@ -18,6 +18,7 @@ namespace pawn {
 	
 	void DefaultLayer::OnInit() {
 		Application& application = Application::Instance();
+		Window& window = application.GetWindow();
 		std::shared_ptr<GraphicsContext>& context = application.GetGraphicsContext();
 
 		if (!m_Shader->InitVertexShader(context, m_VertexShaderPath)) {
@@ -32,7 +33,7 @@ namespace pawn {
 			spdlog::get("console")->error("Shader linking failed");
 		}
 
-		Renderer::Init(application.GetGraphicsContext(), application.GetGraphicsAPI());
+		Renderer::Init(application.GetGraphicsContext(), application.GetGraphicsAPI(), window.GetWidth(), window.GetHeight());
 		Renderer::SetShader(context, m_Shader);
 
 		m_MeshManager.UploadMeshFromFile(context, m_Shader, "res\\models\\smoothsphere.obj");
