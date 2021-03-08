@@ -3,6 +3,8 @@
 #include "OpenglDebug.h"
 #include "OpenglFramebuffer.h"
 
+#ifdef PAWN_OPENGL
+
 namespace pawn {
 
 	OpenglFramebuffer::~OpenglFramebuffer() {
@@ -71,3 +73,5 @@ namespace pawn {
 	}
 
 }
+
+#endif

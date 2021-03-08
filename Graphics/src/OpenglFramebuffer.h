@@ -2,6 +2,8 @@
 
 #include "GraphicsFrameBuffer.h"
 
+#ifdef PAWN_OPENGL
+
 namespace pawn {
 
 	class OpenglFramebuffer : public GraphicsFrameBuffer {
@@ -32,3 +34,5 @@ namespace pawn {
 	};
 
 }
+
+#endif
