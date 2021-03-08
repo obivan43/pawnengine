@@ -444,14 +444,12 @@ exit</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_OpenGL|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\CameraInputHandler.cpp" />
     <ClCompile Include="src\DefaultLayer.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch\pch.h" />
     <ClInclude Include="src\Application.h" />
-    <ClInclude Include="src\CameraInputHandler.h" />
     <ClInclude Include="src\DefaultLayer.h" />
   </ItemGroup>
   <ItemGroup>

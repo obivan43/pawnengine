@@ -54,8 +54,6 @@ void OpenglCallDebug(const char* file, unsigned int line, const char* expression
 		spdlog::get("console")->error("Opengl error: {}, {}, {}, {}", errorMessage, file, line, expression);
 		__debugbreak();
 	}
-
-	spdlog::get("console")->trace("Opengl call: {}, {}, {}", file, line, expression);
 }
 
 #endif

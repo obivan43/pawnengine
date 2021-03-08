@@ -86,10 +86,15 @@ namespace pawn {
 		bufferDescription.CPUAccessFlags = type == GraphicsBufferUsageTypeEnum::StaticBuffer ? 0 : D3D11_CPU_ACCESS_WRITE;
 		bufferDescription.MiscFlags = 0;
 
-		D3D11_SUBRESOURCE_DATA resourceData = {};
-		resourceData.pSysMem = data;
+		if (data != nullptr) {
+			D3D11_SUBRESOURCE_DATA resourceData = {};
+			resourceData.pSysMem = data;
 
-		DirectX11Call(device->CreateBuffer(&bufferDescription, &resourceData, &m_Buffer))
+			DirectX11Call(device->CreateBuffer(&bufferDescription, &resourceData, &m_Buffer))
+		}
+		else {
+			DirectX11Call(device->CreateBuffer(&bufferDescription, nullptr, &m_Buffer))
+		}
 
 		spdlog::get("console")->info("{} buffer created", BufferTypeMessage(m_GraphicsBufferType));
 	}

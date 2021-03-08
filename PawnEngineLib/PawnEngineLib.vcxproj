@@ -45,9 +45,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_OpenGL|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Components.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Layer.cpp" />
     <ClCompile Include="src\LayerList.cpp" />
+    <ClCompile Include="src\MeshManager.cpp" />
+    <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +60,8 @@
     <ClInclude Include="src\Entity.h" />
     <ClInclude Include="src\Layer.h" />
     <ClInclude Include="src\LayerList.h" />
+    <ClInclude Include="src\MeshManager.h" />
+    <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Scene.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

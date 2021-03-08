@@ -1,21 +1,28 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "Camera.h"
 
 namespace pawn {
 
+	Camera::Camera(const glm::mat4& projection) : m_Projection(projection) {}
 
-	Camera::Camera(const glm::vec3& position, float fov, float aspectRatio, float zNear, float zFar) {
-		m_Position = position;
-		m_ViewDirection = glm::vec3(0.0f, 0.0f, -1.0f);
-		m_CameraUP = glm::vec3(0.0f, 1.0f, 0.0f);
+	void Camera::SetOrthographic(
+		float left,
+		float right,
+		float bottom,
+		float top,
+		float near,
+		float far
+	) {
+		m_Projection = glm::ortho(left, right, bottom, top, near, far);
+	}
+
+	void Camera::SetPerspective(
+		float fov,
+		float aspectRatio,
+		float zNear,
+		float zFar
+	) {
 		m_Projection = glm::perspective(glm::radians(fov), aspectRatio, zNear, zFar);
 	}
-	
-	void Camera::RecalculateView() {
-		m_View = glm::lookAt(
-			m_Position,
-			m_Position + m_ViewDirection,
-			m_CameraUP
-		);
-	}
+
 }

@@ -33,6 +33,9 @@
     <Filter Include="src\directx11\buffers">
       <UniqueIdentifier>{c5e45e4d-a7ad-485d-b709-51c90b9765d2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\data">
+      <UniqueIdentifier>{6c84fcd7-43e7-4d3a-bca0-70ffd306ab9d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\pch.cpp">
@@ -139,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="src\GraphicsTexture2D.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mesh.cpp">
+      <Filter>src\data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +258,9 @@
     </ClInclude>
     <ClInclude Include="src\GraphicsTexture2D.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mesh.h">
+      <Filter>src\data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
