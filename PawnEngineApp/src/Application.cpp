@@ -1,6 +1,5 @@
 ﻿#include "pch.h"
 #include "Application.h"
-#include "DefaultLayer.h"
 
 namespace pawn {
 	
@@ -9,6 +8,12 @@ namespace pawn {
 	m_Fps(0),
 	m_Window(pawn::WinAPIWindow::Instance(std::wstring(L"Pawn WinAPIWindow"), 1280, 1024)) {
 		m_Window.AddObserver(this);
+		
+		auto console = spdlog::stdout_color_mt("console");
+
+#if defined(DEBUG) | defined(_DEBUG)
+		console->set_level(spdlog::level::debug);
+#endif
 		
 		m_Clock.Reset();
 
@@ -24,10 +29,7 @@ namespace pawn {
 		m_GraphicsAPI->SetContext(m_GraphicsContext);
 	}
 
-	void Application::Run() {
-		const std::shared_ptr<pawn::Layer> layer(new DefaultLayer());
-		m_LayerList.PushLayer(layer);
-		
+	void Application::Run() {		
 		for (const std::shared_ptr<Layer>& layer : m_LayerList) {
 			m_Window.AddObserver(layer.get());
 			layer->OnInit();

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Application.h"
+#include "DefaultLayer.h"
 
 #ifdef PAWN_DIRECTX11
 
@@ -13,21 +14,12 @@
 #endif
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE parent, PWSTR pCmdLine, int nCmdShow) {
-	UNUSED(hInstance)
-	UNUSED(parent)
-	UNUSED(nCmdShow)
-	UNUSED(hInstance)
-	
-	auto console = spdlog::stdout_color_mt("console");
-	
-#if defined(DEBUG) | defined(_DEBUG)
-	console->set_level(spdlog::level::debug);
-#endif
-	
-	pawn::Application& application = pawn::Application::Instance();
-	application.Run();
+	const std::shared_ptr<pawn::Layer> layer(new pawn::DefaultLayer());
 
-	spdlog::drop_all();
+	pawn::Application& application = pawn::Application::Instance();
+	application.GetLayerList().PushLayer(layer);
+
+	application.Run();
 	
     return 0;
 }
