@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include "Components.h"
 
 namespace pawn {
 
@@ -15,8 +16,9 @@ namespace pawn {
 
 			static void Init(const std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsAPI>& api);
 			static void BeginScene(Camera& camera, glm::mat4& view);
-			static void Submit(Entity& entity);
 			static void EndScene();
+
+			static void DrawMesh(TransformationComponent& transformationComponent, MeshComponent& meshComponent);
 
 			static void SetShader(std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsShader>& shader);
 

@@ -20,9 +20,6 @@
     <ClCompile Include="src\Vertex.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Transformation.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\Camera.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -35,9 +32,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Vertex.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Transformation.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="include\pawnmath.h">

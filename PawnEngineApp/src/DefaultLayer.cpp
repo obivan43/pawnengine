@@ -32,35 +32,27 @@ namespace pawn {
 			spdlog::get("console")->error("Shader linking failed");
 		}
 
-		Renderer::SetShader(context, m_Shader);
 		Renderer::Init(application.GetGraphicsContext(), application.GetGraphicsAPI());
+		Renderer::SetShader(context, m_Shader);
 
 		m_MeshManager.UploadMeshFromFile(context, m_Shader, "res\\models\\smoothsphere.obj");
 		m_MeshManager.UploadMeshFromFile(context, m_Shader, "res\\models\\sphere.obj");
 		m_MeshManager.UploadMeshFromFile(context, m_Shader, "res\\models\\cube.obj");
 
-		m_Entity = m_Scene.CreateEntity("sphere");
-		m_Entity.AddComponent<MeshComponent>(m_MeshManager.GetMeshByName("smoothsphere"));
+		auto entity = m_Scene.CreateEntity("sphere");
+		entity.AddComponent<MeshComponent>(m_MeshManager.GetMeshByName("sphere"));
 
-		m_Camera = m_Scene.CreateEntity("camera");
-		CameraComponent& cameraComponent = m_Camera.AddComponent<CameraComponent>();
+		auto camera = m_Scene.CreateEntity("camera");
+		CameraComponent& cameraComponent = camera.AddComponent<CameraComponent>();
 		cameraComponent.m_Camera.SetPerspective();
 		cameraComponent.m_IsActiveCamera = true;
 
-		TransformationComponent& transformationComponent = m_Camera.GetComponent<TransformationComponent>();
-		glm::vec4& position = transformationComponent.m_Transformation[3];
-		position.z = 4.0f;
+		TransformationComponent& transformationComponent = camera.GetComponent<TransformationComponent>();
+		transformationComponent.m_Transformation[3].z = 4.0f;
 	}
 	
 	void DefaultLayer::OnUpdate(Clock& clock) {
-		CameraComponent& cameraComponent = m_Camera.GetComponent<CameraComponent>();
-		glm::mat4 view = glm::inverse(m_Camera.GetComponent<TransformationComponent>().m_Transformation);
-
-		Renderer::BeginScene(cameraComponent.m_Camera, view);
-
-		Renderer::Submit(m_Entity);
-
-		Renderer::EndScene();
+		m_Scene.OnUpdate(clock);
 	}
 	
 	void DefaultLayer::OnRelease() {}

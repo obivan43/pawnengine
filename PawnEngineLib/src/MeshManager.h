@@ -28,7 +28,6 @@ namespace pawn {
 
 		private:
 			std::unordered_map<std::string, std::shared_ptr<Mesh>> m_MeshesMap;
-
 			AssimpLoader m_MeshLoader;
 	};
 
