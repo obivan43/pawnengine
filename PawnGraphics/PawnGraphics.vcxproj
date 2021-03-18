@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\DirectX11API.cpp" />
+    <ClCompile Include="src\DirectX11Renderer.cpp" />
+    <ClCompile Include="src\DirectX11BufferBase.cpp" />
+    <ClCompile Include="src\DirectX11ContantBuffer.cpp" />
+    <ClCompile Include="src\Directx11Context.cpp" />
+    <ClCompile Include="src\DirectX11Debug.cpp" />
+    <ClCompile Include="src\DirectX11IndexBuffer.cpp" />
+    <ClCompile Include="src\DirectX11InputLayout.cpp" />
+    <ClCompile Include="src\DirectX11Shader.cpp" />
+    <ClCompile Include="src\DirectX11Texture2D.cpp" />
+    <ClCompile Include="src\DirectX11VertexBuffer.cpp" />
+    <ClCompile Include="src\dxerr.cpp" />
+    <ClCompile Include="src\GraphicsAPI.cpp" />
+    <ClCompile Include="src\GraphicsBindableResource.cpp" />
+    <ClCompile Include="src\GraphicsBuffer.cpp" />
+    <ClCompile Include="src\GraphicsContext.cpp" />
+    <ClCompile Include="src\GraphicsInputLayout.cpp" />
+    <ClCompile Include="src\GraphicsRenderer.cpp" />
+    <ClCompile Include="src\GraphicsShader.cpp" />
+    <ClCompile Include="src\GraphicsTexture2D.cpp" />
+    <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\pawngraphics.h" />
+    <ClInclude Include="src\DirectX11API.h" />
+    <ClInclude Include="src\DirectX11Renderer.h" />
+    <ClInclude Include="src\DirectX11BufferBase.h" />
+    <ClInclude Include="src\DirectX11ContantBuffer.h" />
+    <ClInclude Include="src\Directx11Context.h" />
+    <ClInclude Include="src\DirectX11Debug.h" />
+    <ClInclude Include="src\DirectX11IndexBuffer.h" />
+    <ClInclude Include="src\DirectX11InputLayout.h" />
+    <ClInclude Include="src\DirectX11Shader.h" />
+    <ClInclude Include="src\DirectX11Texture2D.h" />
+    <ClInclude Include="src\DirectX11VertexBuffer.h" />
+    <ClInclude Include="src\dxerr.h" />
+    <ClInclude Include="src\GraphicsAPI.h" />
+    <ClInclude Include="src\GraphicsBindableResource.h" />
+    <ClInclude Include="src\GraphicsBuffer.h" />
+    <ClInclude Include="src\GraphicsContext.h" />
+    <ClInclude Include="src\GraphicsInputLayout.h" />
+    <ClInclude Include="src\GraphicsRenderer.h" />
+    <ClInclude Include="src\GraphicsShader.h" />
+    <ClInclude Include="src\GraphicsTexture2D.h" />
+    <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PawnMath\PawnMath.vcxproj">
+      <Project>{7d6d9221-3b78-4c0f-b425-71d41f6d9e7b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\PawnUtils\PawnUtils.vcxproj">
+      <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\DXGetErrorDescription.inl" />
+    <None Include="src\DXGetErrorString.inl" />
+    <None Include="src\DXTrace.inl" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{b01544f3-830b-478a-b76f-c0ffa1f466d5}</ProjectGuid>
+    <RootNamespace>PawnGraphics</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;PAWNGRAPHICS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);LOG_ENABLED;PAWN_DIRECTX11</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;PAWNGRAPHICS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);LOG_ENABLED;PAWN_DIRECTX11</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

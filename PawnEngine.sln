@@ -1,75 +1,61 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PawnEngineApp", "PawnEngineApp\PawnEngineApp.vcxproj", "{9E5A0C46-A9DF-4690-A05E-BA2D24343E36}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3C1EE475-E5D9-496A-8D35-DC2A05362BFD} = {3C1EE475-E5D9-496A-8D35-DC2A05362BFD}
-		{10967DA7-DD20-4003-B270-D25F086216BA} = {10967DA7-DD20-4003-B270-D25F086216BA}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PawnUtils", "PawnUtils\PawnUtils.vcxproj", "{A85C2813-3EE7-42F9-97EC-889534499250}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Utils", "Utils\Utils.vcxproj", "{10967DA7-DD20-4003-B270-D25F086216BA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PawnMath", "PawnMath\PawnMath.vcxproj", "{7D6D9221-3B78-4C0F-B425-71D41F6D9E7B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math", "Math\Math.vcxproj", "{3C1EE475-E5D9-496A-8D35-DC2A05362BFD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PawnGraphics", "PawnGraphics\PawnGraphics.vcxproj", "{B01544F3-830B-478A-B76F-C0FFA1F466D5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graphics", "Graphics\Graphics.vcxproj", "{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PawnEngine", "PawnEngine\PawnEngine.vcxproj", "{550DBB28-816C-4CC6-B90C-564891BD8C99}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PawnEngineLib", "PawnEngineLib\PawnEngineLib.vcxproj", "{BC6605EE-ECC3-4047-93BD-97EA406FC626}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PawnEditor", "PawnEditor\PawnEditor.vcxproj", "{17E01AA8-20DF-4B5E-AEBD-5D52FB3353F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug_DirectX|x64 = Debug_DirectX|x64
-		Debug_OpenGL|x64 = Debug_OpenGL|x64
-		Release_DirectX|x64 = Release_DirectX|x64
-		Release_OpenGL|x64 = Release_OpenGL|x64
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9E5A0C46-A9DF-4690-A05E-BA2D24343E36}.Debug_DirectX|x64.ActiveCfg = Debug|x64
-		{9E5A0C46-A9DF-4690-A05E-BA2D24343E36}.Debug_DirectX|x64.Build.0 = Debug|x64
-		{9E5A0C46-A9DF-4690-A05E-BA2D24343E36}.Debug_OpenGL|x64.ActiveCfg = Debug_OpenGL|x64
-		{9E5A0C46-A9DF-4690-A05E-BA2D24343E36}.Debug_OpenGL|x64.Build.0 = Debug_OpenGL|x64
-		{9E5A0C46-A9DF-4690-A05E-BA2D24343E36}.Release_DirectX|x64.ActiveCfg = Release|x64
-		{9E5A0C46-A9DF-4690-A05E-BA2D24343E36}.Release_DirectX|x64.Build.0 = Release|x64
-		{9E5A0C46-A9DF-4690-A05E-BA2D24343E36}.Release_OpenGL|x64.ActiveCfg = Release_OpenGL|x64
-		{9E5A0C46-A9DF-4690-A05E-BA2D24343E36}.Release_OpenGL|x64.Build.0 = Release_OpenGL|x64
-		{10967DA7-DD20-4003-B270-D25F086216BA}.Debug_DirectX|x64.ActiveCfg = Debug|x64
-		{10967DA7-DD20-4003-B270-D25F086216BA}.Debug_DirectX|x64.Build.0 = Debug|x64
-		{10967DA7-DD20-4003-B270-D25F086216BA}.Debug_OpenGL|x64.ActiveCfg = Debug_OpenGL|x64
-		{10967DA7-DD20-4003-B270-D25F086216BA}.Debug_OpenGL|x64.Build.0 = Debug_OpenGL|x64
-		{10967DA7-DD20-4003-B270-D25F086216BA}.Release_DirectX|x64.ActiveCfg = Release|x64
-		{10967DA7-DD20-4003-B270-D25F086216BA}.Release_DirectX|x64.Build.0 = Release|x64
-		{10967DA7-DD20-4003-B270-D25F086216BA}.Release_OpenGL|x64.ActiveCfg = Release_OpenGL|x64
-		{10967DA7-DD20-4003-B270-D25F086216BA}.Release_OpenGL|x64.Build.0 = Release_OpenGL|x64
-		{3C1EE475-E5D9-496A-8D35-DC2A05362BFD}.Debug_DirectX|x64.ActiveCfg = Debug|x64
-		{3C1EE475-E5D9-496A-8D35-DC2A05362BFD}.Debug_DirectX|x64.Build.0 = Debug|x64
-		{3C1EE475-E5D9-496A-8D35-DC2A05362BFD}.Debug_OpenGL|x64.ActiveCfg = Debug_OpenGL|x64
-		{3C1EE475-E5D9-496A-8D35-DC2A05362BFD}.Debug_OpenGL|x64.Build.0 = Debug_OpenGL|x64
-		{3C1EE475-E5D9-496A-8D35-DC2A05362BFD}.Release_DirectX|x64.ActiveCfg = Release|x64
-		{3C1EE475-E5D9-496A-8D35-DC2A05362BFD}.Release_DirectX|x64.Build.0 = Release|x64
-		{3C1EE475-E5D9-496A-8D35-DC2A05362BFD}.Release_OpenGL|x64.ActiveCfg = Release_OpenGL|x64
-		{3C1EE475-E5D9-496A-8D35-DC2A05362BFD}.Release_OpenGL|x64.Build.0 = Release_OpenGL|x64
-		{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}.Debug_DirectX|x64.ActiveCfg = Debug|x64
-		{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}.Debug_DirectX|x64.Build.0 = Debug|x64
-		{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}.Debug_OpenGL|x64.ActiveCfg = Debug_OpenGL|x64
-		{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}.Debug_OpenGL|x64.Build.0 = Debug_OpenGL|x64
-		{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}.Release_DirectX|x64.ActiveCfg = Release|x64
-		{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}.Release_DirectX|x64.Build.0 = Release|x64
-		{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}.Release_OpenGL|x64.ActiveCfg = Release_OpenGL|x64
-		{3CA759D2-5D17-42DF-8806-6297E2FA4CF8}.Release_OpenGL|x64.Build.0 = Release_OpenGL|x64
-		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Debug_DirectX|x64.ActiveCfg = Debug|x64
-		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Debug_DirectX|x64.Build.0 = Debug|x64
-		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Debug_OpenGL|x64.ActiveCfg = Debug_OpenGL|x64
-		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Debug_OpenGL|x64.Build.0 = Debug_OpenGL|x64
-		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Release_DirectX|x64.ActiveCfg = Release|x64
-		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Release_DirectX|x64.Build.0 = Release|x64
-		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Release_OpenGL|x64.ActiveCfg = Release_OpenGL|x64
-		{BC6605EE-ECC3-4047-93BD-97EA406FC626}.Release_OpenGL|x64.Build.0 = Release_OpenGL|x64
+		{A85C2813-3EE7-42F9-97EC-889534499250}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{A85C2813-3EE7-42F9-97EC-889534499250}.Debug|x64.ActiveCfg = Debug|x64
+		{A85C2813-3EE7-42F9-97EC-889534499250}.Debug|x64.Build.0 = Debug|x64
+		{A85C2813-3EE7-42F9-97EC-889534499250}.Release|Any CPU.ActiveCfg = Release|x64
+		{A85C2813-3EE7-42F9-97EC-889534499250}.Release|x64.ActiveCfg = Release|x64
+		{A85C2813-3EE7-42F9-97EC-889534499250}.Release|x64.Build.0 = Release|x64
+		{7D6D9221-3B78-4C0F-B425-71D41F6D9E7B}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{7D6D9221-3B78-4C0F-B425-71D41F6D9E7B}.Debug|x64.ActiveCfg = Debug|x64
+		{7D6D9221-3B78-4C0F-B425-71D41F6D9E7B}.Debug|x64.Build.0 = Debug|x64
+		{7D6D9221-3B78-4C0F-B425-71D41F6D9E7B}.Release|Any CPU.ActiveCfg = Release|x64
+		{7D6D9221-3B78-4C0F-B425-71D41F6D9E7B}.Release|x64.ActiveCfg = Release|x64
+		{7D6D9221-3B78-4C0F-B425-71D41F6D9E7B}.Release|x64.Build.0 = Release|x64
+		{B01544F3-830B-478A-B76F-C0FFA1F466D5}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{B01544F3-830B-478A-B76F-C0FFA1F466D5}.Debug|x64.ActiveCfg = Debug|x64
+		{B01544F3-830B-478A-B76F-C0FFA1F466D5}.Debug|x64.Build.0 = Debug|x64
+		{B01544F3-830B-478A-B76F-C0FFA1F466D5}.Release|Any CPU.ActiveCfg = Release|x64
+		{B01544F3-830B-478A-B76F-C0FFA1F466D5}.Release|x64.ActiveCfg = Release|x64
+		{B01544F3-830B-478A-B76F-C0FFA1F466D5}.Release|x64.Build.0 = Release|x64
+		{550DBB28-816C-4CC6-B90C-564891BD8C99}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{550DBB28-816C-4CC6-B90C-564891BD8C99}.Debug|x64.ActiveCfg = Debug|x64
+		{550DBB28-816C-4CC6-B90C-564891BD8C99}.Debug|x64.Build.0 = Debug|x64
+		{550DBB28-816C-4CC6-B90C-564891BD8C99}.Release|Any CPU.ActiveCfg = Release|x64
+		{550DBB28-816C-4CC6-B90C-564891BD8C99}.Release|x64.ActiveCfg = Release|x64
+		{550DBB28-816C-4CC6-B90C-564891BD8C99}.Release|x64.Build.0 = Release|x64
+		{17E01AA8-20DF-4B5E-AEBD-5D52FB3353F0}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{17E01AA8-20DF-4B5E-AEBD-5D52FB3353F0}.Debug|x64.ActiveCfg = Debug|x64
+		{17E01AA8-20DF-4B5E-AEBD-5D52FB3353F0}.Debug|x64.Build.0 = Debug|x64
+		{17E01AA8-20DF-4B5E-AEBD-5D52FB3353F0}.Release|Any CPU.ActiveCfg = Release|x64
+		{17E01AA8-20DF-4B5E-AEBD-5D52FB3353F0}.Release|x64.ActiveCfg = Release|x64
+		{17E01AA8-20DF-4B5E-AEBD-5D52FB3353F0}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8020EFC2-9BD0-4816-8264-3F03C67FEFDD}
+		SolutionGuid = {0B9A2FA9-10F0-42FD-9777-13A24524E54E}
 	EndGlobalSection
 EndGlobal

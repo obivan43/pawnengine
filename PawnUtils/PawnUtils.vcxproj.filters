@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="pch">
+      <UniqueIdentifier>{21296220-de8b-453c-a343-d253796bc4d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\entt">
+      <UniqueIdentifier>{5103921d-fdce-4733-9272-3aecaf027ced}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\patterns">
+      <UniqueIdentifier>{bbe85ce9-eb06-45e1-a79b-d6a57e508fbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\patterns\observer">
+      <UniqueIdentifier>{0f2d7c17-b2ac-47bb-b596-36e695d7850e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\patterns\observer\events">
+      <UniqueIdentifier>{2cc2ad18-888f-4913-b5c2-ea3312a50b3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\time">
+      <UniqueIdentifier>{c9f20846-fbe6-4082-8a2f-02e2576ddbbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rtti">
+      <UniqueIdentifier>{3f24fbb3-dbc5-4492-86a8-352b9add9ab1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\winapi">
+      <UniqueIdentifier>{dbb4d655-d935-4417-8a44-6cab6dd344aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\macros">
+      <UniqueIdentifier>{caac0637-45b1-42a0-9285-15fb982aaea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\model_loader">
+      <UniqueIdentifier>{4426de22-30a0-4ff6-8af6-8579a9f9c005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\logger">
+      <UniqueIdentifier>{50279db5-9d78-4e8f-9aa2-319af3c3f86d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\image_loader">
+      <UniqueIdentifier>{d50f96e8-a472-4f24-be34-6eedb7824a38}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\pch.cpp">
+      <Filter>pch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Observable.cpp">
+      <Filter>src\patterns\observer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Observer.cpp">
+      <Filter>src\patterns\observer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IObservable.cpp">
+      <Filter>src\patterns\observer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Event.cpp">
+      <Filter>src\patterns\observer\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Clock.cpp">
+      <Filter>src\time</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AssimpLoader.cpp">
+      <Filter>src\model_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StbImage.cpp">
+      <Filter>src\image_loader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StbImageLoader.cpp">
+      <Filter>src\image_loader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\pch.h">
+      <Filter>pch</Filter>
+    </ClInclude>
+    <ClInclude Include="include\uitls.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entt.h">
+      <Filter>src\entt</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Observer.h">
+      <Filter>src\patterns\observer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Observable.h">
+      <Filter>src\patterns\observer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IObservable.h">
+      <Filter>src\patterns\observer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Event.h">
+      <Filter>src\patterns\observer\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Clock.h">
+      <Filter>src\time</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Rtti.h">
+      <Filter>src\rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WindowsAPI.h">
+      <Filter>src\winapi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Macros.h">
+      <Filter>src\macros</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AssimpLoader.h">
+      <Filter>src\model_loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Logger.h">
+      <Filter>src\logger</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StbImage.h">
+      <Filter>src\image_loader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StbImageLoader.h">
+      <Filter>src\image_loader</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

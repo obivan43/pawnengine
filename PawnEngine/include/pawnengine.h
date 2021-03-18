@@ -1,0 +1,10 @@
+﻿#pragma once
+
+#include "../src/TransformationComponent.h"
+#include "../src/CameraComponent.h"
+#include "../src/NameComponent.h"
+#include "../src/MeshComponent.h"
+
+#include "../src/Entity.h"
+#include "../src/Scene.h"
+#include "../src/Engine.h"
