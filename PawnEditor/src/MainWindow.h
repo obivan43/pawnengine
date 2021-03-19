@@ -5,6 +5,7 @@
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QTextEdit>
 #include <QCloseEvent>
 
 class MainWindow : public QMainWindow {
@@ -26,14 +27,19 @@ class MainWindow : public QMainWindow {
         void InitInspectorPanel();
 
         void UpdateInspectorPanel();
+        void UpdateSceneHierarchy();
 
     private slots:
         void OnSceneHierarchyItemClecked(QTreeWidgetItem* item, int index);
+        void OnLineEditPress();
 
     public:
         bool Running = true;
 
     private:
+        QTextEdit* m_Console;
+        QDockWidget* m_ConsoleDockWidget;
+
         QTreeWidget* m_SceneHierarchy;
         QDockWidget* m_SceneHierarchyDockWidget;
 
@@ -48,7 +54,7 @@ class MainWindow : public QMainWindow {
         QFrame* m_EngineView;
 
 		const uint32_t DefaultWidth = 1280;
-		const uint32_t DefaultHeight = 1024;
+		const uint32_t DefaultHeight = 720;
 
         pawn::Entity m_SelectedEntity;
 

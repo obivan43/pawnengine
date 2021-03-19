@@ -4,6 +4,8 @@
 
 #include <QtWidgets/QHBoxLayout>
 
+#include <string>
+
 #include "gtc/matrix_transform.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -25,18 +27,25 @@ MainWindow::MainWindow(QWidget *parent)
 
 	m_InspectorDockWidget = new QDockWidget("Inspector", this);
 	m_InspectorDockWidget->setWidget(m_Inspector);
-	addDockWidget(Qt::LeftDockWidgetArea, m_InspectorDockWidget);
+	addDockWidget(Qt::RightDockWidgetArea, m_InspectorDockWidget);
+
+	m_Console = new QTextEdit(this);
+
+	m_ConsoleDockWidget = new QDockWidget("Output", this);
+	m_ConsoleDockWidget->setWidget(m_Console);
+	addDockWidget(Qt::BottomDockWidgetArea, m_ConsoleDockWidget);
 
 	setCentralWidget(m_EngineView);
 
 	setWindowTitle("Pawn Engine Editor");
-	setWindowIcon(QIcon(":/editor/pawn.png"));
+	setWindowIcon(QIcon(":/pawn.png"));
 
 	InitEngine();
 	InitSceneHierarchy();
 	InitInspectorPanel();
 
 	connect(m_SceneHierarchy, SIGNAL(itemClicked(QTreeWidgetItem*, int)), SLOT(OnSceneHierarchyItemClecked(QTreeWidgetItem*, int)));
+	connect(entityLineEdit, SIGNAL(returnPressed()), SLOT(OnLineEditPress()));
 }
 
 void MainWindow::closeEvent(QCloseEvent* event) {
@@ -78,6 +87,13 @@ void MainWindow::InitSceneHierarchy() {
 	});
 }
 
+void MainWindow::UpdateSceneHierarchy() {
+	m_SceneHierarchy->clear();
+	InitSceneHierarchy();
+
+	m_SceneHierarchy->expandAll();
+}
+
 void MainWindow::InitInspectorPanel() {
 	m_Tag = new QTreeWidgetItem(m_Inspector);
 	m_Tag->setText(0, "Tag");
@@ -115,4 +131,16 @@ void MainWindow::OnSceneHierarchyItemClecked(QTreeWidgetItem* item, int index) {
 	TreeEntityWidgetItem* entityWidgetItem = reinterpret_cast<TreeEntityWidgetItem*>(item);
 	m_SelectedEntity = entityWidgetItem->GetEntity();
 	UpdateInspectorPanel();
+}
+
+void MainWindow::OnLineEditPress() {
+	QString& text = entityLineEdit->text();
+
+	if (!m_SelectedEntity.IsNull()) {
+		std::string& name = m_SelectedEntity.GetComponent<pawn::NameComponent>().m_Name;
+		name = text.toLocal8Bit().constData();
+	}
+
+	entityLineEdit->clearFocus();
+	UpdateSceneHierarchy();
 }

@@ -29,8 +29,8 @@ namespace pawn {
 			);
 
 			void SetPerspective(
-				float fov = 65.0f,
-				float aspectRatio = 4.0f / 3.0f,
+				float fov = 90.0f,
+				float aspectRatio = 16.0f / 9.0f,
 				float zNear = 0.001f,
 				float zFar = 1000.0f
 			);

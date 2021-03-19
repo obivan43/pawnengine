@@ -13,6 +13,11 @@
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
+	QFile file(":/dark.qss");
+	if (file.open(QFile::ReadOnly | QFile::Text)) {
+		QTextStream stream(&file);
+		app.setStyleSheet(stream.readAll());
+	}
 
     MainWindow window;
     window.show();
