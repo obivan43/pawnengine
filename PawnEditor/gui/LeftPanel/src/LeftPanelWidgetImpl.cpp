@@ -4,14 +4,13 @@
 
 namespace impl {
 
-	LeftPanelWidgetImpl::LeftPanelWidgetImpl(std::shared_ptr<pawn::Scene>& scene, QWidget* parent) : LeftPanelWidget(parent), m_Scene(scene) {
+	LeftPanelWidgetImpl::LeftPanelWidgetImpl(QWidget* parent) : LeftPanelWidget(parent) {
 		m_HierarchyPanel = new QTreeWidget(this);
 		m_HierarchyPanel->setHeaderHidden(true);
 
 		setWindowTitle("Scene Hierarchy");
 		setWidget(m_HierarchyPanel);
 
-		InitHierarchyPanel();
 		InitConnections();
 	}
 
@@ -19,6 +18,13 @@ namespace impl {
 		m_HierarchyPanel->clear();
 		InitHierarchyPanel();
 		m_HierarchyPanel->expandAll();
+	}
+
+	void LeftPanelWidgetImpl::OnActiveSceneChanged(std::shared_ptr<pawn::Scene> scene) {
+		if (m_Scene.get() != scene.get()) {
+			m_Scene = scene;
+			InitHierarchyPanel();
+		}
 	}
 
 	void LeftPanelWidgetImpl::InitHierarchyPanel() {

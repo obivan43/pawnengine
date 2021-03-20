@@ -25,6 +25,10 @@ class MainWindow : public QMainWindow {
 
     private:
         void InitEngine();
+        void InitConnections();
+
+    signals:
+        void ActiveSceneChanged(std::shared_ptr<pawn::Scene>);
 
     public:
         bool Running = true;

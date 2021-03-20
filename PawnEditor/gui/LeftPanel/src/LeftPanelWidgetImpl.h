@@ -11,7 +11,7 @@ namespace impl {
 			Q_OBJECT
 
 		public:
-			LeftPanelWidgetImpl(std::shared_ptr<pawn::Scene>& scene, QWidget* parent);
+			LeftPanelWidgetImpl(QWidget* parent);
 
 			void RefreshPanel();
 
@@ -24,6 +24,7 @@ namespace impl {
 
 		public slots:
 			void OnHierarchyItemClicked(QTreeWidgetItem* item, int index);
+			void OnActiveSceneChanged(std::shared_ptr<pawn::Scene> scene);
 			void OnEntityModified();
 
 		private:
