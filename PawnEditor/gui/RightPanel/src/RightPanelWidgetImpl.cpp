@@ -40,7 +40,7 @@ namespace impl {
 		if (!m_SelectedEntity.IsNull()) {
 			pawn::TagComponent& nameComponent = m_SelectedEntity.GetComponent<pawn::TagComponent>();
 
-			m_TagLineEdit->setText(nameComponent.m_Name.c_str());
+			m_TagLineEdit->setText(nameComponent.Tag.c_str());
 
 			m_TagItem->setHidden(false);
 			m_TagWidgetWrapper->setHidden(false);
@@ -57,7 +57,7 @@ namespace impl {
 		QString& text = m_TagLineEdit->text();
 
 		if (!m_SelectedEntity.IsNull()) {
-			std::string& name = m_SelectedEntity.GetComponent<pawn::TagComponent>().m_Name;
+			std::string& name = m_SelectedEntity.GetComponent<pawn::TagComponent>().Tag;
 			name = text.toLocal8Bit().constData();
 		}
 

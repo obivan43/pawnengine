@@ -3,6 +3,6 @@
 
 namespace pawn {
 
-	TagComponent::TagComponent(const std::string& name) : m_Name(name) {}
+	TagComponent::TagComponent(const std::string& tag) : Tag(tag) {}
 
 }

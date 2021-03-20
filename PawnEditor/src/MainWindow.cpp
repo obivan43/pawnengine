@@ -3,7 +3,6 @@
 
 #include <string>
 
-#include "gtc/matrix_transform.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), m_Engine(nullptr) {
@@ -45,9 +44,9 @@ void MainWindow::InitEngine() {
 
 	pawn::Entity camera = m_Engine->GetScene()->CreateEntity("Camera");
 	pawn::CameraComponent& cameraComponent = camera.AddComponent<pawn::CameraComponent>();
-	cameraComponent.m_Camera.SetPerspective();
-	cameraComponent.m_IsActiveCamera = true;
+	cameraComponent.Camera.SetPerspective();
+	cameraComponent.IsActiveCamera = true;
 
 	pawn::TransformationComponent& transformationComponent = camera.GetComponent<pawn::TransformationComponent>();
-	transformationComponent.m_Transformation = glm::translate(transformationComponent.m_Transformation, glm::vec3(0.0f, 0.0f, 4.0f));
+	transformationComponent.Translate(glm::vec3(0.0f, 0.0f, 4.0f));
 }

@@ -16,10 +16,10 @@ namespace pawn {
 		MeshComponent& operator=(const MeshComponent& other) = default;
 		MeshComponent& operator=(MeshComponent&& other) noexcept = default;
 
-		operator std::shared_ptr<pawn::Mesh>& () { return m_Mesh; }
-		operator const std::shared_ptr<pawn::Mesh>& () const { return m_Mesh; }
+		operator std::shared_ptr<pawn::Mesh>& () { return Mesh; }
+		operator const std::shared_ptr<pawn::Mesh>& () const { return Mesh; }
 
-		std::shared_ptr<pawn::Mesh> m_Mesh;
+		std::shared_ptr<pawn::Mesh> Mesh;
 	};
 
 }

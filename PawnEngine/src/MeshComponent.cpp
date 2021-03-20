@@ -3,6 +3,6 @@
 
 namespace pawn {
 
-	MeshComponent::MeshComponent(const std::shared_ptr<pawn::Mesh>& mesh) : m_Mesh(mesh) {};
+	MeshComponent::MeshComponent(const std::shared_ptr<pawn::Mesh>& mesh) : Mesh(mesh) {};
 
 }

@@ -29,7 +29,7 @@ namespace impl {
 
 		registry.each([&](auto entityID) {
 			pawn::Entity entity(entityID, m_Scene.get());
-			std::string& name = entity.GetComponent<pawn::TagComponent>().m_Name;
+			std::string& name = entity.GetComponent<pawn::TagComponent>().Tag;
 
 			HierarchyWidgetItem* item = new HierarchyWidgetItem(entity, name.c_str(), root);
 			root->addChild((QTreeWidgetItem*)item);

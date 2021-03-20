@@ -30,9 +30,9 @@ namespace pawn {
 		for (auto& entity : cameraGroup) {
 			auto [transformationComponent, cameraComponent] = cameraGroup.get<TransformationComponent, CameraComponent>(entity);
 
-			if (cameraComponent.m_IsActiveCamera) {
-				activeCamera = &cameraComponent.m_Camera;
-				acitveCameraTransformation = transformationComponent.m_Transformation;
+			if (cameraComponent.IsActiveCamera) {
+				activeCamera = &cameraComponent.Camera;
+				acitveCameraTransformation = transformationComponent.Transformation;
 				break;
 			}
 		}

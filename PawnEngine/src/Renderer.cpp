@@ -31,11 +31,11 @@ namespace pawn {
 	}
 
 	void Renderer::DrawMesh(TransformationComponent& transformationComponent, MeshComponent& meshComponent) {
-		m_Transformation->Update(m_Context, &transformationComponent.m_Transformation, 1, sizeof(glm::mat4));
+		m_Transformation->Update(m_Context, &transformationComponent.Transformation, 1, sizeof(glm::mat4));
 		m_Transformation->Bind(m_Context, 0);
 
-		meshComponent.m_Mesh->Bind(m_Context);
-		m_GraphicsRenderer->DrawIndexed(m_Context, meshComponent.m_Mesh->GetIndexBuffer());
+		meshComponent.Mesh->Bind(m_Context);
+		m_GraphicsRenderer->DrawIndexed(m_Context, meshComponent.Mesh->GetIndexBuffer());
 	}
 
 	void Renderer::EndScene() {}

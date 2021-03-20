@@ -14,10 +14,12 @@ namespace pawn {
 		TransformationComponent& operator=(const TransformationComponent& other) = default;
 		TransformationComponent& operator=(TransformationComponent&& other) noexcept = default;
 
-		operator glm::mat4& () { return m_Transformation; }
-		operator const glm::mat4& () const { return m_Transformation; }
+		operator glm::mat4& () { return Transformation; }
+		operator const glm::mat4& () const { return Transformation; }
 
-		glm::mat4 m_Transformation = glm::mat4(1.0f);
+		void Translate(const glm::vec3& position);
+
+		glm::mat4 Transformation = glm::mat4(1.0f);
 	};
 
 }

@@ -15,11 +15,11 @@ namespace pawn {
 		CameraComponent& operator=(const CameraComponent& other) = default;
 		CameraComponent& operator=(CameraComponent&& other) noexcept = default;
 
-		operator pawn::Camera& () { return m_Camera; }
-		operator const pawn::Camera& () const { return m_Camera; }
+		operator pawn::Camera& () { return Camera; }
+		operator const pawn::Camera& () const { return Camera; }
 
-		pawn::Camera m_Camera;
-		bool m_IsActiveCamera = false;
+		pawn::Camera Camera;
+		bool IsActiveCamera = false;
 
 	};
 
