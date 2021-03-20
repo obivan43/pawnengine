@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
 	m_HierarchyWindow = HierarchyWindow::CreateImpl(m_Engine->GetScene(), this);
 	addDockWidget(Qt::LeftDockWidgetArea, m_HierarchyWindow);
 
-	connect(entityLineEdit, SIGNAL(returnPressed()), SLOT(OnLineEditPress()));
+	connect(m_EntityNameLineEdit, SIGNAL(returnPressed()), SLOT(OnLineEditPress()));
 	connect(m_HierarchyWindow, SIGNAL(SelectedEntityChanged(pawn::Entity)), SLOT(OnSelectedEntityChanged(pawn::Entity)));
 }
 
@@ -70,32 +70,27 @@ void MainWindow::InitInspectorPanel() {
 	m_TagChild= new QTreeWidgetItem(m_Tag);
 	m_TagChild->setHidden(true);
 
-	entityLineEdit = new QLineEdit();
-	entityLineEdit->setHidden(true);
-	m_Inspector->setItemWidget(m_TagChild, 0, entityLineEdit);
+	m_EntityNameLineEdit = new QLineEdit();
+	m_EntityNameLineEdit->setHidden(true);
+	m_Inspector->setItemWidget(m_TagChild, 0, m_EntityNameLineEdit);
 
 	m_Tag->addChild(m_TagChild);
-
-	m_Transformation = new QTreeWidgetItem(m_Inspector);
-	m_Transformation->setText(0, "Transformation");
-	m_Inspector->addTopLevelItem(m_Transformation);
-	m_Transformation->setHidden(true);
 }
 
 void MainWindow::UpdateInspectorPanel() {
 	if (!m_SelectedEntity.IsNull()) {
 		pawn::NameComponent& nameComponent = m_SelectedEntity.GetComponent<pawn::NameComponent>();
 
-		entityLineEdit->setText(nameComponent.m_Name.c_str());
+		m_EntityNameLineEdit->setText(nameComponent.m_Name.c_str());
 
 		m_Tag->setHidden(false);
 		m_TagChild->setHidden(false);
-		entityLineEdit->setHidden(false);
+		m_EntityNameLineEdit->setHidden(false);
 	}
 }
 
 void MainWindow::OnLineEditPress() {
-	QString& text = entityLineEdit->text();
+	QString& text = m_EntityNameLineEdit->text();
 
 	if (!m_SelectedEntity.IsNull()) {
 		std::string& name = m_SelectedEntity.GetComponent<pawn::NameComponent>().m_Name;
@@ -103,7 +98,7 @@ void MainWindow::OnLineEditPress() {
 	}
 
 	((impl::HierarchyWindowImpl*)m_HierarchyWindow)->RefreshPanel();
-	entityLineEdit->clearFocus();
+	m_EntityNameLineEdit->clearFocus();
 }
 
 void MainWindow::OnSelectedEntityChanged(pawn::Entity entity) {

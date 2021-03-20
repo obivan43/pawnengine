@@ -42,9 +42,8 @@ class MainWindow : public QMainWindow {
 
         QTreeWidgetItem* m_Tag;
         QTreeWidgetItem* m_TagChild;
-        QLineEdit* entityLineEdit;
-        QTreeWidgetItem* m_Transformation;
         QLineEdit* m_EntityNameLineEdit;
+
 		QTreeWidget* m_Inspector;
 		QDockWidget* m_InspectorDockWidget;
 
