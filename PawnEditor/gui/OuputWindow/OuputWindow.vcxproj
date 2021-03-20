@@ -132,7 +132,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\output.h" />
+    <ClInclude Include="include\outputwindow.h" />
     <ClInclude Include="src\OutputStream.h" />
     <ClInclude Include="src\OutputWindow.h" />
     <QtMoc Include="src\OutputWindowImpl.h" />

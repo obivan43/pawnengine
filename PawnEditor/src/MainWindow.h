@@ -7,7 +7,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QCloseEvent>
 
-#include "gui/OuputWindow/include/output.h"
+#include "gui/OuputWindow/include/outputwindow.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT

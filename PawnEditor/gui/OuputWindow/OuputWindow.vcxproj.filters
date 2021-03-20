@@ -30,7 +30,7 @@
     <ClInclude Include="src\pch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="include\output.h">
+    <ClInclude Include="include\outputwindow.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="src\OutputWindow.h">
