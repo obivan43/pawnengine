@@ -2,7 +2,7 @@
 
 #include "Entity.h"
 #include "TransformationComponent.h"
-#include "NameComponent.h"
+#include "TagComponent.h"
 #include "CameraComponent.h"
 #include "MeshComponent.h"
 

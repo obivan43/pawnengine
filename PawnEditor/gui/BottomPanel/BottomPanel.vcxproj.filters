@@ -16,13 +16,13 @@
     <ClCompile Include="src\pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\HierarchyWindow.cpp">
+    <ClCompile Include="src\BottomPanelWidget.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\HierarchyWindowImpl.cpp">
+    <ClCompile Include="src\BottomPanelWidgetImpl.cpp">
       <Filter>src\impl</Filter>
     </ClCompile>
-    <ClCompile Include="src\HierarchyWidgetItem.cpp">
+    <ClCompile Include="src\OutputStream.cpp">
       <Filter>src\impl</Filter>
     </ClCompile>
   </ItemGroup>
@@ -30,19 +30,19 @@
     <ClInclude Include="src\pch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="include\hierarchywindow.h">
+    <ClInclude Include="include\bottompanelwidget.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="src\HierarchyWidgetItem.h">
+    <ClInclude Include="src\BottomPanelWidget.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OutputStream.h">
       <Filter>src\impl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="src\HierarchyWindowImpl.h">
+    <QtMoc Include="src\BottomPanelWidgetImpl.h">
       <Filter>src\impl</Filter>
-    </QtMoc>
-    <QtMoc Include="src\HierarchyWindow.h">
-      <Filter>src</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

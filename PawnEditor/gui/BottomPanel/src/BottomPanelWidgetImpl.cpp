@@ -1,9 +1,9 @@
 #include "pch.h"
-#include "OutputWindowImpl.h"
+#include "BottomPanelWidgetImpl.h"
 
 namespace impl {
 
-	OutputWindowImpl::OutputWindowImpl(QWidget* parent) : OutputWindow(parent) {
+	BottomPanelWidgetImpl::BottomPanelWidgetImpl(QWidget* parent) : BottomPanelWidget(parent) {
 		m_OutputTextEdit = new QTextEdit(this);
 		m_OutputTextEdit->setReadOnly(true);
 

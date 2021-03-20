@@ -1,17 +1,17 @@
 #pragma once
 
-#include "HierarchyWindow.h"
+#include "LeftPanelWidget.h"
 
 #include <QtWidgets/QTreeWidget>
 #include <memory>
 
 namespace impl {
 
-	class HierarchyWindowImpl : public HierarchyWindow {
+	class LeftPanelWidgetImpl : public LeftPanelWidget {
 			Q_OBJECT
 
 		public:
-			HierarchyWindowImpl(std::shared_ptr<pawn::Scene>& scene, QWidget* parent);
+			LeftPanelWidgetImpl(std::shared_ptr<pawn::Scene>& scene, QWidget* parent);
 
 			void RefreshPanel();
 

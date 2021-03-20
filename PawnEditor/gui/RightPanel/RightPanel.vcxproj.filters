@@ -16,13 +16,10 @@
     <ClCompile Include="src\pch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\OutputWindow.cpp">
+    <ClCompile Include="src\RightPanelWidget.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\OutputWindowImpl.cpp">
-      <Filter>src\impl</Filter>
-    </ClCompile>
-    <ClCompile Include="src\OutputStream.cpp">
+    <ClCompile Include="src\RightPanelWidgetImpl.cpp">
       <Filter>src\impl</Filter>
     </ClCompile>
   </ItemGroup>
@@ -30,18 +27,15 @@
     <ClInclude Include="src\pch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="include\outputwindow.h">
+    <ClInclude Include="include\rightpanelwidget.h">
       <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="src\OutputWindow.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\OutputStream.h">
-      <Filter>src\impl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="src\OutputWindowImpl.h">
+    <QtMoc Include="src\RightPanelWidget.h">
+      <Filter>src</Filter>
+    </QtMoc>
+    <QtMoc Include="src\RightPanelWidgetImpl.h">
       <Filter>src\impl</Filter>
     </QtMoc>
   </ItemGroup>

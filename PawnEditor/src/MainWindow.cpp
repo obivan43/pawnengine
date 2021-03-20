@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
 	m_EngineView = new QFrame(this);
 	m_EngineView->setFixedSize(DefaultWidth, DefaultHeight);
 
-	m_OutputWindow = OutputWindow::CreateImpl(this);
+	m_OutputWindow = BottomPanelWidget::CreateImpl(this);
 	addDockWidget(Qt::BottomDockWidgetArea, m_OutputWindow);
 
 	m_Inspector = new QTreeWidget(this);
@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
 	InitEngine();
 	InitInspectorPanel();
 
-	m_HierarchyWindow = HierarchyWindow::CreateImpl(m_Engine->GetScene(), this);
+	m_HierarchyWindow = LeftPanelWidget::CreateImpl(m_Engine->GetScene(), this);
 	addDockWidget(Qt::LeftDockWidgetArea, m_HierarchyWindow);
 
 	connect(m_EntityNameLineEdit, SIGNAL(returnPressed()), SLOT(OnLineEditPress()));
@@ -79,7 +79,7 @@ void MainWindow::InitInspectorPanel() {
 
 void MainWindow::UpdateInspectorPanel() {
 	if (!m_SelectedEntity.IsNull()) {
-		pawn::NameComponent& nameComponent = m_SelectedEntity.GetComponent<pawn::NameComponent>();
+		pawn::TagComponent& nameComponent = m_SelectedEntity.GetComponent<pawn::TagComponent>();
 
 		m_EntityNameLineEdit->setText(nameComponent.m_Name.c_str());
 
@@ -93,11 +93,11 @@ void MainWindow::OnLineEditPress() {
 	QString& text = m_EntityNameLineEdit->text();
 
 	if (!m_SelectedEntity.IsNull()) {
-		std::string& name = m_SelectedEntity.GetComponent<pawn::NameComponent>().m_Name;
+		std::string& name = m_SelectedEntity.GetComponent<pawn::TagComponent>().m_Name;
 		name = text.toLocal8Bit().constData();
 	}
 
-	((impl::HierarchyWindowImpl*)m_HierarchyWindow)->RefreshPanel();
+	((impl::LeftPanelWidgetImpl*)m_HierarchyWindow)->RefreshPanel();
 	m_EntityNameLineEdit->clearFocus();
 }
 

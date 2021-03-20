@@ -29,7 +29,7 @@
     <ClCompile Include="src\CameraComponent.cpp">
       <Filter>src\components</Filter>
     </ClCompile>
-    <ClCompile Include="src\NameComponent.cpp">
+    <ClCompile Include="src\TagComponent.cpp">
       <Filter>src\components</Filter>
     </ClCompile>
     <ClCompile Include="src\TransformationComponent.cpp">
@@ -64,7 +64,7 @@
     <ClInclude Include="src\CameraComponent.h">
       <Filter>src\components</Filter>
     </ClInclude>
-    <ClInclude Include="src\NameComponent.h">
+    <ClInclude Include="src\TagComponent.h">
       <Filter>src\components</Filter>
     </ClInclude>
     <ClInclude Include="src\TransformationComponent.h">

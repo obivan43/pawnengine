@@ -163,11 +163,14 @@ exit</Command>
     <ProjectReference Include="..\PawnUtils\PawnUtils.vcxproj">
       <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
     </ProjectReference>
-    <ProjectReference Include="gui\Hierarchy\Hierarchy.vcxproj">
+    <ProjectReference Include="gui\BottomPanel\BottomPanel.vcxproj">
+      <Project>{071216a2-e9ac-49e0-a60f-a3eed82ff5c4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="gui\LeftPanel\LeftPanel.vcxproj">
       <Project>{012e8e66-1b41-4c74-9255-89eed1d2ffad}</Project>
     </ProjectReference>
-    <ProjectReference Include="gui\OuputWindow\OuputWindow.vcxproj">
-      <Project>{071216a2-e9ac-49e0-a60f-a3eed82ff5c4}</Project>
+    <ProjectReference Include="gui\RightPanel\RightPanel.vcxproj">
+      <Project>{0772e707-170e-4f4b-971e-38089bb728a0}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

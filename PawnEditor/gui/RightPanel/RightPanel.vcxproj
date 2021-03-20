@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{012E8E66-1B41-4C74-9255-89EED1D2FFAD}</ProjectGuid>
+    <ProjectGuid>{0772E707-170E-4F4B-971E-38089BB728A0}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
@@ -123,20 +123,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\HierarchyWindow.cpp" />
-    <ClCompile Include="src\HierarchyWindowImpl.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\HierarchyWidgetItem.cpp" />
+    <ClCompile Include="src\RightPanelWidget.cpp" />
+    <ClCompile Include="src\RightPanelWidgetImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\hierarchywindow.h" />
-    <QtMoc Include="src\HierarchyWindow.h" />
-    <ClInclude Include="src\HierarchyWidgetItem.h" />
-    <QtMoc Include="src\HierarchyWindowImpl.h" />
+    <ClInclude Include="include\rightpanelwidget.h" />
     <ClInclude Include="src\pch.h" />
+    <QtMoc Include="src\RightPanelWidgetImpl.h" />
+    <QtMoc Include="src\RightPanelWidget.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\PawnEngine\PawnEngine.vcxproj">

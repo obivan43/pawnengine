@@ -124,18 +124,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\OutputStream.cpp" />
-    <ClCompile Include="src\OutputWindow.cpp" />
-    <ClCompile Include="src\OutputWindowImpl.cpp" />
+    <ClCompile Include="src\BottomPanelWidget.cpp" />
+    <ClCompile Include="src\BottomPanelWidgetImpl.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\outputwindow.h" />
+    <ClInclude Include="include\bottompanelwidget.h" />
     <ClInclude Include="src\OutputStream.h" />
-    <ClInclude Include="src\OutputWindow.h" />
-    <QtMoc Include="src\OutputWindowImpl.h" />
+    <ClInclude Include="src\BottomPanelWidget.h" />
+    <QtMoc Include="src\BottomPanelWidgetImpl.h" />
     <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>

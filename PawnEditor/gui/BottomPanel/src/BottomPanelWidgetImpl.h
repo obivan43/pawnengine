@@ -1,17 +1,17 @@
 #pragma once
 
-#include "OutputWindow.h"
+#include "BottomPanelWidget.h"
 #include "OutputStream.h"
 
 #include <QtWidgets/QTextEdit>
 
 namespace impl {
 
-	class OutputWindowImpl : public OutputWindow {
+	class BottomPanelWidgetImpl : public BottomPanelWidget {
 		Q_OBJECT
 
 		public:
-			OutputWindowImpl(QWidget* parent);
+			BottomPanelWidgetImpl(QWidget* parent);
 
 		private:
 			QTextEdit* m_OutputTextEdit;

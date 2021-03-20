@@ -7,8 +7,8 @@
 #include <QtWidgets/QLineEdit>
 #include <QCloseEvent>
 
-#include "gui/OuputWindow/include/outputwindow.h"
-#include "gui/Hierarchy/include/hierarchywindow.h"
+#include "gui/BottomPanel/include/bottompanelwidget.h"
+#include "gui/LeftPanel/include/leftpanelwidget.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -37,8 +37,8 @@ class MainWindow : public QMainWindow {
         bool Running = true;
 
     private:
-        OutputWindow* m_OutputWindow;
-        HierarchyWindow* m_HierarchyWindow;
+        BottomPanelWidget* m_OutputWindow;
+        LeftPanelWidget* m_HierarchyWindow;
 
         QTreeWidgetItem* m_Tag;
         QTreeWidgetItem* m_TagChild;

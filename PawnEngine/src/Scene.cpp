@@ -2,7 +2,7 @@
 #include "Scene.h"
 #include "Entity.h"
 #include "TransformationComponent.h"
-#include "NameComponent.h"
+#include "TagComponent.h"
 #include "CameraComponent.h"
 #include "MeshComponent.h"
 #include "Renderer.h"
@@ -13,7 +13,7 @@ namespace pawn {
 		const entt::entity entityID = m_EnttRegistry.create();
 		
 		m_EnttRegistry.emplace<TransformationComponent>(entityID);
-		m_EnttRegistry.emplace<NameComponent>(entityID, name == "" ? ("Entity") : name);
+		m_EnttRegistry.emplace<TagComponent>(entityID, name == "" ? ("Entity") : name);
 		
 		const Entity entity(entityID, this);
 		return entity;
