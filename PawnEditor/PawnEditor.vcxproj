@@ -90,6 +90,7 @@ exit</Command>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>zlibd.lib;zlibstaticd.lib;spdlog.lib;IrrXMLd.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -120,6 +121,7 @@ exit</Command>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>zlib.lib;zlibstatic.lib;spdlog.lib;IrrXML.lib;assimp-vc142-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
