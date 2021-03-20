@@ -64,7 +64,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)src\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;PAWN_DIRECTX11;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -94,7 +94,7 @@ exit</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)src\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;PAWN_DIRECTX11;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -160,6 +160,9 @@ exit</Command>
     </ProjectReference>
     <ProjectReference Include="..\PawnUtils\PawnUtils.vcxproj">
       <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
+    </ProjectReference>
+    <ProjectReference Include="gui\OuputWindow\OuputWindow.vcxproj">
+      <Project>{071216a2-e9ac-49e0-a60f-a3eed82ff5c4}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -12,6 +12,8 @@
 #endif
 
 int main(int argc, char *argv[]) {
+    pawn::Logger::Init();
+
     QApplication app(argc, argv);
 	QFile file(":/dark.qss");
 	if (file.open(QFile::ReadOnly | QFile::Text)) {

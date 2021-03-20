@@ -15,6 +15,7 @@
     <ClCompile Include="src\Clock.cpp" />
     <ClCompile Include="src\Event.cpp" />
     <ClCompile Include="src\IObservable.cpp" />
+    <ClCompile Include="src\Logger.cpp" />
     <ClCompile Include="src\Observable.cpp" />
     <ClCompile Include="src\Observer.cpp" />
     <ClCompile Include="src\pch.cpp">

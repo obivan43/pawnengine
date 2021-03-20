@@ -5,8 +5,9 @@
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QTextEdit>
 #include <QCloseEvent>
+
+#include "gui/OuputWindow/include/output.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -37,8 +38,7 @@ class MainWindow : public QMainWindow {
         bool Running = true;
 
     private:
-        QTextEdit* m_Console;
-        QDockWidget* m_ConsoleDockWidget;
+        OutputWindow* m_OutputWindow;
 
         QTreeWidget* m_SceneHierarchy;
         QDockWidget* m_SceneHierarchyDockWidget;

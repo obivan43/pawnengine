@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 	QHBoxLayout* layout = new QHBoxLayout(this);
 
 	m_EngineView = new QFrame(this);
-	m_EngineView->setMinimumSize(DefaultWidth, DefaultHeight);
+	m_EngineView->setFixedSize(DefaultWidth, DefaultHeight);
 
 	m_SceneHierarchy = new QTreeWidget(this);
 	m_SceneHierarchy->setHeaderHidden(true);
@@ -29,11 +29,8 @@ MainWindow::MainWindow(QWidget *parent)
 	m_InspectorDockWidget->setWidget(m_Inspector);
 	addDockWidget(Qt::RightDockWidgetArea, m_InspectorDockWidget);
 
-	m_Console = new QTextEdit(this);
-
-	m_ConsoleDockWidget = new QDockWidget("Output", this);
-	m_ConsoleDockWidget->setWidget(m_Console);
-	addDockWidget(Qt::BottomDockWidgetArea, m_ConsoleDockWidget);
+	m_OutputWindow = OutputWindow::createImpl(this);
+	addDockWidget(Qt::BottomDockWidgetArea, m_OutputWindow);
 
 	setCentralWidget(m_EngineView);
 

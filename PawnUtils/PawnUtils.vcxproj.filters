@@ -74,6 +74,9 @@
     <ClCompile Include="src\StbImageLoader.cpp">
       <Filter>src\image_loader</Filter>
     </ClCompile>
+    <ClCompile Include="src\Logger.cpp">
+      <Filter>src\logger</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">

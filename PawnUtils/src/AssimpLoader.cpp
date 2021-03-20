@@ -33,12 +33,12 @@ namespace pawn {
 		m_ModelScene = m_Importer->ReadFile(file, aiProcessPreset_TargetRealtime_MaxQuality);
 
 		if (!m_ModelScene) {
-			CONSOLE_INFO("Assimp loader: Model not loaded")
+			CONSOLE_INFO("Assimp loader: Model not loaded {}", file)
 			return false;
 		}
 
 		ProcessData();
-		CONSOLE_INFO("Assimp loader: Model loaded")
+		CONSOLE_INFO("Assimp loader: Model loaded {}", file)
 
 		return true;
 	}
