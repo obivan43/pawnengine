@@ -3,7 +3,6 @@
 
 #include <string>
 
-
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent), m_Engine(nullptr) {
 	setWindowTitle("Pawn Engine Editor");

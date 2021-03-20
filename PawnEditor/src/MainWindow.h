@@ -2,7 +2,6 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QDockWidget>
-#include <QtWidgets/QFrame>
 #include <QCloseEvent>
 
 #include "gui/BottomPanel/include/bottompanelwidget.h"
