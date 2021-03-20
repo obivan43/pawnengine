@@ -6,13 +6,13 @@
 #include "gtc/matrix_transform.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
-	: QMainWindow(parent), m_EngineView(nullptr), m_Engine(nullptr) {
+	: QMainWindow(parent), m_Engine(nullptr) {
 	setWindowTitle("Pawn Engine Editor");
 	setWindowIcon(QIcon(":/pawn.png"));
 
-	m_EngineView = new QFrame(this);
-	m_EngineView->setFixedSize(DefaultWidth, DefaultHeight);
-	setCentralWidget(m_EngineView);
+	m_CentralWidget = CentralWidget::CreateImpl(this);
+	m_CentralWidget->setFixedSize(DefaultWidth, DefaultHeight);
+	setCentralWidget(m_CentralWidget);
 
 	m_BottomPanel = BottomPanelWidget::CreateImpl(this);
 	m_RightPanel = RightPanelWidget::CreateImpl(this);
@@ -35,7 +35,7 @@ void MainWindow::closeEvent(QCloseEvent* event) {
 
 void MainWindow::InitEngine() {
 	m_Engine.reset(new pawn::Engine);
-	m_Engine->Init((HWND)m_EngineView->winId(), DefaultWidth, DefaultHeight);
+	m_Engine->Init(m_CentralWidget->GetWindowsHandle(), DefaultWidth, DefaultHeight);
 
 	m_Engine->UploadMeshFromFile("res\\assets\\models\\cube.obj");
 	m_Engine->UploadMeshFromFile("res\\assets\\models\\sphere.obj");

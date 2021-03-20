@@ -8,6 +8,7 @@
 #include "gui/BottomPanel/include/bottompanelwidget.h"
 #include "gui/LeftPanel/include/leftpanelwidget.h"
 #include "gui/RightPanel/include/rightpanelwidget.h"
+#include "gui/CentralWidget/include/centralwidget.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -32,8 +33,7 @@ class MainWindow : public QMainWindow {
         BottomPanelWidget* m_BottomPanel;
         LeftPanelWidget* m_LeftPanel;
         RightPanelWidget* m_RightPanel;
-
-        QFrame* m_EngineView;
+        CentralWidget* m_CentralWidget;
 
 		const uint32_t DefaultWidth = 1280;
 		const uint32_t DefaultHeight = 720;
