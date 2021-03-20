@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "MainWindow.h"
-#include "TreeEntityWidgetItem.h"
 
 #include <QtWidgets/QHBoxLayout>
 
@@ -9,18 +8,14 @@
 #include "gtc/matrix_transform.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
-	: QMainWindow(parent), m_EngineView(nullptr), m_SceneHierarchy(nullptr), m_SceneHierarchyDockWidget(nullptr), m_Engine(nullptr) {
+	: QMainWindow(parent), m_EngineView(nullptr), m_Engine(nullptr) {
 	QHBoxLayout* layout = new QHBoxLayout(this);
 
 	m_EngineView = new QFrame(this);
 	m_EngineView->setFixedSize(DefaultWidth, DefaultHeight);
 
-	m_SceneHierarchy = new QTreeWidget(this);
-	m_SceneHierarchy->setHeaderHidden(true);
-
-	m_SceneHierarchyDockWidget = new QDockWidget("Scene Hierarchy", this);
-	m_SceneHierarchyDockWidget->setWidget(m_SceneHierarchy);
-	addDockWidget(Qt::LeftDockWidgetArea, m_SceneHierarchyDockWidget);
+	m_OutputWindow = OutputWindow::CreateImpl(this);
+	addDockWidget(Qt::BottomDockWidgetArea, m_OutputWindow);
 
 	m_Inspector = new QTreeWidget(this);
 	m_Inspector->setHeaderHidden(true);
@@ -29,20 +24,18 @@ MainWindow::MainWindow(QWidget *parent)
 	m_InspectorDockWidget->setWidget(m_Inspector);
 	addDockWidget(Qt::RightDockWidgetArea, m_InspectorDockWidget);
 
-	m_OutputWindow = OutputWindow::createImpl(this);
-	addDockWidget(Qt::BottomDockWidgetArea, m_OutputWindow);
-
-	setCentralWidget(m_EngineView);
-
 	setWindowTitle("Pawn Engine Editor");
 	setWindowIcon(QIcon(":/pawn.png"));
+	setCentralWidget(m_EngineView);
 
 	InitEngine();
-	InitSceneHierarchy();
 	InitInspectorPanel();
 
-	connect(m_SceneHierarchy, SIGNAL(itemClicked(QTreeWidgetItem*, int)), SLOT(OnSceneHierarchyItemClecked(QTreeWidgetItem*, int)));
+	m_HierarchyWindow = HierarchyWindow::CreateImpl(m_Engine->GetScene(), this);
+	addDockWidget(Qt::LeftDockWidgetArea, m_HierarchyWindow);
+
 	connect(entityLineEdit, SIGNAL(returnPressed()), SLOT(OnLineEditPress()));
+	connect(m_HierarchyWindow, SIGNAL(SelectedEntityChanged(pawn::Entity)), SLOT(OnSelectedEntityChanged(pawn::Entity)));
 }
 
 void MainWindow::closeEvent(QCloseEvent* event) {
@@ -66,29 +59,6 @@ void MainWindow::InitEngine() {
 
 	pawn::TransformationComponent& transformationComponent = camera.GetComponent<pawn::TransformationComponent>();
 	transformationComponent.m_Transformation = glm::translate(transformationComponent.m_Transformation, glm::vec3(0.0f, 0.0f, 4.0f));
-}
-
-void MainWindow::InitSceneHierarchy() {
-	std::shared_ptr<pawn::Scene> scene = m_Engine->GetScene();
-	entt::registry& registry = scene->GetRegistry();
-
-	TreeEntityWidgetItem* root = new TreeEntityWidgetItem(pawn::Entity(), "Scene");
-	m_SceneHierarchy->addTopLevelItem(root);
-
-	registry.each([&](auto entityID) {
-		pawn::Entity entity(entityID, scene.get());
-		std::string& name = entity.GetComponent<pawn::NameComponent>().m_Name;
-		
-		TreeEntityWidgetItem* item = new TreeEntityWidgetItem(entity, name.c_str(), root);
-		root->addChild((QTreeWidgetItem*)item);
-	});
-}
-
-void MainWindow::UpdateSceneHierarchy() {
-	m_SceneHierarchy->clear();
-	InitSceneHierarchy();
-
-	m_SceneHierarchy->expandAll();
 }
 
 void MainWindow::InitInspectorPanel() {
@@ -124,12 +94,6 @@ void MainWindow::UpdateInspectorPanel() {
 	}
 }
 
-void MainWindow::OnSceneHierarchyItemClecked(QTreeWidgetItem* item, int index) {
-	TreeEntityWidgetItem* entityWidgetItem = reinterpret_cast<TreeEntityWidgetItem*>(item);
-	m_SelectedEntity = entityWidgetItem->GetEntity();
-	UpdateInspectorPanel();
-}
-
 void MainWindow::OnLineEditPress() {
 	QString& text = entityLineEdit->text();
 
@@ -138,6 +102,11 @@ void MainWindow::OnLineEditPress() {
 		name = text.toLocal8Bit().constData();
 	}
 
+	((impl::HierarchyWindowImpl*)m_HierarchyWindow)->RefreshPanel();
 	entityLineEdit->clearFocus();
-	UpdateSceneHierarchy();
+}
+
+void MainWindow::OnSelectedEntityChanged(pawn::Entity entity) {
+	m_SelectedEntity = entity;
+	UpdateInspectorPanel();
 }

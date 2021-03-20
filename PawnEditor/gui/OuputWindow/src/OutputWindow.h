@@ -5,7 +5,7 @@
 class OutputWindow : public QDockWidget {
 
 	public:
-		static OutputWindow* createImpl(QWidget* parent = Q_NULLPTR);
+		static OutputWindow* CreateImpl(QWidget* parent = Q_NULLPTR);
 
 	protected:
 		OutputWindow(QWidget* parent);

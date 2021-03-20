@@ -29,15 +29,9 @@
     <ClCompile Include="src\MainWindow.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\TreeEntityWidgetItem.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\TreeEntityWidgetItem.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,6 +8,7 @@
 #include <QCloseEvent>
 
 #include "gui/OuputWindow/include/outputwindow.h"
+#include "gui/Hierarchy/include/hierarchywindow.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -24,24 +25,20 @@ class MainWindow : public QMainWindow {
 
     private:
         void InitEngine();
-        void InitSceneHierarchy();
         void InitInspectorPanel();
 
         void UpdateInspectorPanel();
-        void UpdateSceneHierarchy();
 
     private slots:
-        void OnSceneHierarchyItemClecked(QTreeWidgetItem* item, int index);
         void OnLineEditPress();
+        void OnSelectedEntityChanged(pawn::Entity entity);
 
     public:
         bool Running = true;
 
     private:
         OutputWindow* m_OutputWindow;
-
-        QTreeWidget* m_SceneHierarchy;
-        QDockWidget* m_SceneHierarchyDockWidget;
+        HierarchyWindow* m_HierarchyWindow;
 
         QTreeWidgetItem* m_Tag;
         QTreeWidgetItem* m_TagChild;

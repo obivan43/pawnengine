@@ -163,6 +163,9 @@ exit</Command>
     <ProjectReference Include="..\PawnUtils\PawnUtils.vcxproj">
       <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
     </ProjectReference>
+    <ProjectReference Include="gui\Hierarchy\Hierarchy.vcxproj">
+      <Project>{012e8e66-1b41-4c74-9255-89eed1d2ffad}</Project>
+    </ProjectReference>
     <ProjectReference Include="gui\OuputWindow\OuputWindow.vcxproj">
       <Project>{071216a2-e9ac-49e0-a60f-a3eed82ff5c4}</Project>
     </ProjectReference>
@@ -177,10 +180,8 @@ exit</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\TreeEntityWidgetItem.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\TreeEntityWidgetItem.h" />
     <QtMoc Include="src\MainWindow.h" />
     <ClInclude Include="src\pch.h" />
   </ItemGroup>

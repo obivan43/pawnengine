@@ -4,6 +4,6 @@
 
 OutputWindow::OutputWindow(QWidget* parent) : QDockWidget(parent) {}
 
-OutputWindow* OutputWindow::createImpl(QWidget* parent) {
+OutputWindow* OutputWindow::CreateImpl(QWidget* parent) {
 	return new impl::OutputWindowImpl(parent);
 }
