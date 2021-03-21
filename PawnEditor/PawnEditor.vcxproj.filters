@@ -18,6 +18,9 @@
     <Filter Include="res\light">
       <UniqueIdentifier>{3c256e28-aa2e-41e8-8992-1c1d2563228b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\impl">
+      <UniqueIdentifier>{b8c09531-4b89-464d-8829-6acede4b41b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -29,6 +32,9 @@
     <ClCompile Include="src\MainWindow.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\MainWindowImpl.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -38,6 +44,9 @@
   <ItemGroup>
     <QtMoc Include="src\MainWindow.h">
       <Filter>src</Filter>
+    </QtMoc>
+    <QtMoc Include="src\MainWindowImpl.h">
+      <Filter>src\impl</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

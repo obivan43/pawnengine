@@ -21,14 +21,14 @@ int main(int argc, char *argv[]) {
 		app.setStyleSheet(stream.readAll());
 	}
 
-    MainWindow window;
-    window.show();
+    QSharedPointer<MainWindow> window = QSharedPointer<MainWindow>(MainWindow::CreateImpl());
+    window->show();
 
     pawn::Clock m_Clock;
     m_Clock.Reset();
 
-    pawn::Engine* engine = window.GetEngine();
-	while (window.Running) {
+    pawn::Engine* engine = window->GetEngine();
+	while (window->Running) {
         m_Clock.Tick();
         engine->Clear();
 
@@ -38,6 +38,7 @@ int main(int argc, char *argv[]) {
 
         engine->SwapBuffers();
 	}
+    window.clear();
 
     app.exit();
 }
