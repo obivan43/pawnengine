@@ -123,16 +123,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\DragableSpinBox.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\RightPanelWidget.cpp" />
     <ClCompile Include="src\RightPanelWidgetImpl.cpp" />
+    <ClCompile Include="src\TagComponentWidgetItem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rightpanelwidget.h" />
+    <ClInclude Include="src\DragableSpinBox.h" />
     <ClInclude Include="src\pch.h" />
+    <QtMoc Include="src\TagComponentWidgetItem.h" />
     <QtMoc Include="src\RightPanelWidgetImpl.h" />
     <QtMoc Include="src\RightPanelWidget.h" />
   </ItemGroup>

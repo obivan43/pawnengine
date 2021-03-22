@@ -22,6 +22,12 @@
     <ClCompile Include="src\RightPanelWidgetImpl.cpp">
       <Filter>src\impl</Filter>
     </ClCompile>
+    <ClCompile Include="src\DragableSpinBox.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TagComponentWidgetItem.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -30,12 +36,18 @@
     <ClInclude Include="include\rightpanelwidget.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="src\DragableSpinBox.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\RightPanelWidget.h">
       <Filter>src</Filter>
     </QtMoc>
     <QtMoc Include="src\RightPanelWidgetImpl.h">
+      <Filter>src\impl</Filter>
+    </QtMoc>
+    <QtMoc Include="src\TagComponentWidgetItem.h">
       <Filter>src\impl</Filter>
     </QtMoc>
   </ItemGroup>

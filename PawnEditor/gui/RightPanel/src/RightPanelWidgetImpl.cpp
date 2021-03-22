@@ -15,24 +15,16 @@ namespace impl {
 	}
 
 	void RightPanelWidgetImpl::InitTagComponent() {
-		m_TagItem = new QTreeWidgetItem(m_InspectorPanel);
-		m_TagItem->setText(0, "Tag");
-		m_TagItem->setHidden(true);
+		m_TagComponentInspectorWidget = new TagComponentWidgetItem(m_InspectorPanel);
+		m_TagComponentInspectorWidget->setHidden(true);
 
-		m_TagWidgetWrapper = new QTreeWidgetItem(m_TagItem);
-		m_TagWidgetWrapper->setHidden(true);
-
-		m_TagItem->addChild(m_TagWidgetWrapper);
-
-		m_TagLineEdit = new QLineEdit();
-		m_TagLineEdit->setHidden(true);
-
-		m_InspectorPanel->addTopLevelItem(m_TagItem);
-		m_InspectorPanel->setItemWidget(m_TagWidgetWrapper, 0, m_TagLineEdit);
+		m_InspectorPanel->addTopLevelItem(m_TagComponentInspectorWidget);
+		m_InspectorPanel->setItemWidget(m_TagComponentInspectorWidget->GetWrapper(), 0, m_TagComponentInspectorWidget->GetTagComponentWidget());
 	}
 
 	void RightPanelWidgetImpl::OnSelectedEntityChanged(pawn::Entity entity) {
 		m_SelectedEntity = entity;
+		m_TagComponentInspectorWidget->SetEntity(&m_SelectedEntity);
 		RefreshPanel();
 	}
 
@@ -40,36 +32,23 @@ namespace impl {
 		if (!m_SelectedEntity.IsNull()) {
 			pawn::TagComponent& tagComponent = m_SelectedEntity.GetComponent<pawn::TagComponent>();
 
-			m_TagLineEdit->setText(tagComponent.Tag.c_str());
+			QLineEdit* lineEdit = m_TagComponentInspectorWidget->GetTagComponentWidget();
+			lineEdit->setText(tagComponent.Tag.c_str());
 
-			m_TagItem->setHidden(false);
-			m_TagWidgetWrapper->setHidden(false);
-			m_TagLineEdit->setHidden(false);
+			m_TagComponentInspectorWidget->setHidden(false);
 		}
 		else {
-			m_TagItem->setHidden(true);
-			m_TagWidgetWrapper->setHidden(true);
-			m_TagLineEdit->setHidden(true);
+			m_TagComponentInspectorWidget->setHidden(true);
 		}
-	}
-
-	void RightPanelWidgetImpl::OnTagLineEditPress() {
-		QString& text = m_TagLineEdit->text();
-
-		if (!m_SelectedEntity.IsNull()) {
-			std::string& tag = m_SelectedEntity.GetComponent<pawn::TagComponent>().Tag;
-			tag = text.toLocal8Bit().constData();
-		}
-
-		emit EntityModified();
-		m_TagLineEdit->clearFocus();
 	}
 
 	void RightPanelWidgetImpl::InitConnections() {
 		connect(
-			m_TagLineEdit, 
-			SIGNAL(returnPressed()), 
-			SLOT(OnTagLineEditPress())
+			m_TagComponentInspectorWidget,
+			SIGNAL(EntityTagModified()),
+			this,
+			SIGNAL(EntityModified()),
+			Qt::QueuedConnection
 		);
 	}
 

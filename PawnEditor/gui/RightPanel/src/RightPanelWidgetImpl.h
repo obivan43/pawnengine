@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RightPanelWidget.h"
+#include "TagComponentWidgetItem.h"
 
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QLineEdit>
@@ -23,18 +24,12 @@ namespace impl {
 		public slots:
 			void OnSelectedEntityChanged(pawn::Entity);
 
-		private slots:
-			void OnTagLineEditPress();
-
 		signals:
 			void EntityModified();
 
 		private:
 			QTreeWidget* m_InspectorPanel;
-
-			QLineEdit* m_TagLineEdit;
-			QTreeWidgetItem* m_TagItem;
-			QTreeWidgetItem* m_TagWidgetWrapper;
+			TagComponentWidgetItem* m_TagComponentInspectorWidget;
 
 			pawn::Entity m_SelectedEntity;
 	};
