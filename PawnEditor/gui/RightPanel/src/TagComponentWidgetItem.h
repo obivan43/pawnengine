@@ -14,7 +14,7 @@ namespace impl {
 
 			void SetEntity(pawn::Entity* entity) { m_Entity = entity; }
 
-			QLineEdit* GetTagComponentWidget() { return m_TagLineEdit; }
+			QLineEdit* GetWidget() { return m_TagLineEdit; }
 			QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
 
 		private:

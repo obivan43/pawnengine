@@ -2,6 +2,7 @@
 
 #include "RightPanelWidget.h"
 #include "TagComponentWidgetItem.h"
+#include "TransformationComponentWidgetItem.h"
 
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QLineEdit>
@@ -19,6 +20,7 @@ namespace impl {
 
 		private:
 			void InitTagComponent();
+			void InitTransformationComponent();
 			void InitConnections();
 
 		public slots:
@@ -30,6 +32,7 @@ namespace impl {
 		private:
 			QTreeWidget* m_InspectorPanel;
 			TagComponentWidgetItem* m_TagComponentInspectorWidget;
+			TransformationComponentWidgetItem* m_TransformationComponentInspectorWidget;
 
 			pawn::Entity m_SelectedEntity;
 	};

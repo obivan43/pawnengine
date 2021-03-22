@@ -9,7 +9,7 @@ namespace impl {
 		, m_WidgetWrapper(nullptr)
 		, m_Entity(nullptr) {
 		m_WidgetWrapper = new QTreeWidgetItem(this);
-		m_TagLineEdit = new QLineEdit();
+		m_TagLineEdit = new QLineEdit(parent);
 
 		setText(0, "Tag");
 		addChild(m_WidgetWrapper);
@@ -23,7 +23,7 @@ namespace impl {
 		, m_WidgetWrapper(nullptr)
 		, m_Entity(entity) {
 		m_WidgetWrapper = new QTreeWidgetItem(this);
-		m_TagLineEdit = new QLineEdit();
+		m_TagLineEdit = new QLineEdit(parent);
 
 		setText(0, "Tag");
 		addChild(m_WidgetWrapper);

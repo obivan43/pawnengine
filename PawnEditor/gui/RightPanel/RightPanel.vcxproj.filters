@@ -22,10 +22,16 @@
     <ClCompile Include="src\RightPanelWidgetImpl.cpp">
       <Filter>src\impl</Filter>
     </ClCompile>
-    <ClCompile Include="src\DragableSpinBox.cpp">
+    <ClCompile Include="src\TagComponentWidgetItem.cpp">
       <Filter>src\impl</Filter>
     </ClCompile>
-    <ClCompile Include="src\TagComponentWidgetItem.cpp">
+    <ClCompile Include="src\TransformationComponentWidgetItem.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransformationComponentWidget.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Double3Widget.cpp">
       <Filter>src\impl</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,9 +42,6 @@
     <ClInclude Include="include\rightpanelwidget.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="src\DragableSpinBox.h">
-      <Filter>src\impl</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="src\RightPanelWidget.h">
@@ -48,6 +51,15 @@
       <Filter>src\impl</Filter>
     </QtMoc>
     <QtMoc Include="src\TagComponentWidgetItem.h">
+      <Filter>src\impl</Filter>
+    </QtMoc>
+    <QtMoc Include="src\TransformationComponentWidgetItem.h">
+      <Filter>src\impl</Filter>
+    </QtMoc>
+    <QtMoc Include="src\TransformationComponentWidget.h">
+      <Filter>src\impl</Filter>
+    </QtMoc>
+    <QtMoc Include="src\Double3Widget.h">
       <Filter>src\impl</Filter>
     </QtMoc>
   </ItemGroup>

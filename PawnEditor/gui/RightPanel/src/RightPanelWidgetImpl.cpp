@@ -11,6 +11,7 @@ namespace impl {
 		setWidget(m_InspectorPanel);
 
 		InitTagComponent();
+		InitTransformationComponent();
 		InitConnections();
 	}
 
@@ -19,12 +20,21 @@ namespace impl {
 		m_TagComponentInspectorWidget->setHidden(true);
 
 		m_InspectorPanel->addTopLevelItem(m_TagComponentInspectorWidget);
-		m_InspectorPanel->setItemWidget(m_TagComponentInspectorWidget->GetWrapper(), 0, m_TagComponentInspectorWidget->GetTagComponentWidget());
+		m_InspectorPanel->setItemWidget(m_TagComponentInspectorWidget->GetWrapper(), 0, m_TagComponentInspectorWidget->GetWidget());
+	}
+
+	void RightPanelWidgetImpl::InitTransformationComponent() {
+		m_TransformationComponentInspectorWidget = new TransformationComponentWidgetItem(m_InspectorPanel);
+		m_TransformationComponentInspectorWidget->setHidden(true);
+
+		m_InspectorPanel->addTopLevelItem(m_TransformationComponentInspectorWidget);
+		m_InspectorPanel->setItemWidget(m_TransformationComponentInspectorWidget->GetWrapper(), 0, m_TransformationComponentInspectorWidget->GetWidget());
 	}
 
 	void RightPanelWidgetImpl::OnSelectedEntityChanged(pawn::Entity entity) {
 		m_SelectedEntity = entity;
 		m_TagComponentInspectorWidget->SetEntity(&m_SelectedEntity);
+		m_TransformationComponentInspectorWidget->SetEntity(&m_SelectedEntity);
 		RefreshPanel();
 	}
 
@@ -32,13 +42,15 @@ namespace impl {
 		if (!m_SelectedEntity.IsNull()) {
 			pawn::TagComponent& tagComponent = m_SelectedEntity.GetComponent<pawn::TagComponent>();
 
-			QLineEdit* lineEdit = m_TagComponentInspectorWidget->GetTagComponentWidget();
+			QLineEdit* lineEdit = m_TagComponentInspectorWidget->GetWidget();
 			lineEdit->setText(tagComponent.Tag.c_str());
 
 			m_TagComponentInspectorWidget->setHidden(false);
+			m_TransformationComponentInspectorWidget->setHidden(false);
 		}
 		else {
 			m_TagComponentInspectorWidget->setHidden(true);
+			m_TransformationComponentInspectorWidget->setHidden(true);
 		}
 	}
 

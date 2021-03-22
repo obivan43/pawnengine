@@ -13,9 +13,10 @@ namespace impl {
 		, m_CentralWidget(nullptr) {
 		setWindowTitle("Pawn Engine Editor");
 		setWindowIcon(QIcon(":/pawn.png"));
+		resize(EditorDefaultWidth, EditorDefaultHeight);
 
 		m_CentralWidget = CentralWidget::CreateImpl(this);
-		m_CentralWidget->setFixedSize(DefaultWidth, DefaultHeight);
+		m_CentralWidget->setFixedSize(EngineViewWidth, EngineViewHeight);
 		setCentralWidget(m_CentralWidget);
 
 		m_BottomPanel = BottomPanelWidget::CreateImpl(this);
@@ -36,7 +37,7 @@ namespace impl {
 
 	void MainWindowImpl::InitEngine() {
 		m_Engine.reset(new pawn::Engine);
-		m_Engine->Init(m_CentralWidget->GetWindowsHandle(), DefaultWidth, DefaultHeight);
+		m_Engine->Init(m_CentralWidget->GetWindowsHandle(), EngineViewWidth, EngineViewHeight);
 
 		std::shared_ptr<pawn::Scene>& scene = m_Engine->GetScene();
 
