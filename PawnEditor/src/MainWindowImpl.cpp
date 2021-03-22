@@ -53,7 +53,7 @@ namespace impl {
 		cameraComponent.IsActiveCamera = true;
 
 		pawn::TransformationComponent& transformationComponent = camera.GetComponent<pawn::TransformationComponent>();
-		transformationComponent.Translate(glm::vec3(0.0f, 0.0f, 4.0f));
+		transformationComponent.Position = glm::vec3(0.0f, 0.0f, 4.0f);
 
 		emit ActiveSceneChanged(scene);
 	}

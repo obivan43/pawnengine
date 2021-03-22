@@ -15,10 +15,10 @@ namespace impl {
 
 			void SetTransformation(pawn::TransformationComponent* transformation);
 
-			QSize sizeHint() const override;
-
 		private slots:
 			void OnPositionChanged(glm::vec3);
+			void OnRotationChanged(glm::vec3);
+			void OnScaleChanged(glm::vec3);
 
 		private:
 			void InitConnections();
@@ -26,6 +26,8 @@ namespace impl {
 		private:
 			pawn::TransformationComponent* m_Transformation;
 			Double3Widget* m_Position;
+			Double3Widget* m_Rotation;
+			Double3Widget* m_Scale;
 	};
 
 }

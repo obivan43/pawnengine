@@ -5,10 +5,6 @@
 
 namespace pawn {
 
-	TransformationComponent::TransformationComponent(const glm::mat4& transformation) : Transformation(transformation) {}
-
-	void TransformationComponent::Translate(const glm::vec3& position) {
-		Transformation = glm::translate(Transformation, position);
-	}
+	TransformationComponent::TransformationComponent(const glm::vec3& position) : Position(position) {}
 
 }

@@ -31,7 +31,8 @@ namespace pawn {
 	}
 
 	void Renderer::DrawMesh(TransformationComponent& transformationComponent, MeshComponent& meshComponent) {
-		m_Transformation->Update(m_Context, &transformationComponent.Transformation, 1, sizeof(glm::mat4));
+		glm::mat4 transformation = transformationComponent.GetTransformation();
+		m_Transformation->Update(m_Context, &transformation, 1, sizeof(glm::mat4));
 		m_Transformation->Bind(m_Context, 0);
 
 		meshComponent.Mesh->Bind(m_Context);

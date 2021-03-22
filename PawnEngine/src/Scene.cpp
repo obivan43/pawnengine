@@ -32,7 +32,7 @@ namespace pawn {
 
 			if (cameraComponent.IsActiveCamera) {
 				activeCamera = &cameraComponent.Camera;
-				acitveCameraTransformation = transformationComponent.Transformation;
+				acitveCameraTransformation = transformationComponent.GetTransformation();
 				break;
 			}
 		}
