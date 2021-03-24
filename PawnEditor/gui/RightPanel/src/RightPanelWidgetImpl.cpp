@@ -63,8 +63,10 @@ namespace impl {
 
 				QLineEdit* meshLineEdit = m_MeshComponentWidgetItem->GetWidget();
 				meshLineEdit->setText(meshComponent.MeshPath.c_str());
-
 				m_MeshComponentWidgetItem->setHidden(false);
+			}
+			else {
+				m_MeshComponentWidgetItem->setHidden(true);
 			}
 		}
 		else {
