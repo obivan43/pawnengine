@@ -58,16 +58,15 @@ namespace impl {
 			m_TagComponentInspectorWidget->setHidden(false);
 			m_TransformationComponentInspectorWidget->setHidden(false);
 
-			if (m_SelectedEntity.HasComponent<pawn::MeshComponent>()) {
+			bool IsMeshComponentExitst = m_SelectedEntity.HasComponent<pawn::MeshComponent>();
+			if (IsMeshComponentExitst) {
 				pawn::MeshComponent& meshComponent = m_SelectedEntity.GetComponent<pawn::MeshComponent>();
 
 				QLineEdit* meshLineEdit = m_MeshComponentWidgetItem->GetWidget();
 				meshLineEdit->setText(meshComponent.MeshPath.c_str());
-				m_MeshComponentWidgetItem->setHidden(false);
 			}
-			else {
-				m_MeshComponentWidgetItem->setHidden(true);
-			}
+
+			m_MeshComponentWidgetItem->setHidden(!IsMeshComponentExitst);
 		}
 		else {
 			m_TagComponentInspectorWidget->setHidden(true);
