@@ -34,6 +34,9 @@
     <ClCompile Include="src\Double3Widget.cpp">
       <Filter>src\impl</Filter>
     </ClCompile>
+    <ClCompile Include="src\MeshComponentWidgetItem.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -60,6 +63,9 @@
       <Filter>src\impl</Filter>
     </QtMoc>
     <QtMoc Include="src\Double3Widget.h">
+      <Filter>src\impl</Filter>
+    </QtMoc>
+    <QtMoc Include="src\MeshComponentWidgetItem.h">
       <Filter>src\impl</Filter>
     </QtMoc>
   </ItemGroup>

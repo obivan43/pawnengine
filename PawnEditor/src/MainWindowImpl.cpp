@@ -10,7 +10,8 @@ namespace impl {
 		, m_BottomPanel(nullptr)
 		, m_LeftPanel(nullptr) 
 		, m_RightPanel(nullptr)
-		, m_CentralWidget(nullptr) {
+		, m_CentralWidget(nullptr)
+		, m_EngineManager(nullptr) {
 		setWindowTitle("Pawn Engine Editor");
 		setWindowIcon(QIcon(":/pawn.png"));
 		resize(EditorDefaultWidth, EditorDefaultHeight);
@@ -29,6 +30,9 @@ namespace impl {
 
 		InitConnections();
 		InitEngine();
+
+		m_EngineManager = new EngineManager(m_Engine.get());
+		connect(m_RightPanel, SIGNAL(EntityMeshModfied(pawn::Entity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::Entity)));
 	}
 
 	void MainWindowImpl::closeEvent(QCloseEvent* event) {
@@ -75,8 +79,9 @@ namespace impl {
 
 		connect(
 			m_RightPanel,
-			SIGNAL(EntityModified()),
-			m_LeftPanel, SLOT(OnEntityModified())
+			SIGNAL(EntityTagModified()),
+			m_LeftPanel, 
+			SLOT(OnEntityTagModified())
 		);
 	}
 

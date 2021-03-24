@@ -17,20 +17,6 @@ namespace impl {
 		InitConnections();
 	}
 
-	TagComponentWidgetItem::TagComponentWidgetItem(QTreeWidget* parent, pawn::Entity* entity)
-		: QTreeWidgetItem(parent)
-		, m_TagLineEdit(nullptr)
-		, m_WidgetWrapper(nullptr)
-		, m_Entity(entity) {
-		m_WidgetWrapper = new QTreeWidgetItem(this);
-		m_TagLineEdit = new QLineEdit(parent);
-
-		setText(0, "Tag");
-		addChild(m_WidgetWrapper);
-
-		InitConnections();
-	}
-
 	void TagComponentWidgetItem::OnLineEditPress() {
 		QString& text = m_TagLineEdit->text();
 

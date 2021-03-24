@@ -180,6 +180,7 @@ exit</Command>
     <QtRcc Include="res\MainWindow.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\EngineManager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MainWindow.cpp" />
     <ClCompile Include="src\MainWindowImpl.cpp" />
@@ -191,6 +192,7 @@ exit</Command>
   <ItemGroup>
     <QtMoc Include="src\MainWindow.h" />
     <QtMoc Include="src\MainWindowImpl.h" />
+    <QtMoc Include="src\EngineManager.h" />
     <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>

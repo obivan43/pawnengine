@@ -57,7 +57,7 @@ namespace impl {
 		);
 	}
 
-	void LeftPanelWidgetImpl::OnEntityModified() {
+	void LeftPanelWidgetImpl::OnEntityTagModified() {
 		RefreshPanel();
 	}
 

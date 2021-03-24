@@ -3,6 +3,7 @@
 #include "RightPanelWidget.h"
 #include "TagComponentWidgetItem.h"
 #include "TransformationComponentWidgetItem.h"
+#include "MeshComponentWidgetItem.h"
 
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QLineEdit>
@@ -21,18 +22,21 @@ namespace impl {
 		private:
 			void InitTagComponent();
 			void InitTransformationComponent();
+			void InitMeshComponent();
 			void InitConnections();
 
 		public slots:
 			void OnSelectedEntityChanged(pawn::Entity);
 
 		signals:
-			void EntityModified();
+			void EntityTagModified();
+			void EntityMeshModfied(pawn::Entity);
 
 		private:
 			QTreeWidget* m_InspectorPanel;
 			TagComponentWidgetItem* m_TagComponentInspectorWidget;
 			TransformationComponentWidgetItem* m_TransformationComponentInspectorWidget;
+			MeshComponentWidgetItem* m_MeshComponentWidgetItem;
 
 			pawn::Entity m_SelectedEntity;
 	};

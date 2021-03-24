@@ -34,6 +34,10 @@ namespace pawn {
 		return m_MeshManager->GetMeshByPath(path);
 	}
 
+	bool Engine::HasMeshByPath(const std::string& path) {
+		return m_MeshManager->HasMeshByPath(path);
+	}
+
 	void Engine::UploadMeshFromFile(const std::string& file) {
 		m_MeshManager->UploadMeshFromFile(m_Context, m_Shader, file);
 	}

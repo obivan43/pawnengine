@@ -8,6 +8,7 @@
 #include "gui/LeftPanel/include/leftpanelwidget.h"
 #include "gui/RightPanel/include/rightpanelwidget.h"
 #include "gui/CentralWidget/include/centralwidget.h"
+#include "EngineManager.h"
 
 namespace impl {
 
@@ -34,6 +35,7 @@ namespace impl {
 			LeftPanelWidget* m_LeftPanel;
 			RightPanelWidget* m_RightPanel;
 			CentralWidget* m_CentralWidget;
+			EngineManager* m_EngineManager;
 
 			const uint32_t EngineViewWidth = 1280;
 			const uint32_t EngineViewHeight = 720;

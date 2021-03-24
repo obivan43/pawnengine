@@ -12,6 +12,7 @@ namespace impl {
 
 		InitTagComponent();
 		InitTransformationComponent();
+		InitMeshComponent();
 		InitConnections();
 	}
 
@@ -31,10 +32,19 @@ namespace impl {
 		m_InspectorPanel->setItemWidget(m_TransformationComponentInspectorWidget->GetWrapper(), 0, m_TransformationComponentInspectorWidget->GetWidget());
 	}
 
+	void RightPanelWidgetImpl::InitMeshComponent() {
+		m_MeshComponentWidgetItem = new MeshComponentWidgetItem(m_InspectorPanel);
+		m_MeshComponentWidgetItem->setHidden(true);
+
+		m_InspectorPanel->addTopLevelItem(m_MeshComponentWidgetItem);
+		m_InspectorPanel->setItemWidget(m_MeshComponentWidgetItem->GetWrapper(), 0, m_MeshComponentWidgetItem->GetWidget());
+	}
+
 	void RightPanelWidgetImpl::OnSelectedEntityChanged(pawn::Entity entity) {
 		m_SelectedEntity = entity;
 		m_TagComponentInspectorWidget->SetEntity(&m_SelectedEntity);
 		m_TransformationComponentInspectorWidget->SetEntity(&m_SelectedEntity);
+		m_MeshComponentWidgetItem->SetEntity(&m_SelectedEntity);
 		RefreshPanel();
 	}
 
@@ -42,15 +52,25 @@ namespace impl {
 		if (!m_SelectedEntity.IsNull()) {
 			pawn::TagComponent& tagComponent = m_SelectedEntity.GetComponent<pawn::TagComponent>();
 
-			QLineEdit* lineEdit = m_TagComponentInspectorWidget->GetWidget();
-			lineEdit->setText(tagComponent.Tag.c_str());
+			QLineEdit* tagLineEdit = m_TagComponentInspectorWidget->GetWidget();
+			tagLineEdit->setText(tagComponent.Tag.c_str());
 
 			m_TagComponentInspectorWidget->setHidden(false);
 			m_TransformationComponentInspectorWidget->setHidden(false);
+
+			if (m_SelectedEntity.HasComponent<pawn::MeshComponent>()) {
+				pawn::MeshComponent& meshComponent = m_SelectedEntity.GetComponent<pawn::MeshComponent>();
+
+				QLineEdit* meshLineEdit = m_MeshComponentWidgetItem->GetWidget();
+				meshLineEdit->setText(meshComponent.MeshPath.c_str());
+
+				m_MeshComponentWidgetItem->setHidden(false);
+			}
 		}
 		else {
 			m_TagComponentInspectorWidget->setHidden(true);
 			m_TransformationComponentInspectorWidget->setHidden(true);
+			m_MeshComponentWidgetItem->setHidden(true);
 		}
 	}
 
@@ -59,7 +79,16 @@ namespace impl {
 			m_TagComponentInspectorWidget,
 			SIGNAL(EntityTagModified()),
 			this,
-			SIGNAL(EntityModified()),
+			SIGNAL(EntityTagModified()),
+			Qt::QueuedConnection
+		);
+
+		qRegisterMetaType<pawn::Entity>("pawn::Entity");
+		connect(
+			m_MeshComponentWidgetItem,
+			SIGNAL(EntityMeshModified(pawn::Entity)),
+			this,
+			SIGNAL(EntityMeshModfied(pawn::Entity)),
 			Qt::QueuedConnection
 		);
 	}

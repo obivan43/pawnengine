@@ -18,6 +18,7 @@ namespace pawn {
 			MeshManager& operator=(const MeshManager& other) = delete;
 			MeshManager& operator=(MeshManager&& other) noexcept = delete;
 
+			bool HasMeshByPath(const std::string& path);
 			bool UploadMesh(const std::string& name, const std::shared_ptr<Mesh>& mesh);
 
 			bool UploadMeshFromFile(

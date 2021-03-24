@@ -25,7 +25,7 @@ namespace impl {
 		public slots:
 			void OnHierarchyItemClicked(QTreeWidgetItem* item, int index);
 			void OnActiveSceneChanged(std::shared_ptr<pawn::Scene> scene);
-			void OnEntityModified();
+			void OnEntityTagModified();
 
 		private:
 			std::shared_ptr<pawn::Scene> m_Scene;

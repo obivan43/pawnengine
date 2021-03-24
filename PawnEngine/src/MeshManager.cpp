@@ -3,6 +3,10 @@
 
 namespace pawn {
 
+	bool MeshManager::HasMeshByPath(const std::string& path) {
+		return m_MeshesMap[path].get() != nullptr;
+	}
+
 	bool MeshManager::UploadMesh(const std::string& name, const std::shared_ptr<Mesh>& mesh) {
 		if (m_MeshesMap[name] != nullptr) {
 			CONSOLE_WARN("MeshManager: mesh with same name already exist")

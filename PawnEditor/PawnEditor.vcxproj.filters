@@ -35,6 +35,9 @@
     <ClCompile Include="src\MainWindowImpl.cpp">
       <Filter>src\impl</Filter>
     </ClCompile>
+    <ClCompile Include="src\EngineManager.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -46,6 +49,9 @@
       <Filter>src</Filter>
     </QtMoc>
     <QtMoc Include="src\MainWindowImpl.h">
+      <Filter>src\impl</Filter>
+    </QtMoc>
+    <QtMoc Include="src\EngineManager.h">
       <Filter>src\impl</Filter>
     </QtMoc>
   </ItemGroup>

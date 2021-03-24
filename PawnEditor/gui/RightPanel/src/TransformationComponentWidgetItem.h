@@ -12,7 +12,6 @@ namespace impl {
 
 		public:
 			TransformationComponentWidgetItem(QTreeWidget* parent);
-			TransformationComponentWidgetItem(QTreeWidget* parent, pawn::Entity* entity);
 
 			void SetEntity(pawn::Entity* entity);
 

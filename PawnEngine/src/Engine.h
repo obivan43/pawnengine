@@ -29,6 +29,7 @@ namespace pawn {
 			void OnUpdate(Clock& clock);
 			void SwapBuffers();
 
+			bool HasMeshByPath(const std::string& path);
 			void UploadMeshFromFile(const std::string& file);
 			const std::shared_ptr<Mesh>& GetMeshByPath(const std::string& path);
 

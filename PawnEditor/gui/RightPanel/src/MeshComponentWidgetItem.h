@@ -5,15 +5,15 @@
 
 namespace impl {
 
-	class TagComponentWidgetItem : public QObject, public QTreeWidgetItem {
+	class MeshComponentWidgetItem : public QObject, public QTreeWidgetItem {
 		Q_OBJECT
 
 		public:
-			TagComponentWidgetItem(QTreeWidget* parent);
+			MeshComponentWidgetItem(QTreeWidget* parent);
 
 			void SetEntity(pawn::Entity* entity) { m_Entity = entity; }
 
-			QLineEdit* GetWidget() { return m_TagLineEdit; }
+			QLineEdit* GetWidget() { return m_MeshLineEdit; }
 			QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
 
 		private:
@@ -23,10 +23,10 @@ namespace impl {
 			void OnLineEditPress();
 
 		signals:
-			void EntityTagModified();
+			void EntityMeshModified(pawn::Entity entity);
 
 		private:
-			QLineEdit* m_TagLineEdit;
+			QLineEdit* m_MeshLineEdit;
 			QTreeWidgetItem* m_WidgetWrapper;
 			pawn::Entity* m_Entity;
 	};
