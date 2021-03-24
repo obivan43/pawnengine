@@ -30,7 +30,7 @@ namespace pawn {
 			void SwapBuffers();
 
 			void UploadMeshFromFile(const std::string& file);
-			const std::shared_ptr<Mesh>& GetMeshByName(const std::string& name);
+			const std::shared_ptr<Mesh>& GetMeshByPath(const std::string& path);
 
 			std::shared_ptr<Scene>& GetScene() { return m_Scene; }
 			std::shared_ptr<MeshManager>& GetMeshManager() { return m_MeshManager; }

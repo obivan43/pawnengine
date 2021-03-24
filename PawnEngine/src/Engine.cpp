@@ -30,8 +30,8 @@ namespace pawn {
 		m_Scene.reset(new Scene());
 	}
 
-	const std::shared_ptr<Mesh>& Engine::GetMeshByName(const std::string& name) {
-		return m_MeshManager->GetMeshByName(name);
+	const std::shared_ptr<Mesh>& Engine::GetMeshByPath(const std::string& path) {
+		return m_MeshManager->GetMeshByPath(path);
 	}
 
 	void Engine::UploadMeshFromFile(const std::string& file) {

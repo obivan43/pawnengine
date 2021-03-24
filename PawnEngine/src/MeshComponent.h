@@ -9,7 +9,7 @@ namespace pawn {
 	struct MeshComponent {
 
 		MeshComponent() = default;
-		MeshComponent(const std::shared_ptr<pawn::Mesh>& mesh);
+		MeshComponent(const std::shared_ptr<pawn::Mesh>& mesh, const std::string& meshPath = std::string());
 		MeshComponent(const MeshComponent& other) = default;
 		MeshComponent(MeshComponent&& other) noexcept = default;
 
@@ -20,6 +20,7 @@ namespace pawn {
 		operator const std::shared_ptr<pawn::Mesh>& () const { return Mesh; }
 
 		std::shared_ptr<pawn::Mesh> Mesh;
+		std::string MeshPath;
 	};
 
 }

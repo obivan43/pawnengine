@@ -26,7 +26,7 @@ namespace pawn {
 				const std::string& filename
 			);
 
-			const std::shared_ptr<Mesh>& GetMeshByName(const std::string& name);
+			const std::shared_ptr<Mesh>& GetMeshByPath(const std::string& path);
 
 		private:
 			std::unordered_map<std::string, std::shared_ptr<Mesh>> m_MeshesMap;

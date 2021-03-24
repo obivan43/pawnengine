@@ -21,11 +21,7 @@ namespace pawn {
 			{ "TextureCoordinate", GraphicsInputElementType::Float2 }
 		};
 
-		std::string base_filename = filename.substr(filename.find_last_of("/\\") + 1);
-		std::string::size_type const p(base_filename.find_last_of('.'));
-		std::string file_without_extension = base_filename.substr(0, p);
-
-		if (m_MeshesMap[file_without_extension] != nullptr) {
+		if (m_MeshesMap[filename] != nullptr) {
 			CONSOLE_WARN("MeshManager: mesh with same name already exist")
 			return false;
 		}
@@ -51,13 +47,13 @@ namespace pawn {
 
 		inputLayout->Init(context, inputElements, shader->GetVertexShaderInfo());
 
-		m_MeshesMap[file_without_extension].reset(new Mesh(vertexBuffer, indexBuffer, inputLayout));
+		m_MeshesMap[filename].reset(new Mesh(vertexBuffer, indexBuffer, inputLayout));
 
 		return true;
 	}
 
-	const std::shared_ptr<Mesh>& MeshManager::GetMeshByName(const std::string& name) {
-		return m_MeshesMap[name];
+	const std::shared_ptr<Mesh>& MeshManager::GetMeshByPath(const std::string& path) {
+		return m_MeshesMap[path];
 	}
 
 }

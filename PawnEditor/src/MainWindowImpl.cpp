@@ -45,7 +45,7 @@ namespace impl {
 		m_Engine->UploadMeshFromFile("res\\assets\\models\\sphere.obj");
 
 		pawn::Entity entity = scene->CreateEntity("Sphere");
-		entity.AddComponent<pawn::MeshComponent>(m_Engine->GetMeshByName("sphere"));
+		entity.AddComponent<pawn::MeshComponent>(m_Engine->GetMeshByPath("res\\assets\\models\\sphere.obj"), "res\\assets\\models\\sphere.obj");
 
 		pawn::Entity camera = scene->CreateEntity("Camera");
 		pawn::CameraComponent& cameraComponent = camera.AddComponent<pawn::CameraComponent>();
