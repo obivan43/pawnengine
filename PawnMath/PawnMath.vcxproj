@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="include\pawnmath.h" />
     <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\Functions.h" />
     <ClInclude Include="src\MathDefines.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Vertex.h" />

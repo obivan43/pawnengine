@@ -41,5 +41,8 @@
     <ClInclude Include="include\pawnmath.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="src\Functions.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

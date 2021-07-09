@@ -15,6 +15,12 @@
     <Filter Include="src\components">
       <UniqueIdentifier>{bb8cb719-75f6-4f41-8423-24d5c8a82894}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\geometry">
+      <UniqueIdentifier>{0dcf663d-3a65-4af7-9b41-e60bf5e51d64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\geometry\mesh_generators">
+      <UniqueIdentifier>{b9789eee-c79c-462c-9589-36b8eab24f84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\pch.cpp">
@@ -46,6 +52,24 @@
     </ClCompile>
     <ClCompile Include="src\Renderer.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry\LODGroup.cpp">
+      <Filter>src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry\Mesh.cpp">
+      <Filter>src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry\MeshInfo.cpp">
+      <Filter>src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry\Scene.cpp">
+      <Filter>src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry\mesh_generator\MeshGenerator.cpp">
+      <Filter>src\geometry\mesh_generators</Filter>
+    </ClCompile>
+    <ClCompile Include="src\geometry\mesh_generator\PlaneMeshGenerator.cpp">
+      <Filter>src\geometry\mesh_generators</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +105,24 @@
     </ClInclude>
     <ClInclude Include="src\Renderer.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\geometry\LODGroup.h">
+      <Filter>src\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\geometry\Mesh.h">
+      <Filter>src\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\geometry\MeshInfo.h">
+      <Filter>src\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\geometry\Scene.h">
+      <Filter>src\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\geometry\mesh_generator\MeshGenerator.h">
+      <Filter>src\geometry\mesh_generators</Filter>
+    </ClInclude>
+    <ClInclude Include="src\geometry\mesh_generator\PlaneMeshGenerator.h">
+      <Filter>src\geometry\mesh_generators</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

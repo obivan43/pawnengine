@@ -16,7 +16,7 @@ namespace geometry {
 	struct MeshInfo {
 
 		MeshType type;
-		glm::vec3 segments { 1, 1, 1 };
+		glm::uvec3 segments { 1, 1, 1 };
 		glm::vec3 size { 1, 1, 1 };
 		uint32_t lod = 0;
 

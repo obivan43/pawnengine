@@ -7,7 +7,7 @@ namespace geometry {
 	struct LODGroup {
 
 		std::string name;
-		std::vector<Mesh> meshes;
+		std::vector<geometry::Mesh> meshes;
 
 	};
 

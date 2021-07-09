@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -14,6 +14,12 @@
     <ClCompile Include="src\CameraComponent.cpp" />
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\geometry\LODGroup.cpp" />
+    <ClCompile Include="src\geometry\Mesh.cpp" />
+    <ClCompile Include="src\geometry\MeshInfo.cpp" />
+    <ClCompile Include="src\geometry\mesh_generator\MeshGenerator.cpp" />
+    <ClCompile Include="src\geometry\mesh_generator\PlaneMeshGenerator.cpp" />
+    <ClCompile Include="src\geometry\Scene.cpp" />
     <ClCompile Include="src\MeshComponent.cpp" />
     <ClCompile Include="src\MeshManager.cpp" />
     <ClCompile Include="src\TagComponent.cpp" />
@@ -30,6 +36,12 @@
     <ClInclude Include="src\CameraComponent.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\Entity.h" />
+    <ClInclude Include="src\geometry\LODGroup.h" />
+    <ClInclude Include="src\geometry\Mesh.h" />
+    <ClInclude Include="src\geometry\MeshInfo.h" />
+    <ClInclude Include="src\geometry\mesh_generator\MeshGenerator.h" />
+    <ClInclude Include="src\geometry\mesh_generator\PlaneMeshGenerator.h" />
+    <ClInclude Include="src\geometry\Scene.h" />
     <ClInclude Include="src\MeshComponent.h" />
     <ClInclude Include="src\MeshManager.h" />
     <ClInclude Include="src\TagComponent.h" />
