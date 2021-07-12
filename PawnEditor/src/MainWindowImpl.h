@@ -21,7 +21,9 @@ namespace impl {
 			uint32_t GetDefaultWidth() const { return EngineViewWidth; }
 			uint32_t GetDefaultHeight() const { return EngineViewHeight; }
 
-			void closeEvent(QCloseEvent* event);
+			void RestoreSettings();
+
+			void closeEvent(QCloseEvent* event) override;
 
 		private:
 			void InitEngine();

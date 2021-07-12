@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "MainWindowImpl.h"
 
+#include <QSettings>
 #include <string>
 
 namespace impl {
@@ -24,11 +25,18 @@ namespace impl {
 		m_RightPanel = RightPanelWidget::CreateImpl(this);
 		m_LeftPanel = LeftPanelWidget::CreateImpl(this);
 
+		m_BottomPanel->setObjectName("Console");
+		m_RightPanel->setObjectName("Inspector");
+		m_LeftPanel->setObjectName("Scene Hierarchy");
+		m_CentralWidget->setObjectName("Engine view");
+
 		addDockWidget(Qt::BottomDockWidgetArea, m_BottomPanel);
 		addDockWidget(Qt::RightDockWidgetArea, m_RightPanel);
 		addDockWidget(Qt::LeftDockWidgetArea, m_LeftPanel);
 
 		InitConnections();
+		RestoreSettings();
+
 		InitEngine();
 
 		m_EngineManager = new EngineManager(m_Engine.get());
@@ -37,8 +45,20 @@ namespace impl {
 
 	void MainWindowImpl::closeEvent(QCloseEvent* event) {
 		Running = false;
+
+		QSettings settings("Shulzhenko corp", "Pawnengine");
+		settings.setValue("geometry", saveGeometry());
+		settings.setValue("windowState", saveState());
+
+		QMainWindow::closeEvent(event);
 	}
 
+	void MainWindowImpl::RestoreSettings() {
+		QSettings settings("Shulzhenko corp", "Pawnengine");
+		restoreGeometry(settings.value("geometry").toByteArray());
+		restoreState(settings.value("windowState").toByteArray());
+	}
+	
 	void MainWindowImpl::InitEngine() {
 		m_Engine.reset(new pawn::Engine);
 		m_Engine->Init(m_CentralWidget->GetWindowsHandle(), EngineViewWidth, EngineViewHeight);
