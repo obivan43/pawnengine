@@ -11,7 +11,7 @@ namespace impl {
 			EngineManager(pawn::Engine* engine);
 
 		public slots:
-			void OnEntityMeshModified(pawn::Entity entity);
+			void OnEntityMeshModified(pawn::GameEntity entity);
 
 		private:
 			pawn::Engine* m_Engine;

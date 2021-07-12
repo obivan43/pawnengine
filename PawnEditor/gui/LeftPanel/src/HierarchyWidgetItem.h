@@ -7,12 +7,12 @@ namespace impl {
 	class HierarchyWidgetItem : public QTreeWidgetItem {
 
 		public:
-			HierarchyWidgetItem(pawn::Entity entity, const QString& str, QTreeWidgetItem* parent = Q_NULLPTR);
+			HierarchyWidgetItem(pawn::GameEntity entity, const QString& str, QTreeWidgetItem* parent = Q_NULLPTR);
 
-			pawn::Entity GetEntity() const { return m_Entity; }
+			pawn::GameEntity GetEntity() const { return m_Entity; }
 
 		private:
-			pawn::Entity m_Entity;
+			pawn::GameEntity m_Entity;
 	};
 
 }

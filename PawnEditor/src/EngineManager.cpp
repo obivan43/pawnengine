@@ -5,7 +5,7 @@ namespace impl {
 
 	EngineManager::EngineManager(pawn::Engine* engine) : m_Engine(engine) {}
 
-	void EngineManager::OnEntityMeshModified(pawn::Entity entity) {
+	void EngineManager::OnEntityMeshModified(pawn::GameEntity entity) {
 		if (!entity.IsNull()) {
 			pawn::MeshComponent& meshComponent = entity.GetComponent<pawn::MeshComponent>();
 			

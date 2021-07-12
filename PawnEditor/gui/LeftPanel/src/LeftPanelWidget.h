@@ -10,7 +10,7 @@ class LeftPanelWidget : public QDockWidget {
 		static LeftPanelWidget* CreateImpl(QWidget* parent = Q_NULLPTR);
 
 	signals:
-		void SelectedEntityChanged(pawn::Entity entity);
+		void SelectedEntityChanged(pawn::GameEntity entity);
 
 	protected:
 		LeftPanelWidget(QWidget* parent);

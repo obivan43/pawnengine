@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Scene.h"
+#include "GameScene.h"
 #include "MeshManager.h"
 #include "Renderer.h"
 
@@ -33,7 +33,7 @@ namespace pawn {
 			void UploadMeshFromFile(const std::string& file);
 			const std::shared_ptr<Mesh>& GetMeshByPath(const std::string& path);
 
-			std::shared_ptr<Scene>& GetScene() { return m_Scene; }
+			std::shared_ptr<GameScene>& GetScene() { return m_Scene; }
 			std::shared_ptr<MeshManager>& GetMeshManager() { return m_MeshManager; }
 			std::shared_ptr<GraphicsContext>& GetContext() { return m_Context; }
 			std::shared_ptr<GraphicsAPI>& GetAPI() { return m_GraphicsAPI; }
@@ -45,7 +45,7 @@ namespace pawn {
 			std::shared_ptr<GraphicsAPI> m_GraphicsAPI;
 			std::shared_ptr<GraphicsShader> m_Shader;
 			std::shared_ptr<Renderer> m_Renderer;
-			std::shared_ptr<Scene> m_Scene;
+			std::shared_ptr<GameScene> m_Scene;
 	};
 
 }

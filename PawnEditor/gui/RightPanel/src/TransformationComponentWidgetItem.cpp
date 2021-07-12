@@ -15,7 +15,7 @@ namespace impl {
 		addChild(m_WidgetWrapper);
 	}
 
-	void TransformationComponentWidgetItem::SetEntity(pawn::Entity* entity) {
+	void TransformationComponentWidgetItem::SetEntity(pawn::GameEntity* entity) {
 		m_Entity = entity;
 		if (m_Entity && !m_Entity->IsNull()) {
 			m_TransformationComponentWidget->SetTransformation(&m_Entity->GetComponent<pawn::TransformationComponent>());

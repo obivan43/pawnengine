@@ -26,10 +26,10 @@
     <ClCompile Include="src\pch.cpp">
       <Filter>pch</Filter>
     </ClCompile>
-    <ClCompile Include="src\Entity.cpp">
+    <ClCompile Include="src\GameEntity.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scene.cpp">
+    <ClCompile Include="src\GameScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\CameraComponent.cpp">
@@ -79,10 +79,10 @@
     <ClInclude Include="include\pawnengine.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="src\Entity.h">
+    <ClInclude Include="src\GameEntity.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Scene.h">
+    <ClInclude Include="src\GameScene.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\CameraComponent.h">

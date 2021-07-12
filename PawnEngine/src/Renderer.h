@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.h"
+#include "GameEntity.h"
 #include "TransformationComponent.h"
 #include "TagComponent.h"
 #include "CameraComponent.h"

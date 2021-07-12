@@ -27,7 +27,7 @@ namespace pawn {
 		m_Renderer->Init(m_Context, m_GraphicsAPI, width, height);
 		m_Renderer->SetShader(m_Context, m_Shader);
 
-		m_Scene.reset(new Scene());
+		m_Scene.reset(new GameScene());
 	}
 
 	const std::shared_ptr<Mesh>& Engine::GetMeshByPath(const std::string& path) {

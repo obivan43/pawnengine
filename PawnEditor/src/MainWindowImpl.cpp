@@ -32,7 +32,7 @@ namespace impl {
 		InitEngine();
 
 		m_EngineManager = new EngineManager(m_Engine.get());
-		connect(m_RightPanel, SIGNAL(EntityMeshModfied(pawn::Entity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::Entity)));
+		connect(m_RightPanel, SIGNAL(EntityMeshModfied(pawn::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::GameEntity)));
 	}
 
 	void MainWindowImpl::closeEvent(QCloseEvent* event) {
@@ -43,15 +43,15 @@ namespace impl {
 		m_Engine.reset(new pawn::Engine);
 		m_Engine->Init(m_CentralWidget->GetWindowsHandle(), EngineViewWidth, EngineViewHeight);
 
-		std::shared_ptr<pawn::Scene>& scene = m_Engine->GetScene();
+		std::shared_ptr<pawn::GameScene>& scene = m_Engine->GetScene();
 
 		m_Engine->UploadMeshFromFile("res\\assets\\models\\cube.obj");
 		m_Engine->UploadMeshFromFile("res\\assets\\models\\sphere.obj");
 
-		pawn::Entity entity = scene->CreateEntity("Sphere");
+		pawn::GameEntity entity = scene->CreateEntity("Sphere");
 		entity.AddComponent<pawn::MeshComponent>(m_Engine->GetMeshByPath("res\\assets\\models\\sphere.obj"), "res\\assets\\models\\sphere.obj");
 
-		pawn::Entity camera = scene->CreateEntity("Camera");
+		pawn::GameEntity camera = scene->CreateEntity("Camera");
 		pawn::CameraComponent& cameraComponent = camera.AddComponent<pawn::CameraComponent>();
 		cameraComponent.Camera.SetPerspective();
 		cameraComponent.IsActiveCamera = true;
@@ -65,16 +65,16 @@ namespace impl {
 	void MainWindowImpl::InitConnections() {
 		connect(
 			this,
-			SIGNAL(ActiveSceneChanged(std::shared_ptr<pawn::Scene>)),
+			SIGNAL(ActiveSceneChanged(std::shared_ptr<pawn::GameScene>)),
 			m_LeftPanel,
-			SLOT(OnActiveSceneChanged(std::shared_ptr<pawn::Scene>))
+			SLOT(OnActiveSceneChanged(std::shared_ptr<pawn::GameScene>))
 		);
 
 		connect(
 			m_LeftPanel,
-			SIGNAL(SelectedEntityChanged(pawn::Entity)),
+			SIGNAL(SelectedEntityChanged(pawn::GameEntity)),
 			m_RightPanel,
-			SLOT(OnSelectedEntityChanged(pawn::Entity))
+			SLOT(OnSelectedEntityChanged(pawn::GameEntity))
 		);
 
 		connect(

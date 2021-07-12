@@ -20,7 +20,7 @@ namespace impl {
 		m_HierarchyPanel->expandAll();
 	}
 
-	void LeftPanelWidgetImpl::OnActiveSceneChanged(std::shared_ptr<pawn::Scene> scene) {
+	void LeftPanelWidgetImpl::OnActiveSceneChanged(std::shared_ptr<pawn::GameScene> scene) {
 		if (m_Scene.get() != scene.get()) {
 			m_Scene = scene;
 			InitHierarchyPanel();
@@ -30,11 +30,11 @@ namespace impl {
 	void LeftPanelWidgetImpl::InitHierarchyPanel() {
 		entt::registry& registry = m_Scene->GetRegistry();
 
-		HierarchyWidgetItem* root = new HierarchyWidgetItem(pawn::Entity(), "Scene");
+		HierarchyWidgetItem* root = new HierarchyWidgetItem(pawn::GameEntity(), "Scene");
 		m_HierarchyPanel->addTopLevelItem(root);
 
 		registry.each([&](auto entityID) {
-			pawn::Entity entity(entityID, m_Scene.get());
+			pawn::GameEntity entity(entityID, m_Scene.get());
 			std::string& tag = entity.GetComponent<pawn::TagComponent>().Tag;
 
 			HierarchyWidgetItem* item = new HierarchyWidgetItem(entity, tag.c_str(), root);

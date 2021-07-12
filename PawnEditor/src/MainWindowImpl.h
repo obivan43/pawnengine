@@ -28,7 +28,7 @@ namespace impl {
 			void InitConnections();
 
 		signals:
-			void ActiveSceneChanged(std::shared_ptr<pawn::Scene>);
+			void ActiveSceneChanged(std::shared_ptr<pawn::GameScene>);
 
 		private:
 			BottomPanelWidget* m_BottomPanel;

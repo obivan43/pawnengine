@@ -26,11 +26,11 @@ namespace impl {
 			void InitConnections();
 
 		public slots:
-			void OnSelectedEntityChanged(pawn::Entity);
+			void OnSelectedEntityChanged(pawn::GameEntity);
 
 		signals:
 			void EntityTagModified();
-			void EntityMeshModfied(pawn::Entity);
+			void EntityMeshModfied(pawn::GameEntity);
 
 		private:
 			QTreeWidget* m_InspectorPanel;
@@ -38,7 +38,7 @@ namespace impl {
 			TransformationComponentWidgetItem* m_TransformationComponentInspectorWidget;
 			MeshComponentWidgetItem* m_MeshComponentWidgetItem;
 
-			pawn::Entity m_SelectedEntity;
+			pawn::GameEntity m_SelectedEntity;
 	};
 
 }

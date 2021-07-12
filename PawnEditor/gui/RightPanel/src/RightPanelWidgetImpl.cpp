@@ -40,7 +40,7 @@ namespace impl {
 		m_InspectorPanel->setItemWidget(m_MeshComponentWidgetItem->GetWrapper(), 0, m_MeshComponentWidgetItem->GetWidget());
 	}
 
-	void RightPanelWidgetImpl::OnSelectedEntityChanged(pawn::Entity entity) {
+	void RightPanelWidgetImpl::OnSelectedEntityChanged(pawn::GameEntity entity) {
 		m_SelectedEntity = entity;
 		m_TagComponentInspectorWidget->SetEntity(&m_SelectedEntity);
 		m_TransformationComponentInspectorWidget->SetEntity(&m_SelectedEntity);
@@ -84,12 +84,12 @@ namespace impl {
 			Qt::QueuedConnection
 		);
 
-		qRegisterMetaType<pawn::Entity>("pawn::Entity");
+		qRegisterMetaType<pawn::GameEntity>("pawn::Entity");
 		connect(
 			m_MeshComponentWidgetItem,
-			SIGNAL(EntityMeshModified(pawn::Entity)),
+			SIGNAL(EntityMeshModified(pawn::GameEntity)),
 			this,
-			SIGNAL(EntityMeshModfied(pawn::Entity)),
+			SIGNAL(EntityMeshModfied(pawn::GameEntity)),
 			Qt::QueuedConnection
 		);
 	}
