@@ -17,7 +17,7 @@ namespace impl {
 		resize(EditorDefaultWidth, EditorDefaultHeight);
 
 		m_CentralWidget = CentralWidget::CreateImpl(this);
-		m_CentralWidget->setFixedSize(EngineViewWidth, EngineViewHeight);
+		m_CentralWidget->setMinimumSize(EngineViewWidth, EngineViewHeight);
 		setCentralWidget(m_CentralWidget);
 
 		m_BottomPanel = BottomPanelWidget::CreateImpl(this);

@@ -7,7 +7,7 @@ namespace pawn {
 		return m_MeshesMap[path].get() != nullptr;
 	}
 
-	bool MeshManager::UploadMesh(const std::string& name, const std::shared_ptr<Mesh>& mesh) {
+	bool MeshManager::UploadMesh(const std::string& name, const std::shared_ptr<GraphicsMesh>& mesh) {
 		if (m_MeshesMap[name] != nullptr) {
 			CONSOLE_WARN("MeshManager: mesh with same name already exist")
 			return false;
@@ -51,12 +51,12 @@ namespace pawn {
 
 		inputLayout->Init(context, inputElements, shader->GetVertexShaderInfo());
 
-		m_MeshesMap[filename].reset(new Mesh(vertexBuffer, indexBuffer, inputLayout));
+		m_MeshesMap[filename].reset(new GraphicsMesh(vertexBuffer, indexBuffer, inputLayout));
 
 		return true;
 	}
 
-	const std::shared_ptr<Mesh>& MeshManager::GetMeshByPath(const std::string& path) {
+	const std::shared_ptr<GraphicsMesh>& MeshManager::GetMeshByPath(const std::string& path) {
 		return m_MeshesMap[path];
 	}
 

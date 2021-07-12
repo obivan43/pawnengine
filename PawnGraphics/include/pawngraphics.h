@@ -24,4 +24,4 @@
 
 #endif
 
-#include "../src/Mesh.h"
+#include "../src/GraphicsMesh.h"

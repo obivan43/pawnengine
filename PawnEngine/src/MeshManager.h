@@ -6,7 +6,7 @@
 
 namespace pawn {
 
-	class Mesh;
+	class GraphicsMesh;
 
 	class MeshManager {
 
@@ -19,7 +19,7 @@ namespace pawn {
 			MeshManager& operator=(MeshManager&& other) noexcept = delete;
 
 			bool HasMeshByPath(const std::string& path);
-			bool UploadMesh(const std::string& name, const std::shared_ptr<Mesh>& mesh);
+			bool UploadMesh(const std::string& name, const std::shared_ptr<GraphicsMesh>& mesh);
 
 			bool UploadMeshFromFile(
 				std::shared_ptr<pawn::GraphicsContext>& context,
@@ -27,10 +27,10 @@ namespace pawn {
 				const std::string& filename
 			);
 
-			const std::shared_ptr<Mesh>& GetMeshByPath(const std::string& path);
+			const std::shared_ptr<GraphicsMesh>& GetMeshByPath(const std::string& path);
 
 		private:
-			std::unordered_map<std::string, std::shared_ptr<Mesh>> m_MeshesMap;
+			std::unordered_map<std::string, std::shared_ptr<GraphicsMesh>> m_MeshesMap;
 			AssimpLoader m_MeshLoader;
 	};
 

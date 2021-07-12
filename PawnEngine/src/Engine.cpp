@@ -30,7 +30,7 @@ namespace pawn {
 		m_Scene.reset(new GameScene());
 	}
 
-	const std::shared_ptr<Mesh>& Engine::GetMeshByPath(const std::string& path) {
+	const std::shared_ptr<GraphicsMesh>& Engine::GetMeshByPath(const std::string& path) {
 		return m_MeshManager->GetMeshByPath(path);
 	}
 

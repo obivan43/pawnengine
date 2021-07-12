@@ -92,7 +92,7 @@
     <ClCompile Include="src\DirectX11Texture2D.cpp">
       <Filter>src\directx</Filter>
     </ClCompile>
-    <ClCompile Include="src\Mesh.cpp">
+    <ClCompile Include="src\GraphicsMesh.cpp">
       <Filter>src\data</Filter>
     </ClCompile>
   </ItemGroup>
@@ -163,7 +163,7 @@
     <ClInclude Include="src\DirectX11Texture2D.h">
       <Filter>src\directx</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mesh.h">
+    <ClInclude Include="src\GraphicsMesh.h">
       <Filter>src\data</Filter>
     </ClInclude>
   </ItemGroup>

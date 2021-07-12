@@ -31,7 +31,7 @@ namespace pawn {
 
 			bool HasMeshByPath(const std::string& path);
 			void UploadMeshFromFile(const std::string& file);
-			const std::shared_ptr<Mesh>& GetMeshByPath(const std::string& path);
+			const std::shared_ptr<GraphicsMesh>& GetMeshByPath(const std::string& path);
 
 			std::shared_ptr<GameScene>& GetScene() { return m_Scene; }
 			std::shared_ptr<MeshManager>& GetMeshManager() { return m_MeshManager; }
