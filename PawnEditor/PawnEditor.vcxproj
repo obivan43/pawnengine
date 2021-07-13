@@ -57,18 +57,21 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)src\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)src\;$(ProjectDir);$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;PAWN_DIRECTX11;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <PostBuildEvent>
       <Command>cd /d $(SolutionDir)ThirdParty\spdlog-1.8.2\bin\
@@ -89,17 +92,18 @@ exit</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>zlibd.lib;zlibstaticd.lib;spdlog.lib;IrrXMLd.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>zlibd.lib;zlibstaticd.lib;spdlog.lib;IrrXMLd.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies);lua54.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)src\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)src\;$(ProjectDir);$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;PAWN_DIRECTX11;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <PostBuildEvent>
       <Command>cd /d $(SolutionDir)ThirdParty\spdlog-1.8.2\bin\
@@ -120,7 +124,7 @@ exit</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>zlib.lib;zlibstatic.lib;spdlog.lib;IrrXML.lib;assimp-vc142-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>zlib.lib;zlibstatic.lib;spdlog.lib;IrrXML.lib;assimp-vc142-mt.lib;%(AdditionalDependencies);lua54.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -151,9 +155,6 @@ exit</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lua\Lua.vcxproj">
-      <Project>{822d8a4c-5c7a-44eb-b642-b140677b0f8e}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\PawnEngine\PawnEngine.vcxproj">
       <Project>{550dbb28-816c-4cc6-b90c-564891bd8c99}</Project>
     </ProjectReference>
