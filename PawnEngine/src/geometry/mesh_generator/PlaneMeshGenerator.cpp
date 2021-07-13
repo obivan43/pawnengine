@@ -56,8 +56,8 @@ namespace geometry {
 		}
 
 		const uint32_t rowLength = horizontalSize + 1;
-		for (uint32_t i{ 0 }, k{ 0 }; i < verticalSize; ++i, ++k) {
-			for (uint32_t j{ k }; j < horizontalSize; ++j) {
+		for (uint32_t i{ 0 }; i < verticalSize; ++i) {
+			for (uint32_t j{ 0 }; j < horizontalSize; ++j) {
 				const uint32_t index[4]
 				{
 					j + i * rowLength,

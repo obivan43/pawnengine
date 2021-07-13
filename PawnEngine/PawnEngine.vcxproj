@@ -51,6 +51,9 @@
     <ClInclude Include="src\TransformationComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lua\Lua.vcxproj">
+      <Project>{822d8a4c-5c7a-44eb-b642-b140677b0f8e}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\PawnGraphics\PawnGraphics.vcxproj">
       <Project>{b01544f3-830b-478a-b76f-c0ffa1f466d5}</Project>
     </ProjectReference>

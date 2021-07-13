@@ -151,6 +151,9 @@ exit</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lua\Lua.vcxproj">
+      <Project>{822d8a4c-5c7a-44eb-b642-b140677b0f8e}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\PawnEngine\PawnEngine.vcxproj">
       <Project>{550dbb28-816c-4cc6-b90c-564891bd8c99}</Project>
     </ProjectReference>
