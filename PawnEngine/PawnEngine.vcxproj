@@ -11,7 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\CameraComponent.cpp" />
+    <ClCompile Include="src\components\CameraComponent.cpp" />
+    <ClCompile Include="src\components\MeshComponent.cpp" />
+    <ClCompile Include="src\components\TagComponent.cpp" />
+    <ClCompile Include="src\components\TransformationComponent.cpp" />
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\GameEntity.cpp" />
     <ClCompile Include="src\geometry\LODGroup.cpp" />
@@ -20,20 +23,20 @@
     <ClCompile Include="src\geometry\mesh_generator\MeshGenerator.cpp" />
     <ClCompile Include="src\geometry\mesh_generator\PlaneMeshGenerator.cpp" />
     <ClCompile Include="src\geometry\Scene.cpp" />
-    <ClCompile Include="src\MeshComponent.cpp" />
     <ClCompile Include="src\MeshManager.cpp" />
-    <ClCompile Include="src\TagComponent.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\GameScene.cpp" />
-    <ClCompile Include="src\TransformationComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\pawnengine.h" />
-    <ClInclude Include="src\CameraComponent.h" />
+    <ClInclude Include="src\components\CameraComponent.h" />
+    <ClInclude Include="src\components\MeshComponent.h" />
+    <ClInclude Include="src\components\TagComponent.h" />
+    <ClInclude Include="src\components\TransformationComponent.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\GameEntity.h" />
     <ClInclude Include="src\geometry\LODGroup.h" />
@@ -42,13 +45,10 @@
     <ClInclude Include="src\geometry\mesh_generator\MeshGenerator.h" />
     <ClInclude Include="src\geometry\mesh_generator\PlaneMeshGenerator.h" />
     <ClInclude Include="src\geometry\Scene.h" />
-    <ClInclude Include="src\MeshComponent.h" />
     <ClInclude Include="src\MeshManager.h" />
-    <ClInclude Include="src\TagComponent.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\GameScene.h" />
-    <ClInclude Include="src\TransformationComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PawnGraphics\PawnGraphics.vcxproj">
@@ -113,7 +113,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)\PawnEngine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)\PawnEngine\src;$(SolutionDir)\PawnEngine\src\components;$(SolutionDir)\PawnEngine\src\input;$(SolutionDir)\PawnEngine\src\geometry;$(SolutionDir)\PAwnEngine\src\components;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -133,7 +133,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)\PawnEngine\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)\PawnEngine\src;$(SolutionDir)\PawnEngine\src\components;$(SolutionDir)\PawnEngine\src\input;$(SolutionDir)\PawnEngine\src\geometry;$(SolutionDir)\PAwnEngine\src\components;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>

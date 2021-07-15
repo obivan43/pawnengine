@@ -1,10 +1,10 @@
 #pragma once
 
 #include "GameEntity.h"
-#include "TransformationComponent.h"
-#include "TagComponent.h"
-#include "CameraComponent.h"
-#include "MeshComponent.h"
+#include "components\TransformationComponent.h"
+#include "components\TagComponent.h"
+#include "components\CameraComponent.h"
+#include "components\MeshComponent.h"
 
 namespace pawn {
 
