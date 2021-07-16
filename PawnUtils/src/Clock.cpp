@@ -1,6 +1,9 @@
 #include "pch.h"
-#include "WindowsAPI.h"
 #include "Clock.h"
+
+#ifdef _WIN32
+
+#include "PawnSystem/system/windows/WindowsAPI.h"
 
 namespace pawn {
 
@@ -83,3 +86,5 @@ namespace pawn {
 	}
 	
 }
+
+#endif

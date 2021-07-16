@@ -30,9 +30,6 @@
     <Filter Include="src\rtti">
       <UniqueIdentifier>{3f24fbb3-dbc5-4492-86a8-352b9add9ab1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\winapi">
-      <UniqueIdentifier>{dbb4d655-d935-4417-8a44-6cab6dd344aa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\macros">
       <UniqueIdentifier>{caac0637-45b1-42a0-9285-15fb982aaea9}</UniqueIdentifier>
     </Filter>
@@ -105,9 +102,6 @@
     </ClInclude>
     <ClInclude Include="src\Rtti.h">
       <Filter>src\rtti</Filter>
-    </ClInclude>
-    <ClInclude Include="src\WindowsAPI.h">
-      <Filter>src\winapi</Filter>
     </ClInclude>
     <ClInclude Include="src\Macros.h">
       <Filter>src\macros</Filter>

@@ -3,8 +3,6 @@
 #include "../src/Macros.h"
 
 #include "../src/Logger.h"
-
-#include "../src/WindowsAPI.h"
 #include "../src/Rtti.h"
 #include "../src/Clock.h"
 
