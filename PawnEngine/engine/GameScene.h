@@ -7,30 +7,34 @@
 
 namespace pawn {
 
-	class GameEntity;
-	class Renderer;
+	namespace engine {
 
-	class GameScene {
+		class GameEntity;
+		class Renderer;
 
-		friend GameEntity;
-		
-		public:
-			GameScene() = default;
-			GameScene(const GameScene& other) = delete;
-			GameScene(GameScene&& other) noexcept = default;
+		class GameScene {
 
-			GameScene& operator=(const GameScene& other) = delete;
-			GameScene& operator=(GameScene&& other) noexcept = delete;
+			friend GameEntity;
 
-			GameEntity CreateEntity(const std::string& name = std::string());
-			void DeleteEntity(entt::entity entity);
+			public:
+				GameScene() = default;
+				GameScene(const GameScene & other) = delete;
+				GameScene(GameScene && other) noexcept = default;
 
-			void OnUpdate(utils::Clock& clock, std::shared_ptr<Renderer>& renderer);
+				GameScene& operator=(const GameScene & other) = delete;
+				GameScene& operator=(GameScene && other) noexcept = delete;
 
-			entt::registry& GetRegistry() { return m_EnttRegistry; }
+				GameEntity CreateEntity(const std::string & name = std::string());
+				void DeleteEntity(entt::entity entity);
 
-		private:
-			entt::registry m_EnttRegistry;
-	};
+				void OnUpdate(utils::Clock & clock, std::shared_ptr<Renderer>&renderer);
+
+				entt::registry& GetRegistry() { return m_EnttRegistry; }
+
+			private:
+				entt::registry m_EnttRegistry;
+		};
+
+	}
 	
 }

@@ -41,7 +41,7 @@ namespace impl {
 		InitEngine();
 
 		m_EngineManager = new EngineManager(m_Engine.get());
-		connect(m_RightPanel, SIGNAL(EntityMeshModfied(pawn::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::GameEntity)));
+		connect(m_RightPanel, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
 	}
 
 	void MainWindowImpl::closeEvent(QCloseEvent* event) {
@@ -61,7 +61,7 @@ namespace impl {
 	}
 	
 	void MainWindowImpl::InitEngine() {
-		m_Engine.reset(new pawn::Engine);
+		m_Engine.reset(new pawn::engine::Engine);
 
 		SetGameEngineWindowHWND(m_CentralWidget->GetWindowsHandle());
 
@@ -70,20 +70,20 @@ namespace impl {
 
 		m_Engine->Init(GetGameEngineWindowHWND(), EngineViewWidth, EngineViewHeight);
 
-		std::shared_ptr<pawn::GameScene>& scene = m_Engine->GetScene();
+		std::shared_ptr<pawn::engine::GameScene>& scene = m_Engine->GetScene();
 
 		m_Engine->UploadMeshFromFile("res\\assets\\models\\cube.obj");
 		m_Engine->UploadMeshFromFile("res\\assets\\models\\sphere.obj");
 
-		pawn::GameEntity entity = scene->CreateEntity("Sphere");
-		entity.AddComponent<pawn::MeshComponent>(m_Engine->GetMeshByPath("res\\assets\\models\\sphere.obj"), "res\\assets\\models\\sphere.obj");
+		pawn::engine::GameEntity entity = scene->CreateEntity("Sphere");
+		entity.AddComponent<pawn::engine::MeshComponent>(m_Engine->GetMeshByPath("res\\assets\\models\\sphere.obj"), "res\\assets\\models\\sphere.obj");
 
-		pawn::GameEntity camera = scene->CreateEntity("Camera");
-		pawn::CameraComponent& cameraComponent = camera.AddComponent<pawn::CameraComponent>();
+		pawn::engine::GameEntity camera = scene->CreateEntity("Camera");
+		pawn::engine::CameraComponent& cameraComponent = camera.AddComponent<pawn::engine::CameraComponent>();
 		cameraComponent.Camera.SetPerspective();
 		cameraComponent.IsActiveCamera = true;
 
-		pawn::TransformationComponent& transformationComponent = camera.GetComponent<pawn::TransformationComponent>();
+		pawn::engine::TransformationComponent& transformationComponent = camera.GetComponent<pawn::engine::TransformationComponent>();
 		transformationComponent.Position = glm::vec3(0.0f, 0.0f, 4.0f);
 
 		emit ActiveSceneChanged(scene);
@@ -92,16 +92,16 @@ namespace impl {
 	void MainWindowImpl::InitConnections() {
 		connect(
 			this,
-			SIGNAL(ActiveSceneChanged(std::shared_ptr<pawn::GameScene>)),
+			SIGNAL(ActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>)),
 			m_LeftPanel,
-			SLOT(OnActiveSceneChanged(std::shared_ptr<pawn::GameScene>))
+			SLOT(OnActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>))
 		);
 
 		connect(
 			m_LeftPanel,
-			SIGNAL(SelectedEntityChanged(pawn::GameEntity)),
+			SIGNAL(SelectedEntityChanged(pawn::engine::GameEntity)),
 			m_RightPanel,
-			SLOT(OnSelectedEntityChanged(pawn::GameEntity))
+			SLOT(OnSelectedEntityChanged(pawn::engine::GameEntity))
 		);
 
 		connect(

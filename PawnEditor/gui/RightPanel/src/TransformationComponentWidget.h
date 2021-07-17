@@ -13,9 +13,9 @@ namespace impl {
 
 		public:
 			TransformationComponentWidget(QWidget* parent = Q_NULLPTR);
-			TransformationComponentWidget(pawn::TransformationComponent* transformation, QWidget* parent = Q_NULLPTR);
+			TransformationComponentWidget(pawn::engine::TransformationComponent* transformation, QWidget* parent = Q_NULLPTR);
 
-			void SetTransformation(pawn::TransformationComponent* transformation);
+			void SetTransformation(pawn::engine::TransformationComponent* transformation);
 
 		private slots:
 			void OnPositionChanged(glm::vec3);
@@ -26,7 +26,7 @@ namespace impl {
 			void InitConnections();
 
 		private:
-			pawn::TransformationComponent* m_Transformation;
+			pawn::engine::TransformationComponent* m_Transformation;
 			Double3Widget* m_Position;
 			Double3Widget* m_Rotation;
 			Double3Widget* m_Scale;

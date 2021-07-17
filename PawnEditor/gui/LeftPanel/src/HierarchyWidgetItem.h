@@ -9,12 +9,12 @@ namespace impl {
 	class HierarchyWidgetItem : public QTreeWidgetItem {
 
 		public:
-			HierarchyWidgetItem(pawn::GameEntity entity, const QString& str, QTreeWidgetItem* parent = Q_NULLPTR);
+			HierarchyWidgetItem(pawn::engine::GameEntity entity, const QString& str, QTreeWidgetItem* parent = Q_NULLPTR);
 
-			pawn::GameEntity GetEntity() const { return m_Entity; }
+			pawn::engine::GameEntity GetEntity() const { return m_Entity; }
 
 		private:
-			pawn::GameEntity m_Entity;
+			pawn::engine::GameEntity m_Entity;
 	};
 
 }

@@ -22,7 +22,7 @@ namespace impl {
 		QString& text = m_MeshLineEdit->text();
 
 		if (m_Entity && !m_Entity->IsNull()) {
-			std::string& path = m_Entity->GetComponent<pawn::MeshComponent>().MeshPath;
+			std::string& path = m_Entity->GetComponent<pawn::engine::MeshComponent>().MeshPath;
 			path = text.toLocal8Bit().constData();
 		}
 

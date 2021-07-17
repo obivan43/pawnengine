@@ -14,10 +14,10 @@ namespace impl {
 		addChild(m_WidgetWrapper);
 	}
 
-	void TransformationComponentWidgetItem::SetEntity(pawn::GameEntity* entity) {
+	void TransformationComponentWidgetItem::SetEntity(pawn::engine::GameEntity* entity) {
 		m_Entity = entity;
 		if (m_Entity && !m_Entity->IsNull()) {
-			m_TransformationComponentWidget->SetTransformation(&m_Entity->GetComponent<pawn::TransformationComponent>());
+			m_TransformationComponentWidget->SetTransformation(&m_Entity->GetComponent<pawn::engine::TransformationComponent>());
 		}
 	}
 

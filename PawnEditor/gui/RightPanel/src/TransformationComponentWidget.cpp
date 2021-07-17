@@ -20,7 +20,7 @@ namespace impl {
 		InitConnections();
 	}
 
-	TransformationComponentWidget::TransformationComponentWidget(pawn::TransformationComponent* transformation, QWidget* parent) : QWidget(parent), m_Transformation(transformation), m_Position(nullptr), m_Rotation(nullptr), m_Scale(nullptr) {
+	TransformationComponentWidget::TransformationComponentWidget(pawn::engine::TransformationComponent* transformation, QWidget* parent) : QWidget(parent), m_Transformation(transformation), m_Position(nullptr), m_Rotation(nullptr), m_Scale(nullptr) {
 		QVBoxLayout* layout = new QVBoxLayout(this);
 
 		m_Position = new Double3Widget("Position", m_Transformation->Position, this);
@@ -60,7 +60,7 @@ namespace impl {
 		}
 	}
 
-	void TransformationComponentWidget::SetTransformation(pawn::TransformationComponent* transformation) { 
+	void TransformationComponentWidget::SetTransformation(pawn::engine::TransformationComponent* transformation) {
 		m_Transformation = transformation;
 		m_Position->SetValue(m_Transformation->Position);
 		m_Rotation->SetValue(m_Transformation->Rotation);

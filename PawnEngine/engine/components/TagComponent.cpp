@@ -2,6 +2,10 @@
 
 namespace pawn {
 
-	TagComponent::TagComponent(const std::string& tag) : Tag(tag) {}
+	namespace engine {
+
+		TagComponent::TagComponent(const std::string& tag) : Tag(tag) {}
+
+	}
 
 }

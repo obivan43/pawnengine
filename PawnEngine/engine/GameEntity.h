@@ -6,47 +6,51 @@
 
 namespace pawn {
 	
-	class GameEntity {
-		
-		public:
-			GameEntity();
-			GameEntity(entt::entity id, GameScene* scene);
-			GameEntity(const GameEntity& other) = default;
-			GameEntity(GameEntity&& other) noexcept = default;
+	namespace engine {
 
-			GameEntity& operator=(const GameEntity& other) = default;
-			GameEntity& operator=(GameEntity&& other) noexcept = default;
+		class GameEntity {
 
-			bool IsNull() { return m_EntityID == entt::null; }
+			public:
+				GameEntity();
+				GameEntity(entt::entity id, GameScene* scene);
+				GameEntity(const GameEntity& other) = default;
+				GameEntity(GameEntity&& other) noexcept = default;
 
-			template<typename Component>
-			bool HasComponent() {
-				return m_Scene->m_EnttRegistry.has<Component>(m_EntityID);
-			}
+				GameEntity& operator=(const GameEntity& other) = default;
+				GameEntity& operator=(GameEntity&& other) noexcept = default;
 
-			template<typename Component>
-			const Component& GetComponent() const {
-				return m_Scene->m_EnttRegistry.get<Component>(m_EntityID);
-			}
-		
-			template<typename Component>
-			Component& GetComponent() {
-				return m_Scene->m_EnttRegistry.get<Component>(m_EntityID);
-			}
-		
-			template<typename Component, typename... Args>
-			Component& AddComponent(Args&&... args) {
-				return m_Scene->m_EnttRegistry.emplace<Component>(m_EntityID, std::forward<Args>(args)...);
-			}
-			
-			operator entt::entity() const { return m_EntityID; }
+				bool IsNull() { return m_EntityID == entt::null; }
 
-			entt::entity GetEntity() const { return m_EntityID; }
-			GameScene* GetScene() const { return m_Scene; }
+				template<typename Component>
+				bool HasComponent() {
+					return m_Scene->m_EnttRegistry.has<Component>(m_EntityID);
+				}
 
-		private:
-			entt::entity m_EntityID;
-			GameScene* m_Scene;
-	};
+				template<typename Component>
+				const Component& GetComponent() const {
+					return m_Scene->m_EnttRegistry.get<Component>(m_EntityID);
+				}
+
+				template<typename Component>
+				Component& GetComponent() {
+					return m_Scene->m_EnttRegistry.get<Component>(m_EntityID);
+				}
+
+				template<typename Component, typename... Args>
+				Component& AddComponent(Args&&... args) {
+					return m_Scene->m_EnttRegistry.emplace<Component>(m_EntityID, std::forward<Args>(args)...);
+				}
+
+				operator entt::entity() const { return m_EntityID; }
+
+				entt::entity GetEntity() const { return m_EntityID; }
+				GameScene* GetScene() const { return m_Scene; }
+
+			private:
+				entt::entity m_EntityID;
+				GameScene* m_Scene;
+		};
+
+	}
 	
 }

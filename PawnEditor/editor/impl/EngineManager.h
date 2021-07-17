@@ -10,13 +10,13 @@ namespace impl {
 		Q_OBJECT
 
 		public:
-			EngineManager(pawn::Engine* engine);
+			EngineManager(pawn::engine::Engine* engine);
 
 		public slots:
-			void OnEntityMeshModified(pawn::GameEntity entity);
+			void OnEntityMeshModified(pawn::engine::GameEntity entity);
 
 		private:
-			pawn::Engine* m_Engine;
+			pawn::engine::Engine* m_Engine;
 
 	};
 

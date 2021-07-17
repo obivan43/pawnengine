@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     pawn::utils::Clock m_Clock;
     m_Clock.Reset();
 
-    pawn::Engine* engine = window->GetEngine();
+    pawn::engine::Engine* engine = window->GetEngine();
 	while (window->Running) {
         m_Clock.Tick();
         engine->Clear();

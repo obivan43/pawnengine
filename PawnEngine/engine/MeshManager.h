@@ -12,30 +12,34 @@
 
 namespace pawn {
 
-	class MeshManager {
+	namespace engine {
 
-		public:
-			MeshManager() = default;
-			MeshManager(const MeshManager& other) = delete;
-			MeshManager(MeshManager&& other) noexcept = delete;
+		class MeshManager {
 
-			MeshManager& operator=(const MeshManager& other) = delete;
-			MeshManager& operator=(MeshManager&& other) noexcept = delete;
+			public:
+				MeshManager() = default;
+				MeshManager(const MeshManager& other) = delete;
+				MeshManager(MeshManager&& other) noexcept = delete;
 
-			bool HasMeshByPath(const std::string& path);
-			bool UploadMesh(const std::string& name, const std::shared_ptr<graphics::GraphicsMesh>& mesh);
+				MeshManager& operator=(const MeshManager& other) = delete;
+				MeshManager& operator=(MeshManager&& other) noexcept = delete;
 
-			bool UploadMeshFromFile(
-				std::shared_ptr<graphics::GraphicsContext>& context,
-				std::shared_ptr<graphics::GraphicsShader>& shader,
-				const std::string& filename
-			);
+				bool HasMeshByPath(const std::string& path);
+				bool UploadMesh(const std::string& name, const std::shared_ptr<graphics::GraphicsMesh>& mesh);
 
-			const std::shared_ptr<graphics::GraphicsMesh>& GetMeshByPath(const std::string& path);
+				bool UploadMeshFromFile(
+					std::shared_ptr<graphics::GraphicsContext>& context,
+					std::shared_ptr<graphics::GraphicsShader>& shader,
+					const std::string& filename
+				);
 
-		private:
-			std::unordered_map<std::string, std::shared_ptr<graphics::GraphicsMesh>> m_MeshesMap;
-			utils::AssimpLoader m_MeshLoader;
-	};
+				const std::shared_ptr<graphics::GraphicsMesh>& GetMeshByPath(const std::string& path);
+
+			private:
+				std::unordered_map<std::string, std::shared_ptr<graphics::GraphicsMesh>> m_MeshesMap;
+				utils::AssimpLoader m_MeshLoader;
+		};
+
+	}
 
 }

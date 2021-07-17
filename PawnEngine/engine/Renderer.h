@@ -13,31 +13,34 @@
 
 namespace pawn {
 
-	struct ViewProjection {
-		glm::mat4 projection;
-		glm::mat4 view;
-	};
+	namespace engine {
 
-	class Renderer {
+		struct ViewProjection {
+			glm::mat4 projection;
+			glm::mat4 view;
+		};
 
-		public:
-			Renderer() = default;
-			void Init(const std::shared_ptr<graphics::GraphicsContext>& context, const std::shared_ptr<graphics::GraphicsAPI>& api, uint32_t width, uint32_t height);
-			void SetShader(std::shared_ptr<graphics::GraphicsContext>& context, const std::shared_ptr<graphics::GraphicsShader>& shader);
+		class Renderer {
 
-			void BeginScene(math::Camera& camera, glm::mat4& view);
-			void EndScene();
+			public:
+				Renderer() = default;
+				void Init(const std::shared_ptr<graphics::GraphicsContext>&context, const std::shared_ptr<graphics::GraphicsAPI>&api, uint32_t width, uint32_t height);
+				void SetShader(std::shared_ptr<graphics::GraphicsContext>&context, const std::shared_ptr<graphics::GraphicsShader>&shader);
 
-			void DrawMesh(TransformationComponent& transformationComponent, MeshComponent& meshComponent);
+				void BeginScene(math::Camera & camera, glm::mat4 & view);
+				void EndScene();
 
-		private:
-			std::shared_ptr<graphics::GraphicsBuffer> m_Transformation;
-			std::shared_ptr<graphics::GraphicsBuffer> m_ViewProjection;
+				void DrawMesh(TransformationComponent & transformationComponent, MeshComponent & meshComponent);
 
-			std::shared_ptr<graphics::GraphicsContext> m_Context;
-			std::shared_ptr<graphics::GraphicsAPI> m_GraphicsAPI;
-			std::shared_ptr<graphics::GraphicsShader> m_Shader;
-			std::shared_ptr<graphics::GraphicsRenderer> m_GraphicsRenderer;
-	};
+			private:
+				std::shared_ptr<graphics::GraphicsBuffer> m_Transformation;
+				std::shared_ptr<graphics::GraphicsBuffer> m_ViewProjection;
+
+				std::shared_ptr<graphics::GraphicsContext> m_Context;
+				std::shared_ptr<graphics::GraphicsAPI> m_GraphicsAPI;
+				std::shared_ptr<graphics::GraphicsShader> m_Shader;
+				std::shared_ptr<graphics::GraphicsRenderer> m_GraphicsRenderer;
+		};
+	}
 
 }

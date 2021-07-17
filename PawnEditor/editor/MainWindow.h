@@ -11,7 +11,7 @@ class MainWindow : public QMainWindow {
     public:
         static MainWindow* CreateImpl(QWidget* parent = Q_NULLPTR);
 
-        pawn::Engine* GetEngine() { return m_Engine.get(); }
+        pawn::engine::Engine* GetEngine() { return m_Engine.get(); }
 
     protected:
         MainWindow(QWidget* parent);
@@ -20,5 +20,5 @@ class MainWindow : public QMainWindow {
     	bool Running;
 
     protected:
-      std::shared_ptr<pawn::Engine> m_Engine;
+      std::shared_ptr<pawn::engine::Engine> m_Engine;
 };

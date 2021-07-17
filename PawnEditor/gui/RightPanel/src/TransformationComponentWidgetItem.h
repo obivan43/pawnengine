@@ -15,7 +15,7 @@ namespace impl {
 		public:
 			TransformationComponentWidgetItem(QTreeWidget* parent);
 
-			void SetEntity(pawn::GameEntity* entity);
+			void SetEntity(pawn::engine::GameEntity* entity);
 
 			TransformationComponentWidget* GetWidget() { return m_TransformationComponentWidget; }
 			QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
@@ -23,7 +23,7 @@ namespace impl {
 		private:
 			TransformationComponentWidget* m_TransformationComponentWidget;
 			QTreeWidgetItem* m_WidgetWrapper;
-			pawn::GameEntity* m_Entity;
+			pawn::engine::GameEntity* m_Entity;
 	};
 
 }

@@ -13,7 +13,7 @@ namespace impl {
 		public:
 			MeshComponentWidgetItem(QTreeWidget* parent);
 
-			void SetEntity(pawn::GameEntity* entity) { m_Entity = entity; }
+			void SetEntity(pawn::engine::GameEntity* entity) { m_Entity = entity; }
 
 			QLineEdit* GetWidget() { return m_MeshLineEdit; }
 			QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
@@ -25,12 +25,12 @@ namespace impl {
 			void OnLineEditPress();
 
 		signals:
-			void EntityMeshModified(pawn::GameEntity entity);
+			void EntityMeshModified(pawn::engine::GameEntity entity);
 
 		private:
 			QLineEdit* m_MeshLineEdit;
 			QTreeWidgetItem* m_WidgetWrapper;
-			pawn::GameEntity* m_Entity;
+			pawn::engine::GameEntity* m_Entity;
 	};
 
 }

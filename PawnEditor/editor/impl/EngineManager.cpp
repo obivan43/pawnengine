@@ -2,11 +2,11 @@
 
 namespace impl {
 
-	EngineManager::EngineManager(pawn::Engine* engine) : m_Engine(engine) {}
+	EngineManager::EngineManager(pawn::engine::Engine* engine) : m_Engine(engine) {}
 
-	void EngineManager::OnEntityMeshModified(pawn::GameEntity entity) {
+	void EngineManager::OnEntityMeshModified(pawn::engine::GameEntity entity) {
 		if (!entity.IsNull()) {
-			pawn::MeshComponent& meshComponent = entity.GetComponent<pawn::MeshComponent>();
+			pawn::engine::MeshComponent& meshComponent = entity.GetComponent<pawn::engine::MeshComponent>();
 			
 			if (!m_Engine->HasMeshByPath(meshComponent.MeshPath)) {
 				m_Engine->UploadMeshFromFile(meshComponent.MeshPath);

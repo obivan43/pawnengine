@@ -5,22 +5,26 @@
 
 namespace pawn {
 
-	struct CameraComponent {
+	namespace engine {
 
-		CameraComponent() = default;
-		CameraComponent(const glm::mat4& projection);
-		CameraComponent(const CameraComponent& other) = default;
-		CameraComponent(CameraComponent&& other) noexcept = default;
+		struct CameraComponent {
 
-		CameraComponent& operator=(const CameraComponent& other) = default;
-		CameraComponent& operator=(CameraComponent&& other) noexcept = default;
+			CameraComponent() = default;
+			CameraComponent(const glm::mat4& projection);
+			CameraComponent(const CameraComponent& other) = default;
+			CameraComponent(CameraComponent&& other) noexcept = default;
 
-		operator math::Camera& () { return Camera; }
-		operator const math::Camera& () const { return Camera; }
+			CameraComponent& operator=(const CameraComponent& other) = default;
+			CameraComponent& operator=(CameraComponent&& other) noexcept = default;
 
-		math::Camera Camera;
-		bool IsActiveCamera = false;
+			operator math::Camera& () { return Camera; }
+			operator const math::Camera& () const { return Camera; }
 
-	};
+			math::Camera Camera;
+			bool IsActiveCamera = false;
+
+		};
+
+	}
 
 }

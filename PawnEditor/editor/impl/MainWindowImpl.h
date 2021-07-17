@@ -30,7 +30,7 @@ namespace impl {
 			void InitConnections();
 
 		signals:
-			void ActiveSceneChanged(std::shared_ptr<pawn::GameScene>);
+			void ActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>);
 
 		private:
 			BottomPanelWidget* m_BottomPanel;

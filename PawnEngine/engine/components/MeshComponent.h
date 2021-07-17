@@ -6,21 +6,25 @@
 
 namespace pawn {
 
-	struct MeshComponent {
+	namespace engine {
 
-		MeshComponent() = default;
-		MeshComponent(const std::shared_ptr<graphics::GraphicsMesh>& mesh, const std::string& meshPath = std::string());
-		MeshComponent(const MeshComponent& other) = default;
-		MeshComponent(MeshComponent&& other) noexcept = default;
+		struct MeshComponent {
 
-		MeshComponent& operator=(const MeshComponent& other) = default;
-		MeshComponent& operator=(MeshComponent&& other) noexcept = default;
+			MeshComponent() = default;
+			MeshComponent(const std::shared_ptr<graphics::GraphicsMesh>& mesh, const std::string& meshPath = std::string());
+			MeshComponent(const MeshComponent& other) = default;
+			MeshComponent(MeshComponent&& other) noexcept = default;
 
-		operator std::shared_ptr<graphics::GraphicsMesh>& () { return Mesh; }
-		operator const std::shared_ptr<graphics::GraphicsMesh>& () const { return Mesh; }
+			MeshComponent& operator=(const MeshComponent& other) = default;
+			MeshComponent& operator=(MeshComponent&& other) noexcept = default;
 
-		std::shared_ptr<graphics::GraphicsMesh> Mesh;
-		std::string MeshPath;
-	};
+			operator std::shared_ptr<graphics::GraphicsMesh>& () { return Mesh; }
+			operator const std::shared_ptr<graphics::GraphicsMesh>& () const { return Mesh; }
+
+			std::shared_ptr<graphics::GraphicsMesh> Mesh;
+			std::string MeshPath;
+		};
+
+	}
 
 }

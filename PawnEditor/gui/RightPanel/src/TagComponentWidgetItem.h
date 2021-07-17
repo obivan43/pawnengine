@@ -13,7 +13,7 @@ namespace impl {
 		public:
 			TagComponentWidgetItem(QTreeWidget* parent);
 
-			void SetEntity(pawn::GameEntity* entity) { m_Entity = entity; }
+			void SetEntity(pawn::engine::GameEntity* entity) { m_Entity = entity; }
 
 			QLineEdit* GetWidget() { return m_TagLineEdit; }
 			QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
@@ -30,7 +30,7 @@ namespace impl {
 		private:
 			QLineEdit* m_TagLineEdit;
 			QTreeWidgetItem* m_WidgetWrapper;
-			pawn::GameEntity* m_Entity;
+			pawn::engine::GameEntity* m_Entity;
 	};
 
 }

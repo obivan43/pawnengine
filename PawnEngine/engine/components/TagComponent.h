@@ -4,21 +4,25 @@
 
 namespace pawn {
 
-	struct TagComponent {
+	namespace engine {
 
-		TagComponent() = default;
-		TagComponent(const std::string& tag);
-		TagComponent(const TagComponent& other) = default;
-		TagComponent(TagComponent&& other) noexcept = default;
+		struct TagComponent {
 
-		TagComponent& operator=(const TagComponent& other) = default;
-		TagComponent& operator=(TagComponent&& other) noexcept = default;
+			TagComponent() = default;
+			TagComponent(const std::string& tag);
+			TagComponent(const TagComponent& other) = default;
+			TagComponent(TagComponent&& other) noexcept = default;
 
-		operator std::string& () { return Tag; }
-		operator const std::string& () const { return Tag; }
+			TagComponent& operator=(const TagComponent& other) = default;
+			TagComponent& operator=(TagComponent&& other) noexcept = default;
 
-		std::string Tag;
-	};
+			operator std::string& () { return Tag; }
+			operator const std::string& () const { return Tag; }
+
+			std::string Tag;
+		};
+
+	}
 
 }
 

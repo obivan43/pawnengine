@@ -4,6 +4,9 @@
 
 namespace pawn {
 
-	TransformationComponent::TransformationComponent(const glm::vec3& position) : Position(position) {}
+	namespace engine {
 
+		TransformationComponent::TransformationComponent(const glm::vec3& position) : Position(position) {}
+
+	}
 }
