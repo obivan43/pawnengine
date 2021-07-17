@@ -15,6 +15,10 @@ namespace pawn {
 		m_SecondsPerCount = 1.0 / static_cast<double>(countPerSecond);
 	}
 
+	int64_t Clock::TimeStamp() const {
+		return m_CurrentTime;
+	}
+
 	float Clock::Time() const {
 		return static_cast<float>(m_CurrentTime);
 	}

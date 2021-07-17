@@ -19,16 +19,31 @@
     <ClInclude Include="system\windows\SystemPC.h">
       <Filter>system\windows</Filter>
     </ClInclude>
-    <ClInclude Include="system\input\Keyboard.h">
+    <ClInclude Include="system\input\KeyboardManager.h">
       <Filter>system\input</Filter>
+    </ClInclude>
+    <ClInclude Include="system\input\KeyboardButton.h">
+      <Filter>system\input</Filter>
+    </ClInclude>
+    <ClInclude Include="system\windows\InputManagerWindows.h">
+      <Filter>system\windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="system\windows\SystemPC.cpp">
       <Filter>system\windows</Filter>
     </ClCompile>
-    <ClCompile Include="system\input\Keyboard.cpp">
+    <ClCompile Include="system\input\KeyboardManager.cpp">
       <Filter>system\input</Filter>
+    </ClCompile>
+    <ClCompile Include="system\windows\KeyboardManagerWindows.cpp">
+      <Filter>system\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="system\input\KeyboardButton.cpp">
+      <Filter>system\input</Filter>
+    </ClCompile>
+    <ClCompile Include="system\windows\InputManagerWindows.cpp">
+      <Filter>system\windows</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@
 
 #ifdef _WIN32
 
-static HWND g_GameEngineWindowHandle = nullptr;
+static HWND g_GameEngineWindowHandle{ nullptr };
 
 extern "C" {
 

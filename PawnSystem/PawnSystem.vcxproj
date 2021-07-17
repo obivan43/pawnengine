@@ -11,12 +11,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="system\input\Keyboard.h" />
+    <ClInclude Include="system\input\KeyboardButton.h" />
+    <ClInclude Include="system\input\KeyboardManager.h" />
+    <ClInclude Include="system\windows\InputManagerWindows.h" />
     <ClInclude Include="system\windows\SystemPC.h" />
     <ClInclude Include="system\windows\WindowsAPI.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="system\input\Keyboard.cpp" />
+    <ClCompile Include="system\input\KeyboardButton.cpp" />
+    <ClCompile Include="system\input\KeyboardManager.cpp" />
+    <ClCompile Include="system\windows\InputManagerWindows.cpp" />
+    <ClCompile Include="system\windows\KeyboardManagerWindows.cpp" />
     <ClCompile Include="system\windows\SystemPC.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

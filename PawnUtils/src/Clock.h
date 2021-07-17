@@ -11,6 +11,7 @@ namespace pawn {
 		public:
 			Clock();
 		
+			int64_t TimeStamp() const;
 			float Time() const;
 			float DeltaTime() const;
 			float TotalTime() const;
