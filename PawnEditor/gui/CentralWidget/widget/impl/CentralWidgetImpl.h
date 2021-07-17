@@ -1,6 +1,6 @@
 #pragma once
 
-#include "CentralWidget.h"
+#include "PawnEditor/gui/CentralWidget/widget/CentralWidget.h"
 
 namespace impl {
 

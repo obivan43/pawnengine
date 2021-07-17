@@ -1,11 +1,12 @@
 #pragma once
 
 #include "MainWindow.h"
-#include "gui/BottomPanel/include/bottompanelwidget.h"
+#include "EngineManager.h"
+
+#include "gui/BottomPanel/widget/BottomPanelWidget.h"
 #include "gui/LeftPanel/include/leftpanelwidget.h"
 #include "gui/RightPanel/include/rightpanelwidget.h"
-#include "gui/CentralWidget/include/centralwidget.h"
-#include "EngineManager.h"
+#include "gui/CentralWidget/widget/CentralWidget.h"
 
 #include <QtWidgets/QDockWidget>
 #include <QCloseEvent>

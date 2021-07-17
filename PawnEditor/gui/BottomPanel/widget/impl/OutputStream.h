@@ -8,7 +8,7 @@ namespace impl {
 	class OutputStream : public std::basic_streambuf<char> {
 
 		public:
-			OutputStream(std::ostream& stream, QTextEdit* text_edit);
+			OutputStream(std::ostream& stream, QTextEdit* textEdit);
 
 			virtual ~OutputStream();
 			static void registerConsoleMessageHandler();
@@ -21,9 +21,9 @@ namespace impl {
 			static void consoleMessageHandler(QtMsgType type, const QMessageLogContext&, const QString& msg);
 
 		private:
-			std::ostream& m_stream;
-			std::streambuf* m_old_buf;
-			QTextEdit* log_window;
+			std::ostream& m_Stream;
+			std::streambuf* m_OldBuffer;
+			QTextEdit* m_LogWindow;
 	};
 
 }

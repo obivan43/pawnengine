@@ -4,15 +4,15 @@
 
 namespace impl {
 
-	OutputStream::OutputStream(std::ostream& stream, QTextEdit* text_edit) : std::basic_streambuf<char>() , m_stream(stream) {
-		log_window = text_edit;
-		m_old_buf = stream.rdbuf();
+	OutputStream::OutputStream(std::ostream& stream, QTextEdit* textEdit) : std::basic_streambuf<char>() , m_Stream(stream) {
+		m_LogWindow = textEdit;
+		m_OldBuffer = stream.rdbuf();
 
 		stream.rdbuf(this);
 	}
 
 	OutputStream::~OutputStream() {
-		m_stream.rdbuf(m_old_buf);
+		m_Stream.rdbuf(m_OldBuffer);
 	}
 
 	void OutputStream::registerConsoleMessageHandler() {
@@ -21,7 +21,7 @@ namespace impl {
 
 	int OutputStream::overflow(int v) {
 		if (v == '\n') {
-			log_window->append("");
+			m_LogWindow->append("");
 		}
 
 		return v;
@@ -31,39 +31,39 @@ namespace impl {
 		QStringList matchList{ "[info]", "[error]", "[debug]", "[trace]", "[warning]" };
 		QString str{ p };
 
-		log_window->moveCursor(QTextCursor::End);
+		m_LogWindow->moveCursor(QTextCursor::End);
 
-		if (log_window->textColor() != QColorConstants::White) {
-			log_window->setTextColor(QColorConstants::White);
+		if (m_LogWindow->textColor() != QColorConstants::White) {
+			m_LogWindow->setTextColor(QColorConstants::White);
 		}
 
 		for (QString match : matchList) {
 			if (str.contains(match)) {
 				if (match == matchList[0]) {
-					log_window->setTextColor(QColorConstants::White);
+					m_LogWindow->setTextColor(QColorConstants::White);
 				}
 
 				if (match == matchList[1]) {
-					log_window->setTextColor(QColorConstants::Red);
+					m_LogWindow->setTextColor(QColorConstants::Red);
 				}
 
 				if (match == matchList[2]) {
-					log_window->setTextColor(QColorConstants::LightGray);
+					m_LogWindow->setTextColor(QColorConstants::LightGray);
 				}
 
 				if (match == matchList[3]) {
-					log_window->setTextColor(QColorConstants::LightGray);
+					m_LogWindow->setTextColor(QColorConstants::LightGray);
 				}
 
 				if (match == matchList[4]) {
-					log_window->setTextColor(QColorConstants::Yellow);
+					m_LogWindow->setTextColor(QColorConstants::Yellow);
 				}
 
 				break;
 			}
 		}
 
-		log_window->insertPlainText(str);
+		m_LogWindow->insertPlainText(str);
 		
 		return n;
 	}

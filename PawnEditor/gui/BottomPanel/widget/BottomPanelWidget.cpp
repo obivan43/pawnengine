@@ -1,5 +1,5 @@
 #include "BottomPanelWidget.h"
-#include "BottomPanelWidgetImpl.h"
+#include "PawnEditor/gui/BottomPanel/widget/impl/BottomPanelWidgetImpl.h"
 
 BottomPanelWidget::BottomPanelWidget(QWidget* parent) : QDockWidget(parent) {}
 
