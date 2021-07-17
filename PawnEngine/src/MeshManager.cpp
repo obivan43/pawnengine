@@ -1,5 +1,8 @@
-#include "pch.h"
 #include "MeshManager.h"
+
+#include "PawnGraphics/graphics/GraphicsInputLayout.h"
+#include "PawnGraphics/graphics/GraphicsBuffer.h"
+#include "PawnGraphics/graphics/data/GraphicsMesh.h"
 
 #include "PawnUtils/utils/logger/Logger.h"
 
@@ -20,7 +23,7 @@ namespace pawn {
 		return true;
 	}
 
-	bool MeshManager::UploadMeshFromFile(std::shared_ptr<pawn::GraphicsContext>& context, std::shared_ptr<pawn::GraphicsShader>& shader, const std::string& filename) {
+	bool MeshManager::UploadMeshFromFile(std::shared_ptr<GraphicsContext>& context, std::shared_ptr<GraphicsShader>& shader, const std::string& filename) {
 		static const std::initializer_list<GraphicsInputElement> inputElements = {
 			{ "Position", GraphicsInputElementType::Float3 },
 			{ "Normal", GraphicsInputElementType::Float3 },

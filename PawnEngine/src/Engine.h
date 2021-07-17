@@ -6,6 +6,7 @@
 
 #include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsAPI.h"
+#include "PawnGraphics/graphics/GraphicsShader.h"
 
 #include "PawnUtils/utils/time/Clock.h"
 

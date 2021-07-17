@@ -7,7 +7,7 @@ namespace pawn {
 
 	GraphicsMesh::GraphicsMesh() {}
 
-	GraphicsMesh::GraphicsMesh(const std::shared_ptr<pawn::GraphicsBuffer>& vertexBuffer, std::shared_ptr<pawn::GraphicsBuffer>& indexBuffer, std::shared_ptr<GraphicsInputLayout>& inputLayout)
+	GraphicsMesh::GraphicsMesh(const std::shared_ptr<GraphicsBuffer>& vertexBuffer, std::shared_ptr<GraphicsBuffer>& indexBuffer, std::shared_ptr<GraphicsInputLayout>& inputLayout)
 	: m_VertexBuffer(vertexBuffer), m_IndexBuffer(indexBuffer), m_InputLayout(inputLayout) {}
 
 	void GraphicsMesh::Bind(std::shared_ptr<GraphicsContext>& context) {

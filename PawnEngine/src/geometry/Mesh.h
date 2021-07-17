@@ -2,6 +2,8 @@
 
 #include "glm.hpp"
 
+#include <vector>
+
 namespace geometry {
 
 	struct Mesh {

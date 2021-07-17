@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "PlaneMeshGenerator.h"
 
 #include "PawnMath/math/Functions.h"

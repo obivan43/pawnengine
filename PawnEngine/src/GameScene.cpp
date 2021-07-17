@@ -1,5 +1,4 @@
-﻿#include "pch.h"
-#include "GameScene.h"
+﻿#include "GameScene.h"
 #include "GameEntity.h"
 #include "TransformationComponent.h"
 #include "TagComponent.h"

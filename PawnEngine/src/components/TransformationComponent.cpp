@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "TransformationComponent.h"
 
 #include "gtc/matrix_transform.hpp"

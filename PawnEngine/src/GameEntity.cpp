@@ -1,5 +1,4 @@
-﻿#include "pch.h"
-#include "GameEntity.h"
+﻿#include "GameEntity.h"
 #include "GameScene.h"
 
 namespace pawn {

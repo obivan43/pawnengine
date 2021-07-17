@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "TagComponent.h"
 
 namespace pawn {

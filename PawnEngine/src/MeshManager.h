@@ -4,6 +4,7 @@
 
 #include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsShader.h"
+#include "PawnGraphics/graphics/data/GraphicsMesh.h"
 
 #include <memory>
 #include <unordered_map>
@@ -27,8 +28,8 @@ namespace pawn {
 			bool UploadMesh(const std::string& name, const std::shared_ptr<GraphicsMesh>& mesh);
 
 			bool UploadMeshFromFile(
-				std::shared_ptr<pawn::GraphicsContext>& context,
-				std::shared_ptr<pawn::GraphicsShader>& shader,
+				std::shared_ptr<GraphicsContext>& context,
+				std::shared_ptr<GraphicsShader>& shader,
 				const std::string& filename
 			);
 

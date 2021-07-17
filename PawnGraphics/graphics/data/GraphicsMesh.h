@@ -12,7 +12,7 @@ namespace pawn {
 
 		public:
 			GraphicsMesh();
-			GraphicsMesh(const std::shared_ptr<pawn::GraphicsBuffer>& vertexBuffer, std::shared_ptr<pawn::GraphicsBuffer>& indexBuffer, std::shared_ptr<GraphicsInputLayout>& inputLayout);
+			GraphicsMesh(const std::shared_ptr<GraphicsBuffer>& vertexBuffer, std::shared_ptr<GraphicsBuffer>& indexBuffer, std::shared_ptr<GraphicsInputLayout>& inputLayout);
 			GraphicsMesh(const GraphicsMesh& other) = default;
 			GraphicsMesh(GraphicsMesh&& other) noexcept = default;
 
@@ -22,18 +22,18 @@ namespace pawn {
 			void Bind(std::shared_ptr<GraphicsContext>& context);
 			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index);
 
-			void SetVertexBuffer(const std::shared_ptr<pawn::GraphicsBuffer>& vertexBuffer) { m_VertexBuffer = vertexBuffer; }
-			void SetIndexBuffer(const std::shared_ptr<pawn::GraphicsBuffer>& indexBuffer) { m_IndexBuffer = indexBuffer; }
-			void SetInputLayout(const std::shared_ptr<pawn::GraphicsInputLayout>& inputLayout) { m_InputLayout = inputLayout; }
+			void SetVertexBuffer(const std::shared_ptr<GraphicsBuffer>& vertexBuffer) { m_VertexBuffer = vertexBuffer; }
+			void SetIndexBuffer(const std::shared_ptr<GraphicsBuffer>& indexBuffer) { m_IndexBuffer = indexBuffer; }
+			void SetInputLayout(const std::shared_ptr<GraphicsInputLayout>& inputLayout) { m_InputLayout = inputLayout; }
 
-			const std::shared_ptr<pawn::GraphicsBuffer>& GetVertexBuffer() const { return m_VertexBuffer; }
-			const std::shared_ptr<pawn::GraphicsBuffer>& GetIndexBuffer() const { return m_IndexBuffer; }
-			const std::shared_ptr<pawn::GraphicsInputLayout>& GetInputLayout() const { return m_InputLayout; }
+			const std::shared_ptr<GraphicsBuffer>& GetVertexBuffer() const { return m_VertexBuffer; }
+			const std::shared_ptr<GraphicsBuffer>& GetIndexBuffer() const { return m_IndexBuffer; }
+			const std::shared_ptr<GraphicsInputLayout>& GetInputLayout() const { return m_InputLayout; }
 
 		private:
-			std::shared_ptr<pawn::GraphicsBuffer> m_VertexBuffer;
-			std::shared_ptr<pawn::GraphicsBuffer> m_IndexBuffer;
-			std::shared_ptr<pawn::GraphicsInputLayout> m_InputLayout;
+			std::shared_ptr<GraphicsBuffer> m_VertexBuffer;
+			std::shared_ptr<GraphicsBuffer> m_IndexBuffer;
+			std::shared_ptr<GraphicsInputLayout> m_InputLayout;
 	};
 
 }
