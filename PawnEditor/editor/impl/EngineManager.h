@@ -1,5 +1,7 @@
 #pragma once
 
+#include "PawnEngine/src/Engine.h"
+
 #include <QObject>
 
 namespace impl {

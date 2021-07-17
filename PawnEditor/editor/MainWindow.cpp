@@ -1,6 +1,5 @@
-#include "pch.h"
 #include "MainWindow.h"
-#include "MainWindowImpl.h"
+#include "impl/MainWindowImpl.h"
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), Running(true), m_Engine(nullptr) {}
 

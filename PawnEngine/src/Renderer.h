@@ -6,6 +6,11 @@
 #include "components\CameraComponent.h"
 #include "components\MeshComponent.h"
 
+#include "PawnGraphics/src/GraphicsContext.h"
+#include "PawnGraphics/src/GraphicsAPI.h"
+#include "PawnGraphics/src/GraphicsShader.h"
+#include "PawnGraphics/src/GraphicsRenderer.h"
+
 namespace pawn {
 
 	struct ViewProjection {

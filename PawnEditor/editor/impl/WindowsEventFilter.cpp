@@ -1,7 +1,6 @@
-#include "pch.h"
 #include "WindowsEventFilter.h"
 
-#include "../../PawnSystem/system/windows/InputManagerWindows.h"
+#include "PawnSystem/system/windows/InputManagerWindows.h"
 
 #include <QString>
 #include <Windows.h>
@@ -16,7 +15,7 @@ namespace impl {
 	
 	bool WindowsEventFilter::nativeEventFilter(const QByteArray& eventType, void* message, qintptr* result) {
 		if (eventType == QString("windows_generic_MSG")) {
-			reinterpret_cast<qintptr*>(windowEventHandle(
+			result = reinterpret_cast<qintptr*>(windowEventHandle(
 				static_cast<MSG*>(message)->hwnd,
 				static_cast<MSG*>(message)->message,
 				static_cast<MSG*>(message)->wParam,

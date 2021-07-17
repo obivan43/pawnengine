@@ -1,9 +1,10 @@
-#include "pch.h"
 #include "MainWindow.h"
-#include "WindowsEventFilter.h"
+#include "impl/WindowsEventFilter.h"
 
-#include <QtWidgets/QApplication>
+#include "PawnUtils/src/Logger.h"
+
 #include <QtCore>
+#include <QtWidgets/QApplication>
 
 #ifdef PAWN_DIRECTX11
 

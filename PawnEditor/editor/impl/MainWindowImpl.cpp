@@ -1,8 +1,6 @@
-#include "pch.h"
 #include "MainWindowImpl.h"
-#include "../../PawnSystem/system/windows/SystemPC.h"
-#include "../../PawnSystem/system/windows/InputManagerWindows.h"
-
+#include "PawnSystem/system/windows/SystemPC.h"
+#include "PawnSystem/system/windows/InputManagerWindows.h"
 
 #include <QSettings>
 #include <string>

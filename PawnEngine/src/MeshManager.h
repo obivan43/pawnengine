@@ -1,5 +1,10 @@
 #pragma once
 
+#include "PawnUtils/src/AssimpLoader.h"
+
+#include "PawnGraphics/src/GraphicsContext.h"
+#include "PawnGraphics/src/GraphicsShader.h"
+
 #include <memory>
 #include <unordered_map>
 #include <string>

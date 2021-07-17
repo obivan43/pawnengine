@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="src">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="res">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -18,48 +14,13 @@
     <Filter Include="res\light">
       <UniqueIdentifier>{3c256e28-aa2e-41e8-8992-1c1d2563228b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\impl">
+    <Filter Include="editor">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="editor\impl">
       <UniqueIdentifier>{b8c09531-4b89-464d-8829-6acede4b41b6}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\pch.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\MainWindow.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\MainWindowImpl.cpp">
-      <Filter>src\impl</Filter>
-    </ClCompile>
-    <ClCompile Include="src\EngineManager.cpp">
-      <Filter>src\impl</Filter>
-    </ClCompile>
-    <ClCompile Include="src\WindowsEventFilter.cpp">
-      <Filter>src\impl</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\pch.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\WindowsEventFilter.h">
-      <Filter>src\impl</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="src\MainWindow.h">
-      <Filter>src</Filter>
-    </QtMoc>
-    <QtMoc Include="src\MainWindowImpl.h">
-      <Filter>src\impl</Filter>
-    </QtMoc>
-    <QtMoc Include="src\EngineManager.h">
-      <Filter>src\impl</Filter>
-    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\light.qss">
@@ -341,5 +302,38 @@
     <Image Include="res\pawn.png">
       <Filter>res</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="editor\main.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\MainWindow.cpp">
+      <Filter>editor</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\impl\MainWindowImpl.cpp">
+      <Filter>editor\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\impl\WindowsEventFilter.cpp">
+      <Filter>editor\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="editor\impl\EngineManager.cpp">
+      <Filter>editor\impl</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="editor\impl\WindowsEventFilter.h">
+      <Filter>editor\impl</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="editor\impl\MainWindowImpl.h">
+      <Filter>editor\impl</Filter>
+    </QtMoc>
+    <QtMoc Include="editor\impl\EngineManager.h">
+      <Filter>editor\impl</Filter>
+    </QtMoc>
+    <QtMoc Include="editor\MainWindow.h">
+      <Filter>editor</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>

@@ -1,14 +1,14 @@
 #pragma once
 
-#include <QtWidgets/QDockWidget>
-#include <QCloseEvent>
-
 #include "MainWindow.h"
 #include "gui/BottomPanel/include/bottompanelwidget.h"
 #include "gui/LeftPanel/include/leftpanelwidget.h"
 #include "gui/RightPanel/include/rightpanelwidget.h"
 #include "gui/CentralWidget/include/centralwidget.h"
 #include "EngineManager.h"
+
+#include <QtWidgets/QDockWidget>
+#include <QCloseEvent>
 
 namespace impl {
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "PawnEngine/src/Engine.h"
+
 #include <QtWidgets/QMainWindow>
 #include <memory>
 

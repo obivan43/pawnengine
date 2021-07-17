@@ -2,6 +2,8 @@
 
 #include "PawnUtils/src/Rtti.h"
 
+#include "PawnSystem/system/windows/WindowsAPI.h"
+
 #include <memory>
 
 namespace pawn {

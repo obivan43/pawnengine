@@ -66,11 +66,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)src\;$(ProjectDir);$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)editor\;$(ProjectDir);$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;PAWN_DIRECTX11;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
       <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <PostBuildEvent>
@@ -100,11 +101,12 @@ exit</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)src\;$(ProjectDir);$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)editor\;$(ProjectDir);$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;PAWN_DIRECTX11;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
       <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <PostBuildEvent>
@@ -189,24 +191,6 @@ exit</Command>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="res\MainWindow.qrc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\EngineManager.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\MainWindow.cpp" />
-    <ClCompile Include="src\MainWindowImpl.cpp" />
-    <ClCompile Include="src\pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="src\WindowsEventFilter.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\WindowsEventFilter.h" />
-    <QtMoc Include="src\MainWindow.h" />
-    <QtMoc Include="src\MainWindowImpl.h" />
-    <QtMoc Include="src\EngineManager.h" />
-    <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\dark.qss" />
@@ -313,6 +297,19 @@ exit</Command>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)res\assets\shaders\directx_shaders\%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)res\assets\shaders\directx_shaders\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="editor\impl\EngineManager.cpp" />
+    <ClCompile Include="editor\impl\MainWindowImpl.cpp" />
+    <ClCompile Include="editor\impl\WindowsEventFilter.cpp" />
+    <ClCompile Include="editor\main.cpp" />
+    <ClCompile Include="editor\MainWindow.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="editor\impl\EngineManager.h" />
+    <QtMoc Include="editor\impl\MainWindowImpl.h" />
+    <ClInclude Include="editor\impl\WindowsEventFilter.h" />
+    <QtMoc Include="editor\MainWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
