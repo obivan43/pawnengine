@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "Double3Widget.h"
 
 #include <QHBoxLayout>

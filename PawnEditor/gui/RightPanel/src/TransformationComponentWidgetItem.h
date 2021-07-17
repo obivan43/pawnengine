@@ -2,6 +2,8 @@
 
 #include "TransformationComponentWidget.h"
 
+#include "PawnEngine/engine/GameEntity.h"
+
 #include <QtWidgets/QTreeWidgetItem>
 #include <QtWidgets/QLabel>
 

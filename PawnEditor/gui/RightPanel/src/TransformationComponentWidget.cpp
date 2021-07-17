@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "TransformationComponentWidget.h"
 
 #include <QVBoxLayout>

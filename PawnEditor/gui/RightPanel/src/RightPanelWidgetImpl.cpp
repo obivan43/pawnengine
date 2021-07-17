@@ -1,5 +1,7 @@
-#include "pch.h"
 #include "RightPanelWidgetImpl.h"
+
+#include "PawnEngine/engine/components/TagComponent.h"
+#include "PawnEngine/engine/components/MeshComponent.h"
 
 namespace impl {
 

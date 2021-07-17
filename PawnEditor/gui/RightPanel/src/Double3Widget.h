@@ -1,5 +1,7 @@
 #pragma once
 
+#include "glm.hpp"
+
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QDoubleSpinBox>

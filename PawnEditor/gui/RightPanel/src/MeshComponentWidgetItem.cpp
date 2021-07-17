@@ -1,5 +1,6 @@
-#include "pch.h"
 #include "MeshComponentWidgetItem.h"
+
+#include "PawnEngine/engine/components/MeshComponent.h"
 
 namespace impl {
 

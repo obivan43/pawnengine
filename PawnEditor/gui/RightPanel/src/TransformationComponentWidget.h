@@ -2,6 +2,8 @@
 
 #include "Double3Widget.h"
 
+#include "PawnEngine/engine/components/TransformationComponent.h"
+
 #include <QtWidgets/QWidget>
 
 namespace impl {

@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "RightPanelWidget.h"
 #include "RightPanelWidgetImpl.h"
 

@@ -1,5 +1,6 @@
-#include "pch.h"
 #include "TagComponentWidgetItem.h"
+
+#include "PawnEngine/engine/components/TagComponent.h"
 
 namespace impl {
 
