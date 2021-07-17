@@ -19,10 +19,10 @@ namespace impl {
 	}
 
 	void MeshComponentWidgetItem::OnLineEditPress() {
-		QString& text = m_MeshLineEdit->text();
+		QString& text{ m_MeshLineEdit->text() };
 
 		if (m_Entity && !m_Entity->IsNull()) {
-			std::string& path = m_Entity->GetComponent<pawn::engine::MeshComponent>().MeshPath;
+			std::string& path{ m_Entity->GetComponent<pawn::engine::MeshComponent>().MeshPath };
 			path = text.toLocal8Bit().constData();
 		}
 

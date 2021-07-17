@@ -4,8 +4,8 @@
 #include "EngineManager.h"
 
 #include "gui/BottomPanel/widget/BottomPanelWidget.h"
-#include "gui/LeftPanel/include/leftpanelwidget.h"
-#include "gui/RightPanel/include/rightpanelwidget.h"
+#include "gui/LeftPanel/widget/LeftPanelWidget.h"
+#include "gui/RightPanel/widget/RightPanelWidget.h"
 #include "gui/CentralWidget/widget/CentralWidget.h"
 
 #include <QtWidgets/QDockWidget>
@@ -40,11 +40,11 @@ namespace impl {
 			CentralWidget* m_CentralWidget;
 			EngineManager* m_EngineManager;
 
-			const uint32_t EngineViewWidth = 1280;
-			const uint32_t EngineViewHeight = 720;
+			const uint32_t EngineViewWidth{ 1280 };
+			const uint32_t EngineViewHeight{ 720 };
 
-			const uint32_t EditorDefaultWidth = 1920;
-			const uint32_t EditorDefaultHeight = 1080;
+			const uint32_t EditorDefaultWidth{ 1920 };
+			const uint32_t EditorDefaultHeight{ 1080 };
 	};
 
 }

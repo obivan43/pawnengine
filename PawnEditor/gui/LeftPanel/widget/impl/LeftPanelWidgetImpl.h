@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LeftPanelWidget.h"
+#include "PawnEditor/gui/LeftPanel/widget/LeftPanelWidget.h"
 
 #include "PawnEngine/engine/GameEntity.h"
 #include "PawnEngine/engine/GameScene.h"

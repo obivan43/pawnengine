@@ -29,22 +29,22 @@ namespace impl {
 	}
 
 	void LeftPanelWidgetImpl::InitHierarchyPanel() {
-		entt::registry& registry = m_Scene->GetRegistry();
+		entt::registry& registry{ m_Scene->GetRegistry() };
 
 		HierarchyWidgetItem* root = new HierarchyWidgetItem(pawn::engine::GameEntity(), "Scene");
 		m_HierarchyPanel->addTopLevelItem(root);
 
 		registry.each([&](auto entityID) {
-			pawn::engine::GameEntity entity(entityID, m_Scene.get());
-			std::string& tag = entity.GetComponent<pawn::engine::TagComponent>().Tag;
+			pawn::engine::GameEntity entity{ entityID, m_Scene.get() };
+			std::string& tag{ entity.GetComponent<pawn::engine::TagComponent>().Tag };
 
 			HierarchyWidgetItem* item = new HierarchyWidgetItem(entity, tag.c_str(), root);
-			root->addChild((QTreeWidgetItem*)item);
+			root->addChild(reinterpret_cast<QTreeWidgetItem*>(item));
 		});
 	}
 
 	void LeftPanelWidgetImpl::OnHierarchyItemClicked(QTreeWidgetItem* item, int index) {
-		HierarchyWidgetItem* hierarchyWidgetItem = reinterpret_cast<HierarchyWidgetItem*>(item);
+		HierarchyWidgetItem* hierarchyWidgetItem{ reinterpret_cast<HierarchyWidgetItem*>(item) };
 		m_SelectedEntity = hierarchyWidgetItem->GetEntity();
 		emit LeftPanelWidget::SelectedEntityChanged(m_SelectedEntity);
 	}

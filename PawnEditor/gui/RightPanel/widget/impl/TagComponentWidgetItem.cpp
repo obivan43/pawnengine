@@ -19,10 +19,10 @@ namespace impl {
 	}
 
 	void TagComponentWidgetItem::OnLineEditPress() {
-		QString& text = m_TagLineEdit->text();
+		QString& text{ m_TagLineEdit->text() };
 
 		if (m_Entity && !m_Entity->IsNull()) {
-			std::string& tag = m_Entity->GetComponent<pawn::engine::TagComponent>().Tag;
+			std::string& tag{ m_Entity->GetComponent<pawn::engine::TagComponent>().Tag };
 			tag = text.toLocal8Bit().constData();
 		}
 

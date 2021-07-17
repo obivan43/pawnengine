@@ -1,9 +1,10 @@
 #pragma once
 
-#include "RightPanelWidget.h"
 #include "TagComponentWidgetItem.h"
 #include "TransformationComponentWidgetItem.h"
 #include "MeshComponentWidgetItem.h"
+
+#include "PawnEditor/gui/RightPanel/widget/RightPanelWidget.h"
 
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QLineEdit>

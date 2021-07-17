@@ -70,16 +70,16 @@ namespace impl {
 
 		m_Engine->Init(GetGameEngineWindowHWND(), EngineViewWidth, EngineViewHeight);
 
-		std::shared_ptr<pawn::engine::GameScene>& scene = m_Engine->GetScene();
+		std::shared_ptr<pawn::engine::GameScene>& scene{ m_Engine->GetScene() };
 
 		m_Engine->UploadMeshFromFile("res\\assets\\models\\cube.obj");
 		m_Engine->UploadMeshFromFile("res\\assets\\models\\sphere.obj");
 
-		pawn::engine::GameEntity entity = scene->CreateEntity("Sphere");
+		pawn::engine::GameEntity entity{ scene->CreateEntity("Sphere") };
 		entity.AddComponent<pawn::engine::MeshComponent>(m_Engine->GetMeshByPath("res\\assets\\models\\sphere.obj"), "res\\assets\\models\\sphere.obj");
 
-		pawn::engine::GameEntity camera = scene->CreateEntity("Camera");
-		pawn::engine::CameraComponent& cameraComponent = camera.AddComponent<pawn::engine::CameraComponent>();
+		pawn::engine::GameEntity camera{ scene->CreateEntity("Camera") };
+		pawn::engine::CameraComponent& cameraComponent{ camera.AddComponent<pawn::engine::CameraComponent>() };
 		cameraComponent.Camera.SetPerspective();
 		cameraComponent.IsActiveCamera = true;
 

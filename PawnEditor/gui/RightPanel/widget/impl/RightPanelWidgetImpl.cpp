@@ -52,19 +52,19 @@ namespace impl {
 
 	void RightPanelWidgetImpl::RefreshPanel() {
 		if (!m_SelectedEntity.IsNull()) {
-			pawn::engine::TagComponent& tagComponent = m_SelectedEntity.GetComponent<pawn::engine::TagComponent>();
+			pawn::engine::TagComponent& tagComponent{ m_SelectedEntity.GetComponent<pawn::engine::TagComponent>() };
 
-			QLineEdit* tagLineEdit = m_TagComponentInspectorWidget->GetWidget();
+			QLineEdit* tagLineEdit{ m_TagComponentInspectorWidget->GetWidget() };
 			tagLineEdit->setText(tagComponent.Tag.c_str());
 
 			m_TagComponentInspectorWidget->setHidden(false);
 			m_TransformationComponentInspectorWidget->setHidden(false);
 
-			bool IsMeshComponentExitst = m_SelectedEntity.HasComponent<pawn::engine::MeshComponent>();
+			bool IsMeshComponentExitst{ m_SelectedEntity.HasComponent<pawn::engine::MeshComponent>() };
 			if (IsMeshComponentExitst) {
-				pawn::engine::MeshComponent& meshComponent = m_SelectedEntity.GetComponent<pawn::engine::MeshComponent>();
+				pawn::engine::MeshComponent& meshComponent{ m_SelectedEntity.GetComponent<pawn::engine::MeshComponent>() };
 
-				QLineEdit* meshLineEdit = m_MeshComponentWidgetItem->GetWidget();
+				QLineEdit* meshLineEdit{ m_MeshComponentWidgetItem->GetWidget() };
 				meshLineEdit->setText(meshComponent.MeshPath.c_str());
 			}
 

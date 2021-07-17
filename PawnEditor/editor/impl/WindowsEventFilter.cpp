@@ -8,7 +8,7 @@
 namespace impl {
 
 	LRESULT CALLBACK windowEventHandle(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
-		LRESULT result = 0;
+		LRESULT result{ 0 };
 		pawn::system::InputManagerWindows::WinHandle(message, wParam, lParam, &result);
 		return result;
 	}

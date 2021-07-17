@@ -125,25 +125,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Double3Widget.cpp" />
-    <ClCompile Include="src\MeshComponentWidgetItem.cpp" />
-    <ClCompile Include="src\RightPanelWidget.cpp" />
-    <ClCompile Include="src\RightPanelWidgetImpl.cpp" />
-    <ClCompile Include="src\TagComponentWidgetItem.cpp" />
-    <ClCompile Include="src\TransformationComponentWidget.cpp" />
-    <ClCompile Include="src\TransformationComponentWidgetItem.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\rightpanelwidget.h" />
-    <QtMoc Include="src\Double3Widget.h" />
-    <QtMoc Include="src\MeshComponentWidgetItem.h" />
-    <QtMoc Include="src\TransformationComponentWidget.h" />
-    <QtMoc Include="src\TransformationComponentWidgetItem.h" />
-    <QtMoc Include="src\TagComponentWidgetItem.h" />
-    <QtMoc Include="src\RightPanelWidgetImpl.h" />
-    <QtMoc Include="src\RightPanelWidget.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\PawnEngine\PawnEngine.vcxproj">
       <Project>{550dbb28-816c-4cc6-b90c-564891bd8c99}</Project>
     </ProjectReference>
@@ -156,6 +137,28 @@
     <ProjectReference Include="..\..\..\PawnUtils\PawnUtils.vcxproj">
       <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="widget\impl\Double3Widget.cpp" />
+    <ClCompile Include="widget\impl\MeshComponentWidgetItem.cpp" />
+    <ClCompile Include="widget\impl\RightPanelWidgetImpl.cpp" />
+    <ClCompile Include="widget\impl\TagComponentWidgetItem.cpp" />
+    <ClCompile Include="widget\impl\TransformationComponentWidget.cpp" />
+    <ClCompile Include="widget\impl\TransformationComponentWidgetItem.cpp" />
+    <ClCompile Include="widget\RightPanelWidget.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="widget\RightPanelWidget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="widget\impl\Double3Widget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="widget\impl\TransformationComponentWidgetItem.h" />
+    <QtMoc Include="widget\impl\TransformationComponentWidget.h" />
+    <QtMoc Include="widget\impl\TagComponentWidgetItem.h" />
+    <QtMoc Include="widget\impl\RightPanelWidgetImpl.h" />
+    <QtMoc Include="widget\impl\MeshComponentWidgetItem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
