@@ -66,10 +66,11 @@ namespace impl {
 		m_Engine.reset(new pawn::Engine);
 
 		SetGameEngineWindowHWND(m_CentralWidget->GetWindowsHandle());
+
 		pawn::system::InputManagerWindows::RegisterMouse();
 		pawn::system::InputManagerWindows::RegisterKeyboard();
 
-		m_Engine->Init(m_CentralWidget->GetWindowsHandle(), EngineViewWidth, EngineViewHeight);
+		m_Engine->Init(GetGameEngineWindowHWND(), EngineViewWidth, EngineViewHeight);
 
 		std::shared_ptr<pawn::GameScene>& scene = m_Engine->GetScene();
 
