@@ -1,5 +1,4 @@
-﻿#include "pch.h"
-#include "DirectX11IndexBuffer.h"
+﻿#include "DirectX11IndexBuffer.h"
 #include "DirectX11Context.h"
 
 #ifdef PAWN_DIRECTX11

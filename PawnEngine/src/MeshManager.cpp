@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "MeshManager.h"
 
+#include "PawnUtils/utils/logger/Logger.h"
+
 namespace pawn {
 
 	bool MeshManager::HasMeshByPath(const std::string& path) {

@@ -1,7 +1,7 @@
 #include "MainWindow.h"
 #include "impl/WindowsEventFilter.h"
 
-#include "PawnUtils/src/Logger.h"
+#include "PawnUtils/utils/logger/Logger.h"
 
 #include <QtCore>
 #include <QtWidgets/QApplication>

@@ -1,5 +1,6 @@
 #include "InputManagerWindows.h"
-#include "../../../PawnUtils/src/Clock.h"
+
+#include "PawnUtils/utils/time/Clock.h"
 
 #ifdef _WIN32
 

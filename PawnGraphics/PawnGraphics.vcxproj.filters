@@ -29,9 +29,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\pch.cpp">
-      <Filter>pch</Filter>
-    </ClCompile>
     <ClCompile Include="src\GraphicsBindableResource.cpp">
       <Filter>src\graphics</Filter>
     </ClCompile>
@@ -99,9 +96,6 @@
   <ItemGroup>
     <ClInclude Include="include\pawngraphics.h">
       <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="src\pch.h">
-      <Filter>pch</Filter>
     </ClInclude>
     <ClInclude Include="src\GraphicsAPI.h">
       <Filter>src\graphics</Filter>

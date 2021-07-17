@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "DirectX11Debug.h"
 
 #if defined(DEBUG) | defined(_DEBUG)

@@ -1,5 +1,4 @@
-﻿#include "pch.h"
-#include "StbImageLoader.h"
+﻿#include "StbImageLoader.h"
 #include "StbImage.h"
 
 namespace pawn {

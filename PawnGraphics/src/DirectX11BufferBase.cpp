@@ -1,7 +1,8 @@
-﻿#include "pch.h"
-#include "DirectX11BufferBase.h"
+﻿#include "DirectX11BufferBase.h"
 #include "DirectX11Debug.h"
 #include "DirectX11Context.h"
+
+#include "PAwnUtils/utils/logger/Logger.h"
 
 #ifdef PAWN_DIRECTX11
 

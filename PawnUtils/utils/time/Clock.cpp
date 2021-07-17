@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "Clock.h"
 
 #ifdef _WIN32

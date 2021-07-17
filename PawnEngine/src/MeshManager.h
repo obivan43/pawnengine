@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PawnUtils/src/AssimpLoader.h"
+#include "PawnUtils/utils/assimploader/AssimpLoader.h"
 
 #include "PawnGraphics/src/GraphicsContext.h"
 #include "PawnGraphics/src/GraphicsShader.h"

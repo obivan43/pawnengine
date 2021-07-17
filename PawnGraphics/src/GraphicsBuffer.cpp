@@ -1,5 +1,4 @@
-﻿#include "pch.h"
-#include "GraphicsBuffer.h"
+﻿#include "GraphicsBuffer.h"
 #include "GraphicsContext.h"
 #include "GraphicsShader.h"
 #include "DirectX11VertexBuffer.h"

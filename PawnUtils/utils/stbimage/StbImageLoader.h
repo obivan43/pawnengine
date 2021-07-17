@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include <cstdint>
+
 namespace pawn {
 	
 	class StbImageLoader {

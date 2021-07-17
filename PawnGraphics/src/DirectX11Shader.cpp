@@ -1,7 +1,9 @@
-#include "pch.h"
 #include "DirectX11Shader.h"
 #include "DirectX11Debug.h"
 #include "DirectX11Context.h"
+
+#include "PawnUtils/utils/codetools/Macros.h"
+#include "PawnUtils/utils/logger/Logger.h"
 
 #include <d3dcompiler.h>
 

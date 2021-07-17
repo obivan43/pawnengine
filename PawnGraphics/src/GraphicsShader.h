@@ -3,6 +3,7 @@
 #include "GraphicsBindableResource.h"
 
 #include <memory>
+#include <string>
 
 namespace pawn {
 

@@ -1,5 +1,4 @@
-﻿#include "pch.h"
-#include "GraphicsInputLayout.h"
+﻿#include "GraphicsInputLayout.h"
 #include "GraphicsContext.h"
 #include "DirectX11InputLayout.h"
 

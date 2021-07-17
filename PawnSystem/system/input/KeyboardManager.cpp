@@ -1,5 +1,6 @@
 #include "KeyboardManager.h"
-#include "../../../PawnUtils/src/Clock.h"
+
+#include "PawnUtils/utils/time/Clock.h"
 
 #include <cstring>
 #include <cassert>

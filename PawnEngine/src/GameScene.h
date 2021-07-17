@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include "PawnUtils/src/entt.h"
-#include "PawnUtils/src/Clock.h"
+#include "PawnUtils/utils/entt/entt.h"
+#include "PawnUtils/utils/time/Clock.h"
 
 #include <string>
 

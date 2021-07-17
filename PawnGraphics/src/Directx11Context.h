@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "GraphicsContext.h"
-#include "PawnSystem/system/windows/WindowsAPI.h"
 
 #ifdef PAWN_DIRECTX11
 

@@ -1,6 +1,8 @@
-﻿#include "pch.h"
-#include "GraphicsContext.h"
+﻿#include "GraphicsContext.h"
 #include "Directx11Context.h"
+
+#include "PawnUtils/utils/codetools/Macros.h"
+#include "PawnUtils/utils/logger/Logger.h"
 
 namespace pawn {
 	

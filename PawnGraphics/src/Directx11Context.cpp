@@ -1,7 +1,9 @@
-﻿#include "pch.h"
+﻿#include <comdef.h> // Need to be first include
+
 #include "DirectX11Context.h"
 #include "DirectX11Debug.h"
-#include <comdef.h> 
+
+#include "PAwnUtils/utils/logger/Logger.h"
 
 #ifdef PAWN_DIRECTX11
 

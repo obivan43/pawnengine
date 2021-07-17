@@ -1,6 +1,5 @@
-#include "pch.h"
 #include "AssimpLoader.h"
-#include "Logger.h"
+#include "logger/Logger.h"
 
 #include "assimp/Importer.hpp"
 #include "assimp/scene.h"

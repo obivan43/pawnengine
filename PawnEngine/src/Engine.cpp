@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Engine.h"
 
+#include "PawnUtils/utils/logger/Logger.h"
+
 #include "PawnSystem/system/input/KeyboardManager.h"
 
 namespace pawn {

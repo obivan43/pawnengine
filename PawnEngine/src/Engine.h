@@ -7,7 +7,7 @@
 #include "PawnGraphics/src/GraphicsContext.h"
 #include "PawnGraphics/src/GraphicsAPI.h"
 
-#include "PawnUtils/src/Clock.h"
+#include "PawnUtils/utils/time/Clock.h"
 
 #include "PawnSystem/system/windows/WindowsAPI.h"
 

@@ -1,5 +1,4 @@
-﻿#include "pch.h"
-#include "GraphicsTexture2D.h"
+﻿#include "GraphicsTexture2D.h"
 #include "GraphicsContext.h"
 #include "DirectX11Texture2D.h"
 
