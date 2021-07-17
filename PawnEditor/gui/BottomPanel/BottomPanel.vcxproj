@@ -64,7 +64,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(SolutionDir)Core\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -82,7 +82,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(SolutionDir)Core\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -125,20 +125,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\PawnEngine\PawnEngine.vcxproj">
-      <Project>{550dbb28-816c-4cc6-b90c-564891bd8c99}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\PawnGraphics\PawnGraphics.vcxproj">
-      <Project>{b01544f3-830b-478a-b76f-c0ffa1f466d5}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\PawnMath\PawnMath.vcxproj">
-      <Project>{7d6d9221-3b78-4c0f-b425-71d41f6d9e7b}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\PawnUtils\PawnUtils.vcxproj">
-      <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="widget\BottomPanelWidget.cpp" />
     <ClCompile Include="widget\impl\BottomPanelWidgetImpl.cpp" />
     <ClCompile Include="widget\impl\OutputStream.cpp" />
@@ -147,6 +133,23 @@
     <ClInclude Include="widget\BottomPanelWidget.h" />
     <ClInclude Include="widget\impl\OutputStream.h" />
     <QtMoc Include="widget\impl\BottomPanelWidgetImpl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\PawnEngine\PawnEngine.vcxproj">
+      <Project>{550dbb28-816c-4cc6-b90c-564891bd8c99}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\PawnGraphics\PawnGraphics.vcxproj">
+      <Project>{b01544f3-830b-478a-b76f-c0ffa1f466d5}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\PawnMath\PawnMath.vcxproj">
+      <Project>{7d6d9221-3b78-4c0f-b425-71d41f6d9e7b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\PawnSystem\PawnSystem.vcxproj">
+      <Project>{536efe47-0157-4c1b-a551-c1dd390db595}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\PawnUtils\PawnUtils.vcxproj">
+      <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

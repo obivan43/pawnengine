@@ -11,35 +11,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PawnMath\PawnMath.vcxproj">
-      <Project>{7d6d9221-3b78-4c0f-b425-71d41f6d9e7b}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\PawnSystem\PawnSystem.vcxproj">
-      <Project>{536efe47-0157-4c1b-a551-c1dd390db595}</Project>
-    </ProjectReference>
+    <ClCompile Include="math\Camera.cpp" />
+    <ClCompile Include="math\pch\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="math\Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="utils\assimploader\AssimpLoader.h" />
-    <ClInclude Include="utils\codetools\Macros.h" />
-    <ClInclude Include="utils\codetools\Rtti.h" />
-    <ClInclude Include="utils\entt\entt.h" />
-    <ClInclude Include="utils\logger\Logger.h" />
-    <ClInclude Include="utils\stbimage\StbImage.h" />
-    <ClInclude Include="utils\stbimage\StbImageLoader.h" />
-    <ClInclude Include="utils\time\Clock.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="utils\assimploader\AssimpLoader.cpp" />
-    <ClCompile Include="utils\logger\Logger.cpp" />
-    <ClCompile Include="utils\stbimage\StbImage.cpp" />
-    <ClCompile Include="utils\stbimage\StbImageLoader.cpp" />
-    <ClCompile Include="utils\time\Clock.cpp" />
+    <ClInclude Include="math\Camera.h" />
+    <ClInclude Include="math\Functions.h" />
+    <ClInclude Include="math\MathDefines.h" />
+    <ClInclude Include="math\pch\pch.h" />
+    <ClInclude Include="math\Vertex.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a85c2813-3ee7-42f9-97ec-889534499250}</ProjectGuid>
-    <RootNamespace>PawnUtils</RootNamespace>
+    <ProjectGuid>{7d6d9221-3b78-4c0f-b425-71d41f6d9e7b}</ProjectGuid>
+    <RootNamespace>PawnMath</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,33 +60,30 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
     <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
     <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;PAWNUTILS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);LOG_ENABLED</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;PAWNMATH_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>
-      </PrecompiledHeaderFile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\assimp-5.0.1\include;$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)utils\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\glm\include;$(ProjectDir)math\pch;$(ProjectDir)math\;$(SolutionDir);$(SolutionDir)Core\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\assimp-5.0.1\bin\$(Configuration);$(SolutionDir)ThirdParty\spdlog-1.8.2\bin\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>assimp-vc142-mtd.lib;spdlogd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -105,13 +92,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;PAWNUTILS_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);LOG_ENABLED</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;PAWNMATH_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>
-      </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\assimp-5.0.1\include;$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)utils\</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\glm\include;$(ProjectDir)math\pch;$(ProjectDir)math\;$(SolutionDir);$(SolutionDir)Core\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -120,8 +106,6 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\assimp-5.0.1\bin\$(Configuration);$(SolutionDir)ThirdParty\spdlog-1.8.2\bin\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>assimp-vc142-mt.lib;spdlog.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

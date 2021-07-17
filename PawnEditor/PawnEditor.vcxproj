@@ -66,7 +66,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)editor\;$(ProjectDir);$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)editor\;$(ProjectDir);$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;$(SolutionDir)Core\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;PAWN_DIRECTX11;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -77,19 +77,19 @@
     <PostBuildEvent>
       <Command>cd /d $(SolutionDir)ThirdParty\spdlog-1.8.2\bin\
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
-cd /d $(SolutionDir)PawnUtils\bin\
+cd /d $(SolutionDir)Core\PawnUtils\bin\
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
 cd /d $(SolutionDir)ThirdParty\assimp-5.0.1\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
-cd /d $(SolutionDir)PawnMath\bin
+cd /d $(SolutionDir)Core\PawnMath\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
-cd /d $(SolutionDir)PawnGraphics\bin
+cd /d $(SolutionDir)Core\PawnGraphics\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
-cd /d $(SolutionDir)PawnEngine\bin
+cd /d $(SolutionDir)Core\PawnEngine\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
 cd /d $(ProjectDir)
 Xcopy /E /I /y res\assets $(ProjectDir)bin\$(Configuration)\res\assets
-cd /d $(SolutionDir)PawnSystem\bin\
+cd /d $(SolutionDir)Core\PawnSystem\bin\
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
 exit</Command>
     </PostBuildEvent>
@@ -101,7 +101,7 @@ exit</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)editor\;$(ProjectDir);$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)editor\;$(ProjectDir);$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;$(SolutionDir)Core\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;PAWN_DIRECTX11;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -112,19 +112,19 @@ exit</Command>
     <PostBuildEvent>
       <Command>cd /d $(SolutionDir)ThirdParty\spdlog-1.8.2\bin\
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
-cd /d $(SolutionDir)PawnUtils\bin\
+cd /d $(SolutionDir)Core\PawnUtils\bin\
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
 cd /d $(SolutionDir)ThirdParty\assimp-5.0.1\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
-cd /d $(SolutionDir)PawnMath\bin
+cd /d $(SolutionDir)Core\PawnMath\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
-cd /d $(SolutionDir)PawnGraphics\bin
+cd /d $(SolutionDir)Core\PawnGraphics\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
-cd /d $(SolutionDir)PawnEngine\bin
+cd /d $(SolutionDir)Core\PawnEngine\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
 cd /d $(ProjectDir)
 Xcopy /E /I /y res\assets $(ProjectDir)bin\$(Configuration)\res\assets
-cd /d $(SolutionDir)PawnSystem\bin\
+cd /d $(SolutionDir)Core\PawnSystem\bin\
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
 exit</Command>
     </PostBuildEvent>
@@ -161,19 +161,19 @@ exit</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PawnEngine\PawnEngine.vcxproj">
+    <ProjectReference Include="..\Core\PawnEngine\PawnEngine.vcxproj">
       <Project>{550dbb28-816c-4cc6-b90c-564891bd8c99}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\PawnGraphics\PawnGraphics.vcxproj">
+    <ProjectReference Include="..\Core\PawnGraphics\PawnGraphics.vcxproj">
       <Project>{b01544f3-830b-478a-b76f-c0ffa1f466d5}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\PawnMath\PawnMath.vcxproj">
+    <ProjectReference Include="..\Core\PawnMath\PawnMath.vcxproj">
       <Project>{7d6d9221-3b78-4c0f-b425-71d41f6d9e7b}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\PawnSystem\PawnSystem.vcxproj">
+    <ProjectReference Include="..\Core\PawnSystem\PawnSystem.vcxproj">
       <Project>{536efe47-0157-4c1b-a551-c1dd390db595}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\PawnUtils\PawnUtils.vcxproj">
+    <ProjectReference Include="..\Core\PawnUtils\PawnUtils.vcxproj">
       <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
     </ProjectReference>
     <ProjectReference Include="gui\BottomPanel\BottomPanel.vcxproj">
