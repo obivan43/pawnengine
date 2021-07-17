@@ -4,17 +4,21 @@
 
 #include <QtWidgets/QTreeWidgetItem>
 
-namespace impl {
+namespace editor {
 
-	class HierarchyWidgetItem : public QTreeWidgetItem {
+	namespace impl {
 
-		public:
-			HierarchyWidgetItem(pawn::engine::GameEntity entity, const QString& str, QTreeWidgetItem* parent = Q_NULLPTR);
+		class HierarchyWidgetItem : public QTreeWidgetItem {
 
-			pawn::engine::GameEntity GetEntity() const { return m_Entity; }
+			public:
+				HierarchyWidgetItem(pawn::engine::GameEntity entity, const QString& str, QTreeWidgetItem* parent = Q_NULLPTR);
 
-		private:
-			pawn::engine::GameEntity m_Entity;
-	};
+				pawn::engine::GameEntity GetEntity() const { return m_Entity; }
+
+			private:
+				pawn::engine::GameEntity m_Entity;
+		};
+
+	}
 
 }

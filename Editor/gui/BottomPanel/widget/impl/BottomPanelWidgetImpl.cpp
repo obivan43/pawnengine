@@ -1,16 +1,20 @@
 #include "BottomPanelWidgetImpl.h"
 
-namespace impl {
+namespace editor {
 
-	BottomPanelWidgetImpl::BottomPanelWidgetImpl(QWidget* parent) : BottomPanelWidget(parent) {
-		m_OutputTextEdit = new QTextEdit(this);
-		m_OutputTextEdit->setReadOnly(true);
+	namespace impl {
 
-		setWindowTitle("Output");
-		setWidget(m_OutputTextEdit);
+		BottomPanelWidgetImpl::BottomPanelWidgetImpl(QWidget* parent) : BottomPanelWidget(parent) {
+			m_OutputTextEdit = new QTextEdit(this);
+			m_OutputTextEdit->setReadOnly(true);
 
-		m_OutputStream = new OutputStream(std::cout, m_OutputTextEdit);
-		OutputStream::registerConsoleMessageHandler();
+			setWindowTitle("Output");
+			setWidget(m_OutputTextEdit);
+
+			m_OutputStream = new OutputStream(std::cout, m_OutputTextEdit);
+			OutputStream::registerConsoleMessageHandler();
+		}
+
 	}
 
 }

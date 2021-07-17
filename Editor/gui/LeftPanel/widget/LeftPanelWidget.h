@@ -5,15 +5,19 @@
 #include <QtWidgets/QDockWidget>
 #include <memory>
 
-class LeftPanelWidget : public QDockWidget {
-	Q_OBJECT
+namespace editor {
 
-	public:
-		static LeftPanelWidget* CreateImpl(QWidget* parent = Q_NULLPTR);
+	class LeftPanelWidget : public QDockWidget {
+			Q_OBJECT
 
-	signals:
-		void SelectedEntityChanged(pawn::engine::GameEntity entity);
+		public:
+			static LeftPanelWidget* CreateImpl(QWidget* parent = Q_NULLPTR);
 
-	protected:
-		LeftPanelWidget(QWidget* parent);
-};
+		signals:
+			void SelectedEntityChanged(pawn::engine::GameEntity entity);
+
+		protected:
+			LeftPanelWidget(QWidget* parent);
+	};
+
+}

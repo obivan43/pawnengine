@@ -3,27 +3,31 @@
 #include <iostream>
 #include <QtWidgets/QTextEdit>
 
-namespace impl {
+namespace editor {
 
-	class OutputStream : public std::basic_streambuf<char> {
+	namespace impl {
 
-		public:
-			OutputStream(std::ostream& stream, QTextEdit* textEdit);
+		class OutputStream : public std::basic_streambuf<char> {
 
-			virtual ~OutputStream();
-			static void registerConsoleMessageHandler();
+			public:
+				OutputStream(std::ostream& stream, QTextEdit* textEdit);
 
-		protected:
-			virtual int overflow(int v);
-			virtual std::streamsize xsputn(const char* p, std::streamsize n);
+				virtual ~OutputStream();
+				static void registerConsoleMessageHandler();
 
-		private:
-			static void consoleMessageHandler(QtMsgType type, const QMessageLogContext&, const QString& msg);
+			protected:
+				virtual int overflow(int v);
+				virtual std::streamsize xsputn(const char* p, std::streamsize n);
 
-		private:
-			std::ostream& m_Stream;
-			std::streambuf* m_OldBuffer;
-			QTextEdit* m_LogWindow;
-	};
+			private:
+				static void consoleMessageHandler(QtMsgType type, const QMessageLogContext&, const QString& msg);
+
+			private:
+				std::ostream& m_Stream;
+				std::streambuf* m_OldBuffer;
+				QTextEdit* m_LogWindow;
+		};
+
+	}
 
 }

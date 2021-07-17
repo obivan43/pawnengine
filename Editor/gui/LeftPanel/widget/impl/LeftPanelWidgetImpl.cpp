@@ -3,63 +3,67 @@
 
 #include "PawnEngine/engine/components/TagComponent.h"
 
-namespace impl {
+namespace editor {
 
-	LeftPanelWidgetImpl::LeftPanelWidgetImpl(QWidget* parent) : LeftPanelWidget(parent) {
-		m_HierarchyPanel = new QTreeWidget(this);
-		m_HierarchyPanel->setHeaderHidden(true);
+	namespace impl {
 
-		setWindowTitle("Scene Hierarchy");
-		setWidget(m_HierarchyPanel);
+		LeftPanelWidgetImpl::LeftPanelWidgetImpl(QWidget* parent) : LeftPanelWidget(parent) {
+			m_HierarchyPanel = new QTreeWidget(this);
+			m_HierarchyPanel->setHeaderHidden(true);
 
-		InitConnections();
-	}
+			setWindowTitle("Scene Hierarchy");
+			setWidget(m_HierarchyPanel);
 
-	void LeftPanelWidgetImpl::RefreshPanel() {
-		m_HierarchyPanel->clear();
-		InitHierarchyPanel();
-		m_HierarchyPanel->expandAll();
-	}
-
-	void LeftPanelWidgetImpl::OnActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene> scene) {
-		if (m_Scene.get() != scene.get()) {
-			m_Scene = scene;
-			InitHierarchyPanel();
+			InitConnections();
 		}
-	}
 
-	void LeftPanelWidgetImpl::InitHierarchyPanel() {
-		entt::registry& registry{ m_Scene->GetRegistry() };
+		void LeftPanelWidgetImpl::RefreshPanel() {
+			m_HierarchyPanel->clear();
+			InitHierarchyPanel();
+			m_HierarchyPanel->expandAll();
+		}
 
-		HierarchyWidgetItem* root = new HierarchyWidgetItem(pawn::engine::GameEntity(), "Scene");
-		m_HierarchyPanel->addTopLevelItem(root);
+		void LeftPanelWidgetImpl::OnActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene> scene) {
+			if (m_Scene.get() != scene.get()) {
+				m_Scene = scene;
+				InitHierarchyPanel();
+			}
+		}
 
-		registry.each([&](auto entityID) {
-			pawn::engine::GameEntity entity{ entityID, m_Scene.get() };
-			std::string& tag{ entity.GetComponent<pawn::engine::TagComponent>().Tag };
+		void LeftPanelWidgetImpl::InitHierarchyPanel() {
+			entt::registry& registry{ m_Scene->GetRegistry() };
 
-			HierarchyWidgetItem* item = new HierarchyWidgetItem(entity, tag.c_str(), root);
-			root->addChild(reinterpret_cast<QTreeWidgetItem*>(item));
-		});
-	}
+			HierarchyWidgetItem* root = new HierarchyWidgetItem(pawn::engine::GameEntity(), "Scene");
+			m_HierarchyPanel->addTopLevelItem(root);
 
-	void LeftPanelWidgetImpl::OnHierarchyItemClicked(QTreeWidgetItem* item, int index) {
-		HierarchyWidgetItem* hierarchyWidgetItem{ reinterpret_cast<HierarchyWidgetItem*>(item) };
-		m_SelectedEntity = hierarchyWidgetItem->GetEntity();
-		emit LeftPanelWidget::SelectedEntityChanged(m_SelectedEntity);
-	}
+			registry.each([&](auto entityID) {
+				pawn::engine::GameEntity entity{ entityID, m_Scene.get() };
+				std::string& tag{ entity.GetComponent<pawn::engine::TagComponent>().Tag };
 
-	void LeftPanelWidgetImpl::InitConnections() {
-		connect(
-			m_HierarchyPanel,
-			SIGNAL(itemClicked(QTreeWidgetItem*, int)),
-			this,
-			SLOT(OnHierarchyItemClicked(QTreeWidgetItem*, int))
-		);
-	}
+				HierarchyWidgetItem* item = new HierarchyWidgetItem(entity, tag.c_str(), root);
+				root->addChild(reinterpret_cast<QTreeWidgetItem*>(item));
+			});
+		}
 
-	void LeftPanelWidgetImpl::OnEntityTagModified() {
-		RefreshPanel();
+		void LeftPanelWidgetImpl::OnHierarchyItemClicked(QTreeWidgetItem* item, int index) {
+			HierarchyWidgetItem* hierarchyWidgetItem{ reinterpret_cast<HierarchyWidgetItem*>(item) };
+			m_SelectedEntity = hierarchyWidgetItem->GetEntity();
+			emit LeftPanelWidget::SelectedEntityChanged(m_SelectedEntity);
+		}
+
+		void LeftPanelWidgetImpl::InitConnections() {
+			connect(
+				m_HierarchyPanel,
+				SIGNAL(itemClicked(QTreeWidgetItem*, int)),
+				this,
+				SLOT(OnHierarchyItemClicked(QTreeWidgetItem*, int))
+			);
+		}
+
+		void LeftPanelWidgetImpl::OnEntityTagModified() {
+			RefreshPanel();
+		}
+
 	}
 
 }

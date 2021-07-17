@@ -2,8 +2,12 @@
 
 #include "Editor/gui/LeftPanel/widget/impl/LeftPanelWidgetImpl.h"
 
-LeftPanelWidget::LeftPanelWidget(QWidget* parent) : QDockWidget(parent) {}
+namespace editor {
 
-LeftPanelWidget* LeftPanelWidget::CreateImpl(QWidget* parent) {
-	return new impl::LeftPanelWidgetImpl(parent);
+	LeftPanelWidget::LeftPanelWidget(QWidget* parent) : QDockWidget(parent) {}
+
+	LeftPanelWidget* LeftPanelWidget::CreateImpl(QWidget* parent) {
+		return new impl::LeftPanelWidgetImpl(parent);
+	}
+
 }

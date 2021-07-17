@@ -2,12 +2,16 @@
 
 #include <QtWidgets/QDockWidget>
 
-class RightPanelWidget : public QDockWidget {
-	Q_OBJECT
+namespace editor {
 
-	public:
-		static RightPanelWidget* CreateImpl(QWidget* parent = Q_NULLPTR);
+	class RightPanelWidget : public QDockWidget {
+			Q_OBJECT
 
-	protected:
-		RightPanelWidget(QWidget* parent);
-};
+		public:
+			static RightPanelWidget* CreateImpl(QWidget* parent = Q_NULLPTR);
+
+		protected:
+			RightPanelWidget(QWidget* parent);
+	};
+
+}

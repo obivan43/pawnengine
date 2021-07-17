@@ -45,13 +45,13 @@
     <QtMoc Include="widget\impl\RightPanelWidgetImpl.h">
       <Filter>widget\impl</Filter>
     </QtMoc>
-    <QtMoc Include="widget\impl\TagComponentWidgetItem.h">
-      <Filter>widget\impl</Filter>
-    </QtMoc>
     <QtMoc Include="widget\impl\TransformationComponentWidget.h">
       <Filter>widget\impl</Filter>
     </QtMoc>
     <QtMoc Include="widget\impl\TransformationComponentWidgetItem.h">
+      <Filter>widget\impl</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\TagComponentWidgetItem.h">
       <Filter>widget\impl</Filter>
     </QtMoc>
   </ItemGroup>

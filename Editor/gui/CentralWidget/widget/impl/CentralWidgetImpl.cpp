@@ -1,7 +1,11 @@
 #include "CentralWidgetImpl.h"
 
-namespace impl {
+namespace editor {
 
-	CentralWidgetImpl::CentralWidgetImpl(QWidget* parent) : CentralWidget(parent) {}
+	namespace impl {
+
+		CentralWidgetImpl::CentralWidgetImpl(QWidget* parent) : CentralWidget(parent) {}
+
+	}
 
 }

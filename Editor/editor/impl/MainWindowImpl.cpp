@@ -5,111 +5,115 @@
 #include <QSettings>
 #include <string>
 
-namespace impl {
+namespace editor {
 
-	MainWindowImpl::MainWindowImpl(QWidget* parent)
-		: MainWindow(parent)
-		, m_BottomPanel(nullptr)
-		, m_LeftPanel(nullptr) 
-		, m_RightPanel(nullptr)
-		, m_CentralWidget(nullptr)
-		, m_EngineManager(nullptr) {
-		setWindowTitle("Pawn Engine Editor");
-		setWindowIcon(QIcon(":/pawn.png"));
-		resize(EditorDefaultWidth, EditorDefaultHeight);
+	namespace impl {
 
-		m_CentralWidget = CentralWidget::CreateImpl(this);
-		m_CentralWidget->setMinimumSize(EngineViewWidth, EngineViewHeight);
-		setCentralWidget(m_CentralWidget);
+		MainWindowImpl::MainWindowImpl(QWidget* parent)
+			: MainWindow(parent)
+			, m_BottomPanel(nullptr)
+			, m_LeftPanel(nullptr)
+			, m_RightPanel(nullptr)
+			, m_CentralWidget(nullptr)
+			, m_EngineManager(nullptr) {
+			setWindowTitle("Pawn Engine Editor");
+			setWindowIcon(QIcon(":/pawn.png"));
+			resize(EditorDefaultWidth, EditorDefaultHeight);
 
-		m_BottomPanel = BottomPanelWidget::CreateImpl(this);
-		m_RightPanel = RightPanelWidget::CreateImpl(this);
-		m_LeftPanel = LeftPanelWidget::CreateImpl(this);
+			m_CentralWidget = CentralWidget::CreateImpl(this);
+			m_CentralWidget->setMinimumSize(EngineViewWidth, EngineViewHeight);
+			setCentralWidget(m_CentralWidget);
 
-		m_BottomPanel->setObjectName("Console");
-		m_RightPanel->setObjectName("Inspector");
-		m_LeftPanel->setObjectName("Scene Hierarchy");
-		m_CentralWidget->setObjectName("Engine view");
+			m_BottomPanel = BottomPanelWidget::CreateImpl(this);
+			m_RightPanel = RightPanelWidget::CreateImpl(this);
+			m_LeftPanel = LeftPanelWidget::CreateImpl(this);
 
-		addDockWidget(Qt::BottomDockWidgetArea, m_BottomPanel);
-		addDockWidget(Qt::RightDockWidgetArea, m_RightPanel);
-		addDockWidget(Qt::LeftDockWidgetArea, m_LeftPanel);
+			m_BottomPanel->setObjectName("Console");
+			m_RightPanel->setObjectName("Inspector");
+			m_LeftPanel->setObjectName("Scene Hierarchy");
+			m_CentralWidget->setObjectName("Engine view");
 
-		InitConnections();
-		RestoreSettings();
+			addDockWidget(Qt::BottomDockWidgetArea, m_BottomPanel);
+			addDockWidget(Qt::RightDockWidgetArea, m_RightPanel);
+			addDockWidget(Qt::LeftDockWidgetArea, m_LeftPanel);
 
-		InitEngine();
+			InitConnections();
+			RestoreSettings();
 
-		m_EngineManager = new EngineManager(m_Engine.get());
-		connect(m_RightPanel, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
-	}
+			InitEngine();
 
-	void MainWindowImpl::closeEvent(QCloseEvent* event) {
-		Running = false;
+			m_EngineManager = new EngineManager(m_Engine.get());
+			connect(m_RightPanel, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
+		}
 
-		QSettings settings("Shulzhenko corp", "Pawnengine");
-		settings.setValue("geometry", saveGeometry());
-		settings.setValue("windowState", saveState());
+		void MainWindowImpl::closeEvent(QCloseEvent* event) {
+			Running = false;
 
-		QMainWindow::closeEvent(event);
-	}
+			QSettings settings("Shulzhenko corp", "Pawnengine");
+			settings.setValue("geometry", saveGeometry());
+			settings.setValue("windowState", saveState());
 
-	void MainWindowImpl::RestoreSettings() {
-		QSettings settings("Shulzhenko corp", "Pawnengine");
-		restoreGeometry(settings.value("geometry").toByteArray());
-		restoreState(settings.value("windowState").toByteArray());
-	}
-	
-	void MainWindowImpl::InitEngine() {
-		m_Engine.reset(new pawn::engine::Engine);
+			QMainWindow::closeEvent(event);
+		}
 
-		SetGameEngineWindowHWND(m_CentralWidget->GetWindowsHandle());
+		void MainWindowImpl::RestoreSettings() {
+			QSettings settings("Shulzhenko corp", "Pawnengine");
+			restoreGeometry(settings.value("geometry").toByteArray());
+			restoreState(settings.value("windowState").toByteArray());
+		}
 
-		pawn::system::InputManagerWindows::RegisterMouse();
-		pawn::system::InputManagerWindows::RegisterKeyboard();
+		void MainWindowImpl::InitEngine() {
+			m_Engine.reset(new pawn::engine::Engine);
 
-		m_Engine->Init(GetGameEngineWindowHWND(), EngineViewWidth, EngineViewHeight);
+			SetGameEngineWindowHWND(m_CentralWidget->GetWindowsHandle());
 
-		std::shared_ptr<pawn::engine::GameScene>& scene{ m_Engine->GetScene() };
+			pawn::system::InputManagerWindows::RegisterMouse();
+			pawn::system::InputManagerWindows::RegisterKeyboard();
 
-		m_Engine->UploadMeshFromFile("res\\assets\\models\\cube.obj");
-		m_Engine->UploadMeshFromFile("res\\assets\\models\\sphere.obj");
+			m_Engine->Init(GetGameEngineWindowHWND(), EngineViewWidth, EngineViewHeight);
 
-		pawn::engine::GameEntity entity{ scene->CreateEntity("Sphere") };
-		entity.AddComponent<pawn::engine::MeshComponent>(m_Engine->GetMeshByPath("res\\assets\\models\\sphere.obj"), "res\\assets\\models\\sphere.obj");
+			std::shared_ptr<pawn::engine::GameScene>& scene{ m_Engine->GetScene() };
 
-		pawn::engine::GameEntity camera{ scene->CreateEntity("Camera") };
-		pawn::engine::CameraComponent& cameraComponent{ camera.AddComponent<pawn::engine::CameraComponent>() };
-		cameraComponent.Camera.SetPerspective();
-		cameraComponent.IsActiveCamera = true;
+			m_Engine->UploadMeshFromFile("res\\assets\\models\\cube.obj");
+			m_Engine->UploadMeshFromFile("res\\assets\\models\\sphere.obj");
 
-		pawn::engine::TransformationComponent& transformationComponent = camera.GetComponent<pawn::engine::TransformationComponent>();
-		transformationComponent.Position = glm::vec3(0.0f, 0.0f, 4.0f);
+			pawn::engine::GameEntity entity{ scene->CreateEntity("Sphere") };
+			entity.AddComponent<pawn::engine::MeshComponent>(m_Engine->GetMeshByPath("res\\assets\\models\\sphere.obj"), "res\\assets\\models\\sphere.obj");
 
-		emit ActiveSceneChanged(scene);
-	}
+			pawn::engine::GameEntity camera{ scene->CreateEntity("Camera") };
+			pawn::engine::CameraComponent& cameraComponent{ camera.AddComponent<pawn::engine::CameraComponent>() };
+			cameraComponent.Camera.SetPerspective();
+			cameraComponent.IsActiveCamera = true;
 
-	void MainWindowImpl::InitConnections() {
-		connect(
-			this,
-			SIGNAL(ActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>)),
-			m_LeftPanel,
-			SLOT(OnActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>))
-		);
+			pawn::engine::TransformationComponent& transformationComponent = camera.GetComponent<pawn::engine::TransformationComponent>();
+			transformationComponent.Position = glm::vec3(0.0f, 0.0f, 4.0f);
 
-		connect(
-			m_LeftPanel,
-			SIGNAL(SelectedEntityChanged(pawn::engine::GameEntity)),
-			m_RightPanel,
-			SLOT(OnSelectedEntityChanged(pawn::engine::GameEntity))
-		);
+			emit ActiveSceneChanged(scene);
+		}
 
-		connect(
-			m_RightPanel,
-			SIGNAL(EntityTagModified()),
-			m_LeftPanel, 
-			SLOT(OnEntityTagModified())
-		);
+		void MainWindowImpl::InitConnections() {
+			connect(
+				this,
+				SIGNAL(ActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>)),
+				m_LeftPanel,
+				SLOT(OnActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>))
+			);
+
+			connect(
+				m_LeftPanel,
+				SIGNAL(SelectedEntityChanged(pawn::engine::GameEntity)),
+				m_RightPanel,
+				SLOT(OnSelectedEntityChanged(pawn::engine::GameEntity))
+			);
+
+			connect(
+				m_RightPanel,
+				SIGNAL(EntityTagModified()),
+				m_LeftPanel,
+				SLOT(OnEntityTagModified())
+			);
+		}
+
 	}
 
 }

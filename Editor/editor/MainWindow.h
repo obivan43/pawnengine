@@ -5,20 +5,24 @@
 #include <QtWidgets/QMainWindow>
 #include <memory>
 
-class MainWindow : public QMainWindow {
-    Q_OBJECT
+namespace editor {
 
-    public:
-        static MainWindow* CreateImpl(QWidget* parent = Q_NULLPTR);
+    class MainWindow : public QMainWindow {
+            Q_OBJECT
 
-        pawn::engine::Engine* GetEngine() { return m_Engine.get(); }
+        public:
+            static MainWindow* CreateImpl(QWidget* parent = Q_NULLPTR);
 
-    protected:
-        MainWindow(QWidget* parent);
+            pawn::engine::Engine* GetEngine() { return m_Engine.get(); }
 
-    public:
-    	bool Running;
+        protected:
+            MainWindow(QWidget* parent);
 
-    protected:
-      std::shared_ptr<pawn::engine::Engine> m_Engine;
-};
+        public:
+            bool Running;
+
+        protected:
+            std::shared_ptr<pawn::engine::Engine> m_Engine;
+    };
+
+}

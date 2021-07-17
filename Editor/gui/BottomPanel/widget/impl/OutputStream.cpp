@@ -2,74 +2,78 @@
 
 #include <QString>
 
-namespace impl {
+namespace editor {
 
-	OutputStream::OutputStream(std::ostream& stream, QTextEdit* textEdit) : std::basic_streambuf<char>() , m_Stream(stream) {
-		m_LogWindow = textEdit;
-		m_OldBuffer = stream.rdbuf();
+	namespace impl {
 
-		stream.rdbuf(this);
-	}
+		OutputStream::OutputStream(std::ostream& stream, QTextEdit* textEdit) : std::basic_streambuf<char>(), m_Stream(stream) {
+			m_LogWindow = textEdit;
+			m_OldBuffer = stream.rdbuf();
 
-	OutputStream::~OutputStream() {
-		m_Stream.rdbuf(m_OldBuffer);
-	}
-
-	void OutputStream::registerConsoleMessageHandler() {
-		qInstallMessageHandler(consoleMessageHandler);
-	}
-
-	int OutputStream::overflow(int v) {
-		if (v == '\n') {
-			m_LogWindow->append("");
+			stream.rdbuf(this);
 		}
 
-		return v;
-	}
-
-	std::streamsize OutputStream::xsputn(const char* p, std::streamsize n) {
-		QStringList matchList{ "[info]", "[error]", "[debug]", "[trace]", "[warning]" };
-		QString str{ p };
-
-		m_LogWindow->moveCursor(QTextCursor::End);
-
-		if (m_LogWindow->textColor() != QColorConstants::White) {
-			m_LogWindow->setTextColor(QColorConstants::White);
+		OutputStream::~OutputStream() {
+			m_Stream.rdbuf(m_OldBuffer);
 		}
 
-		for (QString match : matchList) {
-			if (str.contains(match)) {
-				if (match == matchList[0]) {
-					m_LogWindow->setTextColor(QColorConstants::White);
-				}
+		void OutputStream::registerConsoleMessageHandler() {
+			qInstallMessageHandler(consoleMessageHandler);
+		}
 
-				if (match == matchList[1]) {
-					m_LogWindow->setTextColor(QColorConstants::Red);
-				}
-
-				if (match == matchList[2]) {
-					m_LogWindow->setTextColor(QColorConstants::LightGray);
-				}
-
-				if (match == matchList[3]) {
-					m_LogWindow->setTextColor(QColorConstants::LightGray);
-				}
-
-				if (match == matchList[4]) {
-					m_LogWindow->setTextColor(QColorConstants::Yellow);
-				}
-
-				break;
+		int OutputStream::overflow(int v) {
+			if (v == '\n') {
+				m_LogWindow->append("");
 			}
+
+			return v;
 		}
 
-		m_LogWindow->insertPlainText(str);
-		
-		return n;
-	}
+		std::streamsize OutputStream::xsputn(const char* p, std::streamsize n) {
+			QStringList matchList{ "[info]", "[error]", "[debug]", "[trace]", "[warning]" };
+			QString str{ p };
 
-	void OutputStream::consoleMessageHandler(QtMsgType type, const QMessageLogContext&, const QString& msg) {
-		std::cout << msg.toStdString().c_str();
+			m_LogWindow->moveCursor(QTextCursor::End);
+
+			if (m_LogWindow->textColor() != QColorConstants::White) {
+				m_LogWindow->setTextColor(QColorConstants::White);
+			}
+
+			for (QString match : matchList) {
+				if (str.contains(match)) {
+					if (match == matchList[0]) {
+						m_LogWindow->setTextColor(QColorConstants::White);
+					}
+
+					if (match == matchList[1]) {
+						m_LogWindow->setTextColor(QColorConstants::Red);
+					}
+
+					if (match == matchList[2]) {
+						m_LogWindow->setTextColor(QColorConstants::LightGray);
+					}
+
+					if (match == matchList[3]) {
+						m_LogWindow->setTextColor(QColorConstants::LightGray);
+					}
+
+					if (match == matchList[4]) {
+						m_LogWindow->setTextColor(QColorConstants::Yellow);
+					}
+
+					break;
+				}
+			}
+
+			m_LogWindow->insertPlainText(str);
+
+			return n;
+		}
+
+		void OutputStream::consoleMessageHandler(QtMsgType type, const QMessageLogContext&, const QString& msg) {
+			std::cout << msg.toStdString().c_str();
+		}
+
 	}
 
 }

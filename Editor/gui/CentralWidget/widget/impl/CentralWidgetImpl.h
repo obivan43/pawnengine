@@ -2,13 +2,17 @@
 
 #include "Editor/gui/CentralWidget/widget/CentralWidget.h"
 
-namespace impl {
+namespace editor {
 
-	class CentralWidgetImpl : public CentralWidget {
-		Q_OBJECT
+	namespace impl {
 
-		public:
-			CentralWidgetImpl(QWidget* parent);
-	};
+		class CentralWidgetImpl : public CentralWidget {
+				Q_OBJECT
+
+			public:
+				CentralWidgetImpl(QWidget* parent);
+		};
+
+	}
 
 }

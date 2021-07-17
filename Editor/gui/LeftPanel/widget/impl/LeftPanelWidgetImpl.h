@@ -8,33 +8,37 @@
 #include <QtWidgets/QTreeWidget>
 #include <memory>
 
-namespace impl {
+namespace editor {
 
-	class LeftPanelWidgetImpl : public LeftPanelWidget {
-			Q_OBJECT
+	namespace impl {
 
-		public:
-			LeftPanelWidgetImpl(QWidget* parent);
+		class LeftPanelWidgetImpl : public LeftPanelWidget {
+				Q_OBJECT
 
-			void RefreshPanel();
+			public:
+				LeftPanelWidgetImpl(QWidget* parent);
 
-			std::shared_ptr<pawn::engine::GameScene>& GetScene() { return m_Scene; }
-			pawn::engine::GameEntity& GetSelectedEntity() { return m_SelectedEntity; }
+				void RefreshPanel();
 
-		private:
-			void InitHierarchyPanel();
-			void InitConnections();
+				std::shared_ptr<pawn::engine::GameScene>& GetScene() { return m_Scene; }
+				pawn::engine::GameEntity& GetSelectedEntity() { return m_SelectedEntity; }
 
-		public slots:
-			void OnHierarchyItemClicked(QTreeWidgetItem* item, int index);
-			void OnActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene> scene);
-			void OnEntityTagModified();
+			private:
+				void InitHierarchyPanel();
+				void InitConnections();
 
-		private:
-			std::shared_ptr<pawn::engine::GameScene> m_Scene;
-			pawn::engine::GameEntity m_SelectedEntity;
+			public slots:
+				void OnHierarchyItemClicked(QTreeWidgetItem* item, int index);
+				void OnActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene> scene);
+				void OnEntityTagModified();
 
-			QTreeWidget* m_HierarchyPanel;
-	};
+			private:
+				std::shared_ptr<pawn::engine::GameScene> m_Scene;
+				pawn::engine::GameEntity m_SelectedEntity;
+
+				QTreeWidget* m_HierarchyPanel;
+		};
+
+	}
 
 }

@@ -11,40 +11,44 @@
 #include <QtWidgets/QDockWidget>
 #include <QCloseEvent>
 
-namespace impl {
+namespace editor {
 
-	class MainWindowImpl : public MainWindow {
-		Q_OBJECT
+	namespace impl {
 
-		public:
-			MainWindowImpl(QWidget* parent = Q_NULLPTR);
+		class MainWindowImpl : public MainWindow {
+				Q_OBJECT
 
-			uint32_t GetDefaultWidth() const { return EngineViewWidth; }
-			uint32_t GetDefaultHeight() const { return EngineViewHeight; }
+			public:
+				MainWindowImpl(QWidget* parent = Q_NULLPTR);
 
-			void RestoreSettings();
+				uint32_t GetDefaultWidth() const { return EngineViewWidth; }
+				uint32_t GetDefaultHeight() const { return EngineViewHeight; }
 
-			void closeEvent(QCloseEvent* event) override;
+				void RestoreSettings();
 
-		private:
-			void InitEngine();
-			void InitConnections();
+				void closeEvent(QCloseEvent* event) override;
 
-		signals:
-			void ActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>);
+			private:
+				void InitEngine();
+				void InitConnections();
 
-		private:
-			BottomPanelWidget* m_BottomPanel;
-			LeftPanelWidget* m_LeftPanel;
-			RightPanelWidget* m_RightPanel;
-			CentralWidget* m_CentralWidget;
-			EngineManager* m_EngineManager;
+			signals:
+				void ActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>);
 
-			const uint32_t EngineViewWidth{ 1280 };
-			const uint32_t EngineViewHeight{ 720 };
+			private:
+				BottomPanelWidget* m_BottomPanel;
+				LeftPanelWidget* m_LeftPanel;
+				RightPanelWidget* m_RightPanel;
+				CentralWidget* m_CentralWidget;
+				EngineManager* m_EngineManager;
 
-			const uint32_t EditorDefaultWidth{ 1920 };
-			const uint32_t EditorDefaultHeight{ 1080 };
-	};
+				const uint32_t EngineViewWidth{ 1280 };
+				const uint32_t EngineViewHeight{ 720 };
+
+				const uint32_t EditorDefaultWidth{ 1920 };
+				const uint32_t EditorDefaultHeight{ 1080 };
+		};
+
+	}
 
 }

@@ -6,33 +6,37 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QDoubleSpinBox>
 
-namespace impl {
+namespace editor {
 
-	class Double3Widget : public QWidget {
-		Q_OBJECT
+	namespace impl {
 
-		public:
-			Double3Widget(const QString& label, glm::vec3 value = glm::vec3(0.0f), QWidget* parent = Q_NULLPTR);
+		class Double3Widget : public QWidget {
+				Q_OBJECT
 
-			void SetValue(glm::vec3 value);
+			public:
+				Double3Widget(const QString& label, glm::vec3 value = glm::vec3(0.0f), QWidget* parent = Q_NULLPTR);
 
-		private:
-			void InitConnections();
+				void SetValue(glm::vec3 value);
 
-		private slots:
-			void OnXChanged(double value);
-			void OnYChanged(double value);
-			void OnZChanged(double value);
+			private:
+				void InitConnections();
 
-		signals:
-			void ValueChanged(glm::vec3);
+			private slots:
+				void OnXChanged(double value);
+				void OnYChanged(double value);
+				void OnZChanged(double value);
 
-		private:
-			QLabel* m_Label;
-			QDoubleSpinBox* m_X;
-			QDoubleSpinBox* m_Y;
-			QDoubleSpinBox* m_Z;
-			glm::vec3 m_ValueCache;
-	};
+			signals:
+				void ValueChanged(glm::vec3);
+
+			private:
+				QLabel* m_Label;
+				QDoubleSpinBox* m_X;
+				QDoubleSpinBox* m_Y;
+				QDoubleSpinBox* m_Z;
+				glm::vec3 m_ValueCache;
+		};
+
+	}
 
 }

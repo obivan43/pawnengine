@@ -4,20 +4,23 @@
 
 #include <QObject>
 
-namespace impl {
+namespace editor {
 
-	class EngineManager : public QObject {
-		Q_OBJECT
+	namespace impl {
 
-		public:
-			EngineManager(pawn::engine::Engine* engine);
+		class EngineManager : public QObject {
+				Q_OBJECT
 
-		public slots:
-			void OnEntityMeshModified(pawn::engine::GameEntity entity);
+			public:
+				EngineManager(pawn::engine::Engine* engine);
 
-		private:
-			pawn::engine::Engine* m_Engine;
+			public slots:
+				void OnEntityMeshModified(pawn::engine::GameEntity entity);
 
-	};
+			private:
+				pawn::engine::Engine* m_Engine;
+		};
+
+	}
 
 }

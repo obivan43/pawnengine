@@ -6,30 +6,34 @@
 
 #include <QtWidgets/QWidget>
 
-namespace impl {
+namespace editor {
 
-	class TransformationComponentWidget : public QWidget {
-		Q_OBJECT
+	namespace impl {
 
-		public:
-			TransformationComponentWidget(QWidget* parent = Q_NULLPTR);
-			TransformationComponentWidget(pawn::engine::TransformationComponent* transformation, QWidget* parent = Q_NULLPTR);
+		class TransformationComponentWidget : public QWidget {
+				Q_OBJECT
 
-			void SetTransformation(pawn::engine::TransformationComponent* transformation);
+			public:
+				TransformationComponentWidget(QWidget* parent = Q_NULLPTR);
+				TransformationComponentWidget(pawn::engine::TransformationComponent* transformation, QWidget* parent = Q_NULLPTR);
 
-		private slots:
-			void OnPositionChanged(glm::vec3);
-			void OnRotationChanged(glm::vec3);
-			void OnScaleChanged(glm::vec3);
+				void SetTransformation(pawn::engine::TransformationComponent* transformation);
 
-		private:
-			void InitConnections();
+			private slots:
+				void OnPositionChanged(glm::vec3);
+				void OnRotationChanged(glm::vec3);
+				void OnScaleChanged(glm::vec3);
 
-		private:
-			pawn::engine::TransformationComponent* m_Transformation;
-			Double3Widget* m_Position;
-			Double3Widget* m_Rotation;
-			Double3Widget* m_Scale;
-	};
+			private:
+				void InitConnections();
+
+			private:
+				pawn::engine::TransformationComponent* m_Transformation;
+				Double3Widget* m_Position;
+				Double3Widget* m_Rotation;
+				Double3Widget* m_Scale;
+		};
+
+	}
 
 }

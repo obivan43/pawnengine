@@ -2,11 +2,15 @@
 
 #include <QtWidgets/QDockWidget>
 
-class BottomPanelWidget : public QDockWidget {
+namespace editor {
 
-	public:
-		static BottomPanelWidget* CreateImpl(QWidget* parent = Q_NULLPTR);
+	class BottomPanelWidget : public QDockWidget {
 
-	protected:
-		BottomPanelWidget(QWidget* parent);
-};
+		public:
+			static BottomPanelWidget* CreateImpl(QWidget* parent = Q_NULLPTR);
+
+		protected:
+			BottomPanelWidget(QWidget* parent);
+	};
+
+}

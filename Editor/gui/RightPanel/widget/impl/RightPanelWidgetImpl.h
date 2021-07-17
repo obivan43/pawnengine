@@ -10,36 +10,40 @@
 #include <QtWidgets/QLineEdit>
 #include <memory>
 
-namespace impl {
+namespace editor {
 
-	class RightPanelWidgetImpl : public RightPanelWidget {
-		Q_OBJECT
+	namespace impl {
 
-		public:
-			RightPanelWidgetImpl(QWidget* parent);
+		class RightPanelWidgetImpl : public RightPanelWidget {
+				Q_OBJECT
 
-			void RefreshPanel();
+			public:
+				RightPanelWidgetImpl(QWidget* parent);
 
-		private:
-			void InitTagComponent();
-			void InitTransformationComponent();
-			void InitMeshComponent();
-			void InitConnections();
+				void RefreshPanel();
 
-		public slots:
-			void OnSelectedEntityChanged(pawn::engine::GameEntity);
+			private:
+				void InitTagComponent();
+				void InitTransformationComponent();
+				void InitMeshComponent();
+				void InitConnections();
 
-		signals:
-			void EntityTagModified();
-			void EntityMeshModfied(pawn::engine::GameEntity);
+			public slots:
+				void OnSelectedEntityChanged(pawn::engine::GameEntity);
 
-		private:
-			QTreeWidget* m_InspectorPanel;
-			TagComponentWidgetItem* m_TagComponentInspectorWidget;
-			TransformationComponentWidgetItem* m_TransformationComponentInspectorWidget;
-			MeshComponentWidgetItem* m_MeshComponentWidgetItem;
+			signals:
+				void EntityTagModified();
+				void EntityMeshModfied(pawn::engine::GameEntity);
 
-			pawn::engine::GameEntity m_SelectedEntity;
-	};
+			private:
+				QTreeWidget* m_InspectorPanel;
+				TagComponentWidgetItem* m_TagComponentInspectorWidget;
+				TransformationComponentWidgetItem* m_TransformationComponentInspectorWidget;
+				MeshComponentWidgetItem* m_MeshComponentWidgetItem;
+
+				pawn::engine::GameEntity m_SelectedEntity;
+		};
+
+	}
 
 }

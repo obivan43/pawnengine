@@ -23,9 +23,9 @@ int main(int argc, char *argv[]) {
 		app.setStyleSheet(stream.readAll());
 	}
 
-    app.installNativeEventFilter(new impl::WindowsEventFilter());
+    app.installNativeEventFilter(new editor::impl::WindowsEventFilter());
 
-    QSharedPointer<MainWindow> window = QSharedPointer<MainWindow>(MainWindow::CreateImpl());
+    QSharedPointer<editor::MainWindow> window = QSharedPointer<editor::MainWindow>(editor::MainWindow::CreateImpl());
     window->show();
 
     pawn::utils::Clock m_Clock;

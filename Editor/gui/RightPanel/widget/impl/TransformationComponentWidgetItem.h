@@ -7,23 +7,27 @@
 #include <QtWidgets/QTreeWidgetItem>
 #include <QtWidgets/QLabel>
 
-namespace impl {
+namespace editor {
 
-	class TransformationComponentWidgetItem : public QObject, public QTreeWidgetItem {
-		Q_OBJECT
+	namespace impl {
 
-		public:
-			TransformationComponentWidgetItem(QTreeWidget* parent);
+		class TransformationComponentWidgetItem : public QObject, public QTreeWidgetItem {
+				Q_OBJECT
 
-			void SetEntity(pawn::engine::GameEntity* entity);
+			public:
+				TransformationComponentWidgetItem(QTreeWidget* parent);
 
-			TransformationComponentWidget* GetWidget() { return m_TransformationComponentWidget; }
-			QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
+				void SetEntity(pawn::engine::GameEntity* entity);
 
-		private:
-			TransformationComponentWidget* m_TransformationComponentWidget;
-			QTreeWidgetItem* m_WidgetWrapper;
-			pawn::engine::GameEntity* m_Entity;
-	};
+				TransformationComponentWidget* GetWidget() { return m_TransformationComponentWidget; }
+				QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
+
+			private:
+				TransformationComponentWidget* m_TransformationComponentWidget;
+				QTreeWidgetItem* m_WidgetWrapper;
+				pawn::engine::GameEntity* m_Entity;
+		};
+
+	}
 
 }

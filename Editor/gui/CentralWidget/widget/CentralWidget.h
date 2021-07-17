@@ -2,14 +2,18 @@
 
 #include <QtWidgets/QFrame>
 
-class CentralWidget : public QFrame {
-	Q_OBJECT
+namespace editor {
 
-	public:
-		static CentralWidget* CreateImpl(QWidget* parent = Q_NULLPTR);
+	class CentralWidget : public QFrame {
+			Q_OBJECT
 
-		HWND GetWindowsHandle() { return reinterpret_cast<HWND>(winId()); }
+		public:
+			static CentralWidget* CreateImpl(QWidget* parent = Q_NULLPTR);
 
-	protected:
-		CentralWidget(QWidget* parent);
-};
+			HWND GetWindowsHandle() { return reinterpret_cast<HWND>(winId()); }
+
+		protected:
+			CentralWidget(QWidget* parent);
+	};
+
+}

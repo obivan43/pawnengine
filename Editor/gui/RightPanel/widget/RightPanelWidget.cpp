@@ -1,8 +1,13 @@
 #include "RightPanelWidget.h"
+
 #include "Editor/gui/RightPanel/widget/impl/RightPanelWidgetImpl.h"
 
-RightPanelWidget::RightPanelWidget(QWidget* parent) : QDockWidget(parent) {}
+namespace editor {
 
-RightPanelWidget* RightPanelWidget::CreateImpl(QWidget* parent) {
-	return new impl::RightPanelWidgetImpl(parent);
+	RightPanelWidget::RightPanelWidget(QWidget* parent) : QDockWidget(parent) {}
+
+	RightPanelWidget* RightPanelWidget::CreateImpl(QWidget* parent) {
+		return new impl::RightPanelWidgetImpl(parent);
+	}
+
 }
