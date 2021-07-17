@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PawnMath/src/Vertex.h"
+#include "PawnMath/math/Vertex.h"
 
 #include <string>
 #include <vector>

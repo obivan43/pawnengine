@@ -1,5 +1,7 @@
 #pragma once
 
+#include "glm.hpp"
+
 namespace geometry {
 
 	enum class MeshType {

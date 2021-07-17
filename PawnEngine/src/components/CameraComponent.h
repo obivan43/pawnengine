@@ -1,7 +1,7 @@
 #pragma once
 
 #include "glm.hpp"
-#include "PawnMath/src/Camera.h"
+#include "PawnMath/math/Camera.h"
 
 namespace pawn {
 

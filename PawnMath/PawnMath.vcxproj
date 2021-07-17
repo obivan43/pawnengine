@@ -11,20 +11,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Camera.cpp" />
-    <ClCompile Include="src\pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    <ClCompile Include="math\Camera.cpp" />
+    <ClCompile Include="math\pch\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Vertex.cpp" />
+    <ClCompile Include="math\Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\pawnmath.h" />
-    <ClInclude Include="src\Camera.h" />
-    <ClInclude Include="src\Functions.h" />
-    <ClInclude Include="src\MathDefines.h" />
-    <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\Vertex.h" />
+    <ClInclude Include="math\Camera.h" />
+    <ClInclude Include="math\Functions.h" />
+    <ClInclude Include="math\MathDefines.h" />
+    <ClInclude Include="math\pch\pch.h" />
+    <ClInclude Include="math\Vertex.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -78,7 +76,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\glm\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\glm\include;$(ProjectDir)math\pch;$(ProjectDir)math\;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -98,7 +96,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\glm\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\glm\include;$(ProjectDir)math\pch;$(ProjectDir)math\;$(SolutionDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
