@@ -6,64 +6,68 @@
 
 namespace pawn {
 
-	class GraphicsContext;
-	
-	enum class GraphicsTextureWrap {
-		REPEAT,
-		CLAMP,
-		CLAMP_TO_EDGE,
-		CLAMP_TO_BORDER
-	};
+	namespace graphics {
 
-	enum class GraphicsTextureFilter {
-		LINEAR,
-		NEAREST
-	};
+		class GraphicsContext;
 
-	enum class GraphicsTextureFormat {
-		RGB,
-		RGBA
-	};
+		enum class GraphicsTextureWrap {
+			REPEAT,
+			CLAMP,
+			CLAMP_TO_EDGE,
+			CLAMP_TO_BORDER
+		};
 
-	struct GraphicsTextureParams {
-		GraphicsTextureWrap m_WrapMode;
-		GraphicsTextureFilter m_FilterMode;
-		GraphicsTextureFormat m_Format;
-	};
-	
-	class GraphicsTexture2D : public GraphicsBindableResource {
+		enum class GraphicsTextureFilter {
+			LINEAR,
+			NEAREST
+		};
 
-		public:
-			GraphicsTexture2D();
-			GraphicsTexture2D(const GraphicsTexture2D& other) = default;
-			GraphicsTexture2D(GraphicsTexture2D&& other) noexcept = default;
+		enum class GraphicsTextureFormat {
+			RGB,
+			RGBA
+		};
 
-			GraphicsTexture2D& operator=(const GraphicsTexture2D& other) = default;
-			GraphicsTexture2D& operator=(GraphicsTexture2D&& other) noexcept = default;
-		
-			virtual ~GraphicsTexture2D() = default;
+		struct GraphicsTextureParams {
+			GraphicsTextureWrap m_WrapMode;
+			GraphicsTextureFilter m_FilterMode;
+			GraphicsTextureFormat m_Format;
+		};
 
-			virtual void Init(
-				std::shared_ptr<GraphicsContext>& context,
-				const void* data, 
-				int32_t width,
-				int32_t height,
-				int32_t bitsPerPixel,
-				const GraphicsTextureParams& params
-			);
-		
-			void Bind(std::shared_ptr<GraphicsContext>& context) override;
-			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+		class GraphicsTexture2D : public GraphicsBindableResource {
 
-			virtual void* GetTexture() { return nullptr; }
+			public:
+				GraphicsTexture2D();
+				GraphicsTexture2D(const GraphicsTexture2D& other) = default;
+				GraphicsTexture2D(GraphicsTexture2D&& other) noexcept = default;
 
-			static std::shared_ptr<GraphicsTexture2D> Create();
+				GraphicsTexture2D& operator=(const GraphicsTexture2D& other) = default;
+				GraphicsTexture2D& operator=(GraphicsTexture2D&& other) noexcept = default;
 
-		protected:
-			int32_t m_Width;
-			int32_t m_Height;
-			int32_t m_BitsPerPixel;
-			GraphicsTextureParams m_Params;
-	};
+				virtual ~GraphicsTexture2D() = default;
+
+				virtual void Init(
+					std::shared_ptr<GraphicsContext>& context,
+					const void* data,
+					int32_t width,
+					int32_t height,
+					int32_t bitsPerPixel,
+					const GraphicsTextureParams& params
+				);
+
+				void Bind(std::shared_ptr<GraphicsContext>& context) override;
+				void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+
+				virtual void* GetTexture() { return nullptr; }
+
+				static std::shared_ptr<GraphicsTexture2D> Create();
+
+			protected:
+				int32_t m_Width;
+				int32_t m_Height;
+				int32_t m_BitsPerPixel;
+				GraphicsTextureParams m_Params;
+		};
+
+	}
 	
 }

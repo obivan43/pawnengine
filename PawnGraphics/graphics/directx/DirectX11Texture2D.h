@@ -12,34 +12,38 @@
 
 namespace pawn {
 
-	class DirectX11Texture2D : public GraphicsTexture2D {
+	namespace graphics {
 
-		public:
-			DirectX11Texture2D() = default;
-			DirectX11Texture2D(const DirectX11Texture2D& other) = default;
-			DirectX11Texture2D(DirectX11Texture2D&& other) noexcept = default;
+		class DirectX11Texture2D : public GraphicsTexture2D {
 
-			DirectX11Texture2D& operator=(const DirectX11Texture2D& other) = default;
-			DirectX11Texture2D& operator=(DirectX11Texture2D&& other) noexcept = default;
+			public:
+				DirectX11Texture2D() = default;
+				DirectX11Texture2D(const DirectX11Texture2D& other) = default;
+				DirectX11Texture2D(DirectX11Texture2D&& other) noexcept = default;
 
-			void Init(
-				std::shared_ptr<GraphicsContext>& context,
-				const void* data,
-				int32_t width,
-				int32_t height,
-				int32_t bitsPerPixel,
-				const GraphicsTextureParams& params
-			) override;
+				DirectX11Texture2D& operator=(const DirectX11Texture2D& other) = default;
+				DirectX11Texture2D& operator=(DirectX11Texture2D&& other) noexcept = default;
 
-			void Bind(std::shared_ptr<GraphicsContext>& context) override;
-			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+				void Init(
+					std::shared_ptr<GraphicsContext>& context,
+					const void* data,
+					int32_t width,
+					int32_t height,
+					int32_t bitsPerPixel,
+					const GraphicsTextureParams& params
+				) override;
 
-			void* GetTexture() override { return m_TextureView.Get(); }
+				void Bind(std::shared_ptr<GraphicsContext>& context) override;
+				void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 
-		private:
-			Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_TextureView;
-			Microsoft::WRL::ComPtr<ID3D11SamplerState> m_Sampler;
-	};
+				void* GetTexture() override { return m_TextureView.Get(); }
+
+			private:
+				Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_TextureView;
+				Microsoft::WRL::ComPtr<ID3D11SamplerState> m_Sampler;
+		};
+
+	}
 
 }
 

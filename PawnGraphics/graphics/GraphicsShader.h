@@ -7,30 +7,34 @@
 
 namespace pawn {
 
-	class GraphicsContext;
+	namespace graphics {
 
-	class GraphicsShader : public GraphicsBindableResource {
+		class GraphicsContext;
 
-		public:
-			GraphicsShader() = default;
-			GraphicsShader(const GraphicsShader& other) = default;
-			GraphicsShader(GraphicsShader&& other) noexcept = default;
+		class GraphicsShader : public GraphicsBindableResource {
 
-			GraphicsShader& operator=(const GraphicsShader& other) = default;
-			GraphicsShader& operator=(GraphicsShader&& other) noexcept = default;
+			public:
+				GraphicsShader() = default;
+				GraphicsShader(const GraphicsShader & other) = default;
+				GraphicsShader(GraphicsShader && other) noexcept = default;
 
-			virtual ~GraphicsShader() = default;
+				GraphicsShader& operator=(const GraphicsShader & other) = default;
+				GraphicsShader& operator=(GraphicsShader && other) noexcept = default;
 
-			virtual bool InitVertexShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName);
-			virtual bool InitPixelShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName);
+				virtual ~GraphicsShader() = default;
 
-			void Bind(std::shared_ptr<GraphicsContext>& context) override;
-			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+				virtual bool InitVertexShader(std::shared_ptr<GraphicsContext>&context, const std::wstring & fileName);
+				virtual bool InitPixelShader(std::shared_ptr<GraphicsContext>&context, const std::wstring & fileName);
 
-			virtual void* GetVertexShaderInfo() const { return nullptr; }
-			virtual void* GetPixelShaderInfo() const { return nullptr; }
+				void Bind(std::shared_ptr<GraphicsContext>&context) override;
+				void Bind(std::shared_ptr<GraphicsContext>&context, uint32_t index) override;
 
-			static std::shared_ptr<GraphicsShader> Create();
-	};
+				virtual void* GetVertexShaderInfo() const { return nullptr; }
+				virtual void* GetPixelShaderInfo() const { return nullptr; }
+
+				static std::shared_ptr<GraphicsShader> Create();
+		};
+
+	}
 
 }

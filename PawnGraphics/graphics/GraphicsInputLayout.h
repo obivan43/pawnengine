@@ -8,65 +8,69 @@
 
 namespace pawn {
 
-	class GraphicsContext;
-	class GraphicsInputLayout;
+	namespace graphics {
 
-	enum class GraphicsInputElementType {
-		None,
-		Float, Float2, Float3, Float4,
-		Int, Int2, Int3, Int4
-	};
+		class GraphicsContext;
+		class GraphicsInputLayout;
 
-	class GraphicsInputElement {
-		
-		friend GraphicsInputLayout;
+		enum class GraphicsInputElementType {
+			None,
+			Float, Float2, Float3, Float4,
+			Int, Int2, Int3, Int4
+		};
 
-		public:
-			GraphicsInputElement(const std::string& name, GraphicsInputElementType type);
-			GraphicsInputElement(const GraphicsInputElement& other) = default;
-			GraphicsInputElement(GraphicsInputElement&& other) noexcept = default;
+		class GraphicsInputElement {
 
-			GraphicsInputElement& operator=(const GraphicsInputElement& other) = default;
-			GraphicsInputElement& operator=(GraphicsInputElement&& other) noexcept = default;
+			friend GraphicsInputLayout;
 
-			~GraphicsInputElement();
+			public:
+				GraphicsInputElement(const std::string& name, GraphicsInputElementType type);
+				GraphicsInputElement(const GraphicsInputElement& other) = default;
+				GraphicsInputElement(GraphicsInputElement&& other) noexcept = default;
 
-			uint32_t ElementCount() const;
-		
-			static uint32_t GraphicsInputElementTypeSize(GraphicsInputElementType type);
+				GraphicsInputElement& operator=(const GraphicsInputElement& other) = default;
+				GraphicsInputElement& operator=(GraphicsInputElement&& other) noexcept = default;
 
-			std::string m_Name;
-			GraphicsInputElementType m_Type;
-			uint32_t m_Size;
-			size_t m_Offset;
-	};
-	
-	class GraphicsInputLayout : public GraphicsBindableResource {
-		
-		public:
-			GraphicsInputLayout();
-			GraphicsInputLayout(const GraphicsInputLayout& other) = default;
-			GraphicsInputLayout(GraphicsInputLayout&& other) noexcept = default;
+				~GraphicsInputElement();
 
-			GraphicsInputLayout& operator=(const GraphicsInputLayout& other) = default;
-			GraphicsInputLayout& operator=(GraphicsInputLayout&& other) noexcept = default;
+				uint32_t ElementCount() const;
 
-			virtual ~GraphicsInputLayout();
+				static uint32_t GraphicsInputElementTypeSize(GraphicsInputElementType type);
 
-			virtual void Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData);
+				std::string m_Name;
+				GraphicsInputElementType m_Type;
+				uint32_t m_Size;
+				size_t m_Offset;
+		};
 
-			void Bind(std::shared_ptr<GraphicsContext>& context) override;
-			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+		class GraphicsInputLayout : public GraphicsBindableResource {
 
-			uint32_t GetStride() const { return m_Stride; }
+			public:
+				GraphicsInputLayout();
+				GraphicsInputLayout(const GraphicsInputLayout& other) = default;
+				GraphicsInputLayout(GraphicsInputLayout&& other) noexcept = default;
 
-			void RecalculateStride();
+				GraphicsInputLayout& operator=(const GraphicsInputLayout& other) = default;
+				GraphicsInputLayout& operator=(GraphicsInputLayout&& other) noexcept = default;
 
-			static std::shared_ptr<GraphicsInputLayout> Create();
-	
-		protected:
-			std::vector<GraphicsInputElement> m_Elements;
-			uint32_t m_Stride;
-	};
+				virtual ~GraphicsInputLayout();
+
+				virtual void Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData);
+
+				void Bind(std::shared_ptr<GraphicsContext>& context) override;
+				void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+
+				uint32_t GetStride() const { return m_Stride; }
+
+				void RecalculateStride();
+
+				static std::shared_ptr<GraphicsInputLayout> Create();
+
+			protected:
+				std::vector<GraphicsInputElement> m_Elements;
+				uint32_t m_Stride;
+		};
+
+	}
 
 }

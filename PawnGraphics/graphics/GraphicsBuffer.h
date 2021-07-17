@@ -7,69 +7,72 @@
 
 namespace pawn {
 
-	class GraphicsContext;
-	class GraphicsShader;
+	namespace graphics {
 
-	enum class GraphicsBufferEnum {
-		None,
-		VertexBuffer,
-		IndexBuffer,
-		ConstantBuffer
-	};
+		class GraphicsContext;
+		class GraphicsShader;
 
-	enum class GraphicsBufferUsageTypeEnum {
-		None,
-		StaticBuffer,
-		DynamicBuffer
-	};
-	
-	class GraphicsBuffer : public GraphicsBindableResource {
+		enum class GraphicsBufferEnum {
+			None,
+			VertexBuffer,
+			IndexBuffer,
+			ConstantBuffer
+		};
 
-		public:
-			GraphicsBuffer();
-			GraphicsBuffer(const GraphicsBuffer& other) = default;
-			GraphicsBuffer(GraphicsBuffer&& other) noexcept = default;
+		enum class GraphicsBufferUsageTypeEnum {
+			None,
+			StaticBuffer,
+			DynamicBuffer
+		};
 
-			GraphicsBuffer& operator=(const GraphicsBuffer& other) = default;
-			GraphicsBuffer& operator=(GraphicsBuffer&& other) noexcept = default;
+		class GraphicsBuffer : public GraphicsBindableResource {
 
-			virtual ~GraphicsBuffer() = default;
+			public:
+				GraphicsBuffer();
+				GraphicsBuffer(const GraphicsBuffer& other) = default;
+				GraphicsBuffer(GraphicsBuffer&& other) noexcept = default;
 
-			virtual void InitLocation(
-				std::shared_ptr<GraphicsContext>& context,
-				std::shared_ptr<GraphicsShader>& shader,
-				const std::string& name,
-				uint32_t index = 0
-			);
+				GraphicsBuffer& operator=(const GraphicsBuffer& other) = default;
+				GraphicsBuffer& operator=(GraphicsBuffer&& other) noexcept = default;
 
-			virtual void Update(
-				std::shared_ptr<GraphicsContext>& context,
-				void* data,
-				uint32_t numVertices,
-				uint32_t stride
-			);
-		
-			virtual void Init(
-				std::shared_ptr<GraphicsContext>& context,
-				void* data,
-				uint32_t numVertices,
-				uint32_t stride,
-				GraphicsBufferUsageTypeEnum type
-			);
-		
-			void Bind(std::shared_ptr<GraphicsContext>& context) override;
-			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+				virtual ~GraphicsBuffer() = default;
 
-			virtual void* GetBuffer() { return nullptr; };
-			virtual uint32_t GetBufferSize() const { return 0; };
-			virtual uint32_t GetStride() const { return 0; };
-		
-			const GraphicsBufferEnum& GetGraphicsBufferType() const { return m_GraphicsBufferType; }
+				virtual void InitLocation(
+					std::shared_ptr<GraphicsContext>& context,
+					std::shared_ptr<GraphicsShader>& shader,
+					const std::string& name,
+					uint32_t index = 0
+				);
 
-			static std::shared_ptr<GraphicsBuffer> Create(GraphicsBufferEnum bufferType);
+				virtual void Update(
+					std::shared_ptr<GraphicsContext>& context,
+					void* data,
+					uint32_t numVertices,
+					uint32_t stride
+				);
 
-		protected:
-			GraphicsBufferEnum m_GraphicsBufferType;
-	};
-	
+				virtual void Init(
+					std::shared_ptr<GraphicsContext>& context,
+					void* data,
+					uint32_t numVertices,
+					uint32_t stride,
+					GraphicsBufferUsageTypeEnum type
+				);
+
+				void Bind(std::shared_ptr<GraphicsContext>& context) override;
+				void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+
+				virtual void* GetBuffer() { return nullptr; };
+				virtual uint32_t GetBufferSize() const { return 0; };
+				virtual uint32_t GetStride() const { return 0; };
+
+				const GraphicsBufferEnum& GetGraphicsBufferType() const { return m_GraphicsBufferType; }
+
+				static std::shared_ptr<GraphicsBuffer> Create(GraphicsBufferEnum bufferType);
+
+			protected:
+				GraphicsBufferEnum m_GraphicsBufferType;
+		};
+
+	}
 }

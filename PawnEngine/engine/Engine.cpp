@@ -7,8 +7,8 @@
 namespace pawn {
 
 	void Engine::Init(HWND handle, uint32_t width, uint32_t height) {
-		m_Context = GraphicsContext::Create();
-		m_GraphicsAPI = GraphicsAPI::Create();
+		m_Context = graphics::GraphicsContext::Create();
+		m_GraphicsAPI = graphics::GraphicsAPI::Create();
 
 		m_Context->Init(handle, width, height);
 		m_GraphicsAPI->SetContext(m_Context);
@@ -17,7 +17,7 @@ namespace pawn {
 
 		m_MeshManager.reset(new MeshManager());
 
-		m_Shader = GraphicsShader::Create();
+		m_Shader = graphics::GraphicsShader::Create();
 		if (!m_Shader->InitVertexShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\VertexShader.cso")) {
 			CONSOLE_ERROR("Vertex shader initialization failed")
 		}
@@ -33,7 +33,7 @@ namespace pawn {
 		m_Scene.reset(new GameScene());
 	}
 
-	const std::shared_ptr<GraphicsMesh>& Engine::GetMeshByPath(const std::string& path) {
+	const std::shared_ptr<graphics::GraphicsMesh>& Engine::GetMeshByPath(const std::string& path) {
 		return m_MeshManager->GetMeshByPath(path);
 	}
 

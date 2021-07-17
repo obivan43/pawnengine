@@ -2,21 +2,21 @@
 
 namespace pawn {
 
-	void Renderer::SetShader(std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsShader>& shader) {
+	void Renderer::SetShader(std::shared_ptr<graphics::GraphicsContext>& context, const std::shared_ptr<graphics::GraphicsShader>& shader) {
 		m_Shader = shader;
 		m_Shader->Bind(context);
 
-		m_Transformation = GraphicsBuffer::Create(GraphicsBufferEnum::ConstantBuffer);
-		m_ViewProjection = GraphicsBuffer::Create(GraphicsBufferEnum::ConstantBuffer);
+		m_Transformation = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::ConstantBuffer);
+		m_ViewProjection = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::ConstantBuffer);
 
-		m_Transformation->Init(m_Context, nullptr, 1, sizeof(glm::mat4), GraphicsBufferUsageTypeEnum::DynamicBuffer);
-		m_ViewProjection->Init(m_Context, nullptr, 1, sizeof(ViewProjection), GraphicsBufferUsageTypeEnum::DynamicBuffer);
+		m_Transformation->Init(m_Context, nullptr, 1, sizeof(glm::mat4), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
+		m_ViewProjection->Init(m_Context, nullptr, 1, sizeof(ViewProjection), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
 	}
 
-	void Renderer::Init(const std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsAPI>& api, uint32_t width, uint32_t height) {
+	void Renderer::Init(const std::shared_ptr<graphics::GraphicsContext>& context, const std::shared_ptr<graphics::GraphicsAPI>& api, uint32_t width, uint32_t height) {
 		m_Context = context;
 		m_GraphicsAPI = api;
-		m_GraphicsRenderer = GraphicsRenderer::Create();
+		m_GraphicsRenderer = graphics::GraphicsRenderer::Create();
 	}
 
 	void Renderer::BeginScene(math::Camera& camera, glm::mat4& view) {
@@ -34,7 +34,7 @@ namespace pawn {
 		m_Transformation->Update(m_Context, &transformation, 1, sizeof(glm::mat4));
 		m_Transformation->Bind(m_Context, 0);
 
-		if (GraphicsMesh* mesh = meshComponent.Mesh.get()) {
+		if (graphics::GraphicsMesh* mesh = meshComponent.Mesh.get()) {
 			mesh->Bind(m_Context);
 			m_GraphicsRenderer->DrawIndexed(m_Context, mesh->GetIndexBuffer());
 		}

@@ -8,24 +8,27 @@
 
 namespace pawn {
 	
-	class GraphicsContext : public Rtti {
-		RTTI_DECLARATIONS(GraphicsContext, Rtti)
-	
-		public:
-			GraphicsContext() = default;
-			GraphicsContext(const GraphicsContext& other) = default;
-			GraphicsContext(GraphicsContext&& other) noexcept = default;
+	namespace graphics {
 
-			GraphicsContext& operator=(const GraphicsContext& other) = default;
-			GraphicsContext& operator=(GraphicsContext&& other) noexcept = default;
+		class GraphicsContext : public Rtti {
+			RTTI_DECLARATIONS(GraphicsContext, Rtti)
 
-			virtual ~GraphicsContext() = default;
+			public:
+				GraphicsContext() = default;
+				GraphicsContext(const GraphicsContext& other) = default;
+				GraphicsContext(GraphicsContext&& other) noexcept = default;
 
-			virtual bool Init(HWND handle, uint32_t width, uint32_t height);
-			virtual void SwapBuffers();
+				GraphicsContext& operator=(const GraphicsContext& other) = default;
+				GraphicsContext& operator=(GraphicsContext&& other) noexcept = default;
 
-			static std::shared_ptr<GraphicsContext> Create();
-	};
-	
+				virtual ~GraphicsContext() = default;
+
+				virtual bool Init(HWND handle, uint32_t width, uint32_t height);
+				virtual void SwapBuffers();
+
+				static std::shared_ptr<GraphicsContext> Create();
+		};
+
+	}
+
 }
-
