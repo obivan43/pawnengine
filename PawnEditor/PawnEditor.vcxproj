@@ -199,8 +199,10 @@ exit</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\WindowsEventFilter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\WindowsEventFilter.h" />
     <QtMoc Include="src\MainWindow.h" />
     <QtMoc Include="src\MainWindowImpl.h" />
     <QtMoc Include="src\EngineManager.h" />

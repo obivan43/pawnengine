@@ -1,5 +1,8 @@
 #include "pch.h"
 #include "MainWindowImpl.h"
+#include "../../PawnSystem/system/windows/SystemPC.h"
+#include "../../PawnSystem/system/windows/InputManagerWindows.h"
+
 
 #include <QSettings>
 #include <string>
@@ -61,6 +64,11 @@ namespace impl {
 	
 	void MainWindowImpl::InitEngine() {
 		m_Engine.reset(new pawn::Engine);
+
+		SetGameEngineWindowHWND(m_CentralWidget->GetWindowsHandle());
+		pawn::system::InputManagerWindows::RegisterMouse();
+		pawn::system::InputManagerWindows::RegisterKeyboard();
+
 		m_Engine->Init(m_CentralWidget->GetWindowsHandle(), EngineViewWidth, EngineViewHeight);
 
 		std::shared_ptr<pawn::GameScene>& scene = m_Engine->GetScene();

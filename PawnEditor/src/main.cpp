@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "MainWindow.h"
+#include "WindowsEventFilter.h"
 
 #include <QtWidgets/QApplication>
 #include <QtCore>
@@ -21,6 +22,8 @@ int main(int argc, char *argv[]) {
 		app.setStyleSheet(stream.readAll());
 	}
 
+    app.installNativeEventFilter(new impl::WindowsEventFilter());
+
     QSharedPointer<MainWindow> window = QSharedPointer<MainWindow>(MainWindow::CreateImpl());
     window->show();
 
@@ -34,6 +37,7 @@ int main(int argc, char *argv[]) {
 
         app.processEvents();
 
+        engine->OnInput();
         engine->OnUpdate(m_Clock);
 
         engine->SwapBuffers();

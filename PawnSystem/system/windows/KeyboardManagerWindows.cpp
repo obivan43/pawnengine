@@ -71,8 +71,6 @@ namespace pawn {
 
 				m_Buttons[static_cast<uint32_t>(button)] = (rawKeyboard.Flags & RI_KEY_BREAK) != RI_KEY_BREAK;
 			}
-
-
 		}
 
 		bool KeyboardManager::IsKeyboardConnected() {

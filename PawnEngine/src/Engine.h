@@ -26,6 +26,7 @@ namespace pawn {
 			void Init(HWND handle, uint32_t width, uint32_t height);
 
 			void Clear();
+			void OnInput();
 			void OnUpdate(Clock& clock);
 			void SwapBuffers();
 

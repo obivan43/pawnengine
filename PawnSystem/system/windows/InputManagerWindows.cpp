@@ -112,31 +112,39 @@ namespace pawn {
 		}
 
 		bool InputManagerWindows::ProccessMouse(uint64_t maxTimestamp, InputData& out) {
-			InputData inputData{};
-			inputData = m_MouseInputs.front();
-			if (inputData.timestamp == 0 || inputData.timestamp > maxTimestamp)
-				return false;
+			if (m_MouseInputs.size() > 0) {
+				InputData inputData{};
+				inputData = m_MouseInputs.front();
+				if (inputData.timestamp == 0 || inputData.timestamp > maxTimestamp)
+					return false;
 
-			out.input = inputData.input;
-			out.timestamp = inputData.timestamp;
+				out.input = inputData.input;
+				out.timestamp = inputData.timestamp;
 
-			m_MouseInputs.pop();
+				m_MouseInputs.pop();
 
-			return true;
+				return true;
+			}
+
+			return false;
 		}
 
 		bool InputManagerWindows::ProccessKeyboard(uint64_t maxTimestamp, InputData& out) {
-			InputData inputData{};
-			inputData = m_KeyboardInputs.front();
-			if (inputData.timestamp == 0 || inputData.timestamp > maxTimestamp)
-				return false;
+			if (m_KeyboardInputs.size() > 0) {
+				InputData inputData{};
+				inputData = m_KeyboardInputs.front();
+				if (inputData.timestamp == 0 || inputData.timestamp > maxTimestamp)
+					return false;
 
-			out.input = inputData.input;
-			out.timestamp = inputData.timestamp;
+				out.input = inputData.input;
+				out.timestamp = inputData.timestamp;
 
-			m_KeyboardInputs.pop();
+				m_KeyboardInputs.pop();
 
-			return true;
+				return true;
+			}
+
+			return false;
 		}
 
 		bool InputManagerWindows::RegisterDevice(USHORT usage, DWORD flags, HWND handle) {

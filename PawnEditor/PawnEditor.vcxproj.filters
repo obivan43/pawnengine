@@ -38,10 +38,16 @@
     <ClCompile Include="src\EngineManager.cpp">
       <Filter>src\impl</Filter>
     </ClCompile>
+    <ClCompile Include="src\WindowsEventFilter.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WindowsEventFilter.h">
+      <Filter>src\impl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

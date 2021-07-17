@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Engine.h"
 
+#include "PawnSystem/system/input/KeyboardManager.h"
+
 namespace pawn {
 
 	void Engine::Init(HWND handle, uint32_t width, uint32_t height) {
@@ -44,6 +46,10 @@ namespace pawn {
 
 	void Engine::Clear() {
 		m_GraphicsAPI->Clear();
+	}
+
+	void Engine::OnInput() {
+		system::KeyboardManager::Update();
 	}
 
 	void Engine::OnUpdate(Clock& clock) {
