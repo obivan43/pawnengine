@@ -11,39 +11,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\components\CameraComponent.cpp" />
-    <ClCompile Include="src\components\MeshComponent.cpp" />
-    <ClCompile Include="src\components\TagComponent.cpp" />
-    <ClCompile Include="src\components\TransformationComponent.cpp" />
-    <ClCompile Include="src\Engine.cpp" />
-    <ClCompile Include="src\GameEntity.cpp" />
-    <ClCompile Include="src\geometry\LODGroup.cpp" />
-    <ClCompile Include="src\geometry\Mesh.cpp" />
-    <ClCompile Include="src\geometry\MeshInfo.cpp" />
-    <ClCompile Include="src\geometry\mesh_generator\MeshGenerator.cpp" />
-    <ClCompile Include="src\geometry\mesh_generator\PlaneMeshGenerator.cpp" />
-    <ClCompile Include="src\geometry\Scene.cpp" />
-    <ClCompile Include="src\MeshManager.cpp" />
-    <ClCompile Include="src\Renderer.cpp" />
-    <ClCompile Include="src\GameScene.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="engine\components\CameraComponent.h" />
+    <ClInclude Include="engine\components\MeshComponent.h" />
+    <ClInclude Include="engine\components\TagComponent.h" />
+    <ClInclude Include="engine\components\TransformationComponent.h" />
+    <ClInclude Include="engine\Engine.h" />
+    <ClInclude Include="engine\GameEntity.h" />
+    <ClInclude Include="engine\GameScene.h" />
+    <ClInclude Include="engine\geometry\LODGroup.h" />
+    <ClInclude Include="engine\geometry\Mesh.h" />
+    <ClInclude Include="engine\geometry\MeshInfo.h" />
+    <ClInclude Include="engine\geometry\mesh_generator\MeshGenerator.h" />
+    <ClInclude Include="engine\geometry\mesh_generator\PlaneMeshGenerator.h" />
+    <ClInclude Include="engine\geometry\Scene.h" />
+    <ClInclude Include="engine\MeshManager.h" />
+    <ClInclude Include="engine\Renderer.h" />
     <ClInclude Include="include\pawnengine.h" />
-    <ClInclude Include="src\components\CameraComponent.h" />
-    <ClInclude Include="src\components\MeshComponent.h" />
-    <ClInclude Include="src\components\TagComponent.h" />
-    <ClInclude Include="src\components\TransformationComponent.h" />
-    <ClInclude Include="src\Engine.h" />
-    <ClInclude Include="src\GameEntity.h" />
-    <ClInclude Include="src\geometry\LODGroup.h" />
-    <ClInclude Include="src\geometry\Mesh.h" />
-    <ClInclude Include="src\geometry\MeshInfo.h" />
-    <ClInclude Include="src\geometry\mesh_generator\MeshGenerator.h" />
-    <ClInclude Include="src\geometry\mesh_generator\PlaneMeshGenerator.h" />
-    <ClInclude Include="src\geometry\Scene.h" />
-    <ClInclude Include="src\MeshManager.h" />
-    <ClInclude Include="src\Renderer.h" />
-    <ClInclude Include="src\GameScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PawnGraphics\PawnGraphics.vcxproj">
@@ -58,6 +41,23 @@
     <ProjectReference Include="..\PawnUtils\PawnUtils.vcxproj">
       <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="engine\components\CameraComponent.cpp" />
+    <ClCompile Include="engine\components\MeshComponent.cpp" />
+    <ClCompile Include="engine\components\TagComponent.cpp" />
+    <ClCompile Include="engine\components\TransformationComponent.cpp" />
+    <ClCompile Include="engine\Engine.cpp" />
+    <ClCompile Include="engine\GameEntity.cpp" />
+    <ClCompile Include="engine\GameScene.cpp" />
+    <ClCompile Include="engine\geometry\LODGroup.cpp" />
+    <ClCompile Include="engine\geometry\Mesh.cpp" />
+    <ClCompile Include="engine\geometry\MeshInfo.cpp" />
+    <ClCompile Include="engine\geometry\mesh_generator\MeshGenerator.cpp" />
+    <ClCompile Include="engine\geometry\mesh_generator\PlaneMeshGenerator.cpp" />
+    <ClCompile Include="engine\geometry\Scene.cpp" />
+    <ClCompile Include="engine\MeshManager.cpp" />
+    <ClCompile Include="engine\Renderer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -112,7 +112,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)\PawnEngine\src;$(SolutionDir)\PawnEngine\src\components;$(SolutionDir)\PawnEngine\src\input;$(SolutionDir)\PawnEngine\src\geometry;$(SolutionDir)\PAwnEngine\src\components;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)\PawnEngine\engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -133,7 +133,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)\PawnEngine\src;$(SolutionDir)\PawnEngine\src\components;$(SolutionDir)\PawnEngine\src\input;$(SolutionDir)\PawnEngine\src\geometry;$(SolutionDir)\PAwnEngine\src\components;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)\PawnEngine\engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>

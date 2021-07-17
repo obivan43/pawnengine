@@ -32,7 +32,6 @@
     <ClInclude Include="graphics\GraphicsRenderer.h" />
     <ClInclude Include="graphics\GraphicsShader.h" />
     <ClInclude Include="graphics\GraphicsTexture2D.h" />
-    <ClInclude Include="include\pawngraphics.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PawnMath\PawnMath.vcxproj">

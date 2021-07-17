@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../Scene.h"
-#include "../MeshInfo.h"
+#include "PawnEngine/engine/geometry/Scene.h"
+#include "PawnEngine/engine/geometry/MeshInfo.h"
 
 namespace geometry {
 

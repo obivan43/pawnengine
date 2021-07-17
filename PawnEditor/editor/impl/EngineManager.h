@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PawnEngine/src/Engine.h"
+#include "PawnEngine/engine/Engine.h"
 
 #include <QObject>
 

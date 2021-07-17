@@ -2,7 +2,7 @@
 
 #include "PawnMath/math/Functions.h"
 
-#include "../LODGroup.h"
+#include "PawnEngine/engine/geometry/LODGroup.h"
 
 namespace geometry {
 

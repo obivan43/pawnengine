@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-#include "../src/components/TransformationComponent.h"
-#include "../src/components/CameraComponent.h"
-#include "../src/components/TagComponent.h"
-#include "../src/components/MeshComponent.h"
+#include "../engine/components/TransformationComponent.h"
+#include "../engine/components/CameraComponent.h"
+#include "../engine/components/TagComponent.h"
+#include "../engine/components/MeshComponent.h"
 
-#include "../src/GameEntity.h"
-#include "../src/GameScene.h"
-#include "../src/Engine.h"
+#include "../engine/GameEntity.h"
+#include "../engine/GameScene.h"
+#include "../engine/Engine.h"
