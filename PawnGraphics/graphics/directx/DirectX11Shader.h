@@ -1,6 +1,7 @@
 ﻿#pragma once
 
-#include "GraphicsShader.h"
+#include "PawnGraphics/graphics/GraphicsShader.h"
+
 #include "PawnSystem/system/windows/WindowsAPI.h"
 
 #include <memory>

@@ -1,7 +1,8 @@
 ﻿#include "DirectX11InputLayout.h"
-#include "DirectX11Debug.h"
 #include "DirectX11Context.h"
-#include "GraphicsInputLayout.h"
+
+#include "PawnGraphics/graphics/GraphicsInputLayout.h"
+#include "PawnGraphics/graphics/directx/debug/DirectX11Debug.h"
 
 #include "PawnUtils/utils/codetools/Macros.h"
 #include "PawnUtils/utils/logger/Logger.h"

@@ -1,175 +1,168 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="src">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="pch">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="include">
       <UniqueIdentifier>{2be1436f-9e6b-4ed3-b8ca-acd274ca9a8d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\graphics">
-      <UniqueIdentifier>{4bfc605f-564c-4c7e-95f9-582ddbd7a072}</UniqueIdentifier>
+    <Filter Include="graphics">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="src\directx">
+    <Filter Include="graphics\directx">
       <UniqueIdentifier>{c7d49b1d-d852-444e-9ec0-33e64ef64730}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\directx\deubg">
+    <Filter Include="graphics\directx\deubg">
       <UniqueIdentifier>{3d62a00b-6e82-48e5-9b5a-9f42061d1187}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\directx\buffer">
+    <Filter Include="graphics\directx\buffer">
       <UniqueIdentifier>{787d3645-c345-4267-8fc3-c787b4c48a00}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\data">
+    <Filter Include="graphics\data">
       <UniqueIdentifier>{091883c4-8385-436a-9d73-5044f82ba8bd}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\GraphicsBindableResource.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GraphicsBuffer.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GraphicsContext.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GraphicsInputLayout.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GraphicsRenderer.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GraphicsShader.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GraphicsTexture2D.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GraphicsAPI.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DirectX11Debug.cpp">
-      <Filter>src\directx\deubg</Filter>
-    </ClCompile>
-    <ClCompile Include="src\dxerr.cpp">
-      <Filter>src\directx\deubg</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DirectX11API.cpp">
-      <Filter>src\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Directx11Context.cpp">
-      <Filter>src\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DirectX11Renderer.cpp">
-      <Filter>src\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DirectX11InputLayout.cpp">
-      <Filter>src\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DirectX11Shader.cpp">
-      <Filter>src\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DirectX11BufferBase.cpp">
-      <Filter>src\directx\buffer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DirectX11ContantBuffer.cpp">
-      <Filter>src\directx\buffer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DirectX11IndexBuffer.cpp">
-      <Filter>src\directx\buffer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DirectX11VertexBuffer.cpp">
-      <Filter>src\directx\buffer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DirectX11Texture2D.cpp">
-      <Filter>src\directx</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GraphicsMesh.cpp">
-      <Filter>src\data</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\pawngraphics.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="src\GraphicsAPI.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="graphics\directx\buffer\DirectX11BufferBase.h">
+      <Filter>graphics\directx\buffer</Filter>
     </ClInclude>
-    <ClInclude Include="src\GraphicsBindableResource.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="graphics\directx\buffer\DirectX11ContantBuffer.h">
+      <Filter>graphics\directx\buffer</Filter>
     </ClInclude>
-    <ClInclude Include="src\GraphicsBuffer.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="graphics\directx\buffer\DirectX11IndexBuffer.h">
+      <Filter>graphics\directx\buffer</Filter>
     </ClInclude>
-    <ClInclude Include="src\GraphicsContext.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="graphics\directx\buffer\DirectX11VertexBuffer.h">
+      <Filter>graphics\directx\buffer</Filter>
     </ClInclude>
-    <ClInclude Include="src\GraphicsInputLayout.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="graphics\directx\debug\DirectX11Debug.h">
+      <Filter>graphics\directx\deubg</Filter>
     </ClInclude>
-    <ClInclude Include="src\GraphicsRenderer.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="graphics\directx\debug\dxerr.h">
+      <Filter>graphics\directx\deubg</Filter>
     </ClInclude>
-    <ClInclude Include="src\GraphicsShader.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="graphics\data\GraphicsMesh.h">
+      <Filter>graphics\data</Filter>
     </ClInclude>
-    <ClInclude Include="src\GraphicsTexture2D.h">
-      <Filter>src\graphics</Filter>
+    <ClInclude Include="graphics\GraphicsAPI.h">
+      <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\DirectX11Debug.h">
-      <Filter>src\directx\deubg</Filter>
+    <ClInclude Include="graphics\GraphicsBindableResource.h">
+      <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\dxerr.h">
-      <Filter>src\directx\deubg</Filter>
+    <ClInclude Include="graphics\GraphicsBuffer.h">
+      <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\DirectX11API.h">
-      <Filter>src\directx</Filter>
+    <ClInclude Include="graphics\GraphicsContext.h">
+      <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Directx11Context.h">
-      <Filter>src\directx</Filter>
+    <ClInclude Include="graphics\GraphicsInputLayout.h">
+      <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\DirectX11Renderer.h">
-      <Filter>src\directx</Filter>
+    <ClInclude Include="graphics\GraphicsRenderer.h">
+      <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\DirectX11InputLayout.h">
-      <Filter>src\directx</Filter>
+    <ClInclude Include="graphics\GraphicsShader.h">
+      <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\DirectX11Shader.h">
-      <Filter>src\directx</Filter>
+    <ClInclude Include="graphics\GraphicsTexture2D.h">
+      <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\DirectX11BufferBase.h">
-      <Filter>src\directx\buffer</Filter>
+    <ClInclude Include="graphics\directx\DirectX11API.h">
+      <Filter>graphics\directx</Filter>
     </ClInclude>
-    <ClInclude Include="src\DirectX11ContantBuffer.h">
-      <Filter>src\directx\buffer</Filter>
+    <ClInclude Include="graphics\directx\Directx11Context.h">
+      <Filter>graphics\directx</Filter>
     </ClInclude>
-    <ClInclude Include="src\DirectX11IndexBuffer.h">
-      <Filter>src\directx\buffer</Filter>
+    <ClInclude Include="graphics\directx\DirectX11InputLayout.h">
+      <Filter>graphics\directx</Filter>
     </ClInclude>
-    <ClInclude Include="src\DirectX11VertexBuffer.h">
-      <Filter>src\directx\buffer</Filter>
+    <ClInclude Include="graphics\directx\DirectX11Renderer.h">
+      <Filter>graphics\directx</Filter>
     </ClInclude>
-    <ClInclude Include="src\DirectX11Texture2D.h">
-      <Filter>src\directx</Filter>
+    <ClInclude Include="graphics\directx\DirectX11Shader.h">
+      <Filter>graphics\directx</Filter>
     </ClInclude>
-    <ClInclude Include="src\GraphicsMesh.h">
-      <Filter>src\data</Filter>
+    <ClInclude Include="graphics\directx\DirectX11Texture2D.h">
+      <Filter>graphics\directx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\DXGetErrorDescription.inl">
-      <Filter>src\directx\deubg</Filter>
+    <ClCompile Include="graphics\directx\buffer\DirectX11BufferBase.cpp">
+      <Filter>graphics\directx\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\directx\buffer\DirectX11ContantBuffer.cpp">
+      <Filter>graphics\directx\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\directx\buffer\DirectX11IndexBuffer.cpp">
+      <Filter>graphics\directx\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\directx\buffer\DirectX11VertexBuffer.cpp">
+      <Filter>graphics\directx\buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\directx\debug\DirectX11Debug.cpp">
+      <Filter>graphics\directx\deubg</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\directx\debug\dxerr.cpp">
+      <Filter>graphics\directx\deubg</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\data\GraphicsMesh.cpp">
+      <Filter>graphics\data</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\GraphicsAPI.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\GraphicsBindableResource.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\GraphicsBuffer.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\GraphicsContext.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\GraphicsInputLayout.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\GraphicsRenderer.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\GraphicsShader.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\GraphicsTexture2D.cpp">
+      <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\directx\DirectX11API.cpp">
+      <Filter>graphics\directx</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\directx\Directx11Context.cpp">
+      <Filter>graphics\directx</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\directx\DirectX11InputLayout.cpp">
+      <Filter>graphics\directx</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\directx\DirectX11Renderer.cpp">
+      <Filter>graphics\directx</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\directx\DirectX11Shader.cpp">
+      <Filter>graphics\directx</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\directx\DirectX11Texture2D.cpp">
+      <Filter>graphics\directx</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="graphics\directx\debug\DXGetErrorDescription.inl">
+      <Filter>graphics\directx\deubg</Filter>
     </None>
-    <None Include="src\DXGetErrorString.inl">
-      <Filter>src\directx\deubg</Filter>
+    <None Include="graphics\directx\debug\DXGetErrorString.inl">
+      <Filter>graphics\directx\deubg</Filter>
     </None>
-    <None Include="src\DXTrace.inl">
-      <Filter>src\directx\deubg</Filter>
+    <None Include="graphics\directx\debug\DXTrace.inl">
+      <Filter>graphics\directx\deubg</Filter>
     </None>
   </ItemGroup>
 </Project>

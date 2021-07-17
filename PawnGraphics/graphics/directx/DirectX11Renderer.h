@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "GraphicsRenderer.h"
+#include "PawnGraphics/graphics/GraphicsRenderer.h"
 
 #include <memory>
 

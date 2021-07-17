@@ -1,8 +1,8 @@
 #pragma once
 
-#include "GraphicsBindableResource.h"
-#include "GraphicsBuffer.h"
-#include "GraphicsInputLayout.h"
+#include "PawnGraphics/graphics/GraphicsBindableResource.h"
+#include "PawnGraphics/graphics/GraphicsBuffer.h"
+#include "PawnGraphics/graphics/GraphicsInputLayout.h"
 
 #include <memory>
 

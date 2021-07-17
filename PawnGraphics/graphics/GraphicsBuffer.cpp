@@ -1,9 +1,11 @@
 ﻿#include "GraphicsBuffer.h"
 #include "GraphicsContext.h"
 #include "GraphicsShader.h"
-#include "DirectX11VertexBuffer.h"
-#include "DirectX11ContantBuffer.h"
-#include "DirectX11IndexBuffer.h"
+#include "directx/buffer/DirectX11VertexBuffer.h"
+#include "directx/buffer/DirectX11ContantBuffer.h"
+#include "directx/buffer/DirectX11IndexBuffer.h"
+
+#include "PawnUtils/utils/codetools/Macros.h"
 
 namespace pawn {
 

@@ -1,7 +1,7 @@
 ﻿#include "DirectX11API.h"
 #include "DirectX11Context.h"
 
-#include "PAwnUtils/utils/logger/Logger.h"
+#include "PawnUtils/utils/logger/Logger.h"
 
 #ifdef PAWN_DIRECTX11
 

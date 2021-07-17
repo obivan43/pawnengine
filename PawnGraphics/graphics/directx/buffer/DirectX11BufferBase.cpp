@@ -1,8 +1,9 @@
 ﻿#include "DirectX11BufferBase.h"
-#include "DirectX11Debug.h"
-#include "DirectX11Context.h"
 
-#include "PAwnUtils/utils/logger/Logger.h"
+#include "PawnGraphics/graphics/directx/debug/DirectX11Debug.h"
+#include "PawnGraphics/graphics/directx/DirectX11Context.h"
+
+#include "PawnUtils/utils/logger/Logger.h"
 
 #ifdef PAWN_DIRECTX11
 

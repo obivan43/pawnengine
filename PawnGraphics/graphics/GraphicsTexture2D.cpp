@@ -1,6 +1,8 @@
 ﻿#include "GraphicsTexture2D.h"
 #include "GraphicsContext.h"
-#include "DirectX11Texture2D.h"
+#include "directx/DirectX11Texture2D.h"
+
+#include "PawnUtils/utils/codetools/Macros.h"
 
 namespace pawn {
 

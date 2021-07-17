@@ -11,51 +11,28 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\DirectX11API.cpp" />
-    <ClCompile Include="src\DirectX11Renderer.cpp" />
-    <ClCompile Include="src\DirectX11BufferBase.cpp" />
-    <ClCompile Include="src\DirectX11ContantBuffer.cpp" />
-    <ClCompile Include="src\Directx11Context.cpp" />
-    <ClCompile Include="src\DirectX11Debug.cpp" />
-    <ClCompile Include="src\DirectX11IndexBuffer.cpp" />
-    <ClCompile Include="src\DirectX11InputLayout.cpp" />
-    <ClCompile Include="src\DirectX11Shader.cpp" />
-    <ClCompile Include="src\DirectX11Texture2D.cpp" />
-    <ClCompile Include="src\DirectX11VertexBuffer.cpp" />
-    <ClCompile Include="src\dxerr.cpp" />
-    <ClCompile Include="src\GraphicsAPI.cpp" />
-    <ClCompile Include="src\GraphicsBindableResource.cpp" />
-    <ClCompile Include="src\GraphicsBuffer.cpp" />
-    <ClCompile Include="src\GraphicsContext.cpp" />
-    <ClCompile Include="src\GraphicsInputLayout.cpp" />
-    <ClCompile Include="src\GraphicsRenderer.cpp" />
-    <ClCompile Include="src\GraphicsShader.cpp" />
-    <ClCompile Include="src\GraphicsTexture2D.cpp" />
-    <ClCompile Include="src\GraphicsMesh.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="graphics\data\GraphicsMesh.h" />
+    <ClInclude Include="graphics\directx\buffer\DirectX11BufferBase.h" />
+    <ClInclude Include="graphics\directx\buffer\DirectX11ContantBuffer.h" />
+    <ClInclude Include="graphics\directx\buffer\DirectX11IndexBuffer.h" />
+    <ClInclude Include="graphics\directx\buffer\DirectX11VertexBuffer.h" />
+    <ClInclude Include="graphics\directx\debug\DirectX11Debug.h" />
+    <ClInclude Include="graphics\directx\debug\dxerr.h" />
+    <ClInclude Include="graphics\directx\DirectX11API.h" />
+    <ClInclude Include="graphics\directx\Directx11Context.h" />
+    <ClInclude Include="graphics\directx\DirectX11InputLayout.h" />
+    <ClInclude Include="graphics\directx\DirectX11Renderer.h" />
+    <ClInclude Include="graphics\directx\DirectX11Shader.h" />
+    <ClInclude Include="graphics\directx\DirectX11Texture2D.h" />
+    <ClInclude Include="graphics\GraphicsAPI.h" />
+    <ClInclude Include="graphics\GraphicsBindableResource.h" />
+    <ClInclude Include="graphics\GraphicsBuffer.h" />
+    <ClInclude Include="graphics\GraphicsContext.h" />
+    <ClInclude Include="graphics\GraphicsInputLayout.h" />
+    <ClInclude Include="graphics\GraphicsRenderer.h" />
+    <ClInclude Include="graphics\GraphicsShader.h" />
+    <ClInclude Include="graphics\GraphicsTexture2D.h" />
     <ClInclude Include="include\pawngraphics.h" />
-    <ClInclude Include="src\DirectX11API.h" />
-    <ClInclude Include="src\DirectX11Renderer.h" />
-    <ClInclude Include="src\DirectX11BufferBase.h" />
-    <ClInclude Include="src\DirectX11ContantBuffer.h" />
-    <ClInclude Include="src\Directx11Context.h" />
-    <ClInclude Include="src\DirectX11Debug.h" />
-    <ClInclude Include="src\DirectX11IndexBuffer.h" />
-    <ClInclude Include="src\DirectX11InputLayout.h" />
-    <ClInclude Include="src\DirectX11Shader.h" />
-    <ClInclude Include="src\DirectX11Texture2D.h" />
-    <ClInclude Include="src\DirectX11VertexBuffer.h" />
-    <ClInclude Include="src\dxerr.h" />
-    <ClInclude Include="src\GraphicsAPI.h" />
-    <ClInclude Include="src\GraphicsBindableResource.h" />
-    <ClInclude Include="src\GraphicsBuffer.h" />
-    <ClInclude Include="src\GraphicsContext.h" />
-    <ClInclude Include="src\GraphicsInputLayout.h" />
-    <ClInclude Include="src\GraphicsRenderer.h" />
-    <ClInclude Include="src\GraphicsShader.h" />
-    <ClInclude Include="src\GraphicsTexture2D.h" />
-    <ClInclude Include="src\GraphicsMesh.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PawnMath\PawnMath.vcxproj">
@@ -66,9 +43,32 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\DXGetErrorDescription.inl" />
-    <None Include="src\DXGetErrorString.inl" />
-    <None Include="src\DXTrace.inl" />
+    <ClCompile Include="graphics\data\GraphicsMesh.cpp" />
+    <ClCompile Include="graphics\directx\buffer\DirectX11BufferBase.cpp" />
+    <ClCompile Include="graphics\directx\buffer\DirectX11ContantBuffer.cpp" />
+    <ClCompile Include="graphics\directx\buffer\DirectX11IndexBuffer.cpp" />
+    <ClCompile Include="graphics\directx\buffer\DirectX11VertexBuffer.cpp" />
+    <ClCompile Include="graphics\directx\debug\DirectX11Debug.cpp" />
+    <ClCompile Include="graphics\directx\debug\dxerr.cpp" />
+    <ClCompile Include="graphics\directx\DirectX11API.cpp" />
+    <ClCompile Include="graphics\directx\Directx11Context.cpp" />
+    <ClCompile Include="graphics\directx\DirectX11InputLayout.cpp" />
+    <ClCompile Include="graphics\directx\DirectX11Renderer.cpp" />
+    <ClCompile Include="graphics\directx\DirectX11Shader.cpp" />
+    <ClCompile Include="graphics\directx\DirectX11Texture2D.cpp" />
+    <ClCompile Include="graphics\GraphicsAPI.cpp" />
+    <ClCompile Include="graphics\GraphicsBindableResource.cpp" />
+    <ClCompile Include="graphics\GraphicsBuffer.cpp" />
+    <ClCompile Include="graphics\GraphicsContext.cpp" />
+    <ClCompile Include="graphics\GraphicsInputLayout.cpp" />
+    <ClCompile Include="graphics\GraphicsRenderer.cpp" />
+    <ClCompile Include="graphics\GraphicsShader.cpp" />
+    <ClCompile Include="graphics\GraphicsTexture2D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="graphics\directx\debug\DXGetErrorDescription.inl" />
+    <None Include="graphics\directx\debug\DXGetErrorString.inl" />
+    <None Include="graphics\directx\debug\DXTrace.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -107,11 +107,13 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -123,7 +125,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -144,7 +146,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>

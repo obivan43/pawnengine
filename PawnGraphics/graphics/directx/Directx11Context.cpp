@@ -1,9 +1,10 @@
 ﻿#include <comdef.h> // Need to be first include
 
 #include "DirectX11Context.h"
-#include "DirectX11Debug.h"
 
-#include "PAwnUtils/utils/logger/Logger.h"
+#include "PawnGraphics/graphics/directx/debug/DirectX11Debug.h"
+
+#include "PawnUtils/utils/logger/Logger.h"
 
 #ifdef PAWN_DIRECTX11
 

@@ -1,6 +1,7 @@
 ﻿#pragma once
 
-#include "GraphicsTexture2D.h"
+#include "PawnGraphics/graphics/GraphicsTexture2D.h"
+
 #include "PawnSystem/system/windows/WindowsAPI.h"
 
 #include <memory>

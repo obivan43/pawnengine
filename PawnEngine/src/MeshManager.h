@@ -2,8 +2,8 @@
 
 #include "PawnUtils/utils/assimploader/AssimpLoader.h"
 
-#include "PawnGraphics/src/GraphicsContext.h"
-#include "PawnGraphics/src/GraphicsShader.h"
+#include "PawnGraphics/graphics/GraphicsContext.h"
+#include "PawnGraphics/graphics/GraphicsShader.h"
 
 #include <memory>
 #include <unordered_map>

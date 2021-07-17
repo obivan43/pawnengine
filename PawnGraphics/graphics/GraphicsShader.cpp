@@ -1,6 +1,8 @@
 ﻿#include "GraphicsShader.h"
 #include "GraphicsContext.h"
-#include "DirectX11Shader.h"
+#include "directx/DirectX11Shader.h"
+
+#include "PawnUtils/utils/codetools/Macros.h"
 
 namespace pawn
 {

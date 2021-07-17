@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "GraphicsContext.h"
+#include "PawnGraphics/graphics/GraphicsContext.h"
 
 #ifdef PAWN_DIRECTX11
 

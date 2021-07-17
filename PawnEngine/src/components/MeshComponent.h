@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PawnGraphics/src/GraphicsMesh.h"
+#include "PawnGraphics/graphics/data/GraphicsMesh.h"
 
 #include <memory>
 

@@ -1,6 +1,6 @@
 ﻿#include "GraphicsInputLayout.h"
 #include "GraphicsContext.h"
-#include "DirectX11InputLayout.h"
+#include "directx/DirectX11InputLayout.h"
 
 namespace pawn {
 

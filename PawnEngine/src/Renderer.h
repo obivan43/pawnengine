@@ -6,10 +6,10 @@
 #include "components\CameraComponent.h"
 #include "components\MeshComponent.h"
 
-#include "PawnGraphics/src/GraphicsContext.h"
-#include "PawnGraphics/src/GraphicsAPI.h"
-#include "PawnGraphics/src/GraphicsShader.h"
-#include "PawnGraphics/src/GraphicsRenderer.h"
+#include "PawnGraphics/graphics/GraphicsContext.h"
+#include "PawnGraphics/graphics/GraphicsAPI.h"
+#include "PawnGraphics/graphics/GraphicsShader.h"
+#include "PawnGraphics/graphics/GraphicsRenderer.h"
 
 namespace pawn {
 

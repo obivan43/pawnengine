@@ -1,6 +1,7 @@
 ﻿#pragma once
 
-#include "GraphicsBuffer.h"
+#include "PawnGraphics/graphics/GraphicsBuffer.h"
+
 #include "PawnSystem/system/windows/WindowsAPI.h"
 
 #ifdef PAWN_DIRECTX11

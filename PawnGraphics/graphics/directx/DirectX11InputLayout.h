@@ -1,6 +1,7 @@
 ﻿#pragma once
 
-#include "GraphicsInputLayout.h"
+#include "PawnGraphics/graphics/GraphicsInputLayout.h"
+
 #include "PawnSystem/system/windows/WindowsAPI.h"
 
 #include <memory>

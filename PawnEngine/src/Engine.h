@@ -4,8 +4,8 @@
 #include "MeshManager.h"
 #include "Renderer.h"
 
-#include "PawnGraphics/src/GraphicsContext.h"
-#include "PawnGraphics/src/GraphicsAPI.h"
+#include "PawnGraphics/graphics/GraphicsContext.h"
+#include "PawnGraphics/graphics/GraphicsAPI.h"
 
 #include "PawnUtils/utils/time/Clock.h"
 

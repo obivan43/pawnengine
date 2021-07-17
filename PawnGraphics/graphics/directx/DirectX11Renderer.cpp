@@ -1,6 +1,7 @@
 ﻿#include "DirectX11Renderer.h"
 #include "DirectX11Context.h"
-#include "GraphicsBuffer.h"
+
+#include "PawnGraphics/graphics/GraphicsBuffer.h"
 
 #ifdef PAWN_DIRECTX11
 
