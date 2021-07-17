@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PawnEditor/gui/BottomPanel/widget/BottomPanelWidget.h"
+#include "Editor/gui/BottomPanel/widget/BottomPanelWidget.h"
 #include "OutputStream.h"
 
 #include <QtWidgets/QTextEdit>

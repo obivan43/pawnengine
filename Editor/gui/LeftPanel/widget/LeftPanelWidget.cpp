@@ -1,6 +1,6 @@
 #include "LeftPanelWidget.h"
 
-#include "PawnEditor/gui/LeftPanel/widget/impl/LeftPanelWidgetImpl.h"
+#include "Editor/gui/LeftPanel/widget/impl/LeftPanelWidgetImpl.h"
 
 LeftPanelWidget::LeftPanelWidget(QWidget* parent) : QDockWidget(parent) {}
 

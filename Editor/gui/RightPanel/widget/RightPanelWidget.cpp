@@ -1,5 +1,5 @@
 #include "RightPanelWidget.h"
-#include "PawnEditor/gui/RightPanel/widget/impl/RightPanelWidgetImpl.h"
+#include "Editor/gui/RightPanel/widget/impl/RightPanelWidgetImpl.h"
 
 RightPanelWidget::RightPanelWidget(QWidget* parent) : QDockWidget(parent) {}
 

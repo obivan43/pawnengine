@@ -1,5 +1,5 @@
 #include "CentralWidget.h"
-#include "PawnEditor/gui/CentralWidget/widget/impl/CentralWidgetImpl.h"
+#include "Editor/gui/CentralWidget/widget/impl/CentralWidgetImpl.h"
 
 CentralWidget::CentralWidget(QWidget* parent) : QFrame(parent) {}
 

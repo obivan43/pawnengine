@@ -4,7 +4,7 @@
 #include "TransformationComponentWidgetItem.h"
 #include "MeshComponentWidgetItem.h"
 
-#include "PawnEditor/gui/RightPanel/widget/RightPanelWidget.h"
+#include "Editor/gui/RightPanel/widget/RightPanelWidget.h"
 
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QLineEdit>
