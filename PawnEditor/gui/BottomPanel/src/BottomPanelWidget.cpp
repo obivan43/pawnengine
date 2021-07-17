@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "BottomPanelWidget.h"
 #include "BottomPanelWidgetImpl.h"
 

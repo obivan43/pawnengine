@@ -13,9 +13,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\pch.cpp">
-      <Filter>widget</Filter>
-    </ClCompile>
     <ClCompile Include="src\BottomPanelWidget.cpp">
       <Filter>widget</Filter>
     </ClCompile>
@@ -27,9 +24,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\pch.h">
-      <Filter>widget</Filter>
-    </ClInclude>
     <ClInclude Include="include\bottompanelwidget.h">
       <Filter>include</Filter>
     </ClInclude>

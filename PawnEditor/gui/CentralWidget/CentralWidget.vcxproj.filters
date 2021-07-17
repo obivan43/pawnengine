@@ -13,9 +13,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\pch.cpp">
-      <Filter>widget</Filter>
-    </ClCompile>
     <ClCompile Include="src\CentralWidget.cpp">
       <Filter>widget</Filter>
     </ClCompile>
@@ -24,9 +21,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\pch.h">
-      <Filter>widget</Filter>
-    </ClInclude>
     <ClInclude Include="include\centralwidget.h">
       <Filter>include</Filter>
     </ClInclude>

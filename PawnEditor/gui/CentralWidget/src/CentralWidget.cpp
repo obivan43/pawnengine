@@ -1,4 +1,3 @@
-#include "pch.h"
 #include "CentralWidget.h"
 #include "CentralWidgetImpl.h"
 
