@@ -1,5 +1,7 @@
 #pragma once
 
+#include "PawnEngine/engine/GameEntity.h"
+
 #include <QtWidgets/QTreeWidgetItem>
 
 namespace impl {

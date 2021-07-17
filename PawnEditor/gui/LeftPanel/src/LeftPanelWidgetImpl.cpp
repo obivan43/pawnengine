@@ -1,6 +1,7 @@
-#include "pch.h"
 #include "LeftPanelWidgetImpl.h"
 #include "HierarchyWidgetItem.h"
+
+#include "PawnEngine/engine/components/TagComponent.h"
 
 namespace impl {
 

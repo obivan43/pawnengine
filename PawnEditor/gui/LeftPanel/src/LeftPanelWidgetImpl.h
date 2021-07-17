@@ -2,6 +2,9 @@
 
 #include "LeftPanelWidget.h"
 
+#include "PawnEngine/engine/GameEntity.h"
+#include "PawnEngine/engine/GameScene.h"
+
 #include <QtWidgets/QTreeWidget>
 #include <memory>
 
