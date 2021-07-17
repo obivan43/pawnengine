@@ -30,7 +30,7 @@ namespace pawn {
 
 			void Clear();
 			void OnInput();
-			void OnUpdate(Clock& clock);
+			void OnUpdate(utils::Clock& clock);
 			void SwapBuffers();
 
 			bool HasMeshByPath(const std::string& path);

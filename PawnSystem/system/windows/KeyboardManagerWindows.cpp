@@ -51,10 +51,7 @@ namespace pawn {
 		}
 
 		void KeyboardManager::UpdateInternal() {
-			static Clock clock{};
-
-			clock.Tick();
-			uint64_t timestamp = clock.TimeStamp();
+			uint64_t timestamp = utils::Clock::TimeStamp();
 
 			InputManagerWindows::InputData input;
 			while (InputManagerWindows::ProccessKeyboard(timestamp, input)) {

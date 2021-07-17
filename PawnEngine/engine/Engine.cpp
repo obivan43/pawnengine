@@ -53,7 +53,7 @@ namespace pawn {
 		system::KeyboardManager::Update();
 	}
 
-	void Engine::OnUpdate(Clock& clock) {
+	void Engine::OnUpdate(utils::Clock& clock) {
 		m_Scene->OnUpdate(clock, m_Renderer);
 	}
 

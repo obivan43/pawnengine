@@ -4,32 +4,37 @@
 
 namespace pawn {
 
-	class Clock {
-		
-		public:
-			Clock();
-		
-			int64_t TimeStamp() const;
-			float Time() const;
-			float DeltaTime() const;
-			float TotalTime() const;
+	namespace utils {
 
-			void Reset();
-			void Start();
-			void Stop();
-			void Tick();
+		class Clock {
+	
+			public:
+				Clock();
 
-		private:
-			double m_SecondsPerCount;
-			double m_DeltaTime;
+				static int64_t TimeStamp();
 
-			int64_t m_BaseTime;
-			int64_t m_PausedTime;
-			int64_t m_StopTime;
-			int64_t m_PrevTime;
-			int64_t m_CurrentTime;
+				float Time() const;
+				float DeltaTime() const;
+				float TotalTime() const;
 
-			bool m_Stopped;
-	};
+				void Reset();
+				void Start();
+				void Stop();
+				void Tick();
+
+			private:
+				double m_SecondsPerCount;
+				double m_DeltaTime;
+
+				int64_t m_BaseTime;
+				int64_t m_PausedTime;
+				int64_t m_StopTime;
+				int64_t m_PrevTime;
+				int64_t m_CurrentTime;
+
+				bool m_Stopped;
+		};
+
+	}
 
 }

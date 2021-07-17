@@ -16,37 +16,41 @@ namespace Assimp {
 
 namespace pawn {
 
-	class AssimpLoader {
+	namespace utils {
 
-		public:
-			AssimpLoader();
-			AssimpLoader(const AssimpLoader& other) = delete;
-			AssimpLoader(AssimpLoader&& other) noexcept = delete;
+		class AssimpLoader {
 
-			AssimpLoader& operator=(const AssimpLoader& other) = delete;
-			AssimpLoader& operator=(AssimpLoader&& other) noexcept = delete;
+			public:
+				AssimpLoader();
+				AssimpLoader(const AssimpLoader& other) = delete;
+				AssimpLoader(AssimpLoader&& other) noexcept = delete;
 
-			~AssimpLoader();
+				AssimpLoader& operator=(const AssimpLoader& other) = delete;
+				AssimpLoader& operator=(AssimpLoader&& other) noexcept = delete;
 
-			bool LoadModel(const char* file);
-			void Flush();
+				~AssimpLoader();
 
-			std::vector<math::Vertex>& GetVertexData() { return m_Verticies; }
-			std::vector<uint16_t>& GetIndexData() { return m_Indices; }
+				bool LoadModel(const char* file);
+				void Flush();
 
-		private:
-			void ProcessData();
-			void AssimpGetMeshData(const aiMesh* mesh);
+				std::vector<math::Vertex>& GetVertexData() { return m_Verticies; }
+				std::vector<uint16_t>& GetIndexData() { return m_Indices; }
 
-		private:
-			Assimp::Importer* m_Importer;
+			private:
+				void ProcessData();
+				void AssimpGetMeshData(const aiMesh* mesh);
 
-			const aiScene* m_ModelScene;
-			const aiNode* m_ModelNode;
+			private:
+				Assimp::Importer* m_Importer;
 
-			std::vector<math::Vertex> m_Verticies;
-			std::vector<uint16_t> m_Indices;
-			std::vector<const aiNode*> m_Nodes;
-	};
+				const aiScene* m_ModelScene;
+				const aiNode* m_ModelNode;
+
+				std::vector<math::Vertex> m_Verticies;
+				std::vector<uint16_t> m_Indices;
+				std::vector<const aiNode*> m_Nodes;
+		};
+
+	}
 
 }

@@ -14,7 +14,7 @@
 #endif
 
 int main(int argc, char *argv[]) {
-    pawn::Logger::Init();
+    pawn::utils::Logger::Init();
 
     QApplication app(argc, argv);
 	QFile file(":/dark.qss");
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
     QSharedPointer<MainWindow> window = QSharedPointer<MainWindow>(MainWindow::CreateImpl());
     window->show();
 
-    pawn::Clock m_Clock;
+    pawn::utils::Clock m_Clock;
     m_Clock.Reset();
 
     pawn::Engine* engine = window->GetEngine();

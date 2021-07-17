@@ -20,8 +20,6 @@ namespace pawn {
 		bool InputManagerWindows::m_IsKeyboardConnected = false;
 
 		LRESULT InputManagerWindows::HandleInput(HRAWINPUT inputHandle) {
-			static Clock clock{};
-
 			UINT size{ 0 };
 			UINT result = GetRawInputData(inputHandle, RID_INPUT, nullptr, &size, sizeof(RAWINPUTHEADER));
 			if (result == static_cast<UINT>(-1)) {
@@ -40,8 +38,7 @@ namespace pawn {
 			InputData inputData{};
 			memcpy(&inputData.input, input, sizeof(RAWINPUT));
 
-			clock.Tick();
-			inputData.timestamp = clock.TimeStamp();
+			inputData.timestamp = utils::Clock::TimeStamp();
 
 			switch (input->header.dwType) {
 				case RIM_TYPEMOUSE:

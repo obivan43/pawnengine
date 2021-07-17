@@ -25,7 +25,7 @@ namespace pawn {
 			GameEntity CreateEntity(const std::string& name = std::string());
 			void DeleteEntity(entt::entity entity);
 
-			void OnUpdate(Clock& clock, std::shared_ptr<Renderer>& renderer);
+			void OnUpdate(utils::Clock& clock, std::shared_ptr<Renderer>& renderer);
 
 			entt::registry& GetRegistry() { return m_EnttRegistry; }
 

@@ -10,25 +10,29 @@
 
 namespace pawn {
 
-	class Logger {
+	namespace utils {
+
+		class Logger {
 		public:
 			static void Init();
-			
+
 			static std::shared_ptr<spdlog::logger>& GetLogger() { return m_Logger; }
 
 		private:
 			static std::shared_ptr<spdlog::logger> m_Logger;
-	};
+		};
+
+	}
 
 }
 
 #ifdef LOG_ENABLED
 
-#define CONSOLE_TRACE(...)	pawn::Logger::GetLogger()->trace(__VA_ARGS__);
-#define CONSOLE_INFO(...)	pawn::Logger::GetLogger()->info(__VA_ARGS__);
-#define CONSOLE_WARN(...)	pawn::Logger::GetLogger()->warn(__VA_ARGS__);
-#define CONSOLE_ERROR(...)	pawn::Logger::GetLogger()->error(__VA_ARGS__);
-#define CONSOLE_DEBUG(...)	pawn::Logger::GetLogger()->debug(__VA_ARGS__);
+#define CONSOLE_TRACE(...)	pawn::utils::Logger::GetLogger()->trace(__VA_ARGS__);
+#define CONSOLE_INFO(...)	pawn::utils::Logger::GetLogger()->info(__VA_ARGS__);
+#define CONSOLE_WARN(...)	pawn::utils::Logger::GetLogger()->warn(__VA_ARGS__);
+#define CONSOLE_ERROR(...)	pawn::utils::Logger::GetLogger()->error(__VA_ARGS__);
+#define CONSOLE_DEBUG(...)	pawn::utils::Logger::GetLogger()->debug(__VA_ARGS__);
 
 #else
 

@@ -35,7 +35,7 @@ namespace pawn {
 
 		private:
 			std::unordered_map<std::string, std::shared_ptr<graphics::GraphicsMesh>> m_MeshesMap;
-			AssimpLoader m_MeshLoader;
+			utils::AssimpLoader m_MeshLoader;
 	};
 
 }

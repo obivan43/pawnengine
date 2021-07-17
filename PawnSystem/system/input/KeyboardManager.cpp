@@ -18,10 +18,7 @@ namespace pawn {
 		bool KeyboardManager::m_IsAnyButtonReleased{ false };
 
 		void KeyboardManager::Update() {
-			static Clock clock;
-			clock.Tick();
-
-			m_TimeStamp = clock.TimeStamp();
+			m_TimeStamp = utils::Clock::TimeStamp();
 
 			memcpy(m_LastFrameButtons, m_Buttons, sizeof(m_LastFrameButtons));
 
