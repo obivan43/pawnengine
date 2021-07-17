@@ -78,7 +78,7 @@ namespace pawn {
 
 		m_Verticies.reserve(mesh->mNumVertices);
 		for (uint32_t i = 0; i < mesh->mNumVertices; i++) {
-			Vertex vertex;
+			math::Vertex vertex;
 			vertex.Position.x = mesh->mVertices[i].x;
 			vertex.Position.y = mesh->mVertices[i].y;
 			vertex.Position.z = mesh->mVertices[i].z;

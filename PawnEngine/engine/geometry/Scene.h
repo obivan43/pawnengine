@@ -2,32 +2,36 @@
 
 #include "LODGroup.h"
 
-namespace geometry {
+namespace pawn {
 
-	struct Scene {
+	namespace geometry {
 
-		std::string name;
-		std::vector<LODGroup> lodGroups;
+		struct Scene {
 
-	};
-	
-	struct ImportSettings {
+			std::string name;
+			std::vector<LODGroup> lodGroups;
 
-		float smoothingAngle;
-		bool calculateNormals;
-		bool calculateTangent;
-		bool reverseHanded;
-		bool importTextures;
-		bool importAnimation;
+		};
 
-	};
+		struct ImportSettings {
 
-	struct SceneData {
+			float smoothingAngle;
+			bool calculateNormals;
+			bool calculateTangent;
+			bool reverseHanded;
+			bool importTextures;
+			bool importAnimation;
 
-		uint8_t* buffer;
-		uint32_t bufferSize;
-		ImportSettings settings;
+		};
 
-	};
+		struct SceneData {
+
+			uint8_t* buffer;
+			uint32_t bufferSize;
+			ImportSettings settings;
+
+		};
+
+	}
 
 }

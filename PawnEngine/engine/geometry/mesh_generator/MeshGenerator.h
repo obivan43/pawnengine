@@ -3,27 +3,31 @@
 #include "PawnEngine/engine/geometry/Scene.h"
 #include "PawnEngine/engine/geometry/MeshInfo.h"
 
-namespace geometry {
+namespace pawn {
 
-	namespace axis {
+	namespace geometry {
 
-		enum Axis {
-			x,
-			y,
-			z,
-			count
+		namespace axis {
+
+			enum Axis {
+				x,
+				y,
+				z,
+				count
+			};
+
+		}
+
+		class MeshGenerator {
+
+			public:
+
+				virtual ~MeshGenerator();
+
+				virtual void CreateMesh(geometry::Scene& scene, const geometry::MeshInfo& meshInfo) = 0;
+
 		};
 
 	}
-
-	class MeshGenerator {
-
-		public:
-			
-			virtual ~MeshGenerator();
-
-			virtual void CreateMesh(geometry::Scene& scene, const geometry::MeshInfo& meshInfo) = 0;
-
-	};
 
 }

@@ -41,14 +41,14 @@ namespace pawn {
 			return result;
 		}
 
-		std::vector<Vertex>& vertices = m_MeshLoader.GetVertexData();
+		std::vector<math::Vertex>& vertices = m_MeshLoader.GetVertexData();
 		std::vector<uint16_t>& indices = m_MeshLoader.GetIndexData();
 
 		std::shared_ptr<GraphicsBuffer> vertexBuffer = GraphicsBuffer::Create(GraphicsBufferEnum::VertexBuffer);
 		std::shared_ptr<GraphicsBuffer> indexBuffer = GraphicsBuffer::Create(GraphicsBufferEnum::IndexBuffer);
 		std::shared_ptr<GraphicsInputLayout> inputLayout = GraphicsInputLayout::Create();
 
-		vertexBuffer->Init(context, vertices.data(), static_cast<uint32_t>(vertices.size()), sizeof(Vertex), GraphicsBufferUsageTypeEnum::StaticBuffer);
+		vertexBuffer->Init(context, vertices.data(), static_cast<uint32_t>(vertices.size()), sizeof(math::Vertex), GraphicsBufferUsageTypeEnum::StaticBuffer);
 		vertexBuffer->Bind(context);
 
 		indexBuffer->Init(context, indices.data(), static_cast<uint32_t>(indices.size()), sizeof(uint16_t), GraphicsBufferUsageTypeEnum::StaticBuffer);

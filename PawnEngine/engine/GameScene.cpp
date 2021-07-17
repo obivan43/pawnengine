@@ -24,7 +24,7 @@ namespace pawn {
 	}
 
 	void GameScene::OnUpdate(Clock& clock, std::shared_ptr<Renderer>& renderer) {
-		Camera* activeCamera = nullptr;
+		math::Camera* activeCamera{ nullptr };
 		glm::mat4 acitveCameraTransformation;
 		auto cameraGroup = m_EnttRegistry.view<TransformationComponent, CameraComponent>();
 		for (auto& entity : cameraGroup) {

@@ -2,23 +2,27 @@
 
 namespace pawn {
 	
-	struct Vertex {
-		struct {
-			float x;
-			float y;
-			float z;
-		} Position;
+	namespace math {
 
-		struct {
-			float x;
-			float y;
-			float z;
-		} Normal;
+		struct Vertex {
+			struct {
+				float x;
+				float y;
+				float z;
+			} Position;
 
-		struct {
-			float u;
-			float v;
-		} TextureCoordinate;
-	};
+			struct {
+				float x;
+				float y;
+				float z;
+			} Normal;
+
+			struct {
+				float u;
+				float v;
+			} TextureCoordinate;
+		};
+
+	}
 	
 }

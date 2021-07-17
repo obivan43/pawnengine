@@ -4,13 +4,17 @@
 
 #include <string>
 
-namespace geometry {
+namespace pawn {
 
-	struct LODGroup {
+	namespace geometry {
 
-		std::string name;
-		std::vector<geometry::Mesh> meshes;
+		struct LODGroup {
 
-	};
+			std::string name;
+			std::vector<geometry::Mesh> meshes;
+
+		};
+
+	}
 
 }

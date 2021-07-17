@@ -2,26 +2,30 @@
 
 #include "glm.hpp"
 
-namespace geometry {
+namespace pawn {
 
-	enum class MeshType {
-		Plane,
-		Cube,
-		UV_Sphere,
-		ICO_Sphere,
-		Cylinder,
-		Capsule,
+	namespace geometry {
 
-		Count
-	};
+		enum class MeshType {
+			Plane,
+			Cube,
+			UV_Sphere,
+			ICO_Sphere,
+			Cylinder,
+			Capsule,
 
-	struct MeshInfo {
+			Count
+		};
 
-		MeshType type;
-		glm::uvec3 segments { 1, 1, 1 };
-		glm::vec3 size { 1, 1, 1 };
-		uint32_t lod = 0;
+		struct MeshInfo {
 
-	};
+			MeshType type;
+			glm::uvec3 segments{ 1, 1, 1 };
+			glm::vec3 size{ 1, 1, 1 };
+			uint32_t lod = 0;
+
+		};
+
+	}
 
 }

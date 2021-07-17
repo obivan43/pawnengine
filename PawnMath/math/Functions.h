@@ -1,9 +1,13 @@
 #pragma once
 
-namespace math {
+namespace pawn {
 
-	template<typename T> constexpr T clamp(T value, T min, T max) {
-		return (value < min) ? min : (value > max) ? max : value;
+	namespace math {
+
+		template<typename T> constexpr T clamp(T value, T min, T max) {
+			return (value < min) ? min : (value > max) ? max : value;
+		}
+
 	}
 
 }

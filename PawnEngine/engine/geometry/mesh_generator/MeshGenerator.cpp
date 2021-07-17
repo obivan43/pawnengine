@@ -1,7 +1,11 @@
 #include "MeshGenerator.h"
 
-namespace geometry {
+namespace pawn {
 
-	MeshGenerator::~MeshGenerator() {}
+	namespace geometry {
+
+		MeshGenerator::~MeshGenerator() {}
+
+	}
 
 }

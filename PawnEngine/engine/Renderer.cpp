@@ -19,8 +19,8 @@ namespace pawn {
 		m_GraphicsRenderer = GraphicsRenderer::Create();
 	}
 
-	void Renderer::BeginScene(Camera& camera, glm::mat4& view) {
-		ViewProjection viewProjection;
+	void Renderer::BeginScene(math::Camera& camera, glm::mat4& view) {
+		ViewProjection viewProjection{};
 
 		viewProjection.projection = camera.GetProjection();
 		viewProjection.view = view;
