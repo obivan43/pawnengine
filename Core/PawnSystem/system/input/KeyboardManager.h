@@ -27,6 +27,8 @@ namespace pawn {
 				
 			private:
 
+				KeyboardManager() = default;
+
 				static bool GetButtonState(Button button);
 				static bool GetLastFrameButtonState(Button button);
 

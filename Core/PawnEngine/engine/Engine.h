@@ -4,6 +4,8 @@
 #include "MeshManager.h"
 #include "Renderer.h"
 
+#include "PawnEngine/engine/scripts/ScriptEngine.h"
+
 #include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsAPI.h"
 #include "PawnGraphics/graphics/GraphicsShader.h"
@@ -52,6 +54,7 @@ namespace pawn {
 				std::shared_ptr<graphics::GraphicsShader> m_Shader;
 				std::shared_ptr<Renderer> m_Renderer;
 				std::shared_ptr<GameScene> m_Scene;
+				std::shared_ptr<ScriptEngine> m_ScriptEngine;
 		};
 
 	}

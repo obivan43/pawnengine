@@ -13,14 +13,22 @@ namespace pawn {
 	namespace utils {
 
 		class Logger {
-		public:
-			static void Init();
+			public:
+				static void Init();
 
-			static std::shared_ptr<spdlog::logger>& GetLogger() { return m_Logger; }
+				static std::shared_ptr<spdlog::logger>& GetLogger() { return m_Logger; }
+				static std::shared_ptr<spdlog::logger>& GetLuaLogger() { return m_LuaLogger; }
 
-		private:
-			static std::shared_ptr<spdlog::logger> m_Logger;
+			private:
+				static std::shared_ptr<spdlog::logger> m_Logger;
+				static std::shared_ptr<spdlog::logger> m_LuaLogger;
 		};
+
+		void LuaTrace(const char* str);
+		void LuaInfo(const char* str);
+		void LuaWarning(const char* str);
+		void LuaError(const char* str);
+		void LuaDebug(const char* str);
 
 	}
 

@@ -33,6 +33,8 @@ namespace pawn {
 			m_Renderer->Init(m_Context, m_GraphicsAPI, width, height);
 			m_Renderer->SetShader(m_Context, m_Shader);
 
+			m_ScriptEngine.reset(new ScriptEngine());
+
 			m_Scene.reset(new GameScene());
 		}
 
@@ -85,6 +87,7 @@ namespace pawn {
 		}
 
 		void Engine::OnUpdate(utils::Clock& clock) {
+			m_ScriptEngine->Test();
 			m_Scene->OnUpdate(clock, m_Renderer);
 		}
 

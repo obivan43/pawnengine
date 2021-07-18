@@ -25,7 +25,7 @@ namespace pawn {
 			glm::vec2 uRange,
 			glm::vec2 vRange
 		) {
-			assert(horizontalAxis < axis::count&& verticalAxis < axis::count);
+			assert(horizontalAxis < axis::count && verticalAxis < axis::count);
 			assert(horizontalAxis != verticalAxis);
 
 			const uint32_t planeMinimum{ 1 };

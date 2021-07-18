@@ -33,6 +33,8 @@ namespace pawn {
 
 			private:
 
+				MouseManager() = default;
+
 				static bool GetButtonState(MouseButton button);
 				static bool GetLastFrameButtonState(MouseButton button);
 
