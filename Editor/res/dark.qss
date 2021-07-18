@@ -1160,6 +1160,11 @@ QDockWidget::float-button
     border-image: url(:/dark/undock.svg);
 }
 
+QDockWidget::float-button:hover
+{
+    border-image: url(:/dark/undock-hover.svg) ;
+}
+
 QDockWidget::close-button
 {
     border-image: url(:/dark/close.svg) ;
