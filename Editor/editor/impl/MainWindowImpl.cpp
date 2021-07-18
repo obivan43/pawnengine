@@ -77,8 +77,8 @@ namespace editor {
 			m_Engine->UploadMeshFromFile("res\\assets\\models\\cube.obj");
 			m_Engine->UploadMeshFromFile("res\\assets\\models\\sphere.obj");
 
-			pawn::engine::GameEntity entity{ scene->CreateEntity("Sphere") };
-			entity.AddComponent<pawn::engine::MeshComponent>(m_Engine->GetMeshByPath("res\\assets\\models\\sphere.obj"), "res\\assets\\models\\sphere.obj");
+			pawn::engine::GameEntity entity{ scene->CreateEntity("Cube") };
+			entity.AddComponent<pawn::engine::MeshComponent>(m_Engine->GetMeshByPath("res\\assets\\models\\cube.obj"), "res\\assets\\models\\cube.obj");
 
 			pawn::engine::GameEntity camera{ scene->CreateEntity("Camera") };
 			pawn::engine::CameraComponent& cameraComponent{ camera.AddComponent<pawn::engine::CameraComponent>() };
@@ -86,7 +86,8 @@ namespace editor {
 			cameraComponent.IsActiveCamera = true;
 
 			pawn::engine::TransformationComponent& transformationComponent = camera.GetComponent<pawn::engine::TransformationComponent>();
-			transformationComponent.Position = glm::vec3(0.0f, 0.0f, 4.0f);
+			transformationComponent.Position = glm::vec3(2.5f, 2.25f, 4.0f);
+			transformationComponent.Rotation = glm::vec3(-0.5f, 0.5f, 0.3f);
 
 			emit ActiveSceneChanged(scene);
 		}

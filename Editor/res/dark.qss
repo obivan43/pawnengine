@@ -1187,21 +1187,6 @@ QListView
     background-color: #232629;
 }
 
-QTreeView::branch:has-siblings:!adjoins-item
-{
-    border-image: url(:/dark/stylesheet-vline.svg) 0;
-}
-
-QTreeView::branch:has-siblings:adjoins-item
-{
-    border-image: url(:/dark/stylesheet-branch-more.svg) 0;
-}
-
-QTreeView::branch:!has-children:!has-siblings:adjoins-item
-{
-    border-image: url(:/dark/stylesheet-branch-end.svg) 0;
-}
-
 QTreeView::branch:has-children:!has-siblings:closed,
 QTreeView::branch:closed:has-children:has-siblings
 {
@@ -1215,36 +1200,6 @@ QTreeView::branch:open:has-children:has-siblings
     border-image: url(:/dark/stylesheet-branch-end-open.svg) 0;
     image: url(:/dark/branch_open.svg);
 }
-
-/*
-QTreeView::branch:has-siblings:!adjoins-item {
-        background: cyan;
-}
-
-QTreeView::branch:has-siblings:adjoins-item {
-        background: red;
-}
-
-QTreeView::branch:!has-children:!has-siblings:adjoins-item {
-        background: blue;
-}
-
-QTreeView::branch:closed:has-children:has-siblings {
-        background: pink;
-}
-
-QTreeView::branch:has-children:!has-siblings:closed {
-        background: gray;
-}
-
-QTreeView::branch:open:has-children:has-siblings {
-        background: magenta;
-}
-
-QTreeView::branch:open:has-children:!has-siblings {
-        background: green;
-}
-*/
 
 QTableView::item,
 QListView::item,

@@ -10,6 +10,8 @@ namespace editor {
 		RightPanelWidgetImpl::RightPanelWidgetImpl(QWidget* parent) : RightPanelWidget(parent) {
 			m_InspectorPanel = new QTreeWidget(this);
 			m_InspectorPanel->setHeaderHidden(true);
+			m_InspectorPanel->setSelectionMode(QAbstractItemView::NoSelection);
+			m_InspectorPanel->setFocusPolicy(Qt::NoFocus);
 
 			setWindowTitle("Inspector");
 			setWidget(m_InspectorPanel);

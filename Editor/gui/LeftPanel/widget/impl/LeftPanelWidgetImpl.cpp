@@ -10,6 +10,8 @@ namespace editor {
 		LeftPanelWidgetImpl::LeftPanelWidgetImpl(QWidget* parent) : LeftPanelWidget(parent) {
 			m_HierarchyPanel = new QTreeWidget(this);
 			m_HierarchyPanel->setHeaderHidden(true);
+			m_HierarchyPanel->setSelectionMode(QAbstractItemView::NoSelection);
+			m_HierarchyPanel->setFocusPolicy(Qt::NoFocus);
 
 			setWindowTitle("Scene Hierarchy");
 			setWidget(m_HierarchyPanel);
