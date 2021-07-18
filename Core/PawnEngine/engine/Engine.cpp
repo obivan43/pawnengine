@@ -87,7 +87,6 @@ namespace pawn {
 		}
 
 		void Engine::OnUpdate(utils::Clock& clock) {
-			m_ScriptEngine->Test();
 			m_Scene->OnUpdate(clock, m_Renderer);
 		}
 

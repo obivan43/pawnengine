@@ -19,8 +19,6 @@ namespace pawn {
 
 				void Register(RegisterScriptClass* scriptClass);
 
-				void Test();
-
 			private:
 
 				sol::state m_LuaState;

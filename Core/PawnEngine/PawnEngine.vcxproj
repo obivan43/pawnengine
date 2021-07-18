@@ -26,6 +26,7 @@
     <ClInclude Include="engine\geometry\Scene.h" />
     <ClInclude Include="engine\MeshManager.h" />
     <ClInclude Include="engine\Renderer.h" />
+    <ClInclude Include="engine\scripts\registers\KeyboardManagerScriptRegister.h" />
     <ClInclude Include="engine\scripts\registers\LoggerScriptRegister.h" />
     <ClInclude Include="engine\scripts\registers\MouseManagerScriptRegister.h" />
     <ClInclude Include="engine\scripts\registers\RegisterScriptClass.h" />
@@ -62,6 +63,7 @@
     <ClCompile Include="engine\geometry\Scene.cpp" />
     <ClCompile Include="engine\MeshManager.cpp" />
     <ClCompile Include="engine\Renderer.cpp" />
+    <ClCompile Include="engine\scripts\registers\KeyboardManagerScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\registers\LoggerScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\registers\MouseManagerScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\registers\RegisterScriptClass.cpp" />

@@ -2,6 +2,7 @@
 
 #include "registers/LoggerScriptRegister.h"
 #include "registers/MouseManagerScriptRegister.h"
+#include "registers/KeyboardManagerScriptRegister.h"
 
 #include "PawnSystem/system/input/KeyboardManager.h"
 
@@ -19,6 +20,7 @@ namespace pawn {
 
 			Register(new LoggerScriptRegister());
 			Register(new MouseManagerScriptRegister());
+			Register(new KeyboardManagerScriptRegister());
 
 			m_LuaState.script("logger_info('Script engine initialized')");
 		}

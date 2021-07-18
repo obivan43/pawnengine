@@ -76,27 +76,10 @@ namespace pawn {
 				"F8", system::Button::F8,
 				"F9", system::Button::F9,
 				"F10", system::Button::F10,
-				"NumLock", system::Button::NumLock,
 				"ScrollLock", system::Button::ScrollLock,
-				"Numpad7", system::Button::Numpad7,
-				"Numpad8", system::Button::Numpad8,
-				"Numpad9", system::Button::Numpad9,
-				"NumpadMinus", system::Button::NumpadMinus,
-				"Numpad4", system::Button::Numpad4,
-				"Numpad5", system::Button::Numpad5,
-				"Numpad6", system::Button::Numpad6,
-				"NumpadPlus", system::Button::NumpadPlus,
-				"Numpad1", system::Button::Numpad1,
-				"Numpad2", system::Button::Numpad2,
-				"Numpad3", system::Button::Numpad3,
-				"Numpad0", system::Button::Numpad0,
-				"NumpadDot", system::Button::NumpadDot,
-				"OEM102", system::Button::OEM102,
 				"F11", system::Button::F11,
 				"F12", system::Button::F12,
-				"NumpadEnter", system::Button::NumpadEnter,
 				"RightControl", system::Button::RightControl,
-				"NumpadDivide", system::Button::NumpadDivide,
 				"SysReq", system::Button::SysReq,
 				"RightAlt", system::Button::RightAlt,
 				"Pause", system::Button::Pause,
@@ -110,7 +93,8 @@ namespace pawn {
 				"PageDown", system::Button::PageDown,
 				"Insert", system::Button::Insert,
 				"Delete", system::Button::Delete,
-				"Count", system::Button::Count
+				"Count", system::Button::Count,
+				"None", system::Button::None
 			);
 
 			lua.set_function("keyboard_buttonPressed",			system::KeyboardManager::ButtonPressed);

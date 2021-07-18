@@ -85,6 +85,9 @@
     <ClInclude Include="engine\scripts\registers\MouseManagerScriptRegister.h">
       <Filter>engine\scripts\registers</Filter>
     </ClInclude>
+    <ClInclude Include="engine\scripts\registers\KeyboardManagerScriptRegister.h">
+      <Filter>engine\scripts\registers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">
@@ -142,6 +145,9 @@
       <Filter>engine\scripts\registers</Filter>
     </ClCompile>
     <ClCompile Include="engine\scripts\registers\MouseManagerScriptRegister.cpp">
+      <Filter>engine\scripts\registers</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripts\registers\KeyboardManagerScriptRegister.cpp">
       <Filter>engine\scripts\registers</Filter>
     </ClCompile>
   </ItemGroup>
