@@ -22,12 +22,13 @@ namespace pawn {
 				static bool IsKeyboardConnected();
 				static bool IsAnyButtonPressed();
 				static bool IsAnyButtonReleased();
+
+				static int64_t GetButtonTimeStamp(Button button);
 				
 			private:
 
 				static bool GetButtonState(Button button);
 				static bool GetLastFrameButtonState(Button button);
-				static int64_t GetButtonTimeStamp(Button button);
 
 				static void UpdateInternal();
 

@@ -13,6 +13,8 @@
   <ItemGroup>
     <ClInclude Include="system\input\KeyboardButton.h" />
     <ClInclude Include="system\input\KeyboardManager.h" />
+    <ClInclude Include="system\input\MouseButton.h" />
+    <ClInclude Include="system\input\MouseManager.h" />
     <ClInclude Include="system\windows\InputManagerWindows.h" />
     <ClInclude Include="system\windows\SystemPC.h" />
     <ClInclude Include="system\windows\WindowsAPI.h" />
@@ -20,8 +22,11 @@
   <ItemGroup>
     <ClCompile Include="system\input\KeyboardButton.cpp" />
     <ClCompile Include="system\input\KeyboardManager.cpp" />
+    <ClCompile Include="system\input\MouseButton.cpp" />
+    <ClCompile Include="system\input\MouseManager.cpp" />
     <ClCompile Include="system\windows\InputManagerWindows.cpp" />
     <ClCompile Include="system\windows\KeyboardManagerWindows.cpp" />
+    <ClCompile Include="system\windows\MouseManagerWindows.cpp" />
     <ClCompile Include="system\windows\SystemPC.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

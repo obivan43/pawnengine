@@ -11,6 +11,7 @@ namespace pawn {
 			public:
 				Clock();
 
+				static float TimeStampToSeconds(int64_t timestamp);
 				static int64_t TimeStamp();
 
 				float Time() const;

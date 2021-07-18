@@ -22,13 +22,13 @@ namespace pawn {
 
 				struct InputData {
 					RAWINPUT input;
-					uint64_t timestamp;
+					int64_t timestamp;
 				};
 
 				static bool WinHandle(UINT message, WPARAM wparam, LPARAM lparam, LRESULT* result);
 
-				static bool ProccessMouse(uint64_t maxTimestamp, InputData& out);
-				static bool ProccessKeyboard(uint64_t maxTimestamp, InputData& out);
+				static bool ProccessMouse(int64_t maxTimestamp, InputData& out);
+				static bool ProccessKeyboard(int64_t maxTimestamp, InputData& out);
 
 				static void RegisterMouse();
 				static void RegisterKeyboard();

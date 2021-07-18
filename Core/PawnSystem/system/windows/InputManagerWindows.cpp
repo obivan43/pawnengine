@@ -109,7 +109,7 @@ namespace pawn {
 			return false;
 		}
 
-		bool InputManagerWindows::ProccessMouse(uint64_t maxTimestamp, InputData& out) {
+		bool InputManagerWindows::ProccessMouse(int64_t maxTimestamp, InputData& out) {
 			if (m_MouseInputs.size() > 0) {
 				InputData inputData{};
 				inputData = m_MouseInputs.front();
@@ -127,7 +127,7 @@ namespace pawn {
 			return false;
 		}
 
-		bool InputManagerWindows::ProccessKeyboard(uint64_t maxTimestamp, InputData& out) {
+		bool InputManagerWindows::ProccessKeyboard(int64_t maxTimestamp, InputData& out) {
 			if (m_KeyboardInputs.size() > 0) {
 				InputData inputData{};
 				inputData = m_KeyboardInputs.front();

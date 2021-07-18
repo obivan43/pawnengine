@@ -73,17 +73,17 @@ namespace pawn {
 
 		bool KeyboardManager::GetButtonState(Button button) {
 			assert(IsValidKeyboardButton(button));
-			return m_Buttons[static_cast<uint8_t>(button)] != 0;
+			return m_Buttons[static_cast<uint32_t>(button)] != 0;
 		}
 
 		bool KeyboardManager::GetLastFrameButtonState(Button button) {
 			assert(IsValidKeyboardButton(button));
-			return m_LastFrameButtons[static_cast<uint8_t>(button)] != 0;
+			return m_LastFrameButtons[static_cast<uint32_t>(button)] != 0;
 		}
 
 		int64_t KeyboardManager::GetButtonTimeStamp(Button button) {
 			assert(IsValidKeyboardButton(button));
-			return m_ButtonPressTimestamp[static_cast<uint8_t>(button)];
+			return m_ButtonPressTimestamp[static_cast<uint32_t>(button)];
 		}
 
 	}

@@ -19,7 +19,9 @@ namespace pawn {
 			dist_sink->add_sink(ostream_sink);
 
 			m_Logger = std::make_shared<spdlog::logger>("pawn", dist_sink);
-			spdlog::set_level(spdlog::level::trace);
+#ifdef TRACE_LOGGER_LEVEL
+			m_Logger->set_level(spdlog::level::trace);
+#endif
 		}
 
 	}

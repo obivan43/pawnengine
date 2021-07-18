@@ -3,6 +3,7 @@
 #include "PawnUtils/utils/logger/Logger.h"
 
 #include "PawnSystem/system/input/KeyboardManager.h"
+#include "PawnSystem/system/input/MouseManager.h"
 
 namespace pawn {
 
@@ -52,7 +53,35 @@ namespace pawn {
 		}
 
 		void Engine::OnInput() {
+			system::MouseManager::Update();
 			system::KeyboardManager::Update();
+
+#ifdef TRACE_MOUSE_INPUT
+			if (system::MouseManager::ButtonPressed(system::MouseButton::LeftButton)) {
+				CONSOLE_TRACE("LEFT BUTTON PRESS")
+			}
+
+			if (system::MouseManager::ButtonPressed(system::MouseButton::RightButton)) {
+				CONSOLE_TRACE("RIGHT BUTTON PRESS")
+			}
+
+			if (system::MouseManager::ButtonReleased(system::MouseButton::LeftButton)) {
+				CONSOLE_TRACE("LEFT BUTTON RELEASE")
+			}
+
+			if (system::MouseManager::ButtonReleased(system::MouseButton::RightButton)) {
+				CONSOLE_TRACE("RIGHT BUTTON RELEASE")
+			}
+
+			int32_t x{ system::MouseManager::GetRawMouseX() };
+			CONSOLE_TRACE("X {}", x)
+
+			int32_t y{ system::MouseManager::GetRawMouseY() };
+			CONSOLE_TRACE("Y {}", y)
+
+			int32_t wheel{ system::MouseManager::GetMouseWheel() };
+			CONSOLE_TRACE("WHEEL {}", wheel)
+#endif
 		}
 
 		void Engine::OnUpdate(utils::Clock& clock) {

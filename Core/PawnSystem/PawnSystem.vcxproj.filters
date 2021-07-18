@@ -28,6 +28,12 @@
     <ClInclude Include="system\windows\InputManagerWindows.h">
       <Filter>system\windows</Filter>
     </ClInclude>
+    <ClInclude Include="system\input\MouseButton.h">
+      <Filter>system\input</Filter>
+    </ClInclude>
+    <ClInclude Include="system\input\MouseManager.h">
+      <Filter>system\input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="system\windows\SystemPC.cpp">
@@ -43,6 +49,15 @@
       <Filter>system\input</Filter>
     </ClCompile>
     <ClCompile Include="system\windows\InputManagerWindows.cpp">
+      <Filter>system\windows</Filter>
+    </ClCompile>
+    <ClCompile Include="system\input\MouseButton.cpp">
+      <Filter>system\input</Filter>
+    </ClCompile>
+    <ClCompile Include="system\input\MouseManager.cpp">
+      <Filter>system\input</Filter>
+    </ClCompile>
+    <ClCompile Include="system\windows\MouseManagerWindows.cpp">
       <Filter>system\windows</Filter>
     </ClCompile>
   </ItemGroup>

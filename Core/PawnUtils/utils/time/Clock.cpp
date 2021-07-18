@@ -22,6 +22,15 @@ namespace pawn {
 			return currentTime;
 		}
 
+		float Clock::TimeStampToSeconds(int64_t timestamp) {
+			int64_t countPerSecond = 0;
+			QueryPerformanceFrequency(reinterpret_cast<LARGE_INTEGER*>(&countPerSecond));
+			double secondsPerCount = 1.0 / static_cast<double>(countPerSecond);
+			return static_cast<float>(
+					static_cast<double>(timestamp) * secondsPerCount
+			);
+		}
+
 		float Clock::Time() const {
 			return static_cast<float>(m_CurrentTime);
 		}

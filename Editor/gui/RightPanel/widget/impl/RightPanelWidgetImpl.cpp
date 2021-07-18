@@ -88,12 +88,12 @@ namespace editor {
 				Qt::QueuedConnection
 			);
 
-			qRegisterMetaType<pawn::engine::GameEntity>("pawn::Entity");
+			qRegisterMetaType<pawn::engine::GameEntity>("pawn::engine::GameEntity");
 			connect(
 				m_MeshComponentWidgetItem,
-				SIGNAL(EntityMeshModified(pawn::GameEntity)),
+				SIGNAL(EntityMeshModified(pawn::engine::GameEntity)),
 				this,
-				SIGNAL(EntityMeshModfied(pawn::GameEntity)),
+				SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)),
 				Qt::QueuedConnection
 			);
 		}
