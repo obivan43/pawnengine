@@ -69,7 +69,7 @@ namespace editor {
 					pawn::engine::MeshComponent& meshComponent{ m_SelectedEntity.GetComponent<pawn::engine::MeshComponent>() };
 
 					QLineEdit* meshLineEdit{ m_MeshComponentWidgetItem->GetWidget() };
-					meshLineEdit->setText(meshComponent.MeshPath.c_str());
+					meshLineEdit->setText(meshComponent.MeshName.c_str());
 				}
 
 				m_MeshComponentWidgetItem->setHidden(!IsMeshComponentExitst);

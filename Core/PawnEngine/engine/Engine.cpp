@@ -19,6 +19,7 @@ namespace pawn {
 			m_GraphicsAPI->SetClearColor(0.1f, 0.1f, 0.1f);
 
 			m_MeshManager.reset(new MeshManager());
+			m_TextureManager.reset(new TextureManager());
 
 			m_Shader = graphics::GraphicsShader::Create();
 			if (!m_Shader->InitVertexShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\VertexShader.cso")) {
@@ -38,17 +39,30 @@ namespace pawn {
 			m_Scene.reset(new GameScene());
 		}
 
-		const std::shared_ptr<graphics::GraphicsMesh>& Engine::GetMeshByPath(const std::string& path) {
-			return m_MeshManager->GetMeshByPath(path);
+		const std::shared_ptr<graphics::GraphicsMesh>& Engine::GetMeshByName(const std::string& name) {
+			return m_MeshManager->GetMeshByName(name);
 		}
 
-		bool Engine::HasMeshByPath(const std::string& path) {
-			return m_MeshManager->HasMeshByPath(path);
+		bool Engine::HasMeshByName(const std::string& name) {
+			return m_MeshManager->HasMeshByName(name);
 		}
 
-		void Engine::UploadMeshFromFile(const std::string& file) {
-			m_MeshManager->UploadMeshFromFile(m_Context, m_Shader, file);
+		bool Engine::UploadMeshFromFile(const std::string& file) {
+			return m_MeshManager->UploadMeshFromFile(m_Context, m_Shader, file);
 		}
+
+		bool Engine::HasTextureByName(const std::string& name) {
+			return m_TextureManager->HasTextureByName(name);
+		}
+
+		bool Engine::UploadTextureFromFile(const std::string& file) {
+			return m_TextureManager->UploadTextureFromFile(m_Context, file);
+		}
+
+		const std::shared_ptr<graphics::GraphicsTexture2D>& Engine::GetTextureByName(const std::string& name) {
+			return m_TextureManager->GetTextureByName(name);
+		}
+
 
 		void Engine::Clear() {
 			m_GraphicsAPI->Clear();

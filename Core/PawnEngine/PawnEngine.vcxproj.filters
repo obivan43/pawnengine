@@ -88,6 +88,9 @@
     <ClInclude Include="engine\scripts\registers\KeyboardManagerScriptRegister.h">
       <Filter>engine\scripts\registers</Filter>
     </ClInclude>
+    <ClInclude Include="engine\TextureManager.h">
+      <Filter>engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">
@@ -149,6 +152,9 @@
     </ClCompile>
     <ClCompile Include="engine\scripts\registers\KeyboardManagerScriptRegister.cpp">
       <Filter>engine\scripts\registers</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\TextureManager.cpp">
+      <Filter>engine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

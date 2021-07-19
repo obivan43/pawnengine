@@ -10,11 +10,11 @@ namespace editor {
 			if (!entity.IsNull()) {
 				pawn::engine::MeshComponent& meshComponent = entity.GetComponent<pawn::engine::MeshComponent>();
 
-				if (!m_Engine->HasMeshByPath(meshComponent.MeshPath)) {
-					m_Engine->UploadMeshFromFile(meshComponent.MeshPath);
+				if (!m_Engine->HasMeshByName(meshComponent.MeshName)) {
+					m_Engine->UploadMeshFromFile(meshComponent.MeshName);
 				}
 
-				meshComponent.Mesh = m_Engine->GetMeshByPath(meshComponent.MeshPath);
+				meshComponent.Mesh = m_Engine->GetMeshByName(meshComponent.MeshName);
 			}
 		}
 

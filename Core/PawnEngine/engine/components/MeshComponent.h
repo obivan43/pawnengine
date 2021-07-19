@@ -22,7 +22,7 @@ namespace pawn {
 			operator const std::shared_ptr<graphics::GraphicsMesh>& () const { return Mesh; }
 
 			std::shared_ptr<graphics::GraphicsMesh> Mesh;
-			std::string MeshPath;
+			std::string MeshName;
 		};
 
 	}

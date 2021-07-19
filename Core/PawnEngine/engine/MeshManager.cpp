@@ -10,8 +10,8 @@ namespace pawn {
 
 	namespace engine {
 
-		bool MeshManager::HasMeshByPath(const std::string& path) {
-			return m_MeshesMap[path].get() != nullptr;
+		bool MeshManager::HasMeshByName(const std::string& name) {
+			return m_MeshesMap[name].get() != nullptr;
 		}
 
 		bool MeshManager::UploadMesh(const std::string& name, const std::shared_ptr<graphics::GraphicsMesh>& mesh) {
@@ -25,22 +25,23 @@ namespace pawn {
 			return true;
 		}
 
-		bool MeshManager::UploadMeshFromFile(std::shared_ptr<graphics::GraphicsContext>& context, std::shared_ptr<graphics::GraphicsShader>& shader, const std::string& filename) {
+		bool MeshManager::UploadMeshFromFile(std::shared_ptr<graphics::GraphicsContext>& context, std::shared_ptr<graphics::GraphicsShader>& shader, const std::string& path) {
 			static const std::initializer_list<graphics::GraphicsInputElement> inputElements = {
 				{ "Position", graphics::GraphicsInputElementType::Float3 },
 				{ "Normal", graphics::GraphicsInputElementType::Float3 },
 				{ "TextureCoordinate", graphics::GraphicsInputElementType::Float2 }
 			};
 
-			if (m_MeshesMap[filename] != nullptr) {
+			std::string name = path.substr(path.find_last_of("/\\") + 1);
+
+			if (m_MeshesMap[name] != nullptr) {
 				CONSOLE_WARN("MeshManager: mesh with same name already exist")
 				return false;
 			}
 
-			bool result = m_MeshLoader.LoadModel(filename.c_str());
-			if (!result) {
-				CONSOLE_WARN("MeshManager: mesh loading corrupted")
-				return result;
+			if (!m_MeshLoader.LoadModel(path.c_str())) {
+				CONSOLE_ERROR("MeshManager: mesh loading corrupted")
+				return false;
 			}
 
 			std::vector<math::Vertex>& vertices = m_MeshLoader.GetVertexData();
@@ -58,13 +59,13 @@ namespace pawn {
 
 			inputLayout->Init(context, inputElements, shader->GetVertexShaderInfo());
 
-			m_MeshesMap[filename].reset(new graphics::GraphicsMesh(vertexBuffer, indexBuffer, inputLayout));
+			m_MeshesMap[name].reset(new graphics::GraphicsMesh(vertexBuffer, indexBuffer, inputLayout));
 
 			return true;
 		}
 
-		const std::shared_ptr<graphics::GraphicsMesh>& MeshManager::GetMeshByPath(const std::string& path) {
-			return m_MeshesMap[path];
+		const std::shared_ptr<graphics::GraphicsMesh>& MeshManager::GetMeshByName(const std::string& name) {
+			return m_MeshesMap[name];
 		}
 
 	}

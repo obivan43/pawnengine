@@ -74,11 +74,13 @@ namespace editor {
 
 			std::shared_ptr<pawn::engine::GameScene>& scene{ m_Engine->GetScene() };
 
-			m_Engine->UploadMeshFromFile("res\\assets\\models\\cube.obj");
-			m_Engine->UploadMeshFromFile("res\\assets\\models\\sphere.obj");
+			m_Engine->UploadMeshFromFile("res/assets/models/cube.obj");
+			m_Engine->UploadMeshFromFile("res/assets/models/sphere.obj");
+
+			m_Engine->UploadTextureFromFile("res/assets/textures/brick.jpg");
 
 			pawn::engine::GameEntity entity{ scene->CreateEntity("Cube") };
-			entity.AddComponent<pawn::engine::MeshComponent>(m_Engine->GetMeshByPath("res\\assets\\models\\cube.obj"), "res\\assets\\models\\cube.obj");
+			entity.AddComponent<pawn::engine::MeshComponent>(m_Engine->GetMeshByName("cube.obj"), "cube.obj");
 
 			pawn::engine::GameEntity camera{ scene->CreateEntity("Camera") };
 			pawn::engine::CameraComponent& cameraComponent{ camera.AddComponent<pawn::engine::CameraComponent>() };
