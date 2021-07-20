@@ -3,13 +3,17 @@
 #include "MainWindow.h"
 #include "EngineManager.h"
 
-#include "gui/BottomPanel/widget/BottomPanelWidget.h"
-#include "gui/LeftPanel/widget/LeftPanelWidget.h"
-#include "gui/RightPanel/widget/RightPanelWidget.h"
-#include "gui/CentralWidget/widget/CentralWidget.h"
+#include "gui/BottomPanel/widget/OutputWidget.h"
+#include "gui/LeftPanel/widget/HierarchyWidget.h"
+#include "gui/RightPanel/widget/InspectorWidget.h"
+#include "gui/CentralWidget/widget/EngineViewWidget.h"
 
-#include <QtWidgets/QDockWidget>
+#include "gui/QtAdvancedDocking/docking/DockWidget.h"
+#include "gui/QtAdvancedDocking/docking/DockManager.h"
+
+
 #include <QCloseEvent>
+#include <QMenu>
 
 namespace editor {
 
@@ -27,6 +31,7 @@ namespace editor {
 				void RestoreSettings();
 
 				void closeEvent(QCloseEvent* event) override;
+				void contextMenuEvent(QContextMenuEvent* event) override;
 
 			private:
 				void InitEngine();
@@ -36,11 +41,13 @@ namespace editor {
 				void ActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>);
 
 			private:
-				BottomPanelWidget* m_BottomPanel;
-				LeftPanelWidget* m_LeftPanel;
-				RightPanelWidget* m_RightPanel;
-				CentralWidget* m_CentralWidget;
+				ads::CDockManager* m_DockManager;
+				OutputWidget* m_Output;
+				HierarchyWidget* m_Hierarchy;
+				InspectorWidget* m_Inspector;
+				EngineViewWidget* m_EngineView;
 				EngineManager* m_EngineManager;
+				QMenu* m_DockMenu;
 
 				const uint32_t EngineViewWidth{ 1280 };
 				const uint32_t EngineViewHeight{ 720 };

@@ -125,12 +125,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <QtMoc Include="widget\CentralWidget.h" />
-    <QtMoc Include="widget\impl\CentralWidgetImpl.h" />
+    <QtMoc Include="widget\EngineViewWidget.h" />
+    <QtMoc Include="widget\impl\EngineViewWidgetImpl.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="widget\CentralWidget.cpp" />
-    <ClCompile Include="widget\impl\CentralWidgetImpl.cpp" />
+    <ClCompile Include="widget\EngineViewWidget.cpp" />
+    <ClCompile Include="widget\impl\EngineViewWidgetImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\PawnEngine\PawnEngine.vcxproj">

@@ -126,15 +126,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="widget\impl\HierarchyWidgetItem.cpp" />
-    <ClCompile Include="widget\impl\LeftPanelWidgetImpl.cpp" />
-    <ClCompile Include="widget\LeftPanelWidget.cpp" />
+    <ClCompile Include="widget\impl\HierarchyWidgetImpl.cpp" />
+    <ClCompile Include="widget\HierarchyWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="widget\LeftPanelWidget.h" />
+    <QtMoc Include="widget\HierarchyWidget.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="widget\impl\HierarchyWidgetItem.h" />
-    <QtMoc Include="widget\impl\LeftPanelWidgetImpl.h" />
+    <QtMoc Include="widget\impl\HierarchyWidgetImpl.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\PawnEngine\PawnEngine.vcxproj">

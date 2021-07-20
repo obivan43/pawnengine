@@ -4,6 +4,8 @@
 
 #include <QSettings>
 #include <string>
+#include <QMenu>
+#include <QMenuBar>
 
 namespace editor {
 
@@ -11,31 +13,52 @@ namespace editor {
 
 		MainWindowImpl::MainWindowImpl(QWidget* parent)
 			: MainWindow(parent)
-			, m_BottomPanel(nullptr)
-			, m_LeftPanel(nullptr)
-			, m_RightPanel(nullptr)
-			, m_CentralWidget(nullptr)
+			, m_Output(nullptr)
+			, m_Hierarchy(nullptr)
+			, m_Inspector(nullptr)
+			, m_EngineView(nullptr)
 			, m_EngineManager(nullptr) {
 			setWindowTitle("Pawn Engine Editor");
 			setWindowIcon(QIcon(":/pawn.png"));
 			resize(EditorDefaultWidth, EditorDefaultHeight);
 
-			m_CentralWidget = CentralWidget::CreateImpl(this);
-			m_CentralWidget->setMinimumSize(EngineViewWidth, EngineViewHeight);
-			setCentralWidget(m_CentralWidget);
+			m_DockMenu = menuBar()->addMenu("View");
 
-			m_BottomPanel = BottomPanelWidget::CreateImpl(this);
-			m_RightPanel = RightPanelWidget::CreateImpl(this);
-			m_LeftPanel = LeftPanelWidget::CreateImpl(this);
+			m_EngineView = EngineViewWidget::CreateImpl(this);
+			m_Output = OutputWidget::CreateImpl(this);
+			m_Inspector = InspectorWidget::CreateImpl(this);
+			m_Hierarchy = HierarchyWidget::CreateImpl(this);
 
-			m_BottomPanel->setObjectName("Console");
-			m_RightPanel->setObjectName("Inspector");
-			m_LeftPanel->setObjectName("Scene Hierarchy");
-			m_CentralWidget->setObjectName("Engine view");
+			m_DockManager = new ads::CDockManager(this);
 
-			addDockWidget(Qt::BottomDockWidgetArea, m_BottomPanel);
-			addDockWidget(Qt::RightDockWidgetArea, m_RightPanel);
-			addDockWidget(Qt::LeftDockWidgetArea, m_LeftPanel);
+			ads::CDockWidget* EngineViewDockWidget = new ads::CDockWidget("Engine view");
+			EngineViewDockWidget->setWidget(m_EngineView);
+			m_EngineView->setMinimumSize(EngineViewWidth, EngineViewHeight);
+			EngineViewDockWidget->setMinimumSize(EngineViewWidth, EngineViewHeight);
+
+			ads::CDockWidget* OutputDockWidget = new ads::CDockWidget("Output");
+			OutputDockWidget->setWidget(m_Output);
+
+			ads::CDockWidget* InspectorDockWidget = new ads::CDockWidget("Inspector");
+			InspectorDockWidget->setWidget(m_Inspector);
+
+			ads::CDockWidget* HierarchyDockWidget = new ads::CDockWidget("Hierarchy");
+			HierarchyDockWidget->setWidget(m_Hierarchy);
+
+			EngineViewDockWidget->setObjectName("EngineViewDockWidget");
+			OutputDockWidget->setObjectName("OutputDockWidget");
+			InspectorDockWidget->setObjectName("InspectorDockWidget");
+			HierarchyDockWidget->setObjectName("HierarchyDockWidget");
+
+			m_DockMenu->addAction(EngineViewDockWidget->toggleViewAction());
+			m_DockMenu->addAction(OutputDockWidget->toggleViewAction());
+			m_DockMenu->addAction(InspectorDockWidget->toggleViewAction());
+			m_DockMenu->addAction(HierarchyDockWidget->toggleViewAction());
+
+			m_DockManager->addDockWidget(ads::CenterDockWidgetArea, EngineViewDockWidget);
+			m_DockManager->addDockWidget(ads::BottomDockWidgetArea, OutputDockWidget, EngineViewDockWidget->dockAreaWidget());
+			m_DockManager->addDockWidget(ads::RightDockWidgetArea, InspectorDockWidget, EngineViewDockWidget->dockAreaWidget());
+			m_DockManager->addDockWidget(ads::BottomDockWidgetArea, HierarchyDockWidget, InspectorDockWidget->dockAreaWidget());
 
 			InitConnections();
 			RestoreSettings();
@@ -43,29 +66,40 @@ namespace editor {
 			InitEngine();
 
 			m_EngineManager = new EngineManager(m_Engine.get());
-			connect(m_RightPanel, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
+			connect(m_Inspector, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
 		}
 
 		void MainWindowImpl::closeEvent(QCloseEvent* event) {
 			Running = false;
 
 			QSettings settings("Shulzhenko corp", "Pawnengine");
+
 			settings.setValue("geometry", saveGeometry());
 			settings.setValue("windowState", saveState());
 
+			settings.setValue("dockManagerGeometry", m_DockManager->saveGeometry());
+			settings.setValue("dockManagerState", m_DockManager->saveState());
+
 			QMainWindow::closeEvent(event);
+		}
+
+		void MainWindowImpl::contextMenuEvent(QContextMenuEvent* event) {
+			m_DockMenu->exec(event->globalPos());
 		}
 
 		void MainWindowImpl::RestoreSettings() {
 			QSettings settings("Shulzhenko corp", "Pawnengine");
 			restoreGeometry(settings.value("geometry").toByteArray());
 			restoreState(settings.value("windowState").toByteArray());
+
+			m_DockManager->restoreGeometry(settings.value("dockManagerGeometry").toByteArray());
+			m_DockManager->restoreState(settings.value("dockManagerState").toByteArray());
 		}
 
 		void MainWindowImpl::InitEngine() {
 			m_Engine.reset(new pawn::engine::Engine);
 
-			SetGameEngineWindowHWND(m_CentralWidget->GetWindowsHandle());
+			SetGameEngineWindowHWND(m_EngineView->GetWindowsHandle());
 
 			pawn::system::InputManagerWindows::RegisterMouse();
 			pawn::system::InputManagerWindows::RegisterKeyboard();
@@ -98,21 +132,21 @@ namespace editor {
 			connect(
 				this,
 				SIGNAL(ActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>)),
-				m_LeftPanel,
+				m_Hierarchy,
 				SLOT(OnActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>))
 			);
 
 			connect(
-				m_LeftPanel,
+				m_Hierarchy,
 				SIGNAL(SelectedEntityChanged(pawn::engine::GameEntity)),
-				m_RightPanel,
+				m_Inspector,
 				SLOT(OnSelectedEntityChanged(pawn::engine::GameEntity))
 			);
 
 			connect(
-				m_RightPanel,
+				m_Inspector,
 				SIGNAL(EntityTagModified()),
-				m_LeftPanel,
+				m_Hierarchy,
 				SLOT(OnEntityTagModified())
 			);
 		}

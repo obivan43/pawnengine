@@ -35,14 +35,14 @@ namespace editor {
 
 			m_LogWindow->moveCursor(QTextCursor::End);
 
-			if (m_LogWindow->textColor() != QColorConstants::White) {
-				m_LogWindow->setTextColor(QColorConstants::White);
+			if (m_LogWindow->textColor() != QColorConstants::Black) {
+				m_LogWindow->setTextColor(QColorConstants::Black);
 			}
 
 			for (QString match : matchList) {
 				if (str.contains(match)) {
 					if (match == matchList[0]) {
-						m_LogWindow->setTextColor(QColorConstants::White);
+						m_LogWindow->setTextColor(QColorConstants::Black);
 					}
 
 					if (match == matchList[1]) {

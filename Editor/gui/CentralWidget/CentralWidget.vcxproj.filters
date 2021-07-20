@@ -10,18 +10,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="widget\CentralWidget.cpp">
+    <ClCompile Include="widget\EngineViewWidget.cpp">
       <Filter>widget</Filter>
     </ClCompile>
-    <ClCompile Include="widget\impl\CentralWidgetImpl.cpp">
+    <ClCompile Include="widget\impl\EngineViewWidgetImpl.cpp">
       <Filter>widget\impl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="widget\impl\CentralWidgetImpl.h">
+    <QtMoc Include="widget\impl\EngineViewWidgetImpl.h">
       <Filter>widget\impl</Filter>
     </QtMoc>
-    <QtMoc Include="widget\CentralWidget.h">
+    <QtMoc Include="widget\EngineViewWidget.h">
       <Filter>widget</Filter>
     </QtMoc>
   </ItemGroup>

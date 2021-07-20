@@ -125,14 +125,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="widget\BottomPanelWidget.cpp" />
-    <ClCompile Include="widget\impl\BottomPanelWidgetImpl.cpp" />
+    <ClCompile Include="widget\OutputWidget.cpp" />
+    <ClCompile Include="widget\impl\OutputWidgetImpl.cpp" />
     <ClCompile Include="widget\impl\OutputStream.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="widget\BottomPanelWidget.h" />
+    <ClInclude Include="widget\OutputWidget.h" />
     <ClInclude Include="widget\impl\OutputStream.h" />
-    <QtMoc Include="widget\impl\BottomPanelWidgetImpl.h" />
+    <QtMoc Include="widget\impl\OutputWidgetImpl.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\PawnEngine\PawnEngine.vcxproj">

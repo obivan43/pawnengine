@@ -127,14 +127,14 @@
   <ItemGroup>
     <ClCompile Include="widget\impl\Double3Widget.cpp" />
     <ClCompile Include="widget\impl\MeshComponentWidgetItem.cpp" />
-    <ClCompile Include="widget\impl\RightPanelWidgetImpl.cpp" />
+    <ClCompile Include="widget\impl\InspectorWidgetImpl.cpp" />
     <ClCompile Include="widget\impl\TagComponentWidgetItem.cpp" />
     <ClCompile Include="widget\impl\TransformationComponentWidget.cpp" />
     <ClCompile Include="widget\impl\TransformationComponentWidgetItem.cpp" />
-    <ClCompile Include="widget\RightPanelWidget.cpp" />
+    <ClCompile Include="widget\InspectorWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="widget\RightPanelWidget.h" />
+    <QtMoc Include="widget\InspectorWidget.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="widget\impl\Double3Widget.h" />
@@ -143,7 +143,7 @@
     <QtMoc Include="widget\impl\TransformationComponentWidgetItem.h" />
     <QtMoc Include="widget\impl\TransformationComponentWidget.h" />
     <QtMoc Include="widget\impl\TagComponentWidgetItem.h" />
-    <QtMoc Include="widget\impl\RightPanelWidgetImpl.h" />
+    <QtMoc Include="widget\impl\InspectorWidgetImpl.h" />
     <QtMoc Include="widget\impl\MeshComponentWidgetItem.h" />
   </ItemGroup>
   <ItemGroup>

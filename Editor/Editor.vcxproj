@@ -78,20 +78,28 @@
     <PostBuildEvent>
       <Command>cd /d $(SolutionDir)ThirdParty\spdlog-1.8.2\bin\
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 cd /d $(SolutionDir)Core\PawnUtils\bin\
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 cd /d $(SolutionDir)ThirdParty\assimp-5.0.1\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 cd /d $(SolutionDir)Core\PawnMath\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 cd /d $(SolutionDir)Core\PawnGraphics\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 cd /d $(SolutionDir)Core\PawnEngine\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 cd /d $(ProjectDir)
 Xcopy /E /I /y res\assets $(ProjectDir)bin\$(Configuration)\res\assets
+
 cd /d $(SolutionDir)Core\PawnSystem\bin\
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 exit</Command>
     </PostBuildEvent>
     <Link>
@@ -113,20 +121,28 @@ exit</Command>
     <PostBuildEvent>
       <Command>cd /d $(SolutionDir)ThirdParty\spdlog-1.8.2\bin\
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 cd /d $(SolutionDir)Core\PawnUtils\bin\
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 cd /d $(SolutionDir)ThirdParty\assimp-5.0.1\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 cd /d $(SolutionDir)Core\PawnMath\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 cd /d $(SolutionDir)Core\PawnGraphics\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 cd /d $(SolutionDir)Core\PawnEngine\bin
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 cd /d $(ProjectDir)
 Xcopy /E /I /y res\assets $(ProjectDir)bin\$(Configuration)\res\assets
+
 cd /d $(SolutionDir)Core\PawnSystem\bin\
 Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
 exit</Command>
     </PostBuildEvent>
     <Link>
@@ -185,6 +201,9 @@ exit</Command>
     </ProjectReference>
     <ProjectReference Include="gui\LeftPanel\LeftPanel.vcxproj">
       <Project>{012e8e66-1b41-4c74-9255-89eed1d2ffad}</Project>
+    </ProjectReference>
+    <ProjectReference Include="gui\QtAdvancedDocking\QtAdvancedDocking.vcxproj">
+      <Project>{a62aad52-e086-4927-b15a-d9c010a72c4b}</Project>
     </ProjectReference>
     <ProjectReference Include="gui\RightPanel\RightPanel.vcxproj">
       <Project>{0772e707-170e-4f4b-971e-38089bb728a0}</Project>

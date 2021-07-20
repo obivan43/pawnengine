@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="docking\ads_globals.cpp" />
+    <ClCompile Include="docking\DockAreaTabBar.cpp" />
+    <ClCompile Include="docking\DockAreaTitleBar.cpp" />
+    <ClCompile Include="docking\DockAreaWidget.cpp" />
+    <ClCompile Include="docking\DockComponentsFactory.cpp" />
+    <ClCompile Include="docking\DockContainerWidget.cpp" />
+    <ClCompile Include="docking\DockFocusController.cpp" />
+    <ClCompile Include="docking\DockingStateReader.cpp" />
+    <ClCompile Include="docking\DockManager.cpp" />
+    <ClCompile Include="docking\DockOverlay.cpp" />
+    <ClCompile Include="docking\DockSplitter.cpp" />
+    <ClCompile Include="docking\DockWidget.cpp" />
+    <ClCompile Include="docking\DockWidgetTab.cpp" />
+    <ClCompile Include="docking\ElidingLabel.cpp" />
+    <ClCompile Include="docking\FloatingDockContainer.cpp" />
+    <ClCompile Include="docking\FloatingDragPreview.cpp" />
+    <ClCompile Include="docking\IconProvider.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="docking\ads_globals.h" />
+    <ClInclude Include="docking\DockComponentsFactory.h" />
+    <ClInclude Include="docking\DockingStateReader.h" />
+    <ClInclude Include="docking\IconProvider.h" />
+    <QtMoc Include="docking\FloatingDragPreview.h" />
+    <QtMoc Include="docking\FloatingDockContainer.h" />
+    <QtMoc Include="docking\ElidingLabel.h" />
+    <QtMoc Include="docking\DockWidgetTab.h" />
+    <QtMoc Include="docking\DockWidget.h" />
+    <QtMoc Include="docking\DockSplitter.h" />
+    <QtMoc Include="docking\DockOverlay.h" />
+    <QtMoc Include="docking\DockManager.h" />
+    <QtMoc Include="docking\DockFocusController.h" />
+    <QtMoc Include="docking\DockContainerWidget.h" />
+    <QtMoc Include="docking\DockAreaWidget.h" />
+    <QtMoc Include="docking\DockAreaTitleBar_p.h" />
+    <QtMoc Include="docking\DockAreaTitleBar.h" />
+    <QtMoc Include="docking\DockAreaTabBar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="docking\ads.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="docking\images\close-button-disabled.svg" />
+    <None Include="docking\images\close-button-focused.svg" />
+    <None Include="docking\images\close-button.svg" />
+    <None Include="docking\images\detach-button-disabled.svg" />
+    <None Include="docking\images\detach-button.svg" />
+    <None Include="docking\images\maximize-button-focused.svg" />
+    <None Include="docking\images\maximize-button.svg" />
+    <None Include="docking\images\restore-button-focused.svg" />
+    <None Include="docking\images\restore-button.svg" />
+    <None Include="docking\images\tabs-menu-button.svg" />
+    <None Include="docking\stylesheets\default.css" />
+    <None Include="docking\stylesheets\default_linux.css" />
+    <None Include="docking\stylesheets\focus_highlighting.css" />
+    <None Include="docking\stylesheets\focus_highlighting_linux.css" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A62AAD52-E086-4927-B15A-D9C010A72C4B}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>default_qt</QtInstall>
+    <QtModules>core;gui;svg;widgets</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>default_qt</QtInstall>
+    <QtModules>core;gui;svg;widgets</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PreprocessorDefinitions>QTADVANCEDDOCKING_LIB;BUILD_STATIC;ADS_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>QTADVANCEDDOCKING_LIB;BUILD_STATIC;ADS_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

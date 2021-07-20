@@ -10,10 +10,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="widget\BottomPanelWidget.cpp">
+    <ClCompile Include="widget\OutputWidget.cpp">
       <Filter>widget</Filter>
     </ClCompile>
-    <ClCompile Include="widget\impl\BottomPanelWidgetImpl.cpp">
+    <ClCompile Include="widget\impl\OutputWidgetImpl.cpp">
       <Filter>widget\impl</Filter>
     </ClCompile>
     <ClCompile Include="widget\impl\OutputStream.cpp">
@@ -21,7 +21,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="widget\BottomPanelWidget.h">
+    <ClInclude Include="widget\OutputWidget.h">
       <Filter>widget</Filter>
     </ClInclude>
     <ClInclude Include="widget\impl\OutputStream.h">
@@ -29,7 +29,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="widget\impl\BottomPanelWidgetImpl.h">
+    <QtMoc Include="widget\impl\OutputWidgetImpl.h">
       <Filter>widget\impl</Filter>
     </QtMoc>
   </ItemGroup>

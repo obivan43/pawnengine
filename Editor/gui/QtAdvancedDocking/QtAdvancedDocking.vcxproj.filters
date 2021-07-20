@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="docking">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{5ee9aee9-de7d-430d-a926-b6585cd284f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\images">
+      <UniqueIdentifier>{4e25a869-dd39-4a1d-86d2-12ede59684cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\styleshhet">
+      <UniqueIdentifier>{cc87ec95-750a-450f-a663-f5d389e7cbb2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="docking\ads_globals.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\DockAreaTabBar.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\DockAreaTitleBar.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\DockAreaWidget.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\DockComponentsFactory.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\DockContainerWidget.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\DockFocusController.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\DockingStateReader.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\DockManager.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\DockOverlay.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\DockSplitter.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\DockWidget.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\DockWidgetTab.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\ElidingLabel.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\FloatingDockContainer.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\FloatingDragPreview.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+    <ClCompile Include="docking\IconProvider.cpp">
+      <Filter>docking</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="docking\ads_globals.h">
+      <Filter>docking</Filter>
+    </ClInclude>
+    <ClInclude Include="docking\DockComponentsFactory.h">
+      <Filter>docking</Filter>
+    </ClInclude>
+    <ClInclude Include="docking\DockingStateReader.h">
+      <Filter>docking</Filter>
+    </ClInclude>
+    <ClInclude Include="docking\IconProvider.h">
+      <Filter>docking</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="docking\DockAreaTabBar.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\DockAreaTitleBar.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\DockAreaTitleBar_p.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\DockAreaWidget.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\DockContainerWidget.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\DockFocusController.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\DockManager.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\DockOverlay.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\DockSplitter.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\DockWidget.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\DockWidgetTab.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\ElidingLabel.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\FloatingDockContainer.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+    <QtMoc Include="docking\FloatingDragPreview.h">
+      <Filter>docking</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="docking\ads.qrc">
+      <Filter>res</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="docking\images\close-button.svg">
+      <Filter>res\images</Filter>
+    </None>
+    <None Include="docking\images\close-button-disabled.svg">
+      <Filter>res\images</Filter>
+    </None>
+    <None Include="docking\images\close-button-focused.svg">
+      <Filter>res\images</Filter>
+    </None>
+    <None Include="docking\images\detach-button.svg">
+      <Filter>res\images</Filter>
+    </None>
+    <None Include="docking\images\detach-button-disabled.svg">
+      <Filter>res\images</Filter>
+    </None>
+    <None Include="docking\images\maximize-button.svg">
+      <Filter>res\images</Filter>
+    </None>
+    <None Include="docking\images\maximize-button-focused.svg">
+      <Filter>res\images</Filter>
+    </None>
+    <None Include="docking\images\restore-button.svg">
+      <Filter>res\images</Filter>
+    </None>
+    <None Include="docking\images\restore-button-focused.svg">
+      <Filter>res\images</Filter>
+    </None>
+    <None Include="docking\images\tabs-menu-button.svg">
+      <Filter>res\images</Filter>
+    </None>
+    <None Include="docking\stylesheets\default.css">
+      <Filter>res\styleshhet</Filter>
+    </None>
+    <None Include="docking\stylesheets\default_linux.css">
+      <Filter>res\styleshhet</Filter>
+    </None>
+    <None Include="docking\stylesheets\focus_highlighting.css">
+      <Filter>res\styleshhet</Filter>
+    </None>
+    <None Include="docking\stylesheets\focus_highlighting_linux.css">
+      <Filter>res\styleshhet</Filter>
+    </None>
+  </ItemGroup>
+</Project>

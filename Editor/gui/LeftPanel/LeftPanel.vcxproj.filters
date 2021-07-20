@@ -10,21 +10,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="widget\LeftPanelWidget.cpp">
+    <ClCompile Include="widget\HierarchyWidget.cpp">
       <Filter>widget</Filter>
     </ClCompile>
     <ClCompile Include="widget\impl\HierarchyWidgetItem.cpp">
       <Filter>widget\impl</Filter>
     </ClCompile>
-    <ClCompile Include="widget\impl\LeftPanelWidgetImpl.cpp">
+    <ClCompile Include="widget\impl\HierarchyWidgetImpl.cpp">
       <Filter>widget\impl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="widget\LeftPanelWidget.h">
+    <QtMoc Include="widget\HierarchyWidget.h">
       <Filter>widget</Filter>
     </QtMoc>
-    <QtMoc Include="widget\impl\LeftPanelWidgetImpl.h">
+    <QtMoc Include="widget\impl\HierarchyWidgetImpl.h">
       <Filter>widget\impl</Filter>
     </QtMoc>
   </ItemGroup>
