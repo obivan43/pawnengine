@@ -23,6 +23,7 @@ namespace editor {
 			resize(EditorDefaultWidth, EditorDefaultHeight);
 
 			m_DockMenu = menuBar()->addMenu("View");
+			m_DockMenu->setParent(this);
 
 			m_EngineView = EngineViewWidget::CreateImpl(this);
 			m_Output = OutputWidget::CreateImpl(this);
@@ -31,18 +32,18 @@ namespace editor {
 
 			m_DockManager = new ads::CDockManager(this);
 
-			ads::CDockWidget* EngineViewDockWidget = new ads::CDockWidget("Engine view");
+			ads::CDockWidget* EngineViewDockWidget = new ads::CDockWidget("Engine view", this);
 			EngineViewDockWidget->setWidget(m_EngineView);
 			m_EngineView->setMinimumSize(EngineViewWidth, EngineViewHeight);
 			EngineViewDockWidget->setMinimumSize(EngineViewWidth, EngineViewHeight);
 
-			ads::CDockWidget* OutputDockWidget = new ads::CDockWidget("Output");
+			ads::CDockWidget* OutputDockWidget = new ads::CDockWidget("Output", this);
 			OutputDockWidget->setWidget(m_Output);
 
-			ads::CDockWidget* InspectorDockWidget = new ads::CDockWidget("Inspector");
+			ads::CDockWidget* InspectorDockWidget = new ads::CDockWidget("Inspector", this);
 			InspectorDockWidget->setWidget(m_Inspector);
 
-			ads::CDockWidget* HierarchyDockWidget = new ads::CDockWidget("Hierarchy");
+			ads::CDockWidget* HierarchyDockWidget = new ads::CDockWidget("Hierarchy", this);
 			HierarchyDockWidget->setWidget(m_Hierarchy);
 
 			EngineViewDockWidget->setObjectName("EngineViewDockWidget");
@@ -81,10 +82,6 @@ namespace editor {
 			settings.setValue("dockManagerState", m_DockManager->saveState());
 
 			QMainWindow::closeEvent(event);
-		}
-
-		void MainWindowImpl::contextMenuEvent(QContextMenuEvent* event) {
-			m_DockMenu->exec(event->globalPos());
 		}
 
 		void MainWindowImpl::RestoreSettings() {

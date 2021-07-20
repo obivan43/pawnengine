@@ -32,7 +32,7 @@ class CDockWidget;
  * CDockComponentsFactory::setDefaultFactory(new MyComponentsFactory()));
  * \endcode
  */
-class ADS_EXPORT CDockComponentsFactory
+class CDockComponentsFactory
 {
 public:
 	/**

@@ -58,7 +58,7 @@ class CDockingStateReader;
  * the main application window and all floating windows contain a 
  * DockContainerWidget instance.
  */
-class ADS_EXPORT CDockContainerWidget : public QFrame
+class CDockContainerWidget : public QFrame
 {
 	Q_OBJECT
 private:

@@ -66,7 +66,7 @@ class CDockComponentsFactory;
  * DockManager->setStyleSheet("");
  * \endcode
  **/
-class ADS_EXPORT CDockManager : public CDockContainerWidget
+class CDockManager : public CDockContainerWidget
 {
 	Q_OBJECT
 private:

@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 
     app.installNativeEventFilter(new editor::impl::WindowsEventFilter());
 
-    QSharedPointer<editor::MainWindow> window = QSharedPointer<editor::MainWindow>(editor::MainWindow::CreateImpl());
+    editor::MainWindow* window = editor::MainWindow::CreateImpl();
     window->show();
 
     pawn::utils::Clock m_Clock;
@@ -43,7 +43,6 @@ int main(int argc, char *argv[]) {
 
         engine->SwapBuffers();
 	}
-    window.clear();
 
     app.exit();
 }

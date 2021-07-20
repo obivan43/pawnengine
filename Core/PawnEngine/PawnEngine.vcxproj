@@ -32,7 +32,6 @@
     <ClInclude Include="engine\scripts\registers\RegisterScriptClass.h" />
     <ClInclude Include="engine\scripts\ScriptEngine.h" />
     <ClInclude Include="engine\TextureManager.h" />
-    <ClInclude Include="include\pawnengine.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PawnGraphics\PawnGraphics.vcxproj">

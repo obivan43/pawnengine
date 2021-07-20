@@ -52,7 +52,7 @@ class CDockAreaTitleBar;
  * It displays a title tab, which is clickable and will switch to
  * the contents associated to the title when clicked.
  */
-class ADS_EXPORT CDockAreaWidget : public QFrame
+class CDockAreaWidget : public QFrame
 {
 	Q_OBJECT
 private:

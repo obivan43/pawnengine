@@ -8,9 +8,7 @@
 #include "gui/InspectorWidget/widget/InspectorWidget.h"
 #include "gui/EngineViewWidget/widget/EngineViewWidget.h"
 
-#include "gui/QtAdvancedDocking/docking/DockWidget.h"
 #include "gui/QtAdvancedDocking/docking/DockManager.h"
-
 
 #include <QCloseEvent>
 #include <QMenu>
@@ -31,7 +29,6 @@ namespace editor {
 				void RestoreSettings();
 
 				void closeEvent(QCloseEvent* event) override;
-				void contextMenuEvent(QContextMenuEvent* event) override;
 
 			private:
 				void InitEngine();

@@ -47,7 +47,7 @@ class CDockManager;
  * The dock widget tab is shown in the dock area title bar to switch between
  * tabbed dock widgets
  */
-class ADS_EXPORT CDockWidgetTab : public QFrame
+class CDockWidgetTab : public QFrame
 {
 	Q_OBJECT
 	Q_PROPERTY(bool activeTab READ isActiveTab WRITE setActiveTab NOTIFY activeTabChanged)

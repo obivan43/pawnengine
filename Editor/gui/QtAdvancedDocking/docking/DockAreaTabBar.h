@@ -50,7 +50,7 @@ class IFloatingWidget;
  * has not finished. And we need to remove a tab, if the user drags a
  * a dock widget out of a group of tabbed widgets
  */
-class ADS_EXPORT CDockAreaTabBar : public QScrollArea
+class CDockAreaTabBar : public QScrollArea
 {
 	Q_OBJECT
 private:

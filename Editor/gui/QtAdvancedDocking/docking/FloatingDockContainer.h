@@ -101,7 +101,7 @@ public:
  * another dock container.
  * Every floating window of the docking system is a FloatingDockContainer.
  */
-class ADS_EXPORT CFloatingDockContainer : public tFloatingWidgetBase, public IFloatingWidget
+class CFloatingDockContainer : public tFloatingWidgetBase, public IFloatingWidget
 {
 	Q_OBJECT
 private:

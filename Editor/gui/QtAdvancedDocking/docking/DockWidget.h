@@ -51,7 +51,7 @@ class CFloatingDockContainer;
  * The QDockWidget class provides a widget that can be docked inside a
  * CDockManager or floated as a top-level window on the desktop.
  */
-class ADS_EXPORT CDockWidget : public QFrame
+class CDockWidget : public QFrame
 {
     Q_OBJECT
 private:
