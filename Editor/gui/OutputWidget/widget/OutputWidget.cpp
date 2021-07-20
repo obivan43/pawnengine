@@ -1,6 +1,6 @@
 #include "OutputWidget.h"
 
-#include "Editor/gui/BottomPanel/widget/impl/OutputWidgetImpl.h"
+#include "Editor/gui/OutputWidget/widget/impl/OutputWidgetImpl.h"
 
 namespace editor {
 

@@ -1,6 +1,6 @@
 #include "HierarchyWidget.h"
 
-#include "Editor/gui/LeftPanel/widget/impl/HierarchyWidgetImpl.h"
+#include "Editor/gui/HierarchyWidget/widget/impl/HierarchyWidgetImpl.h"
 
 namespace editor {
 

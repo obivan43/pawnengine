@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{6BF0C4A8-8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gui", "gui", "{1741DF50-8041-4E21-BEED-2AF26BFC2EEB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LeftPanel", "Editor\gui\LeftPanel\LeftPanel.vcxproj", "{012E8E66-1B41-4C74-9255-89EED1D2FFAD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HierarchyWidget", "Editor\gui\HierarchyWidget\HierarchyWidget.vcxproj", "{012E8E66-1B41-4C74-9255-89EED1D2FFAD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BottomPanel", "Editor\gui\BottomPanel\BottomPanel.vcxproj", "{071216A2-E9AC-49E0-A60F-A3EED82FF5C4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OutputWidget", "Editor\gui\OutputWidget\OutputWidget.vcxproj", "{071216A2-E9AC-49E0-A60F-A3EED82FF5C4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RightPanel", "Editor\gui\RightPanel\RightPanel.vcxproj", "{0772E707-170E-4F4B-971E-38089BB728A0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InspectorWidget", "Editor\gui\InspectorWidget\InspectorWidget.vcxproj", "{0772E707-170E-4F4B-971E-38089BB728A0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CentralWidget", "Editor\gui\CentralWidget\CentralWidget.vcxproj", "{69A660AF-FACB-439B-814D-454EA2E25600}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineViewWidget", "Editor\gui\EngineViewWidget\EngineViewWidget.vcxproj", "{69A660AF-FACB-439B-814D-454EA2E25600}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PawnEngine", "Core\PawnEngine\PawnEngine.vcxproj", "{550DBB28-816C-4CC6-B90C-564891BD8C99}"
 EndProject

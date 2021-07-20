@@ -3,10 +3,10 @@
 #include "MainWindow.h"
 #include "EngineManager.h"
 
-#include "gui/BottomPanel/widget/OutputWidget.h"
-#include "gui/LeftPanel/widget/HierarchyWidget.h"
-#include "gui/RightPanel/widget/InspectorWidget.h"
-#include "gui/CentralWidget/widget/EngineViewWidget.h"
+#include "gui/OutputWidget/widget/OutputWidget.h"
+#include "gui/HierarchyWidget/widget/HierarchyWidget.h"
+#include "gui/InspectorWidget/widget/InspectorWidget.h"
+#include "gui/EngineViewWidget/widget/EngineViewWidget.h"
 
 #include "gui/QtAdvancedDocking/docking/DockWidget.h"
 #include "gui/QtAdvancedDocking/docking/DockManager.h"

@@ -2,7 +2,7 @@
 
 #include "OutputStream.h"
 
-#include "Editor/gui/BottomPanel/widget/OutputWidget.h"
+#include "Editor/gui/OutputWidget/widget/OutputWidget.h"
 
 #include <QtWidgets/QTextEdit>
 

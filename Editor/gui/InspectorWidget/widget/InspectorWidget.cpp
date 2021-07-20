@@ -1,6 +1,6 @@
 #include "InspectorWidget.h"
 
-#include "Editor/gui/RightPanel/widget/impl/InspectorWidgetImpl.h"
+#include "Editor/gui/InspectorWidget/widget/impl/InspectorWidgetImpl.h"
 
 namespace editor {
 

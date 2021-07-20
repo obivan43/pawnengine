@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Editor/gui/CentralWidget/widget/EngineViewWidget.h"
+#include "Editor/gui/EngineViewWidget/widget/EngineViewWidget.h"
 
 namespace editor {
 

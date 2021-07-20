@@ -1,6 +1,6 @@
 #include "EngineViewWidget.h"
 
-#include "Editor/gui/CentralWidget/widget/impl/EngineViewWidgetImpl.h"
+#include "Editor/gui/EngineViewWidget/widget/impl/EngineViewWidgetImpl.h"
 
 namespace editor {
 

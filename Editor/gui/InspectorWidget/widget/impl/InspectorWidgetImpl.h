@@ -4,7 +4,7 @@
 #include "TransformationComponentWidgetItem.h"
 #include "MeshComponentWidgetItem.h"
 
-#include "Editor/gui/RightPanel/widget/InspectorWidget.h"
+#include "Editor/gui/InspectorWidget/widget/InspectorWidget.h"
 
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QLineEdit>

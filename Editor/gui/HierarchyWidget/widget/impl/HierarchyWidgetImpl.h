@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Editor/gui/LeftPanel/widget/HierarchyWidget.h"
+#include "Editor/gui/HierarchyWidget/widget/HierarchyWidget.h"
 
 #include "PawnEngine/engine/GameEntity.h"
 #include "PawnEngine/engine/GameScene.h"

@@ -193,19 +193,19 @@ exit</Command>
     <ProjectReference Include="..\Core\PawnUtils\PawnUtils.vcxproj">
       <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
     </ProjectReference>
-    <ProjectReference Include="gui\BottomPanel\BottomPanel.vcxproj">
+    <ProjectReference Include="gui\OutputWidget\OutputWidget.vcxproj">
       <Project>{071216a2-e9ac-49e0-a60f-a3eed82ff5c4}</Project>
     </ProjectReference>
-    <ProjectReference Include="gui\CentralWidget\CentralWidget.vcxproj">
+    <ProjectReference Include="gui\EngineViewWidget\EngineViewWidget.vcxproj">
       <Project>{69a660af-facb-439b-814d-454ea2e25600}</Project>
     </ProjectReference>
-    <ProjectReference Include="gui\LeftPanel\LeftPanel.vcxproj">
+    <ProjectReference Include="gui\HierarchyWidget\HierarchyWidget.vcxproj">
       <Project>{012e8e66-1b41-4c74-9255-89eed1d2ffad}</Project>
     </ProjectReference>
     <ProjectReference Include="gui\QtAdvancedDocking\QtAdvancedDocking.vcxproj">
       <Project>{a62aad52-e086-4927-b15a-d9c010a72c4b}</Project>
     </ProjectReference>
-    <ProjectReference Include="gui\RightPanel\RightPanel.vcxproj">
+    <ProjectReference Include="gui\InspectorWidget\InspectorWidget.vcxproj">
       <Project>{0772e707-170e-4f4b-971e-38089bb728a0}</Project>
     </ProjectReference>
   </ItemGroup>
