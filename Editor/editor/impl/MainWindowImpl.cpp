@@ -2,6 +2,8 @@
 #include "PawnSystem/system/windows/SystemPC.h"
 #include "PawnSystem/system/windows/InputManagerWindows.h"
 
+#include "gui/QtAdvancedDocking/docking/DockAreaWidget.h"
+
 #include <QSettings>
 #include <string>
 #include <QMenu>
@@ -23,27 +25,30 @@ namespace editor {
 			resize(EditorDefaultWidth, EditorDefaultHeight);
 
 			m_DockMenu = menuBar()->addMenu("View");
-			m_DockMenu->setParent(this);
 
 			m_EngineView = EngineViewWidget::CreateImpl(this);
 			m_Output = OutputWidget::CreateImpl(this);
 			m_Inspector = InspectorWidget::CreateImpl(this);
 			m_Hierarchy = HierarchyWidget::CreateImpl(this);
 
+			ads::CDockManager::setConfigFlag(ads::CDockManager::OpaqueSplitterResize, true);
+			ads::CDockManager::setConfigFlag(ads::CDockManager::XmlCompressionEnabled, false);
+			ads::CDockManager::setConfigFlag(ads::CDockManager::FocusHighlighting, true);
+
 			m_DockManager = new ads::CDockManager(this);
 
-			ads::CDockWidget* EngineViewDockWidget = new ads::CDockWidget("Engine view", this);
+			ads::CDockWidget* EngineViewDockWidget = new ads::CDockWidget("Engine view");
 			EngineViewDockWidget->setWidget(m_EngineView);
 			m_EngineView->setMinimumSize(EngineViewWidth, EngineViewHeight);
 			EngineViewDockWidget->setMinimumSize(EngineViewWidth, EngineViewHeight);
 
-			ads::CDockWidget* OutputDockWidget = new ads::CDockWidget("Output", this);
+			ads::CDockWidget* OutputDockWidget = new ads::CDockWidget("Output");
 			OutputDockWidget->setWidget(m_Output);
 
-			ads::CDockWidget* InspectorDockWidget = new ads::CDockWidget("Inspector", this);
+			ads::CDockWidget* InspectorDockWidget = new ads::CDockWidget("Inspector");
 			InspectorDockWidget->setWidget(m_Inspector);
 
-			ads::CDockWidget* HierarchyDockWidget = new ads::CDockWidget("Hierarchy", this);
+			ads::CDockWidget* HierarchyDockWidget = new ads::CDockWidget("Hierarchy");
 			HierarchyDockWidget->setWidget(m_Hierarchy);
 
 			EngineViewDockWidget->setObjectName("EngineViewDockWidget");
@@ -56,7 +61,9 @@ namespace editor {
 			m_DockMenu->addAction(InspectorDockWidget->toggleViewAction());
 			m_DockMenu->addAction(HierarchyDockWidget->toggleViewAction());
 
-			m_DockManager->addDockWidget(ads::CenterDockWidgetArea, EngineViewDockWidget);
+			ads::CDockAreaWidget* centralDockArea = m_DockManager->setCentralWidget(EngineViewDockWidget);
+			centralDockArea->setAllowedAreas(ads::DockWidgetArea::OuterDockAreas);
+
 			m_DockManager->addDockWidget(ads::BottomDockWidgetArea, OutputDockWidget, EngineViewDockWidget->dockAreaWidget());
 			m_DockManager->addDockWidget(ads::RightDockWidgetArea, InspectorDockWidget, EngineViewDockWidget->dockAreaWidget());
 			m_DockManager->addDockWidget(ads::BottomDockWidgetArea, HierarchyDockWidget, InspectorDockWidget->dockAreaWidget());
