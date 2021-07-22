@@ -1,0 +1,2 @@
+ThirdParty/lib filter=lfs diff=lfs merge=lfs -text
+ThirdParty/lib/*.lib filter=lfs diff=lfs merge=lfs -text
