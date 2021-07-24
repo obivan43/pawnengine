@@ -4,6 +4,7 @@
 #include "PawnUtils/utils/logger/Logger.h"
 
 #include <QtCore>
+#include <QtConcurrent/QtConcurrent>
 #include <QtWidgets/QApplication>
 
 #ifdef PAWN_DIRECTX11
@@ -13,36 +14,29 @@
 
 #endif
 
+void GameThread(pawn::engine::Engine* engine) {
+	pawn::utils::Clock m_Clock;
+	m_Clock.Reset();
+
+	while (engine->GetEngineRunning()) {
+		m_Clock.Tick();
+
+		engine->Clear();
+		engine->OnInput();
+		engine->OnRender(m_Clock);
+	}
+}
+
 int main(int argc, char *argv[]) {
     pawn::utils::Logger::Init();
 
     QApplication app(argc, argv);
-	//QFile file(":/dark.qss");
-	//if (file.open(QFile::ReadOnly | QFile::Text)) {
-	//	QTextStream stream(&file);
-	//	app.setStyleSheet(stream.readAll());
-	//}
-
     app.installNativeEventFilter(new editor::impl::WindowsEventFilter());
 
-    editor::MainWindow* window = editor::MainWindow::CreateImpl();
-    window->show();
+	editor::MainWindow* window = editor::MainWindow::CreateImpl();
+	window->show();
 
-    pawn::utils::Clock m_Clock;
-    m_Clock.Reset();
+	QFuture<void> future = QtConcurrent::run(GameThread, window->GetEngine());
 
-    pawn::engine::Engine* engine = window->GetEngine();
-	while (window->Running) {
-        m_Clock.Tick();
-        engine->Clear();
-
-        app.processEvents();
-
-        engine->OnInput();
-        engine->OnUpdate(m_Clock);
-
-        engine->SwapBuffers();
-	}
-
-    app.exit();
+    return app.exec();
 }

@@ -18,16 +18,16 @@ namespace pawn {
 
 			public:
 				GameScene() = default;
-				GameScene(const GameScene & other) = delete;
-				GameScene(GameScene && other) noexcept = default;
+				GameScene(const GameScene& other) = delete;
+				GameScene(GameScene&& other) noexcept = default;
 
-				GameScene& operator=(const GameScene & other) = delete;
-				GameScene& operator=(GameScene && other) noexcept = delete;
+				GameScene& operator=(const GameScene& other) = delete;
+				GameScene& operator=(GameScene&& other) noexcept = delete;
 
-				GameEntity CreateEntity(const std::string & name = std::string());
+				GameEntity CreateEntity(const std::string& name = std::string());
 				void DeleteEntity(entt::entity entity);
 
-				void OnUpdate(utils::Clock & clock, std::shared_ptr<Renderer>&renderer);
+				void OnRender(utils::Clock& clock, std::shared_ptr<Renderer>&renderer);
 
 				entt::registry& GetRegistry() { return m_EnttRegistry; }
 

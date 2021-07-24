@@ -10,6 +10,7 @@ namespace pawn {
 	namespace engine {
 
 		void Engine::Init(HWND handle, uint32_t width, uint32_t height) {
+			m_IsEngineRunning = true;
 			m_Context = graphics::GraphicsContext::Create();
 			m_GraphicsAPI = graphics::GraphicsAPI::Create();
 
@@ -100,12 +101,17 @@ namespace pawn {
 #endif
 		}
 
-		void Engine::OnUpdate(utils::Clock& clock) {
-			m_Scene->OnUpdate(clock, m_Renderer);
+		void Engine::OnRender(utils::Clock& clock) {
+			m_Scene->OnRender(clock, m_Renderer);
+			m_Context->SwapBuffers();
 		}
 
-		void Engine::SwapBuffers() {
-			m_Context->SwapBuffers();
+		bool Engine::GetEngineRunning() const {
+			return m_IsEngineRunning;
+		}
+
+		void Engine::SetEngineRunning(bool state) {
+			m_IsEngineRunning = state;
 		}
 
 	}

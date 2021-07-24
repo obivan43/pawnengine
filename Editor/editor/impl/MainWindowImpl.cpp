@@ -78,7 +78,7 @@ namespace editor {
 		}
 
 		void MainWindowImpl::closeEvent(QCloseEvent* event) {
-			Running = false;
+			m_Engine->SetEngineRunning(false);
 
 			QSettings settings("Shulzhenko corp", "Pawnengine");
 

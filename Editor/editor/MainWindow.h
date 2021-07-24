@@ -18,9 +18,6 @@ namespace editor {
         protected:
             MainWindow(QWidget* parent);
 
-        public:
-            bool Running;
-
         protected:
             std::shared_ptr<pawn::engine::Engine> m_Engine;
     };

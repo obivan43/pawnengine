@@ -32,12 +32,14 @@ namespace pawn {
 				Engine& operator=(const Engine & other) = delete;
 				Engine& operator=(Engine && other) noexcept = delete;
 
+				bool GetEngineRunning() const;
+				void SetEngineRunning(bool state);
+
 				void Init(HWND handle, uint32_t width, uint32_t height);
 
 				void Clear();
 				void OnInput();
-				void OnUpdate(utils::Clock & clock);
-				void SwapBuffers();
+				void OnRender(utils::Clock & clock);
 
 				bool HasMeshByName(const std::string & name);
 				bool UploadMeshFromFile(const std::string & file);
@@ -56,6 +58,7 @@ namespace pawn {
 				std::shared_ptr<ScriptEngine>& GetScriptEngine() { return m_ScriptEngine; }
 
 			private:
+				bool m_IsEngineRunning;
 				std::shared_ptr<MeshManager> m_MeshManager;
 				std::shared_ptr<TextureManager> m_TextureManager;
 				std::shared_ptr<graphics::GraphicsContext> m_Context;

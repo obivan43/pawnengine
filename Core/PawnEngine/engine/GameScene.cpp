@@ -25,7 +25,7 @@ namespace pawn {
 			m_EnttRegistry.destroy(entity);
 		}
 
-		void GameScene::OnUpdate(utils::Clock& clock, std::shared_ptr<Renderer>& renderer) {
+		void GameScene::OnRender(utils::Clock& clock, std::shared_ptr<Renderer>& renderer) {
 			math::Camera* activeCamera{ nullptr };
 			glm::mat4 acitveCameraTransformation;
 			auto cameraGroup = m_EnttRegistry.view<TransformationComponent, CameraComponent>();
