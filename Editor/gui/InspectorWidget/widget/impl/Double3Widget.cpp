@@ -25,9 +25,9 @@ namespace editor {
 			m_Y->setMaximum(1000.0);
 			m_Z->setMaximum(1000.0);
 
-			m_X->setSingleStep(0.25);
-			m_Y->setSingleStep(0.25);
-			m_Z->setSingleStep(0.25);
+			m_X->setSingleStep(0.05);
+			m_Y->setSingleStep(0.05);
+			m_Z->setSingleStep(0.05);
 
 			m_X->setValue(static_cast<double>(m_ValueCache.x));
 			m_Y->setValue(static_cast<double>(m_ValueCache.y));

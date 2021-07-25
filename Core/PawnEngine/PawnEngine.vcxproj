@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="engine\components\CameraComponent.h" />
     <ClInclude Include="engine\components\MeshComponent.h" />
+    <ClInclude Include="engine\components\ScriptComponent.h" />
     <ClInclude Include="engine\components\TagComponent.h" />
     <ClInclude Include="engine\components\TransformationComponent.h" />
     <ClInclude Include="engine\Engine.h" />
@@ -26,6 +27,7 @@
     <ClInclude Include="engine\geometry\Scene.h" />
     <ClInclude Include="engine\MeshManager.h" />
     <ClInclude Include="engine\Renderer.h" />
+    <ClInclude Include="engine\scripts\registers\ClockScriptRegister.h" />
     <ClInclude Include="engine\scripts\registers\KeyboardManagerScriptRegister.h" />
     <ClInclude Include="engine\scripts\registers\LoggerScriptRegister.h" />
     <ClInclude Include="engine\scripts\registers\MouseManagerScriptRegister.h" />
@@ -50,6 +52,7 @@
   <ItemGroup>
     <ClCompile Include="engine\components\CameraComponent.cpp" />
     <ClCompile Include="engine\components\MeshComponent.cpp" />
+    <ClCompile Include="engine\components\ScriptComponent.cpp" />
     <ClCompile Include="engine\components\TagComponent.cpp" />
     <ClCompile Include="engine\components\TransformationComponent.cpp" />
     <ClCompile Include="engine\Engine.cpp" />
@@ -63,6 +66,7 @@
     <ClCompile Include="engine\geometry\Scene.cpp" />
     <ClCompile Include="engine\MeshManager.cpp" />
     <ClCompile Include="engine\Renderer.cpp" />
+    <ClCompile Include="engine\scripts\registers\ClockScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\registers\KeyboardManagerScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\registers\LoggerScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\registers\MouseManagerScriptRegister.cpp" />

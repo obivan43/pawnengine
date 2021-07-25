@@ -5,17 +5,15 @@ namespace pawn {
 
 	namespace math {
 
-		Camera::Camera() : m_Projection(nullptr) {
-			m_Projection = new glm::mat4(1.0f);
+		Camera::Camera() : m_Projection(1.0f) {
+			SetPerspective();
 		}
 
-		Camera::Camera(const glm::mat4& projection) : m_Projection(nullptr) {
-			m_Projection = new glm::mat4(1.0f);
+		Camera::Camera(const glm::mat4& projection) : m_Projection(projection) {
+			SetPerspective();
 		}
 
-		Camera::~Camera() {
-			delete m_Projection;
-		}
+		Camera::~Camera() {}
 
 		void Camera::SetOrthographic(
 			float left,
@@ -25,7 +23,7 @@ namespace pawn {
 			float near,
 			float far
 		) {
-			*m_Projection = glm::ortho(left, right, bottom, top, near, far);
+			m_Projection = glm::ortho(left, right, bottom, top, near, far);
 		}
 
 		void Camera::SetPerspective(
@@ -34,7 +32,7 @@ namespace pawn {
 			float zNear,
 			float zFar
 		) {
-			*m_Projection = glm::perspective(glm::radians(fov), aspectRatio, zNear, zFar);
+			m_Projection = glm::perspective(glm::radians(fov), aspectRatio, zNear, zFar);
 		}
 
 	}

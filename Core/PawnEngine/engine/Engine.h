@@ -5,6 +5,12 @@
 #include "Renderer.h"
 #include "TextureManager.h"
 
+#include "components\TagComponent.h"
+#include "components\CameraComponent.h"
+#include "components\TransformationComponent.h"
+#include "components\MeshComponent.h"
+#include "components\ScriptComponent.h"
+
 #include "PawnEngine/engine/scripts/ScriptEngine.h"
 
 #include "PawnGraphics/graphics/GraphicsContext.h"
@@ -39,6 +45,8 @@ namespace pawn {
 
 				void Clear();
 				void OnInput();
+				void OnCreate();
+				void OnUpdate(utils::Clock& clock);
 				void OnRender(utils::Clock & clock);
 
 				bool HasMeshByName(const std::string & name);

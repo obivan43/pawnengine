@@ -122,8 +122,9 @@ namespace editor {
 
 			pawn::engine::GameEntity camera{ scene->CreateEntity("Camera") };
 			pawn::engine::CameraComponent& cameraComponent{ camera.AddComponent<pawn::engine::CameraComponent>() };
-			cameraComponent.Camera.SetPerspective();
 			cameraComponent.IsActiveCamera = true;
+
+			pawn::engine::ScriptComponent& scriptComponent{ camera.AddComponent<pawn::engine::ScriptComponent>("res/assets/scripts/Camera.lua") };
 
 			pawn::engine::TransformationComponent& transformationComponent = camera.GetComponent<pawn::engine::TransformationComponent>();
 			transformationComponent.Position = glm::vec3(2.5f, 2.25f, 4.0f);

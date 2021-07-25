@@ -19,7 +19,7 @@ namespace pawn {
 
 				~Camera();
 
-				const glm::mat4& GetProjection() const { return *m_Projection; }
+				const glm::mat4& GetProjection() const { return m_Projection; }
 
 				void SetOrthographic(
 					float left = -16.0f,
@@ -38,7 +38,7 @@ namespace pawn {
 				);
 
 			private:
-				glm::mat4* m_Projection;
+				glm::mat4 m_Projection;
 		};
 
 	}

@@ -10,6 +10,7 @@ namespace pawn {
 	
 			public:
 				Clock();
+				Clock(const Clock& other) = default;
 
 				static float TimeStampToSeconds(int64_t timestamp);
 				static int64_t TimeStamp();

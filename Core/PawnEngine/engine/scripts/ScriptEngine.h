@@ -4,6 +4,8 @@
 
 #include "registers/RegisterScriptClass.h"
 
+#include "PawnUtils/utils/time/Clock.h"
+
 #include <vector>
 
 namespace pawn {
@@ -18,6 +20,8 @@ namespace pawn {
 				~ScriptEngine();
 
 				void Register(RegisterScriptClass* scriptClass);
+				void ExecOnCreate(const std::string& fileName);
+				void ExecOnUpdate(const std::string& fileName, utils::Clock& clock);
 
 			private:
 

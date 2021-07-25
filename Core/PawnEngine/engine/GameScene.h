@@ -3,7 +3,11 @@
 #include "PawnUtils/utils/entt/entt.h"
 #include "PawnUtils/utils/time/Clock.h"
 
+#include "PawnMath/math/Camera.h"
+
 #include <string>
+
+#include <glm.hpp>
 
 namespace pawn {
 
@@ -11,6 +15,7 @@ namespace pawn {
 
 		class GameEntity;
 		class Renderer;
+		class ScriptEngine;
 
 		class GameScene {
 
@@ -27,11 +32,18 @@ namespace pawn {
 				GameEntity CreateEntity(const std::string& name = std::string());
 				void DeleteEntity(entt::entity entity);
 
-				void OnRender(utils::Clock& clock, std::shared_ptr<Renderer>&renderer);
+				void OnCreate(std::shared_ptr<ScriptEngine>& scriptEngine);
+				void OnUpdate(utils::Clock& clock, std::shared_ptr<ScriptEngine>& scriptEngine);
+				void OnRender(utils::Clock& clock, std::shared_ptr<Renderer>& renderer);
 
 				entt::registry& GetRegistry() { return m_EnttRegistry; }
 
 			private:
+				void FindActiveCamera();
+
+			private:
+				math::Camera* m_ActiveCamera;
+				glm::mat4 m_ActiveCameraView;
 				entt::registry m_EnttRegistry;
 		};
 

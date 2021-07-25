@@ -215,6 +215,7 @@ exit</Command>
     <QtRcc Include="res\MainWindow.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\assets\scripts\Camera.lua" />
     <None Include="res\dark.qss" />
     <None Include="res\dark\branch_closed-on.svg" />
     <None Include="res\dark\branch_closed.svg" />

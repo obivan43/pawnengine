@@ -18,11 +18,13 @@ void GameThread(pawn::engine::Engine* engine) {
 	pawn::utils::Clock m_Clock;
 	m_Clock.Reset();
 
+	engine->OnCreate();
 	while (engine->GetEngineRunning()) {
 		m_Clock.Tick();
 
 		engine->Clear();
 		engine->OnInput();
+		engine->OnUpdate(m_Clock);
 		engine->OnRender(m_Clock);
 	}
 }

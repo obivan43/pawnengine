@@ -85,6 +85,12 @@
     <ClInclude Include="engine\TextureManager.h">
       <Filter>engine</Filter>
     </ClInclude>
+    <ClInclude Include="engine\scripts\registers\ClockScriptRegister.h">
+      <Filter>engine\scripts\registers</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\components\ScriptComponent.h">
+      <Filter>engine\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">
@@ -149,6 +155,12 @@
     </ClCompile>
     <ClCompile Include="engine\TextureManager.cpp">
       <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripts\registers\ClockScriptRegister.cpp">
+      <Filter>engine\scripts\registers</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\components\ScriptComponent.cpp">
+      <Filter>engine\components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

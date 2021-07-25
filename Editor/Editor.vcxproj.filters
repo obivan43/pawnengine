@@ -21,6 +21,12 @@
     <Filter Include="editor\impl">
       <UniqueIdentifier>{b8c09531-4b89-464d-8829-6acede4b41b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="res\assets">
+      <UniqueIdentifier>{ca001101-f9e8-495f-8c99-06d2c531695d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\assets\scripts">
+      <UniqueIdentifier>{35ec8061-68b7-4805-9963-c56563ec4f00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\light.qss">
@@ -283,6 +289,9 @@
     </None>
     <None Include="res\light\vsepartoolbars.svg">
       <Filter>res\light</Filter>
+    </None>
+    <None Include="res\assets\scripts\Camera.lua">
+      <Filter>res\assets\scripts</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
