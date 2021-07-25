@@ -2,6 +2,8 @@
 
 #include "PawnEngine/engine/GameEntity.h"
 
+#include "Editor/editor/impl/EngineManager.h"
+
 #include <QtWidgets/QWidget>
 #include <memory>
 
@@ -13,11 +15,16 @@ namespace editor {
 		public:
 			static HierarchyWidget* CreateImpl(QWidget* parent = Q_NULLPTR);
 
+			void SetEngineManager(impl::EngineManager* engineManager);
+
 		signals:
 			void SelectedEntityChanged(pawn::engine::GameEntity entity);
 
 		protected:
 			HierarchyWidget(QWidget* parent);
+
+		protected:
+			impl::EngineManager* m_EngineManager;
 	};
 
 }

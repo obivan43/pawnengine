@@ -14,6 +14,8 @@ namespace editor {
 			public:
 				EngineManager(pawn::engine::Engine* engine);
 
+				pawn::engine::Engine* GetEngine();
+
 			public slots:
 				void OnEntityMeshModified(pawn::engine::GameEntity entity);
 

@@ -74,6 +74,9 @@ namespace editor {
 			InitEngine();
 
 			m_EngineManager = new EngineManager(m_Engine.get());
+
+			m_Hierarchy->SetEngineManager(m_EngineManager);
+
 			connect(m_Inspector, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
 		}
 
@@ -114,13 +117,13 @@ namespace editor {
 
 			m_Engine->UploadMeshFromFile("res/assets/models/cube.obj");
 			m_Engine->UploadMeshFromFile("res/assets/models/sphere.obj");
+			m_Engine->UploadMeshFromFile("res/assets/models/cylinder.obj");
+			m_Engine->UploadMeshFromFile("res/assets/models/cone.obj");
+			m_Engine->UploadMeshFromFile("res/assets/models/torus.obj");
 
 			m_Engine->UploadTextureFromFile("res/assets/textures/brick.jpg");
 
-			pawn::engine::GameEntity entity{ scene->CreateEntity("Cube") };
-			entity.AddComponent<pawn::engine::MeshComponent>(m_Engine->GetMeshByName("cube.obj"), "cube.obj");
-
-			pawn::engine::GameEntity camera{ scene->CreateEntity("Camera") };
+			pawn::engine::GameEntity camera{ scene->CreateEntity("camera") };
 			pawn::engine::CameraComponent& cameraComponent{ camera.AddComponent<pawn::engine::CameraComponent>() };
 			cameraComponent.IsActiveCamera = true;
 

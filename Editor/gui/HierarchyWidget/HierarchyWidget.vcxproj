@@ -57,14 +57,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(SolutionDir)Core\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(SolutionDir)Core\;$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -83,7 +85,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(SolutionDir)Core\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(SolutionDir)Core\;$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>

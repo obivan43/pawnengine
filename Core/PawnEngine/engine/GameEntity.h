@@ -41,6 +41,10 @@ namespace pawn {
 					return m_Scene->m_EnttRegistry.emplace<Component>(m_EntityID, std::forward<Args>(args)...);
 				}
 
+				bool operator==(const GameEntity& other) {
+					return m_EntityID == other.m_EntityID;
+				}
+
 				operator entt::entity() const { return m_EntityID; }
 
 				entt::entity GetEntity() const { return m_EntityID; }

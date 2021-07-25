@@ -6,6 +6,10 @@ namespace editor {
 
 		EngineManager::EngineManager(pawn::engine::Engine* engine) : m_Engine(engine) {}
 
+		pawn::engine::Engine* EngineManager::GetEngine() {
+			return m_Engine;
+		}
+
 		void EngineManager::OnEntityMeshModified(pawn::engine::GameEntity entity) {
 			if (!entity.IsNull()) {
 				pawn::engine::MeshComponent& meshComponent = entity.GetComponent<pawn::engine::MeshComponent>();
