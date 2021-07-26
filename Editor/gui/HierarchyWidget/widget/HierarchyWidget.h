@@ -17,6 +17,8 @@ namespace editor {
 
 			void SetEngineManager(impl::EngineManager* engineManager);
 
+			impl::EngineManager* GetEngineManager();
+
 		signals:
 			void SelectedEntityChanged(pawn::engine::GameEntity entity);
 

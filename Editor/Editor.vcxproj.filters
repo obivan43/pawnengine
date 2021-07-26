@@ -11,9 +11,6 @@
     <Filter Include="res\dark">
       <UniqueIdentifier>{6d1176ea-8473-421d-a3f6-3d1948610335}</UniqueIdentifier>
     </Filter>
-    <Filter Include="res\light">
-      <UniqueIdentifier>{3c256e28-aa2e-41e8-8992-1c1d2563228b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="editor">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -29,9 +26,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\light.qss">
-      <Filter>res\light</Filter>
-    </None>
     <None Include="res\dark.qss">
       <Filter>res\dark</Filter>
     </None>
@@ -157,138 +151,6 @@
     </None>
     <None Include="res\dark\vsepartoolbars.svg">
       <Filter>res\dark</Filter>
-    </None>
-    <None Include="res\light\branch_closed.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\branch_closed-on.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\branch_open.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\branch_open-on.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\checkbox_checked.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\checkbox_checked_disabled.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\checkbox_checked-hover.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\checkbox_indeterminate.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\checkbox_indeterminate_disabled.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\checkbox_indeterminate-hover.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\checkbox_unchecked_disabled.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\checkbox_unchecked-hover.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\close.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\close-hover.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\close-pressed.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\down_arrow.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\down_arrow_disabled.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\down_arrow-hover.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\hmovetoolbar.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\hsepartoolbar.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\left_arrow.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\left_arrow_disabled.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\radio_checked.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\radio_checked_disabled.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\radio_checked-hover.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\radio_unchecked_disabled.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\radio_unchecked-hover.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\right_arrow.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\right_arrow_disabled.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\sizegrip.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\spinup_disabled.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\stylesheet-branch-end.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\stylesheet-branch-end-closed.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\stylesheet-branch-end-open.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\stylesheet-branch-more.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\stylesheet-vline.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\transparent.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\undock.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\undock-hover.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\up_arrow.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\up_arrow_disabled.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\up_arrow-hover.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\vmovetoolbar.svg">
-      <Filter>res\light</Filter>
-    </None>
-    <None Include="res\light\vsepartoolbars.svg">
-      <Filter>res\light</Filter>
     </None>
     <None Include="res\assets\scripts\Camera.lua">
       <Filter>res\assets\scripts</Filter>

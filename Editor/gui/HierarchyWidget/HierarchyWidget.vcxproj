@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="widget\impl\HierarchyWidgetContextMenu.cpp" />
     <ClCompile Include="widget\impl\HierarchyWidgetItem.cpp" />
     <ClCompile Include="widget\impl\HierarchyWidgetImpl.cpp" />
     <ClCompile Include="widget\HierarchyWidget.cpp" />
@@ -137,6 +138,7 @@
     <QtMoc Include="widget\HierarchyWidget.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="widget\impl\HierarchyWidgetContextMenu.h" />
     <ClInclude Include="widget\impl\HierarchyWidgetItem.h" />
     <QtMoc Include="widget\impl\HierarchyWidgetImpl.h" />
   </ItemGroup>

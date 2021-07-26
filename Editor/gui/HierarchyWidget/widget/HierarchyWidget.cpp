@@ -10,6 +10,10 @@ namespace editor {
 		m_EngineManager = engineManager;
 	}
 
+	impl::EngineManager* HierarchyWidget::GetEngineManager() {
+		return m_EngineManager;
+	}
+
 	HierarchyWidget* HierarchyWidget::CreateImpl(QWidget* parent) {
 		return new impl::HierarchyWidgetImpl(parent);
 	}
