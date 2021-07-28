@@ -8,6 +8,18 @@
     <Filter Include="widget\impl">
       <UniqueIdentifier>{f5abfc61-8e2a-4441-bf08-0bb0a574fe77}</UniqueIdentifier>
     </Filter>
+    <Filter Include="widget\impl\camera">
+      <UniqueIdentifier>{171d5e09-c3ec-4ded-aacb-803d3922bbc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget\impl\transformation">
+      <UniqueIdentifier>{aa7190bd-57c8-47dd-be06-379901983de1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget\impl\tag">
+      <UniqueIdentifier>{3fedfe6c-011e-418f-aa61-bccad65ae1a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="widget\impl\mesh">
+      <UniqueIdentifier>{de6a0dda-0a56-4fef-8c4e-8794540b3f4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="widget\InspectorWidget.cpp">
@@ -16,20 +28,26 @@
     <ClCompile Include="widget\impl\Double3Widget.cpp">
       <Filter>widget\impl</Filter>
     </ClCompile>
-    <ClCompile Include="widget\impl\MeshComponentWidgetItem.cpp">
-      <Filter>widget\impl</Filter>
-    </ClCompile>
     <ClCompile Include="widget\impl\InspectorWidgetImpl.cpp">
       <Filter>widget\impl</Filter>
     </ClCompile>
+    <ClCompile Include="widget\impl\CameraComponentWidget.cpp">
+      <Filter>widget\impl\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="widget\impl\CameraComponentWidgetItem.cpp">
+      <Filter>widget\impl\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="widget\impl\MeshComponentWidgetItem.cpp">
+      <Filter>widget\impl\mesh</Filter>
+    </ClCompile>
     <ClCompile Include="widget\impl\TagComponentWidgetItem.cpp">
-      <Filter>widget\impl</Filter>
+      <Filter>widget\impl\tag</Filter>
     </ClCompile>
     <ClCompile Include="widget\impl\TransformationComponentWidget.cpp">
-      <Filter>widget\impl</Filter>
+      <Filter>widget\impl\transformation</Filter>
     </ClCompile>
     <ClCompile Include="widget\impl\TransformationComponentWidgetItem.cpp">
-      <Filter>widget\impl</Filter>
+      <Filter>widget\impl\transformation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -39,20 +57,26 @@
     <QtMoc Include="widget\impl\Double3Widget.h">
       <Filter>widget\impl</Filter>
     </QtMoc>
-    <QtMoc Include="widget\impl\MeshComponentWidgetItem.h">
-      <Filter>widget\impl</Filter>
-    </QtMoc>
     <QtMoc Include="widget\impl\InspectorWidgetImpl.h">
       <Filter>widget\impl</Filter>
     </QtMoc>
-    <QtMoc Include="widget\impl\TransformationComponentWidget.h">
-      <Filter>widget\impl</Filter>
+    <QtMoc Include="widget\impl\CameraComponentWidget.h">
+      <Filter>widget\impl\camera</Filter>
     </QtMoc>
-    <QtMoc Include="widget\impl\TransformationComponentWidgetItem.h">
-      <Filter>widget\impl</Filter>
+    <QtMoc Include="widget\impl\CameraComponentWidgetItem.h">
+      <Filter>widget\impl\camera</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\MeshComponentWidgetItem.h">
+      <Filter>widget\impl\mesh</Filter>
     </QtMoc>
     <QtMoc Include="widget\impl\TagComponentWidgetItem.h">
-      <Filter>widget\impl</Filter>
+      <Filter>widget\impl\tag</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\TransformationComponentWidget.h">
+      <Filter>widget\impl\transformation</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\TransformationComponentWidgetItem.h">
+      <Filter>widget\impl\transformation</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

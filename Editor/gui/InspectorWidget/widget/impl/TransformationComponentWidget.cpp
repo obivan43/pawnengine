@@ -6,7 +6,12 @@ namespace editor {
 
 	namespace impl {
 
-		TransformationComponentWidget::TransformationComponentWidget(QWidget* parent) : QWidget(parent), m_Transformation(nullptr), m_Position(nullptr), m_Rotation(nullptr), m_Scale(nullptr) {
+		TransformationComponentWidget::TransformationComponentWidget(QWidget* parent)
+			: QWidget(parent)
+			, m_Transformation(nullptr)
+			, m_Position(nullptr)
+			, m_Rotation(nullptr)
+			, m_Scale(nullptr) {
 			QVBoxLayout* layout = new QVBoxLayout(this);
 
 			m_Position = new Double3Widget("Position", glm::vec3(0.0f), this);
@@ -22,7 +27,12 @@ namespace editor {
 			InitConnections();
 		}
 
-		TransformationComponentWidget::TransformationComponentWidget(pawn::engine::TransformationComponent* transformation, QWidget* parent) : QWidget(parent), m_Transformation(transformation), m_Position(nullptr), m_Rotation(nullptr), m_Scale(nullptr) {
+		TransformationComponentWidget::TransformationComponentWidget(pawn::engine::TransformationComponent* transformation, QWidget* parent)
+			: QWidget(parent)
+			, m_Transformation(transformation)
+			, m_Position(nullptr)
+			, m_Rotation(nullptr)
+			, m_Scale(nullptr) {
 			QVBoxLayout* layout = new QVBoxLayout(this);
 
 			m_Position = new Double3Widget("Position", m_Transformation->Position, this);
