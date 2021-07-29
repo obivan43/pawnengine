@@ -20,10 +20,10 @@ namespace pawn {
 			float right,
 			float bottom,
 			float top,
-			float near,
-			float far
+			float zNear,
+			float zFar
 		) {
-			m_Projection = glm::ortho(left, right, bottom, top, near, far);
+			m_Projection = glm::ortho(left, right, bottom, top, zNear, zFar);
 			m_Type = CameraType::Orthographic;
 		}
 

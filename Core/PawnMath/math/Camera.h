@@ -32,8 +32,8 @@ namespace pawn {
 					float right = 16.0f,
 					float bottom = -9.0f,
 					float top = 9.0f,
-					float near = 0.0f,
-					float far = 100.0f
+					float zNear = 0.0f,
+					float zFar = 100.0f
 				);
 
 				void SetPerspective(
