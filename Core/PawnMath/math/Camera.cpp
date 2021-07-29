@@ -24,6 +24,7 @@ namespace pawn {
 			float far
 		) {
 			m_Projection = glm::ortho(left, right, bottom, top, near, far);
+			m_Type = CameraType::Orthographic;
 		}
 
 		void Camera::SetPerspective(
@@ -33,6 +34,7 @@ namespace pawn {
 			float zFar
 		) {
 			m_Projection = glm::perspective(glm::radians(fov), aspectRatio, zNear, zFar);
+			m_Type = CameraType::Perspective;
 		}
 
 	}

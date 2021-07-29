@@ -20,6 +20,13 @@ namespace editor {
 			InitConnections();
 		}
 
+		void MeshComponentWidgetItem::SetEntity(pawn::engine::GameEntity* entity) {
+			m_Entity = entity; 
+			if (m_Entity && !m_Entity->IsNull() && m_Entity->HasComponent<pawn::engine::MeshComponent>()) {
+				m_MeshLineEdit->setText(m_Entity->GetComponent<pawn::engine::MeshComponent>().MeshName.c_str());
+			}
+		}
+
 		void MeshComponentWidgetItem::OnLineEditPress() {
 			QString& text{ m_MeshLineEdit->text() };
 

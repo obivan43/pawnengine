@@ -1152,7 +1152,7 @@ QDockWidget::float-button
 {
     border: 0.1ex solid transparent;
     border-radius: 0.2ex;
-    background: transparent;
+    background: #FFC0CB;
 }
 
 QDockWidget::float-button
@@ -1601,3 +1601,102 @@ QDoubleSpinBox::down-arrow:off
 {
    border-image: url(:/dark/down_arrow_disabled.svg);
 }
+
+/*
+
+stylesheet for qt advanced widget
+
+ads--CDockWidgetTab {
+	background: #232629;
+	border-color: #232629;
+	border-style: solid;
+	border-width: 0 1px 0 0;
+	padding: 0 0px;
+}
+
+ads--CDockContainerWidget {
+	background: #232629;
+}
+
+ads--CDockContainerWidget ads--CDockSplitter::handle {
+	background: #232629;
+}
+
+ads--CDockAreaWidget {
+	background: #232629;
+	border: 0px;
+}
+
+ads--CDockWidgetTab[activeTab="true"] {
+	background: #232629;
+}
+
+ads--CDockWidgetTab QLabel {
+	color: #232629;
+}
+
+ads--CDockWidgetTab[activeTab="true"] QLabel {
+	color: #232629;
+}
+
+ads--CDockWidget {
+	background: #232629;
+	border-color: #232629;
+	border-style: solid;
+	border-width: 1px 0 0 0;
+}
+
+ads--CTitleBarButton {
+	padding: 0px 0px;
+}*/
+
+
+/*
+
+test
+
+ads--CDockContainerWidget {
+	background: palette(dark);
+}
+
+ads--CDockContainerWidget ads--CDockSplitter::handle {
+	background: palette(dark);
+}
+
+ads--CDockAreaWidget {
+	background: #AE3450;
+	border: 1px solid #AE3450;
+}
+
+ads--CDockWidgetTab {
+	background: #AE3450;
+	border-color: #AE3450;
+	border-style: solid;
+	border-width: 0 1px 0 0;
+	padding: 0 0px;
+}
+
+ads--CDockWidgetTab[activeTab="true"] {
+	background: #AE3450;
+}
+
+ads--CDockWidgetTab QLabel {
+	color: palette(dark);
+}
+
+ads--CDockWidgetTab[activeTab="true"] QLabel {
+	color: palette(foreground);
+}
+
+ads--CDockWidget {
+	background: #9ACD32;
+	border-color: #9ACD32;
+	border-style: solid;
+	border-width: 1px 0 0 0;
+}
+
+ads--CTitleBarButton {
+	padding: 0px 0px;
+}
+
+*/

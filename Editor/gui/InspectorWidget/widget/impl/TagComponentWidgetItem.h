@@ -15,7 +15,7 @@ namespace editor {
 			public:
 				TagComponentWidgetItem(QTreeWidget* parent);
 
-				void SetEntity(pawn::engine::GameEntity* entity) { m_Entity = entity; }
+				void SetEntity(pawn::engine::GameEntity* entity);
 
 				QLineEdit* GetWidget() { return m_TagLineEdit; }
 				QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }

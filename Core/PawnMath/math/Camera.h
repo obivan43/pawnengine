@@ -6,6 +6,11 @@ namespace pawn {
 
 	namespace math {
 
+		enum CameraType {
+			Perspective,
+			Orthographic
+		};
+
 		class Camera {
 
 			public:
@@ -19,6 +24,7 @@ namespace pawn {
 
 				~Camera();
 
+				CameraType GetType() const { return m_Type; }
 				const glm::mat4& GetProjection() const { return m_Projection; }
 
 				void SetOrthographic(
@@ -39,6 +45,7 @@ namespace pawn {
 
 			private:
 				glm::mat4 m_Projection;
+				CameraType m_Type;
 		};
 
 	}

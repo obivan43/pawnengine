@@ -16,7 +16,6 @@ namespace editor {
 			m_Z = new QDoubleSpinBox(this);
 
 			m_Label->setMinimumWidth(80);
-			m_Label->setAlignment(Qt::AlignCenter);
 
 			m_X->setMinimum(-1000.0);
 			m_Y->setMinimum(-1000.0);

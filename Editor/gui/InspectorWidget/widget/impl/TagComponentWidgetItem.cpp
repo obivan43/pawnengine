@@ -20,6 +20,13 @@ namespace editor {
 			InitConnections();
 		}
 
+		void TagComponentWidgetItem::SetEntity(pawn::engine::GameEntity* entity) {
+			m_Entity = entity;
+			if (m_Entity && !m_Entity->IsNull() && m_Entity->HasComponent<pawn::engine::TagComponent>()) {
+				m_TagLineEdit->setText(m_Entity->GetComponent<pawn::engine::TagComponent>().Tag.c_str());
+			}
+		}
+
 		void TagComponentWidgetItem::OnLineEditPress() {
 			QString& text{ m_TagLineEdit->text() };
 

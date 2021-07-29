@@ -19,7 +19,7 @@ namespace editor {
 		void CameraComponentWidgetItem::SetEntity(pawn::engine::GameEntity* entity) {
 			m_Entity = entity; 
 			if (m_Entity && !m_Entity->IsNull() && m_Entity->HasComponent<pawn::engine::CameraComponent>()) {
-
+				m_CameraComponentWidget->SetCamera(&m_Entity->GetComponent<pawn::engine::CameraComponent>());
 			}
 		}
 

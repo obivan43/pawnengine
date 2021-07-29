@@ -1,5 +1,7 @@
 #include "InspectorWidgetImpl.h"
 
+#include "CameraComponentWidget.h"
+
 #include "PawnEngine/engine/components/TagComponent.h"
 #include "PawnEngine/engine/components/MeshComponent.h"
 
@@ -23,6 +25,7 @@ namespace editor {
 			InitTagComponent();
 			InitTransformationComponent();
 			InitMeshComponent();
+			InitCameraComponent();
 			InitConnections();
 		}
 
@@ -50,38 +53,39 @@ namespace editor {
 			m_InspectorPanel->setItemWidget(m_MeshComponentWidgetItem->GetWrapper(), 0, m_MeshComponentWidgetItem->GetWidget());
 		}
 
+		void InspectorWidgetImpl::InitCameraComponent() {
+			m_CameraComponentWidgetItem = new CameraComponentWidgetItem(m_InspectorPanel);
+			m_CameraComponentWidgetItem->setHidden(true);
+
+			m_InspectorPanel->addTopLevelItem(m_CameraComponentWidgetItem);
+			m_InspectorPanel->setItemWidget(m_CameraComponentWidgetItem->GetWrapper(), 0, m_CameraComponentWidgetItem->GetWidget());
+		}
+
 		void InspectorWidgetImpl::OnSelectedEntityChanged(pawn::engine::GameEntity entity) {
 			m_SelectedEntity = entity;
 			m_TagComponentInspectorWidget->SetEntity(&m_SelectedEntity);
 			m_TransformationComponentInspectorWidget->SetEntity(&m_SelectedEntity);
 			m_MeshComponentWidgetItem->SetEntity(&m_SelectedEntity);
+			m_CameraComponentWidgetItem->SetEntity(&m_SelectedEntity);
 			RefreshPanel();
 		}
 
 		void InspectorWidgetImpl::RefreshPanel() {
 			if (!m_SelectedEntity.IsNull()) {
-				pawn::engine::TagComponent& tagComponent{ m_SelectedEntity.GetComponent<pawn::engine::TagComponent>() };
-
-				QLineEdit* tagLineEdit{ m_TagComponentInspectorWidget->GetWidget() };
-				tagLineEdit->setText(tagComponent.Tag.c_str());
-
 				m_TagComponentInspectorWidget->setHidden(false);
 				m_TransformationComponentInspectorWidget->setHidden(false);
 
 				bool IsMeshComponentExitst{ m_SelectedEntity.HasComponent<pawn::engine::MeshComponent>() };
-				if (IsMeshComponentExitst) {
-					pawn::engine::MeshComponent& meshComponent{ m_SelectedEntity.GetComponent<pawn::engine::MeshComponent>() };
-
-					QLineEdit* meshLineEdit{ m_MeshComponentWidgetItem->GetWidget() };
-					meshLineEdit->setText(meshComponent.MeshName.c_str());
-				}
-
 				m_MeshComponentWidgetItem->setHidden(!IsMeshComponentExitst);
+
+				bool IsCameraComponentExitst{ m_SelectedEntity.HasComponent<pawn::engine::CameraComponent>() };
+				m_CameraComponentWidgetItem->setHidden(!IsCameraComponentExitst);
 			}
 			else {
 				m_TagComponentInspectorWidget->setHidden(true);
 				m_TransformationComponentInspectorWidget->setHidden(true);
 				m_MeshComponentWidgetItem->setHidden(true);
+				m_CameraComponentWidgetItem->setHidden(true);
 			}
 		}
 

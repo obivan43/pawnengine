@@ -3,6 +3,7 @@
 #include "TagComponentWidgetItem.h"
 #include "TransformationComponentWidgetItem.h"
 #include "MeshComponentWidgetItem.h"
+#include "CameraComponentWidgetItem.h"
 
 #include "Editor/gui/InspectorWidget/widget/InspectorWidget.h"
 
@@ -26,6 +27,7 @@ namespace editor {
 				void InitTagComponent();
 				void InitTransformationComponent();
 				void InitMeshComponent();
+				void InitCameraComponent();
 				void InitConnections();
 
 			public slots:
@@ -40,6 +42,7 @@ namespace editor {
 				TagComponentWidgetItem* m_TagComponentInspectorWidget;
 				TransformationComponentWidgetItem* m_TransformationComponentInspectorWidget;
 				MeshComponentWidgetItem* m_MeshComponentWidgetItem;
+				CameraComponentWidgetItem* m_CameraComponentWidgetItem;
 
 				pawn::engine::GameEntity m_SelectedEntity;
 		};

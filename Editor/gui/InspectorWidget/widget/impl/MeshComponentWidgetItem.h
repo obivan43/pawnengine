@@ -15,7 +15,7 @@ namespace editor {
 			public:
 				MeshComponentWidgetItem(QTreeWidget* parent);
 
-				void SetEntity(pawn::engine::GameEntity* entity) { m_Entity = entity; }
+				void SetEntity(pawn::engine::GameEntity* entity);
 
 				QLineEdit* GetWidget() { return m_MeshLineEdit; }
 				QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
