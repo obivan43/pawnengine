@@ -49,6 +49,9 @@
     <ClCompile Include="widget\impl\TransformationComponentWidgetItem.cpp">
       <Filter>widget\impl\transformation</Filter>
     </ClCompile>
+    <ClCompile Include="widget\impl\TagComponentWidget.cpp">
+      <Filter>widget\impl\tag</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="widget\InspectorWidget.h">
@@ -77,6 +80,9 @@
     </QtMoc>
     <QtMoc Include="widget\impl\TransformationComponentWidgetItem.h">
       <Filter>widget\impl\transformation</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\TagComponentWidget.h">
+      <Filter>widget\impl\tag</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

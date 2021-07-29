@@ -132,6 +132,7 @@
     <ClCompile Include="widget\impl\Double3Widget.cpp" />
     <ClCompile Include="widget\impl\MeshComponentWidgetItem.cpp" />
     <ClCompile Include="widget\impl\InspectorWidgetImpl.cpp" />
+    <ClCompile Include="widget\impl\TagComponentWidget.cpp" />
     <ClCompile Include="widget\impl\TagComponentWidgetItem.cpp" />
     <ClCompile Include="widget\impl\TransformationComponentWidget.cpp" />
     <ClCompile Include="widget\impl\TransformationComponentWidgetItem.cpp" />
@@ -172,6 +173,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="widget\impl\CameraComponentWidget.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="widget\impl\TagComponentWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
