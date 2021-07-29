@@ -25,6 +25,7 @@ namespace editor {
 			m_ContextMenu = new QMenu("Context menu", parent);
 			m_CreateEmptyEntity = new QAction("Create empty", m_ContextMenu);
 			m_DeleteEntity = new QAction("Delete", m_ContextMenu);
+			m_CreateCamera = new QAction("Camera", m_ContextMenu);
 
 			m_Create3DObject = new QMenu("3D Object", m_ContextMenu);
 			m_CreateCube = new QAction("Cube", m_ContextMenu);
@@ -43,6 +44,7 @@ namespace editor {
 			m_ContextMenu->addSeparator();
 			m_ContextMenu->addAction(m_CreateEmptyEntity);
 			m_ContextMenu->addMenu(m_Create3DObject);
+			m_ContextMenu->addAction(m_CreateCamera);
 
 			InitConnections();
 		}
@@ -57,8 +59,7 @@ namespace editor {
 
 		void HierarchyWidgetContextMenu::CreateEmptyEntity() {
 			std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
-
-			if (m_HierarchyWidget && scene) {
+			if (scene) {
 				pawn::engine::GameEntity entity = scene->CreateEntity();
 
 				m_HierarchyWidget->SetSelectedEntity(entity);
@@ -71,7 +72,7 @@ namespace editor {
 			std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
 			EngineManager* manager = m_HierarchyWidget->GetEngineManager();
 
-			if (m_HierarchyWidget && scene) {
+			if (scene) {
 				pawn::engine::GameEntity entity{ scene->CreateEntity(objectName) };
 				entity.AddComponent<pawn::engine::MeshComponent>(
 					manager->GetEngine()->GetMeshByName(objectName + ".obj"),
@@ -119,11 +120,23 @@ namespace editor {
 			m_HierarchyWidget->RefreshPanel();
 		}
 
+		void HierarchyWidgetContextMenu::CreateCamera() {
+			std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
+
+			if (scene) {
+				pawn::engine::GameEntity entity{ scene->CreateEntity("camera") };
+				entity.AddComponent<pawn::engine::CameraComponent>();
+
+				m_HierarchyWidget->SetSelectedEntity(entity);
+				m_HierarchyWidget->RefreshPanel();
+			}
+		}
+
 		void HierarchyWidgetContextMenu::DeleteEntity() {
 			std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
 			pawn::engine::GameEntity selectedEntity = m_HierarchyWidget->GetSelectedEntity();
 
-			if (m_HierarchyWidget && !selectedEntity.IsNull() && scene) {
+			if (!selectedEntity.IsNull() && scene) {
 				scene->DeleteEntity(selectedEntity.GetEntity());
 
 				m_HierarchyWidget->SetSelectedEntity(pawn::engine::GameEntity());
@@ -179,6 +192,13 @@ namespace editor {
 				SIGNAL(triggered()),
 				this,
 				SLOT(DeleteEntity())
+			);
+
+			connect(
+				m_CreateCamera,
+				SIGNAL(triggered()),
+				this,
+				SLOT(CreateCamera())
 			);
 		}
 

@@ -35,6 +35,7 @@ namespace editor {
 				void CreateCone();
 				void CreateTorus();
 				void CreateCylinder();
+				void CreateCamera();
 
 				void DeleteEntity();
 
@@ -44,6 +45,7 @@ namespace editor {
 				QMenu* m_ContextMenu;
 				QAction* m_CreateEmptyEntity;
 				QAction* m_DeleteEntity;
+				QAction* m_CreateCamera;
 
 				QMenu* m_Create3DObject;
 				QAction* m_CreateCube;
