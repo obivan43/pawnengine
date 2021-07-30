@@ -2,8 +2,9 @@
 
 #include "PawnEngine/engine/GameEntity.h"
 
+#include "MeshComponentWidget.h"
+
 #include <QtWidgets/QTreeWidgetItem>
-#include <QtWidgets/QLineEdit>
 
 namespace editor {
 
@@ -17,20 +18,17 @@ namespace editor {
 
 				void SetEntity(pawn::engine::GameEntity* entity);
 
-				QLineEdit* GetWidget() { return m_MeshLineEdit; }
+				MeshComponentWidget* GetWidget() { return m_MeshComponentWidget; }
 				QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
 
 			private:
 				void InitConnections();
 
-			public slots:
-				void OnLineEditPress();
-
 			signals:
 				void EntityMeshModified(pawn::engine::GameEntity entity);
 
 			private:
-				QLineEdit* m_MeshLineEdit;
+				MeshComponentWidget* m_MeshComponentWidget;
 				QTreeWidgetItem* m_WidgetWrapper;
 				pawn::engine::GameEntity* m_Entity;
 		};

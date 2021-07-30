@@ -52,6 +52,9 @@
     <ClCompile Include="widget\impl\TagComponentWidget.cpp">
       <Filter>widget\impl\tag</Filter>
     </ClCompile>
+    <ClCompile Include="widget\impl\MeshComponentWidget.cpp">
+      <Filter>widget\impl\mesh</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="widget\InspectorWidget.h">
@@ -83,6 +86,9 @@
     </QtMoc>
     <QtMoc Include="widget\impl\TagComponentWidget.h">
       <Filter>widget\impl\tag</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\MeshComponentWidget.h">
+      <Filter>widget\impl\mesh</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

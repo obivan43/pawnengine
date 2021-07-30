@@ -98,7 +98,6 @@ namespace editor {
 				Qt::QueuedConnection
 			);
 
-			qRegisterMetaType<pawn::engine::GameEntity>("pawn::engine::GameEntity");
 			connect(
 				m_MeshComponentWidgetItem,
 				SIGNAL(EntityMeshModified(pawn::engine::GameEntity)),

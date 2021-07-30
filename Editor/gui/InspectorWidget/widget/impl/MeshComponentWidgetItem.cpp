@@ -8,11 +8,11 @@ namespace editor {
 
 		MeshComponentWidgetItem::MeshComponentWidgetItem(QTreeWidget* parent)
 			: QTreeWidgetItem(parent)
-			, m_MeshLineEdit(nullptr)
+			, m_MeshComponentWidget(nullptr)
 			, m_WidgetWrapper(nullptr)
 			, m_Entity(nullptr) {
 			m_WidgetWrapper = new QTreeWidgetItem(this);
-			m_MeshLineEdit = new QLineEdit(parent);
+			m_MeshComponentWidget = new MeshComponentWidget(parent);
 
 			setText(0, "Mesh");
 			addChild(m_WidgetWrapper);
@@ -23,27 +23,19 @@ namespace editor {
 		void MeshComponentWidgetItem::SetEntity(pawn::engine::GameEntity* entity) {
 			m_Entity = entity; 
 			if (m_Entity && !m_Entity->IsNull() && m_Entity->HasComponent<pawn::engine::MeshComponent>()) {
-				m_MeshLineEdit->setText(m_Entity->GetComponent<pawn::engine::MeshComponent>().MeshName.c_str());
+				m_MeshComponentWidget->SetEntity(entity);
+				m_MeshComponentWidget->SetMesh(&m_Entity->GetComponent<pawn::engine::MeshComponent>());
 			}
-		}
-
-		void MeshComponentWidgetItem::OnLineEditPress() {
-			QString& text{ m_MeshLineEdit->text() };
-
-			if (m_Entity && !m_Entity->IsNull()) {
-				std::string& name{ m_Entity->GetComponent<pawn::engine::MeshComponent>().MeshName };
-				name = text.toLocal8Bit().constData();
-			}
-
-			emit EntityMeshModified(*m_Entity);
-			m_MeshLineEdit->clearFocus();
 		}
 
 		void MeshComponentWidgetItem::InitConnections() {
+			qRegisterMetaType<pawn::engine::GameEntity>("pawn::engine::GameEntity");
 			connect(
-				m_MeshLineEdit,
-				SIGNAL(returnPressed()),
-				SLOT(OnLineEditPress())
+				m_MeshComponentWidget,
+				SIGNAL(MeshModified(pawn::engine::GameEntity)),
+				this,
+				SIGNAL(EntityMeshModified(pawn::engine::GameEntity)),
+				Qt::QueuedConnection
 			);
 		}
 
