@@ -91,6 +91,12 @@
     <ClInclude Include="engine\components\ScriptComponent.h">
       <Filter>engine\components</Filter>
     </ClInclude>
+    <ClInclude Include="engine\scripts\registers\Vec3ScriptRegister.h">
+      <Filter>engine\scripts\registers</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\scripts\registers\TransformationComponentScriptRegister.h">
+      <Filter>engine\scripts\registers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">
@@ -161,6 +167,12 @@
     </ClCompile>
     <ClCompile Include="engine\components\ScriptComponent.cpp">
       <Filter>engine\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripts\registers\Vec3ScriptRegister.cpp">
+      <Filter>engine\scripts\registers</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripts\registers\TransformationComponentScriptRegister.cpp">
+      <Filter>engine\scripts\registers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

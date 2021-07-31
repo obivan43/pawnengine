@@ -4,6 +4,8 @@
 #include "registers/MouseManagerScriptRegister.h"
 #include "registers/KeyboardManagerScriptRegister.h"
 #include "registers/ClockScriptRegister.h"
+#include "registers/Vec3ScriptRegister.h"
+#include "registers/TransformationComponentScriptRegister.h"
 
 #include "PawnSystem/system/input/KeyboardManager.h"
 
@@ -25,6 +27,8 @@ namespace pawn {
 			Register(new MouseManagerScriptRegister());
 			Register(new KeyboardManagerScriptRegister());
 			Register(new ClockScriptRegister());
+			Register(new Vec3ScriptRegister());
+			Register(new TransformationComponentScriptRegister());
 
 			m_LuaState.script("logger_info('Script engine initialized')");
 		}

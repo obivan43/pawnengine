@@ -155,6 +155,9 @@
     <None Include="res\assets\scripts\Camera.lua">
       <Filter>res\assets\scripts</Filter>
     </None>
+    <None Include="res\assets\scripts\CameraSecond.lua">
+      <Filter>res\assets\scripts</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="res\assets\shaders\directx_shaders\PixelShader.hlsl">

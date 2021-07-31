@@ -27,6 +27,14 @@ namespace pawn {
 			glm::vec3 Position{ 0.0f, 0.0f, 0.0f };
 			glm::vec3 Rotation{ 0.0f, 0.0f, 0.0f };
 			glm::vec3 Scale{ 1.0f, 1.0f, 1.0f };
+
+			glm::vec3 GetPosition() const { return Position; }
+			glm::vec3 GetRotation() const { return Rotation; }
+			glm::vec3 GetScale() const { return Scale; }
+
+			void SetPosition(glm::vec3 position) { Position = position; }
+			void SetRotation(glm::vec3 rotation) { Rotation = rotation; }
+			void SetScale(glm::vec3 scale) { Scale = scale; }
 		};
 
 	}

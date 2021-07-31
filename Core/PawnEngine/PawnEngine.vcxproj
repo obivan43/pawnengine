@@ -32,6 +32,8 @@
     <ClInclude Include="engine\scripts\registers\LoggerScriptRegister.h" />
     <ClInclude Include="engine\scripts\registers\MouseManagerScriptRegister.h" />
     <ClInclude Include="engine\scripts\registers\RegisterScriptClass.h" />
+    <ClInclude Include="engine\scripts\registers\TransformationComponentScriptRegister.h" />
+    <ClInclude Include="engine\scripts\registers\Vec3ScriptRegister.h" />
     <ClInclude Include="engine\scripts\ScriptEngine.h" />
     <ClInclude Include="engine\TextureManager.h" />
   </ItemGroup>
@@ -70,7 +72,9 @@
     <ClCompile Include="engine\scripts\registers\KeyboardManagerScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\registers\LoggerScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\registers\MouseManagerScriptRegister.cpp" />
+    <ClCompile Include="engine\scripts\registers\TransformationComponentScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\registers\RegisterScriptClass.cpp" />
+    <ClCompile Include="engine\scripts\registers\Vec3ScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\ScriptEngine.cpp" />
     <ClCompile Include="engine\TextureManager.cpp" />
   </ItemGroup>
