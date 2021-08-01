@@ -34,7 +34,7 @@ namespace pawn {
 
 }
 
-#ifdef LOG_ENABLED
+#ifdef PAWN_LOG_ENABLED
 
 #define CONSOLE_TRACE(...)	pawn::utils::Logger::GetLogger()->trace(__VA_ARGS__);
 #define CONSOLE_INFO(...)	pawn::utils::Logger::GetLogger()->info(__VA_ARGS__);

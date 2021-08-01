@@ -73,7 +73,7 @@ namespace pawn {
 			system::MouseManager::Update();
 			system::KeyboardManager::Update();
 
-#ifdef TRACE_MOUSE_INPUT
+#ifdef PAWN_TRACE_MOUSE_INPUT
 			if (system::MouseManager::ButtonPressed(system::MouseButton::LeftButton)) {
 				CONSOLE_TRACE("LEFT BUTTON PRESS")
 			}

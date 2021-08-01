@@ -8,6 +8,7 @@ extern "C" {
 
 	void SetGameEngineWindowHWND(HWND handle);
 	HWND GetGameEngineWindowHWND();
+	void CreateConsoleOutput();
 
 }
 

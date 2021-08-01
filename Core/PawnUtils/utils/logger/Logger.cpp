@@ -20,7 +20,7 @@ namespace pawn {
 			dist_sink->add_sink(ostream_sink);
 
 			m_Logger = std::make_shared<spdlog::logger>("pawn", dist_sink);
-#ifdef TRACE_LOGGER_LEVEL
+#ifdef PAWN_TRACE_LOGGER_LEVEL
 			m_Logger->set_level(spdlog::level::trace);
 #endif
 
@@ -28,23 +28,33 @@ namespace pawn {
 		}
 
 		void LuaTrace(const char* str) {
+#ifdef PAWN_LOG_ENABLED
 			pawn::utils::Logger::GetLuaLogger()->trace(str);
+#endif
 		}
 
 		void LuaInfo(const char* str) {
+#ifdef PAWN_LOG_ENABLED
 			pawn::utils::Logger::GetLuaLogger()->info(str);
+#endif
 		}
 
 		void LuaWarning(const char* str) {
+#ifdef PAWN_LOG_ENABLED
 			pawn::utils::Logger::GetLuaLogger()->warn(str);
+#endif
 		}
 
 		void LuaError(const char* str) {
+#ifdef PAWN_LOG_ENABLED
 			pawn::utils::Logger::GetLuaLogger()->error(str);
+#endif
 		}
 
 		void LuaDebug(const char* str) {
+#ifdef PAWN_LOG_ENABLED
 			pawn::utils::Logger::GetLuaLogger()->debug(str);
+#endif
 		}
 
 	}

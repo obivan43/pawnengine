@@ -3,6 +3,8 @@
 
 #include "PawnUtils/utils/logger/Logger.h"
 
+#include "PawnSystem/system/windows/SystemPC.h"
+
 #include <QtCore>
 #include <QtConcurrent/QtConcurrent>
 #include <QtWidgets/QApplication>
@@ -30,6 +32,12 @@ void GameThread(pawn::engine::Engine* engine) {
 }
 
 int main(int argc, char *argv[]) {
+#ifdef _WIN32
+#ifdef PAWN_CONSOLE_OUTPUT
+	CreateConsoleOutput();
+#endif
+#endif
+
     pawn::utils::Logger::Init();
 
     QApplication app(argc, argv);
