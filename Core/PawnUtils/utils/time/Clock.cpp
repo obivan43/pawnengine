@@ -39,6 +39,10 @@ namespace pawn {
 			return static_cast<float>(m_DeltaTime);
 		}
 
+		float Clock::PrevTime() const {
+			return static_cast<float>(m_PrevTime);
+		}
+
 		float Clock::TotalTime() const {
 			if (m_Stopped) {
 				return static_cast<float>(

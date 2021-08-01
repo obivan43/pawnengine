@@ -9,6 +9,9 @@
 #include <QtConcurrent/QtConcurrent>
 #include <QtWidgets/QApplication>
 
+#include <chrono>
+#include <thread>
+
 #ifdef PAWN_DIRECTX11
 
 #pragma comment(lib, "d3d11.lib")
@@ -20,14 +23,21 @@ void GameThread(pawn::engine::Engine* engine) {
 	pawn::utils::Clock m_Clock;
 	m_Clock.Reset();
 
+	auto next_frame = std::chrono::steady_clock::now();
+	const int32_t fpsLock = 144;
+
 	engine->OnCreate();
 	while (engine->GetEngineRunning()) {
+		next_frame += std::chrono::milliseconds(1000 / fpsLock);
+
 		m_Clock.Tick();
 
 		engine->Clear();
 		engine->OnInput();
 		engine->OnUpdate(m_Clock);
 		engine->OnRender(m_Clock);
+
+		std::this_thread::sleep_until(next_frame);
 	}
 }
 

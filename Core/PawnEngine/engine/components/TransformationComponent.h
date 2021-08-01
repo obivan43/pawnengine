@@ -24,6 +24,29 @@ namespace pawn {
 				return glm::translate(glm::mat4(1.0f), Position) * rotation * glm::scale(glm::mat4(1.0f), Scale);
 			}
 
+			glm::vec3 GetViewUp() {
+				glm::mat4 inverted = glm::inverse(GetTransformation());
+				return glm::normalize(glm::vec3(inverted[1]));
+			}
+
+			glm::vec3 GetViewForward() {
+				glm::mat4 inverted = glm::inverse(GetTransformation());
+				return glm::normalize(glm::vec3(inverted[2]));
+			}
+
+			glm::vec3 GetViewPosition() {
+				glm::mat4 inverted = glm::inverse(GetTransformation());
+				return glm::normalize(glm::vec3(inverted[3]));
+			}
+
+			glm::vec3 GetViewForwardUpCross() {
+				glm::mat4 inverted = glm::inverse(GetTransformation());
+				glm::vec3 up = inverted[1];
+				glm::vec3 forward = inverted[2];
+
+				return glm::normalize(glm::cross(forward, up));
+			}
+
 			glm::vec3 Position{ 0.0f, 0.0f, 0.0f };
 			glm::vec3 Rotation{ 0.0f, 0.0f, 0.0f };
 			glm::vec3 Scale{ 1.0f, 1.0f, 1.0f };

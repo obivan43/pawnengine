@@ -16,6 +16,7 @@ namespace pawn {
 				static int64_t TimeStamp();
 
 				float Time() const;
+				float PrevTime() const;
 				float DeltaTime() const;
 				float TotalTime() const;
 

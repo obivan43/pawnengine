@@ -12,9 +12,14 @@ namespace pawn {
 				"x", &glm::vec3::x,
 				"y", &glm::vec3::y,
 				"z", &glm::vec3::z,
-				"__add", [](const glm::vec3& l, const glm::vec3& r) { return glm::vec3(l + r); },
-				"__sub", [](const glm::vec3& l, const glm::vec3& r) { return glm::vec3(l - r); }
+				"__add", [](const glm::vec3& l, const glm::vec3& r) { return l + r; },
+				"__sub", [](const glm::vec3& l, const glm::vec3& r) { return l - r; },
+				"__mul", [](const glm::vec3& l, const glm::vec3& r) { return l * r; }
 			);
+
+			lua.set_function("vec3MulScalar", [](const glm::vec3& l, float r) {
+				return l * r;
+			});
 		}
 
 	}

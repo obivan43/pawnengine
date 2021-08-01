@@ -127,11 +127,7 @@ namespace editor {
 			pawn::engine::CameraComponent& cameraComponent{ camera.AddComponent<pawn::engine::CameraComponent>() };
 			cameraComponent.IsActiveCamera = true;
 
-			pawn::engine::ScriptComponent& scriptComponent{ camera.AddComponent<pawn::engine::ScriptComponent>("res/assets/scripts/Camera.lua") };
-
-			pawn::engine::TransformationComponent& transformationComponent = camera.GetComponent<pawn::engine::TransformationComponent>();
-			transformationComponent.Position = glm::vec3(2.5f, 2.25f, 4.0f);
-			transformationComponent.Rotation = glm::vec3(-0.5f, 0.5f, 0.3f);
+			camera.AddComponent<pawn::engine::ScriptComponent>("res/assets/scripts/Camera.lua");
 
 			emit ActiveSceneChanged(scene);
 		}
