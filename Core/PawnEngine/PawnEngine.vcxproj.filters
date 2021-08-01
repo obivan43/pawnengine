@@ -97,6 +97,9 @@
     <ClInclude Include="engine\scripts\registers\TransformationComponentScriptRegister.h">
       <Filter>engine\scripts\registers</Filter>
     </ClInclude>
+    <ClInclude Include="engine\scripts\registers\GameEntityScriptRegister.h">
+      <Filter>engine\scripts\registers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">
@@ -172,6 +175,9 @@
       <Filter>engine\scripts\registers</Filter>
     </ClCompile>
     <ClCompile Include="engine\scripts\registers\TransformationComponentScriptRegister.cpp">
+      <Filter>engine\scripts\registers</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripts\registers\GameEntityScriptRegister.cpp">
       <Filter>engine\scripts\registers</Filter>
     </ClCompile>
   </ItemGroup>

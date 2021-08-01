@@ -10,7 +10,7 @@ namespace pawn {
 
 		void TransformationComponentScriptRegister::Register(sol::state& lua) {
 			lua.new_usertype<pawn::engine::TransformationComponent>("TransformationComponent",
-				sol::constructors<pawn::engine::TransformationComponent()>(),
+				sol::constructors<pawn::engine::TransformationComponent(), pawn::engine::TransformationComponent(const pawn::engine::TransformationComponent&)>(),
 				"position", &pawn::engine::TransformationComponent::Position,
 				"rotation", &pawn::engine::TransformationComponent::Rotation,
 				"scale", &pawn::engine::TransformationComponent::Scale,

@@ -55,7 +55,7 @@ namespace pawn {
 				auto scriptComponent = sciptableEntities.get<ScriptComponent>(entity);
 				
 				if (!scriptComponent.FileName.empty()) {
-					scriptEngine->ExecOnCreate(scriptComponent.FileName);
+					scriptEngine->ExecOnCreate(scriptComponent.FileName, pawn::engine::GameEntity(entity, this));
 				}
 			}
 		}
@@ -68,7 +68,7 @@ namespace pawn {
 				auto scriptComponent = sciptableEntities.get<ScriptComponent>(entity);
 
 				if (!scriptComponent.FileName.empty()) {
-					scriptEngine->ExecOnUpdate(scriptComponent.FileName, clock);
+					scriptEngine->ExecOnUpdate(scriptComponent.FileName, clock, pawn::engine::GameEntity(entity, this));
 				}
 			}
 		}

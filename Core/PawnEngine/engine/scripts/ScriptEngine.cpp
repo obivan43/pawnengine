@@ -6,6 +6,7 @@
 #include "registers/ClockScriptRegister.h"
 #include "registers/Vec3ScriptRegister.h"
 #include "registers/TransformationComponentScriptRegister.h"
+#include "registers/GameEntityScriptRegister.h"
 
 #include "PawnSystem/system/input/KeyboardManager.h"
 
@@ -14,6 +15,8 @@
 namespace pawn {
 
 	namespace engine {
+
+		pawn::engine::GameEntity ScriptEngine::m_CurrentEntity;
 
 		ScriptEngine::ScriptEngine() {
 			m_LuaState.open_libraries(
@@ -28,12 +31,16 @@ namespace pawn {
 			Register(new ClockScriptRegister());
 			Register(new Vec3ScriptRegister());
 			Register(new TransformationComponentScriptRegister());
+			Register(new GameEntityScriptRegister());
+
+			m_LuaState.set_function("current_entity", GetCurrentEntity);
 
 			m_LuaState.script("logger_info('Script engine initialized')");
 		}
 
-		void ScriptEngine::ExecOnCreate(const std::string& fileName) {
+		void ScriptEngine::ExecOnCreate(const std::string& fileName, pawn::engine::GameEntity entity) {
 			m_LuaState.script_file(fileName);
+			m_CurrentEntity = entity;
 
 			sol::function create = m_LuaState["create"];
 			if (!create.valid()) {
@@ -44,8 +51,9 @@ namespace pawn {
 			create();
 		}
 
-		void ScriptEngine::ExecOnUpdate(const std::string& fileName, utils::Clock& clock) {
+		void ScriptEngine::ExecOnUpdate(const std::string& fileName, utils::Clock& clock, pawn::engine::GameEntity entity) {
 			m_LuaState.script_file(fileName);
+			m_CurrentEntity = entity;
 
 			sol::function update = m_LuaState["update"];
 			if (!update.valid()) {

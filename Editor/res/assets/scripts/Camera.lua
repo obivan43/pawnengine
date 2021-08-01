@@ -1,15 +1,14 @@
 function create()
-
 end
 
 function update(dt)
 
+	local camera = GameEntity.new(current_entity())
+
 	if keyboard_buttonPressed(Button.W) then
-		local transform = TransformationComponent.new()
-		transform.position = vec3.new(5.0, 4.0, 1.0)
-		logger_info("X: " .. transform.position.x)
-		logger_info("Y: " .. transform.position.y)
-		logger_info("Z: " .. transform.position.z)
+		local transformation = camera.transformation
+		transformation.position.z = transformation.position.z + 1.0 * dt
+		camera.transformation = transformation
 	end
 	
 end

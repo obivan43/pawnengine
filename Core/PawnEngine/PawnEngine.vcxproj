@@ -28,6 +28,7 @@
     <ClInclude Include="engine\MeshManager.h" />
     <ClInclude Include="engine\Renderer.h" />
     <ClInclude Include="engine\scripts\registers\ClockScriptRegister.h" />
+    <ClInclude Include="engine\scripts\registers\GameEntityScriptRegister.h" />
     <ClInclude Include="engine\scripts\registers\KeyboardManagerScriptRegister.h" />
     <ClInclude Include="engine\scripts\registers\LoggerScriptRegister.h" />
     <ClInclude Include="engine\scripts\registers\MouseManagerScriptRegister.h" />
@@ -69,6 +70,7 @@
     <ClCompile Include="engine\MeshManager.cpp" />
     <ClCompile Include="engine\Renderer.cpp" />
     <ClCompile Include="engine\scripts\registers\ClockScriptRegister.cpp" />
+    <ClCompile Include="engine\scripts\registers\GameEntityScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\registers\KeyboardManagerScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\registers\LoggerScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\registers\MouseManagerScriptRegister.cpp" />
