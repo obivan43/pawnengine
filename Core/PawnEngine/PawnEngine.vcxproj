@@ -127,7 +127,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;PAWNENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);LOG_ENABLED;PAWN_DIRECTX11</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;PAWNENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PAWN_LOG_ENABLED;PAWN_DIRECTX11</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -148,7 +148,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;PAWNENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);LOG_ENABLED;PAWN_DIRECTX11</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;PAWNENGINE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);PAWN_LOG_ENABLED;PAWN_DIRECTX11</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>

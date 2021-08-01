@@ -19,8 +19,7 @@ namespace pawn {
 			m_LuaState.open_libraries(
 				sol::lib::base,
 				sol::lib::math,
-				sol::lib::string,
-				sol::lib::io
+				sol::lib::string
 			);
 
 			Register(new LoggerScriptRegister());
