@@ -26,23 +26,24 @@ namespace editor {
 			InitTransformationComponent();
 			InitMeshComponent();
 			InitCameraComponent();
+			InitScriptComponent();
 			InitConnections();
 		}
 
 		void InspectorWidgetImpl::InitTagComponent() {
-			m_TagComponentInspectorWidget = new TagComponentWidgetItem(m_InspectorPanel);
-			m_TagComponentInspectorWidget->setHidden(true);
+			m_TagComponentInspectorWidgetItem = new TagComponentWidgetItem(m_InspectorPanel);
+			m_TagComponentInspectorWidgetItem->setHidden(true);
 
-			m_InspectorPanel->addTopLevelItem(m_TagComponentInspectorWidget);
-			m_InspectorPanel->setItemWidget(m_TagComponentInspectorWidget->GetWrapper(), 0, m_TagComponentInspectorWidget->GetWidget());
+			m_InspectorPanel->addTopLevelItem(m_TagComponentInspectorWidgetItem);
+			m_InspectorPanel->setItemWidget(m_TagComponentInspectorWidgetItem->GetWrapper(), 0, m_TagComponentInspectorWidgetItem->GetWidget());
 		}
 
 		void InspectorWidgetImpl::InitTransformationComponent() {
-			m_TransformationComponentInspectorWidget = new TransformationComponentWidgetItem(m_InspectorPanel);
-			m_TransformationComponentInspectorWidget->setHidden(true);
+			m_TransformationComponentInspectorWidgetItem = new TransformationComponentWidgetItem(m_InspectorPanel);
+			m_TransformationComponentInspectorWidgetItem->setHidden(true);
 
-			m_InspectorPanel->addTopLevelItem(m_TransformationComponentInspectorWidget);
-			m_InspectorPanel->setItemWidget(m_TransformationComponentInspectorWidget->GetWrapper(), 0, m_TransformationComponentInspectorWidget->GetWidget());
+			m_InspectorPanel->addTopLevelItem(m_TransformationComponentInspectorWidgetItem);
+			m_InspectorPanel->setItemWidget(m_TransformationComponentInspectorWidgetItem->GetWrapper(), 0, m_TransformationComponentInspectorWidgetItem->GetWidget());
 		}
 
 		void InspectorWidgetImpl::InitMeshComponent() {
@@ -61,37 +62,50 @@ namespace editor {
 			m_InspectorPanel->setItemWidget(m_CameraComponentWidgetItem->GetWrapper(), 0, m_CameraComponentWidgetItem->GetWidget());
 		}
 
+		void InspectorWidgetImpl::InitScriptComponent() {
+			m_ScriptComponentInspectorWidgetItem = new ScriptComponentWidgetItem(m_InspectorPanel);
+			m_ScriptComponentInspectorWidgetItem->setHidden(true);
+
+			m_InspectorPanel->addTopLevelItem(m_ScriptComponentInspectorWidgetItem);
+			m_InspectorPanel->setItemWidget(m_ScriptComponentInspectorWidgetItem->GetWrapper(), 0, m_ScriptComponentInspectorWidgetItem->GetWidget());
+		}
+		
 		void InspectorWidgetImpl::OnSelectedEntityChanged(pawn::engine::GameEntity entity) {
 			m_SelectedEntity = entity;
-			m_TagComponentInspectorWidget->SetEntity(&m_SelectedEntity);
-			m_TransformationComponentInspectorWidget->SetEntity(&m_SelectedEntity);
+			m_TagComponentInspectorWidgetItem->SetEntity(&m_SelectedEntity);
+			m_TransformationComponentInspectorWidgetItem->SetEntity(&m_SelectedEntity);
 			m_MeshComponentWidgetItem->SetEntity(&m_SelectedEntity);
 			m_CameraComponentWidgetItem->SetEntity(&m_SelectedEntity);
+			m_ScriptComponentInspectorWidgetItem->SetEntity(&m_SelectedEntity);
 			RefreshPanel();
 		}
 
 		void InspectorWidgetImpl::RefreshPanel() {
 			if (!m_SelectedEntity.IsNull()) {
-				m_TagComponentInspectorWidget->setHidden(false);
-				m_TransformationComponentInspectorWidget->setHidden(false);
+				m_TagComponentInspectorWidgetItem->setHidden(false);
+				m_TransformationComponentInspectorWidgetItem->setHidden(false);
 
 				bool IsMeshComponentExitst{ m_SelectedEntity.HasComponent<pawn::engine::MeshComponent>() };
 				m_MeshComponentWidgetItem->setHidden(!IsMeshComponentExitst);
+
+				bool IsScriptComponentExitst{ m_SelectedEntity.HasComponent<pawn::engine::ScriptComponent>() };
+				m_ScriptComponentInspectorWidgetItem->setHidden(!IsScriptComponentExitst);
 
 				bool IsCameraComponentExitst{ m_SelectedEntity.HasComponent<pawn::engine::CameraComponent>() };
 				m_CameraComponentWidgetItem->setHidden(!IsCameraComponentExitst);
 			}
 			else {
-				m_TagComponentInspectorWidget->setHidden(true);
-				m_TransformationComponentInspectorWidget->setHidden(true);
+				m_TagComponentInspectorWidgetItem->setHidden(true);
+				m_TransformationComponentInspectorWidgetItem->setHidden(true);
 				m_MeshComponentWidgetItem->setHidden(true);
 				m_CameraComponentWidgetItem->setHidden(true);
+				m_ScriptComponentInspectorWidgetItem->setHidden(true);
 			}
 		}
 
 		void InspectorWidgetImpl::InitConnections() {
 			connect(
-				m_TagComponentInspectorWidget,
+				m_TagComponentInspectorWidgetItem,
 				SIGNAL(EntityTagModified()),
 				this,
 				SIGNAL(EntityTagModified()),
@@ -106,6 +120,7 @@ namespace editor {
 				Qt::QueuedConnection
 			);
 		}
+
 
 	}
 

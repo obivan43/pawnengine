@@ -20,6 +20,9 @@
     <Filter Include="widget\impl\mesh">
       <UniqueIdentifier>{de6a0dda-0a56-4fef-8c4e-8794540b3f4e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="widget\impl\script">
+      <UniqueIdentifier>{53f025ca-7003-476e-823f-8ef49f136f80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="widget\InspectorWidget.cpp">
@@ -55,6 +58,12 @@
     <ClCompile Include="widget\impl\MeshComponentWidget.cpp">
       <Filter>widget\impl\mesh</Filter>
     </ClCompile>
+    <ClCompile Include="widget\impl\ScriptComponentWidget.cpp">
+      <Filter>widget\impl\script</Filter>
+    </ClCompile>
+    <ClCompile Include="widget\impl\ScriptComponentWidgetItem.cpp">
+      <Filter>widget\impl\script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="widget\InspectorWidget.h">
@@ -89,6 +98,12 @@
     </QtMoc>
     <QtMoc Include="widget\impl\MeshComponentWidget.h">
       <Filter>widget\impl\mesh</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\ScriptComponentWidget.h">
+      <Filter>widget\impl\script</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\ScriptComponentWidgetItem.h">
+      <Filter>widget\impl\script</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

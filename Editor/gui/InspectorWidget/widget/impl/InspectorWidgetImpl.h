@@ -4,6 +4,7 @@
 #include "TransformationComponentWidgetItem.h"
 #include "MeshComponentWidgetItem.h"
 #include "CameraComponentWidgetItem.h"
+#include "ScriptComponentWidgetItem.h"
 
 #include "Editor/gui/InspectorWidget/widget/InspectorWidget.h"
 
@@ -29,6 +30,7 @@ namespace editor {
 				void InitMeshComponent();
 				void InitCameraComponent();
 				void InitConnections();
+				void InitScriptComponent();
 
 			public slots:
 				void OnSelectedEntityChanged(pawn::engine::GameEntity);
@@ -39,10 +41,11 @@ namespace editor {
 
 			private:
 				QTreeWidget* m_InspectorPanel;
-				TagComponentWidgetItem* m_TagComponentInspectorWidget;
-				TransformationComponentWidgetItem* m_TransformationComponentInspectorWidget;
+				TagComponentWidgetItem* m_TagComponentInspectorWidgetItem;
+				TransformationComponentWidgetItem* m_TransformationComponentInspectorWidgetItem;
 				MeshComponentWidgetItem* m_MeshComponentWidgetItem;
 				CameraComponentWidgetItem* m_CameraComponentWidgetItem;
+				ScriptComponentWidgetItem* m_ScriptComponentInspectorWidgetItem;
 
 				pawn::engine::GameEntity m_SelectedEntity;
 		};

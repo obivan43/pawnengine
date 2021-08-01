@@ -40,8 +40,7 @@ namespace editor {
 		void TagComponentWidget::OnLineEditPress() {
 			QString& text{ m_TagLineEdit->text() };
 
-			std::string& tagRef{ m_Tag->Tag };
-			tagRef = text.toLocal8Bit().constData();
+			m_Tag->Tag = text.toLocal8Bit().constData();
 
 			emit TagModified();
 			m_TagLineEdit->clearFocus();
