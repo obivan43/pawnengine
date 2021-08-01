@@ -9,8 +9,8 @@ namespace pawn {
 	namespace engine {
 
 		void TransformationComponentScriptRegister::Register(sol::state& lua) {
-			/*lua.new_usertype<glm::vec3>("TransformationComponent",
-				sol::constructors<pawn::engine::TransformationComponent(), pawn::engine::TransformationComponent(glm::vec3)>(),
+			lua.new_usertype<pawn::engine::TransformationComponent>("TransformationComponent",
+				sol::constructors<pawn::engine::TransformationComponent()>(),
 				"position", &pawn::engine::TransformationComponent::Position,
 				"rotation", &pawn::engine::TransformationComponent::Rotation,
 				"scale", &pawn::engine::TransformationComponent::Scale,
@@ -38,7 +38,7 @@ namespace pawn {
 				"__sub_scale_x", [](const pawn::engine::TransformationComponent& l, float r) { return l.Scale.x - r; },
 				"__sub_scale_y", [](const pawn::engine::TransformationComponent& l, float r) { return l.Scale.y - r; },
 				"__sub_scale_z", [](const pawn::engine::TransformationComponent& l, float r) { return l.Scale.z - r; }
-			);*/
+			);
 		}
 
 	}
