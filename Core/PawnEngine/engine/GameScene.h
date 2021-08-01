@@ -34,7 +34,7 @@ namespace pawn {
 
 				void OnCreate(std::shared_ptr<ScriptEngine>& scriptEngine);
 				void OnUpdate(utils::Clock& clock, std::shared_ptr<ScriptEngine>& scriptEngine);
-				void OnRender(utils::Clock& clock, std::shared_ptr<Renderer>& renderer);
+				void OnRender(std::shared_ptr<Renderer>& renderer);
 
 				entt::registry& GetRegistry() { return m_EnttRegistry; }
 

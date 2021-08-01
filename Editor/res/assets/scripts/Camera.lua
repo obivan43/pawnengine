@@ -33,5 +33,4 @@ function update(dt)
 		transformation.position = transformation.position - viewForwardUpCrossMovingVector
 		camera.transformation = transformation
 	end
-
 end

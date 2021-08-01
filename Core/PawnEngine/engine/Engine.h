@@ -47,7 +47,7 @@ namespace pawn {
 				void OnInput();
 				void OnCreate();
 				void OnUpdate(utils::Clock& clock);
-				void OnRender(utils::Clock & clock);
+				void OnRender();
 
 				bool HasMeshByName(const std::string & name);
 				bool UploadMeshFromFile(const std::string & file);

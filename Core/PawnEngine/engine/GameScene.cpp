@@ -73,7 +73,7 @@ namespace pawn {
 			}
 		}
 
-		void GameScene::OnRender(utils::Clock& clock, std::shared_ptr<Renderer>& renderer) {
+		void GameScene::OnRender(std::shared_ptr<Renderer>& renderer) {
 			if (m_ActiveCamera) {
 				renderer->BeginScene(*m_ActiveCamera, m_ActiveCameraView);
 

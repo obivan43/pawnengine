@@ -109,8 +109,8 @@ namespace pawn {
 			m_Scene->OnUpdate(clock, m_ScriptEngine);
 		}
 
-		void Engine::OnRender(utils::Clock& clock) {
-			m_Scene->OnRender(clock, m_Renderer);
+		void Engine::OnRender() {
+			m_Scene->OnRender(m_Renderer);
 			m_Context->SwapBuffers();
 		}
 

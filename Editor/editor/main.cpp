@@ -35,7 +35,7 @@ void GameThread(pawn::engine::Engine* engine) {
 		engine->Clear();
 		engine->OnInput();
 		engine->OnUpdate(m_Clock);
-		engine->OnRender(m_Clock);
+		engine->OnRender();
 
 		std::this_thread::sleep_until(next_frame);
 	}
