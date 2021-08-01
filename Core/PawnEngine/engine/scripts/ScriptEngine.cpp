@@ -52,8 +52,14 @@ namespace pawn {
 		}
 
 		void ScriptEngine::ExecOnUpdate(const std::string& fileName, utils::Clock& clock, pawn::engine::GameEntity entity) {
-			m_LuaState.script_file(fileName);
+			m_LuaState.stack_clear();
+			sol::protected_function_result& res =  m_LuaState.script_file(fileName);
 			m_CurrentEntity = entity;
+
+			if (!res.valid()) {
+				CONSOLE_ERROR("invalid script file {}", fileName);
+				return;
+			}
 
 			sol::function update = m_LuaState["update"];
 			if (!update.valid()) {

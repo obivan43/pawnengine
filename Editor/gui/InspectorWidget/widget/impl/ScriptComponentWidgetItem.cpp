@@ -1,7 +1,5 @@
 #include "ScriptComponentWidgetItem.h"
 
-//#include "PawnEngine/engine/components/ScriptComponent.h"
-
 namespace editor {
 
 	namespace impl {

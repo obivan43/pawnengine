@@ -9,4 +9,5 @@ function update(dt)
 		logger_info("script 2")
 
 	end
+
 end
