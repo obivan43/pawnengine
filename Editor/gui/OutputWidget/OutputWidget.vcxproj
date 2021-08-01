@@ -133,7 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="widget\OutputWidget.h" />
-    <ClInclude Include="widget\impl\OutputStream.h" />
+    <QtMoc Include="widget\impl\OutputStream.h" />
     <QtMoc Include="widget\impl\OutputWidgetImpl.h" />
   </ItemGroup>
   <ItemGroup>

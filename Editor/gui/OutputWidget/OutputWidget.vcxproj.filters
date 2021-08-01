@@ -24,12 +24,12 @@
     <ClInclude Include="widget\OutputWidget.h">
       <Filter>widget</Filter>
     </ClInclude>
-    <ClInclude Include="widget\impl\OutputStream.h">
-      <Filter>widget\impl</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="widget\impl\OutputWidgetImpl.h">
+      <Filter>widget\impl</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\OutputStream.h">
       <Filter>widget\impl</Filter>
     </QtMoc>
   </ItemGroup>

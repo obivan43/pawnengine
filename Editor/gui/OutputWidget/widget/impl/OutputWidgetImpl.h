@@ -16,6 +16,12 @@ namespace editor {
 			public:
 				OutputWidgetImpl(QWidget* parent);
 
+			private slots:
+				void OnTextChanged();
+
+			private: 
+				void InitConections();
+
 			private:
 				QTextEdit* m_OutputTextEdit;
 				OutputStream* m_OutputStream;

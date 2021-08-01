@@ -6,8 +6,7 @@ namespace editor {
 
 	namespace impl {
 
-		OutputStream::OutputStream(std::ostream& stream, QTextEdit* textEdit) : std::basic_streambuf<char>(), m_Stream(stream) {
-			m_LogWindow = textEdit;
+		OutputStream::OutputStream(std::ostream& stream) : std::basic_streambuf<char>(), m_Stream(stream) {
 			m_OldBuffer = stream.rdbuf();
 
 			stream.rdbuf(this);
@@ -23,7 +22,7 @@ namespace editor {
 
 		int OutputStream::overflow(int v) {
 			if (v == '\n') {
-				m_LogWindow->append("");
+				emit Append("");
 			}
 
 			return v;
@@ -33,39 +32,40 @@ namespace editor {
 			QStringList matchList{ "[info]", "[error]", "[debug]", "[trace]", "[warning]" };
 			QString str{ p };
 
-			m_LogWindow->moveCursor(QTextCursor::End);
-
-			if (m_LogWindow->textColor() != QColorConstants::Black) {
-				m_LogWindow->setTextColor(QColorConstants::Black);
-			}
-
+			bool changed = false;
 			for (QString match : matchList) {
 				if (str.contains(match)) {
 					if (match == matchList[0]) {
-						m_LogWindow->setTextColor(QColorConstants::Black);
+						emit ColorChanged(QColorConstants::Black);
 					}
 
 					if (match == matchList[1]) {
-						m_LogWindow->setTextColor(QColorConstants::Red);
+						emit ColorChanged(QColorConstants::Red);
 					}
 
 					if (match == matchList[2]) {
-						m_LogWindow->setTextColor(QColorConstants::LightGray);
+						emit ColorChanged(QColorConstants::LightGray);
 					}
 
 					if (match == matchList[3]) {
-						m_LogWindow->setTextColor(QColorConstants::LightGray);
+						emit ColorChanged(QColorConstants::LightGray);
 					}
 
 					if (match == matchList[4]) {
-						m_LogWindow->setTextColor(QColorConstants::Yellow);
+						emit ColorChanged(QColorConstants::Yellow);
 					}
+
+					changed = true;
 
 					break;
 				}
 			}
 
-			m_LogWindow->insertPlainText(str);
+			if (!changed) {
+				emit ColorChanged(QColorConstants::Black);
+			}
+
+			emit InsertText(str);
 
 			return n;
 		}

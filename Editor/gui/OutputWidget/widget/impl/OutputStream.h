@@ -3,17 +3,25 @@
 #include <iostream>
 #include <QtWidgets/QTextEdit>
 
+#include <QObject>
+
 namespace editor {
 
 	namespace impl {
 
-		class OutputStream : public std::basic_streambuf<char> {
+		class OutputStream : public QObject, public std::basic_streambuf<char> {
+			Q_OBJECT
 
 			public:
-				OutputStream(std::ostream& stream, QTextEdit* textEdit);
+				OutputStream(std::ostream& stream);
 
 				virtual ~OutputStream();
 				static void registerConsoleMessageHandler();
+
+			signals:
+				void ColorChanged(const QColor& color);
+				void Append(const QString& text);
+				void InsertText(const QString& text);
 
 			protected:
 				virtual int overflow(int v);
@@ -25,7 +33,6 @@ namespace editor {
 			private:
 				std::ostream& m_Stream;
 				std::streambuf* m_OldBuffer;
-				QTextEdit* m_LogWindow;
 		};
 
 	}
