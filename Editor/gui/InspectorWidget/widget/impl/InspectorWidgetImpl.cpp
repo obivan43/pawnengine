@@ -6,6 +6,7 @@
 #include "PawnEngine/engine/components/MeshComponent.h"
 
 #include <QHBoxLayout>
+#include <QTimer>
 
 namespace editor {
 
@@ -28,6 +29,10 @@ namespace editor {
 			InitCameraComponent();
 			InitScriptComponent();
 			InitConnections();
+
+			QTimer* timer = new QTimer(this);
+			connect(timer, SIGNAL(timeout()), this, SLOT(Update()));
+			timer->start(16);
 		}
 
 		void InspectorWidgetImpl::InitTagComponent() {
@@ -72,12 +77,16 @@ namespace editor {
 		
 		void InspectorWidgetImpl::OnSelectedEntityChanged(pawn::engine::GameEntity entity) {
 			m_SelectedEntity = entity;
+			Update();
+			RefreshPanel();
+		}
+
+		void InspectorWidgetImpl::Update() {
 			m_TagComponentInspectorWidgetItem->SetEntity(&m_SelectedEntity);
 			m_TransformationComponentInspectorWidgetItem->SetEntity(&m_SelectedEntity);
 			m_MeshComponentWidgetItem->SetEntity(&m_SelectedEntity);
 			m_CameraComponentWidgetItem->SetEntity(&m_SelectedEntity);
 			m_ScriptComponentInspectorWidgetItem->SetEntity(&m_SelectedEntity);
-			RefreshPanel();
 		}
 
 		void InspectorWidgetImpl::RefreshPanel() {

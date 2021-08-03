@@ -33,6 +33,7 @@ namespace editor {
 				void InitScriptComponent();
 
 			public slots:
+				void Update();
 				void OnSelectedEntityChanged(pawn::engine::GameEntity);
 
 			signals:
