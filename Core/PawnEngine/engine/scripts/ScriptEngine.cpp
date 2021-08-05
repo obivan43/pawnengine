@@ -18,7 +18,7 @@ namespace pawn {
 
 		pawn::engine::GameEntity ScriptEngine::m_CurrentEntity;
 
-		ScriptEngine::ScriptEngine() {
+		ScriptEngine::ScriptEngine() : m_IsPaused(true) {
 			m_LuaState.open_libraries(
 				sol::lib::base,
 				sol::lib::math,

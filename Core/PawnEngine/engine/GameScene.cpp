@@ -50,12 +50,14 @@ namespace pawn {
 		}
 
 		void GameScene::OnCreate(std::shared_ptr<ScriptEngine>& scriptEngine) {
-			auto sciptableEntities = m_EnttRegistry.view<ScriptComponent>();
-			for (auto& entity : sciptableEntities) {
-				auto scriptComponent = sciptableEntities.get<ScriptComponent>(entity);
-				
-				if (!scriptComponent.FileName.empty()) {
-					scriptEngine->ExecOnCreate(scriptComponent.FileName, pawn::engine::GameEntity(entity, this));
+			if (!scriptEngine->GetIsPaused()) {
+				auto sciptableEntities = m_EnttRegistry.view<ScriptComponent>();
+				for (auto& entity : sciptableEntities) {
+					auto scriptComponent = sciptableEntities.get<ScriptComponent>(entity);
+
+					if (!scriptComponent.FileName.empty()) {
+						scriptEngine->ExecOnCreate(scriptComponent.FileName, pawn::engine::GameEntity(entity, this));
+					}
 				}
 			}
 		}
@@ -63,12 +65,14 @@ namespace pawn {
 		void GameScene::OnUpdate(utils::Clock& clock, std::shared_ptr<ScriptEngine>& scriptEngine) {
 			FindActiveCamera();
 
-			auto sciptableEntities = m_EnttRegistry.view<ScriptComponent>();
-			for (auto& entity : sciptableEntities) {
-				auto scriptComponent = sciptableEntities.get<ScriptComponent>(entity);
+			if (!scriptEngine->GetIsPaused()) {
+				auto sciptableEntities = m_EnttRegistry.view<ScriptComponent>();
+				for (auto& entity : sciptableEntities) {
+					auto scriptComponent = sciptableEntities.get<ScriptComponent>(entity);
 
-				if (!scriptComponent.FileName.empty()) {
-					scriptEngine->ExecOnUpdate(scriptComponent.FileName, clock, pawn::engine::GameEntity(entity, this));
+					if (!scriptComponent.FileName.empty()) {
+						scriptEngine->ExecOnUpdate(scriptComponent.FileName, clock, pawn::engine::GameEntity(entity, this));
+					}
 				}
 			}
 		}

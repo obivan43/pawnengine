@@ -41,22 +41,22 @@ void GameThread(pawn::engine::Engine* engine) {
 	}
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
 #ifdef _WIN32
 #ifdef PAWN_CONSOLE_OUTPUT
 	CreateConsoleOutput();
 #endif
 #endif
 
-    pawn::utils::Logger::Init();
+	pawn::utils::Logger::Init();
 
-    QApplication app(argc, argv);
-    app.installNativeEventFilter(new editor::impl::WindowsEventFilter());
+	QApplication app(argc, argv);
+	app.installNativeEventFilter(new editor::impl::WindowsEventFilter());
 
 	editor::MainWindow* window = editor::MainWindow::CreateImpl();
 	window->show();
 
 	QFuture<void> future = QtConcurrent::run(GameThread, window->GetEngine());
 
-    return app.exec();
+	return app.exec();
 }
