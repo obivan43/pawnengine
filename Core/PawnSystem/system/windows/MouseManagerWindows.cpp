@@ -14,7 +14,8 @@ namespace pawn {
 			if (rawMouse.usButtonFlags & down) {
 				m_Buttons[static_cast<uint32_t>(button)] = true;
 			}
-			else if (rawMouse.usButtonFlags & up) {
+			
+			if (rawMouse.usButtonFlags & up) {
 				m_Buttons[static_cast<uint32_t>(button)] = false;
 			}
 		}

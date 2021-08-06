@@ -41,7 +41,9 @@ namespace pawn {
 				bool GetEngineRunning() const;
 				void SetEngineRunning(bool state);
 
+				void Init();
 				void Init(HWND handle, uint32_t width, uint32_t height);
+				void InitGraphics(HWND handle, uint32_t width, uint32_t height);
 
 				void Clear();
 				void OnInput();

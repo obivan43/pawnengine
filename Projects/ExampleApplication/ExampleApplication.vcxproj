@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{22b9f24d-5b47-4047-8695-3fc99c9b306e}</ProjectGuid>
+    <RootNamespace>ExampleApplication</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);PAWN_DIRECTX11</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\;$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>zlibd.lib;zlibstaticd.lib;spdlog.lib;IrrXMLd.lib;assimp-vc142-mtd.lib;lua54.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>cd /d $(SolutionDir)ThirdParty\spdlog-1.8.2\bin\
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+cd /d $(SolutionDir)Core\PawnUtils\bin\
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+cd /d $(SolutionDir)ThirdParty\assimp-5.0.1\bin
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+cd /d $(SolutionDir)Core\PawnMath\bin
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+cd /d $(SolutionDir)Core\PawnGraphics\bin
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+cd /d $(SolutionDir)Core\PawnEngine\bin
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+cd /d $(ProjectDir)
+Xcopy /E /I /y res\assets $(ProjectDir)bin\$(Configuration)\res\assets
+
+cd /d $(SolutionDir)Core\PawnSystem\bin\
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+exit</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);PAWN_DIRECTX11</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)Core\;$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>zlib.lib;zlibstatic.lib;spdlog.lib;IrrXML.lib;assimp-vc142-mt.lib;%(AdditionalDependencies);lua54.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>cd /d $(SolutionDir)ThirdParty\spdlog-1.8.2\bin\
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+cd /d $(SolutionDir)Core\PawnUtils\bin\
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+cd /d $(SolutionDir)ThirdParty\assimp-5.0.1\bin
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+cd /d $(SolutionDir)Core\PawnMath\bin
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+cd /d $(SolutionDir)Core\PawnGraphics\bin
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+cd /d $(SolutionDir)Core\PawnEngine\bin
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+cd /d $(ProjectDir)
+Xcopy /E /I /y res\assets $(ProjectDir)bin\$(Configuration)\res\assets
+
+cd /d $(SolutionDir)Core\PawnSystem\bin\
+Xcopy /E /I /y $(Configuration) $(ProjectDir)bin\$(Configuration)
+
+exit</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="app\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\PawnEngine\PawnEngine.vcxproj">
+      <Project>{550dbb28-816c-4cc6-b90c-564891bd8c99}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\PawnGraphics\PawnGraphics.vcxproj">
+      <Project>{b01544f3-830b-478a-b76f-c0ffa1f466d5}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\PawnMath\PawnMath.vcxproj">
+      <Project>{7d6d9221-3b78-4c0f-b425-71d41f6d9e7b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\PawnSystem\PawnSystem.vcxproj">
+      <Project>{536efe47-0157-4c1b-a551-c1dd390db595}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\PawnUtils\PawnUtils.vcxproj">
+      <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="res\assets\shaders\directx_shaders\PixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)res\assets\shaders\directx_shaders\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)res\assets\shaders\directx_shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="res\assets\shaders\directx_shaders\VertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)res\assets\shaders\directx_shaders\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)res\assets\shaders\directx_shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="app">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{513aae96-ef99-4d49-a62e-60397919c666}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\assets">
+      <UniqueIdentifier>{66ac5b29-f350-44c9-97e3-f7af52ab865c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\assets\shaders">
+      <UniqueIdentifier>{4c113f88-1fee-467e-bb53-1dda9a2b5e4e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="app\main.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="res\assets\shaders\directx_shaders\PixelShader.hlsl">
+      <Filter>res\assets\shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="res\assets\shaders\directx_shaders\VertexShader.hlsl">
+      <Filter>res\assets\shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

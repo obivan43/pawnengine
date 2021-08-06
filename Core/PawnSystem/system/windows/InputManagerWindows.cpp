@@ -6,10 +6,13 @@
 
 #include <hidusage.h>
 #include <vector>
+#include <mutex>
 
 namespace pawn {
 
 	namespace system {
+
+		static std::mutex mtx;
 
 		std::queue<InputManagerWindows::InputData> InputManagerWindows::m_MouseInputs{};
 		std::queue<InputManagerWindows::InputData> InputManagerWindows::m_KeyboardInputs{};
@@ -40,6 +43,8 @@ namespace pawn {
 
 			inputData.timestamp = utils::Clock::TimeStamp();
 
+			const std::lock_guard<std::mutex> lock(mtx);
+
 			switch (input->header.dwType) {
 				case RIM_TYPEMOUSE:
 					m_MouseInputs.push(inputData);
@@ -69,6 +74,8 @@ namespace pawn {
 			if (result == static_cast<UINT>(-1) || result != size) {
 				return 0;
 			}
+
+			const std::lock_guard<std::mutex> lock(mtx);
 
 			for (const RAWINPUTDEVICELIST& device : deviceList) {
 				switch (device.dwType) {
@@ -111,6 +118,8 @@ namespace pawn {
 
 		bool InputManagerWindows::ProccessMouse(int64_t maxTimestamp, InputData& out) {
 			if (m_MouseInputs.size() > 0) {
+				const std::lock_guard<std::mutex> lock(mtx);
+
 				InputData inputData{};
 				inputData = m_MouseInputs.front();
 				if (inputData.timestamp == 0 || inputData.timestamp > maxTimestamp)
@@ -129,6 +138,8 @@ namespace pawn {
 
 		bool InputManagerWindows::ProccessKeyboard(int64_t maxTimestamp, InputData& out) {
 			if (m_KeyboardInputs.size() > 0) {
+				const std::lock_guard<std::mutex> lock(mtx);
+
 				InputData inputData{};
 				inputData = m_KeyboardInputs.front();
 				if (inputData.timestamp == 0 || inputData.timestamp > maxTimestamp)

@@ -50,7 +50,7 @@ namespace pawn {
 		}
 
 		void GameScene::OnCreate(std::shared_ptr<ScriptEngine>& scriptEngine) {
-			if (!scriptEngine->GetIsPaused()) {
+			if (scriptEngine.get() && !scriptEngine->GetIsPaused()) {
 				auto sciptableEntities = m_EnttRegistry.view<ScriptComponent>();
 				for (auto& entity : sciptableEntities) {
 					auto scriptComponent = sciptableEntities.get<ScriptComponent>(entity);
@@ -65,7 +65,7 @@ namespace pawn {
 		void GameScene::OnUpdate(utils::Clock& clock, std::shared_ptr<ScriptEngine>& scriptEngine) {
 			FindActiveCamera();
 
-			if (!scriptEngine->GetIsPaused()) {
+			if (scriptEngine.get() && !scriptEngine->GetIsPaused()) {
 				auto sciptableEntities = m_EnttRegistry.view<ScriptComponent>();
 				for (auto& entity : sciptableEntities) {
 					auto scriptComponent = sciptableEntities.get<ScriptComponent>(entity);
@@ -78,7 +78,7 @@ namespace pawn {
 		}
 
 		void GameScene::OnRender(std::shared_ptr<Renderer>& renderer) {
-			if (m_ActiveCamera) {
+			if (renderer.get() && m_ActiveCamera) {
 				renderer->BeginScene(*m_ActiveCamera, m_ActiveCameraView);
 
 				auto meshGroup = m_EnttRegistry.view<TransformationComponent, MeshComponent>();

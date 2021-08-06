@@ -105,7 +105,7 @@ exit</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>zlibd.lib;zlibstaticd.lib;spdlog.lib;IrrXMLd.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies);lua54.lib</AdditionalDependencies>
+      <AdditionalDependencies>zlibd.lib;zlibstaticd.lib;spdlog.lib;IrrXMLd.lib;assimp-vc142-mtd.lib;lua54.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>

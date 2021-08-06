@@ -112,6 +112,7 @@ namespace editor {
 			pawn::system::InputManagerWindows::RegisterKeyboard();
 
 			m_Engine->Init(GetGameEngineWindowHWND(), EngineViewWidth, EngineViewHeight);
+			m_Engine->GetScriptEngine()->SetIsPaused(false);
 
 			std::shared_ptr<pawn::engine::GameScene>& scene{ m_Engine->GetScene() };
 

@@ -9,8 +9,27 @@ namespace pawn {
 
 	namespace engine {
 
+		void Engine::Init() {
+			m_IsEngineRunning = true;
+
+			m_MeshManager.reset(new MeshManager());
+			m_TextureManager.reset(new TextureManager());
+			m_ScriptEngine.reset(new ScriptEngine());
+			m_Scene.reset(new GameScene());
+		}
+
 		void Engine::Init(HWND handle, uint32_t width, uint32_t height) {
 			m_IsEngineRunning = true;
+
+			InitGraphics(handle, width, height);
+
+			m_MeshManager.reset(new MeshManager());
+			m_TextureManager.reset(new TextureManager());
+			m_ScriptEngine.reset(new ScriptEngine());
+			m_Scene.reset(new GameScene());
+		}
+
+		void Engine::InitGraphics(HWND handle, uint32_t width, uint32_t height) {
 			m_Context = graphics::GraphicsContext::Create();
 			m_GraphicsAPI = graphics::GraphicsAPI::Create();
 
@@ -18,9 +37,6 @@ namespace pawn {
 			m_GraphicsAPI->SetContext(m_Context);
 
 			m_GraphicsAPI->SetClearColor(0.1f, 0.1f, 0.1f);
-
-			m_MeshManager.reset(new MeshManager());
-			m_TextureManager.reset(new TextureManager());
 
 			m_Shader = graphics::GraphicsShader::Create();
 			if (!m_Shader->InitVertexShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\VertexShader.cso")) {
@@ -34,10 +50,6 @@ namespace pawn {
 			m_Renderer.reset(new Renderer());
 			m_Renderer->Init(m_Context, m_GraphicsAPI, width, height);
 			m_Renderer->SetShader(m_Context, m_Shader);
-
-			m_ScriptEngine.reset(new ScriptEngine());
-
-			m_Scene.reset(new GameScene());
 		}
 
 		const std::shared_ptr<graphics::GraphicsMesh>& Engine::GetMeshByName(const std::string& name) {
@@ -66,7 +78,9 @@ namespace pawn {
 
 
 		void Engine::Clear() {
-			m_GraphicsAPI->Clear();
+			if (m_Context.get() && m_GraphicsAPI.get()) {
+				m_GraphicsAPI->Clear();
+			}
 		}
 
 		void Engine::OnInput() {
@@ -110,8 +124,10 @@ namespace pawn {
 		}
 
 		void Engine::OnRender() {
-			m_Scene->OnRender(m_Renderer);
-			m_Context->SwapBuffers();
+			if (m_Context.get() && m_GraphicsAPI.get()) {
+				m_Scene->OnRender(m_Renderer);
+				m_Context->SwapBuffers();
+			}
 		}
 
 		bool Engine::GetEngineRunning() const {

@@ -31,6 +31,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PawnSystem", "Core\PawnSyst
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtAdvancedDocking", "Editor\gui\QtAdvancedDocking\QtAdvancedDocking.vcxproj", "{A62AAD52-E086-4927-B15A-D9C010A72C4B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{A9B4D448-93E8-4AE4-B306-220CA68CEF01}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExampleApplication", "Projects\ExampleApplication\ExampleApplication.vcxproj", "{22B9F24D-5B47-4047-8695-3FC99C9B306E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +85,10 @@ Global
 		{A62AAD52-E086-4927-B15A-D9C010A72C4B}.Debug|x64.Build.0 = Debug|x64
 		{A62AAD52-E086-4927-B15A-D9C010A72C4B}.Release|x64.ActiveCfg = Release|x64
 		{A62AAD52-E086-4927-B15A-D9C010A72C4B}.Release|x64.Build.0 = Release|x64
+		{22B9F24D-5B47-4047-8695-3FC99C9B306E}.Debug|x64.ActiveCfg = Debug|x64
+		{22B9F24D-5B47-4047-8695-3FC99C9B306E}.Debug|x64.Build.0 = Debug|x64
+		{22B9F24D-5B47-4047-8695-3FC99C9B306E}.Release|x64.ActiveCfg = Release|x64
+		{22B9F24D-5B47-4047-8695-3FC99C9B306E}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +106,7 @@ Global
 		{A85C2813-3EE7-42F9-97EC-889534499250} = {6BF0C4A8-813D-40D3-89FE-06092027177E}
 		{536EFE47-0157-4C1B-A551-C1DD390DB595} = {6BF0C4A8-813D-40D3-89FE-06092027177E}
 		{A62AAD52-E086-4927-B15A-D9C010A72C4B} = {1741DF50-8041-4E21-BEED-2AF26BFC2EEB}
+		{22B9F24D-5B47-4047-8695-3FC99C9B306E} = {A9B4D448-93E8-4AE4-B306-220CA68CEF01}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B9A2FA9-10F0-42FD-9777-13A24524E54E}
