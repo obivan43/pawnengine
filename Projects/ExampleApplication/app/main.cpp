@@ -4,6 +4,7 @@
 #include "PawnEngine/engine/Engine.h"
 
 #include <memory>
+#include <future>
 
 #ifdef PAWN_DIRECTX11
 
@@ -121,7 +122,7 @@ int WINAPI WinMain(
 	ShowWindow(hwnd, nCmdShow);
 	UpdateWindow(hwnd);
 
-	std::thread gameThread(GameThread, hwnd);
+	std::future<void> future =  std::async(std::launch::async, GameThread, hwnd);
 
 	while (isRunning) {
 		BOOL result = PeekMessage(&Msg, NULL, 0, 0, PM_REMOVE);
@@ -132,7 +133,7 @@ int WINAPI WinMain(
 		}
 	}
 
-	gameThread.join();
+	future.wait();
 
 	return static_cast<int>(Msg.wParam);
 }
