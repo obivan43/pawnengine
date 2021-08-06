@@ -13,7 +13,6 @@
 #endif
 
 std::atomic<bool> isRunning = true;
-std::shared_ptr<pawn::engine::Engine> engine;
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	LRESULT result{ 0 };
@@ -40,7 +39,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 void GameThread(HWND hwnd) {
 	pawn::utils::Logger::Init();
 
-	engine.reset(new pawn::engine::Engine);
+	std::shared_ptr<pawn::engine::Engine> engine(new pawn::engine::Engine);
 
 	SetGameEngineWindowHWND(hwnd);
 
