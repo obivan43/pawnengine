@@ -23,6 +23,9 @@
     <Filter Include="utils\codetools">
       <UniqueIdentifier>{bb23e811-ee14-44c6-a2e0-3a7585305d23}</UniqueIdentifier>
     </Filter>
+    <Filter Include="utils\json">
+      <UniqueIdentifier>{070f2993-e03b-48fc-ad9f-94ceb23a7999}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\time\Clock.h">
@@ -48,6 +51,9 @@
     </ClInclude>
     <ClInclude Include="utils\codetools\Rtti.h">
       <Filter>utils\codetools</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\json\json.hpp">
+      <Filter>utils\json</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

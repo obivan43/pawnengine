@@ -16,6 +16,7 @@ namespace pawn {
 			m_TextureManager.reset(new TextureManager());
 			m_ScriptEngine.reset(new ScriptEngine());
 			m_Scene.reset(new GameScene());
+			m_JsonSerializer.reset(new JsonSerializer(m_Scene));
 		}
 
 		void Engine::Init(HWND handle, uint32_t width, uint32_t height) {
@@ -27,6 +28,7 @@ namespace pawn {
 			m_TextureManager.reset(new TextureManager());
 			m_ScriptEngine.reset(new ScriptEngine());
 			m_Scene.reset(new GameScene());
+			m_JsonSerializer.reset(new JsonSerializer(m_Scene));
 		}
 
 		void Engine::InitGraphics(HWND handle, uint32_t width, uint32_t height) {

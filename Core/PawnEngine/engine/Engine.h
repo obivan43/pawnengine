@@ -12,6 +12,7 @@
 #include "components\ScriptComponent.h"
 
 #include "PawnEngine/engine/scripts/ScriptEngine.h"
+#include "PawnEngine/engine/serializer/JsonSerializer.h"
 
 #include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsAPI.h"
@@ -59,24 +60,29 @@ namespace pawn {
 				bool UploadTextureFromFile(const std::string& file);
 				const std::shared_ptr<graphics::GraphicsTexture2D>& GetTextureByName(const std::string& name);
 
-				std::shared_ptr<GameScene>& GetScene() { return m_Scene; }
 				std::shared_ptr<MeshManager>& GetMeshManager() { return m_MeshManager; }
 				std::shared_ptr<TextureManager>& GetTextureManager() { return m_TextureManager; }
+				std::shared_ptr<ScriptEngine>& GetScriptEngine() { return m_ScriptEngine; }
+				std::shared_ptr<GameScene>& GetScene() { return m_Scene; }
+				std::shared_ptr<JsonSerializer>& GetJsonSerializer() { return m_JsonSerializer; }
+
 				std::shared_ptr<graphics::GraphicsContext>& GetContext() { return m_Context; }
 				std::shared_ptr<graphics::GraphicsAPI>& GetAPI() { return m_GraphicsAPI; }
 				std::shared_ptr<Renderer>& GetRenderer() { return m_Renderer; }
-				std::shared_ptr<ScriptEngine>& GetScriptEngine() { return m_ScriptEngine; }
 
 			private:
 				bool m_IsEngineRunning;
 				std::shared_ptr<MeshManager> m_MeshManager;
 				std::shared_ptr<TextureManager> m_TextureManager;
+				std::shared_ptr<ScriptEngine> m_ScriptEngine;
+				std::shared_ptr<GameScene> m_Scene;
+				std::shared_ptr<JsonSerializer> m_JsonSerializer;
+
 				std::shared_ptr<graphics::GraphicsContext> m_Context;
 				std::shared_ptr<graphics::GraphicsAPI> m_GraphicsAPI;
 				std::shared_ptr<graphics::GraphicsShader> m_Shader;
 				std::shared_ptr<Renderer> m_Renderer;
-				std::shared_ptr<GameScene> m_Scene;
-				std::shared_ptr<ScriptEngine> m_ScriptEngine;
+
 		};
 
 	}

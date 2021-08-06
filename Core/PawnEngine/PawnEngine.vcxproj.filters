@@ -20,6 +20,9 @@
     <Filter Include="engine\scripts\registers">
       <UniqueIdentifier>{36937989-cd2f-4a94-a42d-7ae6be547fbf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\serializer">
+      <UniqueIdentifier>{e1d45208-c240-443d-a5ac-4188071f0209}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Engine.h">
@@ -100,6 +103,9 @@
     <ClInclude Include="engine\scripts\registers\GameEntityScriptRegister.h">
       <Filter>engine\scripts\registers</Filter>
     </ClInclude>
+    <ClInclude Include="engine\serializer\JsonSerializer.h">
+      <Filter>engine\serializer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">
@@ -179,6 +185,9 @@
     </ClCompile>
     <ClCompile Include="engine\scripts\registers\GameEntityScriptRegister.cpp">
       <Filter>engine\scripts\registers</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\serializer\JsonSerializer.cpp">
+      <Filter>engine\serializer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

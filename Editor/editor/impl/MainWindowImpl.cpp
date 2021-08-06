@@ -9,6 +9,8 @@
 #include <QMenu>
 #include <QMenuBar>
 
+#include <iomanip>
+
 namespace editor {
 
 	namespace impl {

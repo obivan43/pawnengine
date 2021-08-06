@@ -15,6 +15,7 @@
     <ClInclude Include="utils\codetools\Macros.h" />
     <ClInclude Include="utils\codetools\Rtti.h" />
     <ClInclude Include="utils\entt\entt.h" />
+    <ClInclude Include="utils\json\json.hpp" />
     <ClInclude Include="utils\logger\Logger.h" />
     <ClInclude Include="utils\stbimage\StbImage.h" />
     <ClInclude Include="utils\stbimage\StbImageLoader.h" />
