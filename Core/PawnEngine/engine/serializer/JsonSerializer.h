@@ -21,8 +21,8 @@ namespace pawn {
 				JsonSerializer& operator=(const JsonSerializer& other) = delete;
 				JsonSerializer& operator=(JsonSerializer&& other) noexcept = delete;
 
-				json GetEntityIds();
-				json GetEntityById(entt::entity id);
+				json JsonEntityIds();
+				json JsonEntityById(entt::entity id);
 
 			private:
 				std::shared_ptr<GameScene> m_Scene;

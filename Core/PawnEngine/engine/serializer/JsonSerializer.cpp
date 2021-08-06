@@ -13,7 +13,7 @@ namespace pawn {
 
 		JsonSerializer::JsonSerializer(std::shared_ptr<GameScene>& scene) : m_Scene(scene) {}
 
-		json JsonSerializer::GetEntityIds() {
+		json JsonSerializer::JsonEntityIds() {
 			std::vector<entt::entity> entities;
 			entt::registry& registry = m_Scene->GetRegistry();
 			registry.each([&](entt::entity entity) {
@@ -23,7 +23,7 @@ namespace pawn {
 			return json::parse(entities);
 		}
 
-		json JsonSerializer::GetEntityById(entt::entity id) {
+		json JsonSerializer::JsonEntityById(entt::entity id) {
 			GameEntity entity(id, m_Scene.get());
 
 			json j;
