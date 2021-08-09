@@ -3,7 +3,7 @@
 namespace pawn::network {
 
 	Network::Network() : m_ClientSocket(INVALID_SOCKET) {
-        m_Buffer.reserve(PAWN_DEFAULT_BUFLEN);
+        m_Buffer.resize(PAWN_DEFAULT_BUFLEN);
     }
 
 	int Network::Init() {
@@ -78,7 +78,7 @@ namespace pawn::network {
     }
 
     int Network::Receive() {
-        return recv(m_ClientSocket, reinterpret_cast<char*>(m_Buffer.data()), static_cast<int>(m_Buffer.size()), 0);
+        return recv(m_ClientSocket, reinterpret_cast<char*>(&m_Buffer.front()), static_cast<int>(m_Buffer.size()), 0);
     }
 
     int Network::Send(std::vector<int8_t>& buffer) {

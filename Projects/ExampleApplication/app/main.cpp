@@ -54,10 +54,8 @@ void NetworkThread(std::shared_ptr<pawn::engine::Engine>& engine) {
 		int recive = network->Receive();
 
 		if (recive > 0) {
-			std::lock_guard<std::mutex> guard(mutex);
 			CONSOLE_INFO("recived {}", recive)
 		}
-
 	}
 
 	network->Shutdown();
