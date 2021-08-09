@@ -1,9 +1,4 @@
 function create()
-	local camera = GameEntity.new(current_entity())
-	local transformation = camera.transformation
-
-	transformation.position.z = 4.0
-	camera.transformation = transformation
 end
 
 function update(dt)
