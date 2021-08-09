@@ -16,6 +16,20 @@
   <ItemGroup>
     <ClCompile Include="network\Network.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PawnEngine\PawnEngine.vcxproj">
+      <Project>{550dbb28-816c-4cc6-b90c-564891bd8c99}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\PawnMath\PawnMath.vcxproj">
+      <Project>{7d6d9221-3b78-4c0f-b425-71d41f6d9e7b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\PawnSystem\PawnSystem.vcxproj">
+      <Project>{536efe47-0157-4c1b-a551-c1dd390db595}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\PawnUtils\PawnUtils.vcxproj">
+      <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

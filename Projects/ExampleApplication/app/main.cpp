@@ -1,6 +1,7 @@
 #include "PawnUtils/utils/logger/Logger.h"
 #include "PawnSystem/system/windows/SystemPC.h"
 #include "PawnSystem/system/windows/InputManagerWindows.h"
+#include "PawnNetwork/network/Network.h"
 #include "PawnEngine/engine/Engine.h"
 
 #include <memory>
@@ -13,7 +14,14 @@
 
 #endif
 
+#ifdef PAWN_NETWORK
+
+#pragma comment (lib, "Ws2_32.lib")
+
+#endif
+
 std::atomic<bool> isRunning = true;
+std::mutex mutex;
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	LRESULT result{ 0 };
@@ -37,6 +45,25 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	return 0;
 }
 
+#ifdef PAWN_NETWORK
+void NetworkThread(std::shared_ptr<pawn::engine::Engine>& engine) {
+	std::shared_ptr<pawn::network::Network> network(new pawn::network::Network);
+	network->Init();
+
+	while (isRunning) {
+		int recive = network->Receive();
+
+		if (recive > 0) {
+			std::lock_guard<std::mutex> guard(mutex);
+			CONSOLE_INFO("recived {}", recive)
+		}
+
+	}
+
+	network->Shutdown();
+}
+#endif
+
 void GameThread(HWND hwnd) {
 	pawn::utils::Logger::Init();
 
@@ -57,8 +84,15 @@ void GameThread(HWND hwnd) {
 	const int32_t fpsLock = 144;
 	auto next_frame = std::chrono::steady_clock::now();
 
+#ifdef PAWN_NETWORK
+	std::future<void> future = std::async(std::launch::async, NetworkThread, std::ref(engine));
+#endif
+
 	engine->OnCreate();
 	while (engine->GetEngineRunning()) {
+		std::lock_guard<std::mutex> guard(mutex);
+		std::this_thread::sleep_until(next_frame);
+
 		next_frame += std::chrono::milliseconds(1000 / fpsLock);
 
 		m_Clock.Tick();
@@ -71,8 +105,6 @@ void GameThread(HWND hwnd) {
 		if (!isRunning) {
 			engine->SetEngineRunning(false);
 		}
-
-		std::this_thread::sleep_until(next_frame);
 	}
 }
 
@@ -82,6 +114,10 @@ int WINAPI WinMain(
 	LPSTR lpCmdLine,
 	int nCmdShow
 ) {
+#ifdef _WIN32
+	CreateConsoleOutput();
+#endif
+
 	WNDCLASSEX wc;
 	HWND hwnd;
 	MSG Msg;
@@ -122,7 +158,7 @@ int WINAPI WinMain(
 	ShowWindow(hwnd, nCmdShow);
 	UpdateWindow(hwnd);
 
-	std::future<void> future =  std::async(std::launch::async, GameThread, hwnd);
+	std::future<void> future = std::async(std::launch::async, GameThread, hwnd);
 
 	while (isRunning) {
 		BOOL result = PeekMessage(&Msg, NULL, 0, 0, PM_REMOVE);

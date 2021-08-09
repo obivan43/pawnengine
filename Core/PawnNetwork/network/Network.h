@@ -1,16 +1,20 @@
 #pragma once
 
-#include "PawnSystem/system/windows/WindowsAPI.h"
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <stdlib.h>
 #include <cstdint>
 #include <vector>
 
+#include "PawnSystem/system/windows/WindowsAPI.h"
+
 namespace pawn::network {
-#define DEFAULT_BUFLEN 512
+
+#define PAWN_DEFAULT_BUFLEN 1024
+#define PAWN_DEFAULT_PORT "53818";
 
 	class Network {
+
 		public:
 			Network();
 			Network(const Network& other) = delete;
@@ -24,9 +28,12 @@ namespace pawn::network {
 
 			int Receive();
 			int Send(std::vector<int8_t>& buffer);
+
 			int8_t* Data();
+
 		private:
-			SOCKET ClientSocket;
-			std::vector<int8_t> recvbuf;
+			SOCKET m_ClientSocket;
+			std::vector<int8_t> m_Buffer;
 	};
+
 }
