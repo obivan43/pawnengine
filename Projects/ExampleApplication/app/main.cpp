@@ -106,6 +106,8 @@ void GameThread(HWND hwnd) {
 			engine->SetEngineRunning(false);
 		}
 	}
+
+	future.wait();
 }
 
 int WINAPI WinMain(
