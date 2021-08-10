@@ -4,15 +4,36 @@
     <Filter Include="network">
       <UniqueIdentifier>{ae6d7527-2822-43bd-b11f-e1a1bac85276}</UniqueIdentifier>
     </Filter>
+    <Filter Include="network\api">
+      <UniqueIdentifier>{fbe371dc-df12-4fc9-8498-9df19866f8b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="network\Network.h">
       <Filter>network</Filter>
     </ClInclude>
+    <ClInclude Include="network\api\Api.h">
+      <Filter>network\api</Filter>
+    </ClInclude>
+    <ClInclude Include="network\api\ApiHandler.h">
+      <Filter>network\api</Filter>
+    </ClInclude>
+    <ClInclude Include="network\api\GetEntetyIdsHandler.h">
+      <Filter>network\api</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="network\Network.cpp">
       <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="network\api\ApiHandler.cpp">
+      <Filter>network\api</Filter>
+    </ClCompile>
+    <ClCompile Include="network\api\GetEntetyIdsHandler.cpp">
+      <Filter>network\api</Filter>
+    </ClCompile>
+    <ClCompile Include="network\api\Api.cpp">
+      <Filter>network\api</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

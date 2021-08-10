@@ -2,6 +2,7 @@
 #include "PawnSystem/system/windows/SystemPC.h"
 #include "PawnSystem/system/windows/InputManagerWindows.h"
 #include "PawnNetwork/network/Network.h"
+#include "PawnNetwork/network/api/Api.h"
 #include "PawnEngine/engine/Engine.h"
 
 #include <memory>
@@ -48,12 +49,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 #ifdef PAWN_NETWORK
 void NetworkThread(std::shared_ptr<pawn::engine::Engine>& engine) {
 	std::shared_ptr<pawn::network::Network> network(new pawn::network::Network);
+	std::shared_ptr<pawn::network::Api> api(new pawn::network::Api(engine, network));
 	network->Init();
 
 	while (isRunning) {
 		int recive = network->Receive();
 
 		if (recive > 0) {
+			api->Handle(network->Data());
 			CONSOLE_INFO("recived {}", recive)
 		}
 	}

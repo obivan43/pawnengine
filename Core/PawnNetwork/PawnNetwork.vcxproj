@@ -11,9 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="network\api\Api.h" />
+    <ClInclude Include="network\api\ApiHandler.h" />
+    <ClInclude Include="network\api\GetEntetyIdsHandler.h" />
     <ClInclude Include="network\Network.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="network\api\Api.cpp" />
+    <ClCompile Include="network\api\ApiHandler.cpp" />
+    <ClCompile Include="network\api\GetEntetyIdsHandler.cpp" />
     <ClCompile Include="network\Network.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -67,11 +73,13 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -84,7 +92,7 @@
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(ProjectDir)system\;$(SolutionDir)Core\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)system\;$(SolutionDir)Core\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -105,7 +113,7 @@
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(SolutionDir);$(ProjectDir)system\;$(SolutionDir)Core\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)system\;$(SolutionDir)Core\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <cstdint>
 #include <vector>
+#include <string>
 
 #include "PawnSystem/system/windows/WindowsAPI.h"
 
@@ -28,8 +29,9 @@ namespace pawn::network {
 
 			int Receive();
 			int Send(std::vector<int8_t>& buffer);
+			int Send(const std::string& buffer);
 
-			int8_t* Data();
+			std::vector<int8_t>& Data();
 
 		private:
 			SOCKET m_ClientSocket;

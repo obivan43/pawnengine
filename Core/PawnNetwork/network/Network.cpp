@@ -85,7 +85,11 @@ namespace pawn::network {
         return send(m_ClientSocket, reinterpret_cast<char*>(buffer.data()), static_cast<int>(buffer.size()), 0);
     }
 
-    int8_t* Network::Data() {
-        return m_Buffer.data();
+    int Network::Send(const std::string& buffer) {
+        return send(m_ClientSocket, buffer.data(), static_cast<int>(buffer.size()), 0);
+    }
+
+    std::vector<int8_t>& Network::Data() {
+        return m_Buffer;
     }
 }
