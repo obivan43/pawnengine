@@ -133,6 +133,7 @@
     <ClCompile Include="widget\impl\MeshComponentWidget.cpp" />
     <ClCompile Include="widget\impl\MeshComponentWidgetItem.cpp" />
     <ClCompile Include="widget\impl\InspectorWidgetImpl.cpp" />
+    <ClCompile Include="widget\impl\NewComponentWidget.cpp" />
     <ClCompile Include="widget\impl\ScriptComponentWidget.cpp" />
     <ClCompile Include="widget\impl\ScriptComponentWidgetItem.cpp" />
     <ClCompile Include="widget\impl\TagComponentWidget.cpp" />
@@ -188,6 +189,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="widget\impl\ScriptComponentWidgetItem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="widget\impl\NewComponentWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

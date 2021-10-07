@@ -5,7 +5,7 @@
 #include "PawnEngine/engine/components/TagComponent.h"
 #include "PawnEngine/engine/components/MeshComponent.h"
 
-#include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QTimer>
 
 namespace editor {
@@ -18,7 +18,10 @@ namespace editor {
 			m_InspectorPanel->setSelectionMode(QAbstractItemView::NoSelection);
 			m_InspectorPanel->setFocusPolicy(Qt::NoFocus);
 
-			QHBoxLayout* layout = new QHBoxLayout(this);
+			InitNewComponent();
+
+			QVBoxLayout* layout = new QVBoxLayout(this);
+			layout->addWidget(m_NewComponentWidget);
 			layout->addWidget(m_InspectorPanel);
 
 			setLayout(layout);
@@ -33,6 +36,11 @@ namespace editor {
 			QTimer* timer = new QTimer(this);
 			connect(timer, SIGNAL(timeout()), this, SLOT(Update()));
 			timer->start(16);
+		}
+
+		void InspectorWidgetImpl::InitNewComponent() {
+			m_NewComponentWidget = new NewComponentWidget(this);
+			m_NewComponentWidget->setHidden(true);
 		}
 
 		void InspectorWidgetImpl::InitTagComponent() {
@@ -82,6 +90,7 @@ namespace editor {
 		}
 
 		void InspectorWidgetImpl::Update() {
+			m_NewComponentWidget->SetEntity(&m_SelectedEntity);
 			m_TagComponentInspectorWidgetItem->SetEntity(&m_SelectedEntity);
 			m_TransformationComponentInspectorWidgetItem->SetEntity(&m_SelectedEntity);
 			m_MeshComponentWidgetItem->SetEntity(&m_SelectedEntity);
@@ -91,6 +100,7 @@ namespace editor {
 
 		void InspectorWidgetImpl::RefreshPanel() {
 			if (!m_SelectedEntity.IsNull()) {
+				m_NewComponentWidget->setHidden(false);
 				m_TagComponentInspectorWidgetItem->setHidden(false);
 				m_TransformationComponentInspectorWidgetItem->setHidden(false);
 
@@ -104,6 +114,7 @@ namespace editor {
 				m_CameraComponentWidgetItem->setHidden(!IsCameraComponentExitst);
 			}
 			else {
+				m_NewComponentWidget->setHidden(true);
 				m_TagComponentInspectorWidgetItem->setHidden(true);
 				m_TransformationComponentInspectorWidgetItem->setHidden(true);
 				m_MeshComponentWidgetItem->setHidden(true);

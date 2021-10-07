@@ -23,6 +23,9 @@
     <Filter Include="widget\impl\script">
       <UniqueIdentifier>{53f025ca-7003-476e-823f-8ef49f136f80}</UniqueIdentifier>
     </Filter>
+    <Filter Include="widget\impl\new component">
+      <UniqueIdentifier>{b50c11fd-2ccd-4617-8988-32cad755c062}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="widget\InspectorWidget.cpp">
@@ -64,6 +67,9 @@
     <ClCompile Include="widget\impl\ScriptComponentWidgetItem.cpp">
       <Filter>widget\impl\script</Filter>
     </ClCompile>
+    <ClCompile Include="widget\impl\NewComponentWidget.cpp">
+      <Filter>widget\impl\new component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="widget\InspectorWidget.h">
@@ -104,6 +110,9 @@
     </QtMoc>
     <QtMoc Include="widget\impl\ScriptComponentWidgetItem.h">
       <Filter>widget\impl\script</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\NewComponentWidget.h">
+      <Filter>widget\impl\new component</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

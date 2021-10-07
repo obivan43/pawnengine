@@ -5,6 +5,7 @@
 #include "MeshComponentWidgetItem.h"
 #include "CameraComponentWidgetItem.h"
 #include "ScriptComponentWidgetItem.h"
+#include "NewComponentWidget.h"
 
 #include "Editor/gui/InspectorWidget/widget/InspectorWidget.h"
 
@@ -25,6 +26,7 @@ namespace editor {
 				void RefreshPanel();
 
 			private:
+				void InitNewComponent();
 				void InitTagComponent();
 				void InitTransformationComponent();
 				void InitMeshComponent();
@@ -42,6 +44,7 @@ namespace editor {
 
 			private:
 				QTreeWidget* m_InspectorPanel;
+				NewComponentWidget* m_NewComponentWidget;
 				TagComponentWidgetItem* m_TagComponentInspectorWidgetItem;
 				TransformationComponentWidgetItem* m_TransformationComponentInspectorWidgetItem;
 				MeshComponentWidgetItem* m_MeshComponentWidgetItem;
