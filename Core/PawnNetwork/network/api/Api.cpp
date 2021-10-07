@@ -2,6 +2,7 @@
 #include "GetEntetyIdsHandler.h"
 
 namespace pawn::network {
+
 	Api::Api(std::shared_ptr<engine::Engine>& engine, std::shared_ptr<Network>& network) {
 		m_mappings["GetEntityIds"] = std::make_shared<GetEntetyIdsHandler>(engine, network);
 	}
@@ -14,9 +15,6 @@ namespace pawn::network {
 		std::string str;
 		j.at("Request").get_to(str);
 
-		/*if (res != j.end()) {
-			std::string str = *res;*/
-			m_mappings[str]->Handle();
-		//}
+		m_mappings[str]->Handle();
 	}
 }

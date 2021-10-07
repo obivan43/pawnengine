@@ -6,6 +6,7 @@
 namespace pawn::network {
 
 	class ApiHandler {
+
 		public:
 			ApiHandler(std::shared_ptr<engine::Engine>& engine, std::shared_ptr<Network>& network);
 
@@ -16,6 +17,7 @@ namespace pawn::network {
 			ApiHandler& operator=(ApiHandler&& other) noexcept = delete;
 
 			virtual void Handle() = 0;
+
 		protected:
 			std::shared_ptr<engine::Engine> m_engine;
 			std::shared_ptr<Network> m_network;
