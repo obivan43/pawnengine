@@ -68,14 +68,14 @@ namespace editor {
 			QAction* startAction = new QAction("Start", this);
 			startAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
 
-			QAction* stopAction = new QAction("Stop", this);
-			stopAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F6));
+			QAction* pauseAction = new QAction("Pause", this);
+			pauseAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F6));
 
 			QAction* resetAction = new QAction("Reset", this);
 			resetAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F7));
 
 			m_EngineMenu->addAction(startAction);
-			m_EngineMenu->addAction(stopAction);
+			m_EngineMenu->addAction(pauseAction);
 			m_EngineMenu->addAction(resetAction);
 
 			ads::CDockAreaWidget* centralDockArea = m_DockManager->setCentralWidget(EngineViewDockWidget);
@@ -96,7 +96,7 @@ namespace editor {
 
 			connect(m_Inspector, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
 			connect(startAction, SIGNAL(triggered()), this, SLOT(Start()));
-			connect(stopAction, SIGNAL(triggered()), this, SLOT(Stop()));
+			connect(pauseAction, SIGNAL(triggered()), this, SLOT(Pause()));
 			connect(resetAction, SIGNAL(triggered()), this, SLOT(Reset()));
 		}
 
@@ -111,7 +111,7 @@ namespace editor {
 			m_Inspector->setEnabled(false);
 		}
 
-		void MainWindowImpl::Stop() {
+		void MainWindowImpl::Pause() {
 			m_Engine->GetScriptEngine()->SetIsPaused(true);
 		}
 

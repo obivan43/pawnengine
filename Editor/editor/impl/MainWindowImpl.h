@@ -39,7 +39,7 @@ namespace editor {
 
 			private slots:
 				void Start();
-				void Stop();
+				void Pause();
 				void Reset();
 
 			private:
