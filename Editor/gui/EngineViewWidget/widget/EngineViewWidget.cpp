@@ -4,7 +4,7 @@
 
 namespace editor {
 
-	EngineViewWidget::EngineViewWidget(QWidget* parent) : QFrame(parent) {}
+	EngineViewWidget::EngineViewWidget(QWidget* parent) : QWidget(parent) {}
 
 	EngineViewWidget* EngineViewWidget::CreateImpl(QWidget* parent) {
 		return new impl::EngineViewWidgetImpl(parent);

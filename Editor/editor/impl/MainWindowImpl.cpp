@@ -26,7 +26,8 @@ namespace editor {
 			setWindowIcon(QIcon(":/pawn.png"));
 			resize(EditorDefaultWidth, EditorDefaultHeight);
 
-			m_DockMenu = menuBar()->addMenu("View");
+			m_ViewMenu = menuBar()->addMenu("View");
+			m_EngineMenu = menuBar()->addMenu("Engine");
 
 			m_EngineView = EngineViewWidget::CreateImpl(this);
 			m_Output = OutputWidget::CreateImpl(this);
@@ -58,10 +59,19 @@ namespace editor {
 			InspectorDockWidget->setObjectName("InspectorDockWidget");
 			HierarchyDockWidget->setObjectName("HierarchyDockWidget");
 
-			m_DockMenu->addAction(EngineViewDockWidget->toggleViewAction());
-			m_DockMenu->addAction(OutputDockWidget->toggleViewAction());
-			m_DockMenu->addAction(InspectorDockWidget->toggleViewAction());
-			m_DockMenu->addAction(HierarchyDockWidget->toggleViewAction());
+			m_ViewMenu->addAction(EngineViewDockWidget->toggleViewAction());
+			m_ViewMenu->addAction(OutputDockWidget->toggleViewAction());
+			m_ViewMenu->addAction(InspectorDockWidget->toggleViewAction());
+			m_ViewMenu->addAction(HierarchyDockWidget->toggleViewAction());
+
+			QAction* startAction = new QAction("Start", this);
+			startAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
+
+			QAction* stopAction = new QAction("Stop", this);
+			stopAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F6));
+
+			m_EngineMenu->addAction(startAction);
+			m_EngineMenu->addAction(stopAction);
 
 			ads::CDockAreaWidget* centralDockArea = m_DockManager->setCentralWidget(EngineViewDockWidget);
 			centralDockArea->setAllowedAreas(ads::DockWidgetArea::OuterDockAreas);
@@ -80,6 +90,20 @@ namespace editor {
 			m_Hierarchy->SetEngineManager(m_EngineManager);
 
 			connect(m_Inspector, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
+			connect(startAction, SIGNAL(triggered()), this, SLOT(Start()));
+			connect(stopAction, SIGNAL(triggered()), this, SLOT(Stop()));
+		}
+
+		void MainWindowImpl::Start() {
+			m_Engine->GetScriptEngine()->SetIsPaused(false);
+			m_Hierarchy->setEnabled(false);
+			m_Inspector->setEnabled(false);
+		}
+
+		void MainWindowImpl::Stop() {
+			m_Engine->GetScriptEngine()->SetIsPaused(true);
+			m_Hierarchy->setEnabled(true);
+			m_Inspector->setEnabled(true);
 		}
 
 		void MainWindowImpl::closeEvent(QCloseEvent* event) {
@@ -114,7 +138,6 @@ namespace editor {
 			pawn::system::InputManagerWindows::RegisterKeyboard();
 
 			m_Engine->Init(GetGameEngineWindowHWND(), EngineViewWidth, EngineViewHeight);
-			m_Engine->GetScriptEngine()->SetIsPaused(false);
 
 			std::shared_ptr<pawn::engine::GameScene>& scene{ m_Engine->GetScene() };
 

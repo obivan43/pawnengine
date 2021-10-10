@@ -37,6 +37,10 @@ namespace editor {
 			signals:
 				void ActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>);
 
+			private slots:
+				void Start();
+				void Stop();
+
 			private:
 				ads::CDockManager* m_DockManager;
 				OutputWidget* m_Output;
@@ -44,7 +48,8 @@ namespace editor {
 				InspectorWidget* m_Inspector;
 				EngineViewWidget* m_EngineView;
 				EngineManager* m_EngineManager;
-				QMenu* m_DockMenu;
+				QMenu* m_ViewMenu;
+				QMenu* m_EngineMenu;
 
 				const uint32_t EngineViewWidth{ 1280 };
 				const uint32_t EngineViewHeight{ 720 };

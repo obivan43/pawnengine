@@ -1,16 +1,16 @@
 #pragma once
 
-#include <QtWidgets/QFrame>
+#include <QWidget>
 
 namespace editor {
 
-	class EngineViewWidget : public QFrame {
+	class EngineViewWidget : public QWidget {
 			Q_OBJECT
 
 		public:
 			static EngineViewWidget* CreateImpl(QWidget* parent = Q_NULLPTR);
 
-			HWND GetWindowsHandle() { return reinterpret_cast<HWND>(winId()); }
+			virtual HWND GetWindowsHandle() = 0;
 
 		protected:
 			EngineViewWidget(QWidget* parent);

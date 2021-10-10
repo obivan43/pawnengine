@@ -51,6 +51,14 @@ namespace pawn {
 			create();
 		}
 
+		void ScriptEngine::SetIsPaused(bool state) {
+			m_IsPaused = state;
+
+			if (m_IsPaused) {
+				m_LuaState.stack_clear();
+			}
+		}
+
 		void ScriptEngine::ExecOnUpdate(const std::string& fileName, utils::Clock& clock, pawn::engine::GameEntity entity) {
 			m_LuaState.stack_clear();
 			auto& res =  m_LuaState.script_file(fileName);

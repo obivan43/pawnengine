@@ -25,7 +25,7 @@ namespace pawn {
 				void ExecOnCreate(const std::string& fileName, pawn::engine::GameEntity entity);
 				void ExecOnUpdate(const std::string& fileName, utils::Clock& clock, pawn::engine::GameEntity entity);
 
-				void SetIsPaused(bool state) { m_IsPaused = state; }
+				void SetIsPaused(bool state);
 				bool GetIsPaused() const { return m_IsPaused; }
 
 			private:
