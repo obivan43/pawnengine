@@ -33,9 +33,10 @@ namespace editor {
 			InitScriptComponent();
 			InitConnections();
 
+			const uint32_t transfromationUpdateRate = 32;
 			QTimer* timer = new QTimer(this);
-			connect(timer, SIGNAL(timeout()), this, SLOT(Update()));
-			timer->start(16);
+			connect(timer, SIGNAL(timeout()), this, SLOT(UpdateTransformation()));
+			timer->start(transfromationUpdateRate);
 		}
 
 		void InspectorWidgetImpl::InitNewComponent() {
@@ -83,6 +84,11 @@ namespace editor {
 			m_InspectorPanel->setItemWidget(m_ScriptComponentInspectorWidgetItem->GetWrapper(), 0, m_ScriptComponentInspectorWidgetItem->GetWidget());
 		}
 		
+		void InspectorWidgetImpl::ForceUpdate() {
+			Update();
+			RefreshPanel();
+		}
+
 		void InspectorWidgetImpl::OnSelectedEntityChanged(pawn::engine::GameEntity entity) {
 			m_SelectedEntity = entity;
 			Update();
@@ -96,6 +102,10 @@ namespace editor {
 			m_MeshComponentWidgetItem->SetEntity(&m_SelectedEntity);
 			m_CameraComponentWidgetItem->SetEntity(&m_SelectedEntity);
 			m_ScriptComponentInspectorWidgetItem->SetEntity(&m_SelectedEntity);
+		}
+
+		void InspectorWidgetImpl::UpdateTransformation() {
+			m_TransformationComponentInspectorWidgetItem->SetEntity(&m_SelectedEntity);
 		}
 
 		void InspectorWidgetImpl::RefreshPanel() {
@@ -138,6 +148,13 @@ namespace editor {
 				this,
 				SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)),
 				Qt::QueuedConnection
+			);
+
+			connect(
+				m_NewComponentWidget,
+				SIGNAL(AddedNewComponent()),
+				this,
+				SLOT(ForceUpdate())
 			);
 		}
 

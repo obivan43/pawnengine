@@ -9,6 +9,8 @@ namespace editor {
 
 	namespace impl {
 
+		class SelectComponentWidget;
+
 		class NewComponentWidget : public QWidget {
 			 Q_OBJECT
 
@@ -18,6 +20,9 @@ namespace editor {
 				void SetEntity(pawn::engine::GameEntity* entity);
 
 				QPushButton* GetButton() { return m_Button; }
+
+			signals:
+				void AddedNewComponent();
 
 			public slots:
 				void OnPress();
@@ -29,6 +34,8 @@ namespace editor {
 				pawn::engine::GameEntity* m_Entity;
 
 				QPushButton* m_Button;
+				SelectComponentWidget* m_SelectWidget;
+				
 		};
 
 

@@ -36,6 +36,8 @@ namespace editor {
 
 			public slots:
 				void Update();
+				void UpdateTransformation();
+				void ForceUpdate();
 				void OnSelectedEntityChanged(pawn::engine::GameEntity);
 
 			signals:

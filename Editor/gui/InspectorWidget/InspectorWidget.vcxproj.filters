@@ -70,6 +70,9 @@
     <ClCompile Include="widget\impl\NewComponentWidget.cpp">
       <Filter>widget\impl\new component</Filter>
     </ClCompile>
+    <ClCompile Include="widget\impl\SelectComponentWidget.cpp">
+      <Filter>widget\impl\new component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="widget\InspectorWidget.h">
@@ -112,6 +115,9 @@
       <Filter>widget\impl\script</Filter>
     </QtMoc>
     <QtMoc Include="widget\impl\NewComponentWidget.h">
+      <Filter>widget\impl\new component</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\SelectComponentWidget.h">
       <Filter>widget\impl\new component</Filter>
     </QtMoc>
   </ItemGroup>

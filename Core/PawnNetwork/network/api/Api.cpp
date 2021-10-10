@@ -11,7 +11,8 @@ namespace pawn::network {
 		std::string request(data.begin(), data.end());
 
 		json j;
-		j.parse(request);
+		json result = j.parse(request);
+
 		std::string str;
 		j.at("Request").get_to(str);
 
