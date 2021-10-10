@@ -155,7 +155,7 @@
     <None Include="res\assets\scripts\Camera.lua">
       <Filter>res\assets\scripts</Filter>
     </None>
-    <None Include="res\assets\scripts\CameraSecond.lua">
+    <None Include="res\assets\scripts\Rotation.lua">
       <Filter>res\assets\scripts</Filter>
     </None>
   </ItemGroup>
