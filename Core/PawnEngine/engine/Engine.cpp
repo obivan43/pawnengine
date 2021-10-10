@@ -140,6 +140,17 @@ namespace pawn {
 			m_IsEngineRunning = state;
 		}
 
+		void Engine::SaveState(const std::string& path) {
+			JsonFileSerializer::SaveToFile(path, m_JsonSerializer->JsonEntities());
+		}
+
+		void Engine::LoadState(const std::string& path) {
+			const json& j = JsonFileSerializer::LoadFromFile(path);
+
+			m_Scene->Clear();
+			m_JsonSerializer->ParseJsonEntities(j, m_MeshManager);
+		}
+
 	}
 
 }

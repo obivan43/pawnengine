@@ -21,7 +21,8 @@ namespace editor {
 			, m_Hierarchy(nullptr)
 			, m_Inspector(nullptr)
 			, m_EngineView(nullptr)
-			, m_EngineManager(nullptr) {
+			, m_EngineManager(nullptr)
+			, m_IsFreshStart(true) {
 			setWindowTitle("Pawn Engine Editor");
 			setWindowIcon(QIcon(":/pawn.png"));
 			resize(EditorDefaultWidth, EditorDefaultHeight);
@@ -70,8 +71,12 @@ namespace editor {
 			QAction* stopAction = new QAction("Stop", this);
 			stopAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F6));
 
+			QAction* resetAction = new QAction("Reset", this);
+			resetAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F7));
+
 			m_EngineMenu->addAction(startAction);
 			m_EngineMenu->addAction(stopAction);
+			m_EngineMenu->addAction(resetAction);
 
 			ads::CDockAreaWidget* centralDockArea = m_DockManager->setCentralWidget(EngineViewDockWidget);
 			centralDockArea->setAllowedAreas(ads::DockWidgetArea::OuterDockAreas);
@@ -92,9 +97,15 @@ namespace editor {
 			connect(m_Inspector, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
 			connect(startAction, SIGNAL(triggered()), this, SLOT(Start()));
 			connect(stopAction, SIGNAL(triggered()), this, SLOT(Stop()));
+			connect(resetAction, SIGNAL(triggered()), this, SLOT(Reset()));
 		}
 
 		void MainWindowImpl::Start() {
+			if (m_IsFreshStart) {
+				m_Engine->SaveState("temp.pawn");
+				m_IsFreshStart = false;
+			}
+
 			m_Engine->GetScriptEngine()->SetIsPaused(false);
 			m_Hierarchy->setEnabled(false);
 			m_Inspector->setEnabled(false);
@@ -102,11 +113,23 @@ namespace editor {
 
 		void MainWindowImpl::Stop() {
 			m_Engine->GetScriptEngine()->SetIsPaused(true);
-			m_Hierarchy->setEnabled(true);
-			m_Inspector->setEnabled(true);
+		}
+
+		void MainWindowImpl::Reset() {
+			if (!m_IsFreshStart) {
+				m_Engine->GetScriptEngine()->SetIsPaused(true);
+
+				m_Engine->LoadState("temp.pawn");
+
+				m_Hierarchy->setEnabled(true);
+				m_Inspector->setEnabled(true);
+
+				m_IsFreshStart = true;
+			}
 		}
 
 		void MainWindowImpl::closeEvent(QCloseEvent* event) {
+			std::remove("temp.pawn");
 			m_Engine->SetEngineRunning(false);
 
 			QSettings settings("Shulzhenko corp", "Pawnengine");

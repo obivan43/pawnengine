@@ -26,8 +26,22 @@ namespace pawn {
 			return entity;
 		}
 
+		GameEntity GameScene::CreateEntity(uint32_t hint, const std::string& name) {
+			const entt::entity entityID = m_EnttRegistry.create(static_cast<entt::entity>(hint));
+
+			m_EnttRegistry.emplace<TransformationComponent>(entityID);
+			m_EnttRegistry.emplace<TagComponent>(entityID, name == "" ? ("Entity") : name);
+
+			const GameEntity entity(entityID, this);
+			return entity;
+		}
+
 		void GameScene::DeleteEntity(entt::entity entity) {
 			m_EnttRegistry.destroy(entity);
+		}
+
+		void GameScene::Clear() {
+			m_EnttRegistry.clear();
 		}
 
 		void GameScene::FindActiveCamera() {

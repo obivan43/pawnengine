@@ -36,6 +36,7 @@
     <ClInclude Include="engine\scripts\registers\TransformationComponentScriptRegister.h" />
     <ClInclude Include="engine\scripts\registers\Vec3ScriptRegister.h" />
     <ClInclude Include="engine\scripts\ScriptEngine.h" />
+    <ClInclude Include="engine\serializer\JsonFileSerializer.h" />
     <ClInclude Include="engine\serializer\JsonSerializer.h" />
     <ClInclude Include="engine\TextureManager.h" />
   </ItemGroup>
@@ -79,6 +80,7 @@
     <ClCompile Include="engine\scripts\registers\RegisterScriptClass.cpp" />
     <ClCompile Include="engine\scripts\registers\Vec3ScriptRegister.cpp" />
     <ClCompile Include="engine\scripts\ScriptEngine.cpp" />
+    <ClCompile Include="engine\serializer\JsonFileSerializer.cpp" />
     <ClCompile Include="engine\serializer\JsonSerializer.cpp" />
     <ClCompile Include="engine\TextureManager.cpp" />
   </ItemGroup>

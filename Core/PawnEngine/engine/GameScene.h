@@ -30,7 +30,9 @@ namespace pawn {
 				GameScene& operator=(GameScene&& other) noexcept = delete;
 
 				GameEntity CreateEntity(const std::string& name = std::string());
+				GameEntity CreateEntity(uint32_t hint, const std::string& name = std::string());
 				void DeleteEntity(entt::entity entity);
+				void Clear();
 
 				void OnCreate(std::shared_ptr<ScriptEngine>& scriptEngine);
 				void OnUpdate(utils::Clock& clock, std::shared_ptr<ScriptEngine>& scriptEngine);

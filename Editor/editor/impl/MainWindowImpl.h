@@ -40,6 +40,7 @@ namespace editor {
 			private slots:
 				void Start();
 				void Stop();
+				void Reset();
 
 			private:
 				ads::CDockManager* m_DockManager;
@@ -50,6 +51,8 @@ namespace editor {
 				EngineManager* m_EngineManager;
 				QMenu* m_ViewMenu;
 				QMenu* m_EngineMenu;
+
+				bool m_IsFreshStart;
 
 				const uint32_t EngineViewWidth{ 1280 };
 				const uint32_t EngineViewHeight{ 720 };

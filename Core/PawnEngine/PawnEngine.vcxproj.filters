@@ -106,6 +106,9 @@
     <ClInclude Include="engine\serializer\JsonSerializer.h">
       <Filter>engine\serializer</Filter>
     </ClInclude>
+    <ClInclude Include="engine\serializer\JsonFileSerializer.h">
+      <Filter>engine\serializer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">
@@ -187,6 +190,9 @@
       <Filter>engine\scripts\registers</Filter>
     </ClCompile>
     <ClCompile Include="engine\serializer\JsonSerializer.cpp">
+      <Filter>engine\serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\serializer\JsonFileSerializer.cpp">
       <Filter>engine\serializer</Filter>
     </ClCompile>
   </ItemGroup>

@@ -13,6 +13,7 @@
 
 #include "PawnEngine/engine/scripts/ScriptEngine.h"
 #include "PawnEngine/engine/serializer/JsonSerializer.h"
+#include "PawnEngine/engine/serializer/JsonFileSerializer.h"
 
 #include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsAPI.h"
@@ -51,6 +52,9 @@ namespace pawn {
 				void OnCreate();
 				void OnUpdate(utils::Clock& clock);
 				void OnRender();
+
+				void SaveState(const std::string& path);
+				void LoadState(const std::string& path);
 
 				bool HasMeshByName(const std::string & name);
 				bool UploadMeshFromFile(const std::string & file);
