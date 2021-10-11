@@ -41,6 +41,8 @@ namespace editor {
 				void Start();
 				void Pause();
 				void Reset();
+				void Open();
+				void Save();
 
 			private:
 				ads::CDockManager* m_DockManager;
@@ -49,6 +51,7 @@ namespace editor {
 				InspectorWidget* m_Inspector;
 				EngineViewWidget* m_EngineView;
 				EngineManager* m_EngineManager;
+				QMenu* m_FileMenu;
 				QMenu* m_ViewMenu;
 				QMenu* m_EngineMenu;
 

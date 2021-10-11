@@ -43,6 +43,9 @@ namespace pawn {
 				bool GetEngineRunning() const;
 				void SetEngineRunning(bool state);
 
+				bool GetEnginePaused() const;
+				void SetEnginePaused(bool state);
+
 				void Init();
 				void Init(HWND handle, uint32_t width, uint32_t height);
 				void InitGraphics(HWND handle, uint32_t width, uint32_t height);
@@ -76,6 +79,7 @@ namespace pawn {
 
 			private:
 				bool m_IsEngineRunning;
+				bool m_IsEnginePaused;
 				std::shared_ptr<MeshManager> m_MeshManager;
 				std::shared_ptr<TextureManager> m_TextureManager;
 				std::shared_ptr<ScriptEngine> m_ScriptEngine;

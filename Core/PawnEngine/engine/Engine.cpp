@@ -11,6 +11,7 @@ namespace pawn {
 
 		void Engine::Init() {
 			m_IsEngineRunning = true;
+			m_IsEnginePaused = false;
 
 			m_MeshManager.reset(new MeshManager());
 			m_TextureManager.reset(new TextureManager());
@@ -21,6 +22,7 @@ namespace pawn {
 
 		void Engine::Init(HWND handle, uint32_t width, uint32_t height) {
 			m_IsEngineRunning = true;
+			m_IsEnginePaused = false;
 
 			InitGraphics(handle, width, height);
 
@@ -80,14 +82,16 @@ namespace pawn {
 
 
 		void Engine::Clear() {
-			if (m_Context.get() && m_GraphicsAPI.get()) {
+			if (!m_IsEnginePaused && m_Context.get() && m_GraphicsAPI.get()) {
 				m_GraphicsAPI->Clear();
 			}
 		}
 
 		void Engine::OnInput() {
-			system::MouseManager::Update();
-			system::KeyboardManager::Update();
+			if (!m_IsEnginePaused) {
+				system::MouseManager::Update();
+				system::KeyboardManager::Update();
+			}
 
 #ifdef PAWN_TRACE_MOUSE_INPUT
 			if (system::MouseManager::ButtonPressed(system::MouseButton::LeftButton)) {
@@ -122,11 +126,13 @@ namespace pawn {
 		}
 
 		void Engine::OnUpdate(utils::Clock& clock) {
-			m_Scene->OnUpdate(clock, m_ScriptEngine);
+			if (!m_IsEnginePaused) {
+				m_Scene->OnUpdate(clock, m_ScriptEngine);
+			}
 		}
 
 		void Engine::OnRender() {
-			if (m_Context.get() && m_GraphicsAPI.get()) {
+			if (!m_IsEnginePaused && m_Context.get() && m_GraphicsAPI.get()) {
 				m_Scene->OnRender(m_Renderer);
 				m_Context->SwapBuffers();
 			}
@@ -138,6 +144,14 @@ namespace pawn {
 
 		void Engine::SetEngineRunning(bool state) {
 			m_IsEngineRunning = state;
+		}
+
+		bool Engine::GetEnginePaused() const {
+			return m_IsEnginePaused;
+		}
+
+		void Engine::SetEnginePaused(bool state) {
+			m_IsEnginePaused = state;
 		}
 
 		void Engine::SaveState(const std::string& path) {

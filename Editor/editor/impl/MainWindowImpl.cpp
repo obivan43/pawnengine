@@ -1,14 +1,17 @@
 #include "MainWindowImpl.h"
 #include "PawnSystem/system/windows/SystemPC.h"
 #include "PawnSystem/system/windows/InputManagerWindows.h"
+#include "PawnUtils/utils/logger/Logger.h"
 
 #include "gui/QtAdvancedDocking/docking/DockAreaWidget.h"
 
 #include <QSettings>
-#include <string>
 #include <QMenu>
 #include <QMenuBar>
+#include <QFileDialog>
+#include <QString>
 
+#include <string>
 #include <iomanip>
 
 namespace editor {
@@ -27,6 +30,7 @@ namespace editor {
 			setWindowIcon(QIcon(":/pawn.png"));
 			resize(EditorDefaultWidth, EditorDefaultHeight);
 
+			m_FileMenu = menuBar()->addMenu("File");
 			m_ViewMenu = menuBar()->addMenu("View");
 			m_EngineMenu = menuBar()->addMenu("Engine");
 
@@ -59,6 +63,15 @@ namespace editor {
 			OutputDockWidget->setObjectName("OutputDockWidget");
 			InspectorDockWidget->setObjectName("InspectorDockWidget");
 			HierarchyDockWidget->setObjectName("HierarchyDockWidget");
+
+			QAction* openAction = new QAction("Open", this);
+			openAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_O));
+
+			QAction* saveAction = new QAction("Save", this);
+			saveAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_S));
+
+			m_FileMenu->addAction(openAction);
+			m_FileMenu->addAction(saveAction);
 
 			m_ViewMenu->addAction(EngineViewDockWidget->toggleViewAction());
 			m_ViewMenu->addAction(OutputDockWidget->toggleViewAction());
@@ -98,6 +111,8 @@ namespace editor {
 			connect(startAction, SIGNAL(triggered()), this, SLOT(Start()));
 			connect(pauseAction, SIGNAL(triggered()), this, SLOT(Pause()));
 			connect(resetAction, SIGNAL(triggered()), this, SLOT(Reset()));
+			connect(openAction, SIGNAL(triggered()), this, SLOT(Open()));
+			connect(saveAction, SIGNAL(triggered()), this, SLOT(Save()));
 		}
 
 		void MainWindowImpl::Start() {
@@ -109,6 +124,7 @@ namespace editor {
 			m_Engine->GetScriptEngine()->SetIsPaused(false);
 			m_Hierarchy->setEnabled(false);
 			m_Inspector->setEnabled(false);
+			m_FileMenu->setEnabled(false);
 		}
 
 		void MainWindowImpl::Pause() {
@@ -123,8 +139,26 @@ namespace editor {
 
 				m_Hierarchy->setEnabled(true);
 				m_Inspector->setEnabled(true);
+				m_FileMenu->setEnabled(true);
 
 				m_IsFreshStart = true;
+			}
+		}
+
+		void MainWindowImpl::Open() {
+			QString filter("All File (*.*) ;; Text File (*.txt) ;; Pawn File (*.pawn)");
+			QString fileName = QFileDialog::getOpenFileName(this, "Open a file", QDir::homePath(), filter);
+			if (!fileName.isEmpty()) {
+				m_Engine->LoadState(fileName.toLocal8Bit().constData());
+				m_Hierarchy->RefreshPanel();
+			}
+		}
+
+		void MainWindowImpl::Save() {
+			QString filter("All File (*.*) ;; Text File (*.txt) ;; Pawn File (*.pawn)");
+			QString fileName = QFileDialog::getSaveFileName(this, "Save a file", QDir::homePath(), filter);
+			if (!fileName.isEmpty()) {
+				m_Engine->SaveState(fileName.toLocal8Bit().constData());
 			}
 		}
 

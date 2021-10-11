@@ -15,6 +15,8 @@ namespace editor {
 		public:
 			static HierarchyWidget* CreateImpl(QWidget* parent = Q_NULLPTR);
 
+			virtual void RefreshPanel() = 0;
+
 			void SetEngineManager(impl::EngineManager* engineManager);
 
 			impl::EngineManager* GetEngineManager();

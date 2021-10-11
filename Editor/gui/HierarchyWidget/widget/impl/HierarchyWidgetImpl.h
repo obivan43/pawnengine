@@ -20,7 +20,7 @@ namespace editor {
 			public:
 				HierarchyWidgetImpl(QWidget* parent);
 
-				void RefreshPanel();
+				void RefreshPanel() override;
 
 				void SetSelectedEntity(pawn::engine::GameEntity entity);
 
