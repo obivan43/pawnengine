@@ -2,30 +2,30 @@ function create()
 end
 
 function update(dt)
-	local cameraSpeed = 5.0 * dt
-	local camera = GameEntity.new(current_entity())
-	local transformation = camera.transformation
+	local speed = 5.0 * dt
+	local object = GameEntity.new(current_entity())
+	local transformation = object.transformation
 
-	local viewForwardMovingVector = vec3MulScalar(transformation.viewForward, cameraSpeed)
-	local viewForwardUpCrossMovingVector = vec3MulScalar(transformation.viewForwardUpCross, cameraSpeed)
+	local viewForwardMovingVector = vec3MulScalar(transformation.viewForward, speed)
+	local viewForwardUpCrossMovingVector = vec3MulScalar(transformation.viewForwardUpCross, speed)
 
 	if keyboard_buttonPressed(Button.W) then
 		transformation.position = transformation.position - viewForwardMovingVector
-		camera.transformation = transformation
+		object.transformation = transformation
 	end
 
 	if keyboard_buttonPressed(Button.S) then
 		transformation.position = transformation.position + viewForwardMovingVector
-		camera.transformation = transformation
+		object.transformation = transformation
 	end
 
 	if keyboard_buttonPressed(Button.A) then
 		transformation.position = transformation.position + viewForwardUpCrossMovingVector
-		camera.transformation = transformation
+		object.transformation = transformation
 	end
 	
 	if keyboard_buttonPressed(Button.D) then
 		transformation.position = transformation.position - viewForwardUpCrossMovingVector
-		camera.transformation = transformation
+		object.transformation = transformation
 	end
 end

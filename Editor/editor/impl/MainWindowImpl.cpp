@@ -179,7 +179,7 @@ namespace editor {
 			pawn::engine::TransformationComponent& transformation = camera.GetComponent<pawn::engine::TransformationComponent>();
 			transformation.Position = glm::vec3(0.0f, 0.0f, 4.0f);
 
-			camera.AddComponent<pawn::engine::ScriptComponent>("res/assets/scripts/Camera.lua");
+			camera.AddComponent<pawn::engine::ScriptComponent>("res/assets/scripts/Movement.lua");
 
 			emit ActiveSceneChanged(scene);
 		}

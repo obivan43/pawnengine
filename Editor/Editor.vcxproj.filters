@@ -152,7 +152,7 @@
     <None Include="res\dark\vsepartoolbars.svg">
       <Filter>res\dark</Filter>
     </None>
-    <None Include="res\assets\scripts\Camera.lua">
+    <None Include="res\assets\scripts\Movement.lua">
       <Filter>res\assets\scripts</Filter>
     </None>
     <None Include="res\assets\scripts\Rotation.lua">
