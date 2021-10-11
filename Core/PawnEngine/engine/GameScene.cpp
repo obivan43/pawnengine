@@ -10,6 +10,8 @@
 #include "components/MeshComponent.h"
 #include "components/ScriptComponent.h"
 
+#include "PawnMath/math/Functions.h"
+
 #include <string>
 
 namespace pawn {
@@ -46,7 +48,11 @@ namespace pawn {
 
 		void GameScene::FindActiveCamera() {
 			math::Camera* activeCamera{ nullptr };
-			glm::mat4 acitveCameraTransformation;
+
+			glm::vec3 cameraPosition(0.0);
+			float pitch = 0.0f;
+			float yaw = 0.0f;
+
 			auto cameraGroup = m_EnttRegistry.view<TransformationComponent, CameraComponent>();
 
 			for (auto& entity : cameraGroup) {
@@ -54,13 +60,23 @@ namespace pawn {
 
 				if (cameraComponent.IsActiveCamera) {
 					activeCamera = &cameraComponent.Camera;
-					acitveCameraTransformation = transformationComponent.GetTransformation();
+					cameraPosition = transformationComponent.Position;
+
+					if (transformationComponent.Rotation.x > 90.0f) {
+						transformationComponent.Rotation.x = 89.95f;
+					}
+					else if (transformationComponent.Rotation.x < -90.0f) {
+						transformationComponent.Rotation.x = -89.95f;
+					}
+
+					pitch = transformationComponent.Rotation.x;
+					yaw = transformationComponent.Rotation.y;
 					break;
 				}
 			}
 
 			m_ActiveCamera = activeCamera;
-			m_ActiveCameraView = glm::inverse(acitveCameraTransformation);
+			m_ActiveCameraView = pawn::math::cameraMatrix(cameraPosition, pitch, yaw);
 		}
 
 		void GameScene::OnCreate(std::shared_ptr<ScriptEngine>& scriptEngine) {
