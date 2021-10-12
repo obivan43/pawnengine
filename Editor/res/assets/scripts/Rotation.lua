@@ -2,7 +2,7 @@ function create()
 end
 
 function update(dt)
-	local angle = 1.0 * dt
+	local angle = 10.0 * dt
 	local entity = GameEntity.new(current_entity())
 	local entityTransform = entity.transformation
 

@@ -18,14 +18,16 @@ namespace editor {
 
 	namespace impl {
 
-		MainWindowImpl::MainWindowImpl(QWidget* parent)
+		MainWindowImpl::MainWindowImpl(QApplication* application, QWidget* parent)
 			: MainWindow(parent)
+			, m_Application(application)
 			, m_Output(nullptr)
 			, m_Hierarchy(nullptr)
 			, m_Inspector(nullptr)
 			, m_EngineView(nullptr)
 			, m_EngineManager(nullptr)
-			, m_IsFreshStart(true) {
+			, m_IsFreshStart(true)
+			, m_IsCursorHidden(false) {
 			setWindowTitle("Pawn Engine Editor");
 			setWindowIcon(QIcon(":/pawn.png"));
 			resize(EditorDefaultWidth, EditorDefaultHeight);
@@ -107,12 +109,17 @@ namespace editor {
 
 			m_Hierarchy->SetEngineManager(m_EngineManager);
 
+			QAction* showHideCursor = new QAction("Show/Hide cursor", this);
+			showHideCursor->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_K));
+			addAction(showHideCursor);
+
 			connect(m_Inspector, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
 			connect(startAction, SIGNAL(triggered()), this, SLOT(Start()));
 			connect(pauseAction, SIGNAL(triggered()), this, SLOT(Pause()));
 			connect(resetAction, SIGNAL(triggered()), this, SLOT(Reset()));
 			connect(openAction, SIGNAL(triggered()), this, SLOT(Open()));
 			connect(saveAction, SIGNAL(triggered()), this, SLOT(Save()));
+			connect(showHideCursor, SIGNAL(triggered()), this, SLOT(ShowHideCursor()));
 		}
 
 		void MainWindowImpl::Start() {
@@ -159,6 +166,29 @@ namespace editor {
 			QString fileName = QFileDialog::getSaveFileName(this, "Save a file", QDir::homePath(), filter);
 			if (!fileName.isEmpty()) {
 				m_Engine->SaveState(fileName.toLocal8Bit().constData());
+			}
+		}
+
+		void MainWindowImpl::ShowHideCursor() {
+			if (!m_IsCursorHidden) {
+				QCursor cursor(Qt::BlankCursor);
+				m_Application->setOverrideCursor(cursor);
+				m_Application->changeOverrideCursor(cursor);
+				m_IsCursorHidden = true;
+#ifdef _WIN32
+				HWND handle = m_EngineView->GetWindowsHandle();
+				RECT rect;
+				GetClientRect(handle, &rect);
+				MapWindowPoints(handle, nullptr, reinterpret_cast<POINT*>(&rect), 2);
+				ClipCursor(&rect);
+#endif
+			}
+			else {
+				m_Application->restoreOverrideCursor();
+				m_IsCursorHidden = false;
+#ifdef _WIN32
+				ClipCursor(nullptr);
+#endif
 			}
 		}
 

@@ -12,6 +12,7 @@
 
 #include <QCloseEvent>
 #include <QMenu>
+#include <QApplication>
 
 namespace editor {
 
@@ -21,7 +22,7 @@ namespace editor {
 				Q_OBJECT
 
 			public:
-				MainWindowImpl(QWidget* parent = Q_NULLPTR);
+				MainWindowImpl(QApplication* application, QWidget* parent = Q_NULLPTR);
 
 				uint32_t GetDefaultWidth() const { return EngineViewWidth; }
 				uint32_t GetDefaultHeight() const { return EngineViewHeight; }
@@ -43,8 +44,10 @@ namespace editor {
 				void Reset();
 				void Open();
 				void Save();
+				void ShowHideCursor();
 
 			private:
+				QApplication* m_Application;
 				ads::CDockManager* m_DockManager;
 				OutputWidget* m_Output;
 				HierarchyWidget* m_Hierarchy;
@@ -56,6 +59,7 @@ namespace editor {
 				QMenu* m_EngineMenu;
 
 				bool m_IsFreshStart;
+				bool m_IsCursorHidden;
 
 				const uint32_t EngineViewWidth{ 1280 };
 				const uint32_t EngineViewHeight{ 720 };

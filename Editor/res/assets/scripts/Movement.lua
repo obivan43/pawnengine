@@ -6,7 +6,7 @@ function update(dt)
 
 	-- general stuff
 	local speed = 5.0 * dt
-	local mouseSpeed = 25.0 * dt
+	local mouseSpeed = 35.0 * dt
 	local object = GameEntity.new(current_entity())
 	local transformation = object.transformation
 

@@ -11,7 +11,7 @@ namespace editor {
             Q_OBJECT
 
         public:
-            static MainWindow* CreateImpl(QWidget* parent = Q_NULLPTR);
+            static MainWindow* CreateImpl(QApplication* application, QWidget* parent = Q_NULLPTR);
 
             pawn::engine::Engine* GetEngine() { return m_Engine.get(); }
 

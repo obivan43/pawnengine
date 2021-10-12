@@ -53,7 +53,7 @@ int main(int argc, char* argv[]) {
 	QApplication app(argc, argv);
 	app.installNativeEventFilter(new editor::impl::WindowsEventFilter());
 
-	editor::MainWindow* window = editor::MainWindow::CreateImpl();
+	editor::MainWindow* window = editor::MainWindow::CreateImpl(&app);
 	window->show();
 
 	QFuture<void> future = QtConcurrent::run(GameThread, window->GetEngine());
