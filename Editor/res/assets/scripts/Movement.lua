@@ -5,35 +5,30 @@ function create() end
 function update(dt)
 
 	-- general stuff
-
 	local speed = 5.0 * dt
 	local mouseSpeed = 25.0 * dt
 	local object = GameEntity.new(current_entity())
 	local transformation = object.transformation
 
-	local viewForwardMovingVector = vec3MulScalar(transformation.viewForward, speed)
-	local viewForwardUpCrossMovingVector = vec3MulScalar(transformation.viewForwardUpCross, speed)
-
-	-- keyboard handling
-
+	local front = vec3MulScalar(transformation.front, speed)
 	if keyboard_buttonPressed(Button.W) then
-		transformation.position = transformation.position - viewForwardMovingVector
+		transformation.position = transformation.position - front
 	end
 
 	if keyboard_buttonPressed(Button.S) then
-		transformation.position = transformation.position + viewForwardMovingVector
+		transformation.position = transformation.position + front
 	end
 
+	local frontUpCross = vec3MulScalar(transformation.frontUpCross, speed)
 	if keyboard_buttonPressed(Button.A) then
-		transformation.position = transformation.position + viewForwardUpCrossMovingVector
+		transformation.position = transformation.position + frontUpCross
 	end
-	
+
 	if keyboard_buttonPressed(Button.D) then
-		transformation.position = transformation.position - viewForwardUpCrossMovingVector
+		transformation.position = transformation.position - frontUpCross
 	end
 
 	-- mouse handling
-
 	local mouseX = mouse_getRawMouseX()
 	local mouseY = mouse_getRawMouseY()
 

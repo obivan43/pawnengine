@@ -14,10 +14,8 @@ namespace pawn {
 				"position", &pawn::engine::TransformationComponent::Position,
 				"rotation", &pawn::engine::TransformationComponent::Rotation,
 				"scale", &pawn::engine::TransformationComponent::Scale,
-				"viewForward", sol::property(&pawn::engine::TransformationComponent::GetViewForward),
-				"viewUp", sol::property(&pawn::engine::TransformationComponent::GetViewUp),
-				"viewForwardUpCross", sol::property(&pawn::engine::TransformationComponent::GetViewForwardUpCross),
-				"viewPosition", sol::property(&pawn::engine::TransformationComponent::GetViewPosition)
+				"front", sol::property(&pawn::engine::TransformationComponent::GetFront),
+				"frontUpCross", sol::property(&pawn::engine::TransformationComponent::GetFrontUpCross)
 			);
 		}
 

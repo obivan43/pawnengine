@@ -11,11 +11,11 @@ namespace pawn {
 			return (value < min) ? min : (value > max) ? max : value;
 		}
 
-		static glm::mat4 cameraMatrix(glm::vec3 cameraPosition, float pitch, float yaw) {
+		static glm::mat4 cameraMatrix(const glm::vec3& cameraPosition, float pitch, float yaw) {
 			glm::mat4 rotationMatrix = glm::mat4(1.0);
 
-			float finalPitchDegree = pitch / 57.2958f;
-			float finalYawDegree = yaw / 57.2958f;
+			float finalPitchDegree = glm::radians(pitch);
+			float finalYawDegree = glm::radians(yaw);
 
 			rotationMatrix = glm::rotate(rotationMatrix, finalPitchDegree, glm::vec3(1.0, 0.0, 0.0));
 			rotationMatrix = glm::rotate(rotationMatrix, finalYawDegree, glm::vec3(0.0, 1.0, 0.0));

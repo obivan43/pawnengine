@@ -1,7 +1,8 @@
 #pragma once
 
+#include "PawnMath/math/Functions.h"
+
 #include "glm.hpp"
-#include "gtc/matrix_transform.hpp"
 
 namespace pawn {
 
@@ -18,33 +19,25 @@ namespace pawn {
 			TransformationComponent& operator=(TransformationComponent&& other) noexcept = default;
 
 			glm::mat4 GetTransformation() {
-				glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), Rotation.x, { 1, 0, 0 })
-					* glm::rotate(glm::mat4(1.0f), Rotation.y, { 0, 1, 0 })
-					* glm::rotate(glm::mat4(1.0f), Rotation.z, { 0, 0, 1 });
+				glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), glm::radians(Rotation.x), { 1, 0, 0 })
+					* glm::rotate(glm::mat4(1.0f), glm::radians(Rotation.y), { 0, 1, 0 })
+					* glm::rotate(glm::mat4(1.0f), glm::radians(Rotation.z), { 0, 0, 1 });
 				return glm::translate(glm::mat4(1.0f), Position) * rotation * glm::scale(glm::mat4(1.0f), Scale);
 			}
 
-			glm::vec3 GetViewUp() {
-				glm::mat4 inverted = glm::inverse(GetTransformation());
-				return glm::normalize(glm::vec3(inverted[1]));
+			glm::vec3 GetFrontUpCross() {
+				glm::vec3 front = GetFront();
+				return glm::normalize(glm::cross(front, glm::vec3(0.0, 1.0, 0.0)));
 			}
 
-			glm::vec3 GetViewForward() {
-				glm::mat4 inverted = glm::inverse(GetTransformation());
-				return glm::normalize(glm::vec3(inverted[2]));
-			}
+			glm::vec3 GetFront() {
+				glm::vec3 front;
 
-			glm::vec3 GetViewPosition() {
-				glm::mat4 inverted = glm::inverse(GetTransformation());
-				return glm::normalize(glm::vec3(inverted[3]));
-			}
+				front.x = sin(glm::radians(-Rotation.y)) * cos(glm::radians(Rotation.x));
+				front.y = sin(glm::radians(Rotation.x));
+				front.z = cos(glm::radians(-Rotation.y)) * cos(glm::radians(Rotation.x));
 
-			glm::vec3 GetViewForwardUpCross() {
-				glm::mat4 inverted = glm::inverse(GetTransformation());
-				glm::vec3 up = inverted[1];
-				glm::vec3 forward = inverted[2];
-
-				return glm::normalize(glm::cross(forward, up));
+				return glm::normalize(front);
 			}
 
 			glm::vec3 Position{ 0.0f, 0.0f, 0.0f };
