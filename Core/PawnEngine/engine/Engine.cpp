@@ -47,7 +47,7 @@ namespace pawn {
 				CONSOLE_ERROR("Vertex shader initialization failed")
 			}
 
-			if (!m_Shader->InitPixelShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\PixelShader.cso")) {
+			if (!m_Shader->InitPixelShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\TexturePixelShader.cso")) {
 				CONSOLE_ERROR("Pixel shader initialization failed")
 			}
 

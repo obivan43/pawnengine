@@ -27,6 +27,7 @@ namespace pawn {
 				void Init(std::shared_ptr<GraphicsContext>&context, const std::initializer_list<GraphicsInputElement>&elements, void* shaderData) override;
 				void Bind(std::shared_ptr<GraphicsContext>&context) override;
 				void Bind(std::shared_ptr<GraphicsContext>&context, uint32_t index) override;
+				void Unbind(std::shared_ptr<GraphicsContext>& context) override;
 
 				ID3D11InputLayout* GetInputLayout() const { return m_InputLayout.Get(); }
 

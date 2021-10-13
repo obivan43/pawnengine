@@ -22,6 +22,18 @@ namespace editor {
 			}
 		}
 
+		void EngineManager::OnEntityTexture2DModified(pawn::engine::GameEntity entity) {
+			if (!entity.IsNull()) {
+				pawn::engine::Texture2DComponent& texture2DComponent = entity.GetComponent<pawn::engine::Texture2DComponent>();
+
+				if (!m_Engine->HasTextureByName(texture2DComponent.TextureName)) {
+					m_Engine->UploadTextureFromFile(texture2DComponent.TextureName);
+				}
+
+				texture2DComponent.Texture = m_Engine->GetTextureByName(texture2DComponent.TextureName);
+			}
+		}
+
 	}
 
 }

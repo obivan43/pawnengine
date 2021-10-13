@@ -1,8 +1,9 @@
 #pragma once
 
 #include "GameEntity.h"
-#include "components\TransformationComponent.h"
-#include "components\MeshComponent.h"
+#include "components/TransformationComponent.h"
+#include "components/MeshComponent.h"
+#include "components/Texture2DComponent.h"
 
 #include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsAPI.h"
@@ -13,9 +14,13 @@ namespace pawn {
 
 	namespace engine {
 
-		struct ViewProjection {
+		struct ViewProjectionCB {
 			glm::mat4 projection;
 			glm::mat4 view;
+		};
+
+		struct Texture2DCB {
+			glm::vec4 color;
 		};
 
 		class Renderer {
@@ -29,10 +34,14 @@ namespace pawn {
 				void EndScene();
 
 				void DrawMesh(TransformationComponent& transformationComponent, MeshComponent& meshComponent);
+				void DrawMesh(TransformationComponent& transformationComponent, MeshComponent& meshComponent, Texture2DComponent& textureComponent);
 
 			private:
+				std::shared_ptr<graphics::GraphicsTexture2D> m_WhiteTexture;
+
 				std::shared_ptr<graphics::GraphicsBuffer> m_Transformation;
 				std::shared_ptr<graphics::GraphicsBuffer> m_ViewProjection;
+				std::shared_ptr<graphics::GraphicsBuffer> m_Texture2D;
 
 				std::shared_ptr<graphics::GraphicsContext> m_Context;
 				std::shared_ptr<graphics::GraphicsAPI> m_GraphicsAPI;

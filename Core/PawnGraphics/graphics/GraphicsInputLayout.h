@@ -59,6 +59,7 @@ namespace pawn {
 
 				void Bind(std::shared_ptr<GraphicsContext>& context) override;
 				void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+				void Unbind(std::shared_ptr<GraphicsContext>& context) override;
 
 				uint32_t GetStride() const { return m_Stride; }
 

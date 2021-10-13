@@ -3,6 +3,7 @@
 #include "PawnEngine/engine/components/MeshComponent.h"
 #include "PawnEngine/engine/components/ScriptComponent.h"
 #include "PawnEngine/engine/components/CameraComponent.h"
+#include "PawnEngine/engine/components/Texture2DComponent.h"
 
 #include <QVBoxLayout>
 
@@ -40,6 +41,10 @@ namespace editor {
 				componentsList.append("CameraComponent");
 			}
 
+			if (!m_Entity->HasComponent<pawn::engine::Texture2DComponent>()) {
+				componentsList.append("Texture2DComponent");
+			}
+
 			m_ListWidget->clear();
 			m_ListWidget->addItems(componentsList);
 		}
@@ -56,7 +61,8 @@ namespace editor {
 			static QHash<QString, ComponentsEnum> componentsTable {
 				{ "MeshCompnent", ComponentsEnum::MeshComponent },
 				{ "ScriptComponent", ComponentsEnum::ScriptComponent },
-				{ "CameraComponent", ComponentsEnum::CameraComponeent }
+				{ "CameraComponent", ComponentsEnum::CameraComponent },
+				{ "Texture2DComponent", ComponentsEnum::Texture2DComponent }
 			};
 
 			const QString& selectedText = item->text();
@@ -67,8 +73,11 @@ namespace editor {
 				case ComponentsEnum::ScriptComponent:
 					m_Entity->AddComponent<pawn::engine::ScriptComponent>();
 					break;
-				case ComponentsEnum::CameraComponeent:
+				case ComponentsEnum::CameraComponent:
 					m_Entity->AddComponent<pawn::engine::CameraComponent>();
+					break;
+				case ComponentsEnum::Texture2DComponent:
+					m_Entity->AddComponent<pawn::engine::Texture2DComponent>();
 					break;
 			}
 

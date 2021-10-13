@@ -28,5 +28,16 @@ namespace pawn {
 			Bind(context);
 		}
 
+		void GraphicsMesh::Unbind(std::shared_ptr<GraphicsContext>& context) {
+			if (m_VertexBuffer != nullptr && m_IndexBuffer != nullptr) {
+				m_VertexBuffer->Unbind(context);
+				m_IndexBuffer->Unbind(context);
+				m_InputLayout->Unbind(context);
+				return;
+			}
+
+			CONSOLE_WARN("Unbind call on empty mesh")
+		}
+
 	}
 }

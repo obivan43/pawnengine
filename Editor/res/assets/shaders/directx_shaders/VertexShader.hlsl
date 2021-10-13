@@ -1,8 +1,8 @@
-cbuffer Transformation : register(b0) {
+cbuffer TransformationCB : register(b0) {
 	matrix transformation;
 };
 
-cbuffer ViewProjection : register(b1) {
+cbuffer ViewProjectionCB : register(b1) {
 	matrix  projection;
 	matrix  view;
 };

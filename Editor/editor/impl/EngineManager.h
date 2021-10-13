@@ -18,6 +18,7 @@ namespace editor {
 
 			public slots:
 				void OnEntityMeshModified(pawn::engine::GameEntity entity);
+				void OnEntityTexture2DModified(pawn::engine::GameEntity entity);
 
 			private:
 				pawn::engine::Engine* m_Engine;

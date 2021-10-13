@@ -25,6 +25,13 @@ namespace pawn {
 			deviceContext->PSSetSamplers(index, 1, m_Sampler.GetAddressOf());
 		}
 
+		void DirectX11Texture2D::Unbind(std::shared_ptr<GraphicsContext>& context) {
+			DirectX11Context* directX11Context = context->As<DirectX11Context>();
+			ID3D11DeviceContext* deviceContext = directX11Context->GetDeviceContext();
+			deviceContext->PSSetShaderResources(0, 0, nullptr);
+			deviceContext->PSSetSamplers(0, 0, nullptr);
+		}
+
 		void DirectX11Texture2D::Init(
 			std::shared_ptr<GraphicsContext>& context,
 			const void* data, int32_t width,

@@ -23,6 +23,8 @@ namespace pawn {
 			UNUSED(index)
 		}
 
+		void GraphicsTexture2D::Unbind(std::shared_ptr<GraphicsContext>& context) { UNUSED(context) }
+
 		void GraphicsTexture2D::Init(
 			std::shared_ptr<GraphicsContext>& context,
 			const void* data,

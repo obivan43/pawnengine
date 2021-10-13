@@ -49,6 +49,8 @@ namespace pawn {
 			UNUSED(index)
 		}
 
+		void GraphicsBuffer::Unbind(std::shared_ptr<GraphicsContext>& context) { UNUSED(context) }
+
 		std::shared_ptr<GraphicsBuffer> GraphicsBuffer::Create(GraphicsBufferEnum bufferType) {
 #ifdef PAWN_DIRECTX11
 			switch (bufferType) {

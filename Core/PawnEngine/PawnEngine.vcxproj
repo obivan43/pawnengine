@@ -15,6 +15,7 @@
     <ClInclude Include="engine\components\MeshComponent.h" />
     <ClInclude Include="engine\components\ScriptComponent.h" />
     <ClInclude Include="engine\components\TagComponent.h" />
+    <ClInclude Include="engine\components\Texture2DComponent.h" />
     <ClInclude Include="engine\components\TransformationComponent.h" />
     <ClInclude Include="engine\Engine.h" />
     <ClInclude Include="engine\GameEntity.h" />
@@ -59,6 +60,7 @@
     <ClCompile Include="engine\components\MeshComponent.cpp" />
     <ClCompile Include="engine\components\ScriptComponent.cpp" />
     <ClCompile Include="engine\components\TagComponent.cpp" />
+    <ClCompile Include="engine\components\Texture2DComponent.cpp" />
     <ClCompile Include="engine\components\TransformationComponent.cpp" />
     <ClCompile Include="engine\Engine.cpp" />
     <ClCompile Include="engine\GameEntity.cpp" />

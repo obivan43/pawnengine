@@ -114,6 +114,7 @@ namespace editor {
 			addAction(showHideCursor);
 
 			connect(m_Inspector, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
+			connect(m_Inspector, SIGNAL(EntityTexture2DModified(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityTexture2DModified(pawn::engine::GameEntity)));
 			connect(startAction, SIGNAL(triggered()), this, SLOT(Start()));
 			connect(pauseAction, SIGNAL(triggered()), this, SLOT(Pause()));
 			connect(resetAction, SIGNAL(triggered()), this, SLOT(Reset()));

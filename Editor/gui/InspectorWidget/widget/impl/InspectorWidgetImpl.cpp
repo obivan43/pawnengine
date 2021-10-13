@@ -31,6 +31,7 @@ namespace editor {
 			InitMeshComponent();
 			InitCameraComponent();
 			InitScriptComponent();
+			InitTexture2DComponent();
 			InitConnections();
 
 			const uint32_t transfromationUpdateRate = 32;
@@ -83,6 +84,14 @@ namespace editor {
 			m_InspectorPanel->addTopLevelItem(m_ScriptComponentInspectorWidgetItem);
 			m_InspectorPanel->setItemWidget(m_ScriptComponentInspectorWidgetItem->GetWrapper(), 0, m_ScriptComponentInspectorWidgetItem->GetWidget());
 		}
+
+		void InspectorWidgetImpl::InitTexture2DComponent() {
+			m_Texture2DComponentWidgetItem = new Texture2DComponentWidgetItem(m_InspectorPanel);
+			m_Texture2DComponentWidgetItem->setHidden(true);
+
+			m_InspectorPanel->addTopLevelItem(m_Texture2DComponentWidgetItem);
+			m_InspectorPanel->setItemWidget(m_Texture2DComponentWidgetItem->GetWrapper(), 0, m_Texture2DComponentWidgetItem->GetWidget());
+		}
 		
 		void InspectorWidgetImpl::ForceUpdate() {
 			Update();
@@ -102,6 +111,7 @@ namespace editor {
 			m_MeshComponentWidgetItem->SetEntity(&m_SelectedEntity);
 			m_CameraComponentWidgetItem->SetEntity(&m_SelectedEntity);
 			m_ScriptComponentInspectorWidgetItem->SetEntity(&m_SelectedEntity);
+			m_Texture2DComponentWidgetItem->SetEntity(&m_SelectedEntity);
 		}
 
 		void InspectorWidgetImpl::UpdateTransformation() {
@@ -122,6 +132,9 @@ namespace editor {
 
 				bool IsCameraComponentExitst{ m_SelectedEntity.HasComponent<pawn::engine::CameraComponent>() };
 				m_CameraComponentWidgetItem->setHidden(!IsCameraComponentExitst);
+
+				bool IsTexture2DComponentExitst{ m_SelectedEntity.HasComponent<pawn::engine::Texture2DComponent>() };
+				m_Texture2DComponentWidgetItem->setHidden(!IsTexture2DComponentExitst);
 			}
 			else {
 				m_NewComponentWidget->setHidden(true);
@@ -130,6 +143,7 @@ namespace editor {
 				m_MeshComponentWidgetItem->setHidden(true);
 				m_CameraComponentWidgetItem->setHidden(true);
 				m_ScriptComponentInspectorWidgetItem->setHidden(true);
+				m_Texture2DComponentWidgetItem->setHidden(true);
 			}
 		}
 
@@ -147,6 +161,14 @@ namespace editor {
 				SIGNAL(EntityMeshModified(pawn::engine::GameEntity)),
 				this,
 				SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)),
+				Qt::QueuedConnection
+			);
+
+			connect(
+				m_Texture2DComponentWidgetItem,
+				SIGNAL(EntityTexture2DModified(pawn::engine::GameEntity)),
+				this,
+				SIGNAL(EntityTexture2DModified(pawn::engine::GameEntity)),
 				Qt::QueuedConnection
 			);
 

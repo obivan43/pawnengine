@@ -25,6 +25,12 @@ namespace pawn {
 			Bind(context);
 		}
 
+		void DirectX11IndexBuffer::Unbind(std::shared_ptr<GraphicsContext>& context) {
+			const UINT offset{ 0 };
+			DirectX11Context* directX11Context = context->As<DirectX11Context>();
+			directX11Context->GetDeviceContext()->IASetIndexBuffer(nullptr, DXGI_FORMAT_R16_UINT, 0);
+		}
+
 	}
 }
 

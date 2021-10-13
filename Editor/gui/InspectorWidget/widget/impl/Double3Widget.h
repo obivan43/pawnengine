@@ -17,6 +17,7 @@ namespace editor {
 				Double3Widget(const QString& label, glm::vec3 value = glm::vec3(0.0f), QWidget* parent = Q_NULLPTR);
 
 				void SetValue(glm::vec3 value);
+				void SetMinMax(double min, double max);
 
 			private:
 				void InitConnections();

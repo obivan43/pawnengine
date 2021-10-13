@@ -9,6 +9,7 @@
 #include "components/CameraComponent.h"
 #include "components/MeshComponent.h"
 #include "components/ScriptComponent.h"
+#include "components/Texture2DComponent.h"
 
 #include "PawnMath/math/Functions.h"
 
@@ -111,10 +112,10 @@ namespace pawn {
 			if (renderer.get() && m_ActiveCamera) {
 				renderer->BeginScene(*m_ActiveCamera, m_ActiveCameraView);
 
-				auto meshGroup = m_EnttRegistry.view<TransformationComponent, MeshComponent>();
-				for (auto& entity : meshGroup) {
-					auto [transformationComponent, meshComponent] = meshGroup.get<TransformationComponent, MeshComponent>(entity);
-					renderer->DrawMesh(transformationComponent, meshComponent);
+				auto texturedMeshGroup = m_EnttRegistry.view<TransformationComponent, MeshComponent, Texture2DComponent>();
+				for (auto& entity : texturedMeshGroup) {
+					auto [transformationComponent, meshComponent, texture2DComponent] = texturedMeshGroup.get<TransformationComponent, MeshComponent, Texture2DComponent>(entity);
+					renderer->DrawMesh(transformationComponent, meshComponent, texture2DComponent);
 				}
 
 				renderer->EndScene();

@@ -29,6 +29,8 @@ namespace pawn {
 			UNUSED(index)
 		}
 
+		void GraphicsShader::Unbind(std::shared_ptr<GraphicsContext>& context) { UNUSED(context) }
+
 		std::shared_ptr<GraphicsShader> GraphicsShader::Create() {
 #ifdef PAWN_DIRECTX11
 			return std::shared_ptr<GraphicsShader>(new DirectX11Shader());

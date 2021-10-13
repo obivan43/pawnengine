@@ -26,6 +26,9 @@
     <Filter Include="widget\impl\new component">
       <UniqueIdentifier>{b50c11fd-2ccd-4617-8988-32cad755c062}</UniqueIdentifier>
     </Filter>
+    <Filter Include="widget\impl\texture">
+      <UniqueIdentifier>{01265a2e-063f-401a-8b3f-516ff89df362}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="widget\InspectorWidget.cpp">
@@ -73,6 +76,12 @@
     <ClCompile Include="widget\impl\SelectComponentWidget.cpp">
       <Filter>widget\impl\new component</Filter>
     </ClCompile>
+    <ClCompile Include="widget\impl\Texture2DComponentWidget.cpp">
+      <Filter>widget\impl\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="widget\impl\Texture2DComponentWidgetItem.cpp">
+      <Filter>widget\impl\texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="widget\InspectorWidget.h">
@@ -119,6 +128,12 @@
     </QtMoc>
     <QtMoc Include="widget\impl\SelectComponentWidget.h">
       <Filter>widget\impl\new component</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\Texture2DComponentWidget.h">
+      <Filter>widget\impl\texture</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\Texture2DComponentWidgetItem.h">
+      <Filter>widget\impl\texture</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

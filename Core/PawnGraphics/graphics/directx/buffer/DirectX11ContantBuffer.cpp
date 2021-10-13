@@ -15,11 +15,19 @@ namespace pawn {
 		void DirectX11ContantBuffer::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
 			DirectX11Context* directX11Context = context->As<DirectX11Context>();
 			directX11Context->GetDeviceContext()->VSSetConstantBuffers(index, 1, m_Buffer.GetAddressOf());
+			directX11Context->GetDeviceContext()->PSSetConstantBuffers(index, 1, m_Buffer.GetAddressOf());
 		}
 
 		void DirectX11ContantBuffer::Bind(std::shared_ptr<GraphicsContext>& context) {
 			DirectX11Context* directX11Context = context->As<DirectX11Context>();
 			directX11Context->GetDeviceContext()->VSSetConstantBuffers(0, 1, m_Buffer.GetAddressOf());
+			directX11Context->GetDeviceContext()->PSSetConstantBuffers(0, 1, m_Buffer.GetAddressOf());
+		}
+
+		void DirectX11ContantBuffer::Unbind(std::shared_ptr<GraphicsContext>& context) {
+			DirectX11Context* directX11Context = context->As<DirectX11Context>();
+			directX11Context->GetDeviceContext()->VSSetConstantBuffers(0, 0, nullptr);
+			directX11Context->GetDeviceContext()->PSSetConstantBuffers(0, 0, nullptr);
 		}
 
 		void DirectX11ContantBuffer::Init(

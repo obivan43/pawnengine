@@ -12,7 +12,8 @@ namespace editor {
 		enum class ComponentsEnum {
 			MeshComponent,
 			ScriptComponent,
-			CameraComponeent
+			CameraComponent,
+			Texture2DComponent
 		};
 
 		class SelectComponentWidget : public QDialog {

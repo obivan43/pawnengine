@@ -109,6 +109,9 @@
     <ClInclude Include="engine\serializer\JsonFileSerializer.h">
       <Filter>engine\serializer</Filter>
     </ClInclude>
+    <ClInclude Include="engine\components\Texture2DComponent.h">
+      <Filter>engine\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">
@@ -194,6 +197,9 @@
     </ClCompile>
     <ClCompile Include="engine\serializer\JsonFileSerializer.cpp">
       <Filter>engine\serializer</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\components\Texture2DComponent.cpp">
+      <Filter>engine\components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

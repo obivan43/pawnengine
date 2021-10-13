@@ -35,6 +35,7 @@ namespace pawn {
 
 				void Bind(std::shared_ptr<GraphicsContext>& context) override;
 				void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
+				void Unbind(std::shared_ptr<GraphicsContext>& context) override;
 
 				void* GetTexture() override { return m_TextureView.Get(); }
 

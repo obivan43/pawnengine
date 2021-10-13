@@ -72,6 +72,8 @@ namespace pawn {
 			UNUSED(index)
 		}
 
+		void GraphicsInputLayout::Unbind(std::shared_ptr<GraphicsContext>& context) { UNUSED(context) }
+
 		std::shared_ptr<GraphicsInputLayout> GraphicsInputLayout::Create() {
 #ifdef PAWN_DIRECTX11
 			return std::shared_ptr<GraphicsInputLayout>(new DirectX11InputLayout());

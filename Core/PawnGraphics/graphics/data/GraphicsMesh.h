@@ -23,6 +23,7 @@ namespace pawn {
 
 				void Bind(std::shared_ptr<GraphicsContext>& context);
 				void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index);
+				void Unbind(std::shared_ptr<GraphicsContext>& context);
 
 				void SetVertexBuffer(const std::shared_ptr<GraphicsBuffer>& vertexBuffer) { m_VertexBuffer = vertexBuffer; }
 				void SetIndexBuffer(const std::shared_ptr<GraphicsBuffer>& indexBuffer) { m_IndexBuffer = indexBuffer; }

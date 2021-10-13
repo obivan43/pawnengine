@@ -43,6 +43,16 @@ namespace editor {
 			InitConnections();
 		}
 
+		void Double3Widget::SetMinMax(double min, double max) {
+			m_X->setMinimum(min);
+			m_Y->setMinimum(min);
+			m_Z->setMinimum(min);
+
+			m_X->setMaximum(max);
+			m_Y->setMaximum(max);
+			m_Z->setMaximum(max);
+		}
+
 		void Double3Widget::OnXChanged(double value) {
 			m_ValueCache.x = static_cast<float>(value);
 			emit ValueChanged(m_ValueCache);

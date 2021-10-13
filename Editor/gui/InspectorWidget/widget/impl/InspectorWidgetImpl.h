@@ -6,6 +6,7 @@
 #include "CameraComponentWidgetItem.h"
 #include "ScriptComponentWidgetItem.h"
 #include "NewComponentWidget.h"
+#include "Texture2DComponentWidgetItem.h"
 
 #include "Editor/gui/InspectorWidget/widget/InspectorWidget.h"
 
@@ -33,6 +34,7 @@ namespace editor {
 				void InitCameraComponent();
 				void InitConnections();
 				void InitScriptComponent();
+				void InitTexture2DComponent();
 
 			public slots:
 				void Update();
@@ -43,6 +45,7 @@ namespace editor {
 			signals:
 				void EntityTagModified();
 				void EntityMeshModfied(pawn::engine::GameEntity);
+				void EntityTexture2DModified(pawn::engine::GameEntity);
 
 			private:
 				QTreeWidget* m_InspectorPanel;
@@ -52,6 +55,7 @@ namespace editor {
 				MeshComponentWidgetItem* m_MeshComponentWidgetItem;
 				CameraComponentWidgetItem* m_CameraComponentWidgetItem;
 				ScriptComponentWidgetItem* m_ScriptComponentInspectorWidgetItem;
+				Texture2DComponentWidgetItem* m_Texture2DComponentWidgetItem;
 
 				pawn::engine::GameEntity m_SelectedEntity;
 		};
