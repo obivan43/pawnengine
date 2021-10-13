@@ -6,6 +6,7 @@
 
 #include "PawnEngine/engine/GameScene.h"
 #include "PawnEngine/engine/components/MeshComponent.h"
+#include "PawnEngine/engine/components/Texture2DComponent.h"
 
 namespace editor {
 
@@ -77,6 +78,10 @@ namespace editor {
 				entity.AddComponent<pawn::engine::MeshComponent>(
 					manager->GetEngine()->GetMeshByName(objectName + ".obj"),
 					objectName + ".obj"
+				);
+
+				entity.AddComponent<pawn::engine::Texture2DComponent>(
+					manager->GetEngine()->GetTextureByName(std::string())
 				);
 
 				return entity;
