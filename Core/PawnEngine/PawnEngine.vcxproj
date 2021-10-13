@@ -18,6 +18,7 @@
     <ClInclude Include="engine\components\Texture2DComponent.h" />
     <ClInclude Include="engine\components\TransformationComponent.h" />
     <ClInclude Include="engine\Engine.h" />
+    <ClInclude Include="engine\EngineGlobals.h" />
     <ClInclude Include="engine\GameEntity.h" />
     <ClInclude Include="engine\GameScene.h" />
     <ClInclude Include="engine\geometry\LODGroup.h" />
@@ -63,6 +64,7 @@
     <ClCompile Include="engine\components\Texture2DComponent.cpp" />
     <ClCompile Include="engine\components\TransformationComponent.cpp" />
     <ClCompile Include="engine\Engine.cpp" />
+    <ClCompile Include="engine\EngineGlobals.cpp" />
     <ClCompile Include="engine\GameEntity.cpp" />
     <ClCompile Include="engine\GameScene.cpp" />
     <ClCompile Include="engine\geometry\LODGroup.cpp" />

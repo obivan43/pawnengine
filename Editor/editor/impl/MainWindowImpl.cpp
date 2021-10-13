@@ -2,6 +2,7 @@
 #include "PawnSystem/system/windows/SystemPC.h"
 #include "PawnSystem/system/windows/InputManagerWindows.h"
 #include "PawnUtils/utils/logger/Logger.h"
+#include "PawnEngine/engine/EngineGlobals.h"
 
 #include "gui/QtAdvancedDocking/docking/DockAreaWidget.h"
 
@@ -112,6 +113,7 @@ namespace editor {
 			QAction* showHideCursor = new QAction("Show/Hide cursor", this);
 			showHideCursor->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_K));
 			addAction(showHideCursor);
+			pawn::engine::SetMouseHandlingStateInScripts(false);
 
 			connect(m_Inspector, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
 			connect(m_Inspector, SIGNAL(EntityTexture2DModified(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityTexture2DModified(pawn::engine::GameEntity)));
@@ -176,6 +178,8 @@ namespace editor {
 				m_Application->setOverrideCursor(cursor);
 				m_Application->changeOverrideCursor(cursor);
 				m_IsCursorHidden = true;
+				pawn::engine::SetMouseHandlingStateInScripts(true);
+
 #ifdef _WIN32
 				HWND handle = m_EngineView->GetWindowsHandle();
 				RECT rect;
@@ -187,6 +191,7 @@ namespace editor {
 			else {
 				m_Application->restoreOverrideCursor();
 				m_IsCursorHidden = false;
+				pawn::engine::SetMouseHandlingStateInScripts(false);
 #ifdef _WIN32
 				ClipCursor(nullptr);
 #endif

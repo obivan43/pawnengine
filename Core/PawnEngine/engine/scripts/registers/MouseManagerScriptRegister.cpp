@@ -1,6 +1,7 @@
 #include "MouseManagerScriptRegister.h"
 
 #include "PawnSystem/system/input/MouseManager.h"
+#include "PawnEngine/engine/EngineGlobals.h"
 
 namespace pawn {
 
@@ -15,14 +16,51 @@ namespace pawn {
 				"Button5",		system::MouseButton::Button5
 			);
 
-			lua.set_function("mouse_buttonPressed",			system::MouseManager::ButtonPressed);
-			lua.set_function("mouse_buttonReleased",		system::MouseManager::ButtonReleased);
-			lua.set_function("mouse_getRawMouseX",			system::MouseManager::GetRawMouseX);
-			lua.set_function("mouse_getRawMouseY",			system::MouseManager::GetRawMouseY);
-			lua.set_function("mouse_getMouseWheel",			system::MouseManager::GetMouseWheel);
-			lua.set_function("mouse_isAnyButtonPressed",	system::MouseManager::IsAnyButtonPressed);
-			lua.set_function("mouse_isAnyButtonReleased",	system::MouseManager::IsAnyButtonReleased);
-			lua.set_function("mouse_isMouseConnected",		system::MouseManager::IsMouseConnected);
+			lua.set_function("mouse_buttonPressed",
+				[](system::MouseButton button) {
+					return GetMouseHandlingStateInScripts() ? system::MouseManager::ButtonPressed(button) : false;
+				}
+			);
+
+			lua.set_function("mouse_buttonReleased",
+				[](system::MouseButton button) {
+					return GetMouseHandlingStateInScripts() ? system::MouseManager::ButtonReleased(button) : false;
+				}
+			);
+
+			lua.set_function("mouse_getRawMouseX", []() {
+				return GetMouseHandlingStateInScripts() ? system::MouseManager::GetRawMouseX() : 0;
+			});
+
+			lua.set_function("mouse_getRawMouseY", 
+				[]() {
+					return GetMouseHandlingStateInScripts() ? system::MouseManager::GetRawMouseY() : 0;
+				}
+			);
+
+			lua.set_function("mouse_getMouseWheel", 
+				[]() {
+					return GetMouseHandlingStateInScripts() ? system::MouseManager::GetMouseWheel() : 0;
+				}
+			);
+
+			lua.set_function("mouse_isAnyButtonPressed", 
+				[]() {
+					return GetMouseHandlingStateInScripts() ? system::MouseManager::IsAnyButtonPressed() : false;
+				}
+			);
+
+			lua.set_function("mouse_isAnyButtonReleased",	
+				[]() {
+					return GetMouseHandlingStateInScripts() ? system::MouseManager::IsAnyButtonReleased() : false;
+				}
+			);
+
+			lua.set_function("mouse_isMouseConnected",		
+				[]() {
+					return GetMouseHandlingStateInScripts() ? system::MouseManager::IsMouseConnected() : false;
+				}
+			);
 		}
 
 	}

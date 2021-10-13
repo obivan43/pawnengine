@@ -112,6 +112,9 @@
     <ClInclude Include="engine\components\Texture2DComponent.h">
       <Filter>engine\components</Filter>
     </ClInclude>
+    <ClInclude Include="engine\EngineGlobals.h">
+      <Filter>engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">
@@ -200,6 +203,9 @@
     </ClCompile>
     <ClCompile Include="engine\components\Texture2DComponent.cpp">
       <Filter>engine\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\EngineGlobals.cpp">
+      <Filter>engine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
