@@ -93,6 +93,15 @@ namespace editor {
 			m_InspectorPanel->setItemWidget(m_Texture2DComponentWidgetItem->GetWrapper(), 0, m_Texture2DComponentWidgetItem->GetWidget());
 		}
 		
+		void InspectorWidgetImpl::OnNewComponentAdded(ComponentsEnum id) {
+			ForceUpdate();
+
+			if (id == ComponentsEnum::Texture2DComponent) {
+				emit EntityTexture2DModified(m_SelectedEntity);
+			}
+		}
+
+
 		void InspectorWidgetImpl::ForceUpdate() {
 			Update();
 			RefreshPanel();
@@ -174,9 +183,9 @@ namespace editor {
 
 			connect(
 				m_NewComponentWidget,
-				SIGNAL(AddedNewComponent()),
+				SIGNAL(AddedNewComponent(ComponentsEnum)),
 				this,
-				SLOT(ForceUpdate())
+				SLOT(OnNewComponentAdded(ComponentsEnum))
 			);
 		}
 

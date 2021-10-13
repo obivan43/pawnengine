@@ -1,6 +1,7 @@
 #pragma once
 
 #include "PawnEngine/engine/GameEntity.h"
+#include "SelectComponentWidget.h"
 
 #include <QWidget>
 #include <QPushButton>
@@ -8,8 +9,6 @@
 namespace editor {
 
 	namespace impl {
-
-		class SelectComponentWidget;
 
 		class NewComponentWidget : public QWidget {
 			 Q_OBJECT
@@ -22,7 +21,7 @@ namespace editor {
 				QPushButton* GetButton() { return m_Button; }
 
 			signals:
-				void AddedNewComponent();
+				void AddedNewComponent(ComponentsEnum);
 
 			public slots:
 				void OnPress();

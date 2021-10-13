@@ -26,7 +26,7 @@ namespace editor {
 			if (!entity.IsNull()) {
 				pawn::engine::Texture2DComponent& texture2DComponent = entity.GetComponent<pawn::engine::Texture2DComponent>();
 
-				if (!texture2DComponent.TextureName.empty() && !m_Engine->HasTextureByName(texture2DComponent.TextureName)) {
+				if (!m_Engine->HasTextureByName(texture2DComponent.TextureName)) {
 					m_Engine->UploadTextureFromFile(texture2DComponent.TextureName);
 				}
 

@@ -264,7 +264,7 @@ exit</Command>
     <Image Include="res\pawn.png" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="res\assets\shaders\directx_shaders\PixelShader.hlsl">
+    <FxCompile Include="res\assets\shaders\directx_shaders\NormalsAsColorPixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)res\assets\shaders\directx_shaders\%(Filename).cso</ObjectFileOutput>

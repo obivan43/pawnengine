@@ -160,7 +160,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="res\assets\shaders\directx_shaders\PixelShader.hlsl">
+    <FxCompile Include="res\assets\shaders\directx_shaders\NormalsAsColorPixelShader.hlsl">
       <Filter>res\directx_shader</Filter>
     </FxCompile>
     <FxCompile Include="res\assets\shaders\directx_shaders\VertexShader.hlsl">

@@ -39,11 +39,12 @@ namespace editor {
 		}
 
 		void NewComponentWidget::InitConnections() {
+			qRegisterMetaType<ComponentsEnum>("ComponentsEnum");
 			connect(
 				m_SelectWidget,
-				SIGNAL(AddedNewComponent()),
+				SIGNAL(AddedNewComponent(ComponentsEnum)),
 				this,
-				SIGNAL(AddedNewComponent()),
+				SIGNAL(AddedNewComponent(ComponentsEnum)),
 				Qt::QueuedConnection
 			);
 

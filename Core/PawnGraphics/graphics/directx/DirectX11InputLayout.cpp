@@ -82,7 +82,9 @@ namespace pawn {
 		void DirectX11InputLayout::Unbind(std::shared_ptr<GraphicsContext>& context) {
 			DirectX11Context* directX11Context = context->As<DirectX11Context>();
 			ID3D11DeviceContext* deviceContext = directX11Context->GetDeviceContext();
-			deviceContext->IASetInputLayout(nullptr);
+
+			Microsoft::WRL::ComPtr<ID3D11InputLayout> nullInputLayout;
+			deviceContext->IASetInputLayout(nullInputLayout.Get());
 		}
 
 	}

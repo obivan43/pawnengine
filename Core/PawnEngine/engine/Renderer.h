@@ -37,8 +37,6 @@ namespace pawn {
 				void DrawMesh(TransformationComponent& transformationComponent, MeshComponent& meshComponent, Texture2DComponent& textureComponent);
 
 			private:
-				std::shared_ptr<graphics::GraphicsTexture2D> m_WhiteTexture;
-
 				std::shared_ptr<graphics::GraphicsBuffer> m_Transformation;
 				std::shared_ptr<graphics::GraphicsBuffer> m_ViewProjection;
 				std::shared_ptr<graphics::GraphicsBuffer> m_Texture2D;

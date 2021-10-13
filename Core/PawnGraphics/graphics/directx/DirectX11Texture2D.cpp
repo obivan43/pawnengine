@@ -14,22 +14,27 @@ namespace pawn {
 		void DirectX11Texture2D::Bind(std::shared_ptr<GraphicsContext>& context) {
 			DirectX11Context* directX11Context = context->As<DirectX11Context>();
 			ID3D11DeviceContext* deviceContext = directX11Context->GetDeviceContext();
+
 			deviceContext->PSSetShaderResources(0, 1, m_TextureView.GetAddressOf());
 			deviceContext->PSSetSamplers(0, 1, m_Sampler.GetAddressOf());
+			m_LastBoundIndex = 0;
 		}
 
 		void DirectX11Texture2D::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
 			DirectX11Context* directX11Context = context->As<DirectX11Context>();
 			ID3D11DeviceContext* deviceContext = directX11Context->GetDeviceContext();
+
 			deviceContext->PSSetShaderResources(index, 1, m_TextureView.GetAddressOf());
 			deviceContext->PSSetSamplers(index, 1, m_Sampler.GetAddressOf());
+			m_LastBoundIndex = index;
 		}
 
 		void DirectX11Texture2D::Unbind(std::shared_ptr<GraphicsContext>& context) {
 			DirectX11Context* directX11Context = context->As<DirectX11Context>();
 			ID3D11DeviceContext* deviceContext = directX11Context->GetDeviceContext();
-			deviceContext->PSSetShaderResources(0, 0, nullptr);
-			deviceContext->PSSetSamplers(0, 0, nullptr);
+
+			Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> nullView;
+			deviceContext->PSSetShaderResources(m_LastBoundIndex, 1, nullView.GetAddressOf());
 		}
 
 		void DirectX11Texture2D::Init(
@@ -46,6 +51,7 @@ namespace pawn {
 			m_Height = height;
 			m_Params = params;
 			m_BitsPerPixel = bitsPerPixel;
+			m_LastBoundIndex = 0;
 
 			D3D11_TEXTURE2D_DESC textureDescription{};
 			textureDescription.Width = width;

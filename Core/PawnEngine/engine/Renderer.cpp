@@ -21,15 +21,6 @@ namespace pawn {
 			m_Context = context;
 			m_GraphicsAPI = api;
 			m_GraphicsRenderer = graphics::GraphicsRenderer::Create();
-
-			m_WhiteTexture = graphics::GraphicsTexture2D::Create();
-			uint32_t whiteColor = 0xffffffff;
-			m_WhiteTexture->Init(
-				m_Context,
-				&whiteColor,
-				1, 1, 8,
-				{ graphics::GraphicsTextureWrap::CLAMP, graphics::GraphicsTextureFilter::LINEAR, graphics::GraphicsTextureFormat::RGBA }
-			);
 		}
 
 		void Renderer::BeginScene(math::Camera& camera, glm::mat4& view) {
@@ -60,9 +51,6 @@ namespace pawn {
 		) {
 			if (textureComponent.Texture.get()) {
 				textureComponent.Texture->Bind(m_Context);
-			} else {
-				textureComponent.Texture = m_WhiteTexture;
-				textureComponent.Texture->Bind(m_Context);
 			}
 
 			Texture2DCB texture2DCB{ glm::vec4(textureComponent.Color, 0.0) };
@@ -70,6 +58,10 @@ namespace pawn {
 			m_Texture2D->Bind(m_Context, 2);
 
 			DrawMesh(transformationComponent, meshComponent);
+
+			if (textureComponent.Texture.get()) {
+				textureComponent.Texture->Unbind(m_Context);
+			}
 		}
 
 		void Renderer::EndScene() {}

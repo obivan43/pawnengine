@@ -5,6 +5,7 @@
 
 #include "PawnEngine/engine/GameScene.h"
 #include "PawnEngine/engine/MeshManager.h"
+#include "PawnEngine/engine/TextureManager.h"
 
 using json = nlohmann::json;
 
@@ -26,7 +27,7 @@ namespace pawn {
 				json JsonEntityIds();
 				json JsonEntityById(entt::entity id);
 
-				void ParseJsonEntities(const json& j, std::shared_ptr<MeshManager>& meshManager);
+				void ParseJsonEntities(const json& j, std::shared_ptr<MeshManager>& meshManager, std::shared_ptr<TextureManager>& textureManager);
 
 			private:
 				std::shared_ptr<GameScene> m_Scene;

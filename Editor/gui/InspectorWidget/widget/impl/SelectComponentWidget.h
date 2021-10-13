@@ -13,7 +13,8 @@ namespace editor {
 			MeshComponent,
 			ScriptComponent,
 			CameraComponent,
-			Texture2DComponent
+			Texture2DComponent,
+			Unknown
 		};
 
 		class SelectComponentWidget : public QDialog {
@@ -27,9 +28,8 @@ namespace editor {
 
 				QListView* GetListView() { return m_ListWidget; }
 
-
 			signals:
-				void AddedNewComponent();
+				void AddedNewComponent(ComponentsEnum id);
 
 			public slots:
 				void OnClicked(QListWidgetItem*);

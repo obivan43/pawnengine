@@ -14,6 +14,7 @@ namespace pawn {
 
 			public:
 				TextureManager() = default;
+				TextureManager(std::shared_ptr<graphics::GraphicsContext>& context);
 				TextureManager(const TextureManager& other) = delete;
 				TextureManager(TextureManager&& other) noexcept = delete;
 

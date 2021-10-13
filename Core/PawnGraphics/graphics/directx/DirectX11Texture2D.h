@@ -42,6 +42,7 @@ namespace pawn {
 			private:
 				Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_TextureView;
 				Microsoft::WRL::ComPtr<ID3D11SamplerState> m_Sampler;
+				uint32_t m_LastBoundIndex;
 		};
 
 	}

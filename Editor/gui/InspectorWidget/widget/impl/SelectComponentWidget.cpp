@@ -65,25 +65,30 @@ namespace editor {
 				{ "Texture2DComponent", ComponentsEnum::Texture2DComponent }
 			};
 
+			ComponentsEnum componentID{ ComponentsEnum::Unknown };
 			const QString& selectedText = item->text();
 			switch (componentsTable[selectedText]) {
 				case ComponentsEnum::MeshComponent:
 					m_Entity->AddComponent<pawn::engine::MeshComponent>();
+					componentID = ComponentsEnum::MeshComponent;
 					break;
 				case ComponentsEnum::ScriptComponent:
 					m_Entity->AddComponent<pawn::engine::ScriptComponent>();
+					componentID = ComponentsEnum::ScriptComponent;
 					break;
 				case ComponentsEnum::CameraComponent:
 					m_Entity->AddComponent<pawn::engine::CameraComponent>();
+					componentID = ComponentsEnum::CameraComponent;
 					break;
 				case ComponentsEnum::Texture2DComponent:
 					m_Entity->AddComponent<pawn::engine::Texture2DComponent>();
+					componentID = ComponentsEnum::Texture2DComponent;
 					break;
 			}
 
 			close();
 
-			emit AddedNewComponent();
+			emit AddedNewComponent(componentID);
 		}
 
 		void SelectComponentWidget::InitConnections() {

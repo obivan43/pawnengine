@@ -6,6 +6,7 @@
 #include "PawnEngine/engine/components/CameraComponent.h"
 #include "PawnEngine/engine/components/MeshComponent.h"
 #include "PawnEngine/engine/components/ScriptComponent.h"
+#include "PawnEngine/engine/components/Texture2DComponent.h"
 
 namespace pawn {
 
@@ -115,10 +116,26 @@ namespace pawn {
 				j["has_script_component"] = false;
 			}
 
+			if (entity.HasComponent<Texture2DComponent>()) {
+				Texture2DComponent& texture2DComponent = entity.GetComponent<Texture2DComponent>();
+				j["has_texture2D_component"] = true;
+				j["texture2D_component"] = {
+					{ "name", texture2DComponent.TextureName },
+					{ "color", {
+						{ "x", texture2DComponent.Color.x },
+						{ "y", texture2DComponent.Color.y },
+						{ "z", texture2DComponent.Color.z }
+					} }
+				};
+			}
+			else {
+				j["has_texture2D_component"] = false;
+			}
+
 			return j;
 		}
 
-		void JsonSerializer::ParseJsonEntities(const json& j, std::shared_ptr<MeshManager>& meshManager) {
+		void JsonSerializer::ParseJsonEntities(const json& j, std::shared_ptr<MeshManager>& meshManager, std::shared_ptr<TextureManager>& textureManager) {
 			for (auto& element : j) {
 				uint32_t id = element["id"].get<uint32_t>();
 
@@ -140,7 +157,7 @@ namespace pawn {
 				transformation.Scale.y = element["transformation_component"]["scale"]["y"].get<float>();
 				transformation.Scale.z = element["transformation_component"]["scale"]["z"].get<float>();
 
-				if (element["has_camera_component"].get<bool>()) {
+				if (element.contains("has_camera_component") && element["has_camera_component"].get<bool>()) {
 					CameraComponent& cameraComponent = gameEntity.AddComponent<CameraComponent>();
 					cameraComponent.IsActiveCamera = element["camera_component"]["is_active"].get<bool>();
 					
@@ -158,16 +175,26 @@ namespace pawn {
 					}
 				}
 
-				if (element["has_mesh_component"].get<bool>()) {
+				if (element.contains("has_mesh_component") && element["has_mesh_component"].get<bool>()) {
 					std::string meshName = element["mesh_component"]["name"].get<std::string>();
 					if (meshManager->HasMeshByName(meshName)) {
 						gameEntity.AddComponent<MeshComponent>(meshManager->GetMeshByName(meshName), meshName);
 					}
 				}
 
-				if (element["has_script_component"].get<bool>()) {
+				if (element.contains("has_script_component") && element["has_script_component"].get<bool>()) {
 					std::string file = element["script_component"]["file"].get<std::string>();
 					gameEntity.AddComponent<ScriptComponent>(file);
+				}
+
+				if (element.contains("has_texture2D_component") && element["has_texture2D_component"].get<bool>()) {
+					std::string texture2DName = element["texture2D_component"]["name"].get<std::string>();
+					if (textureManager->HasTextureByName(texture2DName)) {
+						Texture2DComponent& texture2DComponent = gameEntity.AddComponent<Texture2DComponent>(textureManager->GetTextureByName(texture2DName), texture2DName);
+						texture2DComponent.Color.x = element["texture2D_component"]["color"]["x"].get<float>();
+						texture2DComponent.Color.y = element["texture2D_component"]["color"]["y"].get<float>();
+						texture2DComponent.Color.z = element["texture2D_component"]["color"]["z"].get<float>();
+					}
 				}
 			}
 		}

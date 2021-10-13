@@ -27,7 +27,7 @@ namespace pawn {
 			InitGraphics(handle, width, height);
 
 			m_MeshManager.reset(new MeshManager());
-			m_TextureManager.reset(new TextureManager());
+			m_TextureManager.reset(new TextureManager(m_Context));
 			m_ScriptEngine.reset(new ScriptEngine());
 			m_Scene.reset(new GameScene());
 			m_JsonSerializer.reset(new JsonSerializer(m_Scene));
@@ -162,7 +162,7 @@ namespace pawn {
 			const json& j = JsonFileSerializer::LoadFromFile(path);
 
 			m_Scene->Clear();
-			m_JsonSerializer->ParseJsonEntities(j, m_MeshManager);
+			m_JsonSerializer->ParseJsonEntities(j, m_MeshManager, m_TextureManager);
 		}
 
 	}
