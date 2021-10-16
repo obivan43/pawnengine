@@ -17,6 +17,9 @@
     <Filter Include="engine\serializer">
       <UniqueIdentifier>{e1d45208-c240-443d-a5ac-4188071f0209}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\geometry">
+      <UniqueIdentifier>{0e419fa6-9137-4f43-b514-0d4210d804e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Engine.h">
@@ -91,6 +94,12 @@
     <ClInclude Include="engine\EngineGlobals.h">
       <Filter>engine</Filter>
     </ClInclude>
+    <ClInclude Include="engine\geometry\AssimpLoader.h">
+      <Filter>engine\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\geometry\Vertex.h">
+      <Filter>engine\geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">
@@ -164,6 +173,9 @@
     </ClCompile>
     <ClCompile Include="engine\EngineGlobals.cpp">
       <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\geometry\AssimpLoader.cpp">
+      <Filter>engine\geometry</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PawnUtils/utils/assimploader/AssimpLoader.h"
+#include "PawnEngine/engine/geometry/AssimpLoader.h"
 
 #include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsShader.h"
@@ -37,7 +37,7 @@ namespace pawn {
 
 			private:
 				std::unordered_map<std::string, std::shared_ptr<graphics::GraphicsMesh>> m_MeshesMap;
-				utils::AssimpLoader m_MeshLoader;
+				AssimpLoader m_MeshLoader;
 		};
 
 	}

@@ -17,7 +17,7 @@
     <ClCompile Include="math\Camera.cpp">
       <Filter>math</Filter>
     </ClCompile>
-    <ClCompile Include="math\Vertex.cpp">
+    <ClCompile Include="math\Functions.cpp">
       <Filter>math</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,9 +32,6 @@
       <Filter>math</Filter>
     </ClInclude>
     <ClInclude Include="math\MathDefines.h">
-      <Filter>math</Filter>
-    </ClInclude>
-    <ClInclude Include="math\Vertex.h">
       <Filter>math</Filter>
     </ClInclude>
   </ItemGroup>
