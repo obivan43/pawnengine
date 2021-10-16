@@ -100,6 +100,12 @@
     <ClInclude Include="engine\geometry\Vertex.h">
       <Filter>engine\geometry</Filter>
     </ClInclude>
+    <ClInclude Include="engine\geometry\Mesh.h">
+      <Filter>engine\geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\geometry\MeshNodeData.h">
+      <Filter>engine\geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">

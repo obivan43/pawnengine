@@ -22,6 +22,8 @@
     <ClInclude Include="engine\GameEntity.h" />
     <ClInclude Include="engine\GameScene.h" />
     <ClInclude Include="engine\geometry\AssimpLoader.h" />
+    <ClInclude Include="engine\geometry\Mesh.h" />
+    <ClInclude Include="engine\geometry\MeshNodeData.h" />
     <ClInclude Include="engine\geometry\Vertex.h" />
     <ClInclude Include="engine\MeshManager.h" />
     <ClInclude Include="engine\Renderer.h" />

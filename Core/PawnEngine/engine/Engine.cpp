@@ -56,7 +56,7 @@ namespace pawn {
 			m_Renderer->SetShader(m_Context, m_Shader);
 		}
 
-		const std::shared_ptr<graphics::GraphicsMesh>& Engine::GetMeshByName(const std::string& name) {
+		const std::shared_ptr<Mesh>& Engine::GetMeshByName(const std::string& name) {
 			return m_MeshManager->GetMeshByName(name);
 		}
 

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Vertex.h"
+#include "Mesh.h"
+#include "MeshNodeData.h"
 
 #include <string>
 #include <vector>
@@ -28,15 +30,13 @@ namespace pawn::engine {
 
 			~AssimpLoader();
 
-			bool LoadModel(const char* file);
+			std::shared_ptr<Mesh> LoadModel(const char* file, std::shared_ptr<graphics::GraphicsContext>& context, std::shared_ptr<graphics::GraphicsShader>& shader);
 			void Flush();
 
-			std::vector<Vertex>& GetVertexData() { return m_Verticies; }
-			std::vector<uint16_t>& GetIndexData() { return m_Indices; }
-
 		private:
-			void ProcessData();
+			std::shared_ptr<Mesh> ProcessData(std::shared_ptr<graphics::GraphicsContext>& context, std::shared_ptr<graphics::GraphicsShader>& shader);
 			void AssimpGetMeshData(const aiMesh* mesh);
+			void UpdateMeshDataInfo(const aiNode* node, const glm::mat4& transformation);
 
 		private:
 			Assimp::Importer* m_Importer;
@@ -44,6 +44,7 @@ namespace pawn::engine {
 			const aiScene* m_ModelScene;
 			const aiNode* m_ModelNode;
 
+			std::vector<MeshNodeData> m_MeshNodeData;
 			std::vector<Vertex> m_Verticies;
 			std::vector<uint16_t> m_Indices;
 			std::vector<const aiNode*> m_Nodes;

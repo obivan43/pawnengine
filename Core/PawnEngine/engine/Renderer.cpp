@@ -38,9 +38,10 @@ namespace pawn {
 			m_Transformation->Update(m_Context, &transformation, 1, sizeof(glm::mat4));
 			m_Transformation->Bind(m_Context, 0);
 
-			if (graphics::GraphicsMesh* mesh = meshComponent.Mesh.get()) {
-				mesh->Bind(m_Context);
-				m_GraphicsRenderer->DrawIndexed(m_Context, mesh->GetIndexBuffer());
+			if (Mesh* mesh = meshComponent.MeshData.get()) {
+				graphics::GraphicsMesh* graphicsMesh = mesh->GetGraphicsMesh().get();
+				graphicsMesh->Bind(m_Context);
+				m_GraphicsRenderer->DrawIndexed(m_Context, graphicsMesh->GetIndexBuffer());
 			}
 		}
 
