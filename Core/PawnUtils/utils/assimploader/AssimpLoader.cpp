@@ -31,7 +31,7 @@ namespace pawn {
 		bool AssimpLoader::LoadModel(const char* file) {
 			Flush();
 
-			m_ModelScene = m_Importer->ReadFile(file, aiProcessPreset_TargetRealtime_MaxQuality);
+			m_ModelScene = m_Importer->ReadFile(file, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices);
 
 			if (!m_ModelScene) {
 				CONSOLE_INFO("Assimp loader: Model not loaded {}", file)

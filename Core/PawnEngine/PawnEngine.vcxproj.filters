@@ -8,12 +8,6 @@
     <Filter Include="engine\components">
       <UniqueIdentifier>{bb8cb719-75f6-4f41-8423-24d5c8a82894}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\geometry">
-      <UniqueIdentifier>{0dcf663d-3a65-4af7-9b41-e60bf5e51d64}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\geometry\mesh_generators">
-      <UniqueIdentifier>{b9789eee-c79c-462c-9589-36b8eab24f84}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine\scripts">
       <UniqueIdentifier>{5ff60278-f2ab-49dd-abdb-67b53cf33a10}</UniqueIdentifier>
     </Filter>
@@ -39,24 +33,6 @@
     </ClInclude>
     <ClInclude Include="engine\Renderer.h">
       <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\geometry\mesh_generator\MeshGenerator.h">
-      <Filter>engine\geometry\mesh_generators</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\geometry\mesh_generator\PlaneMeshGenerator.h">
-      <Filter>engine\geometry\mesh_generators</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\geometry\LODGroup.h">
-      <Filter>engine\geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\geometry\Mesh.h">
-      <Filter>engine\geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\geometry\MeshInfo.h">
-      <Filter>engine\geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\geometry\Scene.h">
-      <Filter>engine\geometry</Filter>
     </ClInclude>
     <ClInclude Include="engine\components\CameraComponent.h">
       <Filter>engine\components</Filter>
@@ -131,24 +107,6 @@
     </ClCompile>
     <ClCompile Include="engine\Renderer.cpp">
       <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\geometry\mesh_generator\MeshGenerator.cpp">
-      <Filter>engine\geometry\mesh_generators</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\geometry\mesh_generator\PlaneMeshGenerator.cpp">
-      <Filter>engine\geometry\mesh_generators</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\geometry\LODGroup.cpp">
-      <Filter>engine\geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\geometry\Mesh.cpp">
-      <Filter>engine\geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\geometry\MeshInfo.cpp">
-      <Filter>engine\geometry</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\geometry\Scene.cpp">
-      <Filter>engine\geometry</Filter>
     </ClCompile>
     <ClCompile Include="engine\components\CameraComponent.cpp">
       <Filter>engine\components</Filter>

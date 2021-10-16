@@ -24,7 +24,7 @@ namespace pawn {
 			operator std::shared_ptr<graphics::GraphicsTexture2D>& () { return Texture; }
 			operator const std::shared_ptr<graphics::GraphicsTexture2D>& () const { return Texture; }
 
-			glm::vec3 Color {1.0};
+			glm::vec3 Color{ 1.0 };
 			std::shared_ptr<graphics::GraphicsTexture2D> Texture;
 			std::string TextureName;
 		};

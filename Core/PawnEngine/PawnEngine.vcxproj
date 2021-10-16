@@ -21,12 +21,6 @@
     <ClInclude Include="engine\EngineGlobals.h" />
     <ClInclude Include="engine\GameEntity.h" />
     <ClInclude Include="engine\GameScene.h" />
-    <ClInclude Include="engine\geometry\LODGroup.h" />
-    <ClInclude Include="engine\geometry\Mesh.h" />
-    <ClInclude Include="engine\geometry\MeshInfo.h" />
-    <ClInclude Include="engine\geometry\mesh_generator\MeshGenerator.h" />
-    <ClInclude Include="engine\geometry\mesh_generator\PlaneMeshGenerator.h" />
-    <ClInclude Include="engine\geometry\Scene.h" />
     <ClInclude Include="engine\MeshManager.h" />
     <ClInclude Include="engine\Renderer.h" />
     <ClInclude Include="engine\scripts\registers\ClockScriptRegister.h" />
@@ -67,12 +61,6 @@
     <ClCompile Include="engine\EngineGlobals.cpp" />
     <ClCompile Include="engine\GameEntity.cpp" />
     <ClCompile Include="engine\GameScene.cpp" />
-    <ClCompile Include="engine\geometry\LODGroup.cpp" />
-    <ClCompile Include="engine\geometry\Mesh.cpp" />
-    <ClCompile Include="engine\geometry\MeshInfo.cpp" />
-    <ClCompile Include="engine\geometry\mesh_generator\MeshGenerator.cpp" />
-    <ClCompile Include="engine\geometry\mesh_generator\PlaneMeshGenerator.cpp" />
-    <ClCompile Include="engine\geometry\Scene.cpp" />
     <ClCompile Include="engine\MeshManager.cpp" />
     <ClCompile Include="engine\Renderer.cpp" />
     <ClCompile Include="engine\scripts\registers\ClockScriptRegister.cpp" />
