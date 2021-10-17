@@ -7,9 +7,22 @@ namespace pawn {
 
 	namespace graphics {
 
-		void GraphicsRenderer::Draw(std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsBuffer>& buffer) { UNUSED(buffer) }
+		void GraphicsRenderer::Draw(std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsBuffer>& buffer) { 
+			UNUSED(context)
+			UNUSED(buffer) 
+		}
 
-		void GraphicsRenderer::DrawIndexed(std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsBuffer>& IndexBuffer) { UNUSED(IndexBuffer) }
+		void GraphicsRenderer::DrawIndexed(
+			std::shared_ptr<GraphicsContext>& context,
+			const std::shared_ptr<GraphicsBuffer>& IndexBuffer,
+			uint32_t startIndex,
+			uint32_t vertexLocation
+		) { 
+			UNUSED(context)
+			UNUSED(IndexBuffer) 
+			UNUSED(startIndex)
+			UNUSED(vertexLocation)
+		}
 
 		std::shared_ptr<GraphicsRenderer> GraphicsRenderer::Create() {
 #ifdef PAWN_DIRECTX11

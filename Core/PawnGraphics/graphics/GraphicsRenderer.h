@@ -22,7 +22,12 @@ namespace pawn {
 				virtual ~GraphicsRenderer() = default;
 
 				virtual void Draw(std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsBuffer>& buffer);
-				virtual void DrawIndexed(std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsBuffer>& IndexBuffer);
+				virtual void DrawIndexed(
+					std::shared_ptr<GraphicsContext>& context,
+					const std::shared_ptr<GraphicsBuffer>& IndexBuffer,
+					uint32_t startIndex = 0,
+					uint32_t vertexLocation = 0
+				);
 
 				static std::shared_ptr<GraphicsRenderer> Create();
 		};

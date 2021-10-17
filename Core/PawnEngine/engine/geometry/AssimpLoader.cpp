@@ -42,12 +42,21 @@ namespace pawn::engine {
 		m_Verticies.clear();
 		m_Indices.clear();
 		m_Nodes.clear();
+		m_MeshNodeData.clear();
 	}
 
 	std::shared_ptr<Mesh> AssimpLoader::LoadModel(const char* file, std::shared_ptr<graphics::GraphicsContext>& context, std::shared_ptr<graphics::GraphicsShader>& shader) {
 		Flush();
 
-		m_ModelScene = m_Importer->ReadFile(file, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices);
+		m_ModelScene = m_Importer->ReadFile(file, 
+			aiProcess_CalcTangentSpace	|
+			aiProcess_Triangulate		|
+			aiProcess_SortByPType		|
+			aiProcess_GenNormals		|
+			aiProcess_GenUVCoords		|
+			aiProcess_OptimizeMeshes	|
+			aiProcess_ValidateDataStructure
+		);
 
 		if (!m_ModelScene) {
 			CONSOLE_INFO("Assimp loader: Model not loaded {}", file)
@@ -58,73 +67,52 @@ namespace pawn::engine {
 	}
 
 	std::shared_ptr<Mesh> AssimpLoader::ProcessData(std::shared_ptr<graphics::GraphicsContext>& context, std::shared_ptr<graphics::GraphicsShader>& shader) {
-		bool repeat = true;
+		if (m_ModelScene->mNumMeshes > 0) {
 
-		m_Nodes.push_back(m_ModelScene->mRootNode);
+			uint32_t vertexCount = 0;
+			uint32_t indexCount = 0;
+			m_MeshNodeData.reserve(m_ModelScene->mNumMeshes);
 
-		while (repeat) {
-			for (size_t i = 0; i < m_Nodes.size(); i++) {
-				m_ModelNode = m_Nodes.at(i);
-				if (m_ModelNode->mNumChildren > 0) {
-					for (uint32_t j = 0; j < m_ModelNode->mNumChildren; j++) {
-						m_Nodes.push_back(m_ModelNode->mChildren[j]);
-					}
-				}
-				else {
-					repeat = false;
-				}
+			for (uint32_t i = 0; i < m_ModelScene->mNumMeshes; ++i) {
+				const aiMesh* mesh = m_ModelScene->mMeshes[i];
+
+				MeshNodeData& meshNodeData = m_MeshNodeData.emplace_back();
+				meshNodeData.VertexShift = vertexCount;
+				meshNodeData.IndexShift = indexCount;
+				meshNodeData.IndexCount = m_ModelScene->mMeshes[i]->mNumFaces * 3;
+				meshNodeData.Name = mesh->mName.C_Str();
+
+				vertexCount += mesh->mNumVertices;
+				indexCount += meshNodeData.IndexCount;
+
+				AssimpGetMeshData(mesh);
 			}
-		}
 
-		for (uint32_t i = 0; i < m_Nodes.size(); ++i) {
-			m_ModelNode = m_Nodes.at(i);
+			UpdateMeshDataInfo(m_ModelScene->mRootNode, glm::mat4(1.0));
 
-			if (m_ModelNode->mNumMeshes > 0) {
-				m_MeshNodeData.reserve(m_ModelNode->mNumMeshes);
+			const std::initializer_list<graphics::GraphicsInputElement> inputElements = {
+				{ "Position", graphics::GraphicsInputElementType::Float3 },
+				{ "Normal", graphics::GraphicsInputElementType::Float3 },
+				{ "TextureCoordinate", graphics::GraphicsInputElementType::Float2 }
+			};
 
-				uint32_t vertexCount = 0;
-				uint32_t indexCount = 0;
-				for (uint32_t j = 0; j < m_ModelNode->mNumMeshes; j++) {
-					const aiMesh* mesh = m_ModelScene->mMeshes[j];
+			std::shared_ptr<graphics::GraphicsBuffer> vertexBuffer = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::VertexBuffer);
+			std::shared_ptr<graphics::GraphicsBuffer> indexBuffer = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::IndexBuffer);
+			std::shared_ptr<graphics::GraphicsInputLayout> inputLayout = graphics::GraphicsInputLayout::Create();
 
-					MeshNodeData& meshNodeData = m_MeshNodeData.emplace_back();
-					meshNodeData.VertexShift = vertexCount;
-					meshNodeData.IndexShift = indexCount;
-					meshNodeData.IndexCount = m_ModelScene->mMeshes[j]->mNumFaces * 3;
-					meshNodeData.Name = mesh->mName.C_Str();
+			vertexBuffer->Init(context, m_Verticies.data(), static_cast<uint32_t>(m_Verticies.size()), sizeof(Vertex), graphics::GraphicsBufferUsageTypeEnum::StaticBuffer);
+			vertexBuffer->Bind(context);
 
-					vertexCount += mesh->mNumVertices;
-					indexCount += meshNodeData.IndexCount;
+			indexBuffer->Init(context, m_Indices.data(), static_cast<uint32_t>(m_Indices.size()), sizeof(uint16_t), graphics::GraphicsBufferUsageTypeEnum::StaticBuffer);
+			indexBuffer->Bind(context);
 
-					AssimpGetMeshData(mesh);
-				}
+			inputLayout->Init(context, inputElements, shader->GetVertexShaderInfo());
 
-				UpdateMeshDataInfo(m_ModelNode, glm::mat4(1.0));
+			Mesh* mesh = new Mesh();
+			mesh->m_MeshNodeData = m_MeshNodeData;
+			mesh->m_GraphicsMesh.reset(new graphics::GraphicsMesh(vertexBuffer, indexBuffer, inputLayout));
 
-				const std::initializer_list<graphics::GraphicsInputElement> inputElements = {
-					{ "Position", graphics::GraphicsInputElementType::Float3 },
-					{ "Normal", graphics::GraphicsInputElementType::Float3 },
-					{ "TextureCoordinate", graphics::GraphicsInputElementType::Float2 }
-				};
-
-				std::shared_ptr<graphics::GraphicsBuffer> vertexBuffer = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::VertexBuffer);
-				std::shared_ptr<graphics::GraphicsBuffer> indexBuffer = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::IndexBuffer);
-				std::shared_ptr<graphics::GraphicsInputLayout> inputLayout = graphics::GraphicsInputLayout::Create();
-
-				vertexBuffer->Init(context, m_Verticies.data(), static_cast<uint32_t>(m_Verticies.size()), sizeof(Vertex), graphics::GraphicsBufferUsageTypeEnum::StaticBuffer);
-				vertexBuffer->Bind(context);
-
-				indexBuffer->Init(context, m_Indices.data(), static_cast<uint32_t>(m_Indices.size()), sizeof(uint16_t), graphics::GraphicsBufferUsageTypeEnum::StaticBuffer);
-				indexBuffer->Bind(context);
-
-				inputLayout->Init(context, inputElements, shader->GetVertexShaderInfo());
-
-				Mesh* mesh = new Mesh();
-				mesh->m_MeshNodeData = m_MeshNodeData;
-				mesh->m_GraphicsMesh.reset(new graphics::GraphicsMesh(vertexBuffer, indexBuffer, inputLayout));
-
-				return std::shared_ptr<Mesh>(mesh);
-			}
+			return std::shared_ptr<Mesh>(mesh);
 		}
 
 		return std::shared_ptr<Mesh>();
@@ -172,6 +160,11 @@ namespace pawn::engine {
 		aiFace* face;
 		for (uint32_t i = 0; i < mesh->mNumFaces; i++) {
 			face = &mesh->mFaces[i];
+
+			if (face->mNumIndices < 3) {
+				continue;
+			}
+
 			m_Indices.push_back(face->mIndices[0]);
 			m_Indices.push_back(face->mIndices[1]);
 			m_Indices.push_back(face->mIndices[2]);

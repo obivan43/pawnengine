@@ -34,14 +34,19 @@ namespace pawn {
 		}
 
 		void Renderer::DrawMesh(TransformationComponent& transformationComponent, MeshComponent& meshComponent) {
-			glm::mat4 transformation = transformationComponent.GetTransformation();
-			m_Transformation->Update(m_Context, &transformation, 1, sizeof(glm::mat4));
-			m_Transformation->Bind(m_Context, 0);
-
 			if (Mesh* mesh = meshComponent.MeshData.get()) {
-				graphics::GraphicsMesh* graphicsMesh = mesh->GetGraphicsMesh().get();
+				std::shared_ptr<graphics::GraphicsMesh> graphicsMesh = mesh->GetGraphicsMesh();
 				graphicsMesh->Bind(m_Context);
-				m_GraphicsRenderer->DrawIndexed(m_Context, graphicsMesh->GetIndexBuffer());
+
+				for (const MeshNodeData& meshNodeData : mesh->GetMeshNodeData()) {
+					glm::mat4 transformation = transformationComponent.GetTransformation();
+					transformation *= meshNodeData.Transformation;
+
+					m_Transformation->Update(m_Context, &transformation, 1, sizeof(glm::mat4));
+					m_Transformation->Bind(m_Context, 0);
+
+					m_GraphicsRenderer->DrawIndexed(m_Context, graphicsMesh->GetIndexBuffer(), meshNodeData.IndexShift, meshNodeData.VertexShift);
+				}
 			}
 		}
 
