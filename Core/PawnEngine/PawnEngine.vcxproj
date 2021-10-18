@@ -21,6 +21,10 @@
     <ClInclude Include="engine\EngineGlobals.h" />
     <ClInclude Include="engine\GameEntity.h" />
     <ClInclude Include="engine\GameScene.h" />
+    <ClInclude Include="engine\geometry\AssimpLoader.h" />
+    <ClInclude Include="engine\geometry\Mesh.h" />
+    <ClInclude Include="engine\geometry\MeshNodeData.h" />
+    <ClInclude Include="engine\geometry\Vertex.h" />
     <ClInclude Include="engine\MeshManager.h" />
     <ClInclude Include="engine\Renderer.h" />
     <ClInclude Include="engine\scripts\registers\ClockScriptRegister.h" />
@@ -61,6 +65,7 @@
     <ClCompile Include="engine\EngineGlobals.cpp" />
     <ClCompile Include="engine\GameEntity.cpp" />
     <ClCompile Include="engine\GameScene.cpp" />
+    <ClCompile Include="engine\geometry\AssimpLoader.cpp" />
     <ClCompile Include="engine\MeshManager.cpp" />
     <ClCompile Include="engine\Renderer.cpp" />
     <ClCompile Include="engine\scripts\registers\ClockScriptRegister.cpp" />
@@ -131,7 +136,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)\Core\PawnEngine\engine;$(SolutionDir)Core\;$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)\Core\PawnEngine\engine;$(SolutionDir)Core\;$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;$(SolutionDir)ThirdParty\assimp-5.0.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -152,7 +157,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)\Core\PawnEngine\engine;$(SolutionDir)Core\;$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir);$(SolutionDir)ThirdParty\glm\include;$(SolutionDir)\Core\PawnEngine\engine;$(SolutionDir)Core\;$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;$(SolutionDir)ThirdParty\assimp-5.0.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>

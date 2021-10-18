@@ -13,7 +13,8 @@ struct VS_OUT {
 	float4 position : SV_Position;
 };
 
-VS_OUT main(float3 position : Position, float3 normal : Normal, float2 texcoord : TextureCoordinate) {
+VS_OUT main(float3 position : Position, float3 normal : Normal, float2 texcoord : TextureCoordinate)
+{
 	matrix tView = transpose(view);
 	matrix tProjection = transpose(projection);
 	matrix tTransformation = transpose(transformation);

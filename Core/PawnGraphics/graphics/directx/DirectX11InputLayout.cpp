@@ -31,6 +31,7 @@ namespace pawn {
 		void DirectX11InputLayout::Init(std::shared_ptr<GraphicsContext>& context, const std::initializer_list<GraphicsInputElement>& elements, void* shaderData) {
 			GraphicsInputLayout::Init(context, elements, shaderData);
 			m_Elements = elements;
+			RecalculateStride();
 
 			D3D11_INPUT_ELEMENT_DESC* inputDescription = new D3D11_INPUT_ELEMENT_DESC[m_Elements.size()];
 			uint32_t inputSlot{ 0 };

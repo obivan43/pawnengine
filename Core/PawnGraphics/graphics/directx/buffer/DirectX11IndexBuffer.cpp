@@ -17,7 +17,7 @@ namespace pawn {
 		void DirectX11IndexBuffer::Bind(std::shared_ptr<GraphicsContext>& context) {
 			const UINT offset{ 0 };
 			DirectX11Context* directX11Context = context->As<DirectX11Context>();
-			directX11Context->GetDeviceContext()->IASetIndexBuffer(m_Buffer.Get(), DXGI_FORMAT_R16_UINT, 0);
+			directX11Context->GetDeviceContext()->IASetIndexBuffer(m_Buffer.Get(), DXGI_FORMAT_R32_UINT, 0);
 		}
 
 		void DirectX11IndexBuffer::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
@@ -30,7 +30,7 @@ namespace pawn {
 			DirectX11Context* directX11Context = context->As<DirectX11Context>();
 
 			Microsoft::WRL::ComPtr<ID3D11Buffer> nullBuffer;
-			directX11Context->GetDeviceContext()->IASetIndexBuffer(nullBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
+			directX11Context->GetDeviceContext()->IASetIndexBuffer(nullBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
 		}
 
 	}

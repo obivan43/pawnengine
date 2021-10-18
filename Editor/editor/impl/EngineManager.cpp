@@ -18,7 +18,7 @@ namespace editor {
 					m_Engine->UploadMeshFromFile(meshComponent.MeshName);
 				}
 
-				meshComponent.Mesh = m_Engine->GetMeshByName(meshComponent.MeshName);
+				meshComponent.MeshData = m_Engine->GetMeshByName(meshComponent.MeshName);
 			}
 		}
 

@@ -11,7 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="utils\assimploader\AssimpLoader.h" />
     <ClInclude Include="utils\codetools\Macros.h" />
     <ClInclude Include="utils\codetools\Rtti.h" />
     <ClInclude Include="utils\entt\entt.h" />
@@ -22,7 +21,6 @@
     <ClInclude Include="utils\time\Clock.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="utils\assimploader\AssimpLoader.cpp" />
     <ClCompile Include="utils\logger\Logger.cpp" />
     <ClCompile Include="utils\stbimage\StbImage.cpp" />
     <ClCompile Include="utils\stbimage\StbImageLoader.cpp" />
@@ -89,7 +87,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\assimp-5.0.1\include;$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)utils\;$(SolutionDir)Core\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)utils\;$(SolutionDir)Core\</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -111,7 +109,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\assimp-5.0.1\include;$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)utils\;$(SolutionDir)Core\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(ProjectDir)utils\;$(SolutionDir)Core\</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>

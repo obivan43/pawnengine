@@ -17,9 +17,6 @@
     <Filter Include="utils\stbimage">
       <UniqueIdentifier>{d50f96e8-a472-4f24-be34-6eedb7824a38}</UniqueIdentifier>
     </Filter>
-    <Filter Include="utils\assimploader">
-      <UniqueIdentifier>{4426de22-30a0-4ff6-8af6-8579a9f9c005}</UniqueIdentifier>
-    </Filter>
     <Filter Include="utils\codetools">
       <UniqueIdentifier>{bb23e811-ee14-44c6-a2e0-3a7585305d23}</UniqueIdentifier>
     </Filter>
@@ -43,9 +40,6 @@
     <ClInclude Include="utils\entt\entt.h">
       <Filter>utils\entt</Filter>
     </ClInclude>
-    <ClInclude Include="utils\assimploader\AssimpLoader.h">
-      <Filter>utils\assimploader</Filter>
-    </ClInclude>
     <ClInclude Include="utils\codetools\Macros.h">
       <Filter>utils\codetools</Filter>
     </ClInclude>
@@ -68,9 +62,6 @@
     </ClCompile>
     <ClCompile Include="utils\stbimage\StbImageLoader.cpp">
       <Filter>utils\stbimage</Filter>
-    </ClCompile>
-    <ClCompile Include="utils\assimploader\AssimpLoader.cpp">
-      <Filter>utils\assimploader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

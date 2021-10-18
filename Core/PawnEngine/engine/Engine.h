@@ -14,6 +14,7 @@
 #include "PawnEngine/engine/scripts/ScriptEngine.h"
 #include "PawnEngine/engine/serializer/JsonSerializer.h"
 #include "PawnEngine/engine/serializer/JsonFileSerializer.h"
+#include "PawnEngine/engine/geometry/Mesh.h"
 
 #include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsAPI.h"
@@ -61,7 +62,7 @@ namespace pawn {
 
 				bool HasMeshByName(const std::string & name);
 				bool UploadMeshFromFile(const std::string & file);
-				const std::shared_ptr<graphics::GraphicsMesh>& GetMeshByName(const std::string & name);
+				const std::shared_ptr<Mesh>& GetMeshByName(const std::string & name);
 
 				bool HasTextureByName(const std::string& name);
 				bool UploadTextureFromFile(const std::string& file);

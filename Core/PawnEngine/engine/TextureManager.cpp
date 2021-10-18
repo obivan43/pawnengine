@@ -65,6 +65,8 @@ namespace pawn {
 			utils::StbImageLoader::Free(data);
 			m_TexturesMap[name] = texture;
 
+			CONSOLE_INFO("TextureManager: Texture loaded {}", path)
+
 			return true;
 		}
 

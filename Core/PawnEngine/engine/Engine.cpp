@@ -46,7 +46,7 @@ namespace pawn {
 			if (!m_Shader->InitVertexShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\VertexShader.cso")) {
 				CONSOLE_ERROR("Vertex shader initialization failed")
 			}
-
+			
 			if (!m_Shader->InitPixelShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\TexturePixelShader.cso")) {
 				CONSOLE_ERROR("Pixel shader initialization failed")
 			}
@@ -56,7 +56,7 @@ namespace pawn {
 			m_Renderer->SetShader(m_Context, m_Shader);
 		}
 
-		const std::shared_ptr<graphics::GraphicsMesh>& Engine::GetMeshByName(const std::string& name) {
+		const std::shared_ptr<Mesh>& Engine::GetMeshByName(const std::string& name) {
 			return m_MeshManager->GetMeshByName(name);
 		}
 
