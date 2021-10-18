@@ -239,7 +239,6 @@ namespace editor {
 			m_Engine->UploadMeshFromFile("res/assets/models/cylinder.obj");
 			m_Engine->UploadMeshFromFile("res/assets/models/cone.obj");
 			m_Engine->UploadMeshFromFile("res/assets/models/torus.obj");
-			m_Engine->UploadMeshFromFile("res/assets/models/nanosuit.obj");
 			m_Engine->UploadMeshFromFile("res/assets/models/handgun.obj");
 
 			m_Engine->UploadTextureFromFile("res/assets/textures/brick.jpg");

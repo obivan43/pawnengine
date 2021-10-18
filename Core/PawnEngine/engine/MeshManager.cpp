@@ -40,6 +40,8 @@ namespace pawn {
 
 			m_MeshesMap[name] = mesh;
 
+			CONSOLE_INFO("MeshManager: Model loaded {}", path)
+
 			return true;
 		}
 
