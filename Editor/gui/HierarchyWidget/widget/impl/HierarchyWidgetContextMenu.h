@@ -30,6 +30,7 @@ namespace editor {
 
 			public slots:
 				void CreateEmptyEntity();
+				void CreatePlane();
 				void CreateCube();
 				void CreateSphere();
 				void CreateCone();
@@ -48,6 +49,7 @@ namespace editor {
 				QAction* m_CreateCamera;
 
 				QMenu* m_Create3DObject;
+				QAction* m_CreatePlane;
 				QAction* m_CreateCube;
 				QAction* m_CreateSphere;
 				QAction* m_CreateCone;

@@ -1,13 +1,16 @@
-cbuffer TransformationCB : register(b0) {
+cbuffer TransformationCB : register(b0)
+{
 	matrix transformation;
 };
 
-cbuffer ViewProjectionCB : register(b1) {
+cbuffer ViewProjectionCB : register(b1) 
+{
 	matrix  projection;
 	matrix  view;
 };
 
-struct VS_OUT {
+struct VS_OUT
+{
 	float2 texcoord : TextureCoordinate;
 	float3 normal : Normal;
 	float4 position : SV_Position;
