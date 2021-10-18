@@ -244,6 +244,8 @@ namespace editor {
 
 			m_Engine->UploadTextureFromFile("res/assets/textures/brick.jpg");
 			m_Engine->UploadTextureFromFile("res/assets/textures/handgun_C.jpg");
+			m_Engine->UploadTextureFromFile("res/assets/textures/handgun_N.jpg");
+			m_Engine->UploadTextureFromFile("res/assets/textures/handgun_S.jpg");
 
 			pawn::engine::GameEntity camera{ scene->CreateEntity("camera") };
 			pawn::engine::CameraComponent& cameraComponent{ camera.AddComponent<pawn::engine::CameraComponent>() };

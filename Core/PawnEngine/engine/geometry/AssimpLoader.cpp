@@ -90,7 +90,7 @@ namespace pawn::engine {
 
 			UpdateMeshDataInfo(m_ModelScene->mRootNode, glm::mat4(1.0));
 
-			const std::initializer_list<graphics::GraphicsInputElement> inputElements = {
+			static const std::initializer_list<graphics::GraphicsInputElement> inputElements = {
 				{ "Position", graphics::GraphicsInputElementType::Float3 },
 				{ "Normal", graphics::GraphicsInputElementType::Float3 },
 				{ "TextureCoordinate", graphics::GraphicsInputElementType::Float2 }
@@ -103,10 +103,11 @@ namespace pawn::engine {
 			vertexBuffer->Init(context, m_Verticies.data(), static_cast<uint32_t>(m_Verticies.size()), sizeof(Vertex), graphics::GraphicsBufferUsageTypeEnum::StaticBuffer);
 			vertexBuffer->Bind(context);
 
-			indexBuffer->Init(context, m_Indices.data(), static_cast<uint32_t>(m_Indices.size()), sizeof(uint16_t), graphics::GraphicsBufferUsageTypeEnum::StaticBuffer);
+			indexBuffer->Init(context, m_Indices.data(), static_cast<uint32_t>(m_Indices.size()), sizeof(uint32_t), graphics::GraphicsBufferUsageTypeEnum::StaticBuffer);
 			indexBuffer->Bind(context);
 
 			inputLayout->Init(context, inputElements, shader->GetVertexShaderInfo());
+			inputLayout->Bind(context);
 
 			Mesh* mesh = new Mesh();
 			mesh->m_MeshNodeData = m_MeshNodeData;
@@ -146,12 +147,12 @@ namespace pawn::engine {
 			vertex.Normal.z = mesh->mNormals[i].z;
 
 			if (mesh->HasTextureCoords(0)) {
-				vertex.TextureCoordinate.u = mesh->mTextureCoords[0][i].x;
-				vertex.TextureCoordinate.v = mesh->mTextureCoords[0][i].y;
+				vertex.TextureCoordinate.x = mesh->mTextureCoords[0][i].x;
+				vertex.TextureCoordinate.y = mesh->mTextureCoords[0][i].y;
 			}
 			else {
-				vertex.TextureCoordinate.u = 0.0f;
-				vertex.TextureCoordinate.v = 0.0f;
+				vertex.TextureCoordinate.x = 0.0f;
+				vertex.TextureCoordinate.y = 0.0f;
 			}
 
 			m_Verticies.push_back(vertex);

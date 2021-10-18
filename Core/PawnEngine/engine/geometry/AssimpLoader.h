@@ -46,7 +46,7 @@ namespace pawn::engine {
 
 			std::vector<MeshNodeData> m_MeshNodeData;
 			std::vector<Vertex> m_Verticies;
-			std::vector<uint16_t> m_Indices;
+			std::vector<uint32_t> m_Indices;
 			std::vector<const aiNode*> m_Nodes;
 	};
 }
