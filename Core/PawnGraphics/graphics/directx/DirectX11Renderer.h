@@ -23,7 +23,7 @@ namespace pawn {
 				void Draw(std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsBuffer>& buffer) override;
 				void DrawIndexed(
 					std::shared_ptr<GraphicsContext>& context,
-					const std::shared_ptr<GraphicsBuffer>& IndexBuffer,
+					uint32_t indexCount,
 					uint32_t startIndex = 0,
 					uint32_t vertexLocation = 0
 				) override;

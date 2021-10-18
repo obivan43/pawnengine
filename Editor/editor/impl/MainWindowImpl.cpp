@@ -234,14 +234,17 @@ namespace editor {
 
 			std::shared_ptr<pawn::engine::GameScene>& scene{ m_Engine->GetScene() };
 
-			m_Engine->UploadMeshFromFile("res/assets/models/cube.obj");
-			m_Engine->UploadMeshFromFile("res/assets/models/sphere.obj");
-			m_Engine->UploadMeshFromFile("res/assets/models/cylinder.obj");
-			m_Engine->UploadMeshFromFile("res/assets/models/cone.obj");
-			m_Engine->UploadMeshFromFile("res/assets/models/torus.obj");
-			m_Engine->UploadMeshFromFile("res/assets/models/handgun.obj");
+			m_Engine->UploadMeshFromFile("res/assets/models/cube.fbx");
+			m_Engine->UploadMeshFromFile("res/assets/models/sphere.fbx");
+			m_Engine->UploadMeshFromFile("res/assets/models/cylinder.fbx");
+			m_Engine->UploadMeshFromFile("res/assets/models/cone.fbx");
+			m_Engine->UploadMeshFromFile("res/assets/models/torus.fbx");
+			m_Engine->UploadMeshFromFile("res/assets/models/plane.fbx");
+			m_Engine->UploadMeshFromFile("res/assets/models/handgun.fbx");
 
-			m_Engine->UploadTextureFromFile("res/assets/textures/brick.jpg");
+			m_Engine->UploadTextureFromFile("res/assets/textures/brick_C.jpg");
+			m_Engine->UploadTextureFromFile("res/assets/textures/wall_C.jpg");
+			m_Engine->UploadTextureFromFile("res/assets/textures/wall_N.jpg");
 			m_Engine->UploadTextureFromFile("res/assets/textures/handgun_C.jpg");
 			m_Engine->UploadTextureFromFile("res/assets/textures/handgun_N.jpg");
 			m_Engine->UploadTextureFromFile("res/assets/textures/handgun_S.jpg");

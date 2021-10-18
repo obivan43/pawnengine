@@ -17,6 +17,7 @@ namespace editor {
 			, m_CreateEmptyEntity(nullptr)
 			, m_DeleteEntity(nullptr)
 			, m_Create3DObject(nullptr)
+			, m_CreatePlane(nullptr)
 			, m_CreateCube(nullptr)
 			, m_CreateSphere(nullptr)
 			, m_CreateCone(nullptr)
@@ -29,12 +30,14 @@ namespace editor {
 			m_CreateCamera = new QAction("Camera", m_ContextMenu);
 
 			m_Create3DObject = new QMenu("3D Object", m_ContextMenu);
+			m_CreatePlane = new QAction("Plane", m_ContextMenu);
 			m_CreateCube = new QAction("Cube", m_ContextMenu);
 			m_CreateSphere = new QAction("Sphere", m_ContextMenu);
 			m_CreateCone = new QAction("Cone", m_ContextMenu);
 			m_CreateTorus = new QAction("Torus", m_ContextMenu);
 			m_CreateCylinder = new QAction("Cylinder", m_ContextMenu);
 
+			m_Create3DObject->addAction(m_CreatePlane);
 			m_Create3DObject->addAction(m_CreateCube);
 			m_Create3DObject->addAction(m_CreateSphere);
 			m_Create3DObject->addAction(m_CreateCone);
@@ -76,8 +79,8 @@ namespace editor {
 			if (scene) {
 				pawn::engine::GameEntity entity{ scene->CreateEntity(objectName) };
 				entity.AddComponent<pawn::engine::MeshComponent>(
-					manager->GetEngine()->GetMeshByName(objectName + ".obj"),
-					objectName + ".obj"
+					manager->GetEngine()->GetMeshByName(objectName + ".fbx"),
+					objectName + ".fbx"
 				);
 
 				entity.AddComponent<pawn::engine::Texture2DComponent>(
@@ -88,6 +91,13 @@ namespace editor {
 			}
 
 			return pawn::engine::GameEntity();
+		}
+
+		void HierarchyWidgetContextMenu::CreatePlane() {
+			pawn::engine::GameEntity entity = Create3DObject("plane");
+
+			m_HierarchyWidget->SetSelectedEntity(entity);
+			m_HierarchyWidget->RefreshPanel();
 		}
 
 		void HierarchyWidgetContextMenu::CreateCube() {
@@ -155,6 +165,13 @@ namespace editor {
 				SIGNAL(triggered()),
 				this,
 				SLOT(CreateEmptyEntity())
+			);
+
+			connect(
+				m_CreatePlane,
+				SIGNAL(triggered()),
+				this,
+				SLOT(CreatePlane())
 			);
 
 			connect(

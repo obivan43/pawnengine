@@ -23,7 +23,7 @@ namespace pawn {
 
 		void DirectX11Renderer::DrawIndexed(
 			std::shared_ptr<GraphicsContext>& context, 
-			const std::shared_ptr<GraphicsBuffer>& indexBuffer,
+			uint32_t indexCount,
 			uint32_t startIndex,
 			uint32_t vertexLocation
 		) {
@@ -33,7 +33,7 @@ namespace pawn {
 			ID3D11DepthStencilView* depthStencilView = directX11Context->GetDepthStencilView();
 
 			deviceContext->OMSetRenderTargets(1, &renderTragetView, depthStencilView);
-			deviceContext->DrawIndexed(indexBuffer->GetBufferSize(), startIndex, vertexLocation);
+			deviceContext->DrawIndexed(indexCount, startIndex, vertexLocation);
 		}
 
 	}

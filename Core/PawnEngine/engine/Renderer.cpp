@@ -45,7 +45,7 @@ namespace pawn {
 					m_Transformation->Update(m_Context, &transformation, 1, sizeof(glm::mat4));
 					m_Transformation->Bind(m_Context, 0);
 
-					m_GraphicsRenderer->DrawIndexed(m_Context, graphicsMesh->GetIndexBuffer(), meshNodeData.IndexShift, meshNodeData.VertexShift);
+					m_GraphicsRenderer->DrawIndexed(m_Context, meshNodeData.IndexCount, meshNodeData.IndexShift, meshNodeData.VertexShift);
 				}
 			}
 		}

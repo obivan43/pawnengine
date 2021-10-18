@@ -14,12 +14,12 @@ namespace pawn {
 
 		void GraphicsRenderer::DrawIndexed(
 			std::shared_ptr<GraphicsContext>& context,
-			const std::shared_ptr<GraphicsBuffer>& IndexBuffer,
+			uint32_t indexCount,
 			uint32_t startIndex,
 			uint32_t vertexLocation
 		) { 
 			UNUSED(context)
-			UNUSED(IndexBuffer) 
+			UNUSED(indexCount)
 			UNUSED(startIndex)
 			UNUSED(vertexLocation)
 		}
