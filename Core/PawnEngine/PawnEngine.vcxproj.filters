@@ -20,9 +20,6 @@
     <Filter Include="engine\geometry">
       <UniqueIdentifier>{0e419fa6-9137-4f43-b514-0d4210d804e2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\light">
-      <UniqueIdentifier>{49343dc0-638a-4c07-aa69-678550ff3103}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Engine.h">

@@ -11,6 +11,9 @@
 #include <memory>
 #include <future>
 
+#define WINDOW_W 1920
+#define WINDOW_H 1080
+
 #undef PAWN_NETWORK
 
 #ifdef PAWN_DIRECTX11
@@ -85,7 +88,7 @@ void GameThread(HWND hwnd) {
 	pawn::system::InputManagerWindows::RegisterMouse();
 	pawn::system::InputManagerWindows::RegisterKeyboard();
 
-	engine->Init(hwnd, 1280, 720);
+	engine->Init(hwnd, WINDOW_W, WINDOW_H);
 
 	pawn::utils::Clock m_Clock;
 	m_Clock.Reset();
@@ -182,7 +185,7 @@ int WINAPI WinMain(
 		L"window",
 		L"pawn engine",
 		WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, CW_USEDEFAULT, 1280, 720,
+		CW_USEDEFAULT, CW_USEDEFAULT, WINDOW_W, WINDOW_H,
 		NULL, NULL, hInstance, NULL);
 
 	if (hwnd == NULL) {
