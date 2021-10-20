@@ -8,14 +8,14 @@
     <Filter Include="graphics\directx">
       <UniqueIdentifier>{c7d49b1d-d852-444e-9ec0-33e64ef64730}</UniqueIdentifier>
     </Filter>
-    <Filter Include="graphics\directx\deubg">
-      <UniqueIdentifier>{3d62a00b-6e82-48e5-9b5a-9f42061d1187}</UniqueIdentifier>
-    </Filter>
     <Filter Include="graphics\directx\buffer">
       <UniqueIdentifier>{787d3645-c345-4267-8fc3-c787b4c48a00}</UniqueIdentifier>
     </Filter>
     <Filter Include="graphics\data">
       <UniqueIdentifier>{091883c4-8385-436a-9d73-5044f82ba8bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graphics\directx\deubug">
+      <UniqueIdentifier>{3d62a00b-6e82-48e5-9b5a-9f42061d1187}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -32,10 +32,10 @@
       <Filter>graphics\directx\buffer</Filter>
     </ClInclude>
     <ClInclude Include="graphics\directx\debug\DirectX11Debug.h">
-      <Filter>graphics\directx\deubg</Filter>
+      <Filter>graphics\directx\deubug</Filter>
     </ClInclude>
     <ClInclude Include="graphics\directx\debug\dxerr.h">
-      <Filter>graphics\directx\deubg</Filter>
+      <Filter>graphics\directx\deubug</Filter>
     </ClInclude>
     <ClInclude Include="graphics\data\GraphicsMesh.h">
       <Filter>graphics\data</Filter>
@@ -82,6 +82,12 @@
     <ClInclude Include="graphics\directx\DirectX11Texture2D.h">
       <Filter>graphics\directx</Filter>
     </ClInclude>
+    <ClInclude Include="graphics\directx\debug\DirectX11DebugInfoManager.h">
+      <Filter>graphics\directx\deubug</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics\directx\debug\DirectX11Exception.h">
+      <Filter>graphics\directx\deubug</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="graphics\directx\buffer\DirectX11BufferBase.cpp">
@@ -97,10 +103,10 @@
       <Filter>graphics\directx\buffer</Filter>
     </ClCompile>
     <ClCompile Include="graphics\directx\debug\DirectX11Debug.cpp">
-      <Filter>graphics\directx\deubg</Filter>
+      <Filter>graphics\directx\deubug</Filter>
     </ClCompile>
     <ClCompile Include="graphics\directx\debug\dxerr.cpp">
-      <Filter>graphics\directx\deubg</Filter>
+      <Filter>graphics\directx\deubug</Filter>
     </ClCompile>
     <ClCompile Include="graphics\data\GraphicsMesh.cpp">
       <Filter>graphics\data</Filter>
@@ -147,16 +153,22 @@
     <ClCompile Include="graphics\directx\DirectX11Texture2D.cpp">
       <Filter>graphics\directx</Filter>
     </ClCompile>
+    <ClCompile Include="graphics\directx\debug\DirectX11DebugInfoManager.cpp">
+      <Filter>graphics\directx\deubug</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics\directx\debug\DirectX11Exception.cpp">
+      <Filter>graphics\directx\deubug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="graphics\directx\debug\DXGetErrorDescription.inl">
-      <Filter>graphics\directx\deubg</Filter>
+      <Filter>graphics\directx\deubug</Filter>
     </None>
     <None Include="graphics\directx\debug\DXGetErrorString.inl">
-      <Filter>graphics\directx\deubg</Filter>
+      <Filter>graphics\directx\deubug</Filter>
     </None>
     <None Include="graphics\directx\debug\DXTrace.inl">
-      <Filter>graphics\directx\deubg</Filter>
+      <Filter>graphics\directx\deubug</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -7,6 +7,7 @@
 #include "PawnNetwork/network/api/Api.h"
 #include "PawnEngine/engine/Engine.h"
 #include "PawnEngine/engine/EngineGlobals.h"
+#include "PawnGraphics/graphics/directx/debug/DirectX11Exception.h"
 
 #include <memory>
 #include <future>
@@ -20,6 +21,7 @@
 
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "D3DCompiler.lib")
+#pragma comment(lib, "dxguid.lib")
 
 #endif
 
@@ -81,67 +83,83 @@ void NetworkThread(std::shared_ptr<pawn::engine::Engine>& engine) {
 void GameThread(HWND hwnd) {
 	pawn::utils::Logger::Init();
 
-	std::shared_ptr<pawn::engine::Engine> engine(new pawn::engine::Engine);
+	try {
+		std::shared_ptr<pawn::engine::Engine> engine(new pawn::engine::Engine);
 
-	SetGameEngineWindowHWND(hwnd);
+		SetGameEngineWindowHWND(hwnd);
 
-	pawn::system::InputManagerWindows::RegisterMouse();
-	pawn::system::InputManagerWindows::RegisterKeyboard();
+		pawn::system::InputManagerWindows::RegisterMouse();
+		pawn::system::InputManagerWindows::RegisterKeyboard();
 
-	engine->Init(hwnd, WINDOW_W, WINDOW_H);
+		engine->Init(hwnd, WINDOW_W, WINDOW_H);
 
-	pawn::utils::Clock m_Clock;
-	m_Clock.Reset();
+		pawn::utils::Clock m_Clock;
+		m_Clock.Reset();
 
-	engine->GetScriptEngine()->SetIsPaused(false);
+		engine->GetScriptEngine()->SetIsPaused(false);
 
-	const int32_t fpsLock = 144;
-	auto next_frame = std::chrono::steady_clock::now();
+		const int32_t fpsLock = 144;
+		auto next_frame = std::chrono::steady_clock::now();
 
 #ifdef PAWN_NETWORK
-	std::future<void> future = std::async(std::launch::async, NetworkThread, std::ref(engine));
+		std::future<void> future = std::async(std::launch::async, NetworkThread, std::ref(engine));
 #endif
 
-	engine->UploadMeshFromFile("res/assets/models/cube.fbx");
-	engine->UploadMeshFromFile("res/assets/models/sphere.fbx");
-	engine->UploadMeshFromFile("res/assets/models/cylinder.fbx");
-	engine->UploadMeshFromFile("res/assets/models/cone.fbx");
-	engine->UploadMeshFromFile("res/assets/models/torus.fbx");
-	engine->UploadMeshFromFile("res/assets/models/plane.fbx");
-	engine->UploadMeshFromFile("res/assets/models/handgun.fbx");
-	
-	engine->UploadTextureFromFile("res/assets/textures/brick_C.jpg");
-	engine->UploadTextureFromFile("res/assets/textures/wall_C.jpg");
-	engine->UploadTextureFromFile("res/assets/textures/wall_N.jpg");
-	engine->UploadTextureFromFile("res/assets/textures/handgun_C.jpg");
-	engine->UploadTextureFromFile("res/assets/textures/handgun_N.jpg");
-	engine->UploadTextureFromFile("res/assets/textures/handgun_S.jpg");
+		engine->UploadMeshFromFile("res/assets/models/cube.fbx");
+		engine->UploadMeshFromFile("res/assets/models/sphere.fbx");
+		engine->UploadMeshFromFile("res/assets/models/cylinder.fbx");
+		engine->UploadMeshFromFile("res/assets/models/cone.fbx");
+		engine->UploadMeshFromFile("res/assets/models/torus.fbx");
+		engine->UploadMeshFromFile("res/assets/models/plane.fbx");
+		engine->UploadMeshFromFile("res/assets/models/handgun.fbx");
 
-	engine->LoadState("res/assets/scenes/basicScene.pawn");
+		engine->UploadTextureFromFile("res/assets/textures/brick_C.jpg");
+		engine->UploadTextureFromFile("res/assets/textures/wall_C.jpg");
+		engine->UploadTextureFromFile("res/assets/textures/wall_N.jpg");
+		engine->UploadTextureFromFile("res/assets/textures/handgun_C.jpg");
+		engine->UploadTextureFromFile("res/assets/textures/handgun_N.jpg");
+		engine->UploadTextureFromFile("res/assets/textures/handgun_S.jpg");
 
-	engine->OnCreate();
-	while (engine->GetEngineRunning()) {
-		std::lock_guard<std::mutex> guard(mutex);
-		std::this_thread::sleep_until(next_frame);
+		engine->LoadState("res/assets/scenes/basicScene.pawn");
 
-		next_frame += std::chrono::milliseconds(1000 / fpsLock);
 
-		m_Clock.Tick();
+		engine->OnCreate();
+		while (engine->GetEngineRunning()) {
+			std::lock_guard<std::mutex> guard(mutex);
+			std::this_thread::sleep_until(next_frame);
 
-		engine->Clear();
-		engine->OnInput();
+			next_frame += std::chrono::milliseconds(1000 / fpsLock);
 
-		if (pawn::system::KeyboardManager::ButtonPressed(pawn::system::Button::Escape)) {
-			isRunning = false;
-		}
+			m_Clock.Tick();
 
-		engine->OnUpdate(m_Clock);
-		engine->OnRender();
+			engine->Clear();
+			engine->OnInput();
 
-		if (!isRunning) {
-			engine->SetEngineRunning(false);
+			if (pawn::system::KeyboardManager::ButtonPressed(pawn::system::Button::Escape)) {
+				isRunning = false;
+			}
+
+			engine->OnUpdate(m_Clock);
+			engine->OnRender();
+
+			if (!isRunning) {
+				engine->SetEngineRunning(false);
+			}
 		}
 	}
+	catch (const pawn::graphics::DirectX11Exception& e) {
+#ifdef _WIN32
+		MessageBoxA(nullptr, e.what(), "DirectX11 exception", MB_OK | MB_ICONEXCLAMATION);
+#endif
+	}
+	catch (const std::exception& e) {
+#ifdef _WIN32
+		MessageBoxA(nullptr, e.what(), "Standard exception", MB_OK | MB_ICONEXCLAMATION);
+#endif
+	}
+
+	isRunning = false;
+
 #ifdef PAWN_NETWORK
 	future.wait();
 #endif

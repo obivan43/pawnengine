@@ -17,7 +17,9 @@
     <ClInclude Include="graphics\directx\buffer\DirectX11IndexBuffer.h" />
     <ClInclude Include="graphics\directx\buffer\DirectX11VertexBuffer.h" />
     <ClInclude Include="graphics\directx\debug\DirectX11Debug.h" />
+    <ClInclude Include="graphics\directx\debug\DirectX11Exception.h" />
     <ClInclude Include="graphics\directx\debug\dxerr.h" />
+    <ClInclude Include="graphics\directx\debug\DirectX11DebugInfoManager.h" />
     <ClInclude Include="graphics\directx\DirectX11API.h" />
     <ClInclude Include="graphics\directx\Directx11Context.h" />
     <ClInclude Include="graphics\directx\DirectX11InputLayout.h" />
@@ -51,6 +53,8 @@
     <ClCompile Include="graphics\directx\buffer\DirectX11IndexBuffer.cpp" />
     <ClCompile Include="graphics\directx\buffer\DirectX11VertexBuffer.cpp" />
     <ClCompile Include="graphics\directx\debug\DirectX11Debug.cpp" />
+    <ClCompile Include="graphics\directx\debug\DirectX11DebugInfoManager.cpp" />
+    <ClCompile Include="graphics\directx\debug\DirectX11Exception.cpp" />
     <ClCompile Include="graphics\directx\debug\dxerr.cpp" />
     <ClCompile Include="graphics\directx\DirectX11API.cpp" />
     <ClCompile Include="graphics\directx\Directx11Context.cpp" />
