@@ -5,22 +5,18 @@
 #include <QFrame>
 #include <QPushButton>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	class EngineViewWidgetImpl : public EngineViewWidget {
+			Q_OBJECT
 
-		class EngineViewWidgetImpl : public EngineViewWidget {
-				Q_OBJECT
+		public:
+			EngineViewWidgetImpl(QWidget* parent);
 
-			public:
-				EngineViewWidgetImpl(QWidget* parent);
+			HWND GetWindowsHandle() override { return reinterpret_cast<HWND>(m_EngineFrame->winId()); }
 
-				HWND GetWindowsHandle() override { return reinterpret_cast<HWND>(m_EngineFrame->winId()); }
-
-			private:
-				QFrame* m_EngineFrame;
-		};
-
-	}
+		private:
+			QFrame* m_EngineFrame;
+	};
 
 }

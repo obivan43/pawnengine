@@ -6,38 +6,33 @@
 #include <QWidget>
 #include <QPushButton>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	class NewComponentWidget : public QWidget {
+		 Q_OBJECT
 
-		class NewComponentWidget : public QWidget {
-			 Q_OBJECT
+		public:
+			NewComponentWidget(QWidget* parent = Q_NULLPTR);
 
-			public:
-				NewComponentWidget(QWidget* parent = Q_NULLPTR);
+			void SetEntity(pawn::engine::GameEntity* entity);
 
-				void SetEntity(pawn::engine::GameEntity* entity);
+			QPushButton* GetButton() { return m_Button; }
 
-				QPushButton* GetButton() { return m_Button; }
+		signals:
+			void AddedNewComponent(ComponentsEnum);
 
-			signals:
-				void AddedNewComponent(ComponentsEnum);
+		public slots:
+			void OnPress();
 
-			public slots:
-				void OnPress();
+		private:
+			void InitConnections();
 
-			private:
-				void InitConnections();
+		private:
+			pawn::engine::GameEntity* m_Entity;
 
-			private:
-				pawn::engine::GameEntity* m_Entity;
-
-				QPushButton* m_Button;
-				SelectComponentWidget* m_SelectWidget;
-				
-		};
-
-
-	}
+			QPushButton* m_Button;
+			SelectComponentWidget* m_SelectWidget;
+			
+	};
 
 }

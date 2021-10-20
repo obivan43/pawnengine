@@ -6,29 +6,25 @@
 
 #include <memory>
 
-namespace pawn {
-	
-	namespace graphics {
+namespace pawn::graphics {
 
-		class GraphicsContext : public Rtti {
-			RTTI_DECLARATIONS(GraphicsContext, Rtti)
+	class GraphicsContext : public Rtti {
+		RTTI_DECLARATIONS(GraphicsContext, Rtti)
 
-			public:
-				GraphicsContext() = default;
-				GraphicsContext(const GraphicsContext& other) = default;
-				GraphicsContext(GraphicsContext&& other) noexcept = default;
+		public:
+			GraphicsContext() = default;
+			GraphicsContext(const GraphicsContext& other) = default;
+			GraphicsContext(GraphicsContext&& other) noexcept = default;
 
-				GraphicsContext& operator=(const GraphicsContext& other) = default;
-				GraphicsContext& operator=(GraphicsContext&& other) noexcept = default;
+			GraphicsContext& operator=(const GraphicsContext& other) = default;
+			GraphicsContext& operator=(GraphicsContext&& other) noexcept = default;
 
-				virtual ~GraphicsContext() = default;
+			virtual ~GraphicsContext() = default;
 
-				virtual bool Init(HWND handle, uint32_t width, uint32_t height);
-				virtual void SwapBuffers();
+			virtual bool Init(HWND handle, uint32_t width, uint32_t height);
+			virtual void SwapBuffers();
 
-				static std::shared_ptr<GraphicsContext> Create();
-		};
-
-	}
+			static std::shared_ptr<GraphicsContext> Create();
+	};
 
 }

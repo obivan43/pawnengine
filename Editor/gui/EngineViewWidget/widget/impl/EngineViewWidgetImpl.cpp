@@ -3,23 +3,19 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	EngineViewWidgetImpl::EngineViewWidgetImpl(QWidget* parent)
+		: EngineViewWidget(parent)
+		, m_EngineFrame(nullptr) {
+		
+		QVBoxLayout* layout = new QVBoxLayout(this);
 
-		EngineViewWidgetImpl::EngineViewWidgetImpl(QWidget* parent)
-			: EngineViewWidget(parent)
-			, m_EngineFrame(nullptr) {
-			
-			QVBoxLayout* layout = new QVBoxLayout(this);
+		m_EngineFrame = new QFrame();
 
-			m_EngineFrame = new QFrame();
+		layout->addWidget(m_EngineFrame);
 
-			layout->addWidget(m_EngineFrame);
-
-			setLayout(layout);
-		}
-
+		setLayout(layout);
 	}
 
 }

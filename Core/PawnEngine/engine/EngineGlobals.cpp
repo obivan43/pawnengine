@@ -1,19 +1,15 @@
 #include "EngineGlobals.h"
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
+	static bool g_ShouldHandleMouseInEngineScripts = true;
 
-		static bool g_ShouldHandleMouseInEngineScripts = true;
+	bool GetMouseHandlingStateInScripts() {
+		return g_ShouldHandleMouseInEngineScripts;
+	}
 
-		bool GetMouseHandlingStateInScripts() {
-			return g_ShouldHandleMouseInEngineScripts;
-		}
-
-		void SetMouseHandlingStateInScripts(bool state) {
-			g_ShouldHandleMouseInEngineScripts = state;
-		}
-
+	void SetMouseHandlingStateInScripts(bool state) {
+		g_ShouldHandleMouseInEngineScripts = state;
 	}
 
 }

@@ -2,36 +2,32 @@
 
 #include <fstream>
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
+	void JsonFileSerializer::SaveToFile(const std::string& path, const nlohmann::json& j) {
+		std::ofstream outputFile;
 
-		void JsonFileSerializer::SaveToFile(const std::string& path, const json& j) {
-			std::ofstream outputFile;
-
-			outputFile.open(path, std::fstream::out | std::ofstream::trunc | std::ofstream::binary);
-			if (!outputFile.is_open()) {
-				return;
-			}
-
-			outputFile << j.dump() << std::endl;
-			outputFile.close();
+		outputFile.open(path, std::fstream::out | std::ofstream::trunc | std::ofstream::binary);
+		if (!outputFile.is_open()) {
+			return;
 		}
 
-		json JsonFileSerializer::LoadFromFile(const std::string& path) {
-			std::ifstream inputFile;
+		outputFile << j.dump() << std::endl;
+		outputFile.close();
+	}
 
-			inputFile.open(path, std::fstream::in | std::fstream::binary);
-			if (!inputFile.is_open()) {
-				return json();
-			}
+	nlohmann::json JsonFileSerializer::LoadFromFile(const std::string& path) {
+		std::ifstream inputFile;
 
-			std::string tempJsonData;
-			inputFile >> tempJsonData;
-
-			return json::parse(tempJsonData);
+		inputFile.open(path, std::fstream::in | std::fstream::binary);
+		if (!inputFile.is_open()) {
+			return nlohmann::json();
 		}
 
+		std::string tempJsonData;
+		inputFile >> tempJsonData;
+
+		return nlohmann::json::parse(tempJsonData);
 	}
 
 }

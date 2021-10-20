@@ -8,29 +8,25 @@
 
 #include <memory>
 
-namespace pawn {
+namespace pawn::utils {
 
-	namespace utils {
+	class Logger {
+		public:
+			static void Init();
 
-		class Logger {
-			public:
-				static void Init();
+			static std::shared_ptr<spdlog::logger>& GetLogger() { return m_Logger; }
+			static std::shared_ptr<spdlog::logger>& GetLuaLogger() { return m_LuaLogger; }
 
-				static std::shared_ptr<spdlog::logger>& GetLogger() { return m_Logger; }
-				static std::shared_ptr<spdlog::logger>& GetLuaLogger() { return m_LuaLogger; }
+		private:
+			static std::shared_ptr<spdlog::logger> m_Logger;
+			static std::shared_ptr<spdlog::logger> m_LuaLogger;
+	};
 
-			private:
-				static std::shared_ptr<spdlog::logger> m_Logger;
-				static std::shared_ptr<spdlog::logger> m_LuaLogger;
-		};
-
-		void LuaTrace(const char* str);
-		void LuaInfo(const char* str);
-		void LuaWarning(const char* str);
-		void LuaError(const char* str);
-		void LuaDebug(const char* str);
-
-	}
+	void LuaTrace(const char* str);
+	void LuaInfo(const char* str);
+	void LuaWarning(const char* str);
+	void LuaError(const char* str);
+	void LuaDebug(const char* str);
 
 }
 

@@ -8,222 +8,218 @@
 #include "PawnEngine/engine/components/MeshComponent.h"
 #include "PawnEngine/engine/components/Texture2DComponent.h"
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	HierarchyWidgetContextMenu::HierarchyWidgetContextMenu(QWidget* parent)
+		: m_ContextMenu(nullptr)
+		, m_CreateEmptyEntity(nullptr)
+		, m_DeleteEntity(nullptr)
+		, m_Create3DObject(nullptr)
+		, m_CreatePlane(nullptr)
+		, m_CreateCube(nullptr)
+		, m_CreateSphere(nullptr)
+		, m_CreateCone(nullptr)
+		, m_CreateTorus(nullptr)
+		, m_CreateCylinder(nullptr) {
 
-		HierarchyWidgetContextMenu::HierarchyWidgetContextMenu(QWidget* parent)
-			: m_ContextMenu(nullptr)
-			, m_CreateEmptyEntity(nullptr)
-			, m_DeleteEntity(nullptr)
-			, m_Create3DObject(nullptr)
-			, m_CreatePlane(nullptr)
-			, m_CreateCube(nullptr)
-			, m_CreateSphere(nullptr)
-			, m_CreateCone(nullptr)
-			, m_CreateTorus(nullptr)
-			, m_CreateCylinder(nullptr) {
+		m_ContextMenu = new QMenu("Context menu", parent);
+		m_CreateEmptyEntity = new QAction("Create empty", m_ContextMenu);
+		m_DeleteEntity = new QAction("Delete", m_ContextMenu);
+		m_CreateCamera = new QAction("Camera", m_ContextMenu);
 
-			m_ContextMenu = new QMenu("Context menu", parent);
-			m_CreateEmptyEntity = new QAction("Create empty", m_ContextMenu);
-			m_DeleteEntity = new QAction("Delete", m_ContextMenu);
-			m_CreateCamera = new QAction("Camera", m_ContextMenu);
+		m_Create3DObject = new QMenu("3D Object", m_ContextMenu);
+		m_CreatePlane = new QAction("Plane", m_ContextMenu);
+		m_CreateCube = new QAction("Cube", m_ContextMenu);
+		m_CreateSphere = new QAction("Sphere", m_ContextMenu);
+		m_CreateCone = new QAction("Cone", m_ContextMenu);
+		m_CreateTorus = new QAction("Torus", m_ContextMenu);
+		m_CreateCylinder = new QAction("Cylinder", m_ContextMenu);
 
-			m_Create3DObject = new QMenu("3D Object", m_ContextMenu);
-			m_CreatePlane = new QAction("Plane", m_ContextMenu);
-			m_CreateCube = new QAction("Cube", m_ContextMenu);
-			m_CreateSphere = new QAction("Sphere", m_ContextMenu);
-			m_CreateCone = new QAction("Cone", m_ContextMenu);
-			m_CreateTorus = new QAction("Torus", m_ContextMenu);
-			m_CreateCylinder = new QAction("Cylinder", m_ContextMenu);
+		m_Create3DObject->addAction(m_CreatePlane);
+		m_Create3DObject->addAction(m_CreateCube);
+		m_Create3DObject->addAction(m_CreateSphere);
+		m_Create3DObject->addAction(m_CreateCone);
+		m_Create3DObject->addAction(m_CreateTorus);
+		m_Create3DObject->addAction(m_CreateCylinder);
 
-			m_Create3DObject->addAction(m_CreatePlane);
-			m_Create3DObject->addAction(m_CreateCube);
-			m_Create3DObject->addAction(m_CreateSphere);
-			m_Create3DObject->addAction(m_CreateCone);
-			m_Create3DObject->addAction(m_CreateTorus);
-			m_Create3DObject->addAction(m_CreateCylinder);
+		m_ContextMenu->addAction(m_DeleteEntity);
+		m_ContextMenu->addSeparator();
+		m_ContextMenu->addAction(m_CreateEmptyEntity);
+		m_ContextMenu->addMenu(m_Create3DObject);
+		m_ContextMenu->addAction(m_CreateCamera);
 
-			m_ContextMenu->addAction(m_DeleteEntity);
-			m_ContextMenu->addSeparator();
-			m_ContextMenu->addAction(m_CreateEmptyEntity);
-			m_ContextMenu->addMenu(m_Create3DObject);
-			m_ContextMenu->addAction(m_CreateCamera);
+		InitConnections();
+	}
 
-			InitConnections();
+	void HierarchyWidgetContextMenu::ShowMenu(
+		HierarchyWidgetImpl* widget,
+		const QPoint& position
+	) {
+		m_HierarchyWidget = widget;
+		m_ContextMenu->exec(m_HierarchyWidget->mapToGlobal(position));
+	}
+
+	void HierarchyWidgetContextMenu::CreateEmptyEntity() {
+		std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
+		if (scene) {
+			pawn::engine::GameEntity entity = scene->CreateEntity();
+
+			m_HierarchyWidget->SetSelectedEntity(entity);
+			m_HierarchyWidget->RefreshPanel();
 		}
+	}
 
-		void HierarchyWidgetContextMenu::ShowMenu(
-			HierarchyWidgetImpl* widget,
-			const QPoint& position
-		) {
-			m_HierarchyWidget = widget;
-			m_ContextMenu->exec(m_HierarchyWidget->mapToGlobal(position));
-		}
+	pawn::engine::GameEntity HierarchyWidgetContextMenu::Create3DObject(const QString& name) {
+		std::string objectName = name.toLocal8Bit().constData();
+		std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
+		EngineManager* manager = m_HierarchyWidget->GetEngineManager();
 
-		void HierarchyWidgetContextMenu::CreateEmptyEntity() {
-			std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
-			if (scene) {
-				pawn::engine::GameEntity entity = scene->CreateEntity();
-
-				m_HierarchyWidget->SetSelectedEntity(entity);
-				m_HierarchyWidget->RefreshPanel();
-			}
-		}
-
-		pawn::engine::GameEntity HierarchyWidgetContextMenu::Create3DObject(const QString& name) {
-			std::string objectName = name.toLocal8Bit().constData();
-			std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
-			EngineManager* manager = m_HierarchyWidget->GetEngineManager();
-
-			if (scene) {
-				pawn::engine::GameEntity entity{ scene->CreateEntity(objectName) };
-				entity.AddComponent<pawn::engine::MeshComponent>(
-					manager->GetEngine()->GetMeshByName(objectName + ".fbx"),
-					objectName + ".fbx"
+		if (scene) {
+			pawn::engine::GameEntity entity{ scene->CreateEntity(objectName) };
+			entity.AddComponent<pawn::engine::MeshComponent>(
+				manager->GetEngine()->GetMeshByName(objectName + ".fbx"),
+				objectName + ".fbx"
 				);
 
-				entity.AddComponent<pawn::engine::Texture2DComponent>(
-					manager->GetEngine()->GetTextureByName(std::string())
+			entity.AddComponent<pawn::engine::Texture2DComponent>(
+				manager->GetEngine()->GetTextureByName(std::string())
 				);
 
-				return entity;
-			}
-
-			return pawn::engine::GameEntity();
+			return entity;
 		}
 
-		void HierarchyWidgetContextMenu::CreatePlane() {
-			pawn::engine::GameEntity entity = Create3DObject("plane");
+		return pawn::engine::GameEntity();
+	}
+
+	void HierarchyWidgetContextMenu::CreatePlane() {
+		pawn::engine::GameEntity entity = Create3DObject("plane");
+
+		m_HierarchyWidget->SetSelectedEntity(entity);
+		m_HierarchyWidget->RefreshPanel();
+	}
+
+	void HierarchyWidgetContextMenu::CreateCube() {
+		pawn::engine::GameEntity entity = Create3DObject("cube");
+
+		m_HierarchyWidget->SetSelectedEntity(entity);
+		m_HierarchyWidget->RefreshPanel();
+	}
+
+	void HierarchyWidgetContextMenu::CreateSphere() {
+		pawn::engine::GameEntity entity = Create3DObject("sphere");
+
+		m_HierarchyWidget->SetSelectedEntity(entity);
+		m_HierarchyWidget->RefreshPanel();
+	}
+
+	void HierarchyWidgetContextMenu::CreateCone() {
+		pawn::engine::GameEntity entity = Create3DObject("cone");
+
+		m_HierarchyWidget->SetSelectedEntity(entity);
+		m_HierarchyWidget->RefreshPanel();
+	}
+
+	void HierarchyWidgetContextMenu::CreateTorus() {
+		pawn::engine::GameEntity entity = Create3DObject("torus");
+
+		m_HierarchyWidget->SetSelectedEntity(entity);
+		m_HierarchyWidget->RefreshPanel();
+	}
+
+	void HierarchyWidgetContextMenu::CreateCylinder() {
+		pawn::engine::GameEntity entity = Create3DObject("cylinder");
+
+		m_HierarchyWidget->SetSelectedEntity(entity);
+		m_HierarchyWidget->RefreshPanel();
+	}
+
+	void HierarchyWidgetContextMenu::CreateCamera() {
+		std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
+
+		if (scene) {
+			pawn::engine::GameEntity entity{ scene->CreateEntity("camera") };
+			entity.AddComponent<pawn::engine::CameraComponent>();
 
 			m_HierarchyWidget->SetSelectedEntity(entity);
 			m_HierarchyWidget->RefreshPanel();
 		}
+	}
 
-		void HierarchyWidgetContextMenu::CreateCube() {
-			pawn::engine::GameEntity entity = Create3DObject("cube");
+	void HierarchyWidgetContextMenu::DeleteEntity() {
+		std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
+		pawn::engine::GameEntity selectedEntity = m_HierarchyWidget->GetSelectedEntity();
 
-			m_HierarchyWidget->SetSelectedEntity(entity);
+		if (!selectedEntity.IsNull() && scene) {
+			scene->DeleteEntity(selectedEntity.GetEntity());
+
+			m_HierarchyWidget->SetSelectedEntity(pawn::engine::GameEntity());
 			m_HierarchyWidget->RefreshPanel();
 		}
+	}
 
-		void HierarchyWidgetContextMenu::CreateSphere() {
-			pawn::engine::GameEntity entity = Create3DObject("sphere");
+	void HierarchyWidgetContextMenu::InitConnections() {
+		connect(
+			m_CreateEmptyEntity,
+			SIGNAL(triggered()),
+			this,
+			SLOT(CreateEmptyEntity())
+		);
 
-			m_HierarchyWidget->SetSelectedEntity(entity);
-			m_HierarchyWidget->RefreshPanel();
-		}
+		connect(
+			m_CreatePlane,
+			SIGNAL(triggered()),
+			this,
+			SLOT(CreatePlane())
+		);
 
-		void HierarchyWidgetContextMenu::CreateCone() {
-			pawn::engine::GameEntity entity = Create3DObject("cone");
+		connect(
+			m_CreateCube,
+			SIGNAL(triggered()),
+			this,
+			SLOT(CreateCube())
+		);
 
-			m_HierarchyWidget->SetSelectedEntity(entity);
-			m_HierarchyWidget->RefreshPanel();
-		}
+		connect(
+			m_CreateSphere,
+			SIGNAL(triggered()),
+			this,
+			SLOT(CreateSphere())
+		);
 
-		void HierarchyWidgetContextMenu::CreateTorus() {
-			pawn::engine::GameEntity entity = Create3DObject("torus");
+		connect(
+			m_CreateCone,
+			SIGNAL(triggered()),
+			this,
+			SLOT(CreateCone())
+		);
 
-			m_HierarchyWidget->SetSelectedEntity(entity);
-			m_HierarchyWidget->RefreshPanel();
-		}
+		connect(
+			m_CreateTorus,
+			SIGNAL(triggered()),
+			this,
+			SLOT(CreateTorus())
+		);
 
-		void HierarchyWidgetContextMenu::CreateCylinder() {
-			pawn::engine::GameEntity entity = Create3DObject("cylinder");
+		connect(
+			m_CreateCylinder,
+			SIGNAL(triggered()),
+			this,
+			SLOT(CreateCylinder())
+		);
 
-			m_HierarchyWidget->SetSelectedEntity(entity);
-			m_HierarchyWidget->RefreshPanel();
-		}
+		connect(
+			m_DeleteEntity,
+			SIGNAL(triggered()),
+			this,
+			SLOT(DeleteEntity())
+		);
 
-		void HierarchyWidgetContextMenu::CreateCamera() {
-			std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
-
-			if (scene) {
-				pawn::engine::GameEntity entity{ scene->CreateEntity("camera") };
-				entity.AddComponent<pawn::engine::CameraComponent>();
-
-				m_HierarchyWidget->SetSelectedEntity(entity);
-				m_HierarchyWidget->RefreshPanel();
-			}
-		}
-
-		void HierarchyWidgetContextMenu::DeleteEntity() {
-			std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
-			pawn::engine::GameEntity selectedEntity = m_HierarchyWidget->GetSelectedEntity();
-
-			if (!selectedEntity.IsNull() && scene) {
-				scene->DeleteEntity(selectedEntity.GetEntity());
-
-				m_HierarchyWidget->SetSelectedEntity(pawn::engine::GameEntity());
-				m_HierarchyWidget->RefreshPanel();
-			}
-		}
-
-		void HierarchyWidgetContextMenu::InitConnections() {
-			connect(
-				m_CreateEmptyEntity,
-				SIGNAL(triggered()),
-				this,
-				SLOT(CreateEmptyEntity())
-			);
-
-			connect(
-				m_CreatePlane,
-				SIGNAL(triggered()),
-				this,
-				SLOT(CreatePlane())
-			);
-
-			connect(
-				m_CreateCube,
-				SIGNAL(triggered()),
-				this,
-				SLOT(CreateCube())
-			);
-
-			connect(
-				m_CreateSphere,
-				SIGNAL(triggered()),
-				this,
-				SLOT(CreateSphere())
-			);
-
-			connect(
-				m_CreateCone,
-				SIGNAL(triggered()),
-				this,
-				SLOT(CreateCone())
-			);
-
-			connect(
-				m_CreateTorus,
-				SIGNAL(triggered()),
-				this,
-				SLOT(CreateTorus())
-			);
-
-			connect(
-				m_CreateCylinder,
-				SIGNAL(triggered()),
-				this,
-				SLOT(CreateCylinder())
-			);
-
-			connect(
-				m_DeleteEntity,
-				SIGNAL(triggered()),
-				this,
-				SLOT(DeleteEntity())
-			);
-
-			connect(
-				m_CreateCamera,
-				SIGNAL(triggered()),
-				this,
-				SLOT(CreateCamera())
-			);
-		}
-
+		connect(
+			m_CreateCamera,
+			SIGNAL(triggered()),
+			this,
+			SLOT(CreateCamera())
+		);
 	}
 
 }

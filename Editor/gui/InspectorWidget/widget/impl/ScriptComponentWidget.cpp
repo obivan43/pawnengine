@@ -3,58 +3,54 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	ScriptComponentWidget::ScriptComponentWidget(QWidget* parent)
+		: QWidget(parent)
+		, m_Script(nullptr)
+		, m_ScriptLineEdit(nullptr)
+		, m_ScriptLabel(nullptr) {
 
-		ScriptComponentWidget::ScriptComponentWidget(QWidget* parent)
-			: QWidget(parent)
-			, m_Script(nullptr)
-			, m_ScriptLineEdit(nullptr)
-			, m_ScriptLabel(nullptr) {
+		QVBoxLayout* layout = new QVBoxLayout(this);
 
-			QVBoxLayout* layout = new QVBoxLayout(this);
+		QHBoxLayout* scriptLayout = new QHBoxLayout();
 
-			QHBoxLayout* scriptLayout = new QHBoxLayout();
+		m_ScriptLineEdit = new QLineEdit(this);
 
-			m_ScriptLineEdit = new QLineEdit(this);
+		m_ScriptLabel = new QLabel("Script", this);
+		m_ScriptLabel->setMinimumWidth(80);
 
-			m_ScriptLabel = new QLabel("Script", this);
-			m_ScriptLabel->setMinimumWidth(80);
+		scriptLayout->addWidget(m_ScriptLabel);
+		scriptLayout->addWidget(m_ScriptLineEdit);
 
-			scriptLayout->addWidget(m_ScriptLabel);
-			scriptLayout->addWidget(m_ScriptLineEdit);
+		layout->addLayout(scriptLayout);
 
-			layout->addLayout(scriptLayout);
+		setLayout(layout);
 
-			setLayout(layout);
+		InitConnections();
+	}
 
-			InitConnections();
-		}
+	void ScriptComponentWidget::SetScript(pawn::engine::ScriptComponent* script) {
+		m_Script = script;
+		m_ScriptLineEdit->setText(m_Script->FileName.c_str());
+	}
 
-		void ScriptComponentWidget::SetScript(pawn::engine::ScriptComponent* script) {
-			m_Script = script;
-			m_ScriptLineEdit->setText(m_Script->FileName.c_str());
-		}
+	void ScriptComponentWidget::OnLineEditPress() {
+		QString& text{ m_ScriptLineEdit->text() };
 
-		void ScriptComponentWidget::OnLineEditPress() {
-			QString& text{ m_ScriptLineEdit->text() };
+		m_Script->FileName = text.toLocal8Bit().constData();
 
-			m_Script->FileName = text.toLocal8Bit().constData();
+		emit ScriptModified();
+		m_ScriptLineEdit->clearFocus();
+	}
 
-			emit ScriptModified();
-			m_ScriptLineEdit->clearFocus();
-		}
-
-		void ScriptComponentWidget::InitConnections() {
-			connect(
-				m_ScriptLineEdit,
-				SIGNAL(returnPressed()),
-				this,
-				SLOT(OnLineEditPress())
-			);
-		}
-
+	void ScriptComponentWidget::InitConnections() {
+		connect(
+			m_ScriptLineEdit,
+			SIGNAL(returnPressed()),
+			this,
+			SLOT(OnLineEditPress())
+		);
 	}
 
 }

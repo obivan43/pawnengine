@@ -4,47 +4,43 @@
 
 #include "KeyboardButton.h"
 
-namespace pawn {
+namespace pawn::system {
 
-	namespace system {
+	class KeyboardManager {
 
-		class KeyboardManager {
+		public:
 
-			public:
+			static void Update();
+			static void Reset();
 
-				static void Update();
-				static void Reset();
+			static bool ButtonPressed(Button button);
+			static bool ButtonReleased(Button button);
 
-				static bool ButtonPressed(Button button);
-				static bool ButtonReleased(Button button);
+			static bool IsValidKeyboardButton(Button button);
+			static bool IsKeyboardConnected();
+			static bool IsAnyButtonPressed();
+			static bool IsAnyButtonReleased();
 
-				static bool IsValidKeyboardButton(Button button);
-				static bool IsKeyboardConnected();
-				static bool IsAnyButtonPressed();
-				static bool IsAnyButtonReleased();
+			static int64_t GetButtonTimeStamp(Button button);
+			
+		private:
 
-				static int64_t GetButtonTimeStamp(Button button);
-				
-			private:
+			KeyboardManager() = default;
 
-				KeyboardManager() = default;
+			static bool GetButtonState(Button button);
+			static bool GetLastFrameButtonState(Button button);
 
-				static bool GetButtonState(Button button);
-				static bool GetLastFrameButtonState(Button button);
+			static void UpdateInternal();
 
-				static void UpdateInternal();
+		private:
 
-			private:
+			static uint8_t m_Buttons[static_cast<uint32_t>(Button::Count)];
+			static uint8_t m_LastFrameButtons[static_cast<uint32_t>(Button::Count)];
+			static int64_t m_ButtonPressTimestamp[static_cast<uint32_t>(Button::Count)];
+			static int64_t m_TimeStamp;
 
-				static uint8_t m_Buttons[static_cast<uint32_t>(Button::Count)];
-				static uint8_t m_LastFrameButtons[static_cast<uint32_t>(Button::Count)];
-				static int64_t m_ButtonPressTimestamp[static_cast<uint32_t>(Button::Count)];
-				static int64_t m_TimeStamp;
-
-				static bool m_IsAnyButonPressed;
-				static bool m_IsAnyButtonReleased;
-		};
-
-	}
+			static bool m_IsAnyButonPressed;
+			static bool m_IsAnyButtonReleased;
+	};
 
 }

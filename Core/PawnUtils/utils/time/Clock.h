@@ -2,42 +2,38 @@
 
 #include <cstdint>
 
-namespace pawn {
+namespace pawn::utils {
 
-	namespace utils {
+	class Clock {
 
-		class Clock {
-	
-			public:
-				Clock();
-				Clock(const Clock& other) = default;
+		public:
+			Clock();
+			Clock(const Clock& other) = default;
 
-				static float TimeStampToSeconds(int64_t timestamp);
-				static int64_t TimeStamp();
+			static float TimeStampToSeconds(int64_t timestamp);
+			static int64_t TimeStamp();
 
-				float Time() const;
-				float PrevTime() const;
-				float DeltaTime() const;
-				float TotalTime() const;
+			float Time() const;
+			float PrevTime() const;
+			float DeltaTime() const;
+			float TotalTime() const;
 
-				void Reset();
-				void Start();
-				void Stop();
-				void Tick();
+			void Reset();
+			void Start();
+			void Stop();
+			void Tick();
 
-			private:
-				double m_SecondsPerCount;
-				double m_DeltaTime;
+		private:
+			double m_SecondsPerCount;
+			double m_DeltaTime;
 
-				int64_t m_BaseTime;
-				int64_t m_PausedTime;
-				int64_t m_StopTime;
-				int64_t m_PrevTime;
-				int64_t m_CurrentTime;
+			int64_t m_BaseTime;
+			int64_t m_PausedTime;
+			int64_t m_StopTime;
+			int64_t m_PrevTime;
+			int64_t m_CurrentTime;
 
-				bool m_Stopped;
-		};
-
-	}
+			bool m_Stopped;
+	};
 
 }

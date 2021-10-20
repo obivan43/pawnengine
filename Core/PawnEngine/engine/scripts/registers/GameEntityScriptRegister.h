@@ -2,18 +2,14 @@
 
 #include "RegisterScriptClass.h"
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
+	class GameEntityScriptRegister : public RegisterScriptClass {
 
-		class GameEntityScriptRegister : public RegisterScriptClass {
+		public:
 
-			public:
+			void Register(sol::state& lua) override;
 
-				void Register(sol::state& lua) override;
-
-		};
-
-	}
+	};
 
 }

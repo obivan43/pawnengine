@@ -2,20 +2,15 @@
 
 #include <sol.hpp>
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
+	class RegisterScriptClass {
 
-		class RegisterScriptClass {
+		public:
 
-			public:
+			virtual ~RegisterScriptClass() = default;
 
-				virtual ~RegisterScriptClass() = default;
+			virtual void Register(sol::state& lua) = 0;
 
-				virtual void Register(sol::state& lua) = 0;
-
-		};
-
-	}
-
+	};
 }

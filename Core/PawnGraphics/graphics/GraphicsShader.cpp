@@ -4,41 +4,37 @@
 
 #include "PawnUtils/utils/codetools/Macros.h"
 
-namespace pawn {
+namespace pawn::graphics {
 
-	namespace graphics {
+	bool GraphicsShader::InitVertexShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) {
+		UNUSED(context)
+		UNUSED(fileName)
+		return false;
+	}
 
-		bool GraphicsShader::InitVertexShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) {
-			UNUSED(context)
-			UNUSED(fileName)
-			return false;
-		}
+	bool GraphicsShader::InitPixelShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) {
+		UNUSED(context)
+		UNUSED(fileName)
+		return false;
+	}
 
-		bool GraphicsShader::InitPixelShader(std::shared_ptr<GraphicsContext>& context, const std::wstring& fileName) {
-			UNUSED(context)
-			UNUSED(fileName)
-			return false;
-		}
+	void GraphicsShader::Bind(std::shared_ptr<GraphicsContext>& context) {
+		UNUSED(context)
+	}
 
-		void GraphicsShader::Bind(std::shared_ptr<GraphicsContext>& context) {
-			UNUSED(context)
-		}
+	void GraphicsShader::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
+		UNUSED(context)
+		UNUSED(index)
+	}
 
-		void GraphicsShader::Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) {
-			UNUSED(context)
-			UNUSED(index)
-		}
+	void GraphicsShader::Unbind(std::shared_ptr<GraphicsContext>& context) { UNUSED(context) }
 
-		void GraphicsShader::Unbind(std::shared_ptr<GraphicsContext>& context) { UNUSED(context) }
-
-		std::shared_ptr<GraphicsShader> GraphicsShader::Create() {
+	std::shared_ptr<GraphicsShader> GraphicsShader::Create() {
 #ifdef PAWN_DIRECTX11
-			return std::shared_ptr<GraphicsShader>(new DirectX11Shader());
+		return std::shared_ptr<GraphicsShader>(new DirectX11Shader());
 #else
-			return std::shared_ptr<GraphicsShader>(new GraphicsShader());
+		return std::shared_ptr<GraphicsShader>(new GraphicsShader());
 #endif
-		}
-
 	}
 
 }

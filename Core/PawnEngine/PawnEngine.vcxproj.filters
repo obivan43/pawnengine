@@ -109,6 +109,9 @@
     <ClInclude Include="engine\components\LightComponent.h">
       <Filter>engine\components</Filter>
     </ClInclude>
+    <ClInclude Include="engine\Environment.h">
+      <Filter>engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">
@@ -188,6 +191,9 @@
     </ClCompile>
     <ClCompile Include="engine\components\LightComponent.cpp">
       <Filter>engine\components</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\Environment.cpp">
+      <Filter>engine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

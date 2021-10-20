@@ -2,24 +2,20 @@
 
 #include "JsonSerializer.h"
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
+	class JsonFileSerializer {
 
-		class JsonFileSerializer {
+		public:
+			JsonFileSerializer() = delete;
+			JsonFileSerializer(const JsonSerializer& other) = delete;
+			JsonFileSerializer(JsonSerializer&& other) noexcept = delete;
 
-			public:
-				JsonFileSerializer() = delete;
-				JsonFileSerializer(const JsonSerializer& other) = delete;
-				JsonFileSerializer(JsonSerializer&& other) noexcept = delete;
+			JsonSerializer& operator=(const JsonSerializer& other) = delete;
+			JsonSerializer& operator=(JsonSerializer&& other) noexcept = delete;
 
-				JsonSerializer& operator=(const JsonSerializer& other) = delete;
-				JsonSerializer& operator=(JsonSerializer&& other) noexcept = delete;
-
-				static void SaveToFile(const std::string& path, const json& j);
-				static json LoadFromFile(const std::string& path);
-		};
-
-	}
+			static void SaveToFile(const std::string& path, const nlohmann::json& j);
+			static nlohmann::json LoadFromFile(const std::string& path);
+	};
 
 }

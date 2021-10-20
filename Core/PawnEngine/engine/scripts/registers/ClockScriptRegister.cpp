@@ -4,15 +4,11 @@
 
 #include <sol.hpp>
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
-
-		void ClockScriptRegister::Register(sol::state& lua) {
-			lua.set_function("clock_timestamp", utils::Clock::TimeStamp);
-			lua.set_function("clock_timestampToSeconds", utils::Clock::TimeStampToSeconds);
-		}
-
+	void ClockScriptRegister::Register(sol::state& lua) {
+		lua.set_function("clock_timestamp", utils::Clock::TimeStamp);
+		lua.set_function("clock_timestampToSeconds", utils::Clock::TimeStampToSeconds);
 	}
 
 }

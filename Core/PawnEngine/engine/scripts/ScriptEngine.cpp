@@ -12,81 +12,77 @@
 
 #include "PawnUtils/utils/logger/Logger.h"
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
+	pawn::engine::GameEntity ScriptEngine::m_CurrentEntity;
 
-		pawn::engine::GameEntity ScriptEngine::m_CurrentEntity;
+	ScriptEngine::ScriptEngine() : m_IsPaused(true) {
+		m_LuaState.open_libraries(
+			sol::lib::base,
+			sol::lib::math,
+			sol::lib::string
+		);
 
-		ScriptEngine::ScriptEngine() : m_IsPaused(true) {
-			m_LuaState.open_libraries(
-				sol::lib::base,
-				sol::lib::math,
-				sol::lib::string
-			);
+		Register(new LoggerScriptRegister());
+		Register(new MouseManagerScriptRegister());
+		Register(new KeyboardManagerScriptRegister());
+		Register(new ClockScriptRegister());
+		Register(new Vec3ScriptRegister());
+		Register(new TransformationComponentScriptRegister());
+		Register(new GameEntityScriptRegister());
 
-			Register(new LoggerScriptRegister());
-			Register(new MouseManagerScriptRegister());
-			Register(new KeyboardManagerScriptRegister());
-			Register(new ClockScriptRegister());
-			Register(new Vec3ScriptRegister());
-			Register(new TransformationComponentScriptRegister());
-			Register(new GameEntityScriptRegister());
+		m_LuaState.set_function("current_entity", GetCurrentEntity);
 
-			m_LuaState.set_function("current_entity", GetCurrentEntity);
+		m_LuaState.script("logger_info('Script engine initialized')");
+	}
 
-			m_LuaState.script("logger_info('Script engine initialized')");
+	void ScriptEngine::ExecOnCreate(const std::string& fileName, pawn::engine::GameEntity entity) {
+		m_LuaState.script_file(fileName);
+		m_CurrentEntity = entity;
+
+		sol::function create = m_LuaState["create"];
+		if (!create.valid()) {
+			CONSOLE_ERROR("create function does not exist in {} script", fileName);
+			return;
 		}
 
-		void ScriptEngine::ExecOnCreate(const std::string& fileName, pawn::engine::GameEntity entity) {
-			m_LuaState.script_file(fileName);
-			m_CurrentEntity = entity;
+		create();
+	}
 
-			sol::function create = m_LuaState["create"];
-			if (!create.valid()) {
-				CONSOLE_ERROR("create function does not exist in {} script", fileName);
-				return;
-			}
+	void ScriptEngine::SetIsPaused(bool state) {
+		m_IsPaused = state;
 
-			create();
-		}
-
-		void ScriptEngine::SetIsPaused(bool state) {
-			m_IsPaused = state;
-
-			if (m_IsPaused) {
-				m_LuaState.stack_clear();
-			}
-		}
-
-		void ScriptEngine::ExecOnUpdate(const std::string& fileName, utils::Clock& clock, pawn::engine::GameEntity entity) {
+		if (m_IsPaused) {
 			m_LuaState.stack_clear();
-			auto& res =  m_LuaState.script_file(fileName);
-			m_CurrentEntity = entity;
+		}
+	}
 
-			if (!res.valid()) {
-				CONSOLE_ERROR("invalid script file {}", fileName);
-				return;
-			}
+	void ScriptEngine::ExecOnUpdate(const std::string& fileName, utils::Clock& clock, pawn::engine::GameEntity entity) {
+		m_LuaState.stack_clear();
+		auto& res = m_LuaState.script_file(fileName);
+		m_CurrentEntity = entity;
 
-			sol::function update = m_LuaState["update"];
-			if (!update.valid()) {
-				CONSOLE_ERROR("update function does not exist in {} script", fileName);
-				return;
-			}
-
-			update(clock.DeltaTime());
+		if (!res.valid()) {
+			CONSOLE_ERROR("invalid script file {}", fileName);
+			return;
 		}
 
-		ScriptEngine::~ScriptEngine() {
-			m_ClassList.clear();
+		sol::function update = m_LuaState["update"];
+		if (!update.valid()) {
+			CONSOLE_ERROR("update function does not exist in {} script", fileName);
+			return;
 		}
 
-		void ScriptEngine::Register(RegisterScriptClass* scriptClass) {
-			scriptClass->Register(m_LuaState);
-			m_ClassList.emplace_back(scriptClass);
-		}
+		update(clock.DeltaTime());
+	}
 
+	ScriptEngine::~ScriptEngine() {
+		m_ClassList.clear();
+	}
+
+	void ScriptEngine::Register(RegisterScriptClass* scriptClass) {
+		scriptClass->Register(m_LuaState);
+		m_ClassList.emplace_back(scriptClass);
 	}
 
 }

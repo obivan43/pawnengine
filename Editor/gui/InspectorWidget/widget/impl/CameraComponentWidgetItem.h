@@ -6,27 +6,23 @@
 
 #include <QTreeWidgetItem>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	class CameraComponentWidgetItem : public QObject, public QTreeWidgetItem {
+		Q_OBJECT
 
-		class CameraComponentWidgetItem : public QObject, public QTreeWidgetItem {
-			Q_OBJECT
+		public:
+			CameraComponentWidgetItem(QTreeWidget* parent);
 
-			public:
-				CameraComponentWidgetItem(QTreeWidget* parent);
+			void SetEntity(pawn::engine::GameEntity* entity);
 
-				void SetEntity(pawn::engine::GameEntity* entity);
+			CameraComponentWidget* GetWidget() { return m_CameraComponentWidget; }
+			QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
 
-				CameraComponentWidget* GetWidget() { return m_CameraComponentWidget; }
-				QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
-
-			private:
-				CameraComponentWidget* m_CameraComponentWidget;
-				QTreeWidgetItem* m_WidgetWrapper;
-				pawn::engine::GameEntity* m_Entity;
-		};
-
-	}
+		private:
+			CameraComponentWidget* m_CameraComponentWidget;
+			QTreeWidgetItem* m_WidgetWrapper;
+			pawn::engine::GameEntity* m_Entity;
+	};
 
 }

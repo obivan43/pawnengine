@@ -7,36 +7,32 @@
 #include <QLabel>
 #include <QLineEdit>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	class ScriptComponentWidget : public QWidget {
+		Q_OBJECT
 
-		class ScriptComponentWidget : public QWidget {
-			Q_OBJECT
+		public:
+			ScriptComponentWidget(QWidget* parent = Q_NULLPTR);
 
-			public:
-				ScriptComponentWidget(QWidget* parent = Q_NULLPTR);
+			void SetScript(pawn::engine::ScriptComponent* script);
 
-				void SetScript(pawn::engine::ScriptComponent* script);
+			QLineEdit* GetScriptLineEdit() { return m_ScriptLineEdit; }
 
-				QLineEdit* GetScriptLineEdit() { return m_ScriptLineEdit; }
+		signals:
+			void ScriptModified();
 
-			signals:
-				void ScriptModified();
+		public slots:
+			void OnLineEditPress();
 
-			public slots:
-				void OnLineEditPress();
+		private:
+			void InitConnections();
 
-			private:
-				void InitConnections();
+		private:
+			pawn::engine::ScriptComponent* m_Script;
 
-			private:
-				pawn::engine::ScriptComponent* m_Script;
-
-				QLineEdit* m_ScriptLineEdit;
-				QLabel* m_ScriptLabel;
-		};
-
-	}
+			QLineEdit* m_ScriptLineEdit;
+			QLabel* m_ScriptLabel;
+	};
 
 }

@@ -2,18 +2,14 @@
 
 #include <QAbstractNativeEventFilter>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	class WindowsEventFilter : public QAbstractNativeEventFilter {
 
-		class WindowsEventFilter : public QAbstractNativeEventFilter {
+		public:
 
-			public:
-
-				WindowsEventFilter() = default;
-				bool nativeEventFilter(const QByteArray& eventType, void* message, qintptr* result) override;
-		};
-
-	}
+			WindowsEventFilter() = default;
+			bool nativeEventFilter(const QByteArray& eventType, void* message, qintptr* result) override;
+	};
 
 }

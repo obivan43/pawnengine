@@ -1,10 +1,7 @@
 #include "CameraComponent.h"
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
+	CameraComponent::CameraComponent(const glm::mat4& projection) : Camera(projection) {}
 
-		CameraComponent::CameraComponent(const glm::mat4& projection) : Camera(projection) {}
-
-	}
 }

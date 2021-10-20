@@ -2,26 +2,22 @@
 
 #include <string>
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
+	struct TagComponent {
 
-		struct TagComponent {
+		TagComponent() = default;
+		TagComponent(const std::string& tag);
+		TagComponent(const TagComponent& other) = default;
+		TagComponent(TagComponent&& other) noexcept = default;
 
-			TagComponent() = default;
-			TagComponent(const std::string& tag);
-			TagComponent(const TagComponent& other) = default;
-			TagComponent(TagComponent&& other) noexcept = default;
+		TagComponent& operator=(const TagComponent& other) = default;
+		TagComponent& operator=(TagComponent&& other) noexcept = default;
 
-			TagComponent& operator=(const TagComponent& other) = default;
-			TagComponent& operator=(TagComponent&& other) noexcept = default;
+		operator std::string& () { return Tag; }
+		operator const std::string& () const { return Tag; }
 
-			operator std::string& () { return Tag; }
-			operator const std::string& () const { return Tag; }
-
-			std::string Tag;
-		};
-
-	}
+		std::string Tag;
+	};
 
 }

@@ -1,12 +1,8 @@
 #pragma once
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
-
-		bool GetMouseHandlingStateInScripts();
-		void SetMouseHandlingStateInScripts(bool state);
-
-	}
+	bool GetMouseHandlingStateInScripts();
+	void SetMouseHandlingStateInScripts(bool state);
 
 }

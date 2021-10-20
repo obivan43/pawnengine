@@ -5,36 +5,31 @@
 #include <QLabel>
 #include <QLineEdit>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	class TagComponentWidget : public QWidget {
+		Q_OBJECT
 
-		class TagComponentWidget : public QWidget {
-			Q_OBJECT
+		public:
+			TagComponentWidget(QWidget* parent = Q_NULLPTR);
 
-			public:
-				TagComponentWidget(QWidget* parent = Q_NULLPTR);
+			void SetTag(pawn::engine::TagComponent* tag);
 
-				void SetTag(pawn::engine::TagComponent* tag);
+			QLineEdit* GetTagLineEdit() { return m_TagLineEdit; }
 
-				QLineEdit* GetTagLineEdit() { return m_TagLineEdit; }
+		signals:
+			void TagModified();
 
-			signals:
-				void TagModified();
+		public slots:
+			void OnLineEditPress();
 
-			public slots:
-				void OnLineEditPress();
+		private:
+			void InitConnections();
 
-			private:
-				void InitConnections();
+		private:
+			pawn::engine::TagComponent* m_Tag;
 
-			private:
-				pawn::engine::TagComponent* m_Tag;
-
-				QLineEdit* m_TagLineEdit;
-				QLabel* m_TagLabel;
-		};
-
-	}
-
+			QLineEdit* m_TagLineEdit;
+			QLabel* m_TagLabel;
+	};
 }

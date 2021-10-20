@@ -2,18 +2,14 @@
 
 #include "RegisterScriptClass.h"
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
+	class Vec3ScriptRegister : public RegisterScriptClass {
 
-		class Vec3ScriptRegister : public RegisterScriptClass {
+		public:
 
-			public:
+			void Register(sol::state& lua) override;
 
-				void Register(sol::state& lua) override;
-
-		};
-
-	}
+	};
 
 }

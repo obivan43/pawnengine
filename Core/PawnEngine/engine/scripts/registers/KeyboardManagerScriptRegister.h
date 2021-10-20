@@ -2,18 +2,14 @@
 
 #include "RegisterScriptClass.h"
 
-namespace pawn {
-
-	namespace engine {
+namespace pawn::engine {
 
 		class KeyboardManagerScriptRegister : public RegisterScriptClass {
 
-		public:
+			public:
 
-			void Register(sol::state& lua) override;
+				void Register(sol::state& lua) override;
 
 		};
-
-	}
 
 }

@@ -7,33 +7,27 @@
 #include "PawnEngine/engine/MeshManager.h"
 #include "PawnEngine/engine/TextureManager.h"
 
-using json = nlohmann::json;
+namespace pawn::engine {
 
-namespace pawn {
+	class JsonSerializer {
 
-	namespace engine {
+		public:
+			JsonSerializer(std::shared_ptr<GameScene>& scene);
+			JsonSerializer(const JsonSerializer& other) = delete;
+			JsonSerializer(JsonSerializer&& other) noexcept = delete;
 
-		class JsonSerializer {
+			JsonSerializer& operator=(const JsonSerializer& other) = delete;
+			JsonSerializer& operator=(JsonSerializer&& other) noexcept = delete;
 
-			public:
-				JsonSerializer(std::shared_ptr<GameScene>& scene);
-				JsonSerializer(const JsonSerializer& other) = delete;
-				JsonSerializer(JsonSerializer&& other) noexcept = delete;
+			nlohmann::json JsonEntities();
+			nlohmann::json JsonEntityIds();
+			nlohmann::json JsonEntityById(entt::entity id);
 
-				JsonSerializer& operator=(const JsonSerializer& other) = delete;
-				JsonSerializer& operator=(JsonSerializer&& other) noexcept = delete;
+			void ParseJsonEntities(const nlohmann::json& j, std::shared_ptr<MeshManager>& meshManager, std::shared_ptr<TextureManager>& textureManager);
 
-				json JsonEntities();
-				json JsonEntityIds();
-				json JsonEntityById(entt::entity id);
+		private:
+			std::shared_ptr<GameScene> m_Scene;
 
-				void ParseJsonEntities(const json& j, std::shared_ptr<MeshManager>& meshManager, std::shared_ptr<TextureManager>& textureManager);
-
-			private:
-				std::shared_ptr<GameScene> m_Scene;
-
-		};
-
-	}
+	};
 
 }

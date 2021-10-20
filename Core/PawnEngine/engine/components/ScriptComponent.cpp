@@ -1,11 +1,7 @@
 #include "ScriptComponent.h"
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
-
-		ScriptComponent::ScriptComponent(const std::string& fileName) : FileName(fileName) {}
-
-	}
+	ScriptComponent::ScriptComponent(const std::string& fileName) : FileName(fileName) {}
 
 }

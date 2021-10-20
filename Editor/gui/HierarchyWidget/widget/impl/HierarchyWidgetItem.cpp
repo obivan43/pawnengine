@@ -1,14 +1,10 @@
 #include "HierarchyWidgetItem.h"
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
-
-		HierarchyWidgetItem::HierarchyWidgetItem(pawn::engine::GameEntity entity, const QString& str, QTreeWidgetItem* parent)
-			: QTreeWidgetItem(parent), m_Entity(entity) {
-			setText(0, str);
-		}
-
+	HierarchyWidgetItem::HierarchyWidgetItem(pawn::engine::GameEntity entity, const QString& str, QTreeWidgetItem* parent)
+		: QTreeWidgetItem(parent), m_Entity(entity) {
+		setText(0, str);
 	}
 
 }

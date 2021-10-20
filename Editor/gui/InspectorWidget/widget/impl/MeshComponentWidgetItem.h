@@ -6,33 +6,29 @@
 
 #include <QtWidgets/QTreeWidgetItem>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	class MeshComponentWidgetItem : public QObject, public QTreeWidgetItem {
+			Q_OBJECT
 
-		class MeshComponentWidgetItem : public QObject, public QTreeWidgetItem {
-				Q_OBJECT
+		public:
+			MeshComponentWidgetItem(QTreeWidget* parent);
 
-			public:
-				MeshComponentWidgetItem(QTreeWidget* parent);
+			void SetEntity(pawn::engine::GameEntity* entity);
 
-				void SetEntity(pawn::engine::GameEntity* entity);
+			MeshComponentWidget* GetWidget() { return m_MeshComponentWidget; }
+			QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
 
-				MeshComponentWidget* GetWidget() { return m_MeshComponentWidget; }
-				QTreeWidgetItem* GetWrapper() { return m_WidgetWrapper; }
+		private:
+			void InitConnections();
 
-			private:
-				void InitConnections();
+		signals:
+			void EntityMeshModified(pawn::engine::GameEntity entity);
 
-			signals:
-				void EntityMeshModified(pawn::engine::GameEntity entity);
-
-			private:
-				MeshComponentWidget* m_MeshComponentWidget;
-				QTreeWidgetItem* m_WidgetWrapper;
-				pawn::engine::GameEntity* m_Entity;
-		};
-
-	}
+		private:
+			MeshComponentWidget* m_MeshComponentWidget;
+			QTreeWidgetItem* m_WidgetWrapper;
+			pawn::engine::GameEntity* m_Entity;
+	};
 
 }

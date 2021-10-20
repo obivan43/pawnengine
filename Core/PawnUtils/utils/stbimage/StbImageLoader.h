@@ -2,19 +2,15 @@
 
 #include <cstdint>
 
-namespace pawn {
-	
-	namespace utils {
+namespace pawn::utils {
 
-		class StbImageLoader {
+	class StbImageLoader {
 
-			public:
+		public:
 
-				static unsigned char* Load(const char* file, int32_t* width, int32_t* height, int32_t* bitsPerPixel);
-				static void Free(unsigned char* data);
+			static unsigned char* Load(const char* file, int32_t* width, int32_t* height, int32_t* bitsPerPixel);
+			static void Free(unsigned char* data);
 
-		};
-
-	}
+	};
 
 }

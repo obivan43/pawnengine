@@ -14,60 +14,56 @@
 #include <QMenu>
 #include <QApplication>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	class MainWindowImpl : public MainWindow {
+			Q_OBJECT
 
-		class MainWindowImpl : public MainWindow {
-				Q_OBJECT
+		public:
+			MainWindowImpl(QApplication* application, QWidget* parent = Q_NULLPTR);
 
-			public:
-				MainWindowImpl(QApplication* application, QWidget* parent = Q_NULLPTR);
+			uint32_t GetDefaultWidth() const { return EngineViewWidth; }
+			uint32_t GetDefaultHeight() const { return EngineViewHeight; }
 
-				uint32_t GetDefaultWidth() const { return EngineViewWidth; }
-				uint32_t GetDefaultHeight() const { return EngineViewHeight; }
+			void RestoreSettings();
 
-				void RestoreSettings();
+			void closeEvent(QCloseEvent* event) override;
 
-				void closeEvent(QCloseEvent* event) override;
+		private:
+			void InitEngine();
+			void InitConnections();
 
-			private:
-				void InitEngine();
-				void InitConnections();
+		signals:
+			void ActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>);
 
-			signals:
-				void ActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene>);
+		private slots:
+			void Start();
+			void Pause();
+			void Reset();
+			void Open();
+			void Save();
+			void ShowHideCursor();
 
-			private slots:
-				void Start();
-				void Pause();
-				void Reset();
-				void Open();
-				void Save();
-				void ShowHideCursor();
+		private:
+			QApplication* m_Application;
+			ads::CDockManager* m_DockManager;
+			OutputWidget* m_Output;
+			HierarchyWidget* m_Hierarchy;
+			InspectorWidget* m_Inspector;
+			EngineViewWidget* m_EngineView;
+			EngineManager* m_EngineManager;
+			QMenu* m_FileMenu;
+			QMenu* m_ViewMenu;
+			QMenu* m_EngineMenu;
 
-			private:
-				QApplication* m_Application;
-				ads::CDockManager* m_DockManager;
-				OutputWidget* m_Output;
-				HierarchyWidget* m_Hierarchy;
-				InspectorWidget* m_Inspector;
-				EngineViewWidget* m_EngineView;
-				EngineManager* m_EngineManager;
-				QMenu* m_FileMenu;
-				QMenu* m_ViewMenu;
-				QMenu* m_EngineMenu;
+			bool m_IsFreshStart;
+			bool m_IsCursorHidden;
 
-				bool m_IsFreshStart;
-				bool m_IsCursorHidden;
+			const uint32_t EngineViewWidth{ 1280 };
+			const uint32_t EngineViewHeight{ 720 };
 
-				const uint32_t EngineViewWidth{ 1280 };
-				const uint32_t EngineViewHeight{ 720 };
-
-				const uint32_t EditorDefaultWidth{ 1920 };
-				const uint32_t EditorDefaultHeight{ 1080 };
-		};
-
-	}
+			const uint32_t EditorDefaultWidth{ 1920 };
+			const uint32_t EditorDefaultHeight{ 1080 };
+	};
 
 }

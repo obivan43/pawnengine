@@ -10,45 +10,41 @@
 
 #include <memory>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	class HierarchyWidgetImpl : public HierarchyWidget {
+			Q_OBJECT
 
-		class HierarchyWidgetImpl : public HierarchyWidget {
-				Q_OBJECT
+		public:
+			HierarchyWidgetImpl(QWidget* parent);
 
-			public:
-				HierarchyWidgetImpl(QWidget* parent);
+			void RefreshPanel() override;
 
-				void RefreshPanel() override;
+			void SetSelectedEntity(pawn::engine::GameEntity entity);
 
-				void SetSelectedEntity(pawn::engine::GameEntity entity);
+			std::shared_ptr<pawn::engine::GameScene>& GetScene() { return m_Scene; }
+			pawn::engine::GameEntity& GetSelectedEntity() { return m_SelectedEntity; }
 
-				std::shared_ptr<pawn::engine::GameScene>& GetScene() { return m_Scene; }
-				pawn::engine::GameEntity& GetSelectedEntity() { return m_SelectedEntity; }
+		private:
+			void InitHierarchyPanel();
+			void InitConnections();
 
-			private:
-				void InitHierarchyPanel();
-				void InitConnections();
+			bool FindEntityToSelect(QTreeWidgetItem* item);
 
-				bool FindEntityToSelect(QTreeWidgetItem* item);
+		public slots:
+			void OnHierarchyItemClicked(QTreeWidgetItem* item, int index);
+			void OnActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene> scene);
+			void OnEntityTagModified();
 
-			public slots:
-				void OnHierarchyItemClicked(QTreeWidgetItem* item, int index);
-				void OnActiveSceneChanged(std::shared_ptr<pawn::engine::GameScene> scene);
-				void OnEntityTagModified();
+			void ShowContextMenu(const QPoint& position);
 
-				void ShowContextMenu(const QPoint& position);
+		private:
+			std::shared_ptr<pawn::engine::GameScene> m_Scene;
+			pawn::engine::GameEntity m_SelectedEntity;
 
-			private:
-				std::shared_ptr<pawn::engine::GameScene> m_Scene;
-				pawn::engine::GameEntity m_SelectedEntity;
+			HierarchyWidgetContextMenu* m_ContextMenu;
 
-				HierarchyWidgetContextMenu* m_ContextMenu;
-
-				QTreeWidget* m_HierarchyPanel;
-		};
-
-	}
+			QTreeWidget* m_HierarchyPanel;
+	};
 
 }

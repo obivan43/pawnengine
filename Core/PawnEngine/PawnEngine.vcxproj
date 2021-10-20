@@ -20,6 +20,7 @@
     <ClInclude Include="engine\components\TransformationComponent.h" />
     <ClInclude Include="engine\Engine.h" />
     <ClInclude Include="engine\EngineGlobals.h" />
+    <ClInclude Include="engine\Environment.h" />
     <ClInclude Include="engine\GameEntity.h" />
     <ClInclude Include="engine\GameScene.h" />
     <ClInclude Include="engine\geometry\AssimpLoader.h" />
@@ -65,6 +66,7 @@
     <ClCompile Include="engine\components\TransformationComponent.cpp" />
     <ClCompile Include="engine\Engine.cpp" />
     <ClCompile Include="engine\EngineGlobals.cpp" />
+    <ClCompile Include="engine\Environment.cpp" />
     <ClCompile Include="engine\GameEntity.cpp" />
     <ClCompile Include="engine\GameScene.cpp" />
     <ClCompile Include="engine\geometry\AssimpLoader.cpp" />

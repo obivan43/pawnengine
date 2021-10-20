@@ -2,20 +2,16 @@
 
 #include <memory>
 
-namespace pawn {
+namespace pawn::graphics {
 
-	namespace graphics {
+	class GraphicsContext;
 
-		class GraphicsContext;
+	class GraphicsBindableResource {
 
-		class GraphicsBindableResource {
-
-			public:
-				virtual void Bind(std::shared_ptr<GraphicsContext>& context) = 0;
-				virtual void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) = 0;
-				virtual void Unbind(std::shared_ptr<GraphicsContext>& context) = 0;
-		};
-
-	}
+		public:
+			virtual void Bind(std::shared_ptr<GraphicsContext>& context) = 0;
+			virtual void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) = 0;
+			virtual void Unbind(std::shared_ptr<GraphicsContext>& context) = 0;
+	};
 
 }

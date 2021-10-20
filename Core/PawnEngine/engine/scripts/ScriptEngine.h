@@ -10,35 +10,30 @@
 
 #include <vector>
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
+	class ScriptEngine {
 
-		class ScriptEngine {
+		public:
 
-			public:
-				
-				ScriptEngine();
-				~ScriptEngine();
+			ScriptEngine();
+			~ScriptEngine();
 
-				void Register(RegisterScriptClass* scriptClass);
-				void ExecOnCreate(const std::string& fileName, pawn::engine::GameEntity entity);
-				void ExecOnUpdate(const std::string& fileName, utils::Clock& clock, pawn::engine::GameEntity entity);
+			void Register(RegisterScriptClass* scriptClass);
+			void ExecOnCreate(const std::string& fileName, pawn::engine::GameEntity entity);
+			void ExecOnUpdate(const std::string& fileName, utils::Clock& clock, pawn::engine::GameEntity entity);
 
-				void SetIsPaused(bool state);
-				bool GetIsPaused() const { return m_IsPaused; }
+			void SetIsPaused(bool state);
+			bool GetIsPaused() const { return m_IsPaused; }
 
-			private:
-				static pawn::engine::GameEntity GetCurrentEntity() { return m_CurrentEntity; }
+		private:
+			static pawn::engine::GameEntity GetCurrentEntity() { return m_CurrentEntity; }
 
-			private:
-				bool m_IsPaused;
-				static pawn::engine::GameEntity m_CurrentEntity;
-				sol::state m_LuaState;
-				std::vector<RegisterScriptClass*> m_ClassList;
-		};
-
-	}
-
+		private:
+			bool m_IsPaused;
+			static pawn::engine::GameEntity m_CurrentEntity;
+			sol::state m_LuaState;
+			std::vector<RegisterScriptClass*> m_ClassList;
+	};
 
 }

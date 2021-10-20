@@ -6,27 +6,23 @@
 
 #include <QtWidgets/QTextEdit>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	class OutputWidgetImpl : public OutputWidget {
+			Q_OBJECT
 
-		class OutputWidgetImpl : public OutputWidget {
-				Q_OBJECT
+		public:
+			OutputWidgetImpl(QWidget* parent);
 
-			public:
-				OutputWidgetImpl(QWidget* parent);
+		private slots:
+			void OnTextChanged();
 
-			private slots:
-				void OnTextChanged();
+		private: 
+			void InitConections();
 
-			private: 
-				void InitConections();
-
-			private:
-				QTextEdit* m_OutputTextEdit;
-				OutputStream* m_OutputStream;
-		};
-
-	}
+		private:
+			QTextEdit* m_OutputTextEdit;
+			OutputStream* m_OutputStream;
+	};
 
 }

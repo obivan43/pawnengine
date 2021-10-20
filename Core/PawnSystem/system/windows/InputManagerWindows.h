@@ -5,50 +5,46 @@
 #include "SystemPC.h"
 #include <queue>
 
-namespace pawn {
+namespace pawn::system {
 
-	namespace system {
+	class InputManagerWindows {
 
-		class InputManagerWindows {
+		private:
+			InputManagerWindows() = default;
 
-			private:
-				InputManagerWindows() = default;
+			static LRESULT HandleInput(HRAWINPUT inputHandle);
+			static LRESULT HandleInputDeviceChanged();
+			static bool RegisterDevice(USHORT usage, DWORD flags, HWND handle);
 
-				static LRESULT HandleInput(HRAWINPUT inputHandle);
-				static LRESULT HandleInputDeviceChanged();
-				static bool RegisterDevice(USHORT usage, DWORD flags, HWND handle);
+		public:
 
-			public:
+			struct InputData {
+				RAWINPUT input;
+				int64_t timestamp;
+			};
 
-				struct InputData {
-					RAWINPUT input;
-					int64_t timestamp;
-				};
+			static bool WinHandle(UINT message, WPARAM wparam, LPARAM lparam, LRESULT* result);
 
-				static bool WinHandle(UINT message, WPARAM wparam, LPARAM lparam, LRESULT* result);
+			static bool ProccessMouse(int64_t maxTimestamp, InputData& out);
+			static bool ProccessKeyboard(int64_t maxTimestamp, InputData& out);
 
-				static bool ProccessMouse(int64_t maxTimestamp, InputData& out);
-				static bool ProccessKeyboard(int64_t maxTimestamp, InputData& out);
+			static void RegisterMouse();
+			static void RegisterKeyboard();
+			static void UnregisterMouse();
+			static void UnregisterKeyboard();
 
-				static void RegisterMouse();
-				static void RegisterKeyboard();
-				static void UnregisterMouse();
-				static void UnregisterKeyboard();
+			static bool IsMouseConnected() { return m_IsMouseConnected; }
+			static bool IsKeyboardConnected() { return m_IsKeyboardConnected; }
 
-				static bool IsMouseConnected() { return m_IsMouseConnected; }
-				static bool IsKeyboardConnected() { return m_IsKeyboardConnected; }
+		private:
+			static std::queue<InputData> m_MouseInputs;
+			static std::queue<InputData> m_KeyboardInputs;
 
-			private:
-				static std::queue<InputData> m_MouseInputs;
-				static std::queue<InputData> m_KeyboardInputs;
-
-				static bool m_IsMouseRegistered;
-				static bool m_IsMouseConnected;
-				static bool m_IsKeyboardRegistered;
-				static bool m_IsKeyboardConnected;
-		};
-
-	}
+			static bool m_IsMouseRegistered;
+			static bool m_IsMouseConnected;
+			static bool m_IsKeyboardRegistered;
+			static bool m_IsKeyboardConnected;
+	};
 
 }
 

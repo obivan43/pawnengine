@@ -5,44 +5,40 @@
 #include <QDialog>
 #include <QListWidget>
 
-namespace editor {
+namespace editor::impl {
 
-	namespace impl {
+	enum class ComponentsEnum {
+		MeshComponent,
+		ScriptComponent,
+		CameraComponent,
+		Texture2DComponent,
+		Unknown
+	};
 
-		enum class ComponentsEnum {
-			MeshComponent,
-			ScriptComponent,
-			CameraComponent,
-			Texture2DComponent,
-			Unknown
-		};
+	class SelectComponentWidget : public QDialog {
+		Q_OBJECT
 
-		class SelectComponentWidget : public QDialog {
-			Q_OBJECT
+		public:
+			SelectComponentWidget(QWidget* parent = Q_NULLPTR);
 
-			public:
-				SelectComponentWidget(QWidget* parent = Q_NULLPTR);
+			void Update();
+			void SetEntity(pawn::engine::GameEntity* entity);
 
-				void Update();
-				void SetEntity(pawn::engine::GameEntity* entity);
+			QListView* GetListView() { return m_ListWidget; }
 
-				QListView* GetListView() { return m_ListWidget; }
+		signals:
+			void AddedNewComponent(ComponentsEnum id);
 
-			signals:
-				void AddedNewComponent(ComponentsEnum id);
+		public slots:
+			void OnClicked(QListWidgetItem*);
 
-			public slots:
-				void OnClicked(QListWidgetItem*);
+		private:
+			void InitConnections();
 
-			private:
-				void InitConnections();
+		private:
+			pawn::engine::GameEntity* m_Entity;
 
-			private:
-				pawn::engine::GameEntity* m_Entity;
-
-				QListWidget* m_ListWidget;
-		};
-
-	}
+			QListWidget* m_ListWidget;
+	};
 
 }

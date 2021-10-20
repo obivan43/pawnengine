@@ -2,11 +2,8 @@
 
 #include "gtc/matrix_transform.hpp"
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
+	TransformationComponent::TransformationComponent(const glm::vec3& position) : Position(position) {}
 
-		TransformationComponent::TransformationComponent(const glm::vec3& position) : Position(position) {}
-
-	}
 }

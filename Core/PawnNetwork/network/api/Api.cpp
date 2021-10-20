@@ -10,8 +10,8 @@ namespace pawn::network {
 	void Api::Handle(std::vector<int8_t>& data) {
 		std::string request(data.begin(), data.end());
 
-		json j;
-		json result = j.parse(request);
+		nlohmann::json j;
+		nlohmann::json result = j.parse(request);
 
 		std::string str;
 		j.at("Request").get_to(str);

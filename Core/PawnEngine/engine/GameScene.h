@@ -9,46 +9,42 @@
 
 #include <glm.hpp>
 
-namespace pawn {
+namespace pawn::engine {
 
-	namespace engine {
+	class GameEntity;
+	class Renderer;
+	class ScriptEngine;
 
-		class GameEntity;
-		class Renderer;
-		class ScriptEngine;
+	class GameScene {
 
-		class GameScene {
+		friend GameEntity;
 
-			friend GameEntity;
+		public:
+			GameScene() = default;
+			GameScene(const GameScene& other) = delete;
+			GameScene(GameScene&& other) noexcept = default;
 
-			public:
-				GameScene() = default;
-				GameScene(const GameScene& other) = delete;
-				GameScene(GameScene&& other) noexcept = default;
+			GameScene& operator=(const GameScene& other) = delete;
+			GameScene& operator=(GameScene&& other) noexcept = delete;
 
-				GameScene& operator=(const GameScene& other) = delete;
-				GameScene& operator=(GameScene&& other) noexcept = delete;
+			GameEntity CreateEntity(const std::string& name = std::string());
+			GameEntity CreateEntity(uint32_t hint, const std::string& name = std::string());
+			void DeleteEntity(entt::entity entity);
+			void Clear();
 
-				GameEntity CreateEntity(const std::string& name = std::string());
-				GameEntity CreateEntity(uint32_t hint, const std::string& name = std::string());
-				void DeleteEntity(entt::entity entity);
-				void Clear();
+			void OnCreate(std::shared_ptr<ScriptEngine>& scriptEngine);
+			void OnUpdate(utils::Clock& clock, std::shared_ptr<ScriptEngine>& scriptEngine);
+			void OnRender(std::shared_ptr<Renderer>& renderer);
 
-				void OnCreate(std::shared_ptr<ScriptEngine>& scriptEngine);
-				void OnUpdate(utils::Clock& clock, std::shared_ptr<ScriptEngine>& scriptEngine);
-				void OnRender(std::shared_ptr<Renderer>& renderer);
+			entt::registry& GetRegistry() { return m_EnttRegistry; }
 
-				entt::registry& GetRegistry() { return m_EnttRegistry; }
+		private:
+			void FindActiveCamera();
 
-			private:
-				void FindActiveCamera();
+		private:
+			math::Camera* m_ActiveCamera;
+			glm::mat4 m_ActiveCameraView;
+			entt::registry m_EnttRegistry;
+	};
 
-			private:
-				math::Camera* m_ActiveCamera;
-				glm::mat4 m_ActiveCameraView;
-				entt::registry m_EnttRegistry;
-		};
-
-	}
-	
 }
