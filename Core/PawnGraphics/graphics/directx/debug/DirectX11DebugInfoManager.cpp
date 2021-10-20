@@ -51,6 +51,7 @@ namespace pawn::graphics {
 			}
 			messages.emplace_back(pMessage->pDescription);
 		}
+
 		return messages;
 	}
 

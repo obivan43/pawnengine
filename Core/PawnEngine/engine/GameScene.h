@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#include "Environment.h"
+
 #include "PawnUtils/utils/entt/entt.h"
 #include "PawnUtils/utils/time/Clock.h"
 
@@ -20,7 +22,7 @@ namespace pawn::engine {
 		friend GameEntity;
 
 		public:
-			GameScene() = default;
+			GameScene();
 			GameScene(const GameScene& other) = delete;
 			GameScene(GameScene&& other) noexcept = default;
 
@@ -37,14 +39,18 @@ namespace pawn::engine {
 			void OnRender(std::shared_ptr<Renderer>& renderer);
 
 			entt::registry& GetRegistry() { return m_EnttRegistry; }
+			std::shared_ptr<Environment> GetEnvironment() { return m_Environment; }
 
 		private:
 			void FindActiveCamera();
 
 		private:
+			entt::registry m_EnttRegistry;
+
 			math::Camera* m_ActiveCamera;
 			glm::mat4 m_ActiveCameraView;
-			entt::registry m_EnttRegistry;
+
+			std::shared_ptr<Environment> m_Environment;
 	};
 
 }

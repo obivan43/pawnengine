@@ -21,6 +21,11 @@ namespace pawn::engine {
 		glm::vec4 color;
 	};
 
+	struct EnvironmentCB {
+		glm::vec3 ambientLightColor;
+		float ambientLightIntensity;
+	};
+
 	class Renderer {
 
 		public:
@@ -29,6 +34,7 @@ namespace pawn::engine {
 			void SetShader(std::shared_ptr<graphics::GraphicsContext>& context, const std::shared_ptr<graphics::GraphicsShader>& shader);
 
 			void BeginScene(math::Camera& camera, glm::mat4& view);
+			void BeginScene(math::Camera& camera, glm::mat4& view, std::shared_ptr<Environment> environment);
 			void EndScene();
 
 			void DrawMesh(TransformationComponent& transformationComponent, MeshComponent& meshComponent);
@@ -38,6 +44,7 @@ namespace pawn::engine {
 			std::shared_ptr<graphics::GraphicsBuffer> m_Transformation;
 			std::shared_ptr<graphics::GraphicsBuffer> m_ViewProjection;
 			std::shared_ptr<graphics::GraphicsBuffer> m_Texture2D;
+			std::shared_ptr<graphics::GraphicsBuffer> m_Environment;
 
 			std::shared_ptr<graphics::GraphicsContext> m_Context;
 			std::shared_ptr<graphics::GraphicsAPI> m_GraphicsAPI;

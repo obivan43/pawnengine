@@ -169,6 +169,9 @@
     <FxCompile Include="res\assets\shaders\directx_shaders\TexturePixelShader.hlsl">
       <Filter>res\directx_shader</Filter>
     </FxCompile>
+    <FxCompile Include="res\assets\shaders\directx_shaders\TextureAmbientLightPixelShader.hlsl">
+      <Filter>res\directx_shader</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="res\MainWindow.qrc">

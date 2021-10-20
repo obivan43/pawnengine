@@ -34,7 +34,7 @@ namespace pawn::engine {
 		entt::registry& registry = m_Scene->GetRegistry();
 		registry.each([&](entt::entity entity) {
 			entities.push_back(entity);
-			});
+		});
 
 		return nlohmann::json::parse(entities);
 	}

@@ -30,5 +30,8 @@
     <FxCompile Include="res\assets\shaders\directx_shaders\VertexShader.hlsl">
       <Filter>res\assets\shaders</Filter>
     </FxCompile>
+    <FxCompile Include="res\assets\shaders\directx_shaders\TextureAmbientLightPixelShader.hlsl">
+      <Filter>res\assets\shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
