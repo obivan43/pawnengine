@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\components\CameraComponent.h" />
+    <ClInclude Include="engine\components\LightComponent.h" />
     <ClInclude Include="engine\components\MeshComponent.h" />
     <ClInclude Include="engine\components\ScriptComponent.h" />
     <ClInclude Include="engine\components\TagComponent.h" />
@@ -56,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\components\CameraComponent.cpp" />
+    <ClCompile Include="engine\components\LightComponent.cpp" />
     <ClCompile Include="engine\components\MeshComponent.cpp" />
     <ClCompile Include="engine\components\ScriptComponent.cpp" />
     <ClCompile Include="engine\components\TagComponent.cpp" />

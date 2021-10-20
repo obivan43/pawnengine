@@ -20,6 +20,9 @@
     <Filter Include="engine\geometry">
       <UniqueIdentifier>{0e419fa6-9137-4f43-b514-0d4210d804e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="engine\light">
+      <UniqueIdentifier>{49343dc0-638a-4c07-aa69-678550ff3103}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Engine.h">
@@ -106,6 +109,9 @@
     <ClInclude Include="engine\geometry\MeshNodeData.h">
       <Filter>engine\geometry</Filter>
     </ClInclude>
+    <ClInclude Include="engine\components\LightComponent.h">
+      <Filter>engine\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\Engine.cpp">
@@ -182,6 +188,9 @@
     </ClCompile>
     <ClCompile Include="engine\geometry\AssimpLoader.cpp">
       <Filter>engine\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\components\LightComponent.cpp">
+      <Filter>engine\components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

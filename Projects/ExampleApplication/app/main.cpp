@@ -1,12 +1,17 @@
 #include "PawnUtils/utils/logger/Logger.h"
 #include "PawnSystem/system/windows/SystemPC.h"
 #include "PawnSystem/system/windows/InputManagerWindows.h"
+#include "PawnSystem/system/input/KeyboardManager.h"
+#include "PawnSystem/system/input/KeyboardButton.h"
 #include "PawnNetwork/network/Network.h"
 #include "PawnNetwork/network/api/Api.h"
 #include "PawnEngine/engine/Engine.h"
+#include "PawnEngine/engine/EngineGlobals.h"
 
 #include <memory>
 #include <future>
+
+#undef PAWN_NETWORK
 
 #ifdef PAWN_DIRECTX11
 
@@ -26,7 +31,7 @@ std::mutex mutex;
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	LRESULT result{ 0 };
-	
+
 	switch (msg) {
 		case WM_CLOSE:
 			isRunning = false;
@@ -38,6 +43,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 		case WM_INPUT:
 		case WM_INPUT_DEVICE_CHANGE:
 			pawn::system::InputManagerWindows::WinHandle(msg, wParam, lParam, &result);
+			break;
+		case WM_SETCURSOR:
+			if (LOWORD(lParam) == HTCLIENT) {
+				SetCursor(NULL);
+			}
 			break;
 		default:
 			return DefWindowProc(hwnd, msg, wParam, lParam);
@@ -89,6 +99,23 @@ void GameThread(HWND hwnd) {
 	std::future<void> future = std::async(std::launch::async, NetworkThread, std::ref(engine));
 #endif
 
+	engine->UploadMeshFromFile("res/assets/models/cube.fbx");
+	engine->UploadMeshFromFile("res/assets/models/sphere.fbx");
+	engine->UploadMeshFromFile("res/assets/models/cylinder.fbx");
+	engine->UploadMeshFromFile("res/assets/models/cone.fbx");
+	engine->UploadMeshFromFile("res/assets/models/torus.fbx");
+	engine->UploadMeshFromFile("res/assets/models/plane.fbx");
+	engine->UploadMeshFromFile("res/assets/models/handgun.fbx");
+	
+	engine->UploadTextureFromFile("res/assets/textures/brick_C.jpg");
+	engine->UploadTextureFromFile("res/assets/textures/wall_C.jpg");
+	engine->UploadTextureFromFile("res/assets/textures/wall_N.jpg");
+	engine->UploadTextureFromFile("res/assets/textures/handgun_C.jpg");
+	engine->UploadTextureFromFile("res/assets/textures/handgun_N.jpg");
+	engine->UploadTextureFromFile("res/assets/textures/handgun_S.jpg");
+
+	engine->LoadState("res/assets/scenes/basicScene.pawn");
+
 	engine->OnCreate();
 	while (engine->GetEngineRunning()) {
 		std::lock_guard<std::mutex> guard(mutex);
@@ -100,6 +127,11 @@ void GameThread(HWND hwnd) {
 
 		engine->Clear();
 		engine->OnInput();
+
+		if (pawn::system::KeyboardManager::ButtonPressed(pawn::system::Button::Escape)) {
+			isRunning = false;
+		}
+
 		engine->OnUpdate(m_Clock);
 		engine->OnRender();
 
@@ -107,8 +139,9 @@ void GameThread(HWND hwnd) {
 			engine->SetEngineRunning(false);
 		}
 	}
-
+#ifdef PAWN_NETWORK
 	future.wait();
+#endif
 }
 
 int WINAPI WinMain(
@@ -117,7 +150,7 @@ int WINAPI WinMain(
 	LPSTR lpCmdLine,
 	int nCmdShow
 ) {
-#ifdef _WIN32
+#if defined _WIN32 && defined _DEBUG
 	CreateConsoleOutput();
 #endif
 
@@ -160,6 +193,11 @@ int WINAPI WinMain(
 
 	ShowWindow(hwnd, nCmdShow);
 	UpdateWindow(hwnd);
+
+	RECT rect;
+	GetClientRect(hwnd, &rect);
+	MapWindowPoints(hwnd, nullptr, reinterpret_cast<POINT*>(&rect), 2);
+	ClipCursor(&rect);
 
 	std::future<void> future = std::async(std::launch::async, GameThread, hwnd);
 
