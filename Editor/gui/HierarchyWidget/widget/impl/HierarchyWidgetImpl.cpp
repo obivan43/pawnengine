@@ -60,7 +60,7 @@ namespace editor::impl {
 
 			HierarchyWidgetItem* item = new HierarchyWidgetItem(entity, tag.c_str(), root);
 			root->addChild(reinterpret_cast<QTreeWidgetItem*>(item));
-			});
+		});
 	}
 
 	void HierarchyWidgetImpl::OnHierarchyItemClicked(QTreeWidgetItem* item, int index) {

@@ -72,18 +72,18 @@ namespace editor::impl {
 	pawn::engine::GameEntity HierarchyWidgetContextMenu::Create3DObject(const QString& name) {
 		std::string objectName = name.toLocal8Bit().constData();
 		std::shared_ptr<pawn::engine::GameScene> scene = m_HierarchyWidget->GetScene();
-		EngineManager* manager = m_HierarchyWidget->GetEngineManager();
+		std::shared_ptr<EngineManager> manager = m_HierarchyWidget->GetEngineManager();
 
 		if (scene) {
 			pawn::engine::GameEntity entity{ scene->CreateEntity(objectName) };
 			entity.AddComponent<pawn::engine::MeshComponent>(
 				manager->GetEngine()->GetMeshByName(objectName + ".fbx"),
 				objectName + ".fbx"
-				);
+			);
 
 			entity.AddComponent<pawn::engine::Texture2DComponent>(
 				manager->GetEngine()->GetTextureByName(std::string())
-				);
+			);
 
 			return entity;
 		}

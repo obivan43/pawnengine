@@ -39,6 +39,7 @@ namespace editor::impl {
 		m_Output = OutputWidget::CreateImpl(this);
 		m_Inspector = InspectorWidget::CreateImpl(this);
 		m_Hierarchy = HierarchyWidget::CreateImpl(this);
+		m_Environment = EnvironmentWidget::CreateImpl(this);
 
 		ads::CDockManager::setConfigFlag(ads::CDockManager::OpaqueSplitterResize, true);
 		ads::CDockManager::setConfigFlag(ads::CDockManager::XmlCompressionEnabled, false);
@@ -60,6 +61,9 @@ namespace editor::impl {
 		ads::CDockWidget* HierarchyDockWidget = new ads::CDockWidget("Hierarchy");
 		HierarchyDockWidget->setWidget(m_Hierarchy);
 
+		ads::CDockWidget* EnvironmentDockWidget = new ads::CDockWidget("Environment");
+		EnvironmentDockWidget->setWidget(m_Environment);
+
 		EngineViewDockWidget->setObjectName("EngineViewDockWidget");
 		OutputDockWidget->setObjectName("OutputDockWidget");
 		InspectorDockWidget->setObjectName("InspectorDockWidget");
@@ -78,6 +82,7 @@ namespace editor::impl {
 		m_ViewMenu->addAction(OutputDockWidget->toggleViewAction());
 		m_ViewMenu->addAction(InspectorDockWidget->toggleViewAction());
 		m_ViewMenu->addAction(HierarchyDockWidget->toggleViewAction());
+		m_ViewMenu->addAction(EnvironmentDockWidget->toggleViewAction());
 
 		QAction* startAction = new QAction("Start", this);
 		startAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F5));
@@ -98,23 +103,25 @@ namespace editor::impl {
 		m_DockManager->addDockWidget(ads::BottomDockWidgetArea, OutputDockWidget, EngineViewDockWidget->dockAreaWidget());
 		m_DockManager->addDockWidget(ads::RightDockWidgetArea, InspectorDockWidget, EngineViewDockWidget->dockAreaWidget());
 		m_DockManager->addDockWidget(ads::BottomDockWidgetArea, HierarchyDockWidget, InspectorDockWidget->dockAreaWidget());
+		m_DockManager->addDockWidget(ads::LeftDockWidgetArea, EnvironmentDockWidget, InspectorDockWidget->dockAreaWidget());
 
 		InitConnections();
 		RestoreSettings();
 
 		InitEngine();
 
-		m_EngineManager = new EngineManager(m_Engine.get());
+		m_EngineManager.reset(new EngineManager(m_Engine.get()));
 
 		m_Hierarchy->SetEngineManager(m_EngineManager);
+		m_Environment->SetEngineManager(m_EngineManager);
 
 		QAction* showHideCursor = new QAction("Show/Hide cursor", this);
 		showHideCursor->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_K));
 		addAction(showHideCursor);
 		pawn::engine::SetMouseHandlingStateInScripts(false);
 
-		connect(m_Inspector, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
-		connect(m_Inspector, SIGNAL(EntityTexture2DModified(pawn::engine::GameEntity)), m_EngineManager, SLOT(OnEntityTexture2DModified(pawn::engine::GameEntity)));
+		connect(m_Inspector, SIGNAL(EntityMeshModfied(pawn::engine::GameEntity)), m_EngineManager.get(), SLOT(OnEntityMeshModified(pawn::engine::GameEntity)));
+		connect(m_Inspector, SIGNAL(EntityTexture2DModified(pawn::engine::GameEntity)), m_EngineManager.get(), SLOT(OnEntityTexture2DModified(pawn::engine::GameEntity)));
 		connect(startAction, SIGNAL(triggered()), this, SLOT(Start()));
 		connect(pauseAction, SIGNAL(triggered()), this, SLOT(Pause()));
 		connect(resetAction, SIGNAL(triggered()), this, SLOT(Reset()));
@@ -133,6 +140,7 @@ namespace editor::impl {
 		m_Hierarchy->setEnabled(false);
 		m_Inspector->setEnabled(false);
 		m_FileMenu->setEnabled(false);
+		m_Environment->setEnabled(false);
 	}
 
 	void MainWindowImpl::Pause() {
@@ -145,6 +153,7 @@ namespace editor::impl {
 
 			m_Engine->LoadState("temp.pawn");
 
+			m_Environment->setEnabled(true);
 			m_Hierarchy->setEnabled(true);
 			m_Inspector->setEnabled(true);
 			m_FileMenu->setEnabled(true);
@@ -159,6 +168,7 @@ namespace editor::impl {
 		if (!fileName.isEmpty()) {
 			m_Engine->LoadState(fileName.toLocal8Bit().constData());
 			m_Hierarchy->RefreshPanel();
+			m_Environment->RefreshPanel();
 		}
 	}
 

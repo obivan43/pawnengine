@@ -195,6 +195,9 @@ exit</Command>
     <ProjectReference Include="..\Core\PawnUtils\PawnUtils.vcxproj">
       <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
     </ProjectReference>
+    <ProjectReference Include="gui\EnvironmentWidget\EnvironmentWidget.vcxproj">
+      <Project>{395fbb03-c953-4bdb-8769-0aae45ef0c6c}</Project>
+    </ProjectReference>
     <ProjectReference Include="gui\OutputWidget\OutputWidget.vcxproj">
       <Project>{071216a2-e9ac-49e0-a60f-a3eed82ff5c4}</Project>
     </ProjectReference>
