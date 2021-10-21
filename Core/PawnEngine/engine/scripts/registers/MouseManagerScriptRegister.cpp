@@ -1,11 +1,11 @@
 #include "MouseManagerScriptRegister.h"
 
-#include "PawnSystem/system/input/MouseManager.h"
 #include "PawnEngine/engine/EngineGlobals.h"
+#include "PawnSystem/system/input/MouseManager.h"
 
 namespace pawn::engine {
 
-	void MouseManagerScriptRegister::Register(sol::state& lua) {
+	void MouseManagerScriptRegister::Register(sol::state& lua) const {
 		lua.new_enum("MouseButton",
 			"LeftButton", system::MouseButton::LeftButton,
 			"RightButton", system::MouseButton::RightButton,

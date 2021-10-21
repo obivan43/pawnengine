@@ -11,13 +11,14 @@ namespace pawn::engine {
 		public:
 			GameEntity();
 			GameEntity(entt::entity id, GameScene* scene);
+
 			GameEntity(const GameEntity& other) = default;
 			GameEntity(GameEntity&& other) noexcept = default;
 
 			GameEntity& operator=(const GameEntity& other) = default;
 			GameEntity& operator=(GameEntity&& other) noexcept = default;
 
-			bool IsNull() { return m_EntityID == entt::null; }
+			inline bool IsNull() const noexcept { return m_EntityID == entt::null; }
 
 			template<typename Component>
 			bool HasComponent() {
@@ -39,14 +40,14 @@ namespace pawn::engine {
 				return m_Scene->m_EnttRegistry.emplace<Component>(m_EntityID, std::forward<Args>(args)...);
 			}
 
-			bool operator==(const GameEntity& other) {
+			inline bool operator==(const GameEntity& other) const noexcept {
 				return m_EntityID == other.m_EntityID;
 			}
 
-			operator entt::entity() const { return m_EntityID; }
+			inline operator entt::entity() const noexcept { return m_EntityID; }
 
-			entt::entity GetEntity() const { return m_EntityID; }
-			GameScene* GetScene() const { return m_Scene; }
+			inline entt::entity GetEntity() const noexcept { return m_EntityID; }
+			inline GameScene* GetScene() noexcept { return m_Scene; }
 
 		private:
 			entt::entity m_EntityID;

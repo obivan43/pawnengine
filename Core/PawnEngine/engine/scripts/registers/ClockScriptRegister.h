@@ -4,11 +4,17 @@
 
 namespace pawn::engine {
 
-	class ClockScriptRegister : public RegisterScriptClass {
+	class ClockScriptRegister final : public RegisterScriptClass {
 
 		public:
+			ClockScriptRegister() = default;
+			ClockScriptRegister(const ClockScriptRegister& other) = delete;
+			ClockScriptRegister(ClockScriptRegister&& other) noexcept = delete;
 
-			void Register(sol::state& lua) override;
+			ClockScriptRegister& operator=(const ClockScriptRegister& other) = delete;
+			ClockScriptRegister& operator=(ClockScriptRegister&& other) noexcept = delete;
+
+			void Register(sol::state& lua) const override final;
 
 	};
 

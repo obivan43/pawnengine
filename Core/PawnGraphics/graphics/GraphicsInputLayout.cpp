@@ -1,5 +1,7 @@
 ﻿#include "GraphicsInputLayout.h"
+
 #include "GraphicsContext.h"
+
 #include "directx/DirectX11InputLayout.h"
 
 namespace pawn::graphics {
@@ -37,8 +39,7 @@ namespace pawn::graphics {
 	}
 
 	GraphicsInputElement::GraphicsInputElement(const std::string& name, GraphicsInputElementType type)
-		: m_Name(name), m_Type(type), m_Size(GraphicsInputElementTypeSize(type)), m_Offset(0)
-	{}
+		: m_Name(name), m_Type(type), m_Size(GraphicsInputElementTypeSize(type)), m_Offset(0) {}
 
 	GraphicsInputElement::~GraphicsInputElement() {}
 

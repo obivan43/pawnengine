@@ -1,13 +1,9 @@
 #pragma once
 
-#include <winsock2.h>
-#include <ws2tcpip.h>
-#include <stdlib.h>
 #include <cstdint>
-#include <vector>
+#include <stdlib.h>
 #include <string>
-
-#include "PawnSystem/system/windows/WindowsAPI.h"
+#include <vector>
 
 namespace pawn::network {
 
@@ -34,7 +30,7 @@ namespace pawn::network {
 			std::vector<int8_t>& Data();
 
 		private:
-			SOCKET m_ClientSocket;
+			unsigned long long* m_ClientSocket;
 			std::vector<int8_t> m_Buffer;
 	};
 

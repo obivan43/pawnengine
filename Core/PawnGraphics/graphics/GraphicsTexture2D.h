@@ -35,13 +35,13 @@ namespace pawn::graphics {
 
 		public:
 			GraphicsTexture2D();
+			virtual ~GraphicsTexture2D() = default;
+
 			GraphicsTexture2D(const GraphicsTexture2D& other) = default;
 			GraphicsTexture2D(GraphicsTexture2D&& other) noexcept = default;
 
 			GraphicsTexture2D& operator=(const GraphicsTexture2D& other) = default;
 			GraphicsTexture2D& operator=(GraphicsTexture2D&& other) noexcept = default;
-
-			virtual ~GraphicsTexture2D() = default;
 
 			virtual void Init(
 				std::shared_ptr<GraphicsContext>& context,
@@ -56,7 +56,7 @@ namespace pawn::graphics {
 			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 			void Unbind(std::shared_ptr<GraphicsContext>& context) override;
 
-			virtual void* GetTexture() { return nullptr; }
+			inline virtual void* GetTexture() { return nullptr; }
 
 			static std::shared_ptr<GraphicsTexture2D> Create();
 

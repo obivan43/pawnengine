@@ -1,14 +1,14 @@
 #include "DirectX11Shader.h"
+
 #include "DirectX11Context.h"
 
 #include "PawnGraphics/graphics/directx/debug/DirectX11Debug.h"
-
 #include "PawnUtils/utils/codetools/Macros.h"
 #include "PawnUtils/utils/logger/Logger.h"
 
-#include <d3dcompiler.h>
-
 #ifdef PAWN_DIRECTX11
+
+#include <d3dcompiler.h>
 
 namespace pawn::graphics {
 

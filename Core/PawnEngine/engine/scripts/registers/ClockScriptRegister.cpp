@@ -6,7 +6,7 @@
 
 namespace pawn::engine {
 
-	void ClockScriptRegister::Register(sol::state& lua) {
+	void ClockScriptRegister::Register(sol::state& lua) const {
 		lua.set_function("clock_timestamp", utils::Clock::TimeStamp);
 		lua.set_function("clock_timestampToSeconds", utils::Clock::TimeStampToSeconds);
 	}

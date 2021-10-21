@@ -9,12 +9,11 @@
 #include "registers/GameEntityScriptRegister.h"
 
 #include "PawnSystem/system/input/KeyboardManager.h"
-
 #include "PawnUtils/utils/logger/Logger.h"
 
 namespace pawn::engine {
 
-	pawn::engine::GameEntity ScriptEngine::m_CurrentEntity;
+	pawn::engine::GameEntity ScriptEngine::m_ScriptableEntity;
 
 	ScriptEngine::ScriptEngine() : m_IsPaused(true) {
 		m_LuaState.open_libraries(
@@ -23,22 +22,21 @@ namespace pawn::engine {
 			sol::lib::string
 		);
 
-		Register(new LoggerScriptRegister());
-		Register(new MouseManagerScriptRegister());
-		Register(new KeyboardManagerScriptRegister());
-		Register(new ClockScriptRegister());
-		Register(new Vec3ScriptRegister());
-		Register(new TransformationComponentScriptRegister());
-		Register(new GameEntityScriptRegister());
+		Register(std::make_unique<LoggerScriptRegister>());
+		Register(std::make_unique<MouseManagerScriptRegister>());
+		Register(std::make_unique<KeyboardManagerScriptRegister>());
+		Register(std::make_unique<ClockScriptRegister>());
+		Register(std::make_unique<Vec3ScriptRegister>());
+		Register(std::make_unique<TransformationComponentScriptRegister>());
+		Register(std::make_unique<GameEntityScriptRegister>());
 
-		m_LuaState.set_function("current_entity", GetCurrentEntity);
-
+		m_LuaState.set_function("current_entity", GetScriptableEntity);
 		m_LuaState.script("logger_info('Script engine initialized')");
 	}
 
 	void ScriptEngine::ExecOnCreate(const std::string& fileName, pawn::engine::GameEntity entity) {
 		m_LuaState.script_file(fileName);
-		m_CurrentEntity = entity;
+		m_ScriptableEntity = entity;
 
 		sol::function create = m_LuaState["create"];
 		if (!create.valid()) {
@@ -60,7 +58,7 @@ namespace pawn::engine {
 	void ScriptEngine::ExecOnUpdate(const std::string& fileName, utils::Clock& clock, pawn::engine::GameEntity entity) {
 		m_LuaState.stack_clear();
 		auto& res = m_LuaState.script_file(fileName);
-		m_CurrentEntity = entity;
+		m_ScriptableEntity = entity;
 
 		if (!res.valid()) {
 			CONSOLE_ERROR("invalid script file {}", fileName);
@@ -77,12 +75,12 @@ namespace pawn::engine {
 	}
 
 	ScriptEngine::~ScriptEngine() {
-		m_ClassList.clear();
+		m_ScriptsRegisters.clear();
 	}
 
-	void ScriptEngine::Register(RegisterScriptClass* scriptClass) {
-		scriptClass->Register(m_LuaState);
-		m_ClassList.emplace_back(scriptClass);
+	void ScriptEngine::Register(std::unique_ptr<RegisterScriptClass>&& scriptRegister) {
+		scriptRegister->Register(m_LuaState);
+		m_ScriptsRegisters.emplace_back(std::move(scriptRegister));
 	}
 
 }

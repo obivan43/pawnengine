@@ -12,7 +12,12 @@ namespace pawn::graphics {
 
 		public:
 			GraphicsMesh();
-			GraphicsMesh(const std::shared_ptr<GraphicsBuffer>& vertexBuffer, std::shared_ptr<GraphicsBuffer>& indexBuffer, std::shared_ptr<GraphicsInputLayout>& inputLayout);
+			GraphicsMesh(
+				const std::shared_ptr<GraphicsBuffer>& vertexBuffer,
+				std::shared_ptr<GraphicsBuffer>& indexBuffer,
+				std::shared_ptr<GraphicsInputLayout>& inputLayout
+			);
+
 			GraphicsMesh(const GraphicsMesh& other) = default;
 			GraphicsMesh(GraphicsMesh&& other) noexcept = default;
 
@@ -23,13 +28,13 @@ namespace pawn::graphics {
 			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index);
 			void Unbind(std::shared_ptr<GraphicsContext>& context);
 
-			void SetVertexBuffer(const std::shared_ptr<GraphicsBuffer>& vertexBuffer) { m_VertexBuffer = vertexBuffer; }
-			void SetIndexBuffer(const std::shared_ptr<GraphicsBuffer>& indexBuffer) { m_IndexBuffer = indexBuffer; }
-			void SetInputLayout(const std::shared_ptr<GraphicsInputLayout>& inputLayout) { m_InputLayout = inputLayout; }
+			inline void SetVertexBuffer(const std::shared_ptr<GraphicsBuffer>& vertexBuffer) noexcept { m_VertexBuffer = vertexBuffer; }
+			inline void SetIndexBuffer(const std::shared_ptr<GraphicsBuffer>& indexBuffer) noexcept { m_IndexBuffer = indexBuffer; }
+			inline void SetInputLayout(const std::shared_ptr<GraphicsInputLayout>& inputLayout) noexcept { m_InputLayout = inputLayout; }
 
-			const std::shared_ptr<GraphicsBuffer>& GetVertexBuffer() const { return m_VertexBuffer; }
-			const std::shared_ptr<GraphicsBuffer>& GetIndexBuffer() const { return m_IndexBuffer; }
-			const std::shared_ptr<GraphicsInputLayout>& GetInputLayout() const { return m_InputLayout; }
+			inline const std::shared_ptr<GraphicsBuffer>& GetVertexBuffer() const noexcept { return m_VertexBuffer; }
+			inline const std::shared_ptr<GraphicsBuffer>& GetIndexBuffer() const noexcept { return m_IndexBuffer; }
+			inline const std::shared_ptr<GraphicsInputLayout>& GetInputLayout() const noexcept { return m_InputLayout; }
 
 		private:
 			std::shared_ptr<GraphicsBuffer> m_VertexBuffer;

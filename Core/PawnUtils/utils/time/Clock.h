@@ -9,6 +9,10 @@ namespace pawn::utils {
 		public:
 			Clock();
 			Clock(const Clock& other) = default;
+			Clock(Clock&& other) noexcept = default;
+
+			Clock& operator=(const Clock& other) = default;
+			Clock& operator=(Clock&& other) noexcept = default;
 
 			static float TimeStampToSeconds(int64_t timestamp);
 			static int64_t TimeStamp();

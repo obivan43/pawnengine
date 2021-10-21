@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Vertex.h"
 #include "Mesh.h"
 #include "MeshNodeData.h"
+#include "Vertex.h"
 
 #include <string>
 #include <vector>
@@ -22,20 +22,27 @@ namespace pawn::engine {
 
 		public:
 			AssimpLoader();
+			~AssimpLoader();
+
 			AssimpLoader(const AssimpLoader& other) = delete;
 			AssimpLoader(AssimpLoader&& other) noexcept = delete;
 
 			AssimpLoader& operator=(const AssimpLoader& other) = delete;
 			AssimpLoader& operator=(AssimpLoader&& other) noexcept = delete;
 
-			~AssimpLoader();
-
-			std::shared_ptr<Mesh> LoadModel(const char* file, std::shared_ptr<graphics::GraphicsContext>& context, std::shared_ptr<graphics::GraphicsShader>& shader);
+			std::shared_ptr<Mesh> LoadModel(
+				const char* file,
+				std::shared_ptr<graphics::GraphicsContext>& context,
+				std::shared_ptr<graphics::GraphicsShader>& shader
+			);
 			void Flush();
 
 		private:
-			std::shared_ptr<Mesh> ProcessData(std::shared_ptr<graphics::GraphicsContext>& context, std::shared_ptr<graphics::GraphicsShader>& shader);
-			void AssimpGetMeshData(const aiMesh* mesh);
+			std::shared_ptr<Mesh> ProcessData(
+				std::shared_ptr<graphics::GraphicsContext>& context,
+				std::shared_ptr<graphics::GraphicsShader>& shader
+			);
+			void GetAssimpMeshData(const aiMesh* mesh);
 			void UpdateMeshDataInfo(const aiNode* node, const glm::mat4& transformation);
 
 		private:

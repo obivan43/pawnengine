@@ -1,8 +1,12 @@
 #include "Network.h"
 
+#include <ws2tcpip.h>
+#include <winsock2.h>
+
 namespace pawn::network {
 
-	Network::Network() : m_ClientSocket(INVALID_SOCKET) {
+	Network::Network() {
+        m_ClientSocket = (unsigned long long*)INVALID_SOCKET;
         m_Buffer.resize(PAWN_DEFAULT_BUFLEN);
     }
 
@@ -52,8 +56,8 @@ namespace pawn::network {
             return 1;
         }
 
-        m_ClientSocket = accept(ListenSocket, nullptr, nullptr);
-        if (m_ClientSocket == INVALID_SOCKET) {
+        m_ClientSocket = (unsigned long long*)accept(ListenSocket, nullptr, nullptr);
+        if ((SOCKET)m_ClientSocket == INVALID_SOCKET) {
             closesocket(ListenSocket);
             WSACleanup();
             return 1;
@@ -65,28 +69,28 @@ namespace pawn::network {
 	}
 
     int Network::Shutdown() {
-        int iResult = shutdown(m_ClientSocket, SD_SEND);
+        int iResult = shutdown((SOCKET)m_ClientSocket, SD_SEND);
         if (iResult == SOCKET_ERROR) {
-            closesocket(m_ClientSocket);
+            closesocket((SOCKET)m_ClientSocket);
             WSACleanup();
             return 1;
         }
 
-        closesocket(m_ClientSocket);
+        closesocket((SOCKET)m_ClientSocket);
         WSACleanup();
         return 0;
     }
 
     int Network::Receive() {
-        return recv(m_ClientSocket, reinterpret_cast<char*>(&m_Buffer.front()), static_cast<int>(m_Buffer.size()), 0);
+        return recv((SOCKET)m_ClientSocket, reinterpret_cast<char*>(&m_Buffer.front()), static_cast<int>(m_Buffer.size()), 0);
     }
 
     int Network::Send(std::vector<int8_t>& buffer) {
-        return send(m_ClientSocket, reinterpret_cast<char*>(buffer.data()), static_cast<int>(buffer.size()), 0);
+        return send((SOCKET)m_ClientSocket, reinterpret_cast<char*>(buffer.data()), static_cast<int>(buffer.size()), 0);
     }
 
     int Network::Send(const std::string& buffer) {
-        return send(m_ClientSocket, buffer.data(), static_cast<int>(buffer.size()), 0);
+        return send((SOCKET)m_ClientSocket, buffer.data(), static_cast<int>(buffer.size()), 0);
     }
 
     std::vector<int8_t>& Network::Data() {

@@ -1,29 +1,27 @@
 ﻿#include "GameScene.h"
+
 #include "GameEntity.h"
 #include "Renderer.h"
 
-#include "scripts/ScriptEngine.h"
-
-#include "components/TransformationComponent.h"
-#include "components/TagComponent.h"
 #include "components/CameraComponent.h"
 #include "components/MeshComponent.h"
 #include "components/ScriptComponent.h"
+#include "components/TagComponent.h"
 #include "components/Texture2DComponent.h"
+#include "components/TransformationComponent.h"
+#include "scripts/ScriptEngine.h"
 
 #include "PawnMath/math/Functions.h"
 
-#include <string>
-
 namespace pawn::engine {
 
-	GameScene::GameScene() : m_ActiveCamera(nullptr), m_ActiveCameraView(glm::mat4(1.0)), m_Environment(new Environment()) {}
+	GameScene::GameScene() : m_ActiveCamera(nullptr), m_ActiveCameraView(glm::mat4(1.0f)), m_Environment(new Environment()) {}
 
 	GameEntity GameScene::CreateEntity(const std::string& name) {
 		const entt::entity entityID = m_EnttRegistry.create();
 
 		m_EnttRegistry.emplace<TransformationComponent>(entityID);
-		m_EnttRegistry.emplace<TagComponent>(entityID, name == "" ? ("Entity") : name);
+		m_EnttRegistry.emplace<TagComponent>(entityID, name == std::string() ? ("Entity") : name);
 
 		const GameEntity entity(entityID, this);
 		return entity;
@@ -33,7 +31,7 @@ namespace pawn::engine {
 		const entt::entity entityID = m_EnttRegistry.create(static_cast<entt::entity>(hint));
 
 		m_EnttRegistry.emplace<TransformationComponent>(entityID);
-		m_EnttRegistry.emplace<TagComponent>(entityID, name == "" ? ("Entity") : name);
+		m_EnttRegistry.emplace<TagComponent>(entityID, name == std::string() ? ("Entity") : name);
 
 		const GameEntity entity(entityID, this);
 		return entity;
@@ -51,7 +49,7 @@ namespace pawn::engine {
 	void GameScene::FindActiveCamera() {
 		math::Camera* activeCamera{ nullptr };
 
-		glm::vec3 cameraPosition(0.0);
+		glm::vec3 cameraPosition(0.0f);
 		float pitch = 0.0f;
 		float yaw = 0.0f;
 

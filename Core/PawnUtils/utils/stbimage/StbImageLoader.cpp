@@ -1,4 +1,5 @@
 ﻿#include "StbImageLoader.h"
+
 #include "StbImage.h"
 
 namespace pawn::utils {

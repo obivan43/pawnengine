@@ -14,6 +14,7 @@ namespace pawn::math {
 		public:
 			Camera();
 			Camera(const glm::mat4& projection);
+
 			Camera(const Camera& other) = default;
 			Camera(Camera&& other) noexcept = default;
 
@@ -22,8 +23,8 @@ namespace pawn::math {
 
 			~Camera();
 
-			CameraType GetType() const { return m_Type; }
-			const glm::mat4& GetProjection() const { return m_Projection; }
+			inline CameraType GetType() const noexcept { return m_Type; }
+			inline const glm::mat4& GetProjection() const noexcept { return m_Projection; }
 
 			void SetOrthographic(
 				float left = -16.0f,

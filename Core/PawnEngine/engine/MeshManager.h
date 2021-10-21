@@ -1,15 +1,14 @@
 #pragma once
 
-#include "PawnEngine/engine/geometry/Mesh.h"
 #include "PawnEngine/engine/geometry/AssimpLoader.h"
-
+#include "PawnEngine/engine/geometry/Mesh.h"
 #include "PawnGraphics/graphics/GraphicsContext.h"
-#include "PawnGraphics/graphics/GraphicsShader.h"
 #include "PawnGraphics/graphics/data/GraphicsMesh.h"
+#include "PawnGraphics/graphics/GraphicsShader.h"
 
 #include <memory>
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
 
 namespace pawn::engine {
 

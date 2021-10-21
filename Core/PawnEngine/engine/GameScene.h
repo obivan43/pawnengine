@@ -1,15 +1,13 @@
 ﻿#pragma once
 
 #include "Environment.h"
+#include "glm.hpp"
 
+#include "PawnMath/math/Camera.h"
 #include "PawnUtils/utils/entt/entt.h"
 #include "PawnUtils/utils/time/Clock.h"
 
-#include "PawnMath/math/Camera.h"
-
 #include <string>
-
-#include <glm.hpp>
 
 namespace pawn::engine {
 
@@ -31,6 +29,7 @@ namespace pawn::engine {
 
 			GameEntity CreateEntity(const std::string& name = std::string());
 			GameEntity CreateEntity(uint32_t hint, const std::string& name = std::string());
+
 			void DeleteEntity(entt::entity entity);
 			void Clear();
 
@@ -38,8 +37,8 @@ namespace pawn::engine {
 			void OnUpdate(utils::Clock& clock, std::shared_ptr<ScriptEngine>& scriptEngine);
 			void OnRender(std::shared_ptr<Renderer>& renderer);
 
-			entt::registry& GetRegistry() { return m_EnttRegistry; }
-			std::shared_ptr<Environment> GetEnvironment() { return m_Environment; }
+			inline entt::registry& GetRegistry() noexcept { return m_EnttRegistry; }
+			inline std::shared_ptr<Environment> GetEnvironment() noexcept { return m_Environment; }
 
 		private:
 			void FindActiveCamera();

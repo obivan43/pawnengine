@@ -4,7 +4,7 @@
 
 namespace pawn::engine {
 
-	void LoggerScriptRegister::Register(sol::state& lua) {
+	void LoggerScriptRegister::Register(sol::state& lua) const {
 		lua.set_function("logger_trace",	utils::LuaTrace);
 		lua.set_function("logger_info",		utils::LuaInfo);
 		lua.set_function("logger_warning",	utils::LuaWarning);

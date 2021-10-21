@@ -10,7 +10,7 @@ namespace pawn::graphics {
 
 	class DirectX11API;
 
-	class DirectX11Context : public GraphicsContext {
+	class DirectX11Context final : public GraphicsContext {
 
 		friend DirectX11API;
 
@@ -25,12 +25,12 @@ namespace pawn::graphics {
 			bool Init(HWND handle, uint32_t width, uint32_t height) override final;
 			void SwapBuffers() override final;
 
-			ID3D11Device* GetDevice() const { return m_Device.Get(); }
-			ID3D11DeviceContext* GetDeviceContext() const { return m_DeviceContext.Get(); }
-			IDXGISwapChain* GetSwapChain() const { return m_SwapChain.Get(); }
-			ID3D11RenderTargetView* GetRenderTargetView() const { return m_RenderTargetView.Get(); }
-			ID3D11Texture2D* GetDepthStencilBuffer() const { return m_DepthStencilBuffer.Get(); }
-			ID3D11DepthStencilView* GetDepthStencilView() const { return m_DepthStencilView.Get(); }
+			inline ID3D11Device* GetDevice() const noexcept { return m_Device.Get(); }
+			inline ID3D11DeviceContext* GetDeviceContext() const noexcept { return m_DeviceContext.Get(); }
+			inline IDXGISwapChain* GetSwapChain() const noexcept { return m_SwapChain.Get(); }
+			inline ID3D11RenderTargetView* GetRenderTargetView() const noexcept { return m_RenderTargetView.Get(); }
+			inline ID3D11Texture2D* GetDepthStencilBuffer() const noexcept { return m_DepthStencilBuffer.Get(); }
+			inline ID3D11DepthStencilView* GetDepthStencilView() const noexcept { return m_DepthStencilView.Get(); }
 
 		private:
 			HWND m_Handle;

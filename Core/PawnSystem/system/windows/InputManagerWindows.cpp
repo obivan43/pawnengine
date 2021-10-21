@@ -4,9 +4,9 @@
 
 #ifdef _WIN32
 
+#include <mutex>
 #include <hidusage.h>
 #include <vector>
-#include <mutex>
 
 namespace pawn::system {
 
@@ -50,7 +50,6 @@ namespace pawn::system {
 			case RIM_TYPEKEYBOARD:
 				m_KeyboardInputs.push(inputData);
 				break;
-
 		}
 
 		return 0;

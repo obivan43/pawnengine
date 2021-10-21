@@ -3,10 +3,9 @@
 #include "PawnEngine/engine/GameEntity.h"
 #include "PawnEngine/engine/components/TransformationComponent.h"
 
-
 namespace pawn::engine {
 
-	void GameEntityScriptRegister::Register(sol::state& lua) {
+	void GameEntityScriptRegister::Register(sol::state& lua) const {
 		lua.new_usertype<pawn::engine::GameEntity>("GameEntity",
 			sol::constructors<pawn::engine::GameEntity(), pawn::engine::GameEntity(const GameEntity&), pawn::engine::GameEntity(GameEntity&&)>(),
 			"id", sol::property(&pawn::engine::GameEntity::GetEntity),
@@ -20,8 +19,8 @@ namespace pawn::engine {
 					pawn::engine::TransformationComponent& transform = entity.GetComponent<pawn::engine::TransformationComponent>();
 					transform = newTransformation;
 				}
-					)
-			);
+			)
+		);
 	}
 
 }

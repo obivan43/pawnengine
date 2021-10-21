@@ -1,7 +1,7 @@
 #include "DirectX11Exception.h"
 
-#include <sstream>
 #include <iomanip>
+#include <sstream>
 
 namespace pawn::graphics {
 
@@ -24,7 +24,6 @@ namespace pawn::graphics {
 		if (!m_Info.empty()) {
 			m_Info.pop_back();
 		}
-
 	}
 
 	const char* DirectX11Exception::what() const noexcept {

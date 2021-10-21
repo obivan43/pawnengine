@@ -3,8 +3,8 @@
 #include "GraphicsBindableResource.h"
 
 #include <memory>
-#include <vector>
 #include <string>
+#include <vector>
 
 namespace pawn::graphics {
 
@@ -59,7 +59,7 @@ namespace pawn::graphics {
 			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 			void Unbind(std::shared_ptr<GraphicsContext>& context) override;
 
-			uint32_t GetStride() const { return m_Stride; }
+			inline uint32_t GetStride() const noexcept { return m_Stride; }
 
 			void RecalculateStride();
 

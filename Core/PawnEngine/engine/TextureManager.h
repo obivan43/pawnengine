@@ -3,8 +3,8 @@
 #include "PawnGraphics/graphics/GraphicsTexture2D.h"
 
 #include <memory>
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
 
 namespace pawn::engine {
 
@@ -13,6 +13,7 @@ namespace pawn::engine {
 		public:
 			TextureManager() = default;
 			TextureManager(std::shared_ptr<graphics::GraphicsContext>& context);
+
 			TextureManager(const TextureManager& other) = delete;
 			TextureManager(TextureManager&& other) noexcept = delete;
 

@@ -2,9 +2,9 @@
 
 #include "PawnGraphics/graphics/directx/Directx11Context.h"
 
-#include <vector>
-#include <string>
 #include <exception>
+#include <string>
+#include <vector>
 
 #ifdef PAWN_DIRECTX11
 
@@ -14,6 +14,7 @@ namespace pawn::graphics {
 
 	class DirectX11DebugInfoManager {
 
+		private:
 			DirectX11DebugInfoManager();
 			DirectX11DebugInfoManager(const DirectX11DebugInfoManager& other) = default;
 			DirectX11DebugInfoManager(DirectX11DebugInfoManager&& other) noexcept = default;

@@ -10,7 +10,7 @@ namespace pawn::graphics {
 
 	class DirectX11Context;
 
-	class DirectX11API : public GraphicsAPI {
+	class DirectX11API final : public GraphicsAPI {
 
 		public:
 			DirectX11API();
@@ -24,7 +24,7 @@ namespace pawn::graphics {
 
 			void SetContext(std::shared_ptr<GraphicsContext>& context) override final;
 
-			void SetClearColor(float r, float g, float b) override;
+			void SetClearColor(float r, float g, float b) override final;
 			void Clear() override final;
 
 		private:

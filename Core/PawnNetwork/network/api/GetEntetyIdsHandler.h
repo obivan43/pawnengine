@@ -4,11 +4,19 @@
 
 namespace pawn::network {
 
-	class GetEntetyIdsHandler : public ApiHandler {
+	class GetEntetyIdsHandler final : public ApiHandler {
 
 		public:
+			GetEntetyIdsHandler() = delete;
 			GetEntetyIdsHandler(std::shared_ptr<engine::Engine>& engine, std::shared_ptr<Network>& network);
-			void Handle() override;
+
+			GetEntetyIdsHandler(const GetEntetyIdsHandler& other) = delete;
+			GetEntetyIdsHandler(GetEntetyIdsHandler&& other) noexcept = delete;
+
+			GetEntetyIdsHandler& operator=(const GetEntetyIdsHandler& other) = delete;
+			GetEntetyIdsHandler& operator=(GetEntetyIdsHandler&& other) noexcept = delete;
+
+			void Handle() override final;
 
 	};
 

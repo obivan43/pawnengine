@@ -3,16 +3,13 @@
 #include "DirectX11Context.h"
 
 #include "PawnGraphics/graphics/directx/debug/DirectX11Debug.h"
-
 #include "PawnUtils/utils/logger/Logger.h"
 
 #ifdef PAWN_DIRECTX11
 
 namespace pawn::graphics {
 
-	DirectX11Context::DirectX11Context()
-		: m_FeatureLevel(D3D_FEATURE_LEVEL_9_1)
-	{}
+	DirectX11Context::DirectX11Context() : m_FeatureLevel(D3D_FEATURE_LEVEL_9_1) {}
 
 	bool DirectX11Context::Init(HWND handle, uint32_t width, uint32_t height) {
 		m_Handle = handle;

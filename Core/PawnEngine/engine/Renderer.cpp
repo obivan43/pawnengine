@@ -69,7 +69,7 @@ namespace pawn::engine {
 			textureComponent.Texture->Bind(m_Context);
 		}
 
-		Texture2DCB texture2DCB{ glm::vec4(textureComponent.Color, 0.0) };
+		Texture2DCB texture2DCB{ glm::vec4(textureComponent.Color, 0.0f) };
 		m_Texture2D->Update(m_Context, &texture2DCB, 1, sizeof(Texture2DCB));
 		m_Texture2D->Bind(m_Context, 2);
 

@@ -2,15 +2,14 @@
 
 #include "MeshNodeData.h"
 
-#include "PawnUtils/utils/logger/Logger.h"
-#include "PawnGraphics/graphics/GraphicsShader.h"
-#include "PawnGraphics/graphics/GraphicsShader.h"
-#include "PawnGraphics/graphics/GraphicsBuffer.h"
-#include "PawnGraphics/graphics/GraphicsInputLayout.h"
-
 #include "assimp/Importer.hpp"
 #include "assimp/scene.h"
 #include "assimp/postprocess.h"
+
+#include "PawnGraphics/graphics/GraphicsBuffer.h"
+#include "PawnGraphics/graphics/GraphicsInputLayout.h"
+#include "PawnGraphics/graphics/GraphicsShader.h"
+#include "PawnUtils/utils/logger/Logger.h"
 
 namespace pawn::engine {
 
@@ -85,7 +84,7 @@ namespace pawn::engine {
 				vertexCount += mesh->mNumVertices;
 				indexCount += meshNodeData.IndexCount;
 
-				AssimpGetMeshData(mesh);
+				GetAssimpMeshData(mesh);
 			}
 
 			UpdateMeshDataInfo(m_ModelScene->mRootNode, glm::mat4(1.0));
@@ -135,7 +134,7 @@ namespace pawn::engine {
 		}
 	}
 
-	void AssimpLoader::AssimpGetMeshData(const aiMesh* mesh) {
+	void AssimpLoader::GetAssimpMeshData(const aiMesh* mesh) {
 		for (uint32_t i = 0; i < mesh->mNumVertices; i++) {
 			Vertex vertex;
 			vertex.Position.x = mesh->mVertices[i].x;

@@ -1,21 +1,29 @@
 #pragma once
 
 #include "spdlog/spdlog.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/sinks/dist_sink.h"
 #include "spdlog/sinks/msvc_sink.h"
 #include "spdlog/sinks/ostream_sink.h"
-#include "spdlog/sinks/dist_sink.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 
 #include <memory>
 
 namespace pawn::utils {
 
 	class Logger {
+
 		public:
+			Logger() = delete;
+			Logger(const Logger& other) = delete;
+			Logger(Logger&& other) noexcept = delete;
+
+			Logger& operator=(const Logger& other) = delete;
+			Logger& operator=(Logger&& other) noexcept = delete;
+
 			static void Init();
 
-			static std::shared_ptr<spdlog::logger>& GetLogger() { return m_Logger; }
-			static std::shared_ptr<spdlog::logger>& GetLuaLogger() { return m_LuaLogger; }
+			inline static std::shared_ptr<spdlog::logger>& GetLogger() noexcept { return m_Logger; }
+			inline static std::shared_ptr<spdlog::logger>& GetLuaLogger() noexcept { return m_LuaLogger; }
 
 		private:
 			static std::shared_ptr<spdlog::logger> m_Logger;

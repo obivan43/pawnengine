@@ -3,20 +3,20 @@
 #ifdef _WIN32
 
 #include "SystemPC.h"
+
 #include <queue>
 
 namespace pawn::system {
 
 	class InputManagerWindows {
 
-		private:
-			InputManagerWindows() = default;
-
-			static LRESULT HandleInput(HRAWINPUT inputHandle);
-			static LRESULT HandleInputDeviceChanged();
-			static bool RegisterDevice(USHORT usage, DWORD flags, HWND handle);
-
 		public:
+			InputManagerWindows() = delete;
+			InputManagerWindows(const InputManagerWindows& other) = delete;
+			InputManagerWindows(InputManagerWindows&& other) noexcept = delete;
+
+			InputManagerWindows& operator=(const InputManagerWindows& other) = delete;
+			InputManagerWindows& operator=(InputManagerWindows&& other) noexcept = delete;
 
 			struct InputData {
 				RAWINPUT input;
@@ -33,8 +33,13 @@ namespace pawn::system {
 			static void UnregisterMouse();
 			static void UnregisterKeyboard();
 
-			static bool IsMouseConnected() { return m_IsMouseConnected; }
-			static bool IsKeyboardConnected() { return m_IsKeyboardConnected; }
+			inline static bool IsMouseConnected() noexcept { return m_IsMouseConnected; }
+			inline static bool IsKeyboardConnected() noexcept { return m_IsKeyboardConnected; }
+
+		private:
+			static LRESULT HandleInput(HRAWINPUT inputHandle);
+			static LRESULT HandleInputDeviceChanged();
+			static bool RegisterDevice(USHORT usage, DWORD flags, HWND handle);
 
 		private:
 			static std::queue<InputData> m_MouseInputs;

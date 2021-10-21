@@ -11,6 +11,12 @@ namespace pawn::system {
 	class MouseManager {
 
 		public:
+			MouseManager() = delete;
+			MouseManager(const MouseManager& other) = delete;
+			MouseManager(MouseManager&& other) noexcept = delete;
+
+			MouseManager& operator=(const MouseManager& other) = delete;
+			MouseManager& operator=(MouseManager&& other) noexcept = delete;
 
 			static void Update();
 			static void Reset(bool onlyButtons);
@@ -30,9 +36,6 @@ namespace pawn::system {
 			static int64_t GetButtonTimeStamp(MouseButton button);
 
 		private:
-
-			MouseManager() = default;
-
 			static bool GetButtonState(MouseButton button);
 			static bool GetLastFrameButtonState(MouseButton button);
 
@@ -42,7 +45,6 @@ namespace pawn::system {
 #endif
 
 		private:
-
 			static uint8_t m_Buttons[static_cast<uint32_t>(MouseButton::Count)];
 			static uint8_t m_LastFrameButtons[static_cast<uint32_t>(MouseButton::Count)];
 			static int64_t m_ButtonPressTimestamp[static_cast<uint32_t>(MouseButton::Count)];

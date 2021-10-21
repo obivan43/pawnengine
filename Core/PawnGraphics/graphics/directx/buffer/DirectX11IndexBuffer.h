@@ -6,7 +6,7 @@
 
 namespace pawn::graphics {
 
-	class DirectX11IndexBuffer : public DirectX11BufferBase {
+	class DirectX11IndexBuffer final : public DirectX11BufferBase {
 
 		public:
 			DirectX11IndexBuffer();
@@ -16,9 +16,9 @@ namespace pawn::graphics {
 			DirectX11IndexBuffer& operator=(const DirectX11IndexBuffer & other) = default;
 			DirectX11IndexBuffer& operator=(DirectX11IndexBuffer && other) noexcept = default;
 
-			void Bind(std::shared_ptr<GraphicsContext>&context) override;
-			void Bind(std::shared_ptr<GraphicsContext>&context, uint32_t index) override;
-			void Unbind(std::shared_ptr<GraphicsContext>& context) override;
+			void Bind(std::shared_ptr<GraphicsContext>&context) override final;
+			void Bind(std::shared_ptr<GraphicsContext>&context, uint32_t index) override final;
+			void Unbind(std::shared_ptr<GraphicsContext>& context) override final;
 	};
 
 }

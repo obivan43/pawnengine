@@ -1,14 +1,15 @@
 #pragma once
 
 #include "GameEntity.h"
-#include "components/TransformationComponent.h"
+
 #include "components/MeshComponent.h"
 #include "components/Texture2DComponent.h"
+#include "components/TransformationComponent.h"
 
-#include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsAPI.h"
-#include "PawnGraphics/graphics/GraphicsShader.h"
+#include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsRenderer.h"
+#include "PawnGraphics/graphics/GraphicsShader.h"
 
 namespace pawn::engine {
 
@@ -30,7 +31,18 @@ namespace pawn::engine {
 
 		public:
 			Renderer() = default;
-			void Init(const std::shared_ptr<graphics::GraphicsContext>& context, const std::shared_ptr<graphics::GraphicsAPI>& api, uint32_t width, uint32_t height);
+			Renderer(const Renderer& other) = delete;
+			Renderer(Renderer&& other) noexcept = delete;
+
+			Renderer& operator=(const Renderer& other) = delete;
+			Renderer& operator=(Renderer&& other) noexcept = delete;
+
+			void Init(
+				const std::shared_ptr<graphics::GraphicsContext>& context,
+				const std::shared_ptr<graphics::GraphicsAPI>& api,
+				uint32_t width,
+				uint32_t height
+			);
 			void SetShader(std::shared_ptr<graphics::GraphicsContext>& context, const std::shared_ptr<graphics::GraphicsShader>& shader);
 
 			void BeginScene(math::Camera& camera, glm::mat4& view);

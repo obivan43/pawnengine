@@ -1,9 +1,8 @@
 #include "MeshManager.h"
 
-#include "PawnGraphics/graphics/GraphicsInputLayout.h"
 #include "PawnGraphics/graphics/GraphicsBuffer.h"
+#include "PawnGraphics/graphics/GraphicsInputLayout.h"
 #include "PawnGraphics/graphics/data/GraphicsMesh.h"
-
 #include "PawnUtils/utils/logger/Logger.h"
 
 namespace pawn::engine {
@@ -15,7 +14,7 @@ namespace pawn::engine {
 	bool MeshManager::UploadMesh(const std::string& name, const std::shared_ptr<Mesh>& mesh) {
 		if (m_MeshesMap[name] != nullptr) {
 			CONSOLE_WARN("MeshManager: mesh with same name already exist")
-				return false;
+			return false;
 		}
 
 		m_MeshesMap[name] = mesh;
@@ -28,19 +27,19 @@ namespace pawn::engine {
 
 		if (m_MeshesMap[name] != nullptr) {
 			CONSOLE_WARN("MeshManager: mesh with same name already exist")
-				return false;
+			return false;
 		}
 		std::shared_ptr<Mesh> mesh = m_MeshLoader.LoadModel(path.c_str(), context, shader);
 		if (mesh.get() == nullptr) {
 			CONSOLE_ERROR("MeshManager: mesh loading corrupted")
-				return false;
+			return false;
 		}
 
 		m_MeshesMap[name] = mesh;
 
 		CONSOLE_INFO("MeshManager: Model loaded {}", path)
 
-			return true;
+		return true;
 	}
 
 	const std::shared_ptr<Mesh>& MeshManager::GetMeshByName(const std::string& name) {

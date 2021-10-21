@@ -1,8 +1,8 @@
 #pragma once
 
-#include "PawnGraphics/graphics/data/GraphicsMesh.h"
-
 #include "MeshNodeData.h"
+
+#include "PawnGraphics/graphics/data/GraphicsMesh.h"
 
 namespace pawn::engine {
 
@@ -13,7 +13,6 @@ namespace pawn::engine {
 		friend AssimpLoader;
 
 		public:
-
 			Mesh() = default;
 			Mesh(const Mesh & other) = default;
 			Mesh(Mesh && other) noexcept = default;

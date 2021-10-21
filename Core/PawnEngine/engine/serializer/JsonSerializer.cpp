@@ -1,19 +1,19 @@
 #include "JsonSerializer.h"
 
 #include "PawnEngine/engine/GameEntity.h"
-#include "PawnEngine/engine/components/TagComponent.h"
-#include "PawnEngine/engine/components/TransformationComponent.h"
 #include "PawnEngine/engine/components/CameraComponent.h"
 #include "PawnEngine/engine/components/MeshComponent.h"
 #include "PawnEngine/engine/components/ScriptComponent.h"
+#include "PawnEngine/engine/components/TagComponent.h"
 #include "PawnEngine/engine/components/Texture2DComponent.h"
+#include "PawnEngine/engine/components/TransformationComponent.h"
 
 namespace pawn::engine {
 
 	JsonSerializer::JsonSerializer(std::shared_ptr<GameScene>& scene) : m_Scene(scene) {}
 
 	nlohmann::json JsonSerializer::JsonEntities() {
-		nlohmann::json j = nlohmann::json::array();
+		nlohmann::json json = nlohmann::json::array();
 
 		std::vector<entt::entity> entities;
 		entt::registry& registry = m_Scene->GetRegistry();
@@ -23,10 +23,10 @@ namespace pawn::engine {
 
 		for (entt::entity id : entities) {
 			nlohmann::json tmp = JsonEntityById(id);
-			j.push_back(tmp);
+			json.push_back(tmp);
 		}
 
-		return j;
+		return json;
 	}
 
 	nlohmann::json JsonSerializer::JsonEntityIds() {
@@ -42,24 +42,24 @@ namespace pawn::engine {
 	nlohmann::json JsonSerializer::JsonEntityById(entt::entity id) {
 		GameEntity entity(id, m_Scene.get());
 
-		nlohmann::json j;
-		j["id"] = entity.GetEntity();
+		nlohmann::json json;
+		json["id"] = entity.GetEntity();
 
 		if (entity.HasComponent<TagComponent>()) {
 			TagComponent& tagComponent = entity.GetComponent<TagComponent>();
-			j["has_tag_component"] = true;
-			j["tag_component"] = {
+			json["has_tag_component"] = true;
+			json["tag_component"] = {
 				{ "tag", tagComponent.Tag }
 			};
 		}
 		else {
-			j["has_tag_component"] = false;
+			json["has_tag_component"] = false;
 		}
 
 		if (entity.HasComponent<TransformationComponent>()) {
 			TransformationComponent& transformationComponent = entity.GetComponent<TransformationComponent>();
-			j["has_transformation_component"] = true;
-			j["transformation_component"] = {
+			json["has_transformation_component"] = true;
+			json["transformation_component"] = {
 				{ "position", {
 					{ "x", transformationComponent.Position.x },
 					{ "y", transformationComponent.Position.y },
@@ -80,49 +80,49 @@ namespace pawn::engine {
 			};
 		}
 		else {
-			j["has_transformation_component"] = false;
+			json["has_transformation_component"] = false;
 		}
 
 
 		if (entity.HasComponent<CameraComponent>()) {
 			CameraComponent& cameraComponent = entity.GetComponent<CameraComponent>();
-			j["has_camera_component"] = true;
-			j["camera_component"] = {
+			json["has_camera_component"] = true;
+			json["camera_component"] = {
 				{ "is_active", cameraComponent.IsActiveCamera },
 				{ "projection", static_cast<uint32_t>(cameraComponent.Camera.GetType()) }
 			};
 		}
 		else {
-			j["has_camera_component"] = false;
+			json["has_camera_component"] = false;
 		}
 
 
 		if (entity.HasComponent<MeshComponent>()) {
 			MeshComponent& meshComponent = entity.GetComponent<MeshComponent>();
-			j["has_mesh_component"] = true;
-			j["mesh_component"] = {
+			json["has_mesh_component"] = true;
+			json["mesh_component"] = {
 				{ "name", meshComponent.MeshName }
 			};
 		}
 		else {
-			j["has_mesh_component"] = false;
+			json["has_mesh_component"] = false;
 		}
 
 		if (entity.HasComponent<ScriptComponent>()) {
 			ScriptComponent& scriptComponent = entity.GetComponent<ScriptComponent>();
-			j["has_script_component"] = true;
-			j["script_component"] = {
+			json["has_script_component"] = true;
+			json["script_component"] = {
 				{ "file", scriptComponent.FileName }
 			};
 		}
 		else {
-			j["has_script_component"] = false;
+			json["has_script_component"] = false;
 		}
 
 		if (entity.HasComponent<Texture2DComponent>()) {
 			Texture2DComponent& texture2DComponent = entity.GetComponent<Texture2DComponent>();
-			j["has_texture2D_component"] = true;
-			j["texture2D_component"] = {
+			json["has_texture2D_component"] = true;
+			json["texture2D_component"] = {
 				{ "name", texture2DComponent.TextureName },
 				{ "color", {
 					{ "x", texture2DComponent.Color.x },
@@ -132,14 +132,18 @@ namespace pawn::engine {
 			};
 		}
 		else {
-			j["has_texture2D_component"] = false;
+			json["has_texture2D_component"] = false;
 		}
 
-		return j;
+		return json;
 	}
 
-	void JsonSerializer::ParseJsonEntities(const nlohmann::json& j, std::shared_ptr<MeshManager>& meshManager, std::shared_ptr<TextureManager>& textureManager) {
-		for (auto& element : j) {
+	void JsonSerializer::ParseJsonEntities(
+		const nlohmann::json& json,
+		std::shared_ptr<MeshManager>& meshManager,
+		std::shared_ptr<TextureManager>& textureManager
+	) {
+		for (auto& element : json) {
 			uint32_t id = element["id"].get<uint32_t>();
 
 			std::string tag;

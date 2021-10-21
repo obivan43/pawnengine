@@ -14,11 +14,11 @@ namespace pawn::engine {
 			Environment& operator=(const Environment& other) = delete;
 			Environment& operator=(Environment&& other) noexcept = delete;
 
-			const glm::vec3& GetAmbientLightColor() const { return m_AmbientLightColor; }
-			float GetAmbientLightIntensity() const { return m_AmbientLightIntensity; }
+			inline const glm::vec3& GetAmbientLightColor() const noexcept { return m_AmbientLightColor; }
+			inline float GetAmbientLightIntensity() const noexcept { return m_AmbientLightIntensity; }
 
-			void SetAmbientLightColor(const glm::vec3& color) { m_AmbientLightColor = color; }
-			void SetAmbientLightIntensity(float intensity) { m_AmbientLightIntensity = intensity; }
+			inline void SetAmbientLightColor(const glm::vec3& color) noexcept { m_AmbientLightColor = color; }
+			inline void SetAmbientLightIntensity(float intensity) noexcept { m_AmbientLightIntensity = intensity; }
 
 		private:
 			glm::vec3 m_AmbientLightColor;

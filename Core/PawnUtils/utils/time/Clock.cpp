@@ -26,7 +26,7 @@ namespace pawn::utils {
 		double secondsPerCount = 1.0 / static_cast<double>(countPerSecond);
 		return static_cast<float>(
 			static_cast<double>(timestamp) * secondsPerCount
-			);
+		);
 	}
 
 	float Clock::Time() const {
@@ -45,12 +45,12 @@ namespace pawn::utils {
 		if (m_Stopped) {
 			return static_cast<float>(
 				static_cast<double>(((m_StopTime - m_PausedTime) - m_BaseTime)) * m_SecondsPerCount
-				);
+			);
 		}
 
 		return static_cast<float>(
 			static_cast<double>(((m_CurrentTime - m_PausedTime) - m_BaseTime)) * m_SecondsPerCount
-			);
+		);
 	}
 
 	void Clock::Reset() {

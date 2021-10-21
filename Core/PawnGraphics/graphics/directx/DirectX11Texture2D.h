@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "PawnGraphics/graphics/GraphicsTexture2D.h"
-
 #include "PawnSystem/system/windows/WindowsAPI.h"
 
 #include <memory>
@@ -12,7 +11,7 @@
 
 namespace pawn::graphics {
 
-	class DirectX11Texture2D : public GraphicsTexture2D {
+	class DirectX11Texture2D final : public GraphicsTexture2D {
 
 		public:
 			DirectX11Texture2D() = default;
@@ -29,13 +28,13 @@ namespace pawn::graphics {
 				int32_t height,
 				int32_t bitsPerPixel,
 				const GraphicsTextureParams& params
-			) override;
+			) override final;
 
-			void Bind(std::shared_ptr<GraphicsContext>& context) override;
-			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
-			void Unbind(std::shared_ptr<GraphicsContext>& context) override;
+			void Bind(std::shared_ptr<GraphicsContext>& context) override final;
+			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override final;
+			void Unbind(std::shared_ptr<GraphicsContext>& context) override final;
 
-			void* GetTexture() override { return m_TextureView.Get(); }
+			inline void* GetTexture() override final { return m_TextureView.Get(); }
 
 		private:
 			Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_TextureView;

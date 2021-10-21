@@ -25,7 +25,7 @@ namespace pawn::engine {
 	bool TextureManager::UploadTexture(const std::string& name, const std::shared_ptr<graphics::GraphicsTexture2D>& texture) {
 		if (m_TexturesMap[name] != nullptr) {
 			CONSOLE_WARN("TextureManager: texture with same name already exist")
-				return false;
+			return false;
 		}
 
 		m_TexturesMap[name] = texture;
@@ -38,7 +38,7 @@ namespace pawn::engine {
 
 		if (m_TexturesMap[name] != nullptr) {
 			CONSOLE_WARN("TextureManager: texture with same name already exist")
-				return false;
+			return false;
 		}
 
 		std::shared_ptr<graphics::GraphicsTexture2D> texture = graphics::GraphicsTexture2D::Create();
@@ -48,7 +48,7 @@ namespace pawn::engine {
 
 		if (data == nullptr) {
 			CONSOLE_ERROR("TextureManager: texture loading corrupted")
-				return false;
+			return false;
 		}
 
 		texture->Init(
@@ -65,7 +65,7 @@ namespace pawn::engine {
 
 		CONSOLE_INFO("TextureManager: Texture loaded {}", path)
 
-			return true;
+		return true;
 	}
 
 	const std::shared_ptr<graphics::GraphicsTexture2D>& TextureManager::GetTextureByName(const std::string& name) {

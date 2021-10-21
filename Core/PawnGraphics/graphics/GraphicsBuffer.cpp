@@ -1,17 +1,17 @@
 ﻿#include "GraphicsBuffer.h"
+
 #include "GraphicsContext.h"
 #include "GraphicsShader.h"
-#include "directx/buffer/DirectX11VertexBuffer.h"
+
 #include "directx/buffer/DirectX11ContantBuffer.h"
 #include "directx/buffer/DirectX11IndexBuffer.h"
+#include "directx/buffer/DirectX11VertexBuffer.h"
 
 #include "PawnUtils/utils/codetools/Macros.h"
 
 namespace pawn::graphics {
 
-	GraphicsBuffer::GraphicsBuffer()
-		: m_GraphicsBufferType(GraphicsBufferEnum::None)
-	{}
+	GraphicsBuffer::GraphicsBuffer(): m_GraphicsBufferType(GraphicsBufferEnum::None) {}
 
 	void GraphicsBuffer::InitLocation(
 		std::shared_ptr<GraphicsContext>& context,

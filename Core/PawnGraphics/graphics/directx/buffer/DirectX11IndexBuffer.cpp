@@ -1,7 +1,6 @@
 ﻿#include "DirectX11IndexBuffer.h"
 
 #include "PawnGraphics/graphics/directx/DirectX11Context.h"
-
 #include "PawnUtils/utils/codetools/Macros.h"
 
 #ifdef PAWN_DIRECTX11

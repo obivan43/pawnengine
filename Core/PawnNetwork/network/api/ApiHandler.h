@@ -1,6 +1,8 @@
 #pragma once
+
 #include "PawnEngine/engine/Engine.h"
 #include "PawnNetwork/network/Network.h"
+
 #include <memory>
 
 namespace pawn::network {
@@ -8,6 +10,7 @@ namespace pawn::network {
 	class ApiHandler {
 
 		public:
+			ApiHandler() = delete;
 			ApiHandler(std::shared_ptr<engine::Engine>& engine, std::shared_ptr<Network>& network);
 
 			ApiHandler(const ApiHandler& other) = delete;
@@ -19,8 +22,8 @@ namespace pawn::network {
 			virtual void Handle() = 0;
 
 		protected:
-			std::shared_ptr<engine::Engine> m_engine;
-			std::shared_ptr<Network> m_network;
+			std::shared_ptr<engine::Engine> m_Engine;
+			std::shared_ptr<Network> m_Network;
 
 	};
 

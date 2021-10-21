@@ -11,13 +11,15 @@ namespace pawn::graphics {
 
 		public:
 			GraphicsRenderer() = default;
+			virtual ~GraphicsRenderer() = default;
+
 			GraphicsRenderer(const GraphicsRenderer& other) = default;
 			GraphicsRenderer(GraphicsRenderer&& other) noexcept = default;
 
 			GraphicsRenderer& operator=(const GraphicsRenderer& other) = default;
 			GraphicsRenderer& operator=(GraphicsRenderer&& other) noexcept = default;
 
-			virtual ~GraphicsRenderer() = default;
+
 
 			virtual void Draw(std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsBuffer>& buffer);
 			virtual void DrawIndexed(

@@ -6,9 +6,9 @@ namespace pawn::network {
 		: ApiHandler(engine, network) {}
 
 	void GetEntetyIdsHandler::Handle() {
-		std::string response = m_engine->GetJsonSerializer()->JsonEntityIds().dump();
+		std::string response = m_Engine->GetJsonSerializer()->JsonEntityIds().dump();
 
-		m_network->Send(response);
+		m_Network->Send(response);
 	}
 
 }

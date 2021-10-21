@@ -14,7 +14,7 @@ namespace pawn::engine {
 			JsonSerializer& operator=(const JsonSerializer& other) = delete;
 			JsonSerializer& operator=(JsonSerializer&& other) noexcept = delete;
 
-			static void SaveToFile(const std::string& path, const nlohmann::json& j);
+			static void SaveToFile(const std::string& path, const nlohmann::json& json);
 			static nlohmann::json LoadFromFile(const std::string& path);
 	};
 

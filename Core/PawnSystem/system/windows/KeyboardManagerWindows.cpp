@@ -12,6 +12,7 @@ namespace pawn::system {
 		if (!prefixE0 && !prefixE1) {
 			return static_cast<Button>(makeCode);
 		}
+
 		else if (prefixE0) {
 			switch (static_cast<Button>(makeCode)) {
 				case Button::Slash:

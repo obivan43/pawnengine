@@ -23,7 +23,11 @@ namespace pawn::engine {
 			nlohmann::json JsonEntityIds();
 			nlohmann::json JsonEntityById(entt::entity id);
 
-			void ParseJsonEntities(const nlohmann::json& j, std::shared_ptr<MeshManager>& meshManager, std::shared_ptr<TextureManager>& textureManager);
+			void ParseJsonEntities(
+				const nlohmann::json& json,
+				std::shared_ptr<MeshManager>& meshManager,
+				std::shared_ptr<TextureManager>& textureManager
+			);
 
 		private:
 			std::shared_ptr<GameScene> m_Scene;

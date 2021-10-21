@@ -2,8 +2,8 @@
 
 #include "PawnUtils/utils/time/Clock.h"
 
-#include <cstring>
 #include <cassert>
+#include <cstring>
 
 namespace pawn::system {
 

@@ -4,7 +4,7 @@
 
 namespace pawn::engine {
 
-	void KeyboardManagerScriptRegister::Register(sol::state& lua) {
+	void KeyboardManagerScriptRegister::Register(sol::state& lua) const {
 		lua.new_enum("Button",
 			"Escape", system::Button::Escape,
 			"One", system::Button::One,

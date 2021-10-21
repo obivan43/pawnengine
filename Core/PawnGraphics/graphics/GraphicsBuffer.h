@@ -27,13 +27,13 @@ namespace pawn::graphics {
 
 		public:
 			GraphicsBuffer();
+			virtual ~GraphicsBuffer() = default;
+
 			GraphicsBuffer(const GraphicsBuffer& other) = default;
 			GraphicsBuffer(GraphicsBuffer&& other) noexcept = default;
 
 			GraphicsBuffer& operator=(const GraphicsBuffer& other) = default;
 			GraphicsBuffer& operator=(GraphicsBuffer&& other) noexcept = default;
-
-			virtual ~GraphicsBuffer() = default;
 
 			virtual void InitLocation(
 				std::shared_ptr<GraphicsContext>& context,
@@ -61,11 +61,11 @@ namespace pawn::graphics {
 			void Bind(std::shared_ptr<GraphicsContext>& context, uint32_t index) override;
 			void Unbind(std::shared_ptr<GraphicsContext>& context) override;
 
-			virtual void* GetBuffer() { return nullptr; };
-			virtual uint32_t GetBufferSize() const { return 0; };
-			virtual uint32_t GetStride() const { return 0; };
+			inline virtual void* GetBuffer() { return nullptr; };
+			inline virtual uint32_t GetBufferSize() const { return 0; };
+			inline virtual uint32_t GetStride() const { return 0; };
 
-			const GraphicsBufferEnum& GetGraphicsBufferType() const { return m_GraphicsBufferType; }
+			inline const GraphicsBufferEnum& GetGraphicsBufferType() const noexcept { return m_GraphicsBufferType; }
 
 			static std::shared_ptr<GraphicsBuffer> Create(GraphicsBufferEnum bufferType);
 

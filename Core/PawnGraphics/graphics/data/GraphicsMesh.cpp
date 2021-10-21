@@ -1,14 +1,20 @@
 #include "GraphicsMesh.h"
 
-#include "PawnUtils/utils/codetools/Macros.h"
 #include "PawnUtils/utils/logger/Logger.h"
+#include "PawnUtils/utils/codetools/Macros.h"
 
 namespace pawn::graphics {
 
 	GraphicsMesh::GraphicsMesh() {}
 
-	GraphicsMesh::GraphicsMesh(const std::shared_ptr<GraphicsBuffer>& vertexBuffer, std::shared_ptr<GraphicsBuffer>& indexBuffer, std::shared_ptr<GraphicsInputLayout>& inputLayout)
-		: m_VertexBuffer(vertexBuffer), m_IndexBuffer(indexBuffer), m_InputLayout(inputLayout) {}
+	GraphicsMesh::GraphicsMesh(
+		const std::shared_ptr<GraphicsBuffer>& vertexBuffer,
+		std::shared_ptr<GraphicsBuffer>& indexBuffer,
+		std::shared_ptr<GraphicsInputLayout>& inputLayout
+	)
+		: m_VertexBuffer(vertexBuffer)
+		, m_IndexBuffer(indexBuffer)
+		, m_InputLayout(inputLayout) {}
 
 	void GraphicsMesh::Bind(std::shared_ptr<GraphicsContext>& context) {
 		if (m_VertexBuffer != nullptr && m_IndexBuffer != nullptr) {

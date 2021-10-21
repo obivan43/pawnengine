@@ -4,7 +4,7 @@
 
 namespace pawn::engine {
 
-	void JsonFileSerializer::SaveToFile(const std::string& path, const nlohmann::json& j) {
+	void JsonFileSerializer::SaveToFile(const std::string& path, const nlohmann::json& json) {
 		std::ofstream outputFile;
 
 		outputFile.open(path, std::fstream::out | std::ofstream::trunc | std::ofstream::binary);
@@ -12,7 +12,7 @@ namespace pawn::engine {
 			return;
 		}
 
-		outputFile << j.dump() << std::endl;
+		outputFile << json.dump() << std::endl;
 		outputFile.close();
 	}
 

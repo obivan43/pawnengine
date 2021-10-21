@@ -5,25 +5,22 @@
 #include "Renderer.h"
 #include "TextureManager.h"
 
-#include "components\TagComponent.h"
-#include "components\CameraComponent.h"
-#include "components\TransformationComponent.h"
-#include "components\MeshComponent.h"
-#include "components\ScriptComponent.h"
+#include "components/CameraComponent.h"
+#include "components/MeshComponent.h"
+#include "components/ScriptComponent.h"
+#include "components/TagComponent.h"
+#include "components/TransformationComponent.h"
 
 #include "PawnEngine/engine/scripts/ScriptEngine.h"
-#include "PawnEngine/engine/serializer/JsonSerializer.h"
 #include "PawnEngine/engine/serializer/JsonFileSerializer.h"
+#include "PawnEngine/engine/serializer/JsonSerializer.h"
 #include "PawnEngine/engine/geometry/Mesh.h"
-
-#include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsAPI.h"
+#include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsShader.h"
 #include "PawnGraphics/graphics/GraphicsTexture2D.h"
-
-#include "PawnUtils/utils/time/Clock.h"
-
 #include "PawnSystem/system/windows/WindowsAPI.h"
+#include "PawnUtils/utils/time/Clock.h"
 
 #include <memory>
 
@@ -59,22 +56,22 @@ namespace pawn::engine {
 			void LoadState(const std::string& path);
 
 			bool HasMeshByName(const std::string& name);
-			bool UploadMeshFromFile(const std::string& file);
+			bool UploadMeshFromFile(const std::string& path);
 			const std::shared_ptr<Mesh>& GetMeshByName(const std::string& name);
 
 			bool HasTextureByName(const std::string& name);
-			bool UploadTextureFromFile(const std::string& file);
+			bool UploadTextureFromFile(const std::string& path);
 			const std::shared_ptr<graphics::GraphicsTexture2D>& GetTextureByName(const std::string& name);
 
-			std::shared_ptr<MeshManager>& GetMeshManager() { return m_MeshManager; }
-			std::shared_ptr<TextureManager>& GetTextureManager() { return m_TextureManager; }
-			std::shared_ptr<ScriptEngine>& GetScriptEngine() { return m_ScriptEngine; }
-			std::shared_ptr<GameScene>& GetScene() { return m_Scene; }
-			std::shared_ptr<JsonSerializer>& GetJsonSerializer() { return m_JsonSerializer; }
+			inline std::shared_ptr<MeshManager>& GetMeshManager() noexcept { return m_MeshManager; }
+			inline std::shared_ptr<TextureManager>& GetTextureManager() noexcept { return m_TextureManager; }
+			inline std::shared_ptr<ScriptEngine>& GetScriptEngine() noexcept { return m_ScriptEngine; }
+			inline std::shared_ptr<GameScene>& GetScene() noexcept { return m_Scene; }
+			inline std::shared_ptr<JsonSerializer>& GetJsonSerializer() noexcept { return m_JsonSerializer; }
 
-			std::shared_ptr<graphics::GraphicsContext>& GetContext() { return m_Context; }
-			std::shared_ptr<graphics::GraphicsAPI>& GetAPI() { return m_GraphicsAPI; }
-			std::shared_ptr<Renderer>& GetRenderer() { return m_Renderer; }
+			inline std::shared_ptr<graphics::GraphicsContext>& GetContext() noexcept { return m_Context; }
+			inline std::shared_ptr<graphics::GraphicsAPI>& GetAPI() noexcept { return m_GraphicsAPI; }
+			inline std::shared_ptr<Renderer>& GetRenderer() noexcept { return m_Renderer; }
 
 		private:
 			bool m_IsEngineRunning;

@@ -1,9 +1,8 @@
 #include "Engine.h"
 
-#include "PawnUtils/utils/logger/Logger.h"
-
 #include "PawnSystem/system/input/KeyboardManager.h"
 #include "PawnSystem/system/input/MouseManager.h"
+#include "PawnUtils/utils/logger/Logger.h"
 
 namespace pawn::engine {
 
@@ -62,16 +61,16 @@ namespace pawn::engine {
 		return m_MeshManager->HasMeshByName(name);
 	}
 
-	bool Engine::UploadMeshFromFile(const std::string& file) {
-		return m_MeshManager->UploadMeshFromFile(m_Context, m_Shader, file);
+	bool Engine::UploadMeshFromFile(const std::string& path) {
+		return m_MeshManager->UploadMeshFromFile(m_Context, m_Shader, path);
 	}
 
 	bool Engine::HasTextureByName(const std::string& name) {
 		return m_TextureManager->HasTextureByName(name);
 	}
 
-	bool Engine::UploadTextureFromFile(const std::string& file) {
-		return m_TextureManager->UploadTextureFromFile(m_Context, file);
+	bool Engine::UploadTextureFromFile(const std::string& path) {
+		return m_TextureManager->UploadTextureFromFile(m_Context, path);
 	}
 
 	const std::shared_ptr<graphics::GraphicsTexture2D>& Engine::GetTextureByName(const std::string& name) {
@@ -161,10 +160,10 @@ namespace pawn::engine {
 	}
 
 	void Engine::LoadState(const std::string& path) {
-		const nlohmann::json& j = JsonFileSerializer::LoadFromFile(path);
+		const nlohmann::json& json = JsonFileSerializer::LoadFromFile(path);
 
 		m_Scene->Clear();
-		m_JsonSerializer->ParseJsonEntities(j, m_MeshManager, m_TextureManager);
+		m_JsonSerializer->ParseJsonEntities(json, m_MeshManager, m_TextureManager);
 	}
 
 }

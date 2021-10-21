@@ -1,16 +1,17 @@
 ﻿#include "GraphicsTexture2D.h"
+
 #include "GraphicsContext.h"
+
 #include "directx/DirectX11Texture2D.h"
 
 #include "PawnUtils/utils/codetools/Macros.h"
 
 namespace pawn::graphics {
 
-	GraphicsTexture2D::GraphicsTexture2D() :
-		m_Width(0),
-		m_Height(0),
-		m_Params({ GraphicsTextureWrap::CLAMP, GraphicsTextureFilter::LINEAR, GraphicsTextureFormat::RGB })
-	{}
+	GraphicsTexture2D::GraphicsTexture2D()
+		: m_Width(0)
+		, m_Height(0)
+		,m_Params({ GraphicsTextureWrap::CLAMP, GraphicsTextureFilter::LINEAR, GraphicsTextureFormat::RGB }) {}
 
 	void GraphicsTexture2D::Bind(std::shared_ptr<GraphicsContext>& context) {
 		UNUSED(context)

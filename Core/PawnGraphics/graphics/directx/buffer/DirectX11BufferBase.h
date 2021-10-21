@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "PawnGraphics/graphics/GraphicsBuffer.h"
-
 #include "PawnSystem/system/windows/WindowsAPI.h"
 
 #ifdef PAWN_DIRECTX11
@@ -35,9 +34,9 @@ namespace pawn::graphics {
 				GraphicsBufferUsageTypeEnum type
 			) override;
 
-			void* GetBuffer() override { return m_Buffer.Get(); }
-			uint32_t GetBufferSize() const override { return m_BufferSize; }
-			uint32_t GetStride() const override { return m_Stride; }
+			inline void* GetBuffer() override { return m_Buffer.Get(); }
+			inline uint32_t GetBufferSize() const override { return m_BufferSize; }
+			inline uint32_t GetStride() const override { return m_Stride; }
 
 		private:
 			static D3D11_BIND_FLAG BufferTypeToDirectXBufferType(GraphicsBufferEnum type);

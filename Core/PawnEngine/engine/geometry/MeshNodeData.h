@@ -3,6 +3,7 @@
 #include "glm.hpp"
 
 #include <cstdint>
+#include <string>
 
 namespace pawn::engine {
 

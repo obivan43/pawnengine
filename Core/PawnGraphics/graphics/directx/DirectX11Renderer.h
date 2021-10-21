@@ -8,7 +8,7 @@
 
 namespace pawn::graphics {
 
-	class DirectX11Renderer : public GraphicsRenderer {
+	class DirectX11Renderer final : public GraphicsRenderer {
 
 		public:
 			DirectX11Renderer() = default;
@@ -18,13 +18,13 @@ namespace pawn::graphics {
 			DirectX11Renderer& operator=(const DirectX11Renderer& other) = default;
 			DirectX11Renderer& operator=(DirectX11Renderer&& other) noexcept = default;
 
-			void Draw(std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsBuffer>& buffer) override;
+			void Draw(std::shared_ptr<GraphicsContext>& context, const std::shared_ptr<GraphicsBuffer>& buffer) override final;
 			void DrawIndexed(
 				std::shared_ptr<GraphicsContext>& context,
 				uint32_t indexCount,
 				uint32_t startIndex = 0,
 				uint32_t vertexLocation = 0
-			) override;
+			) override final;
 	};
 
 }
