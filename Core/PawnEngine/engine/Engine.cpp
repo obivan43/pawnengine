@@ -156,14 +156,14 @@ namespace pawn::engine {
 	}
 
 	void Engine::SaveState(const std::string& path) {
-		JsonFileSerializer::SaveToFile(path, m_JsonSerializer->JsonEntities());
+		JsonFileSerializer::SaveToFile(path, m_JsonSerializer->JsonScene());
 	}
 
 	void Engine::LoadState(const std::string& path) {
 		const nlohmann::json& json = JsonFileSerializer::LoadFromFile(path);
 
 		m_Scene->Clear();
-		m_JsonSerializer->ParseJsonEntities(json, m_MeshManager, m_TextureManager);
+		m_JsonSerializer->ParseJsonScene(json, m_MeshManager, m_TextureManager);
 	}
 
 }

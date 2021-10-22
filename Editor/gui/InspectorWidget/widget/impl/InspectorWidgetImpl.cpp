@@ -99,7 +99,6 @@ namespace editor::impl {
 		}
 	}
 
-
 	void InspectorWidgetImpl::ForceUpdate() {
 		Update();
 		RefreshPanel();

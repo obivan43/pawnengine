@@ -19,14 +19,26 @@ namespace pawn::engine {
 			JsonSerializer& operator=(const JsonSerializer& other) = delete;
 			JsonSerializer& operator=(JsonSerializer&& other) noexcept = delete;
 
+			nlohmann::json JsonScene();
+			nlohmann::json JsonEnvironment();
 			nlohmann::json JsonEntities();
 			nlohmann::json JsonEntityIds();
 			nlohmann::json JsonEntityById(entt::entity id);
+
+			void ParseJsonScene(
+				const nlohmann::json& json,
+				std::shared_ptr<MeshManager>& meshManager,
+				std::shared_ptr<TextureManager>& textureManager
+			);
 
 			void ParseJsonEntities(
 				const nlohmann::json& json,
 				std::shared_ptr<MeshManager>& meshManager,
 				std::shared_ptr<TextureManager>& textureManager
+			);
+			
+			void ParseJsonEnvironment(
+				const nlohmann::json& json
 			);
 
 		private:

@@ -12,6 +12,35 @@ namespace pawn::engine {
 
 	JsonSerializer::JsonSerializer(std::shared_ptr<GameScene>& scene) : m_Scene(scene) {}
 
+	nlohmann::json JsonSerializer::JsonScene() {
+		nlohmann::json jsonScene;
+		
+		jsonScene["entities"] = JsonEntities();
+		jsonScene["environment"] = JsonEnvironment();
+
+		return jsonScene;
+	}
+
+	nlohmann::json JsonSerializer::JsonEnvironment() {
+		nlohmann::json json;
+
+		const glm::vec3& ambientLightColor = m_Scene->GetEnvironment()->GetAmbientLightColor();
+		json = {  
+			{
+				"ambientLightColor", {
+						{ "x", ambientLightColor.x },
+						{ "y", ambientLightColor.y },
+						{ "z", ambientLightColor.z }
+				}
+			},
+			{
+				"ambientLightIntensity", m_Scene->GetEnvironment()->GetAmbientLightIntensity()
+			}
+		};
+
+		return json;
+	}
+
 	nlohmann::json JsonSerializer::JsonEntities() {
 		nlohmann::json json = nlohmann::json::array();
 
@@ -19,7 +48,7 @@ namespace pawn::engine {
 		entt::registry& registry = m_Scene->GetRegistry();
 		registry.each([&](entt::entity entity) {
 			entities.push_back(entity);
-			});
+		});
 
 		for (entt::entity id : entities) {
 			nlohmann::json tmp = JsonEntityById(id);
@@ -43,7 +72,6 @@ namespace pawn::engine {
 		GameEntity entity(id, m_Scene.get());
 
 		nlohmann::json json;
-		json["id"] = entity.GetEntity();
 
 		if (entity.HasComponent<TagComponent>()) {
 			TagComponent& tagComponent = entity.GetComponent<TagComponent>();
@@ -138,18 +166,31 @@ namespace pawn::engine {
 		return json;
 	}
 
+	void JsonSerializer::ParseJsonScene(
+		const nlohmann::json& json,
+		std::shared_ptr<MeshManager>& meshManager,
+		std::shared_ptr<TextureManager>& textureManager
+	) {
+
+		if (json.contains("entities")) {
+			ParseJsonEntities(json["entities"], meshManager, textureManager);
+		}
+
+		if (json.contains("environment")) {
+			ParseJsonEnvironment(json["environment"]);
+		}
+	}
+
 	void JsonSerializer::ParseJsonEntities(
 		const nlohmann::json& json,
 		std::shared_ptr<MeshManager>& meshManager,
 		std::shared_ptr<TextureManager>& textureManager
 	) {
 		for (auto& element : json) {
-			uint32_t id = element["id"].get<uint32_t>();
-
 			std::string tag;
 			tag = element["tag_component"]["tag"].get<std::string>();
 
-			GameEntity gameEntity = m_Scene->CreateEntity(id, tag);
+			GameEntity gameEntity = m_Scene->CreateEntity(tag);
 
 			TransformationComponent& transformation = gameEntity.GetComponent<TransformationComponent>();
 			transformation.Position.x = element["transformation_component"]["position"]["x"].get<float>();
@@ -203,6 +244,21 @@ namespace pawn::engine {
 					texture2DComponent.Color.z = element["texture2D_component"]["color"]["z"].get<float>();
 				}
 			}
+		}
+	}
+
+	void JsonSerializer::ParseJsonEnvironment(const nlohmann::json& json) {
+		if (json.contains("ambientLightColor")) {
+			glm::vec3 color;
+			color.x = json["ambientLightColor"]["x"].get<float>();
+			color.y = json["ambientLightColor"]["y"].get<float>();
+			color.z = json["ambientLightColor"]["z"].get<float>();
+			m_Scene->GetEnvironment()->SetAmbientLightColor(color);
+		}
+
+		if (json.contains("ambientLightIntensity")) {
+			float intensity = json["ambientLightIntensity"].get<float>();
+			m_Scene->GetEnvironment()->SetAmbientLightIntensity(intensity);
 		}
 	}
 
