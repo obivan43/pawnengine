@@ -23,6 +23,7 @@
 #include "PawnUtils/utils/time/Clock.h"
 
 #include <memory>
+#include <mutex>
 
 namespace pawn::engine {
 
@@ -74,6 +75,8 @@ namespace pawn::engine {
 			inline std::shared_ptr<Renderer>& GetRenderer() noexcept { return m_Renderer; }
 
 		private:
+			mutable std::mutex m_Mutex;
+
 			bool m_IsEngineRunning;
 			bool m_IsEnginePaused;
 			std::shared_ptr<MeshManager> m_MeshManager;

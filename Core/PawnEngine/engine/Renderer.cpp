@@ -37,8 +37,15 @@ namespace pawn::engine {
 		BeginScene(camera, view);
 
 		if (environment.get()) {
-			EnvironmentCB environmentCB{ environment->GetAmbientLightColor(), environment->GetAmbientLightIntensity() };
-			m_Environment->Update(m_Context, &environmentCB, 1, sizeof(Texture2DCB));
+			EnvironmentCB environmentCB{ 
+				environment->GetAmbientLightColor(),
+				environment->GetAmbientLightIntensity(),
+				environment->GetDirectionalLightColor(),
+				environment->GetDirectionalLightIntensity(),
+				environment->GetDirectionalLightPosition()
+			};
+
+			m_Environment->Update(m_Context, &environmentCB, 1, sizeof(EnvironmentCB));
 			m_Environment->Bind(m_Context, 3);
 		}
 	}
@@ -74,10 +81,6 @@ namespace pawn::engine {
 		m_Texture2D->Bind(m_Context, 2);
 
 		DrawMesh(transformationComponent, meshComponent);
-
-		if (textureComponent.Texture.get()) {
-			textureComponent.Texture->Unbind(m_Context);
-		}
 	}
 
 	void Renderer::EndScene() {}

@@ -125,7 +125,7 @@ namespace editor::impl {
 	}
 
 	void InspectorWidgetImpl::RefreshPanel() {
-		if (!m_SelectedEntity.IsNull()) {
+		if (!m_SelectedEntity.IsNull() && m_SelectedEntity.IsValid()) {
 			m_NewComponentWidget->setHidden(false);
 			m_TagComponentInspectorWidgetItem->setHidden(false);
 			m_TransformationComponentInspectorWidgetItem->setHidden(false);

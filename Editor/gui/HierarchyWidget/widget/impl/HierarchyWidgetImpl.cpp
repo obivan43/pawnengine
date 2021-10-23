@@ -28,6 +28,9 @@ namespace editor::impl {
 	}
 
 	void HierarchyWidgetImpl::RefreshPanel() {
+		m_SelectedEntity = pawn::engine::GameEntity();
+		emit HierarchyWidget::SelectedEntityChanged(m_SelectedEntity);
+
 		m_HierarchyPanel->clear();
 
 		InitHierarchyPanel();
@@ -66,7 +69,13 @@ namespace editor::impl {
 	void HierarchyWidgetImpl::OnHierarchyItemClicked(QTreeWidgetItem* item, int index) {
 		HierarchyWidgetItem* hierarchyWidgetItem{ reinterpret_cast<HierarchyWidgetItem*>(item) };
 		m_SelectedEntity = hierarchyWidgetItem->GetEntity();
-		emit HierarchyWidget::SelectedEntityChanged(m_SelectedEntity);
+
+		if (m_SelectedEntity.IsValid()) {
+			emit HierarchyWidget::SelectedEntityChanged(m_SelectedEntity);
+			return;
+		}
+
+		emit HierarchyWidget::SelectedEntityChanged(pawn::engine::GameEntity());
 	}
 
 	void HierarchyWidgetImpl::ShowContextMenu(const QPoint& position) {

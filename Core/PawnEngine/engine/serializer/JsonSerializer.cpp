@@ -25,6 +25,8 @@ namespace pawn::engine {
 		nlohmann::json json;
 
 		const glm::vec3& ambientLightColor = m_Scene->GetEnvironment()->GetAmbientLightColor();
+		const glm::vec3& directionalLightColor = m_Scene->GetEnvironment()->GetDirectionalLightColor();
+		const glm::vec3& directionalLightPosition = m_Scene->GetEnvironment()->GetDirectionalLightPosition();
 		json = {  
 			{
 				"ambientLightColor", {
@@ -35,6 +37,23 @@ namespace pawn::engine {
 			},
 			{
 				"ambientLightIntensity", m_Scene->GetEnvironment()->GetAmbientLightIntensity()
+			},
+			{
+				"directionalLightColor", {
+						{ "x", directionalLightColor.x },
+						{ "y", directionalLightColor.y },
+						{ "z", directionalLightColor.z }
+				}
+			},
+			{
+				"directionalLightPosition", {
+						{ "x", directionalLightPosition.x },
+						{ "y", directionalLightPosition.y },
+						{ "z", directionalLightPosition.z }
+				}
+			},
+			{
+				"directionalLightIntensity", m_Scene->GetEnvironment()->GetDirectionalLightIntensity()
 			}
 		};
 
@@ -259,6 +278,27 @@ namespace pawn::engine {
 		if (json.contains("ambientLightIntensity")) {
 			float intensity = json["ambientLightIntensity"].get<float>();
 			m_Scene->GetEnvironment()->SetAmbientLightIntensity(intensity);
+		}
+
+		if (json.contains("directionalLightColor")) {
+			glm::vec3 color;
+			color.x = json["directionalLightColor"]["x"].get<float>();
+			color.y = json["directionalLightColor"]["y"].get<float>();
+			color.z = json["directionalLightColor"]["z"].get<float>();
+			m_Scene->GetEnvironment()->SetDirectionalLightColor(color);
+		}
+
+		if (json.contains("directionalLightPosition")) {
+			glm::vec3 position;
+			position.x = json["directionalLightPosition"]["x"].get<float>();
+			position.y = json["directionalLightPosition"]["y"].get<float>();
+			position.z = json["directionalLightPosition"]["z"].get<float>();
+			m_Scene->GetEnvironment()->SetDirectionalLightPosition(position);
+		}
+
+		if (json.contains("directionalLightIntensity")) {
+			float intensity = json["directionalLightIntensity"].get<float>();
+			m_Scene->GetEnvironment()->SetDirectionalLightIntensity(intensity);
 		}
 	}
 

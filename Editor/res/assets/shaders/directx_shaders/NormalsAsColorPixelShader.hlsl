@@ -1,5 +1,13 @@
-float4 main(float2 texcoord : TextureCoordinate, float3 normal : Normal) : SV_Target
+struct PS_INPUT
 {
-	float3 color = (normal + 1) * 0.5;
+	float4 position : SV_Position;
+	float3 normal : Normal;
+	float2 texcoord : TextureCoordinate;
+	float3 worldPosition : WorldPosition;
+};
+
+float4 main(PS_INPUT input) : SV_Target
+{
+	float3 color = (input.normal + 1) * 0.5;
 	return float4(color.rgb, 1.0f);
 }

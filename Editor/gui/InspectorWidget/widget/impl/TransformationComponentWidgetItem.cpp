@@ -16,7 +16,7 @@ namespace editor::impl {
 
 	void TransformationComponentWidgetItem::SetEntity(pawn::engine::GameEntity* entity) {
 		m_Entity = entity;
-		if (m_Entity && !m_Entity->IsNull()) {
+		if (m_Entity && !m_Entity->IsNull() && m_Entity->IsValid()) {
 			m_TransformationComponentWidget->SetTransformation(&m_Entity->GetComponent<pawn::engine::TransformationComponent>());
 		}
 	}

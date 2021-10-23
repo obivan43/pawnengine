@@ -110,6 +110,11 @@ void GameThread(HWND hwnd) {
 		engine->UploadMeshFromFile("res/assets/models/cylinder.fbx");
 		engine->UploadMeshFromFile("res/assets/models/cone.fbx");
 		engine->UploadMeshFromFile("res/assets/models/torus.fbx");
+		engine->UploadMeshFromFile("res/assets/models/cube_smooth.fbx");
+		engine->UploadMeshFromFile("res/assets/models/sphere_smooth.fbx");
+		engine->UploadMeshFromFile("res/assets/models/cylinder_smooth.fbx");
+		engine->UploadMeshFromFile("res/assets/models/cone_smooth.fbx");
+		engine->UploadMeshFromFile("res/assets/models/torus_smooth.fbx");
 		engine->UploadMeshFromFile("res/assets/models/plane.fbx");
 		engine->UploadMeshFromFile("res/assets/models/handgun.fbx");
 

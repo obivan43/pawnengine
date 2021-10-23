@@ -153,6 +153,9 @@ namespace editor::impl {
 
 			m_Engine->LoadState("temp.pawn");
 
+			m_Hierarchy->RefreshPanel();
+			m_Environment->RefreshPanel();
+
 			m_Environment->setEnabled(true);
 			m_Hierarchy->setEnabled(true);
 			m_Inspector->setEnabled(true);
@@ -247,6 +250,11 @@ namespace editor::impl {
 		m_Engine->UploadMeshFromFile("res/assets/models/cylinder.fbx");
 		m_Engine->UploadMeshFromFile("res/assets/models/cone.fbx");
 		m_Engine->UploadMeshFromFile("res/assets/models/torus.fbx");
+		m_Engine->UploadMeshFromFile("res/assets/models/cube_smooth.fbx");
+		m_Engine->UploadMeshFromFile("res/assets/models/sphere_smooth.fbx");
+		m_Engine->UploadMeshFromFile("res/assets/models/cylinder_smooth.fbx");
+		m_Engine->UploadMeshFromFile("res/assets/models/cone_smooth.fbx");
+		m_Engine->UploadMeshFromFile("res/assets/models/torus_smooth.fbx");
 		m_Engine->UploadMeshFromFile("res/assets/models/plane.fbx");
 		m_Engine->UploadMeshFromFile("res/assets/models/handgun.fbx");
 

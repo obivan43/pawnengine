@@ -43,6 +43,8 @@ namespace pawn::engine {
 
 	void GameScene::Clear() {
 		m_EnttRegistry.clear();
+		m_ActiveCamera = nullptr;
+		m_ActiveCameraView = glm::mat4(1.0f);
 		m_Environment.reset(new Environment());
 	}
 

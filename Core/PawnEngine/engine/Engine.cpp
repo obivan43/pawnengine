@@ -134,6 +134,7 @@ namespace pawn::engine {
 
 	void Engine::OnRender() {
 		if (!m_IsEnginePaused && m_Context.get() && m_GraphicsAPI.get()) {
+			std::lock_guard<std::mutex> lock(m_Mutex);
 			m_Scene->OnRender(m_Renderer);
 			m_Context->SwapBuffers();
 		}

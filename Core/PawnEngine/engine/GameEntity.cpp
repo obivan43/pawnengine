@@ -7,5 +7,5 @@ namespace pawn::engine {
 
 	GameEntity::GameEntity(entt::entity id, GameScene* scene)
 		: m_EntityID(id), m_Scene(scene) {}
-	
+
 }

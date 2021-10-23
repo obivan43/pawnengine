@@ -7,7 +7,7 @@ namespace pawn::engine {
 
 	void GameEntityScriptRegister::Register(sol::state& lua) const {
 		lua.new_usertype<pawn::engine::GameEntity>("GameEntity",
-			sol::constructors<pawn::engine::GameEntity(), pawn::engine::GameEntity(const GameEntity&), pawn::engine::GameEntity(GameEntity&&)>(),
+			sol::constructors<pawn::engine::GameEntity(), pawn::engine::GameEntity(const GameEntity&)>(),
 			"id", sol::property(&pawn::engine::GameEntity::GetEntity),
 			"transformation", sol::property(
 				[](const pawn::engine::GameEntity& entity) {

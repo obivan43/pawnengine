@@ -2,10 +2,11 @@
 
 #include "GameScene.h"
 
+#include <mutex>
 #include <utility>
 
 namespace pawn::engine {
-	
+
 	class GameEntity {
 
 		public:
@@ -13,12 +14,11 @@ namespace pawn::engine {
 			GameEntity(entt::entity id, GameScene* scene);
 
 			GameEntity(const GameEntity& other) = default;
-			GameEntity(GameEntity&& other) noexcept = default;
-
 			GameEntity& operator=(const GameEntity& other) = default;
-			GameEntity& operator=(GameEntity&& other) noexcept = default;
 
 			inline bool IsNull() const noexcept { return m_EntityID == entt::null; }
+
+			inline bool IsValid() const noexcept { return m_Scene->m_EnttRegistry.valid(m_EntityID); }
 
 			template<typename Component>
 			bool HasComponent() {
