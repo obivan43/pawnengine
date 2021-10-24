@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PawnEngine/engine/geometry/Mesh.h"
+#include "PawnEngine/engine/data/Mesh.h"
 
 #include <memory>
 

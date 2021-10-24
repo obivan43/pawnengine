@@ -37,12 +37,12 @@ namespace pawn::engine {
 		BeginScene(camera, view);
 
 		if (environment.get()) {
+			const Light& light = environment->GetLight();
 			EnvironmentCB environmentCB{ 
-				environment->GetAmbientLightColor(),
-				environment->GetAmbientLightIntensity(),
-				environment->GetDirectionalLightColor(),
-				environment->GetDirectionalLightIntensity(),
-				environment->GetDirectionalLightPosition()
+				light.GetLightPosition(),
+				light.GetAmbientIntensity(),
+				light.GetLightColor(),
+				light.GetDiffuseIntensity()
 			};
 
 			m_Environment->Update(m_Context, &environmentCB, 1, sizeof(EnvironmentCB));

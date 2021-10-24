@@ -1,6 +1,6 @@
 #pragma once
 
-#include "glm.hpp"
+#include "data/Light.h"
 
 namespace pawn::engine {
 
@@ -14,27 +14,14 @@ namespace pawn::engine {
 			Environment& operator=(const Environment& other) = delete;
 			Environment& operator=(Environment&& other) noexcept = delete;
 
-			inline const glm::vec3& GetAmbientLightColor() const noexcept { return m_AmbientLightColor; }
-			inline float GetAmbientLightIntensity() const noexcept { return m_AmbientLightIntensity; }
+			inline Light& GetLight() noexcept { return m_Light; }
+			inline const Light& GetLight() const noexcept { return m_Light; }
 
-			inline const glm::vec3& GetDirectionalLightPosition() const noexcept { return m_DirectionalLightPosition; }
-			inline const glm::vec3& GetDirectionalLightColor() const noexcept { return m_DirectionalLightColor; }
-			inline float GetDirectionalLightIntensity() const noexcept { return m_DirectionalLightIntensity; }
-
-			inline void SetAmbientLightColor(const glm::vec3& color) noexcept { m_AmbientLightColor = color; }
-			inline void SetAmbientLightIntensity(float intensity) noexcept { m_AmbientLightIntensity = intensity; }
-
-			inline void SetDirectionalLightPosition(const glm::vec3& position) noexcept { m_DirectionalLightPosition = position; }
-			inline void SetDirectionalLightColor(const glm::vec3& color) noexcept { m_DirectionalLightColor = color; }
-			inline void SetDirectionalLightIntensity(float intensity) noexcept { m_DirectionalLightIntensity = intensity; }
+			inline void SetLight(const Light& light) noexcept { m_Light = light; }
 
 		private:
-			glm::vec3 m_AmbientLightColor;
-			float m_AmbientLightIntensity;
-
-			glm::vec3 m_DirectionalLightPosition;
-			glm::vec3 m_DirectionalLightColor;
-			float m_DirectionalLightIntensity;
+			Light m_Light;
+		
 	};
 
 }

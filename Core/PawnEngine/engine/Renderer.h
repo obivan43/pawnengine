@@ -23,12 +23,10 @@ namespace pawn::engine {
 	};
 
 	struct EnvironmentCB {
-		glm::vec3 ambientLightColor;
+		glm::vec3 LightPosition;
 		float ambientLightIntensity;
-
-		glm::vec3 directionalLightColor;
-		float directionalLightIntensity;
-		alignas(16) glm::vec3 directionalLightPosition;
+		glm::vec3 LightColor;
+		float diffuseIntensity;
 	};
 
 	class Renderer {

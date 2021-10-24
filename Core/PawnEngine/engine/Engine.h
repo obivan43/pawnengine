@@ -11,10 +11,10 @@
 #include "components/TagComponent.h"
 #include "components/TransformationComponent.h"
 
+#include "PawnEngine/engine/data/Mesh.h"
 #include "PawnEngine/engine/scripts/ScriptEngine.h"
 #include "PawnEngine/engine/serializer/JsonFileSerializer.h"
 #include "PawnEngine/engine/serializer/JsonSerializer.h"
-#include "PawnEngine/engine/geometry/Mesh.h"
 #include "PawnGraphics/graphics/GraphicsAPI.h"
 #include "PawnGraphics/graphics/GraphicsContext.h"
 #include "PawnGraphics/graphics/GraphicsShader.h"

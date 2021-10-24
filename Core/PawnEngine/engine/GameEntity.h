@@ -18,7 +18,7 @@ namespace pawn::engine {
 
 			inline bool IsNull() const noexcept { return m_EntityID == entt::null; }
 
-			inline bool IsValid() const noexcept { return m_Scene->m_EnttRegistry.valid(m_EntityID); }
+			inline bool IsValid() const noexcept { return m_Scene ? m_Scene->m_EnttRegistry.valid(m_EntityID) : false; }
 
 			template<typename Component>
 			bool HasComponent() {

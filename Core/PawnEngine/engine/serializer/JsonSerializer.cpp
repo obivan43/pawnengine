@@ -24,36 +24,27 @@ namespace pawn::engine {
 	nlohmann::json JsonSerializer::JsonEnvironment() {
 		nlohmann::json json;
 
-		const glm::vec3& ambientLightColor = m_Scene->GetEnvironment()->GetAmbientLightColor();
-		const glm::vec3& directionalLightColor = m_Scene->GetEnvironment()->GetDirectionalLightColor();
-		const glm::vec3& directionalLightPosition = m_Scene->GetEnvironment()->GetDirectionalLightPosition();
+		const Light& light = m_Scene->GetEnvironment()->GetLight();
 		json = {  
 			{
-				"ambientLightColor", {
-						{ "x", ambientLightColor.x },
-						{ "y", ambientLightColor.y },
-						{ "z", ambientLightColor.z }
+				"lightPosition", {
+						{ "x", light.GetLightPosition().x },
+						{ "y", light.GetLightPosition().y },
+						{ "z", light.GetLightPosition().z }
 				}
 			},
 			{
-				"ambientLightIntensity", m_Scene->GetEnvironment()->GetAmbientLightIntensity()
-			},
-			{
-				"directionalLightColor", {
-						{ "x", directionalLightColor.x },
-						{ "y", directionalLightColor.y },
-						{ "z", directionalLightColor.z }
+				"lightColor", {
+						{ "x", light.GetLightColor().x },
+						{ "y", light.GetLightColor().y },
+						{ "z", light.GetLightColor().z }
 				}
 			},
 			{
-				"directionalLightPosition", {
-						{ "x", directionalLightPosition.x },
-						{ "y", directionalLightPosition.y },
-						{ "z", directionalLightPosition.z }
-				}
+				"ambientLightIntensity", light.GetAmbientIntensity()
 			},
 			{
-				"directionalLightIntensity", m_Scene->GetEnvironment()->GetDirectionalLightIntensity()
+				"diffuseIntensity", light.GetDiffuseIntensity()
 			}
 		};
 
@@ -267,38 +258,31 @@ namespace pawn::engine {
 	}
 
 	void JsonSerializer::ParseJsonEnvironment(const nlohmann::json& json) {
-		if (json.contains("ambientLightColor")) {
+		Light& light = m_Scene->GetEnvironment()->GetLight();
+		if (json.contains("lightPosition")) {
+			glm::vec3 position;
+			position.x = json["lightPosition"]["x"].get<float>();
+			position.y = json["lightPosition"]["y"].get<float>();
+			position.z = json["lightPosition"]["z"].get<float>();
+			light.SetLightPosition(position);
+		}
+
+		if (json.contains("lightColor")) {
 			glm::vec3 color;
-			color.x = json["ambientLightColor"]["x"].get<float>();
-			color.y = json["ambientLightColor"]["y"].get<float>();
-			color.z = json["ambientLightColor"]["z"].get<float>();
-			m_Scene->GetEnvironment()->SetAmbientLightColor(color);
+			color.x = json["lightColor"]["x"].get<float>();
+			color.y = json["lightColor"]["y"].get<float>();
+			color.z = json["lightColor"]["z"].get<float>();
+			light.SetLightColor(color);
 		}
 
 		if (json.contains("ambientLightIntensity")) {
 			float intensity = json["ambientLightIntensity"].get<float>();
-			m_Scene->GetEnvironment()->SetAmbientLightIntensity(intensity);
-		}
-
-		if (json.contains("directionalLightColor")) {
-			glm::vec3 color;
-			color.x = json["directionalLightColor"]["x"].get<float>();
-			color.y = json["directionalLightColor"]["y"].get<float>();
-			color.z = json["directionalLightColor"]["z"].get<float>();
-			m_Scene->GetEnvironment()->SetDirectionalLightColor(color);
-		}
-
-		if (json.contains("directionalLightPosition")) {
-			glm::vec3 position;
-			position.x = json["directionalLightPosition"]["x"].get<float>();
-			position.y = json["directionalLightPosition"]["y"].get<float>();
-			position.z = json["directionalLightPosition"]["z"].get<float>();
-			m_Scene->GetEnvironment()->SetDirectionalLightPosition(position);
+			light.SetAmbientIntensity(intensity);
 		}
 
 		if (json.contains("directionalLightIntensity")) {
 			float intensity = json["directionalLightIntensity"].get<float>();
-			m_Scene->GetEnvironment()->SetDirectionalLightIntensity(intensity);
+			light.SetDiffuseIntensity(intensity);
 		}
 	}
 

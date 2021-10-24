@@ -17,7 +17,7 @@
     <Filter Include="engine\serializer">
       <UniqueIdentifier>{e1d45208-c240-443d-a5ac-4188071f0209}</UniqueIdentifier>
     </Filter>
-    <Filter Include="engine\geometry">
+    <Filter Include="engine\data">
       <UniqueIdentifier>{0e419fa6-9137-4f43-b514-0d4210d804e2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -94,23 +94,26 @@
     <ClInclude Include="engine\EngineGlobals.h">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="engine\geometry\AssimpLoader.h">
-      <Filter>engine\geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\geometry\Vertex.h">
-      <Filter>engine\geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\geometry\Mesh.h">
-      <Filter>engine\geometry</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\geometry\MeshNodeData.h">
-      <Filter>engine\geometry</Filter>
-    </ClInclude>
     <ClInclude Include="engine\components\LightComponent.h">
       <Filter>engine\components</Filter>
     </ClInclude>
     <ClInclude Include="engine\Environment.h">
       <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\data\AssimpLoader.h">
+      <Filter>engine\data</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\data\Light.h">
+      <Filter>engine\data</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\data\Mesh.h">
+      <Filter>engine\data</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\data\MeshNodeData.h">
+      <Filter>engine\data</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\data\Vertex.h">
+      <Filter>engine\data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -186,14 +189,17 @@
     <ClCompile Include="engine\EngineGlobals.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="engine\geometry\AssimpLoader.cpp">
-      <Filter>engine\geometry</Filter>
-    </ClCompile>
     <ClCompile Include="engine\components\LightComponent.cpp">
       <Filter>engine\components</Filter>
     </ClCompile>
     <ClCompile Include="engine\Environment.cpp">
       <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\data\AssimpLoader.cpp">
+      <Filter>engine\data</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\data\Light.cpp">
+      <Filter>engine\data</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

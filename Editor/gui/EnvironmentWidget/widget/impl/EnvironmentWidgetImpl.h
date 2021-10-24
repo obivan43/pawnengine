@@ -21,11 +21,10 @@ namespace editor::impl {
 			void RefreshPanel() override;
 
 		private slots:
-			void OnAmbientLightColorChanged(glm::vec3 color);
+			void OnLightPositionChanged(glm::vec3 position);
+			void OnLightColorChanged(glm::vec3 color);
 			void OnAmbientLightIntensityChanged(double intensity);
-			void OnDirectionalLightPositionChanged(glm::vec3 position);
-			void OnDirectionalLightColorChanged(glm::vec3 color);
-			void OnDirectionalLightIntensityChanged(double intensity);
+			void OnDiffuseLightIntensityChanged(double intensity);
 
 		private:
 			void InitConnections();
@@ -33,14 +32,11 @@ namespace editor::impl {
 		private:
 			std::shared_ptr<pawn::engine::Environment> m_Environment;
 
-			QGroupBox* m_AmbientLightGroupBox;
-			Double3Widget* m_AmbientLightColor;
+			QGroupBox* m_GroupBox;
+			Double3Widget* m_LightPosition;
+			Double3Widget* m_LightColor;
 			DoubleLabelWidget* m_AmbientLightIntensity;
-
-			QGroupBox* m_DirectionalLightGroupBox;
-			Double3Widget* m_DirectionalLightPosition;
-			Double3Widget* m_DirectionalLightColor;
-			DoubleLabelWidget* m_DirectionalLightIntensity;
+			DoubleLabelWidget* m_DiffuseLightIntensity;
 	};
 
 }
