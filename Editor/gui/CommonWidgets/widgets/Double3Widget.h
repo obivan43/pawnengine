@@ -6,7 +6,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QDoubleSpinBox>
 
-namespace editor::impl {
+namespace editor {
 
 	class Double3Widget : public QWidget {
 			Q_OBJECT

@@ -3,7 +3,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-namespace editor::impl {
+namespace editor {
 
 	Double3Widget::Double3Widget(const QString& label, glm::vec3 value, QWidget* parent) : QWidget(parent), m_ValueCache(value) {
 		QHBoxLayout* layout = new QHBoxLayout(this);
