@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Double3Widget.h"
+#include "Editor/gui/CommonWidgets/widgets/Double3Widget.h"
+
 #include "PawnEngine/engine/GameEntity.h"
 #include "PawnEngine/engine/components/Texture2DComponent.h"
 

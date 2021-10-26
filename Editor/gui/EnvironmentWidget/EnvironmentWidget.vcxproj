@@ -144,6 +144,9 @@
     <ProjectReference Include="..\..\..\Core\PawnUtils\PawnUtils.vcxproj">
       <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\CommonWidgets\CommonWidgets.vcxproj">
+      <Project>{d0cb28dd-d0bb-484a-8eb3-d67c6a98c164}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="widget\EnvironmentWidget.h" />
@@ -151,11 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="widget\EnvironmentWidget.cpp" />
-    <ClCompile Include="widget\impl\DoubleLabelWidget.cpp" />
     <ClCompile Include="widget\impl\EnvironmentWidgetImpl.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="widget\impl\DoubleLabelWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

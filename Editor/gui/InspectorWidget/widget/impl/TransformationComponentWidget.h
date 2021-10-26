@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Double3Widget.h"
+#include "Editor/gui/CommonWidgets/widgets/Double3Widget.h"
 
 #include "PawnEngine/engine/components/TransformationComponent.h"
 

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "DoubleLabelWidget.h"
-
+#include "Editor/gui/CommonWidgets/widgets/Double3Widget.h"
+#include "Editor/gui/CommonWidgets/widgets/DoubleLabelWidget.h"
 #include "Editor/gui/EnvironmentWidget/widget/EnvironmentWidget.h"
-#include "Editor/gui/InspectorWidget/widget/impl/Double3Widget.h"
+
 
 #include <QDoubleSpinBox>
 #include <QLabel>

@@ -1,12 +1,10 @@
 #pragma once
 
-#include "glm.hpp"
-
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QDoubleSpinBox>
 
-namespace editor::impl {
+namespace editor {
 
 	class DoubleLabelWidget : public QWidget {
 			Q_OBJECT

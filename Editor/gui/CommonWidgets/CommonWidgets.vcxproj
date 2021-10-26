@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0772E707-170E-4F4B-971E-38089BB728A0}</ProjectGuid>
+    <ProjectGuid>{D0CB28DD-D0BB-484A-8EB3-D67C6A98C164}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
@@ -57,14 +57,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutDir>$(ProjectDir)\bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\GeneratedFiles\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(SolutionDir)Core\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(SolutionDir)Core\;$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -83,7 +85,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(SolutionDir)Core\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\spdlog-1.8.2\include\;$(SolutionDir)ThirdParty\glm\include;$(SolutionDir);$(SolutionDir)Core\;$(SolutionDir)ThirdParty\lua\include;$(SolutionDir)ThirdParty\sol2-3.2.2\single\include\sol;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LOG_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
@@ -127,34 +129,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="widget\impl\CameraComponentWidget.cpp" />
-    <ClCompile Include="widget\impl\CameraComponentWidgetItem.cpp" />
-    <ClCompile Include="widget\impl\MeshComponentWidget.cpp" />
-    <ClCompile Include="widget\impl\MeshComponentWidgetItem.cpp" />
-    <ClCompile Include="widget\impl\InspectorWidgetImpl.cpp" />
-    <ClCompile Include="widget\impl\NewComponentWidget.cpp" />
-    <ClCompile Include="widget\impl\ScriptComponentWidget.cpp" />
-    <ClCompile Include="widget\impl\ScriptComponentWidgetItem.cpp" />
-    <ClCompile Include="widget\impl\SelectComponentWidget.cpp" />
-    <ClCompile Include="widget\impl\TagComponentWidget.cpp" />
-    <ClCompile Include="widget\impl\TagComponentWidgetItem.cpp" />
-    <ClCompile Include="widget\impl\Texture2DComponentWidget.cpp" />
-    <ClCompile Include="widget\impl\Texture2DComponentWidgetItem.cpp" />
-    <ClCompile Include="widget\impl\TransformationComponentWidget.cpp" />
-    <ClCompile Include="widget\impl\TransformationComponentWidgetItem.cpp" />
-    <ClCompile Include="widget\InspectorWidget.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="widget\InspectorWidget.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="widget\impl\TransformationComponentWidgetItem.h" />
-    <QtMoc Include="widget\impl\TransformationComponentWidget.h" />
-    <QtMoc Include="widget\impl\TagComponentWidgetItem.h" />
-    <QtMoc Include="widget\impl\InspectorWidgetImpl.h" />
-    <QtMoc Include="widget\impl\MeshComponentWidgetItem.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\Core\PawnEngine\PawnEngine.vcxproj">
       <Project>{550dbb28-816c-4cc6-b90c-564891bd8c99}</Project>
     </ProjectReference>
@@ -170,37 +144,16 @@
     <ProjectReference Include="..\..\..\Core\PawnUtils\PawnUtils.vcxproj">
       <Project>{a85c2813-3ee7-42f9-97ec-889534499250}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\CommonWidgets\CommonWidgets.vcxproj">
-      <Project>{d0cb28dd-d0bb-484a-8eb3-d67c6a98c164}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="widget\impl\CameraComponentWidgetItem.h" />
+    <ClCompile Include="widgets\Double3Widget.cpp" />
+    <ClCompile Include="widgets\DoubleLabelWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="widget\impl\CameraComponentWidget.h" />
+    <QtMoc Include="widgets\DoubleLabelWidget.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="widget\impl\TagComponentWidget.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="widget\impl\MeshComponentWidget.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="widget\impl\ScriptComponentWidget.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="widget\impl\ScriptComponentWidgetItem.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="widget\impl\NewComponentWidget.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="widget\impl\SelectComponentWidget.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="widget\impl\Texture2DComponentWidget.h" />
-    <QtMoc Include="widget\impl\Texture2DComponentWidgetItem.h" />
+    <QtMoc Include="widgets\Double3Widget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
