@@ -129,6 +129,8 @@
   <ItemGroup>
     <ClCompile Include="widget\impl\CameraComponentWidget.cpp" />
     <ClCompile Include="widget\impl\CameraComponentWidgetItem.cpp" />
+    <ClCompile Include="widget\impl\DirectionalLightWidget.cpp" />
+    <ClCompile Include="widget\impl\DirectionalLightWidgetItem.cpp" />
     <ClCompile Include="widget\impl\MeshComponentWidget.cpp" />
     <ClCompile Include="widget\impl\MeshComponentWidgetItem.cpp" />
     <ClCompile Include="widget\impl\InspectorWidgetImpl.cpp" />
@@ -201,6 +203,10 @@
   <ItemGroup>
     <QtMoc Include="widget\impl\Texture2DComponentWidget.h" />
     <QtMoc Include="widget\impl\Texture2DComponentWidgetItem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="widget\impl\DirectionalLightWidget.h" />
+    <QtMoc Include="widget\impl\DirectionalLightWidgetItem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

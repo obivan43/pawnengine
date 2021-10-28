@@ -12,9 +12,22 @@ struct PS_INPUT
 	float3 worldPosition : WorldPosition;
 };
 
+struct DirectionaLight
+{
+	float4 ambient;
+	float4 diffuse;
+	float4 specular;
+	float4 direction;
+};
+
 cbuffer Texture2DCB : register(b2)
 {
 	float4 color;
+};
+
+cbuffer DirectionalLightCB : register(b3)
+{
+	DirectionaLight directionalLight;
 };
 
 float4 main(PS_INPUT input) : SV_Target
