@@ -15,7 +15,7 @@
 
 namespace pawn::engine {
 
-	GameScene::GameScene() : m_ActiveCamera(nullptr), m_ActiveCameraView(glm::mat4(1.0f)), m_Environment(new Environment()) {}
+	GameScene::GameScene() : m_ActiveCamera(nullptr), m_ActiveCameraView(glm::mat4(1.0f)) {}
 
 	GameEntity GameScene::CreateEntity(const std::string& name) {
 		const entt::entity entityID = m_EnttRegistry.create();
@@ -45,7 +45,6 @@ namespace pawn::engine {
 		m_EnttRegistry.clear();
 		m_ActiveCamera = nullptr;
 		m_ActiveCameraView = glm::mat4(1.0f);
-		m_Environment.reset(new Environment());
 	}
 
 	void GameScene::FindActiveCamera() {
@@ -111,7 +110,7 @@ namespace pawn::engine {
 
 	void GameScene::OnRender(std::shared_ptr<Renderer>& renderer) {
 		if (renderer.get() && m_ActiveCamera) {
-			renderer->BeginScene(*m_ActiveCamera, m_ActiveCameraView, m_Environment);
+			renderer->BeginScene(*m_ActiveCamera, m_ActiveCameraView);
 
 			auto texturedMeshGroup = m_EnttRegistry.view<TransformationComponent, MeshComponent, Texture2DComponent>();
 			for (auto& entity : texturedMeshGroup) {

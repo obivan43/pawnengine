@@ -12,14 +12,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\components\CameraComponent.h" />
-    <ClInclude Include="engine\components\LightComponent.h" />
+    <ClInclude Include="engine\components\DirectionalLightComponent.h" />
     <ClInclude Include="engine\components\MeshComponent.h" />
     <ClInclude Include="engine\components\ScriptComponent.h" />
     <ClInclude Include="engine\components\TagComponent.h" />
     <ClInclude Include="engine\components\Texture2DComponent.h" />
     <ClInclude Include="engine\components\TransformationComponent.h" />
     <ClInclude Include="engine\data\AssimpLoader.h" />
-    <ClInclude Include="engine\data\Light.h" />
+    <ClInclude Include="engine\data\BaseLight.h" />
+    <ClInclude Include="engine\data\DirectionalLight.h" />
     <ClInclude Include="engine\data\Mesh.h" />
     <ClInclude Include="engine\data\MeshNodeData.h" />
     <ClInclude Include="engine\data\Vertex.h" />
@@ -59,14 +60,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="engine\components\CameraComponent.cpp" />
-    <ClCompile Include="engine\components\LightComponent.cpp" />
     <ClCompile Include="engine\components\MeshComponent.cpp" />
     <ClCompile Include="engine\components\ScriptComponent.cpp" />
+    <ClCompile Include="engine\components\DirectionalLightComponent.cpp" />
     <ClCompile Include="engine\components\TagComponent.cpp" />
     <ClCompile Include="engine\components\Texture2DComponent.cpp" />
     <ClCompile Include="engine\components\TransformationComponent.cpp" />
     <ClCompile Include="engine\data\AssimpLoader.cpp" />
-    <ClCompile Include="engine\data\Light.cpp" />
+    <ClCompile Include="engine\data\DirectionalLight.cpp" />
     <ClCompile Include="engine\Engine.cpp" />
     <ClCompile Include="engine\EngineGlobals.cpp" />
     <ClCompile Include="engine\Environment.cpp" />

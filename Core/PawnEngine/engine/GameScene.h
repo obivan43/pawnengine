@@ -38,7 +38,6 @@ namespace pawn::engine {
 			void OnRender(std::shared_ptr<Renderer>& renderer);
 
 			inline entt::registry& GetRegistry() noexcept { return m_EnttRegistry; }
-			inline std::shared_ptr<Environment> GetEnvironment() noexcept { return m_Environment; }
 
 		private:
 			void FindActiveCamera();
@@ -48,8 +47,6 @@ namespace pawn::engine {
 
 			math::Camera* m_ActiveCamera;
 			glm::mat4 m_ActiveCameraView;
-
-			std::shared_ptr<Environment> m_Environment;
 	};
 
 }

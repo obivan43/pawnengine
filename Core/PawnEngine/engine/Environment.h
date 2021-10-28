@@ -1,7 +1,5 @@
 #pragma once
 
-#include "data/Light.h"
-
 namespace pawn::engine {
 
 	class Environment {
@@ -13,14 +11,6 @@ namespace pawn::engine {
 
 			Environment& operator=(const Environment& other) = delete;
 			Environment& operator=(Environment&& other) noexcept = delete;
-
-			inline Light& GetLight() noexcept { return m_Light; }
-			inline const Light& GetLight() const noexcept { return m_Light; }
-
-			inline void SetLight(const Light& light) noexcept { m_Light = light; }
-
-		private:
-			Light m_Light;
 		
 	};
 

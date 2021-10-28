@@ -20,7 +20,6 @@ namespace pawn::engine {
 			JsonSerializer& operator=(JsonSerializer&& other) noexcept = delete;
 
 			nlohmann::json JsonScene();
-			nlohmann::json JsonEnvironment();
 			nlohmann::json JsonEntities();
 			nlohmann::json JsonEntityIds();
 			nlohmann::json JsonEntityById(entt::entity id);
@@ -37,9 +36,6 @@ namespace pawn::engine {
 				std::shared_ptr<TextureManager>& textureManager
 			);
 			
-			void ParseJsonEnvironment(
-				const nlohmann::json& json
-			);
 
 		private:
 			std::shared_ptr<GameScene> m_Scene;

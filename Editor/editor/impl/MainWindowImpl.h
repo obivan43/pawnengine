@@ -7,7 +7,6 @@
 #include "gui/HierarchyWidget/widget/HierarchyWidget.h"
 #include "gui/InspectorWidget/widget/InspectorWidget.h"
 #include "gui/EngineViewWidget/widget/EngineViewWidget.h"
-#include "gui/EnvironmentWidget/widget/EnvironmentWidget.h"
 
 #include "gui/QtAdvancedDocking/docking/DockManager.h"
 
@@ -52,7 +51,6 @@ namespace editor::impl {
 			HierarchyWidget* m_Hierarchy;
 			InspectorWidget* m_Inspector;
 			EngineViewWidget* m_EngineView;
-			EnvironmentWidget* m_Environment;
 			QMenu* m_FileMenu;
 			QMenu* m_ViewMenu;
 			QMenu* m_EngineMenu;

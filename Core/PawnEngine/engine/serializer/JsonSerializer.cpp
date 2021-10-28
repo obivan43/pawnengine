@@ -16,39 +16,8 @@ namespace pawn::engine {
 		nlohmann::json jsonScene;
 		
 		jsonScene["entities"] = JsonEntities();
-		jsonScene["environment"] = JsonEnvironment();
 
 		return jsonScene;
-	}
-
-	nlohmann::json JsonSerializer::JsonEnvironment() {
-		nlohmann::json json;
-
-		const Light& light = m_Scene->GetEnvironment()->GetLight();
-		json = {  
-			{
-				"lightPosition", {
-						{ "x", light.GetLightPosition().x },
-						{ "y", light.GetLightPosition().y },
-						{ "z", light.GetLightPosition().z }
-				}
-			},
-			{
-				"lightColor", {
-						{ "x", light.GetLightColor().x },
-						{ "y", light.GetLightColor().y },
-						{ "z", light.GetLightColor().z }
-				}
-			},
-			{
-				"ambientLightIntensity", light.GetAmbientIntensity()
-			},
-			{
-				"diffuseIntensity", light.GetDiffuseIntensity()
-			}
-		};
-
-		return json;
 	}
 
 	nlohmann::json JsonSerializer::JsonEntities() {
@@ -185,10 +154,6 @@ namespace pawn::engine {
 		if (json.contains("entities")) {
 			ParseJsonEntities(json["entities"], meshManager, textureManager);
 		}
-
-		if (json.contains("environment")) {
-			ParseJsonEnvironment(json["environment"]);
-		}
 	}
 
 	void JsonSerializer::ParseJsonEntities(
@@ -254,35 +219,6 @@ namespace pawn::engine {
 					texture2DComponent.Color.z = element["texture2D_component"]["color"]["z"].get<float>();
 				}
 			}
-		}
-	}
-
-	void JsonSerializer::ParseJsonEnvironment(const nlohmann::json& json) {
-		Light& light = m_Scene->GetEnvironment()->GetLight();
-		if (json.contains("lightPosition")) {
-			glm::vec3 position;
-			position.x = json["lightPosition"]["x"].get<float>();
-			position.y = json["lightPosition"]["y"].get<float>();
-			position.z = json["lightPosition"]["z"].get<float>();
-			light.SetLightPosition(position);
-		}
-
-		if (json.contains("lightColor")) {
-			glm::vec3 color;
-			color.x = json["lightColor"]["x"].get<float>();
-			color.y = json["lightColor"]["y"].get<float>();
-			color.z = json["lightColor"]["z"].get<float>();
-			light.SetLightColor(color);
-		}
-
-		if (json.contains("ambientLightIntensity")) {
-			float intensity = json["ambientLightIntensity"].get<float>();
-			light.SetAmbientIntensity(intensity);
-		}
-
-		if (json.contains("directionalLightIntensity")) {
-			float intensity = json["directionalLightIntensity"].get<float>();
-			light.SetDiffuseIntensity(intensity);
 		}
 	}
 
