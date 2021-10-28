@@ -92,6 +92,8 @@ namespace pawn::engine {
 			static const std::initializer_list<graphics::GraphicsInputElement> inputElements = {
 				{ "Position", graphics::GraphicsInputElementType::Float3 },
 				{ "Normal", graphics::GraphicsInputElementType::Float3 },
+				{ "Tangent", graphics::GraphicsInputElementType::Float3 },
+				{ "Binormal", graphics::GraphicsInputElementType::Float3 },
 				{ "TextureCoordinate", graphics::GraphicsInputElementType::Float2 }
 			};
 
@@ -144,6 +146,16 @@ namespace pawn::engine {
 			vertex.Normal.x = mesh->mNormals[i].x;
 			vertex.Normal.y = mesh->mNormals[i].y;
 			vertex.Normal.z = mesh->mNormals[i].z;
+
+			if (mesh->HasTangentsAndBitangents()) {
+				vertex.Tangent.x = mesh->mTangents[i].x;
+				vertex.Tangent.y = mesh->mTangents[i].y;
+				vertex.Tangent.z = mesh->mTangents[i].z;
+
+				vertex.Binormal.x = mesh->mBitangents[i].x;
+				vertex.Binormal.y = mesh->mBitangents[i].y;
+				vertex.Binormal.z = mesh->mBitangents[i].z;
+			}
 
 			if (mesh->HasTextureCoords(0)) {
 				vertex.TextureCoordinate.x = mesh->mTextureCoords[0][i].x;

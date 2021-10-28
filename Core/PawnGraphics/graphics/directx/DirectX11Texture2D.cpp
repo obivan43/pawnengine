@@ -54,22 +54,19 @@ namespace pawn::graphics {
 		D3D11_TEXTURE2D_DESC textureDescription{};
 		textureDescription.Width = width;
 		textureDescription.Height = height;
-		textureDescription.MipLevels = 1;
+		textureDescription.MipLevels = 0;
 		textureDescription.ArraySize = 1;
 		textureDescription.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 		textureDescription.SampleDesc.Count = 1;
 		textureDescription.SampleDesc.Quality = 0;
 		textureDescription.Usage = D3D11_USAGE_DEFAULT;
-		textureDescription.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+		textureDescription.BindFlags = D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_RENDER_TARGET;
 		textureDescription.CPUAccessFlags = 0;
-		textureDescription.MiscFlags = 0;
-
-		D3D11_SUBRESOURCE_DATA resourceData{};
-		resourceData.pSysMem = data;
-		resourceData.SysMemPitch = width * sizeof(uint32_t);
+		textureDescription.MiscFlags = D3D11_RESOURCE_MISC_GENERATE_MIPS;
 
 		Microsoft::WRL::ComPtr<ID3D11Texture2D> texture;
-		DirectX11Call(device->CreateTexture2D(&textureDescription, &resourceData, &texture))
+		DirectX11Call(device->CreateTexture2D(&textureDescription, nullptr, &texture))
+		directX11Context->GetDeviceContext()->UpdateSubresource(texture.Get(), 0, nullptr, data, width * sizeof(uint32_t), 0);
 
 		CONSOLE_INFO("Texture2D created")
 
@@ -77,15 +74,35 @@ namespace pawn::graphics {
 		resourceViewDescription.Format = textureDescription.Format;
 		resourceViewDescription.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 		resourceViewDescription.Texture2D.MostDetailedMip = 0;
-		resourceViewDescription.Texture2D.MipLevels = 1;
+		resourceViewDescription.Texture2D.MipLevels = -1;
 
 		DirectX11Call(device->CreateShaderResourceView(texture.Get(), &resourceViewDescription, &m_TextureView))
+		directX11Context->GetDeviceContext()->GenerateMips(m_TextureView.Get());
 
 		D3D11_SAMPLER_DESC samplerDescription {};
-		samplerDescription.Filter = params.m_FilterMode == GraphicsTextureFilter::LINEAR ? D3D11_FILTER_MIN_MAG_MIP_LINEAR : D3D11_FILTER_MIN_MAG_MIP_POINT;
 		samplerDescription.AddressU = D3D11_TEXTURE_ADDRESS_WRAP;
 		samplerDescription.AddressV = D3D11_TEXTURE_ADDRESS_WRAP;
 		samplerDescription.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
+		samplerDescription.MipLODBias = 0.0f;
+		samplerDescription.MinLOD = 0.0f;
+		samplerDescription.MaxLOD = D3D11_FLOAT32_MAX;
+
+		switch (params.m_FilterMode) {
+			case GraphicsTextureFilter::LINEAR:
+				samplerDescription.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+				break;
+			case GraphicsTextureFilter::NEAREST:
+				samplerDescription.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
+				break;
+			case GraphicsTextureFilter::ANISOTROPIC: {
+				samplerDescription.Filter = D3D11_FILTER_ANISOTROPIC;
+				samplerDescription.MaxAnisotropy = D3D11_REQ_MAXANISOTROPY;
+			}
+				break;
+			default:
+				samplerDescription.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+				break;
+		}
 
 		DirectX11Call(device->CreateSamplerState(&samplerDescription, &m_Sampler))
 	}

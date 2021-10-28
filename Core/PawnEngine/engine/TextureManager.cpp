@@ -57,7 +57,7 @@ namespace pawn::engine {
 			width,
 			height,
 			bitsPerPixel,
-			{ graphics::GraphicsTextureWrap::CLAMP, graphics::GraphicsTextureFilter::LINEAR, graphics::GraphicsTextureFormat::RGBA }
+			{ graphics::GraphicsTextureWrap::CLAMP, graphics::GraphicsTextureFilter::ANISOTROPIC, graphics::GraphicsTextureFormat::RGBA }
 		);
 
 		utils::StbImageLoader::Free(data);

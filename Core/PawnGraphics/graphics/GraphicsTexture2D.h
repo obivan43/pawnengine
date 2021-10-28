@@ -17,7 +17,8 @@ namespace pawn::graphics {
 
 	enum class GraphicsTextureFilter {
 		LINEAR,
-		NEAREST
+		NEAREST,
+		ANISOTROPIC
 	};
 
 	enum class GraphicsTextureFormat {

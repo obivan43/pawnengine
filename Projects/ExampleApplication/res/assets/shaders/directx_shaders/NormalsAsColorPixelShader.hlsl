@@ -2,6 +2,8 @@ struct PS_INPUT
 {
 	float4 position : SV_Position;
 	float3 normal : Normal;
+	float3 tangent : Tangent;
+	float3 binormal : Binormal;
 	float2 texcoord : TextureCoordinate;
 	float3 worldPosition : WorldPosition;
 };
