@@ -17,6 +17,19 @@ namespace editor::impl {
 
 				void SetDirectionalLight(pawn::engine::DirectionalLightComponent* directionalLight);
 
+			private slots:
+				void OnAmbientChanged(glm::vec3);
+				void OnDeffuseChanged(glm::vec3);
+				void OnSpecularChanged(glm::vec3);
+				void OnDirectionChanged(glm::vec3);
+
+				void OnAmbientIntensityChanged(double);
+				void OnDeffuseIntensityChanged(double);
+				void OnSpecularIntensityChanged(double);
+
+			private:
+				void InitConnections();
+
 			private:
 				pawn::engine::DirectionalLightComponent* m_DirectionalLight;
 				Double3Widget* m_Ambient;

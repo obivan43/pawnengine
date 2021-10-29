@@ -30,6 +30,7 @@ namespace editor::impl {
 		InitCameraComponent();
 		InitScriptComponent();
 		InitTexture2DComponent();
+		InitDirectionalLightComponent();
 		InitConnections();
 
 		const uint32_t transfromationUpdateRate = 32;
@@ -91,6 +92,14 @@ namespace editor::impl {
 		m_InspectorPanel->setItemWidget(m_Texture2DComponentWidgetItem->GetWrapper(), 0, m_Texture2DComponentWidgetItem->GetWidget());
 	}
 
+	void InspectorWidgetImpl::InitDirectionalLightComponent() {
+		m_DirectionalLightComponentWidgetItem = new DirectionalLightWidgetItem(m_InspectorPanel);
+		m_DirectionalLightComponentWidgetItem->setHidden(true);
+
+		m_InspectorPanel->addTopLevelItem(m_DirectionalLightComponentWidgetItem);
+		m_InspectorPanel->setItemWidget(m_DirectionalLightComponentWidgetItem->GetWrapper(), 0, m_DirectionalLightComponentWidgetItem->GetWidget());
+	}
+
 	void InspectorWidgetImpl::OnNewComponentAdded(ComponentsEnum id) {
 		ForceUpdate();
 
@@ -118,6 +127,7 @@ namespace editor::impl {
 		m_CameraComponentWidgetItem->SetEntity(&m_SelectedEntity);
 		m_ScriptComponentInspectorWidgetItem->SetEntity(&m_SelectedEntity);
 		m_Texture2DComponentWidgetItem->SetEntity(&m_SelectedEntity);
+		m_DirectionalLightComponentWidgetItem->SetEntity(&m_SelectedEntity);
 	}
 
 	void InspectorWidgetImpl::UpdateTransformation() {
@@ -141,6 +151,9 @@ namespace editor::impl {
 
 			bool IsTexture2DComponentExitst{ m_SelectedEntity.HasComponent<pawn::engine::Texture2DComponent>() };
 			m_Texture2DComponentWidgetItem->setHidden(!IsTexture2DComponentExitst);
+
+			bool IsDirectionalLightComponentExitst{ m_SelectedEntity.HasComponent<pawn::engine::DirectionalLightComponent>() };
+			m_DirectionalLightComponentWidgetItem->setHidden(!IsDirectionalLightComponentExitst);
 		}
 		else {
 			m_NewComponentWidget->setHidden(true);
@@ -150,6 +163,7 @@ namespace editor::impl {
 			m_CameraComponentWidgetItem->setHidden(true);
 			m_ScriptComponentInspectorWidgetItem->setHidden(true);
 			m_Texture2DComponentWidgetItem->setHidden(true);
+			m_DirectionalLightComponentWidgetItem->setHidden(true);
 		}
 	}
 

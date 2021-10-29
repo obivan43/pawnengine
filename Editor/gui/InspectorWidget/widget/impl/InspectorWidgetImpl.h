@@ -8,6 +8,7 @@
 #include "NewComponentWidget.h"
 #include "SelectComponentWidget.h"
 #include "Texture2DComponentWidgetItem.h"
+#include "DirectionalLightWidgetItem.h"
 
 #include "Editor/gui/InspectorWidget/widget/InspectorWidget.h"
 
@@ -35,6 +36,7 @@ namespace editor::impl {
 			void InitConnections();
 			void InitScriptComponent();
 			void InitTexture2DComponent();
+			void InitDirectionalLightComponent();
 
 		public slots:
 			void Update();
@@ -56,6 +58,7 @@ namespace editor::impl {
 			CameraComponentWidgetItem* m_CameraComponentWidgetItem;
 			ScriptComponentWidgetItem* m_ScriptComponentInspectorWidgetItem;
 			Texture2DComponentWidgetItem* m_Texture2DComponentWidgetItem;
+			DirectionalLightWidgetItem* m_DirectionalLightComponentWidgetItem;
 
 			pawn::engine::GameEntity m_SelectedEntity;
 	};

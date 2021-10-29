@@ -47,6 +47,7 @@ namespace pawn::engine {
 
 			math::Camera* m_ActiveCamera;
 			glm::mat4 m_ActiveCameraView;
+			glm::vec3 m_ActiveCameraEyePosition;
 	};
 
 }

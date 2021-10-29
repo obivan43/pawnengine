@@ -3,6 +3,7 @@
 cbuffer TransformationCB : register(b0)
 {
 	matrix transformation;
+	matrix inverseTransposeTransformation;
 };
 
 cbuffer ViewProjectionCB : register(b1) 
@@ -37,7 +38,7 @@ VS_OUT main(
 	result.texcoord = texcoord;
 	
 	result.position = mul(float4(position, 1.0f), MVP);
-	result.normal = normalize(mul(float4(normal, 0.0f), transformation));
+	result.normal = normalize(mul(float4(normal, 0.0f), inverseTransposeTransformation));
 	result.worldPosition = mul(float4(position, 1.0f), transformation).xyz;
 	
 	return result;

@@ -16,7 +16,7 @@ namespace editor::impl {
 
 	void DirectionalLightWidgetItem::SetEntity(pawn::engine::GameEntity* entity) {
 		m_Entity = entity;
-		if (m_Entity && !m_Entity->IsNull() && m_Entity->IsValid()) {
+		if (m_Entity && !m_Entity->IsNull() && m_Entity->IsValid() && m_Entity->HasComponent<pawn::engine::DirectionalLightComponent>()) {
 			m_DirectionalLightWidget->SetDirectionalLight(&m_Entity->GetComponent<pawn::engine::DirectionalLightComponent>());
 		}
 	}
