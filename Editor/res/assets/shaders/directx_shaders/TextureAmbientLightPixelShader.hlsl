@@ -42,19 +42,15 @@ void ComputeDirectionalLight(
 	out float4 diffuse,
 	out float4 spec
 ) {
-	float3 lightVec = -light.direction.xyz;
+	float3 lightVec = normalize(-light.direction.xyz);
 	ambient = float4(light.ambient * light.ambientIntensity, 0.0f);
 	
-	float diffuseFactor = dot(lightVec, normal);
-[flatten]
-	if (diffuseFactor > 0.0f)
-	{
-		diffuse = float4(diffuseFactor * light.diffuseIntensity * light.diffuse, 1.0f);
+	float diffuseFactor = max(dot(lightVec, normal), 0.0f);
+	diffuse = float4(diffuseFactor * light.diffuseIntensity * light.diffuse, 1.0f);
 		
-		float3 v = reflect(-lightVec, normal);
-		float specFactor = pow(max(dot(v, toEye), 0.0f), 32.0f);
-		spec = float4(specFactor * light.specularIntensity * light.specular, 1.0f);
-	}
+	float3 v = reflect(-lightVec, normal);
+	float specFactor = diffuseFactor * pow(max(dot(v, toEye), 0.0f), 16.0f);
+	spec = float4(specFactor * light.specularIntensity * light.specular, 1.0f);
 }
 
 float4 main(PS_INPUT input) : SV_Target

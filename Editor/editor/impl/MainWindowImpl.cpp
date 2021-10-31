@@ -137,6 +137,9 @@ namespace editor::impl {
 
 	void MainWindowImpl::Pause() {
 		m_Engine->GetScriptEngine()->SetIsPaused(true);
+		m_Hierarchy->setEnabled(true);
+		m_Inspector->setEnabled(true);
+		m_FileMenu->setEnabled(true);
 	}
 
 	void MainWindowImpl::Reset() {
