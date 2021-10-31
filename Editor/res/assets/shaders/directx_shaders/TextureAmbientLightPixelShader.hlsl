@@ -42,10 +42,6 @@ void ComputeDirectionalLight(
 	out float4 diffuse,
 	out float4 spec
 ) {
-	ambient = float4(0.0f, 0.0f, 0.0f, 0.0f);
-	diffuse = float4(0.0f, 0.0f, 0.0f, 0.0f);
-	spec = float4(0.0f, 0.0f, 0.0f, 0.0f);
-
 	float3 lightVec = -light.direction.xyz;
 	ambient = float4(light.ambient * light.ambientIntensity, 0.0f);
 	
@@ -53,11 +49,11 @@ void ComputeDirectionalLight(
 [flatten]
 	if (diffuseFactor > 0.0f)
 	{
-		diffuse = float4(diffuseFactor * light.diffuseIntensity * light.diffuse, 0.0f);
+		diffuse = float4(diffuseFactor * light.diffuseIntensity * light.diffuse, 1.0f);
 		
-		//float3 v = reflect(-lightVec, normal);
-		//float specFactor = pow(max(dot(v, toEye), 0.0f), 32.0f);
-		//spec = float4(specFactor * light.specularIntensity * light.specular, 0.0f);
+		float3 v = reflect(-lightVec, normal);
+		float specFactor = pow(max(dot(v, toEye), 0.0f), 32.0f);
+		spec = float4(specFactor * light.specularIntensity * light.specular, 1.0f);
 	}
 }
 
@@ -66,10 +62,12 @@ float4 main(PS_INPUT input) : SV_Target
 	float3 toEye = normalize(eyePosition.xyz - input.worldPosition);
 	float4 samplerColor = tex.Sample(sampl, input.texcoord) * color;
 
-	float4 A, D, S;
+	float4 A = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	float4 D = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	float4 S = float4(0.0f, 0.0f, 0.0f, 0.0f);
 	ComputeDirectionalLight(directionalLight, input.normal, toEye, A, D, S);
 	
 	float4 resultLight = A + D + S;
 	
-	return samplerColor * resultLight;
+	return samplerColor * saturate(resultLight);
 }

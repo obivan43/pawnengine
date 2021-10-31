@@ -9,7 +9,6 @@ namespace pawn::engine {
 		m_AmbientIntensity = 0.2f;
 		m_DiffuseIntensity = 1.0f;
 		m_SpecularIntensity = 1.0f;
-		m_LightType = LightType::DirectionalLight;
 	}
 
 }

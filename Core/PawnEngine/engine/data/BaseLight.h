@@ -4,12 +4,6 @@
 
 namespace pawn::engine {
 
-	enum class LightType {
-		DirectionalLight,
-		PointLight,
-		SpotLight
-	};
-
 	class BaseLight {
 
 		protected:
@@ -30,8 +24,6 @@ namespace pawn::engine {
 			inline const glm::vec3& GetSpecular() const noexcept { return m_Specular; }
 			inline float GetSpecularIntensity() const noexcept { return m_SpecularIntensity; }
 
-			inline const LightType GetLightType() const noexcept { return m_LightType; }
-
 			inline void SetAmbient(const glm::vec3& ambient) noexcept { m_Ambient = ambient; }
 			inline void SetDiffuse(const glm::vec3& diffuse) noexcept { m_Diffuse = diffuse; }
 			inline void SetSpecular(const glm::vec3& specular) noexcept { m_Specular = specular; }
@@ -49,8 +41,6 @@ namespace pawn::engine {
 
 			glm::vec3 m_Specular;
 			float m_SpecularIntensity;
-
-			LightType m_LightType;
 	};
 
 }
