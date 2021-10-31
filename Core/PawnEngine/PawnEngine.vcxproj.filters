@@ -94,9 +94,6 @@
     <ClInclude Include="engine\EngineGlobals.h">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="engine\Environment.h">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="engine\data\AssimpLoader.h">
       <Filter>engine\data</Filter>
     </ClInclude>
@@ -190,9 +187,6 @@
       <Filter>engine\components</Filter>
     </ClCompile>
     <ClCompile Include="engine\EngineGlobals.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\Environment.cpp">
       <Filter>engine</Filter>
     </ClCompile>
     <ClCompile Include="engine\data\AssimpLoader.cpp">

@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-#include "Environment.h"
 #include "glm.hpp"
 
 #include "PawnMath/math/Camera.h"
