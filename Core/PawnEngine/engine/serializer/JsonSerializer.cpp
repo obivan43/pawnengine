@@ -7,6 +7,7 @@
 #include "PawnEngine/engine/components/TagComponent.h"
 #include "PawnEngine/engine/components/Texture2DComponent.h"
 #include "PawnEngine/engine/components/TransformationComponent.h"
+#include "PawnEngine/engine/components/DirectionalLightComponent.h"
 
 namespace pawn::engine {
 
@@ -16,39 +17,8 @@ namespace pawn::engine {
 		nlohmann::json jsonScene;
 		
 		jsonScene["entities"] = JsonEntities();
-		jsonScene["environment"] = JsonEnvironment();
 
 		return jsonScene;
-	}
-
-	nlohmann::json JsonSerializer::JsonEnvironment() {
-		nlohmann::json json;
-
-		const Light& light = m_Scene->GetEnvironment()->GetLight();
-		json = {  
-			{
-				"lightPosition", {
-						{ "x", light.GetLightPosition().x },
-						{ "y", light.GetLightPosition().y },
-						{ "z", light.GetLightPosition().z }
-				}
-			},
-			{
-				"lightColor", {
-						{ "x", light.GetLightColor().x },
-						{ "y", light.GetLightColor().y },
-						{ "z", light.GetLightColor().z }
-				}
-			},
-			{
-				"ambientLightIntensity", light.GetAmbientIntensity()
-			},
-			{
-				"diffuseIntensity", light.GetDiffuseIntensity()
-			}
-		};
-
-		return json;
 	}
 
 	nlohmann::json JsonSerializer::JsonEntities() {
@@ -173,6 +143,40 @@ namespace pawn::engine {
 			json["has_texture2D_component"] = false;
 		}
 
+		if (entity.HasComponent<DirectionalLightComponent>()) {
+			DirectionalLightComponent& directionalLight = entity.GetComponent<DirectionalLightComponent>();
+			const DirectionalLight& light = directionalLight.Light;
+			json["has_directional_light_component"] = true;
+			json["directional_light_component"] = {
+				{ "ambient", {
+					{ "x", light.GetAmbient().x },
+					{ "y", light.GetAmbient().y },
+					{ "z", light.GetAmbient().z }
+				} },
+				{ "ambient_intensity", light.GetAmbientIntensity() },
+				{ "diffuse", {
+					{ "x", light.GetDiffuse().x },
+					{ "y", light.GetDiffuse().y },
+					{ "z", light.GetDiffuse().z }
+				} },
+				{ "diffuse_intensity", light.GetDiffuseIntensity() },
+				{ "specular", {
+					{ "x", light.GetSpecular().x },
+					{ "y", light.GetSpecular().y },
+					{ "z", light.GetSpecular().z }
+				} },
+				{ "specular_intensity", light.GetSpecularIntensity() },
+				{ "direction", {
+					{ "x", light.GetDirection().x },
+					{ "y", light.GetDirection().y },
+					{ "z", light.GetDirection().z }
+				} },
+			};
+		}
+		else {
+			json["has_directional_light_component"] = false;
+		}
+
 		return json;
 	}
 
@@ -184,10 +188,6 @@ namespace pawn::engine {
 
 		if (json.contains("entities")) {
 			ParseJsonEntities(json["entities"], meshManager, textureManager);
-		}
-
-		if (json.contains("environment")) {
-			ParseJsonEnvironment(json["environment"]);
 		}
 	}
 
@@ -254,35 +254,41 @@ namespace pawn::engine {
 					texture2DComponent.Color.z = element["texture2D_component"]["color"]["z"].get<float>();
 				}
 			}
-		}
-	}
 
-	void JsonSerializer::ParseJsonEnvironment(const nlohmann::json& json) {
-		Light& light = m_Scene->GetEnvironment()->GetLight();
-		if (json.contains("lightPosition")) {
-			glm::vec3 position;
-			position.x = json["lightPosition"]["x"].get<float>();
-			position.y = json["lightPosition"]["y"].get<float>();
-			position.z = json["lightPosition"]["z"].get<float>();
-			light.SetLightPosition(position);
-		}
+			if (element.contains("has_directional_light_component") && element["has_directional_light_component"].get<bool>()) {
+				DirectionalLightComponent& directionalLight = gameEntity.AddComponent<DirectionalLightComponent>();
+				DirectionalLight& light = directionalLight.Light;
 
-		if (json.contains("lightColor")) {
-			glm::vec3 color;
-			color.x = json["lightColor"]["x"].get<float>();
-			color.y = json["lightColor"]["y"].get<float>();
-			color.z = json["lightColor"]["z"].get<float>();
-			light.SetLightColor(color);
-		}
+				glm::vec3 buffer;
 
-		if (json.contains("ambientLightIntensity")) {
-			float intensity = json["ambientLightIntensity"].get<float>();
-			light.SetAmbientIntensity(intensity);
-		}
+				buffer.x = element["directional_light_component"]["ambient"]["x"].get<float>();
+				buffer.y = element["directional_light_component"]["ambient"]["y"].get<float>();
+				buffer.z = element["directional_light_component"]["ambient"]["z"].get<float>();
 
-		if (json.contains("directionalLightIntensity")) {
-			float intensity = json["directionalLightIntensity"].get<float>();
-			light.SetDiffuseIntensity(intensity);
+				light.SetAmbient(buffer);
+
+				buffer.x = element["directional_light_component"]["diffuse"]["x"].get<float>();
+				buffer.y = element["directional_light_component"]["diffuse"]["y"].get<float>();
+				buffer.z = element["directional_light_component"]["diffuse"]["z"].get<float>();
+
+				light.SetDiffuse(buffer);
+
+				buffer.x = element["directional_light_component"]["specular"]["x"].get<float>();
+				buffer.y = element["directional_light_component"]["specular"]["y"].get<float>();
+				buffer.z = element["directional_light_component"]["specular"]["z"].get<float>();
+
+				light.SetSpecular(buffer);
+
+				buffer.x = element["directional_light_component"]["direction"]["x"].get<float>();
+				buffer.y = element["directional_light_component"]["direction"]["y"].get<float>();
+				buffer.z = element["directional_light_component"]["direction"]["z"].get<float>();
+
+				light.SetDirection(buffer);
+
+				light.SetAmbientIntensity(element["directional_light_component"]["ambient_intensity"].get<float>());
+				light.SetDiffuseIntensity(element["directional_light_component"]["diffuse_intensity"].get<float>());
+				light.SetSpecularIntensity(element["directional_light_component"]["specular_intensity"].get<float>());
+			}
 		}
 	}
 

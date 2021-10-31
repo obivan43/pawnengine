@@ -1,5 +1,7 @@
 #include "Renderer.h"
 
+#include "PawnMath/math/Functions.h"
+
 namespace pawn::engine {
 
 	void Renderer::SetShader(std::shared_ptr<graphics::GraphicsContext>& context, const std::shared_ptr<graphics::GraphicsShader>& shader) {
@@ -9,12 +11,12 @@ namespace pawn::engine {
 		m_Transformation = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::ConstantBuffer);
 		m_ViewProjection = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::ConstantBuffer);
 		m_Texture2D = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::ConstantBuffer);
-		m_Environment = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::ConstantBuffer);
+		m_Light = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::ConstantBuffer);
 
-		m_Transformation->Init(m_Context, nullptr, 1, sizeof(glm::mat4), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
+		m_Transformation->Init(m_Context, nullptr, 1, sizeof(TransfromCB), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_ViewProjection->Init(m_Context, nullptr, 1, sizeof(ViewProjectionCB), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_Texture2D->Init(m_Context, nullptr, 1, sizeof(Texture2DCB), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
-		m_Environment->Init(m_Context, nullptr, 1, sizeof(EnvironmentCB), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
+		m_Light->Init(m_Context, nullptr, 1, sizeof(LightCB), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
 	}
 
 	void Renderer::Init(const std::shared_ptr<graphics::GraphicsContext>& context, const std::shared_ptr<graphics::GraphicsAPI>& api, uint32_t width, uint32_t height) {
@@ -33,21 +35,20 @@ namespace pawn::engine {
 		m_ViewProjection->Bind(m_Context, 1);
 	}
 
-	void Renderer::BeginScene(math::Camera& camera, glm::mat4& view, std::shared_ptr<Environment> environment) {
-		BeginScene(camera, view);
+	void Renderer::UpdateLights(DirectionalLightComponent& directionalLight, const glm::vec3& eyePosition) {
+		DirectionalLightCB directionalLightCB {
+			directionalLight.Light.GetAmbient(),
+			directionalLight.Light.GetAmbientIntensity(),
+			directionalLight.Light.GetDiffuse(),
+			directionalLight.Light.GetDiffuseIntensity(),
+			directionalLight.Light.GetSpecular(),
+			directionalLight.Light.GetSpecularIntensity(),
+			directionalLight.Light.GetDirection()
+		};
 
-		if (environment.get()) {
-			const Light& light = environment->GetLight();
-			EnvironmentCB environmentCB{ 
-				light.GetLightPosition(),
-				light.GetAmbientIntensity(),
-				light.GetLightColor(),
-				light.GetDiffuseIntensity()
-			};
-
-			m_Environment->Update(m_Context, &environmentCB, 1, sizeof(EnvironmentCB));
-			m_Environment->Bind(m_Context, 3);
-		}
+		LightCB light{ directionalLightCB, eyePosition };
+		m_Light->Update(m_Context, &light, 1, sizeof(LightCB));
+		m_Light->Bind(m_Context, 3);
 	}
 
 	void Renderer::DrawMesh(TransformationComponent& transformationComponent, MeshComponent& meshComponent) {
@@ -59,7 +60,9 @@ namespace pawn::engine {
 				glm::mat4 transformation = transformationComponent.GetTransformation();
 				transformation *= meshNodeData.Transformation;
 
-				m_Transformation->Update(m_Context, &transformation, 1, sizeof(glm::mat4));
+				TransfromCB transfromCB{ transformation, math::inverseTranspose(transformation) };
+
+				m_Transformation->Update(m_Context, &transfromCB, 1, sizeof(TransfromCB));
 				m_Transformation->Bind(m_Context, 0);
 
 				m_GraphicsRenderer->DrawIndexed(m_Context, meshNodeData.IndexCount, meshNodeData.IndexShift, meshNodeData.VertexShift);

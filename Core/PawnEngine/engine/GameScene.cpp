@@ -15,7 +15,7 @@
 
 namespace pawn::engine {
 
-	GameScene::GameScene() : m_ActiveCamera(nullptr), m_ActiveCameraView(glm::mat4(1.0f)), m_Environment(new Environment()) {}
+	GameScene::GameScene() : m_ActiveCamera(nullptr), m_ActiveCameraView(glm::mat4(1.0f)), m_ActiveCameraEyePosition(glm::vec3(0.0)) {}
 
 	GameEntity GameScene::CreateEntity(const std::string& name) {
 		const entt::entity entityID = m_EnttRegistry.create();
@@ -45,7 +45,6 @@ namespace pawn::engine {
 		m_EnttRegistry.clear();
 		m_ActiveCamera = nullptr;
 		m_ActiveCameraView = glm::mat4(1.0f);
-		m_Environment.reset(new Environment());
 	}
 
 	void GameScene::FindActiveCamera() {
@@ -79,6 +78,7 @@ namespace pawn::engine {
 
 		m_ActiveCamera = activeCamera;
 		m_ActiveCameraView = pawn::math::cameraMatrix(cameraPosition, pitch, yaw);
+		m_ActiveCameraEyePosition = cameraPosition;
 	}
 
 	void GameScene::OnCreate(std::shared_ptr<ScriptEngine>& scriptEngine) {
@@ -111,7 +111,14 @@ namespace pawn::engine {
 
 	void GameScene::OnRender(std::shared_ptr<Renderer>& renderer) {
 		if (renderer.get() && m_ActiveCamera) {
-			renderer->BeginScene(*m_ActiveCamera, m_ActiveCameraView, m_Environment);
+			renderer->BeginScene(*m_ActiveCamera, m_ActiveCameraView);
+
+			auto directionalLights = m_EnttRegistry.view<DirectionalLightComponent>();
+			for (auto& entity : directionalLights) {
+				auto directionalLightComponent = directionalLights.get<DirectionalLightComponent>(entity);
+				renderer->UpdateLights(directionalLightComponent, m_ActiveCameraEyePosition);
+				break;
+			}
 
 			auto texturedMeshGroup = m_EnttRegistry.view<TransformationComponent, MeshComponent, Texture2DComponent>();
 			for (auto& entity : texturedMeshGroup) {

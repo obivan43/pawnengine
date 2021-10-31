@@ -29,6 +29,9 @@
     <Filter Include="widget\impl\texture">
       <UniqueIdentifier>{01265a2e-063f-401a-8b3f-516ff89df362}</UniqueIdentifier>
     </Filter>
+    <Filter Include="widget\impl\directional_light">
+      <UniqueIdentifier>{978a6b21-7f8b-4032-be0a-33622789098a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="widget\InspectorWidget.cpp">
@@ -79,6 +82,12 @@
     <ClCompile Include="widget\impl\Texture2DComponentWidgetItem.cpp">
       <Filter>widget\impl\texture</Filter>
     </ClCompile>
+    <ClCompile Include="widget\impl\DirectionalLightWidgetItem.cpp">
+      <Filter>widget\impl\directional_light</Filter>
+    </ClCompile>
+    <ClCompile Include="widget\impl\DirectionalLightWidget.cpp">
+      <Filter>widget\impl\directional_light</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="widget\InspectorWidget.h">
@@ -128,6 +137,12 @@
     </QtMoc>
     <QtMoc Include="widget\impl\Texture2DComponentWidgetItem.h">
       <Filter>widget\impl\texture</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\DirectionalLightWidgetItem.h">
+      <Filter>widget\impl\directional_light</Filter>
+    </QtMoc>
+    <QtMoc Include="widget\impl\DirectionalLightWidget.h">
+      <Filter>widget\impl\directional_light</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

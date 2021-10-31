@@ -12,6 +12,7 @@ namespace editor::impl {
 		ScriptComponent,
 		CameraComponent,
 		Texture2DComponent,
+		DirectionalLightComponent,
 		Unknown
 	};
 

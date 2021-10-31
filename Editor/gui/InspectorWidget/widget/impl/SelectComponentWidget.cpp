@@ -4,6 +4,7 @@
 #include "PawnEngine/engine/components/ScriptComponent.h"
 #include "PawnEngine/engine/components/CameraComponent.h"
 #include "PawnEngine/engine/components/Texture2DComponent.h"
+#include "PawnEngine/engine/components/DirectionalLightComponent.h"
 
 #include <QVBoxLayout>
 
@@ -43,6 +44,10 @@ namespace editor::impl {
 			componentsList.append("Texture2DComponent");
 		}
 
+		if (!m_Entity->HasComponent<pawn::engine::DirectionalLightComponent>()) {
+			componentsList.append("DirectionalLightComponent");
+		}
+
 		m_ListWidget->clear();
 		m_ListWidget->addItems(componentsList);
 	}
@@ -60,7 +65,8 @@ namespace editor::impl {
 			{ "MeshCompnent", ComponentsEnum::MeshComponent },
 			{ "ScriptComponent", ComponentsEnum::ScriptComponent },
 			{ "CameraComponent", ComponentsEnum::CameraComponent },
-			{ "Texture2DComponent", ComponentsEnum::Texture2DComponent }
+			{ "Texture2DComponent", ComponentsEnum::Texture2DComponent },
+			{ "DirectionalLightComponent", ComponentsEnum::DirectionalLightComponent }
 		};
 
 		ComponentsEnum componentID{ ComponentsEnum::Unknown };
@@ -81,6 +87,10 @@ namespace editor::impl {
 			case ComponentsEnum::Texture2DComponent:
 				m_Entity->AddComponent<pawn::engine::Texture2DComponent>();
 				componentID = ComponentsEnum::Texture2DComponent;
+				break;
+			case ComponentsEnum::DirectionalLightComponent:
+				m_Entity->AddComponent<pawn::engine::DirectionalLightComponent>();
+				componentID = ComponentsEnum::DirectionalLightComponent;
 				break;
 		}
 

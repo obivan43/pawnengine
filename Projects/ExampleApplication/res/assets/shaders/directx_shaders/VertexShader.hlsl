@@ -1,6 +1,9 @@
+#pragma pack_matrix(row_major)
+
 cbuffer TransformationCB : register(b0)
 {
 	matrix transformation;
+	matrix inverseTransposeTransformation;
 };
 
 cbuffer ViewProjectionCB : register(b1) 
@@ -26,18 +29,17 @@ VS_OUT main(
 	float3 binormal : Binormal,
 	float2 texcoord : TextureCoordinate
 ) {
-	matrix tView = transpose(view);
-	matrix tProjection = transpose(projection);
-	matrix tTransformation = transpose(transformation);
-
-	matrix MVP = mul(tTransformation, mul(tView, tProjection));
+	matrix MVP = mul(transformation, mul(view, projection));
+	
 	VS_OUT result;
-	result.position = mul(float4(position, 1.0f), MVP);
-	result.normal = normalize(mul(float4(normal, 0.0f), tTransformation)).xyz;
+
 	result.tangent = tangent;
 	result.binormal = binormal;
 	result.texcoord = texcoord;
-	result.worldPosition = mul(float4(position, 1.0f), tTransformation).xyz;
+	
+	result.position = mul(float4(position, 1.0f), MVP);
+	result.normal = normalize(mul(float4(normal, 0.0f), inverseTransposeTransformation));
+	result.worldPosition = mul(float4(position, 1.0f), transformation).xyz;
 	
 	return result;
 }

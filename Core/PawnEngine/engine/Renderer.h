@@ -5,6 +5,7 @@
 #include "components/MeshComponent.h"
 #include "components/Texture2DComponent.h"
 #include "components/TransformationComponent.h"
+#include "components/DirectionalLightComponent.h"
 
 #include "PawnGraphics/graphics/GraphicsAPI.h"
 #include "PawnGraphics/graphics/GraphicsContext.h"
@@ -12,6 +13,11 @@
 #include "PawnGraphics/graphics/GraphicsShader.h"
 
 namespace pawn::engine {
+
+	struct TransfromCB {
+		glm::mat4 transform;
+		glm::mat4 inserseTransposeTransform;
+	};
 
 	struct ViewProjectionCB {
 		glm::mat4 projection;
@@ -22,11 +28,19 @@ namespace pawn::engine {
 		glm::vec4 color;
 	};
 
-	struct EnvironmentCB {
-		glm::vec3 LightPosition;
-		float ambientLightIntensity;
-		glm::vec3 LightColor;
+	struct DirectionalLightCB {
+		glm::vec3 ambient;
+		float ambientIntensity;
+		glm::vec3 diffuse;
 		float diffuseIntensity;
+		glm::vec3 specular;
+		float specularIntensity;
+		alignas(16) glm::vec3 direction;
+	};
+
+	struct LightCB {
+		DirectionalLightCB directionalLight;
+		alignas(16) glm::vec3 eyePosition;
 	};
 
 	class Renderer {
@@ -48,7 +62,7 @@ namespace pawn::engine {
 			void SetShader(std::shared_ptr<graphics::GraphicsContext>& context, const std::shared_ptr<graphics::GraphicsShader>& shader);
 
 			void BeginScene(math::Camera& camera, glm::mat4& view);
-			void BeginScene(math::Camera& camera, glm::mat4& view, std::shared_ptr<Environment> environment);
+			void UpdateLights(DirectionalLightComponent& directionalLight, const glm::vec3& eyePosition);
 			void EndScene();
 
 			void DrawMesh(TransformationComponent& transformationComponent, MeshComponent& meshComponent);
@@ -58,7 +72,7 @@ namespace pawn::engine {
 			std::shared_ptr<graphics::GraphicsBuffer> m_Transformation;
 			std::shared_ptr<graphics::GraphicsBuffer> m_ViewProjection;
 			std::shared_ptr<graphics::GraphicsBuffer> m_Texture2D;
-			std::shared_ptr<graphics::GraphicsBuffer> m_Environment;
+			std::shared_ptr<graphics::GraphicsBuffer> m_Light;
 
 			std::shared_ptr<graphics::GraphicsContext> m_Context;
 			std::shared_ptr<graphics::GraphicsAPI> m_GraphicsAPI;

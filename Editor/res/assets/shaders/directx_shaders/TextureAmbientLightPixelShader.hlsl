@@ -12,10 +12,15 @@ struct PS_INPUT
 	float3 worldPosition : WorldPosition;
 };
 
-cbuffer ViewProjectionCB : register(b1)
+struct DirectionalLight
 {
-	matrix projection;
-	matrix view;
+	float3 ambient;
+	float ambientIntensity;
+	float3 diffuse;
+	float diffuseIntensity;
+	float3 specular;
+	float specularIntensity;
+	float4 direction;
 };
 
 cbuffer Texture2DCB : register(b2)
@@ -23,30 +28,46 @@ cbuffer Texture2DCB : register(b2)
 	float4 color;
 };
 
-cbuffer EnvironmentCB : register(b3)
+cbuffer LightCB : register(b3)
 {
-	float3 lightPosition;
-	float ambientIntensity;
-	
-	float3 lightColor;
-	float diffuseIntensity;
+	DirectionalLight directionalLight;
+	float4 eyePosition;
 };
+
+void ComputeDirectionalLight(
+	DirectionalLight light,
+	float3 normal,
+	float3 toEye,
+	out float4 ambient,
+	out float4 diffuse,
+	out float4 spec
+) {
+	float3 lightVec = -light.direction.xyz;
+	ambient = float4(light.ambient * light.ambientIntensity, 0.0f);
+	
+	float diffuseFactor = dot(lightVec, normal);
+[flatten]
+	if (diffuseFactor > 0.0f)
+	{
+		diffuse = float4(diffuseFactor * light.diffuseIntensity * light.diffuse, 1.0f);
+		
+		float3 v = reflect(-lightVec, normal);
+		float specFactor = pow(max(dot(v, toEye), 0.0f), 32.0f);
+		spec = float4(specFactor * light.specularIntensity * light.specular, 1.0f);
+	}
+}
 
 float4 main(PS_INPUT input) : SV_Target
 {
-	float3 samplerColor = tex.Sample(sampl, input.texcoord).xyz * color.xyz;
-	
-	float3 ambientLight = lightColor * ambientIntensity;
+	float3 toEye = normalize(eyePosition.xyz - input.worldPosition);
+	float4 samplerColor = tex.Sample(sampl, input.texcoord) * color;
 
-	float3 vetorToLight = normalize(lightPosition - input.worldPosition);
-	float3 diffuse = max(dot(vetorToLight, input.normal), 0);
-	float3 diffuseLight = diffuse * (lightColor * diffuseIntensity);
+	float4 A = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	float4 D = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	float4 S = float4(0.0f, 0.0f, 0.0f, 0.0f);
+	ComputeDirectionalLight(directionalLight, input.normal, toEye, A, D, S);
 	
-	float3 reflectionDirection = reflect(vetorToLight, input.normal);
-	float spec = pow(max(dot(-reflectionDirection, vetorToLight), 0.0f), 32.0f);
-	float3 specularLight = lightColor * (spec * float3(1.0f, 1.0f, 1.0f));
+	float4 resultLight = A + D + S;
 	
-	float3 light = ambientLight + diffuseLight + specularLight;
-	
-	return float4(samplerColor * light, 1.0);
+	return samplerColor * saturate(resultLight);
 }

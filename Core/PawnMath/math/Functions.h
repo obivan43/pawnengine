@@ -11,5 +11,5 @@ namespace pawn::math {
 	}
 
 	glm::mat4 cameraMatrix(const glm::vec3& cameraPosition, float pitch, float yaw);
-
+	glm::mat4 inverseTranspose(const glm::mat4& matrix);
 }
