@@ -160,16 +160,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="res\assets\shaders\directx_shaders\NormalsAsColorPixelShader.hlsl">
+    <FxCompile Include="res\assets\shaders\directx_shaders\NormalsAsColorPS.hlsl">
       <Filter>res\directx_shader</Filter>
     </FxCompile>
-    <FxCompile Include="res\assets\shaders\directx_shaders\VertexShader.hlsl">
+    <FxCompile Include="res\assets\shaders\directx_shaders\BasicVS.hlsl">
       <Filter>res\directx_shader</Filter>
     </FxCompile>
-    <FxCompile Include="res\assets\shaders\directx_shaders\TexturePixelShader.hlsl">
+    <FxCompile Include="res\assets\shaders\directx_shaders\RawTexturePS.hlsl">
       <Filter>res\directx_shader</Filter>
     </FxCompile>
-    <FxCompile Include="res\assets\shaders\directx_shaders\TextureAmbientLightPixelShader.hlsl">
+    <FxCompile Include="res\assets\shaders\directx_shaders\BasicPS.hlsl">
       <Filter>res\directx_shader</Filter>
     </FxCompile>
   </ItemGroup>

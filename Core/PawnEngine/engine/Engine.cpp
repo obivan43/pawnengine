@@ -40,11 +40,11 @@ namespace pawn::engine {
 		m_GraphicsAPI->SetClearColor(0.1f, 0.1f, 0.1f);
 
 		m_Shader = graphics::GraphicsShader::Create();
-		if (!m_Shader->InitVertexShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\VertexShader.cso")) {
+		if (!m_Shader->InitVertexShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\BasicVS.cso")) {
 			CONSOLE_ERROR("Vertex shader initialization failed")
 		}
 
-		if (!m_Shader->InitPixelShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\TextureAmbientLightPixelShader.cso")) {
+		if (!m_Shader->InitPixelShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\BasicPS.cso")) {
 			CONSOLE_ERROR("Pixel shader initialization failed")
 		}
 

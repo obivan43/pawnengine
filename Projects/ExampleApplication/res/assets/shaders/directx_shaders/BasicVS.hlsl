@@ -38,7 +38,7 @@ VS_OUT main(
 	result.texcoord = texcoord;
 	
 	result.position = mul(float4(position, 1.0f), MVP);
-	result.normal = normalize(mul(float4(normal, 0.0f), inverseTransposeTransformation));
+	result.normal = normalize(mul(float4(normal, 1.0f), inverseTransposeTransformation)).xyz;
 	result.worldPosition = mul(float4(position, 1.0f), transformation).xyz;
 	
 	return result;
