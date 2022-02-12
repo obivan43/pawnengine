@@ -43,6 +43,11 @@ namespace pawn::engine {
 		alignas(16) glm::vec3 eyePosition;
 	};
 
+	struct alignas(16) ASCIICB {
+		int asciiWidth;
+		int asciiHeight;
+	};
+
 	class Renderer {
 
 		public:
@@ -60,6 +65,7 @@ namespace pawn::engine {
 				uint32_t height
 			);
 			void SetShader(std::shared_ptr<graphics::GraphicsContext>& context, const std::shared_ptr<graphics::GraphicsShader>& shader);
+			void SetASCIITexture(const std::shared_ptr<graphics::GraphicsTexture2D>& texture) { m_ASCIITexture = texture; }
 
 			void BeginScene(math::Camera& camera, glm::mat4& view);
 			void UpdateLights(DirectionalLightComponent& directionalLight, const glm::vec3& eyePosition);
@@ -73,11 +79,17 @@ namespace pawn::engine {
 			std::shared_ptr<graphics::GraphicsBuffer> m_ViewProjection;
 			std::shared_ptr<graphics::GraphicsBuffer> m_Texture2D;
 			std::shared_ptr<graphics::GraphicsBuffer> m_Light;
+			std::shared_ptr<graphics::GraphicsBuffer> m_ASCII;
+
+			std::shared_ptr<graphics::GraphicsTexture2D> m_ASCIITexture;
 
 			std::shared_ptr<graphics::GraphicsContext> m_Context;
 			std::shared_ptr<graphics::GraphicsAPI> m_GraphicsAPI;
 			std::shared_ptr<graphics::GraphicsShader> m_Shader;
 			std::shared_ptr<graphics::GraphicsRenderer> m_GraphicsRenderer;
+
+			uint32_t m_CacheWidth;
+			uint32_t m_CacheHeight;
 	};
 
 }

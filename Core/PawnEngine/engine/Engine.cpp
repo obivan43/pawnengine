@@ -44,7 +44,7 @@ namespace pawn::engine {
 			CONSOLE_ERROR("Vertex shader initialization failed")
 		}
 
-		if (!m_Shader->InitPixelShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\BasicPS.cso")) {
+		if (!m_Shader->InitPixelShader(m_Context, L"res\\assets\\shaders\\directx_shaders\\ASCII.cso")) {
 			CONSOLE_ERROR("Pixel shader initialization failed")
 		}
 
@@ -124,6 +124,7 @@ namespace pawn::engine {
 
 	void Engine::OnCreate() {
 		m_Scene->OnCreate(m_ScriptEngine);
+		m_Renderer->SetASCIITexture(m_TextureManager->GetTextureByName("arial.jpg"));
 	}
 
 	void Engine::OnUpdate(utils::Clock& clock) {

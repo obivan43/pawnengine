@@ -12,16 +12,20 @@ namespace pawn::engine {
 		m_ViewProjection = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::ConstantBuffer);
 		m_Texture2D = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::ConstantBuffer);
 		m_Light = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::ConstantBuffer);
+		m_ASCII = graphics::GraphicsBuffer::Create(graphics::GraphicsBufferEnum::ConstantBuffer);
 
 		m_Transformation->Init(m_Context, nullptr, 1, sizeof(TransfromCB), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_ViewProjection->Init(m_Context, nullptr, 1, sizeof(ViewProjectionCB), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_Texture2D->Init(m_Context, nullptr, 1, sizeof(Texture2DCB), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
 		m_Light->Init(m_Context, nullptr, 1, sizeof(LightCB), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
+		m_ASCII->Init(m_Context, nullptr, 1, sizeof(ASCIICB), graphics::GraphicsBufferUsageTypeEnum::DynamicBuffer);
 	}
 
 	void Renderer::Init(const std::shared_ptr<graphics::GraphicsContext>& context, const std::shared_ptr<graphics::GraphicsAPI>& api, uint32_t width, uint32_t height) {
 		m_Context = context;
 		m_GraphicsAPI = api;
+		m_CacheWidth = width;
+		m_CacheHeight = height;
 		m_GraphicsRenderer = graphics::GraphicsRenderer::Create();
 	}
 
@@ -33,6 +37,13 @@ namespace pawn::engine {
 
 		m_ViewProjection->Update(m_Context, &viewProjection, 1, sizeof(ViewProjectionCB));
 		m_ViewProjection->Bind(m_Context, 1);
+
+		ASCIICB asciiCB{};
+		asciiCB.asciiWidth = static_cast<int>(m_CacheWidth);
+		asciiCB.asciiHeight = static_cast<int>(m_CacheHeight);
+
+		m_ASCII->Update(m_Context, &asciiCB, 1, sizeof(ASCIICB));
+		m_ASCII->Bind(m_Context, 4);
 	}
 
 	void Renderer::UpdateLights(DirectionalLightComponent& directionalLight, const glm::vec3& eyePosition) {
@@ -77,6 +88,10 @@ namespace pawn::engine {
 	) {
 		if (textureComponent.Texture.get()) {
 			textureComponent.Texture->Bind(m_Context);
+		}
+
+		if (m_ASCIITexture.get()) {
+			m_ASCIITexture->Bind(m_Context, 1);
 		}
 
 		Texture2DCB texture2DCB{ glm::vec4(textureComponent.Color, 0.0f) };

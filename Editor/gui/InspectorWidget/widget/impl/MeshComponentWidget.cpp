@@ -41,7 +41,7 @@ namespace editor::impl {
 	}
 
 	void MeshComponentWidget::OnLineEditPress() {
-		QString& text{ m_MeshLineEdit->text() };
+		QString text{ m_MeshLineEdit->text() };
 
 		std::string& meshName{ m_Mesh->MeshName };
 		meshName = text.toLocal8Bit().constData();

@@ -53,7 +53,7 @@ namespace editor::impl {
 	}
 
 	void Texture2DComponentWidget::OnLineEditPress() {
-		QString& text{ m_Texture2DLineEdit->text() };
+		QString text{ m_Texture2DLineEdit->text() };
 
 		std::string& textureName{ m_Texture2D->TextureName };
 		textureName = text.toLocal8Bit().constData();
