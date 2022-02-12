@@ -212,7 +212,7 @@ float4 ComputeASCII(float4 inputPosition, float2 TextureCoordinate)
 	}
 	
 	float3 col = tex.xyz / max(tex.x, max(tex.y, tex.z));
-	return float4(cha * col, 1.);
+	return float4(cha * col, 1.) * color;
 }
 
 float4 main(PS_INPUT input) : SV_Target 
